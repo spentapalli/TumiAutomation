@@ -223,6 +223,7 @@ public class GenericMethods extends GlobalConstants {
 				// Clicking on WebElement
 				element.click();
 				logger.log(Status.INFO, "Clicked on " + buttonName);
+				//getScreen("./Screenshots/"+buttonName+".png");
 				WaitForJStoLoad();
 			} else {
 				logger.log(Status.FAIL, "Button is not enabled " + buttonName);
