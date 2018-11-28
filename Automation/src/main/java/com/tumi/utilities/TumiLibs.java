@@ -16,7 +16,10 @@ public class TumiLibs extends GenericMethods {
 	}
 
 	public static void closeSignUpForUS() {
-		click(home.getSignupPopupUS(), "Close SignUp Window");
+		try {
+			click(home.getSignupPopupUS(), "Close SignUp Window");
+		} catch (Exception e) {
+		}
 	}
 
 	public static void acceptCookies() {

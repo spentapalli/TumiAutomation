@@ -17,14 +17,16 @@ public class TumiLogin extends GenericMethods {
 		
 		TumiLibs.closeSignUpForUS();
 		// click on login window
-		click(login.getLoginWindow(), " click on Login");
+		/*click(login.getLoginWindow(), " click on Login");
 		// enter username
 		input(login.getLoginUsername(), testData.get("EmailID"), "User Name");
 		// enter password
 		input(login.getLoginPassword(), testData.get("Password"), "Password");
 		// click on SignIn
-		click(login.getLogOn(), "click on SignIn");	
-		click(driver.findElement(By.xpath("//div[@id='tm-panel-login-confirmation']/header/a")), "Close My Account Section");
+		click(login.getLogOn(), "click on SignIn");	*/
+		login("Login", "TumiLogin");
+		click(home.getCloseMyAccount(), "Close my account window");
+
 
 		
 	}

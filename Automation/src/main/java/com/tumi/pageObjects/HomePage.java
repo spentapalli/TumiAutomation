@@ -117,4 +117,11 @@ public class HomePage extends GenericMethods {
 		
 		return invalidCredentials;
 	}
+	
+	@FindBy(how=How.XPATH,using="//div[@id='tm-panel-login-confirmation']/header/a")
+	private WebElement closeMyAccount;
+
+	public WebElement getCloseMyAccount() {
+		return closeMyAccount;
+	}
 }
