@@ -85,7 +85,7 @@ public class GenericMethods extends GlobalConstants {
 			driver.get(url);
 			//driver.navigate().to("https://ca.stg-hybris-akamai.tumi.com");
 			driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
-			TumiLibs.closeSignUpForUS();
+			//TumiLibs.closeSignUpForUS();
 			//TumiLibs.closeSignUp();
 			//TumiLibs.acceptCookies();
 		} catch (Exception e) {
@@ -134,7 +134,7 @@ public class GenericMethods extends GlobalConstants {
 				Timestamp time = new Timestamp(System.currentTimeMillis());
 				String screenlocation = "./Screenshots/" + result.getName() + "" + time.getTime()
 						+ ".png";
-				getScreen("./ExtentReports/Screenshots/" + result.getName() + "" + time.getTime() + ".png");
+				getScreen("./Screenshots/" + result.getName() + "" + time.getTime() + ".png");
 				logger.fail(MarkupHelper.createLabel(result.getName() + " Test Case Failed", ExtentColor.RED));
 				logger.fail(result.getThrowable());
 				logger.fail("Screen Shot Reference:  ",
@@ -155,7 +155,7 @@ public class GenericMethods extends GlobalConstants {
 			File destination = new File(path);
 			TakesScreenshot screenshot = (TakesScreenshot) driver;
 			File src = screenshot.getScreenshotAs(OutputType.FILE);
-			FileHandler.copy(src, destination.getAbsoluteFile());
+			FileHandler.copy(src, destination);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

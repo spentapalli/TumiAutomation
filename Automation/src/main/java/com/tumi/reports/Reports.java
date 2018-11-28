@@ -47,7 +47,7 @@ public class Reports {
 				}
 			}
 		} catch (Exception e) {
-			logger.log(Status.INFO, "File(s) are not available in ScreenShot Folder");
+			e.getMessage();
 		}
 	}
 

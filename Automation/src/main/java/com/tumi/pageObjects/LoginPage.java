@@ -25,7 +25,7 @@ public class LoginPage {
 		
 		return loginWindow;
 	}
-	@FindBy(how=How.ID,using="j_username")
+	@FindBy(how=How.XPATH,using="//input[@id='j_username']")
 	private WebElement loginUsername;
 	
 	public WebElement getLoginUsername() {
@@ -33,7 +33,7 @@ public class LoginPage {
 		 return loginUsername;
 	}
 	
-	@FindBy(how=How.ID,using="j_password")
+	@FindBy(how=How.XPATH,using="//input[@id='j_password']")
 	private WebElement loginPassword;
 	
 	public WebElement getLoginPassword() {
@@ -57,10 +57,10 @@ public class LoginPage {
 		return rememberMe;
 	}
 	
-	@FindBy(how=How.XPATH,using="//div[@id='login-option-regular']/input")
+	@FindBy(how=How.XPATH,using="//input[@value='Sign in']")
 	private WebElement signInClick;
 	
-	public WebElement getSignInClick() {
+	public WebElement getLogOn() {
 		
 		return signInClick;
 	}

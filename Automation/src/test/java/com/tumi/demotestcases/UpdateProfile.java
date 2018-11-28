@@ -13,7 +13,7 @@ public class UpdateProfile extends GenericMethods{
 	public Map<String, String> testData = ReadTestData.retrieveData("Login", "UpdateProfile");
 	
 	@Test
-	public void UpdateProfile(WebDriver driver) throws InterruptedException {
+	public void updateProfile(){
 		
 		 //click on login window
 		click(login.getLoginWindow(), " click on Login");
@@ -25,7 +25,7 @@ public class UpdateProfile extends GenericMethods{
 		input(login.getLoginPassword(), testData.get("Password"), "Password");
 				
 		//click on SignIn
-		click(login.getSignInClick(), "click on SignIn");
+		click(login.getLogOn(), "click on SignIn");
 	    
 		//click on view my profile from MyAccount page
 		click(myacc.getViewProfile(), "View Profile");
