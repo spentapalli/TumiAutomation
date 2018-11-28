@@ -17,6 +17,8 @@ public class LoginPage {
 	}
 	
 	@FindBy(how=How.XPATH,using="(//a[contains(text(),'Sign In')])[1]")
+	//us
+	//@FindBy(how=How.XPATH,using="//div[@id='signInDiv']")
 	private WebElement loginWindow;
 	
 	public WebElement getLoginWindow() {

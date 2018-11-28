@@ -86,6 +86,7 @@ public class GenericMethods extends GlobalConstants {
 			//driver.navigate().to("https://ca.stg-hybris-akamai.tumi.com");
 			driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
 			TumiLibs.closeSignUpForUS();
+			//TumiLibs.closeSignUp();
 			//TumiLibs.acceptCookies();
 		} catch (Exception e) {
 			Assert.fail("Fail to launch Application "+e.getMessage());
@@ -227,7 +228,7 @@ public class GenericMethods extends GlobalConstants {
 				logger.log(Status.FAIL, "Button is not enabled " + buttonName);
 			}
 		} catch (Exception e) {
-			Assert.fail(buttonName + "is not Enabled or Unable to interact at this point");
+			Assert.fail(buttonName +" "+ "is not Enabled or Unable to interact at this point");
 		}
 
 	}

@@ -17,7 +17,7 @@ public class HomePage extends GenericMethods {
 	}
 	
 	//for Canada
-	@FindBy(how=How.XPATH,using="//div[@id='firstTimeEmailSignupPopup']/div/span")
+	@FindBy(how=How.XPATH,using="//div[@id='firstTimeEmailSignupPopup']/a/span")
 	private WebElement signupPopup;
 	
 	public WebElement getSignupPopup() {

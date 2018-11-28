@@ -7,8 +7,8 @@ public class GlobalConstants extends Reports {
 	//initiating driver
 	
 	
-	public static String url = "https://ca.stg-hybris-akamai.tumi.com/p/alpha-patch-tracer-key-fob-014757D/";
-	//public static String url = "https://www.stg-hybris-akamai.tumi.com/p/alpha-patch-tracer-key-fob-014757D/";
+	//public static String url = "https://ca.stg-hybris-akamai.tumi.com";
+	public static String url = "https://www.stg-hybris-akamai.tumi.com";
 
 	// Drivers Path
 	public static String chromePath = "./BrowserDrivers/chromedriver.exe";
