@@ -8,6 +8,7 @@ public class GlobalConstants extends Reports {
 	
 	
 	//public static String url = "https://ca.stg-hybris-akamai.tumi.com";
+	//this is for US
 	public static String url = "https://www.stg-hybris-akamai.tumi.com";
 
 	// Drivers Path
