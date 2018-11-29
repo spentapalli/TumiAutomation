@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
+import com.tumi.utilities.TumiLibs;
 
 public class InvalidCredentials extends GenericMethods {
 
@@ -14,6 +15,7 @@ public class InvalidCredentials extends GenericMethods {
 	@Test
 	public void verifyInvalidUserMessage() {
 
+		TumiLibs.closeSignUpForUS();
 		login("Login", "InValidCredentials");
 		verifyAssertEquals(getText(home.getInvalidCredentialsError()),
 				repository("home.invalidCredentials"));
