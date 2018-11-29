@@ -10,7 +10,7 @@ public class GlobalConstants extends Reports {
 	//public static String url = "https://ca.stg-hybris-akamai.tumi.com";
 	//this is for US
 	public static String url = "https://www.stg-hybris-akamai.tumi.com";
-
+	//https://www.stg-hybris-akamai.tumi.com/p/continental-expandable-2-wheeled-carry-on-022021CHYA/
 	// Drivers Path
 	public static String chromePath = "./BrowserDrivers/chromedriver.exe";
 	public static String firefoxPath = "./BrowserDrivers/geckodriver.exe";
