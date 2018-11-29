@@ -10,7 +10,9 @@ import com.tumi.utilities.GenericMethods;
 
 public class FailedOrder extends GenericMethods {
 	public Map<String, String> testData = ReadTestData.retrieveData("Login", "FailedOrder");
-
+/*
+ * Verify whether the user is able to place an order with invalid credit card details
+ */
 	@Test
 	public void testFailedOrder() throws InterruptedException {
 
