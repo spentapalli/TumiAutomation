@@ -244,6 +244,17 @@ public class GenericMethods extends GlobalConstants {
 		}
 		captureScreen(buttonName);
 	}
+	
+	public static void webclick(WebElement element, String buttonName) {
+		try {
+				// Clicking on WebElement
+				element.click();
+				logger.log(Status.INFO, "Clicked on " + buttonName);
+		} catch (Exception e) {
+			Assert.fail(buttonName +" "+ "is not Enabled or Unable to interact at this point");
+		}
+		captureScreen(buttonName);
+	}
 
 	public static void input(WebElement element, String Value, String fieldName) {
 		try {

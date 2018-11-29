@@ -9,22 +9,22 @@ import org.openqa.selenium.support.PageFactory;
 import com.tumi.reports.Reports;
 import com.tumi.utilities.GenericMethods;
 
-public class GuestBillingPage {
+public class GuestBillingPage extends GenericMethods {
 	
 	public GuestBillingPage(WebDriver driver) {
 		Reports.driver= driver;
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(how=How.XPATH,using="//input[@placeholder='Your Name (as appears on card)']")
+	@FindBy(how=How.XPATH,using="//input[@name='nameOnCard']")
 	private WebElement nameOnCard;
 	
 	public WebElement getNameOnCard() {
 		
-		return nameOnCard;
+		return explicitWait(nameOnCard);
 	}
 	
-	@FindBy(how=How.XPATH,using="//input[@placeholder='Card Number']")
+	@FindBy(how=How.XPATH,using="//input[@name='cardNumber']")
 	private WebElement cardNumber;
 	
 	public WebElement getCardNumber() {
@@ -32,7 +32,7 @@ public class GuestBillingPage {
 		return cardNumber;
 	}
 
-	@FindBy(how=How.XPATH,using="//span[@name='expiryMonth']")
+	@FindBy(how=How.XPATH,using="//select[@name='expiryMonth']")
 	private WebElement expiryMonth;
 	
 	public WebElement getExpiryMonth() {
@@ -42,7 +42,7 @@ public class GuestBillingPage {
 	
 	
 	
-	@FindBy(how=How.XPATH,using="//span[@name='expiryYear']")
+	@FindBy(how=How.XPATH,using="//select[@name='expiryYear']")
 	private WebElement expiryYear;
 	
 	public WebElement getExpiryYear() {
@@ -82,7 +82,7 @@ public class GuestBillingPage {
 		return useShippingAddressAsBilling;
 	}
 	
-	@FindBy(how=How.XPATH,using="//button[contains(text(),'Review Your Order')]")
+	@FindBy(how=How.XPATH,using="//div[@id='newPaymentButton']/button")
 	private WebElement reviewOrder;
 	
 	public WebElement getReviewOrder() {
