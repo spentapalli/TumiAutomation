@@ -35,7 +35,6 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -134,7 +133,7 @@ public class GenericMethods extends GlobalConstants {
 				Timestamp time = new Timestamp(System.currentTimeMillis());
 				String screenlocation = "./Screenshots/" + result.getName() + "" + time.getTime()
 						+ ".png";
-				getScreen("./Screenshots/" + result.getName() + "" + time.getTime() + ".png");
+				getScreen("./ExtentReports/Screenshots/" + result.getName() + "" + time.getTime() + ".png");
 				logger.fail(MarkupHelper.createLabel(result.getName() + " Test Case Failed", ExtentColor.RED));
 				logger.fail(result.getThrowable());
 				logger.fail("Screen Shot Reference:  ",
@@ -159,7 +158,17 @@ public class GenericMethods extends GlobalConstants {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+	}
+	
+	public static void captureScreen(String name) {
+		Timestamp time = new Timestamp(System.currentTimeMillis());
+		String location = "./Screenshots/"+name+time.getTime()+".png";
+		getScreen("./ExtentReports/Screenshots/"+name+time.getTime()+".png");
+		try {
+			logger.info("Reference",MediaEntityBuilder.createScreenCaptureFromPath(location).build());
+		} catch (Exception e) {
+			
+		}
 	}
 
 	public static void login(String sheetName,String testCaseName){
@@ -224,7 +233,7 @@ public class GenericMethods extends GlobalConstants {
 				// Clicking on WebElement
 				element.click();
 				logger.log(Status.INFO, "Clicked on " + buttonName);
-				//getScreen("./Screenshots/"+buttonName+".png");
+				
 				WaitForJStoLoad();
 			} else {
 				logger.log(Status.FAIL, "Button is not enabled " + buttonName);
@@ -232,7 +241,18 @@ public class GenericMethods extends GlobalConstants {
 		} catch (Exception e) {
 			Assert.fail(buttonName +" "+ "is not Enabled or Unable to interact at this point");
 		}
-
+		captureScreen(buttonName);
+	}
+	
+	public static void webclick(WebElement element, String buttonName) {
+		try {
+				// Clicking on WebElement
+				element.click();
+				logger.log(Status.INFO, "Clicked on " + buttonName);
+		} catch (Exception e) {
+			Assert.fail(buttonName +" "+ "is not Enabled or Unable to interact at this point");
+		}
+		captureScreen(buttonName);
 	}
 
 	public static void input(WebElement element, String Value, String fieldName) {

@@ -10,8 +10,6 @@ import com.tumi.pageObjects.ShippingPage;
 import com.tumi.utilities.GenericMethods;
 
 public class TumiOrderInStage extends GenericMethods {
-	private String baseUrl;
-	
 	WebDriver driver;
 	
 	@Test

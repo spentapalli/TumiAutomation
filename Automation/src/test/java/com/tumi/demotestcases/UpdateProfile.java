@@ -2,7 +2,6 @@ package com.tumi.demotestcases;
 
 import java.util.Map;
 
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
 import com.tumi.dataProvider.ReadTestData;
