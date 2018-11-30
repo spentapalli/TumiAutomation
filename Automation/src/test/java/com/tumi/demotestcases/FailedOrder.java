@@ -12,6 +12,7 @@ import com.tumi.dataProvider.ReadTestData;
 import com.tumi.pageObjects.MiniCartPage;
 import com.tumi.pageObjects.ShippingPage;import com.tumi.reports.Reports;
 import com.tumi.utilities.GenericMethods;
+import com.tumi.utilities.TumiLibs;
 
 public class FailedOrder extends GenericMethods{
 	public Map<String, String> testData = ReadTestData.retrieveData("Login", "FailedOrder");
@@ -19,7 +20,7 @@ public class FailedOrder extends GenericMethods{
 	@Test
 	public void testFailedOrder() throws InterruptedException{
 		
-		
+		TumiLibs.closeSignUpForUS();
 		click(pdp.getAddToCart(), "Add To Cart");
 		
 		//click on proceed to checkout in Mini cart
