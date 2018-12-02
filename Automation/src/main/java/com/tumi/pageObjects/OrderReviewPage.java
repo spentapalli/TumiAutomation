@@ -47,5 +47,12 @@ public class OrderReviewPage {
 		
 		return placeOrder;
 	}
+	@FindBy(how=How.XPATH,using="//section[@id='confirmation-info-ctnr']/div/div/b")
+	private WebElement orderNumber;
+
+	public WebElement getOrderNumber() {
+		return orderNumber;
+	}
+	
 	
 }

@@ -7,6 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
+import com.tumi.utilities.TumiLibs;
 
 public class FailedOrder extends GenericMethods {
 	public Map<String, String> testData = ReadTestData.retrieveData("Login", "FailedOrder");
@@ -15,6 +16,8 @@ public class FailedOrder extends GenericMethods {
  */
 	@Test
 	public void testFailedOrder() throws InterruptedException {
+		
+		TumiLibs.closeSignUpForUS();
 
 		click(pdp.getAddToCart(), "Add To Cart");
 
@@ -45,18 +48,18 @@ public class FailedOrder extends GenericMethods {
 		}
 		// input(shipping.getAddressLine2(),testData.get("AddressLine2"), "Address
 		// Line2");
-		input(shipping.getTown(), testData.get("TownCity"), "Town or city");
+		/*input(shipping.getTown(), testData.get("TownCity"), "Town or city");
 		selectByVisibleText(shipping.getRegionIso(), testData.get("Region"), "Region");
 
-		input(shipping.getPostcode(), testData.get("PostCode"), "Post code");
+		input(shipping.getPostcode(), testData.get("PostCode"), "Post code");*/
 		input(shipping.getPhoneNumber(), testData.get("Phone"), "Phone Number");
 
 		click(shipping.getContinueShippingMethod(), "Continue shipping Method");
 
-		// shipping method page
+		// shipping method pagess
 		webclick(shipMethod.getStandardShippingMethod(), "Standard Shipping Method");
-		// -------------------Missing Step
-		click(driver.findElement(By.xpath("//button[contains(text(),'Proceed to Payment')]")), "Proceed");
+		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
+		
 		// billing page
 		input(guestBillPage.getNameOnCard(), testData.get("NameOnCard"), "Name on Card");
 

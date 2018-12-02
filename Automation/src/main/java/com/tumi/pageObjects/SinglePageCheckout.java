@@ -23,7 +23,7 @@ public class SinglePageCheckout {
 		return signInExpressCheckout;
 	}
 	
-	@FindBy(how = How.XPATH, using = "//input[@placeholder='Email Address *']")
+	@FindBy(how = How.XPATH, using = "(//input[@name='email'])[1]")
 	private WebElement emailAddress;
 
 	public WebElement getEmailAddress() {

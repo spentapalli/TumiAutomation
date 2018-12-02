@@ -16,7 +16,7 @@ public class ShippingPage {
 		Reports.driver = driver;
 		PageFactory.initElements(driver,this);
 	}
-	@FindBy(how=How.NAME,using="firstName")
+	@FindBy(how=How.XPATH,using="//input[@placeholder='First Name *']")
 	private WebElement firstName;
 	
 	public WebElement getFirstName() {
@@ -24,7 +24,7 @@ public class ShippingPage {
 		return firstName;
 	}
 	
-	@FindBy(how=How.NAME,using="lastName")
+	@FindBy(how=How.XPATH,using="//input[@placeholder='Last Name *']")
 	private WebElement lastName;
 	
 	public WebElement getLastName() {
@@ -33,7 +33,7 @@ public class ShippingPage {
 	}
 	
 
-	@FindBy(how=How.NAME,using="line1")
+	@FindBy(how=How.XPATH,using="//input[@placeholder='Start typing address…']")
 	private WebElement addressLine1;
 	
 	public WebElement getAddressLine1() {
@@ -50,7 +50,7 @@ public class ShippingPage {
 	}
 	
 	
-	@FindBy(how=How.NAME,using="line2")
+	@FindBy(how=How.XPATH,using="//input[@placeholder='Address Line2']")
 	private WebElement addressLine2;
 	
 	public WebElement getAddressLine2() {
@@ -58,7 +58,7 @@ public class ShippingPage {
 		return addressLine2;
 	}
 	
-	@FindBy(how=How.NAME,using="townCity")
+	@FindBy(how=How.XPATH,using="//input[@placeholder='Town / City *']")
 	private WebElement town;
 	
 	public WebElement getTown() {
@@ -84,7 +84,7 @@ public class ShippingPage {
 	}
 	
 	
-	@FindBy(how=How.NAME,using="postcode")
+	@FindBy(how=How.NAME,using="//input[@placeholder='Zip Code *']")
 	private WebElement postcode;
 	
 	public WebElement getPostcode() {
