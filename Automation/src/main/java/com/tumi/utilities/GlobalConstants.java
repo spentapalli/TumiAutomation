@@ -14,7 +14,7 @@ public class GlobalConstants extends Reports {
 	//https://www.stg-hybris-akamai.tumi.com/p/continental-expandable-2-wheeled-carry-on-022021CHYA/
 	
 	//Stage2 US
-	public static String url = "https://www.hybris-stage2.tumi.com/p/014757D";
+	public static String url = "https://www.hybris-stage2.tumi.com/";
 	
 	// Drivers Path
 	public static String chromePath = "./BrowserDrivers/chromedriver.exe";

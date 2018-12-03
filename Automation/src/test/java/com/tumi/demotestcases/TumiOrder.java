@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
+import com.tumi.utilities.GlobalConstants;
 import com.tumi.utilities.TumiLibs;
 
 
@@ -16,8 +17,10 @@ public class TumiOrder extends GenericMethods {
 	
 	@Test
 	public void TumiOrder() throws InterruptedException {
-
+		
 		TumiLibs.closeSignUpForUS();
+		final String pdpURL = GlobalConstants.url+"p/"+testData.get("SKUID");
+		driver.get(pdpURL);
 		click(pdp.getAddToCart(), "Add To Cart");
 		
 		// click on proceed to checkout in Mini cart
@@ -71,8 +74,9 @@ public class TumiOrder extends GenericMethods {
   
 		
 		click(review.getPlaceOrder(), "place order");
+		delay(2000);
+		captureOrderConfScreen("OrderConfirmation");
 		
-		//System.out.println("your order number is "+" "+ review.getOrderNumber().getText());
 		
 		
 

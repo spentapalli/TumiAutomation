@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
+import com.tumi.utilities.GlobalConstants;
 import com.tumi.utilities.TumiLibs;
 
 public class OrderWithMonogram extends GenericMethods{
@@ -18,7 +19,8 @@ public class OrderWithMonogram extends GenericMethods{
 		
 		//Close signUp window
 		TumiLibs.closeSignUpForUS();
-		
+		final String pdpURL = GlobalConstants.url+"p/"+testData.get("SKUID");
+		driver.get(pdpURL);
 		//Adding Personalization
 		click(mono.getAddPersonalization(), "Add Personalization");
 		input(mono.getFirstMonoInput(), testData.get("FirstMonoInput"), "First Mono Input");
@@ -72,6 +74,8 @@ public class OrderWithMonogram extends GenericMethods{
 		delay(2000);
 		
 		click(review.getPlaceOrder(), "Place Order");
+		delay(2000);
+		captureOrderConfScreen("OrderConfirmation");
 	
 		
 		

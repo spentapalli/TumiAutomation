@@ -173,6 +173,17 @@ public class GenericMethods extends GlobalConstants {
 			
 		}
 	}
+	
+	public static void captureOrderConfScreen(String name) {
+		Timestamp time = new Timestamp(System.currentTimeMillis());
+		String location = "./Screenshots/Ordres/"+name+time.getTime()+".png";
+		getScreen("./ExtentReports/Screenshots/Orders/"+name+time.getTime()+".png");
+		try {
+			logger.info("Reference",MediaEntityBuilder.createScreenCaptureFromPath(location).build());
+		} catch (Exception e) {
+			
+		}
+	}
 
 	public static void login(String sheetName,String testCaseName){
 		try {

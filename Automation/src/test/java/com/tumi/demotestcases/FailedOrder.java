@@ -7,6 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
+import com.tumi.utilities.GlobalConstants;
 import com.tumi.utilities.TumiLibs;
 
 public class FailedOrder extends GenericMethods {
@@ -18,6 +19,8 @@ public class FailedOrder extends GenericMethods {
 	public void testFailedOrder() throws InterruptedException {
 		
 		TumiLibs.closeSignUpForUS();
+		final String pdpURL = GlobalConstants.url+"p/"+testData.get("SKUID");
+		driver.get(pdpURL);
 
 		click(pdp.getAddToCart(), "Add To Cart");
 
@@ -70,7 +73,7 @@ public class FailedOrder extends GenericMethods {
 		input(guestBillPage.getCvvNumber(), testData.get("CVV"), "Cvv Number");
 		click(guestBillPage.getReviewOrder(),"Review your order");
 		/*if (guestBillPage.getReviewOrder().isEnabled()) {
-			Assert.fail("Able to Proceed Order with invlid details");
+			Assert.fail("Able to Proceed Order with invalid details");
 		}
 */
         delay(3000);
