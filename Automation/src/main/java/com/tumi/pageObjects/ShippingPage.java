@@ -16,7 +16,7 @@ public class ShippingPage {
 		Reports.driver = driver;
 		PageFactory.initElements(driver,this);
 	}
-	@FindBy(how=How.XPATH,using="//input[@placeholder='First Name *']")
+	@FindBy(how=How.XPATH,using="(//input[@name='firstName'])[1]")
 	private WebElement firstName;
 	
 	public WebElement getFirstName() {
@@ -24,7 +24,7 @@ public class ShippingPage {
 		return firstName;
 	}
 	
-	@FindBy(how=How.XPATH,using="//input[@placeholder='Last Name *']")
+	@FindBy(how=How.XPATH,using="//input[@name='lastName']")
 	private WebElement lastName;
 	
 	public WebElement getLastName() {
@@ -33,7 +33,7 @@ public class ShippingPage {
 	}
 	
 
-	@FindBy(how=How.XPATH,using="//input[@placeholder='Start typing address…']")
+	@FindBy(how=How.XPATH,using="//input[@name='line1']")
 	private WebElement addressLine1;
 	
 	public WebElement getAddressLine1() {
@@ -93,7 +93,7 @@ public class ShippingPage {
 	}
 	
 
-	@FindBy(how=How.XPATH,using="//input[@placeholder='Daytime Phone(mobile preferred) *']")
+	@FindBy(how=How.XPATH,using="//input[@name='phone']")
 	private WebElement phoneNumber;
 	
 	public WebElement getPhoneNumber() {

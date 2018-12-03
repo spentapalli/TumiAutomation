@@ -30,6 +30,7 @@ public class TumiOrder extends GenericMethods {
 		// singlePageCheckout
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email");
 		click(singlePage.getContinueAsGuest(), "Continue As Guest");
+		delay(2000);
 
 		// Shipping page
 		input(shipping.getFirstName(), testData.get("FirstName"), "First Name");

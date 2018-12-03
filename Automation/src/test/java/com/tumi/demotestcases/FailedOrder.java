@@ -68,10 +68,13 @@ public class FailedOrder extends GenericMethods {
 		selectByVisibleText(guestBillPage.getExpiryMonth(), "05", "Expiry Month");
 		selectByVisibleText(guestBillPage.getExpiryYear(), "2020", "Expiry Year");
 		input(guestBillPage.getCvvNumber(), testData.get("CVV"), "Cvv Number");
-		if (guestBillPage.getReviewOrder().isEnabled()) {
+		click(guestBillPage.getReviewOrder(),"Review your order");
+		/*if (guestBillPage.getReviewOrder().isEnabled()) {
 			Assert.fail("Able to Proceed Order with invlid details");
 		}
-
+*/
+        delay(3000);
+		click(review.getPlaceOrder(), "place order");
 	}
 
 }

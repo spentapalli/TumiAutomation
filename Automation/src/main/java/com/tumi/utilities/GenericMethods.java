@@ -52,6 +52,7 @@ import com.tumi.pageObjects.MiniCartPage;
 import com.tumi.pageObjects.MyAccountPage;
 import com.tumi.pageObjects.MyProfile;
 import com.tumi.pageObjects.OrderReviewPage;
+import com.tumi.pageObjects.Personalization;
 import com.tumi.pageObjects.ProductDetailPage;
 import com.tumi.pageObjects.ShippingMethodPage;
 import com.tumi.pageObjects.ShippingPage;
@@ -75,6 +76,7 @@ public class GenericMethods extends GlobalConstants {
 	public static OrderReviewPage review = null;
 	public static MyAccountPage myacc = null;
 	public static MyProfile profile = null;
+	public static Personalization mono = null;
 
 	@BeforeClass(alwaysRun = true)
 	public static void launchBrowser() {
@@ -118,6 +120,7 @@ public class GenericMethods extends GlobalConstants {
 		review = new OrderReviewPage(driver);
 		myacc = new MyAccountPage(driver);
 		profile = new MyProfile(driver);
+		mono = new Personalization(driver);
 	}
 
 	@AfterMethod(alwaysRun = true)
