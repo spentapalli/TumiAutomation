@@ -70,12 +70,12 @@ public class TumiOrder extends GenericMethods {
 		selectByVisibleText(guestBillPage.getExpiryYear(), "2020", "Expiry Year");	
 		input(guestBillPage.getCvvNumber(), testData.get("CVV"), "Cvv Number");
 		click(guestBillPage.getReviewOrder(), "Review your order");
-		delay(3000);
+		delay(2000);
   
 		
 		click(review.getPlaceOrder(), "place order");
-		delay(2000);
-		captureOrderConfScreen("OrderConfirmation");
+		/*delay(4000);
+		captureOrderConfScreen("OrderConfirmation");*/
 		
 		
 		

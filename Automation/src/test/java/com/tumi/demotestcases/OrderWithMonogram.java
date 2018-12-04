@@ -74,8 +74,8 @@ public class OrderWithMonogram extends GenericMethods{
 		delay(2000);
 		
 		click(review.getPlaceOrder(), "Place Order");
-		delay(2000);
-		captureOrderConfScreen("OrderConfirmation");
+		/*delay(4000);
+		captureOrderConfScreen("OrderConfirmation");*/
 	
 		
 		

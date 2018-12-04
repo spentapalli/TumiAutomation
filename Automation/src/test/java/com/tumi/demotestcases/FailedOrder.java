@@ -24,7 +24,7 @@ public class FailedOrder extends GenericMethods {
 
 		click(pdp.getAddToCart(), "Add To Cart");
 
-		// click on proceed to checkout in Mini cart
+		// click on proceed to checkout in Mini cart 
 		click(cart.getProceedCheckOut(), "Proceed to Checkout");
 		// Thread.sleep(5000);
 
