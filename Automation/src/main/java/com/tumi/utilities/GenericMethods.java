@@ -45,6 +45,7 @@ import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.pageObjects.CartPage;
+import com.tumi.pageObjects.GiftServices;
 import com.tumi.pageObjects.GuestBillingPage;
 import com.tumi.pageObjects.HomePage;
 import com.tumi.pageObjects.LoginPage;
@@ -77,6 +78,7 @@ public class GenericMethods extends GlobalConstants {
 	public static MyAccountPage myacc = null;
 	public static MyProfile profile = null;
 	public static Personalization mono = null;
+	public static GiftServices gift = null;
 
 	@BeforeClass(alwaysRun = true)
 	public static void launchBrowser() {
@@ -121,6 +123,7 @@ public class GenericMethods extends GlobalConstants {
 		myacc = new MyAccountPage(driver);
 		profile = new MyProfile(driver);
 		mono = new Personalization(driver);
+		gift = new GiftServices(driver);
 	}
 
 	@AfterMethod(alwaysRun = true)

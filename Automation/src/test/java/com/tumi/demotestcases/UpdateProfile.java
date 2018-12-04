@@ -22,9 +22,12 @@ public class UpdateProfile extends GenericMethods{
 		//click on view my profile from MyAccount page
 		click(myacc.getViewProfile(), "View Profile");
 		
+		
+		
 		//update profile name
 		input(profile.getName(), testData.get("name"), "First name");
-		
+		input(profile.getPhone(),testData.get("Phone"), "Phone Number");
+		click(profile.getNotifications(),"notifications");
 		//click on save
 		click(profile.getSave(), "Save Update");
 		
