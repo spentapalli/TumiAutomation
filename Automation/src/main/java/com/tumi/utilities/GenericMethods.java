@@ -35,6 +35,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.ITestResult;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -95,15 +96,20 @@ public class GenericMethods extends GlobalConstants {
 			Assert.fail("Fail to launch Application "+e.getMessage());
 		}
 	}
+	
+	@AfterClass(alwaysRun = true)
+	public static void closeBrowser() {
+		driver.close();
+	}
 
 	//@AfterClass(alwaysRun = true)
 	public static void closeSession() {
 		driver.close();
-		try {
+		/*try {
 			killSession();
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		}*/
 	}
 	
 	@BeforeMethod(alwaysRun = true)

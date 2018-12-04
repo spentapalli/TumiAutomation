@@ -34,7 +34,6 @@ public class FailedOrder extends GenericMethods {
 		// singlePageCheckout
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email");
 		click(singlePage.getContinueAsGuest(), "Continue As Guest");
-		// Thread.sleep(3000);
 
 		// Shipping page
 
