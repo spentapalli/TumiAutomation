@@ -89,6 +89,7 @@ public class GenericMethods extends GlobalConstants {
 			driver.get(url);
 			//driver.navigate().to("https://ca.stg-hybris-akamai.tumi.com");
 			driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+			driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 			//TumiLibs.closeSignUpForUS();
 			//TumiLibs.closeSignUp();
 			//TumiLibs.acceptCookies();
@@ -264,7 +265,7 @@ public class GenericMethods extends GlobalConstants {
 		} catch (Exception e) {
 			Assert.fail(buttonName +" "+ "is not Enabled or Unable to interact at this point");
 		}
-		captureScreen(buttonName);
+		//captureScreen(buttonName);
 	}
 	
 	public static void webclick(WebElement element, String buttonName) {
