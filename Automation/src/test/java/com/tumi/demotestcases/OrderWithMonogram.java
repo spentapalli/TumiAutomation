@@ -2,7 +2,9 @@ package com.tumi.demotestcases;
 
 import java.util.Map;
 
+
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.tumi.dataProvider.ReadTestData;
@@ -10,6 +12,10 @@ import com.tumi.utilities.GenericMethods;
 import com.tumi.utilities.GlobalConstants;
 import com.tumi.utilities.TumiLibs;
 
+/**
+ * @author Shwetha Capo
+ *
+ */
 public class OrderWithMonogram extends GenericMethods{
 	
 	public Map<String, String>  testData = ReadTestData.retrieveData("Login", "OrderWithMonogram");
@@ -18,9 +24,13 @@ public class OrderWithMonogram extends GenericMethods{
 	public void testOrderWithMonogram() throws InterruptedException {
 		
 		//Close signUp window
-		TumiLibs.closeSignUpForUS();
-		final String pdpURL = GlobalConstants.url+"p/"+testData.get("SKUID");
+		/*TumiLibs.closeSignUpForUsProd();
+		click(home.getSelectCountryUS(), "Select US country");
+		click(home.getSelectUS(), "click US");
+		delay(3000);*/
+		final String pdpURL = GlobalConstants.url+"/p/"+testData.get("SKUID");
 		driver.get(pdpURL);
+		
 		//Adding Personalization
 		click(mono.getAddPersonalization(), "Add Personalization");
 		input(mono.getFirstMonoInput(), testData.get("FirstMonoInput"), "First Mono Input");
@@ -34,7 +44,7 @@ public class OrderWithMonogram extends GenericMethods{
 		click(mono.getSecondNext(), "Second Next");
 		
 		click(mono.getApply(),"Apply");
-		
+		delay(3000);
 				
 		click(pdp.getAddToCart(), "Add To Cart");
 		
@@ -71,6 +81,10 @@ public class OrderWithMonogram extends GenericMethods{
 		input(guestBillPage.getPhoneNumber(), testData.get("Phone"), "Phone number");
 		
 		click(guestBillPage.getReviewOrder(), "Review your Order");
+		/*if (guestBillPage.getReviewOrder().isEnabled()) {
+			Assert.fail("Able to Proceed Order with invalid details");
+		}*/
+
 		delay(2000);
 		
 		click(review.getPlaceOrder(), "Place Order");

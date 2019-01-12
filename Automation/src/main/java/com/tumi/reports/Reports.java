@@ -4,9 +4,13 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import org.openqa.selenium.WebDriver;
+import org.testng.ISuite;
+import org.testng.ITestContext;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
@@ -18,16 +22,24 @@ public class Reports {
 	public static WebDriver driver = null;
 	String timeStamp;
 	String extentReportPath;
+	
+	
 
+	
+	
 	@BeforeTest(alwaysRun=true)
-	public void startReport() {
+	
+	public void startReport(ITestContext ctx) {
 		timeStamp = new SimpleDateFormat("dd-MMM-yy  hh.mm.ss aa").format(Calendar.getInstance().getTime());
-		extentReportPath = System.getProperty("user.dir") + "//ExtentReports//" + timeStamp + ".html";
+		String suiteName = ctx.getCurrentXmlTest().getSuite().getName();
+		extentReportPath = System.getProperty("user.dir") + "//ExtentReports//" +suiteName+"-"+ timeStamp + ".html";
 		htmlreport = new ExtentHtmlReporter(extentReportPath);
 		htmlreport.loadXMLConfig(new File(System.getProperty("user.dir") + "\\extent-config.xml"));
 		report = new ExtentReports();
 		report.attachReporter(htmlreport);
 	}
+	
+	
 
 	@AfterTest(alwaysRun=true)
 	public void endReport() {
@@ -49,5 +61,5 @@ public class Reports {
 			e.getMessage();
 		}
 	}
-
+	
 }

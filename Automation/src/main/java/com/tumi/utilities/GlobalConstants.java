@@ -16,6 +16,20 @@ public class GlobalConstants extends Reports {
 	//Stage2 US
 	public static String url = "https://www.hybris-stage2.tumi.com/";
 	
+	//Production
+	//public static String url = "https://www.tumi.com";
+	
+	//production Canada
+	//public static String url = "https://ca.tumi.com";
+	
+	//production Korea
+	//public static String url = "https://kr.tumi.com";
+	
+	
+	//dev US
+	//public static String url = "https://eom-tumi.com:9002/";
+	
+	
 	// Drivers Path
 	public static String chromePath = "./BrowserDrivers/chromedriver.exe";
 	public static String firefoxPath = "./BrowserDrivers/geckodriver.exe";

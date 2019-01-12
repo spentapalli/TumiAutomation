@@ -12,17 +12,33 @@ import com.tumi.utilities.GlobalConstants;
 import com.tumi.utilities.TumiLibs;
 
 
+
+/**
+ * @author Shwetha  Capo
+ *
+ */
 public class TumiOrder extends GenericMethods {
-	public Map<String, String> testData = ReadTestData.retrieveData("Login", "TumiOrder");
+	public Map<String, String> testData = ReadTestData.retrieveData("Login", "TumiOrderKR");
+	
 	
 	@Test
-	public void TumiOrder() throws InterruptedException {
+	public void testTumiOrder() throws InterruptedException {
 		
-		TumiLibs.closeSignUpForUS();
-		final String pdpURL = GlobalConstants.url+"p/"+testData.get("SKUID");
+		/*TumiLibs.closeSignUpForUsProd();
+		click(home.getSelectCountryUS(), "Select US country");
+		click(home.getSelectKorea(), "click korea");
+		delay(4000);*/
+
+		/*if (google.getNoThanks().isDisplayed()) {
+			click(google.getNoThanks(), "offers popup");
+		}else {
+		}*/
+
+		//TumiLibs.closeSignUpForUS();
+		final String pdpURL = GlobalConstants.url+"/p/"+testData.get("SKUID");
 		driver.get(pdpURL);
 		click(pdp.getAddToCart(), "Add To Cart");
-		
+		delay(2000);
 		// click on proceed to checkout in Mini cart
 		click(cart.getProceedCheckOut(), "Proceed to Checkout");
 		
@@ -51,8 +67,8 @@ public class TumiOrder extends GenericMethods {
 		
 		/*input(shipping.getAddressLine2(), testData.get("AddressLine2"), "Address Line2");
 		input(shipping.getTown(), testData.get("TownCity"), "Town or city");
-		input(shipping.getRegionIso(), testData.get("Region"), "RegionISO");
-		input(shipping.getPostcode(), testData.get("PostCode"), "Post code");*/
+		input(shipping.getRegionIso(), testData.get("Region"), "RegionISO");*/
+		input(shipping.getPostcode(), testData.get("PostCode"), "Post code");
 		
 		input(shipping.getPhoneNumber(), testData.get("Phone"), "Phone Number");
 		click(shipping.getContinueShippingMethod(), "Continue shipping Method");

@@ -2,20 +2,30 @@ package com.tumi.demotestcases;
 
 import java.util.Map;
 
+
 import org.testng.annotations.Test;
 
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
 import com.tumi.utilities.TumiLibs;
 
+
+/**
+ * @author Shwetha Capo
+ *
+ */
 public class UpdateProfile extends GenericMethods{
 
 	public Map<String, String> testData = ReadTestData.retrieveData("Login", "UpdateProfile");
 	
 	@Test
-	public void updateProfile(){
+	public void testUpdateProfile(){
 		
-		TumiLibs.closeSignUpForUS();
+		TumiLibs.closeSignUpForUsProd();
+		click(home.getSelectCountryUS(), "Select US country");
+		click(home.getSelectUS(), "click US");
+		delay(3000);
+		
 		 //click on login window
 		login("Login", "UpdateProfile");
 	    
