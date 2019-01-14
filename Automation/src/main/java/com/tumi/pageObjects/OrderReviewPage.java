@@ -7,8 +7,13 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
 import com.tumi.reports.Reports;
+import com.tumi.utilities.GenericMethods;
 
-public class OrderReviewPage {
+/**
+ * @author Shwetha Capo
+ *
+ */
+public class OrderReviewPage extends GenericMethods {
 	
 	public OrderReviewPage(WebDriver driver) {
 		Reports.driver = driver;
@@ -45,7 +50,7 @@ public class OrderReviewPage {
 	
 	public WebElement getPlaceOrder() {
 		
-		return placeOrder;
+		return explicitWait(placeOrder);
 	}
 	@FindBy(how=How.XPATH,using="//section[@id='confirmation-info-ctnr']/div/div/b")
 	private WebElement orderNumber;

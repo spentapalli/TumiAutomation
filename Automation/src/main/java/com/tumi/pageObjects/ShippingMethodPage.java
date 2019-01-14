@@ -9,6 +9,10 @@ import org.openqa.selenium.support.PageFactory;
 import com.tumi.reports.Reports;
 import com.tumi.utilities.GenericMethods;
 
+/**
+ * @author Shwetha Capo
+ *
+ */
 public class ShippingMethodPage extends GenericMethods {
 	
 	public ShippingMethodPage(WebDriver driver) {
@@ -22,6 +26,14 @@ public class ShippingMethodPage extends GenericMethods {
 	public WebElement getStandardShippingMethod() {
 		
 		return explicitWait(standardShippingMethod);
+	}
+	
+	@FindBy(how=How.XPATH,using="//input[@id='standard-international-shipping-net']")
+	private WebElement caStandardShippingMethod;
+	
+	public WebElement getCaStandardShippingMethod() {
+		
+		return explicitWait(caStandardShippingMethod);
 	}
 	
 	@FindBy(how=How.XPATH,using="//input[@id='second-day-net']")

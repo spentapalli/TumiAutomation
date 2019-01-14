@@ -7,8 +7,13 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
 import com.tumi.reports.Reports;
+import com.tumi.utilities.GenericMethods;
 
-public class Personalization {
+/**
+ * @author Shwetha Capo
+ *
+ */
+public class Personalization extends GenericMethods {
 	
 	public Personalization(WebDriver driver) {
 		Reports.driver = driver;
@@ -204,6 +209,15 @@ public class Personalization {
 		return textStyleFutura;
 	}
 	
+
+	@FindBy(how=How.XPATH, using="(//input[@type='checkbox'])[5]")
+	private WebElement checkBox;
+					
+	
+	public WebElement getCheckBox() {
+		return checkBox;
+	}
+
 	@FindBy(how=How.XPATH, using="//div[@id='monogram-step2']/div[3]/a[2]")
 	private WebElement secondNext;
 	

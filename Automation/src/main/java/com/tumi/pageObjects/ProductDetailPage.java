@@ -9,7 +9,11 @@ import org.openqa.selenium.support.PageFactory;
 import com.tumi.reports.Reports;
 import com.tumi.utilities.GenericMethods;
 
-public class ProductDetailPage {
+/**
+ * @author Shwetha Capo
+ *
+ */
+public class ProductDetailPage extends GenericMethods{
 	
 	 public ProductDetailPage(WebDriver driver) {
 		 Reports.driver = driver;
@@ -21,7 +25,7 @@ public class ProductDetailPage {
 
 	public WebElement getAddToCart() {
 
-		return addToCart;
+		return explicitWait(addToCart);
 	}
 
 	@FindBy(how = How.ID, using = "select-qty")

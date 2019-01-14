@@ -8,6 +8,11 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.tumi.reports.Reports;
 
+
+/**
+ * @author Shwetha Capo
+ *
+ */
 public class CartPage {
 	
 	public CartPage(WebDriver driver) {
@@ -39,12 +44,22 @@ public class CartPage {
 		return makeGiftBox;
 	}
 	
+
 	@FindBy(how=How.XPATH,using="//button[contains(text(),'Proceed to Checkout')]")
 	private WebElement proceedToCheckout;
 	
 	public WebElement getProceedToCheckout() {
 		
 		return proceedToCheckout;
+		
+	}
+	
+	@FindBy(how=How.XPATH,using="//div[@class='checkout-btn-container removeFocusIndicator']")
+	private WebElement krProceedToCheckout;
+	
+	public WebElement getKrProceedToCheckout() {
+		
+		return krProceedToCheckout;
 		
 	}
 	

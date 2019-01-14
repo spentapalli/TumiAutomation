@@ -60,8 +60,10 @@ import com.tumi.pageObjects.OrderReviewPage;
 import com.tumi.pageObjects.PayPalPage;
 import com.tumi.pageObjects.Personalization;
 import com.tumi.pageObjects.ProductDetailPage;
+import com.tumi.pageObjects.ShiipingPageForSignedIn;
 import com.tumi.pageObjects.ShippingMethodPage;
 import com.tumi.pageObjects.ShippingPage;
+import com.tumi.pageObjects.SignInBillingPage;
 import com.tumi.pageObjects.SinglePageCheckout;
 import com.tumi.pageObjects.TumiStudio;
 
@@ -88,6 +90,8 @@ public class GenericMethods extends GlobalConstants {
 	public static MultiShippingPage multiShip = null;
 	public static GooglePage google = null;
 	public static InstaPage insta = null;
+	public static ShiipingPageForSignedIn signinShip = null;
+	public static SignInBillingPage signinBill = null;
 
 	@BeforeClass(alwaysRun = true)
 	public static void launchBrowser() {
@@ -142,6 +146,9 @@ public class GenericMethods extends GlobalConstants {
 		multiShip = new MultiShippingPage(driver);
 		google = new GooglePage(driver);
 		insta = new InstaPage(driver);
+		signinShip =new ShiipingPageForSignedIn(driver);
+		signinBill = new SignInBillingPage(driver);
+		
 		
 	}
 

@@ -39,6 +39,7 @@ public Map<String, String> testData = ReadTestData.retrieveData("Login","Prdouct
 		input(home.getSearch(),testData.get("PrdouctName"),"Product search");
 		
 		WebElement dropdown = driver.findElement(By.id("matching_products"));
+		
 		//dropdown.click(); // assuming you have to click the "dropdown" to open it
 		List<WebElement> allSearchResults = dropdown.findElements(By.tagName("li"));
 		if (allSearchResults.isEmpty()) {
