@@ -5,6 +5,7 @@ package com.tumi.login;
 
 import java.util.Map;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.aventstack.extentreports.Status;
@@ -40,9 +41,7 @@ public class MyAccPage extends GenericMethods {
 				logger.log(Status.INFO, "new here message displayed");
 				System.out.println("new here message displayed");
 			}else {
-				logger.log(Status.INFO, "new here mesage is not displayed");
-
-				System.out.println("new here mesage is not displayed");
+				Assert.fail("new here mesage is not displayed");
 			}
 			
 			if(myacc.getCreateAcc().isDisplayed()) {

@@ -24,18 +24,17 @@ public class VerifyInvalidGoogleLogin extends GenericMethods {
 	@Test
 	public void verifyInvalidGoogleLogin() throws InterruptedException {
 
-		TumiLibs.closeSignUpForUsProd();
+		/*TumiLibs.closeSignUpForUsProd();
 		click(home.getSelectCountryUS(), "Select US country");
 		click(home.getSelectUS(), "click US");
 		delay(4000);
 
 		if (google.getNoThanks().isDisplayed()) {
 			click(google.getNoThanks(), "offers popup");
-		}
+		}*/
 
 		click(home.getHeaderSignIn(), "SignIn");
 
-		String pwindow = driver.getWindowHandle();
 		/*
 		 * System.out.println("the parent window handler id is"+pwindow);
 		 * System.out.println("before switch to other window, the title is"+driver.

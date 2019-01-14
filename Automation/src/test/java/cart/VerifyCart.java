@@ -33,6 +33,7 @@ public class VerifyCart extends GenericMethods {
 
 		login("PlaceOrder", "TumiLogin");
 		click(myacc.getMyAccountClose(), "My Account Close");
+		//to get PDP
 		input(home.getSearchProduct(), testData.get("SKUID"), "Search Product");
 		keyEnter(home.getSearchProduct());
 		try {
@@ -50,7 +51,7 @@ public class VerifyCart extends GenericMethods {
 	/*Confirm you can edit in the cart
 	 * Editing/Updating cart adds a new line item for the product
 	 */
-	@Test(priority = 1, dependsOnMethods = "verifyMiniCartCount")
+	@Test(priority = 1, dependsOnMethods = "verifyCartCount")
 	public void verifyCartEdit() {
 		click(pdp.getFEditQuantity(), "Edit First Product");
 		input(pdp.getEnterQuantity(), testData.get("ProductQ"), "Input Quantity");
