@@ -41,19 +41,18 @@ public class ReadTestData {
 
 		Map<String, Map<String, String>> objTestData = new HashMap<String, Map<String, String>>();
 		try {
-			sPreviousTestCaseName = "";
 			iRowNo = 1;
 			// Go To File Path
 			file = new File(sFilePath);
 			fin = new FileInputStream(file);
 			wb = new XSSFWorkbook(fin);
 			sh = wb.getSheet(sSheetName);
-			rows = sh.getLastRowNum() + 1;
+			rows = sh.getLastRowNum() - sh.getFirstRowNum();
 			cols = sh.getRow(0).getLastCellNum();
 			/*
 			 * i is used to get the Test Case Name
 			 */
-			for (int i = 1; i < rows; i++) {
+			for (int i = 1; i <=rows; i++) {
 				
 
 				// Below Map Interface is used to find Single Set of Data
@@ -70,7 +69,7 @@ public class ReadTestData {
 				}
 
 				if (sCurTestCaseName.equalsIgnoreCase(sTestCaseName)) {
-					sPreviousTestCaseName = sCurTestCaseName;
+					
 					// Below Loop is used to get all the headers names in the excel
 					for (int j = 0; j < cols; j++) {
 						sKey = sh.getRow(0).getCell(j).getStringCellValue().trim();
