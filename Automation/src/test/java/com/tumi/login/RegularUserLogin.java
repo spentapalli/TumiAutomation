@@ -42,7 +42,7 @@ public class RegularUserLogin extends GenericMethods {
 		click(pdp.getAddToCart(), "Add To Cart");
 		// delay(2000);
 
-		click(cart.getProceedCheckOut(), "Proceed to Checkout");
+		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 
 		click(mainCart.getProceedToCheckout(), "Cart");
 

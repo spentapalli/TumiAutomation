@@ -57,7 +57,7 @@ public class VerifyInvalidGoogleLogin extends GenericMethods {
 			Assert.fail("verifying Invalid google login failed");
 		}
 		//verifyAssertEquals(getText(home.getInvalidCredentialsError()),
-				repository("home.invalidCredentials"));
+				getProperty("home.invalidCredentials");
 
 	}
 

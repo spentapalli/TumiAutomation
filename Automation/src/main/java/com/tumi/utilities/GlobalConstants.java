@@ -6,25 +6,6 @@ public class GlobalConstants extends Reports {
 	
 	
 	
-<<<<<<< HEAD
-	//Stage2 US
-	//public static String url = "https://www.hybris-stage2.tumi.com/";
-	
-	//Production
-	public static String url = "https://www.tumi.com";
-	
-	//production Canada
-	//public static String url = "https://ca.tumi.com";
-	
-	//production Korea
-	//public static String url = "https://kr.tumi.com";
-	
-	
-	//dev US
-	//public static String url = "https://eom-tumi.com:9002/";
-	
-	
-=======
 	// initiating driver
 
 	// Stage akamai Canada
@@ -49,7 +30,6 @@ public class GlobalConstants extends Reports {
 	// dev US
 	// public static String url = "https://eom-tumi.com:9002/";
 
->>>>>>> aeedd54764433033c3ff3e941386c80d8b463e36
 	// Drivers Path
 	public static String chromePath = System.getProperty("user.dir") + "/BrowserDrivers/chromedriver.exe";
 	public static String firefoxPath = System.getProperty("user.dir") + "/BrowserDrivers/geckodriver.exe";

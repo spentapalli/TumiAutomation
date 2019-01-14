@@ -42,8 +42,10 @@ import com.tumi.webPages.CartPage;
 import com.tumi.webPages.CheckOutPage;
 import com.tumi.webPages.CreateAccountPage;
 import com.tumi.webPages.GiftServices;
+import com.tumi.webPages.GooglePage;
 import com.tumi.webPages.GuestBillingPage;
 import com.tumi.webPages.HomePage;
+import com.tumi.webPages.InstaPage;
 import com.tumi.webPages.LoginPage;
 import com.tumi.webPages.MiniCartPage;
 import com.tumi.webPages.MultiShippingPage;
@@ -53,9 +55,12 @@ import com.tumi.webPages.OrderReviewPage;
 import com.tumi.webPages.PayPalPage;
 import com.tumi.webPages.Personalization;
 import com.tumi.webPages.ProductDetailPage;
+import com.tumi.webPages.ShiipingPageForSignedIn;
 import com.tumi.webPages.ShippingMethodPage;
 import com.tumi.webPages.ShippingPage;
+import com.tumi.webPages.SignInBillingPage;
 import com.tumi.webPages.SinglePageCheckout;
+import com.tumi.webPages.TumiStudio;
 
 public class Reports {
 	public static ExtentHtmlReporter htmlreport;
@@ -82,12 +87,14 @@ public class Reports {
 	public static Personalization mono = null;
 	public static GiftServices gift = null;
 	public static PayPalPage paypal = null;
-	// public static TumiStudio tumiId = null;
+	public static TumiStudio tumiId = null;
 	public static MultiShippingPage multiShip = null;
 	public static CreateAccountPage register = null;
 	public static CheckOutPage checkout = null;
-	// public static GooglePage google = null;
-	// public static InstaPage insta = null;
+	public static GooglePage google = null;
+	public static InstaPage insta = null;
+	public static SignInBillingPage signinBill = null;
+	public static ShiipingPageForSignedIn signinShip = null;
 
 	@BeforeTest(alwaysRun = true)
 	public void startReport(ITestContext ctx) {
@@ -153,12 +160,14 @@ public class Reports {
 		mono = new Personalization(driver);
 		gift = new GiftServices(driver);
 		paypal = new PayPalPage(driver);
-		// tumiId = new TumiStudio(driver);
+		tumiId = new TumiStudio(driver);
 		multiShip = new MultiShippingPage(driver);
-		// google = new GooglePage(driver);
-		// insta = new InstaPage(driver);
+		google = new GooglePage(driver);
+		insta = new InstaPage(driver);
 		register = new CreateAccountPage();
 		checkout = new CheckOutPage();
+		signinBill = new SignInBillingPage(driver);
+		signinShip = new ShiipingPageForSignedIn(driver);
 	}
 
 	@AfterMethod(alwaysRun = true)

@@ -23,6 +23,7 @@ public Map<String, String> testData = ReadTestData.retrieveData("Login","Prdouct
 	@Test
 	public void search() throws InterruptedException{
 		
+		
 		TumiLibs.closeSignUpForUsProd();
 		click(home.getSelectCountryUS(), "Select US country");
 		click(home.getSelectUS(), "click US");

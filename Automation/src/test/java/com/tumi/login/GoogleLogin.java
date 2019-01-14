@@ -65,7 +65,7 @@ public class GoogleLogin extends GenericMethods {
 			}
 		}
 		driver.switchTo().window(pwindow);
-		verifyAssertEquals(getText(myacc.getWelcomeMessage()), repository("login.success.message"));
+		verifyAssertEquals(getText(myacc.getWelcomeMessage()), getProperty("login.success.message"));
 	    
 	    System.out.println("login.success.message");
 		driver.close();

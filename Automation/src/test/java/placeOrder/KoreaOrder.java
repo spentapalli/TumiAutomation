@@ -1,4 +1,4 @@
-package com.tumi.demotestcases;
+package placeOrder;
 
 import java.util.Map;
 
@@ -27,7 +27,7 @@ public class KoreaOrder extends GenericMethods{
 			click(pdp.getAddToCart(), "Add To Cart");
 			delay(2000);
 			// click on proceed to checkout in Mini cart
-			click(cart.getKrProceedCheckOut(), "Proceed to Checkout");
+			click(minicart.getKrProceedCheckOut(), "Proceed to Checkout");
 			delay(2000);
 			
 			// click on proceed to checkout in cart page

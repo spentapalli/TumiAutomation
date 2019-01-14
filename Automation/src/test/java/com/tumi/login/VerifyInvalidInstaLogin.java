@@ -52,7 +52,7 @@ public Map<String, String> testData = ReadTestData.retrieveData("Login", "Verify
 		String message = insta.getPasswordErr().getText();
 		Assert.assertTrue(message.contains(expectedMessage), "Your error message");
 		System.out.println(message);*/
-		verifyAssertEquals(getText(insta.getPasswordErr()), repository("insta.passwordError"));
+		verifyAssertEquals(getText(insta.getPasswordErr()), getProperty("insta.passwordError"));
 		
 	    
 		
