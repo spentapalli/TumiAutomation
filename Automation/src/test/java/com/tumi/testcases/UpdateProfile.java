@@ -1,4 +1,4 @@
-package com.tumi.demotestcases;
+package com.tumi.testcases;
 
 import java.util.Map;
 
@@ -22,8 +22,8 @@ public class UpdateProfile extends GenericMethods{
 	public void testUpdateProfile(){
 		
 		TumiLibs.closeSignUpForUsProd();
-		click(home.getSelectCountryUS(), "Select US country");
-		click(home.getSelectUS(), "click US");
+		click(home.getSelectCountry(), "US country");
+		click(home.getSelectCountry(), "Korea");
 		delay(3000);
 		
 		 //click on login window
@@ -32,14 +32,11 @@ public class UpdateProfile extends GenericMethods{
 		//click on view my profile from MyAccount page
 		click(myacc.getViewProfile(), "View Profile");
 		
-		
-		
 		//update profile name
 		input(profile.getName(), testData.get("name"), "First name");
 		input(profile.getPhone(),testData.get("Phone"), "Phone Number");
 		click(profile.getNotifications(),"notifications");
 		//click on save
-		click(profile.getSave(), "Save Update");
-		
+		click(profile.getSave(), "Save Update");		
 	}
 }

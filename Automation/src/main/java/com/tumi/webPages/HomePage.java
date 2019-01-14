@@ -1,4 +1,6 @@
-package com.tumi.pageObjects;
+package com.tumi.webPages;
+
+import java.util.List;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -22,11 +24,36 @@ public class HomePage extends GenericMethods {
 		
 	}
 	
+	@FindBy(how=How.XPATH,using="//input[@id='search']")
+	private WebElement searchProduct;
+	
+	public WebElement getSearchProduct() {
+		delay(2000);
+		return searchProduct;
+	}
+	
+	@FindBy(how=How.XPATH,using="//main[@id='navEnd']/div[2]/div[1]/div/div")
+	private WebElement NoProducts;
+	
+	public WebElement getNoProducts() {
+		delay(2000);
+		return NoProducts;
+	}
+	
+	
+	@FindBy(how=How.XPATH,using="//ul[@id='matching_products']/li")
+	private List<WebElement> matchingProducts;
+	
+	public List<WebElement> getMatchingProducts() {
+		
+		return matchingProducts;
+	}
+	
 	//for Canada
 	@FindBy(how=How.XPATH,using="//div[@id='firstTimeEmailSignupPopup']/a/span")
 	private WebElement signupPopup;
 	
-	public WebElement getSignupPopup() {
+	public WebElement getCASignupPopup() {
 		
 		return signupPopup;
 	}
@@ -35,7 +62,7 @@ public class HomePage extends GenericMethods {
 	@FindBy(how=How.XPATH,using="//div[@id='firstTimeEmailSignupPopup']/a/span")
 	private WebElement signupPopupUS;
 	
-	public WebElement getSignupPopupUS() {
+	public WebElement getUSSignupPopupUS() {
 		
 		return signupPopupUS;
 	}
@@ -175,7 +202,7 @@ public class HomePage extends GenericMethods {
 		
 		return submit;
 	}
-	
+		
 	@FindBy(how=How.XPATH,using="(//div[@class='error-message'])[1]")
 	private WebElement invalidCredentials;
 	
@@ -190,4 +217,35 @@ public class HomePage extends GenericMethods {
 	public WebElement getCloseMyAccount() {
 		return closeMyAccount;
 	}
+
+	@FindBy(how=How.XPATH,using="//div[@id='firstTimeEmailSignupPopup']/a")
+	private WebElement signUpPop;
+	
+	public WebElement getSignupPopup() {
+		return signUpPop ;
+	}
+	
+	@FindBy(how=How.XPATH,using="//div[@id='main-content']/div[2]/h1/span")
+	private WebElement vpnIssue;
+	
+	public WebElement getVPNDis() {
+		return vpnIssue ;
+	}
+	
+	@FindBy(how=How.XPATH,using="//div[@id='minicart_data']/span[2]")
+	private WebElement minicartcount;
+	
+	public WebElement getMinicartCount() {
+		return minicartcount ;
+	}
+	
+	@FindBy(how=How.XPATH,using="//div[@id='minicart_data']")
+	private WebElement minicart;
+	
+	public WebElement getMinicart() {
+		return minicartcount ;
+	}
+	
+	
+	
 }

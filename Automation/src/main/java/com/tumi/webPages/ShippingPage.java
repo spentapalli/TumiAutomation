@@ -1,4 +1,4 @@
-package com.tumi.pageObjects;
+package com.tumi.webPages;
 
 import java.util.List;
 

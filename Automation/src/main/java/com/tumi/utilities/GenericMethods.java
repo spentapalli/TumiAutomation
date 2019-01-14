@@ -3,48 +3,34 @@ package com.tumi.utilities;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.lang.reflect.Method;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Properties;
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.ITestResult;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
+import org.testng.asserts.SoftAssert;
 
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
-import com.aventstack.extentreports.markuputils.ExtentColor;
-import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.tumi.dataProvider.ReadTestData;
+<<<<<<< HEAD
 import com.tumi.pageObjects.CartPage;
 import com.tumi.pageObjects.GiftServices;
 import com.tumi.pageObjects.GooglePage;
@@ -202,6 +188,11 @@ public class GenericMethods extends GlobalConstants {
 		}
 	}
 
+=======
+
+public class GenericMethods extends GlobalConstants {
+
+>>>>>>> aeedd54764433033c3ff3e941386c80d8b463e36
 	public static void captureOrderConfScreen(String name) {
 		Timestamp time = new Timestamp(System.currentTimeMillis());
 		String location = "./Screenshots/Ordres/" + name + time.getTime() + ".png";
@@ -209,73 +200,31 @@ public class GenericMethods extends GlobalConstants {
 		try {
 			logger.info("Reference", MediaEntityBuilder.createScreenCaptureFromPath(location).build());
 		} catch (Exception e) {
-
+			Assert.fail("Fail to Capture Screen " + e.getMessage());
 		}
 	}
 
-	public static void login(String sheetName, String testCaseName) {
+	public void login(String sheetName, String testCaseName) {
 		try {
 			Map<String, String> testData = ReadTestData.retrieveData(sheetName, testCaseName);
 			click(home.getHeaderSignIn(), "Sign In");
 			input(home.getUserName(), testData.get("EmailID"), "Email Address");
 			input(home.getPassWord(), testData.get("Password"), "Password");
 			click(home.getLogOn(), "Login");
-
+			click(myacc.getMyAccountClose(), "My Account Close");
+			//removeExistingCart();
 		} catch (Exception e) {
 			Assert.fail("Fail to Login due to " + e.getMessage());
-		}
-	}
-
-	public static void getBrowser(String browserName) throws Exception {
-		// logger = report.createTest("Initialize Browser");
-		browser = browserName;
-
-		if (browserName.equalsIgnoreCase("firefox")) {
-
-			System.setProperty(GlobalConstants.firefox, GlobalConstants.firefoxPath);
-
-			driver = new FirefoxDriver();
-			// logger.log(Status.INFO, "Firefox has been successfully Launched");
-
-		} else if (browserName.equalsIgnoreCase("Chrome")) {
-			ChromeOptions options = new ChromeOptions();
-			options.addArguments("disable-infobars");
-			options.addArguments("--disable-notifications");
-			System.setProperty(GlobalConstants.chrome, GlobalConstants.chromePath);
-			driver = new ChromeDriver(options);
-			// logger.log(Status.INFO, "Chrome has been successfully Launched");
-		} else if (browserName.equalsIgnoreCase("ie")) {
-			System.setProperty(GlobalConstants.ie, GlobalConstants.iePath);
-			driver = new InternetExplorerDriver();
-		} else {
-			Assert.fail("No Browser has been selected");
-		}
-	}
-
-	public static void getURL(String URL) {
-
-		logger = report.createTest("initiate Application");
-
-		if (URL.equalsIgnoreCase("Q2")) {
-
-			driver.get("");
-			logger.log(Status.INFO, "Successfully Navigated to Environment");
-
-		} else if (URL.equalsIgnoreCase("Q3")) {
-
-			driver.get("");
-			logger.log(Status.INFO, "Successfully Navigated to  Environment");
 		}
 	}
 
 	public static void click(WebElement element, String buttonName) {
 
 		try {
-			if (element.isEnabled() || element.isDisplayed()) {
+			if (element.isDisplayed()) {
 				// Clicking on WebElement
 				element.click();
 				logger.log(Status.INFO, "Clicked on " + buttonName);
-
 				WaitForJStoLoad();
 			} else {
 				logger.log(Status.FAIL, "Button is not enabled " + buttonName);
@@ -294,7 +243,7 @@ public class GenericMethods extends GlobalConstants {
 		} catch (Exception e) {
 			Assert.fail(buttonName + " " + "is not Enabled or Unable to interact at this point");
 		}
-		captureScreen(buttonName);
+
 	}
 
 	public static void input(WebElement element, String Value, String fieldName) {
@@ -308,23 +257,10 @@ public class GenericMethods extends GlobalConstants {
 				WaitForJStoLoad();
 			}
 		} catch (Exception e) {
-
 			Assert.fail("Fail to Enter Value in  " + fieldName + e.getMessage());
 		}
 
 	}
-	/*
-	 * ////////////////////////////////// public static void input(WebElement
-	 * element, WebElement element2, String fieldName) { try { if
-	 * (element.isDisplayed()) { // To clear the existed value element.clear(); //
-	 * To enter current value element.sendKeys(element2); logger.log(Status.INFO,
-	 * "Entered the value in " + fieldName + " as: " + element2); WaitForJStoLoad();
-	 * } } catch (Exception e) {
-	 * 
-	 * Assert.fail("Fail to Enter Value in  " + fieldName+ e.getMessage()); }
-	 * 
-	 * }
-	 */
 
 	public static String getText(WebElement element) {
 		String text = null;
@@ -523,7 +459,7 @@ public class GenericMethods extends GlobalConstants {
 		return getText(ele);
 	}
 
-	public String repository(String propertyName) {
+	public static String getProperty(String propertyName) {
 		prop = new Properties();
 		try {
 			String propPath = propertiesPath;
@@ -535,14 +471,6 @@ public class GenericMethods extends GlobalConstants {
 			Assert.fail("Unable to Load Properties " + e.getMessage());
 		}
 		return prop.getProperty(propertyName);
-	}
-
-	public static void maximizeBrowser() {
-		if (OSFinder.isWindows()) {
-			driver.manage().window().maximize();
-		} else {
-			driver.manage().window().setSize(new Dimension(1600, 900));
-		}
 	}
 
 	public static void killSession() {
@@ -589,9 +517,17 @@ public class GenericMethods extends GlobalConstants {
 		}
 	}
 
+	public static void verifyAssertInt(int actual, int expected) {
+		try {
+			Assert.assertEquals(actual, expected);
+		} catch (Exception e) {
+			logger.log(Status.FAIL, e.getMessage());
+		}
+	}
+
 	public static void verifyAssertContains(String actual, String text, String errorMsg) {
 		try {
-			Assert.assertEquals(actual.contains(text), errorMsg);
+			Assert.assertTrue(actual.contains(text), errorMsg);
 		} catch (Exception e) {
 			logger.log(Status.FAIL, e.getMessage());
 		}
@@ -782,14 +718,48 @@ public class GenericMethods extends GlobalConstants {
 		}
 	}
 
-	protected void waitForElement(WebElement element, int timeOut) {
+	public void waitForElement(WebElement element, int timeOut) {
 		WebDriverWait wait = new WebDriverWait(driver, timeOut);
 		wait.until(ExpectedConditions.visibilityOf(element));
 	}
-	
-	protected void waitForElementToBeClickable(WebElement element, int timeOut) {
+
+	public void waitForElementToBeClickable(WebElement element, int timeOut) {
 		WebDriverWait wait = new WebDriverWait(driver, timeOut);
-		wait.until(ExpectedConditions.elementToBeClickable( element));
+		wait.until(ExpectedConditions.elementToBeClickable(element));
 	}
 
+	public String randomNumber() {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("ddMMYYmmss");
+		Date date = new Date();
+		return dateFormat.format(date);
+	}
+
+	public void softAssertEquals(String actual, String expected) {
+		SoftAssert softAssertion = new SoftAssert();
+		softAssertion.assertEquals(actual, expected);
+		softAssertion.assertAll();
+	}
+
+	public void softAssertContains(String actual, String expected) {
+		SoftAssert softAssertion = new SoftAssert();
+		softAssertion.assertTrue(actual.contains(expected));
+		softAssertion.assertAll();
+	}
+
+	public int parseInt(String name) {
+
+		return Integer.parseInt(name);
+	}
+	
+	public void removeExistingCart() {
+		int cart = parseInt(getText(home.getMinicartCount()));
+		if (cart != 0) {
+			click(home.getMinicart(), "Mini Cart");
+			click(minicart.getProceedCheckOut(), "Proceed to Checkout");
+			for (WebElement ele : checkout.getRemoveProducts()) {
+				click(ele,getText(ele));
+				driver.navigate().refresh();
+			}
+		}
+	}
 }

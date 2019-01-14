@@ -1,4 +1,4 @@
-package com.tumi.demotestcases;
+package com.tumi.testcases;
 
 import java.util.Map;
 
@@ -15,18 +15,18 @@ import com.tumi.utilities.TumiLibs;
  */
 public class InvalidCredentials extends GenericMethods {
 
-	public Map<String, String> testData = ReadTestData.retrieveData("Login", "InValidCredentials");
+	public Map<String, String> testData = ReadTestData.retrieveData("PlaceOrder", "InValidCredentials");
 
 	@Test
 	public void verifyInvalidUserMessage() {
 
 		TumiLibs.closeSignUpForUsProd();
-		click(home.getSelectCountryUS(), "Select US country");
-		click(home.getSelectUS(), "click US");
+		click(home.getSelectCountry(), "US country");
+		click(home.getSelectCountry(), "Korea");
 		delay(3000);
 		login("Login", "InValidCredentials");
 		verifyAssertEquals(getText(home.getInvalidCredentialsError()),
-				repository("home.invalidCredentials"));
+				getProperty("home.invalidCredentials"));
 
 	}
 

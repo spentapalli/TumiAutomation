@@ -1,4 +1,4 @@
-package com.tumi.demotestcases;
+package placeOrder;
 
 import java.util.Map;
 
@@ -17,7 +17,7 @@ import com.tumi.utilities.TumiLibs;
  */
 public class OrderWithGiftServices extends GenericMethods {
 
-	public Map<String, String> testData = ReadTestData.retrieveData("Login", "OrderWithGiftServices");
+	public Map<String, String> testData = ReadTestData.retrieveData("PlaceOrder", "OrderWithGiftServices");
 
 	@Test
 	public void testOrderWithGiftServices() throws InterruptedException {
@@ -43,7 +43,7 @@ public class OrderWithGiftServices extends GenericMethods {
 
 		click(pdp.getAddToCart(), "Add To Cart");
 
-		click(cart.getProceedCheckOut(), "Proceed to Checkout");
+		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 
 		click(gift.getMakeThisGift(), "Make this Gift");
 		click(gift.getCheckMessage(), " check Message");
@@ -74,17 +74,11 @@ public class OrderWithGiftServices extends GenericMethods {
 		click(shipMethod.getpriorityShippingMethod(), "Over Night");
 		click(shipMethod.getProceedToPayment(), "Continue Payment");
 
-		input(guestBillPage.getNameOnCard(), testData.get("NameOnCard"), "Name on Card");
-		input(guestBillPage.getCardNumber(), testData.get("CardNumber"), "Card Number");
-		selectByVisibleText(guestBillPage.getExpiryMonth(), "03", "Expiry Month");
-		selectByVisibleText(guestBillPage.getExpiryYear(), "2019", "Expiry Year");
-		input(guestBillPage.getCvvNumber(), testData.get("CVV"), "Cvv number");
-		input(guestBillPage.getemail(), testData.get("EmailID"), "Email ID");
-		input(guestBillPage.getPhoneNumber(), testData.get("Phone"), "Phone number");
-
-		click(guestBillPage.getReviewOrder(), "Review your Order");
-		delay(3000);
-
+		/*
+		 * Add Card Details
+		 * @param: SheetName and TestCaseName
+		 */
+		TumiLibs.addCardDetails("PlaceOrder", "OrderWithGiftServices");
 		click(review.getPlaceOrder(), "Place Order");
 		/*
 		 * delay(10000); captureOrderConfScreen("OrderConfirmation");

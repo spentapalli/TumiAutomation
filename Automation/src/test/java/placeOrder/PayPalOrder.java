@@ -1,4 +1,4 @@
-package com.tumi.demotestcases;
+package placeOrder;
 
 import java.util.Map;
 
@@ -18,7 +18,7 @@ import com.tumi.utilities.TumiLibs;
  */
 public class PayPalOrder extends GenericMethods {
 	
-	public Map<String, String> testData = ReadTestData.retrieveData("Login", "PayPalOrder");
+	public Map<String, String> testData = ReadTestData.retrieveData("PlaceOrder", "PayPalOrder");
 	
 	@Test
 	public void testPayPalOrder() throws InterruptedException{
@@ -28,10 +28,10 @@ public class PayPalOrder extends GenericMethods {
 		driver.get(pdpURL);
 		
 		click(pdp.getAddToCart(),"Add to cart");
-		click(cart.getProceedCheckOut(),"proceed to checkout");
-		click(paypal.getPayPal(),"Click on PayPal");
+		click(minicart.getProceedCheckOut(),"proceed to checkout");
+		click(paypal.getPayPal(),"PayPal");
 		delay(6000);
-		click(paypal.getPayPalLogin(),"Click on paypal login");
+		click(paypal.getPayPalLogin(),"Paypal login");
 		delay(2000);
 		input(paypal.getPayPalEmail(),testData.get("EmailID"), "EmailID");
 		click(paypal.getNext(),"Next");
@@ -39,14 +39,13 @@ public class PayPalOrder extends GenericMethods {
 		input(paypal.getPayPalPassword(),testData.get("Password"),"Password");
 		click(paypal.getLogin(),"Login");
 		delay(10000);
-		click(paypal.getVisax111(),"select Visa");
+		click(paypal.getVisax111(),"Select Visa");
 		click(paypal.getPaypalContinue(),"Continue");
 		delay(5000);
 		if(review.getPlaceOrder().isEnabled()) {
 			click(review.getPlaceOrder(),"Place Order");
 		}else {
-			Assert.fail("Page is not enabled to proceed to place an order");
-			System.out.println("Review page is not enabled to place order");
+			Assert.fail("Review Page is not enabled to proceed to place an order");
 		}
 		
 		

@@ -1,4 +1,4 @@
-package com.tumi.pageObjects;
+package com.tumi.webPages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -72,6 +72,15 @@ public class MyAccountPage {
 	public WebElement getNewHereMessage() {
 		return newHereMessage;
 	}
+	
+	@FindBy(how=How.XPATH,using="(//a[@title='Close'])[4]")
+	private WebElement myAccountClose;
+	
+	public WebElement getMyAccountClose() {
+		
+		return myAccountClose;
+	}
+	
 
 	public WebElement getCreateAcc() {
 		return createAcc;

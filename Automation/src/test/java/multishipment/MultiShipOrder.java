@@ -1,4 +1,4 @@
-package com.tumi.demotestcases;
+package multishipment;
 
 import java.util.List;
 
@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
 import com.tumi.dataProvider.ReadTestData;
+import com.tumi.testcases.ProductSearch;
 import com.tumi.utilities.GenericMethods;
 import com.tumi.utilities.GlobalConstants;
 import com.tumi.utilities.TumiLibs;
@@ -20,8 +21,8 @@ import com.tumi.utilities.TumiLibs;
  */
 public class MultiShipOrder extends GenericMethods {
 
-	public Map<String, String> testData = ReadTestData.retrieveData("Login", "MultiShipOrder");
-
+	public Map<String, String> testData = ReadTestData.retrieveData("PlaceOrder", "MultiShipOrder");
+ //success
 	@Test
 	public void testMultiShipOrder() throws InterruptedException {
 
@@ -49,7 +50,7 @@ public class MultiShipOrder extends GenericMethods {
 			click(cart.getContinueShopping(), "Continue shopping");
 
 		}
-		click(cart.getMiniCartSymbol(), "click on cart image");
+		click(cart.getMiniCartSymbol(), "Cart Image");
 		click(cart.getProceedCheckOut(), "proceed to checkout");
 		click(mainCart.getProceedToCheckout(), "Cart");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email");

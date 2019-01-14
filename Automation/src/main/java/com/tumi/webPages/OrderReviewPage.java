@@ -1,4 +1,4 @@
-package com.tumi.pageObjects;
+package com.tumi.webPages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,10 +9,13 @@ import org.openqa.selenium.support.PageFactory;
 import com.tumi.reports.Reports;
 import com.tumi.utilities.GenericMethods;
 
+<<<<<<< HEAD:Automation/src/main/java/com/tumi/pageObjects/OrderReviewPage.java
 /**
  * @author Shwetha Capo
  *
  */
+=======
+>>>>>>> aeedd54764433033c3ff3e941386c80d8b463e36:Automation/src/main/java/com/tumi/webPages/OrderReviewPage.java
 public class OrderReviewPage extends GenericMethods {
 	
 	public OrderReviewPage(WebDriver driver) {

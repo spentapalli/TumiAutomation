@@ -1,4 +1,4 @@
-package com.tumi.demotestcases;
+package placeOrder;
 
 import java.util.Map;
 
@@ -18,7 +18,7 @@ import com.tumi.utilities.TumiLibs;
  */
 public class OrderWithMonogram extends GenericMethods{
 	
-	public Map<String, String>  testData = ReadTestData.retrieveData("Login", "OrderWithMonogram");
+	public Map<String, String>  testData = ReadTestData.retrieveData("PlaceOrder", "OrderWithMonogram");
 
 	@Test
 	public void testOrderWithMonogram() throws InterruptedException {
@@ -49,7 +49,7 @@ public class OrderWithMonogram extends GenericMethods{
 		click(pdp.getAddToCart(), "Add To Cart");
 		
 	
-		click(cart.getProceedCheckOut(),"Proceed to Checkout");
+		click(minicart.getProceedCheckOut(),"Proceed to Checkout");
 		click(mainCart.getProceedToCheckout(), "Proceed to Checkout");
 		input(singlePage.getEmailAddress(),testData.get("EmailID"), "Email ID");
 		click(singlePage.getPromotionsAndNews(), "Check Promotions");
@@ -72,21 +72,11 @@ public class OrderWithMonogram extends GenericMethods{
 		click(shipMethod.getpriorityShippingMethod(), "Over Night");
 		click(shipMethod.getProceedToPayment(), "Continue Payment");
 		
-		input(guestBillPage.getNameOnCard(), testData.get("NameOnCard"), "Name on Card");
-		input(guestBillPage.getCardNumber(), testData.get("CardNumber"), "Card Number");
-		selectByVisibleText(guestBillPage.getExpiryMonth(), "03","Expiry Month" );
-		selectByVisibleText(guestBillPage.getExpiryYear(), "2019", "Expiry Year");
-		input(guestBillPage.getCvvNumber(), testData.get("CVV"), "Cvv number");
-		input(guestBillPage.getemail(), testData.get("EmailID"), "Email ID");
-		input(guestBillPage.getPhoneNumber(), testData.get("Phone"), "Phone number");
-		
-		click(guestBillPage.getReviewOrder(), "Review your Order");
-		/*if (guestBillPage.getReviewOrder().isEnabled()) {
-			Assert.fail("Able to Proceed Order with invalid details");
-		}*/
-
-		delay(2000);
-		
+		/*
+		 * Add Card Details
+		 * @param: SheetName and TestCaseName
+		 */
+		TumiLibs.addCardDetails("PlaceOrder", "OrderWithMonogram");
 		click(review.getPlaceOrder(), "Place Order");
 		/*delay(4000);
 		captureOrderConfScreen("OrderConfirmation");*/

@@ -1,4 +1,4 @@
-package com.tumi.pageObjects;
+package com.tumi.webPages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

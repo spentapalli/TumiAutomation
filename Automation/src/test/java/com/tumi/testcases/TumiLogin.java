@@ -1,4 +1,4 @@
-package com.tumi.demotestcases;
+package com.tumi.testcases;
 
 
 import java.util.Map;
@@ -23,15 +23,11 @@ public class TumiLogin extends GenericMethods {
 		
 		TumiLibs.closeSignUpForUsProd();
 		//click(home.getSelectCountryUS(), "Select US country");
-		click(home.getSelectCountryUS(), "Select US country");
-		click(home.getSelectUS(), "click US");
+		click(home.getSelectCountry(), "US country");
+		click(home.getSelectCountry(), "Korea");
 		delay(3000);
 		
 		login("Login", "TumiLogin");
-		click(home.getCloseMyAccount(), "Close my account window");
-
-
-		
-		
+		click(home.getCloseMyAccount(), "Close my account window");	
 	}
 }

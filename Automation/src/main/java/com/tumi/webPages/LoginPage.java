@@ -1,4 +1,4 @@
-package com.tumi.pageObjects;
+package com.tumi.webPages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -68,6 +68,31 @@ public class LoginPage {
 		
 		return signInClick;
 	}
+	
+	@FindBy(how=How.XPATH,using="//a[@title='Sign Out']")
+	private WebElement logOut;
+	
+	public WebElement getLogOut() {
+		
+		return logOut;
+	}
+	
+	@FindBy(how=How.XPATH,using="(//a[contains(text(),'Hi, Tumi')])[2]")
+	private WebElement UserHi;
+	
+	public WebElement getUserHi() {
+		
+		return UserHi;
+	}
+	
+	@FindBy(how=How.XPATH,using="(//header[@class=\"tm-header\"])[2]/a")
+	private WebElement closeWindow;
+	
+	public WebElement getCloseWindow() {
+		
+		return closeWindow;
+	}
+	
 	
 	
 
