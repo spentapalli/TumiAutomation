@@ -182,6 +182,27 @@ public class CartPage {
 		return giftBoxAdded;
 		
 	}
+	@FindBy(how=How.XPATH,using="(//input[@name='voucherCode'])[1]")
+	private WebElement promocode;
+	public WebElement getPromocode() {
+		 return getPromocode();
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

@@ -9,6 +9,10 @@ import org.openqa.selenium.support.PageFactory;
 import com.tumi.reports.Reports;
 import com.tumi.utilities.GenericMethods;
 
+/**
+ * @author Shwetha Capo
+ *
+ */
 public class GuestBillingPage extends GenericMethods {
 	
 	public GuestBillingPage(WebDriver driver) {
@@ -82,12 +86,15 @@ public class GuestBillingPage extends GenericMethods {
 		return useShippingAddressAsBilling;
 	}
 	
-	@FindBy(how=How.XPATH,using="//div[@id='newPaymentButton']/button")
+	//@FindBy(how=How.XPATH,using="//div[@id='newPaymentButton']/button")
+	//for multiship
+	@FindBy(how=How.XPATH,using="//button[contains(text(),'Review Your Order')]")
+	
 	private WebElement reviewOrder;
 	
 	public WebElement getReviewOrder() {
 		
-		return reviewOrder;
+		return explicitWait(reviewOrder);
 	}
 	
 	@FindBy(how=How.XPATH,using="//span[@name='countryIso']")

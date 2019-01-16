@@ -10,6 +10,10 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.tumi.reports.Reports;
 
+/**
+ * @author Shwetha Capo
+ *
+ */
 public class ShippingPage {
 
 	public ShippingPage(WebDriver driver) {
@@ -66,8 +70,8 @@ public class ShippingPage {
 		return town;
 	}
 	
-	
-	@FindBy(how=How.XPATH,using="//select[@name='regionIso']")
+	//select[@name='regionIso']
+	@FindBy(how=How.XPATH,using="//span[@name='regionIso']")
 	private WebElement regionIso;
 	
 	public WebElement getRegionIso() {
@@ -84,7 +88,9 @@ public class ShippingPage {
 	}
 	
 	
-	@FindBy(how=How.NAME,using="//input[@placeholder='Zip Code *']")
+	//@FindBy(how=How.NAME,using="//input[@placeholder='Zip Code *']")
+	@FindBy(how=How.XPATH,using="//input[@name='postcode']")
+	
 	private WebElement postcode;
 	
 	public WebElement getPostcode() {

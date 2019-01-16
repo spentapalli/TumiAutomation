@@ -8,11 +8,22 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.tumi.reports.Reports;
 
+/**
+ * @author Shwetha Capo
+ *
+ */
 public class MiniCartPage {
 
 	public MiniCartPage(WebDriver driver) {
 		Reports.driver = driver;
 		PageFactory.initElements(driver,this);
+	}
+	@FindBy(how=How.XPATH,using="//div[@id='minicart_data']")
+	private WebElement miniCartSymbol;
+	
+	public WebElement getMiniCartSymbol() {
+		
+		return miniCartSymbol;
 	}
 	@FindBy(how=How.XPATH,using="//a[@title='Proceed to Checkout']")
 	private WebElement proceedtoCheck;
@@ -20,6 +31,14 @@ public class MiniCartPage {
 	public WebElement getProceedCheckOut() {
 		
 		return proceedtoCheck;
+	}
+	
+	@FindBy(how=How.XPATH,using="(//a[@href='/cart'])[2]")
+	private WebElement krProceedtoCheck;
+			
+	public WebElement getKrProceedCheckOut() {
+				
+		return krProceedtoCheck;
 	}
 	
 	@FindBy(how=How.XPATH,using="//a[@title='Continue Shopping']")

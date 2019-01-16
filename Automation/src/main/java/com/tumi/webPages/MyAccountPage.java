@@ -8,6 +8,10 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.tumi.reports.Reports;
 
+/**
+ * @author Shwetha Capo
+ *
+ */
 public class MyAccountPage {
 	
 	public MyAccountPage(WebDriver driver) {
@@ -52,6 +56,21 @@ public class MyAccountPage {
 	public WebElement getRepairServices() {
 		
 		return repairServices;
+	}//div[@id='tm-panel-login-confirmation']/header/span
+	
+	@FindBy(how=How.XPATH,using="//div[@id='tm-panel-login-confirmation']/header/span")
+	private WebElement welcomeMessage;
+	
+	public WebElement getWelcomeMessage() {
+		
+		return welcomeMessage;
+	}
+	
+	@FindBy(how=How.XPATH, using="//h4[contains(text(),'New here?')]")
+	private WebElement newHereMessage;
+	
+	public WebElement getNewHereMessage() {
+		return newHereMessage;
 	}
 	
 	@FindBy(how=How.XPATH,using="(//a[@title='Close'])[4]")
@@ -63,4 +82,23 @@ public class MyAccountPage {
 	}
 	
 
+	public WebElement getCreateAcc() {
+		return createAcc;
+	}
+
+	@FindBy(how=How.XPATH, using="//a[@href='#create-account']")
+	private WebElement createAcc;
+
+	@FindBy(how=How.XPATH, using="(//h3[contains(text(),'My Account')])[2]")
+	private WebElement signUpMyAccMsg;
+	
+	public WebElement getSignUpMyAccMsg() {
+		return signUpMyAccMsg;
+	}
+	@FindBy(how=How.XPATH, using="(//a[contains(text(),'Sign Out')])[3]")
+	private WebElement signout;
+	
+	public WebElement getSignout() {
+		return signout;
+	}
 }

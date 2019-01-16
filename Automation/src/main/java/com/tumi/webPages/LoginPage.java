@@ -8,6 +8,10 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.tumi.reports.Reports;
 
+/**
+ * @author Shwetha Capo
+ *
+ */
 public class LoginPage {
 	
 	public LoginPage(WebDriver driver) {

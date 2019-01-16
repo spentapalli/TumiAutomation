@@ -7,15 +7,21 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 import com.tumi.reports.Reports;
 import com.tumi.utilities.GenericMethods;
 
+/**
+ * @author Shwetha Capo
+ *
+ */
 public class HomePage extends GenericMethods {
 	
 	public HomePage(WebDriver driver) {
 		Reports.driver = driver;
 		PageFactory.initElements(driver,this);
+		
 	}
 	
 	@FindBy(how=How.XPATH,using="//input[@id='search']")
@@ -61,12 +67,54 @@ public class HomePage extends GenericMethods {
 		return signupPopupUS;
 	}
 	
+	@FindBy(how=How.XPATH,using="//div[@id='firstTimeEmailSignupPopup']/div/span")
+	private WebElement signupPopupUsProd;
+	
+	public WebElement getSignupPopupUsProd() {
+		
+		return signupPopupUsProd;
+	}
+	
+	@FindBy(how=How.XPATH,using="//a[@id='bx-close-inside-807411']")
+	private WebElement offersPopupUsProd;
+	
+	public WebElement getOffersPopupUsProd() {
+		
+		return offersPopupUsProd;
+	}
+	@FindBy(how=How.XPATH,using="//div[@id='cmsSlot1']/div/div/div//div/div/ul/li[2]/a")
+	private WebElement selectUS;
+	
+	public WebElement getSelectUS() {
+		return explicitWait(selectUS);
+	}
+	@FindBy(how=How.XPATH,using="//a[@href='/country/selected?country=CA']")
+	private WebElement selectCanada;
+	
+	public WebElement getSelectCanada() {
+		return selectCanada;
+	}
+	
+	@FindBy(how=How.XPATH,using="//a[@href='/country/selected?country=KR']")
+	private WebElement selectKorea;
+	
+	public WebElement getSelectKorea() {
+		return selectKorea;
+	}
 	@FindBy(how=How.XPATH,using="//a[contains(text(),'Close')]")
 	private WebElement acceptCookies;
 	
 	public WebElement getAcceptCookies() {
 		
 		return acceptCookies;
+	}
+	
+	@FindBy(how=How.XPATH,using="//a[contains(text(),'Location: United States')]")
+	private WebElement selectCountryUS;
+	
+	public WebElement getSelectCountryUS() {
+		
+		return selectCountryUS;
 	}
 	
 	@FindBy(how=How.XPATH,using="//a[text()='Location: Canada']")
@@ -103,6 +151,16 @@ public class HomePage extends GenericMethods {
 		return headerCustomerService;
 	}
 	
+	@FindBy(how=How.XPATH, using="//input[@id='search']")
+	private WebElement search;
+	
+	public WebElement getSearch() {
+		
+		return search;
+		
+	}
+	
+	
 	@FindBy(how=How.XPATH,using="(//a[text()='Sign In'])[1]")
 	private WebElement headerSignIn;
 	
@@ -110,6 +168,14 @@ public class HomePage extends GenericMethods {
 		
 		return headerSignIn;
 	
+	}
+	
+	
+	@FindBy(how=How.XPATH,using="//li[@id='janrain-instagram']/a")
+	private WebElement instaLogin;
+	
+	public WebElement VerifyInstaLogin() {
+		return instaLogin;
 	}
 	
 	

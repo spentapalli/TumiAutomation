@@ -9,6 +9,10 @@ import org.openqa.selenium.support.PageFactory;
 import com.tumi.reports.Reports;
 import com.tumi.utilities.GenericMethods;
 
+/**
+ * @author Shwetha Capo
+ *
+ */
 public class GiftServices extends GenericMethods {
 	
 	public GiftServices(WebDriver driver) {
