@@ -13,6 +13,18 @@ import com.tumi.utilities.GenericMethods;
  *
  */
 public class GoogleLogin extends GenericMethods {
+	
+	/* Suuresh - Observations
+	 * Reading Test Data SheetName and TestCaseName are not available in excel
+	 * 
+	 * At Priority = 0 - Call userGoogleAccount i.e. called that method in 35 line 
+	 * Update google page locators
+	 *  
+	 * Verification of google offers should be surrender with try catch
+	 * 
+	 */
+	
+	
 	// private static final Logger LOG = Logger.getLogger(GoogleLogin.class);
 	public Map<String, String> testData = ReadTestData.retrieveData("Login", "GoogleLogin");
 	public Map<String, String> testData1 = ReadTestData.retrieveData("Login", "InValidCredentials");
@@ -21,7 +33,7 @@ public class GoogleLogin extends GenericMethods {
 	public void verifyGoogleLogin() {
 		
 		   
-		 
+		userGoogleAccount("skurry@coredatalabs.com");
 
 		//click(home.getHeaderSignIn(), "SignIn");
 		//click(google.getGoogleLogin(), "Google login");
@@ -88,12 +100,11 @@ public class GoogleLogin extends GenericMethods {
 	public void userGoogleAccount(String data) {
 		click(home.getSelectCountryUS(), "Select US country");
 		click(home.getSelectUS(), "click US");
-		delay(4000);
-
-		if (google.getNoThanks().isDisplayed()) {
-			click(google.getNoThanks(), "offers popup");
-		}
-
+		try {
+			if (google.getNoThanks().isDisplayed()) {
+				click(google.getNoThanks(), "offers popup");
+			}
+		} catch (Exception e) {}
 		click(home.getHeaderSignIn(), "Sign In");
 		click(google.getGoogleLogin(), "Google login");
 		input(google.getEmail(), data, "gmail id");
