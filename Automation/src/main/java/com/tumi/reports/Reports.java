@@ -248,12 +248,10 @@ public class Reports {
 			
 			driver.get(GlobalConstants.url);
 			
-		} else if (URL.equalsIgnoreCase("Q3")) {
+		} else if (URL.equalsIgnoreCase("")) {
 			driver.get("");
 			logger.log(Status.INFO, "Successfully Navigated to " +URL+" Environment");
 		}
-		driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
-		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		TumiLibs.verifyVPN();
 		//TumiLibs.closeSignUp();
 		TumiLibs.closeSignUpForUsProd();
