@@ -2,8 +2,8 @@ package placeOrder;
 
 import java.util.Map;
 
-
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.tumi.dataProvider.ReadTestData;
@@ -23,23 +23,16 @@ public class OrderWithGiftServices extends GenericMethods {
 	public void testOrderWithGiftServices() throws InterruptedException {
 
 		// Close signUp window
-		// TumiLibs.closeSignUpForUS();
-		final String pdpURL = GlobalConstants.url + "p/" + testData.get("SKUID");
-		driver.get(pdpURL);
-		// Adding Personalization
-		click(mono.getAddPersonalization(), "Add Personalization");
-		input(mono.getFirstMonoInput(), testData.get("FirstMonoInput"), "First Mono Input");
-		input(mono.getSecondMonoInput(), testData.get("SecondMonoInput"), "Second Mono Input");
-		input(mono.getThirdMonoInput(), testData.get("ThirdMonoInput"), "Third Mono Input");
+		 TumiLibs.closeSignUpForUS();
+		input(home.getSearchProduct(), testData.get("SKUID"), "FailedOrder");
+		keyEnter(home.getSearchProduct());
+		try {
+			if (getText(home.getNoProducts()).contains("SORRY")) {
+				Assert.fail("Sorry, no search results");
+			}
+		} catch (Exception e) {
 
-		click(mono.getNext(), "Next");
-		click(mono.getTextStyleBold(), "Serif as Bold");
-		click(mono.getCafeColor(), "Color");
-		delay(2000);
-		click(mono.getSecondNext(), "Second Next");
-
-		click(mono.getApply(), "Apply");
-		delay(3000);
+		}
 
 		click(pdp.getAddToCart(), "Add To Cart");
 
@@ -70,12 +63,13 @@ public class OrderWithGiftServices extends GenericMethods {
 		}
 
 		input(shipping.getPhoneNumber(), testData.get("Phone"), "Phone Number");
-		click(shipping.getContinueShippingMethod(), "Continue");
+		click(shipping.getContinueShippingMethod(), "Continue shipping Method");
 		click(shipMethod.getpriorityShippingMethod(), "Over Night");
 		click(shipMethod.getProceedToPayment(), "Continue Payment");
 
 		/*
 		 * Add Card Details
+		 * 
 		 * @param: SheetName and TestCaseName
 		 */
 		TumiLibs.addCardDetails("PlaceOrder", "OrderWithGiftServices");

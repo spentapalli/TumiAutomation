@@ -20,11 +20,17 @@ public class Personalization extends GenericMethods {
 		PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(how=How.XPATH,using="(//a[@id='monogramming-popup-link'])[1]")
+	@FindBy(how=How.XPATH,using="(//a[@id='monogramming-popup-link'])[1]/span")
 	private WebElement addPersonalization;
 	
 	public WebElement getAddPersonalization() {
 		return addPersonalization;
+	}
+	@FindBy(how=How.XPATH,using="//span[contains(text(),'Complimentary of Premium Options')]")
+	private WebElement complimentaryMono;
+	
+	public WebElement getComplimentaryMono() {
+		return complimentaryMono;
 	}
 	
 	@FindBy(how=How.XPATH, using="//div[@id='monogram-step1']/div[2]/label")
@@ -69,11 +75,11 @@ public class Personalization extends GenericMethods {
 		return addClub;
 	}
 	
-	@FindBy(how=How.XPATH, using="(//a[contains(text(),'Next')])[1]")
+	@FindBy(how=How.XPATH, using="(//a[contains(text(),'Next')])[2]")
 	private WebElement next;
 	
 	public WebElement getNext() {
-		return next;
+		return explicitWait(next);
 	}
 	
 	@FindBy(how=How.XPATH, using="//input[@name='monogram_initial_1']")
@@ -104,105 +110,105 @@ public class Personalization extends GenericMethods {
 		return remove;
 	}
 	
-	@FindBy(how=How.XPATH, using="//div[@id='monogram-step2']/div[2]/div/label")
+	@FindBy(how=How.XPATH, using="//div[@id='monogram-step3']/div[2]/div/label")
 	private WebElement whiteColor;
 	
 	public WebElement getWhiteColor() {
 		return whiteColor;
 	}
 	
-	@FindBy(how=How.XPATH, using="//div[@id='monogram-step2']/div[2]/div/label[2]")
+	@FindBy(how=How.XPATH, using="//div[@id='monogram-step3']/div[2]/div/label[2]")
 	private WebElement fuchsiaColor;
 	
 	public WebElement getFuchsiaColor() {
 		return fuchsiaColor;
 	}
 	
-	@FindBy(how=How.XPATH, using="//div[@id='monogram-step2']/div[2]/div/label[3]")
+	@FindBy(how=How.XPATH, using="//div[@id='monogram-step3']/div[2]/div/label[3]")
 	private WebElement redColor;
 	
 	public WebElement getRedColor() {
 		return redColor;
 	}
 	
-	@FindBy(how=How.XPATH, using="//div[@id='monogram-step2']/div[2]/div/label[4]")
+	@FindBy(how=How.XPATH, using="//div[@id='monogram-step3']/div[2]/div/label[4]")
 	private WebElement pinkColor;
 	
 	public WebElement getPinkColor() {
 		return pinkColor;
 	}
 	
-	@FindBy(how=How.XPATH, using="//div[@id='monogram-step2']/div[2]/div/label[5]")
+	@FindBy(how=How.XPATH, using="//div[@id='monogram-step3']/div[2]/div/label[5]")
 	private WebElement blueColor;
 	
 	public WebElement getBlueColor() {
 		return blueColor;
 	}
 	
-	@FindBy(how=How.XPATH, using="//div[@id='monogram-step2']/div[2]/div/label[6]")
+	@FindBy(how=How.XPATH, using="//div[@id='monogram-step3']/div[2]/div/label[6]")
 	private WebElement greenColor;
 	
 	public WebElement getGreenColor() {
 		return greenColor;
 	}
 	
-	@FindBy(how=How.XPATH, using="//div[@id='monogram-step2']/div[2]/div/label[7]")
+	@FindBy(how=How.XPATH, using="//div[@id='monogram-step3']/div[2]/div/label[7]")
 	private WebElement cafeColor;
 	
 	public WebElement getCafeColor() {
 		return cafeColor;
 	}
 
-	@FindBy(how=How.XPATH, using="//div[@id='monogram-step2']/div[2]/div/label[8]")
+	@FindBy(how=How.XPATH, using="//div[@id='monogram-step3']/div[2]/div/label[8]")
 	private WebElement orangeColor;
 	
 	public WebElement getOrangeColor() {
 		return orangeColor;
 	}
 
-	@FindBy(how=How.XPATH, using="//div[@id='monogram-step2']/div[2]/div/label[9]")
+	@FindBy(how=How.XPATH, using="//div[@id='monogram-step3']/div[2]/div/label[9]")
 	private WebElement yellowColor;
 	
 	public WebElement getYellowColor() {
 		return yellowColor;
 	}
 
-	@FindBy(how=How.XPATH, using="//div[@id='monogram-step2']/div[2]/div/label[10]")
+	@FindBy(how=How.XPATH, using="//div[@id='monogram-step3']/div[2]/div/label[10]")
 	private WebElement blindColor;
 	
 	public WebElement getBlindColor() {
 		return blindColor;
 	}
 	
-	@FindBy(how=How.XPATH, using="//div[@id='monogram-step2']/div[2]/div/label[11]")
+	@FindBy(how=How.XPATH, using="//div[@id='monogram-step3']/div[2]/div/label[11]")
 	private WebElement silverColor;
 	
 	public WebElement getSilverColor() {
 		return silverColor;
 	}
 	
-	@FindBy(how=How.XPATH, using="//div[@id='monogram-step2']/div[2]/div/label[12]")
+	@FindBy(how=How.XPATH, using="//div[@id='monogram-step3']/div[2]/div/label[12]")
 	private WebElement goldColor;
 	
 	public WebElement getGoldColor() {
 		return goldColor;
 	}
 	
-	@FindBy(how=How.XPATH, using="//div[@id='monogram-step2']/div[2]/div/label[13]")
+	@FindBy(how=How.XPATH, using="//div[@id='monogram-step3']/div[2]/div/label[13]")
 	private WebElement blackColor;
 	
 	public WebElement getBlackColor() {
 		return blackColor;
 	}
 	
-	@FindBy(how=How.XPATH, using="//div[@id='monogram-step2']/div/label")
+	@FindBy(how=How.XPATH, using="//div[@id='monogram-step3']/div/label")
 	private WebElement textStyleBold;
 	
 	public WebElement getTextStyleBold() {
 		return textStyleBold;
 	}
 	
-	@FindBy(how=How.XPATH, using="//div[@id='monogram-step2']/div/label[2]")
+	@FindBy(how=How.XPATH, using="//div[@id='monogram-step3']/div/label[2]")
 	private WebElement textStyleFutura;
 	
 	public WebElement getTextStyleFutura() {
@@ -232,11 +238,11 @@ public class Personalization extends GenericMethods {
 		return previous;
 	}
 	
-	@FindBy(how=How.XPATH, using="//a[contains(text(),'Apply')]")
+	@FindBy(how=How.XPATH, using="(//a[contains(text(),'Apply')])[1]")
 	private WebElement apply;
 	
 	public WebElement getApply() {
-		return apply;
+		return explicitWait(apply);
 	}
 
 

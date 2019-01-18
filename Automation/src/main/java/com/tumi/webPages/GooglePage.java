@@ -45,7 +45,7 @@ public class GooglePage extends GenericMethods{
 	private WebElement email;
 	
 	public WebElement getEmail() {
-		return explicitWait(email);
+		return email;
 	}
 	
 	@FindBy(how=How.XPATH, using="//div[@id='password']/div/div/div/input")
@@ -81,6 +81,42 @@ public class GooglePage extends GenericMethods{
 	
 	public WebElement getNoThanks() {
 		return explicitWait(noThanks);
+	}
+	@FindBy(how=How.XPATH,using="(//div[@class='dEOOab RxsGPe'])[1]")
+	private WebElement emailBlankError;
+	
+	public WebElement getEmailBlankError() {
+		
+		return emailBlankError;
+	}
+	@FindBy(how=How.XPATH,using="//div[@class='GQ8Pzc']")
+	private WebElement emailError;
+	
+	public WebElement getEmailError() {
+		
+		return emailError;
+	}
+
+	@FindBy(how = How.XPATH, using = "(//div[@class='dEOOab RxsGPe'])[1]")
+	private WebElement emailNotFound;
+
+	public WebElement getEmailNotFound() {
+
+		return emailNotFound;
+	}
+	@FindBy(how=How.XPATH,using="(//div[@class='GQ8Pzc'])")
+	private WebElement passwordError;
+	
+	public WebElement getPasswordError() {
+		
+		return passwordError;
+	}
+	@FindBy(how=How.XPATH,using="//div[@class='GQ8Pzc']")
+	private WebElement passwordBlank;
+	
+	public WebElement getPasswordBlank() {
+		
+		return passwordBlank;
 	}
 	
 	/*@FindBy(how=How.XPATH, using="submit_deny_access")

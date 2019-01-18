@@ -202,7 +202,44 @@ public class HomePage extends GenericMethods {
 		
 		return submit;
 	}
+	
+	@FindBy(how=How.XPATH,using="(//div[@class='dEOOab RxsGPe'])[1]")
+	private WebElement emailBlankError;
+	
+	public WebElement getEmailBlankError() {
 		
+		return emailBlankError;
+	}
+	@FindBy(how=How.XPATH,using="//label[@id='j_password-error']")
+	private WebElement emailRegularError;
+	
+	public WebElement getEmailRegularError() {
+		
+		return emailRegularError;
+	}
+
+	@FindBy(how = How.XPATH, using = "//label[@id='j_username-error']")
+	private WebElement emailBlank;
+
+	public WebElement getEmailBlank() {
+
+		return emailBlank;
+	}
+	@FindBy(how=How.XPATH,using="//label[@id='j_password-error']")
+	private WebElement passwordRegularError;
+	
+	public WebElement getPasswordRegularError() {
+		
+		return passwordRegularError;
+	}
+	@FindBy(how=How.XPATH,using="//div[@class='GQ8Pzc']")
+	private WebElement passwordBlank;
+	
+	public WebElement getPasswordBlank() {
+		
+		return passwordBlank;
+	}
+	
 	@FindBy(how=How.XPATH,using="(//div[@class='error-message'])[1]")
 	private WebElement invalidCredentials;
 	

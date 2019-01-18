@@ -11,46 +11,34 @@ import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
 import com.tumi.utilities.TumiLibs;
 
-
 /**
- * @author  Shwetha Capo
+ * @author Shwetha Capo
  *
  */
-public class InstagramLogin extends GenericMethods{
-	
+public class InstagramLogin extends GenericMethods {
+
 	public Map<String, String> testData = ReadTestData.retrieveData("Login", "InstagramLogin");
-	
+
 	@Test
-	public void verifyInstaLogin() throws InterruptedException{
-		TumiLibs.closeSignUpForUsProd();
-		click(home.getSelectCountryUS(), "Select US country");
-		click(home.getSelectUS(), "click US");
-		delay(4000);
-		if (google.getNoThanks().isDisplayed()) {
-			click(google.getNoThanks(), "offers popup");
-		}
-		/*if(home.getOffersPopupUsProd().isDisplayed()) {
-		click(home.getOffersPopupUsProd(),"offers popup");
-	}*/
-		click(home.getHeaderSignIn(), "SignIn");
+	public void verifyInstaLogin() throws InterruptedException {
 		
+		TumiLibs.closeSignUpForUS();
+		click(home.getHeaderSignIn(), "SignIn");
+
 		String parentHandle = driver.getWindowHandle(); // get the current window handle
-		click(insta.getInsta(),"Instagram");
+		click(insta.getInsta(), "Instagram");
 		delay(2000);
 		for (String winHandle : driver.getWindowHandles()) {
-		    driver.switchTo().window(winHandle); // switch focus of WebDriver to the next found window handle (that's your newly opened window)
+			driver.switchTo().window(winHandle); // switch focus of WebDriver to the next found window handle (that's
+													// your newly opened window)
 		}
-		//code to do something on new window
-		
-		input(insta.getInstaUsername(),testData.get("EmailID"),"Username");
-		input(insta.getInstaPassword(),testData.get("Password"), "Password");
-		click(insta.getInstaLogin(),"Login");
+		// code to do something on new window
+
+		input(insta.getInstaUsername(), testData.get("EmailID"), "Username");
+		input(insta.getInstaPassword(), testData.get("Password"), "Password");
+		click(insta.getInstaLogin(), "Login");
 		delay(2000);
 		driver.switchTo().window(parentHandle);
 
-		
-		
-		
-		
 	}
 }
