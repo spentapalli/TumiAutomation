@@ -129,7 +129,7 @@ public class Reports {
 		}
 	}
 
-	@AfterClass(alwaysRun = true)
+	//@AfterClass(alwaysRun = true)
 	public static void closeBrowser() {
 		driver.close();
 		try {
@@ -255,7 +255,8 @@ public class Reports {
 		driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		TumiLibs.verifyVPN();
-		TumiLibs.closeSignUp();
+		//TumiLibs.closeSignUp();
+		TumiLibs.closeSignUpForUsProd();
 	}
 	
 	public static void getScreen(String path) {

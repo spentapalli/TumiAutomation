@@ -43,6 +43,13 @@ public class CartPage {
 		
 	}
 	
+	@FindBy(how=How.XPATH, using="")
+	private WebElement krProceedtoCheckout;
+	
+	public WebElement getkrProceedtoCheckout() {
+		return krProceedtoCheckout;
+	}
+	
 	@FindBy(how=How.XPATH,using= "//img[@alt='Checkout with PayPal']")
     private WebElement payPalProceed;
 	
