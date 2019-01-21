@@ -187,32 +187,19 @@ public class CartPage {
 	public WebElement getGiftBoxAdded() {
 		
 		return giftBoxAdded;
+		}
+	@FindBy(how=How.XPATH,using="(//input[@name='voucherCode'])[2]")
+	private WebElement addPromocode;
+	
+	public WebElement getPromocode() {
+		return  addPromocode;
+	}
+	@FindBy(how=How.XPATH,using="(//button[@id='signupnewsletter'])[2]")
+	
+	private WebElement ApplyClick;
+	
+	public WebElement getApply() {
 		
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-			
-	
-	
-	
-
-	
-}
+		return ApplyClick;
+	}
 }
