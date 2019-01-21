@@ -1,6 +1,6 @@
 //TestCase : Regular login->Add item to cart->Checkoutpage->Wait for 10+ OR 30minute,confirm that user should be taken to /cart#expired and the login/register panel should open automatically
 
-package com.tumi.login;
+package login;
 
 import java.util.List;
 import java.util.Map;

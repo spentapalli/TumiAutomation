@@ -1,6 +1,6 @@
 //TestCase : Confirm Gmail login is successful on clicking "Google" and entering valid Email & password
 
-package com.tumi.login;
+package login;
 import java.util.*;
 
 import org.testng.Assert;

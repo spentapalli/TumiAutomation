@@ -1,7 +1,7 @@
 //TestCase : Confirm when click on "sign In", In My Account window is having"New Here?" and  "Create an account" is there. 
 //             If click on SignUp will take to "My Account Registration page".
 
-package com.tumi.login;
+package login;
 
 import java.util.Map;
 

@@ -1,6 +1,6 @@
 //testcase : Confirm Regular login is successful on clicking Sign In and Entering Valid Email address & Password
 
-package com.tumi.login;
+package login;
 
 	import java.util.List;
 import java.util.Map;

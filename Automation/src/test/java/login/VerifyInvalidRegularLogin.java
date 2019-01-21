@@ -1,6 +1,6 @@
 //TestCase : Confirm clicking on Sign In link without entering credentials throws error message for normal sign in - N
 
-package com.tumi.login;
+package login;
 
 import java.util.Map;
 

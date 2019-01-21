@@ -1,6 +1,6 @@
 //TestCase : Confirm for Blank of any one of the Email & password field should display alert message for Google login -  N
 
-package com.tumi.login;
+package login;
 
 import java.util.Iterator;
 import java.util.Map;
