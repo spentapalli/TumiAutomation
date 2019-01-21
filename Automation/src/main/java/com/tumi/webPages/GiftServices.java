@@ -56,11 +56,12 @@ public class GiftServices extends GenericMethods {
 		return addMessage;
 	}
 	
-	@FindBy(how=How.XPATH, using="//input[@id='premiumGiftBox']")
+	//@FindBy(how=How.XPATH, using="//input[@id='premiumGiftBox']")
+	@FindBy(how=How.XPATH, using="//label[contains(text(),' Premium Gift Boxing ')]")
 	private WebElement checkPremiumGift;
 	
 	public WebElement getCheckPremiumGift() {
-		return checkPremiumGift;
+		return explicitWait(checkPremiumGift);
 	}
 	
 	@FindBy(how=How.XPATH, using="//input[@id='giftBox']")

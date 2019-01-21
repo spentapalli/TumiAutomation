@@ -3,6 +3,7 @@ package placeOrder;
 import java.util.Map;
 
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
@@ -21,22 +22,25 @@ public class FailedOrder extends GenericMethods {
 	@Test
 	public void testFailedOrder() throws InterruptedException {
 		
-		TumiLibs.closeSignUpForUsProd();
-		click(home.getSelectCountry(), "US country");
-		click(home.getSelectCountry(), "Korea");
-		delay(3000);
-		final String pdpURL = GlobalConstants.url+"/p/"+testData.get("SKUID");
+		TumiLibs.closeSignUpForUS();
+		input(home.getSearchProduct(), testData.get("SKUID"), "Search Product");
+		keyEnter(home.getSearchProduct());
+		try {
+			if (getText(home.getNoProducts()).contains("SORRY")) {
+				Assert.fail("Sorry, no search results");
+			}
+		} catch (Exception e) {
+			
+		}
+		/*final String pdpURL = GlobalConstants.url+"/p/"+testData.get("SKUID");
 		driver.get(pdpURL);
-
+*/
 		click(pdp.getAddToCart(), "Add To Cart");
 
-		// click on proceed to checkout in Mini cart 
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		
-		// click on proceed to checkout in cart page
 		click(mainCart.getProceedToCheckout(), "Cart");
 
-		// singlePageCheckout
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email");
 		click(singlePage.getContinueAsGuest(), "Continue As Guest");
 		delay(2000);

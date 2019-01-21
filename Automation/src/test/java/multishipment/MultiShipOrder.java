@@ -58,7 +58,8 @@ public class MultiShipOrder extends GenericMethods {
 		delay(2000);
 
 		click(multiShip.getMultiShipClick(), "MultiShipment");
-		click(multiShip.getAddShippment0(), "add shipment 1");
+		delay(2000);
+		click(multiShip.getAddShippment0(), "add shipment 1"); //here getting error
 		input(shipping.getFirstName(), testData.get("FirstName"), "First Name");
 		input(shipping.getLastName(), testData.get("LastName"), "Last Name");
 		input(shipping.getAddressLine1(), testData.get("AddressLine1"), "Address line1");
@@ -115,10 +116,7 @@ public class MultiShipOrder extends GenericMethods {
 			}
 		}*/
 			input(shipping.getPostcode(), testData.get("PostCode"), "postal code");
-			delay(2000);
-
 			click(guestBillPage.getReviewOrder(), "Review your order");
-			delay(2000);
 			click(review.getPlaceOrder(), "Place Order");
 
 		

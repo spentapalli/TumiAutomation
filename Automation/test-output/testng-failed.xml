@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
+  <test thread-count="5" name="Default test(failed)">
+    <classes>
+      <class name="com.tumi.bindu.LoginFailed">
+        <methods>
+          <include name="endReport"/>
+          <include name="startReport"/>
+          <include name="verifyTestResult"/>
+          <include name="Verifylogin"/>
+          <include name="launchBrowser"/>
+          <include name="removeExistingFiles"/>
+          <include name="initiatePageObjects"/>
+        </methods>
+      </class> <!-- com.tumi.bindu.LoginFailed -->
+    </classes>
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

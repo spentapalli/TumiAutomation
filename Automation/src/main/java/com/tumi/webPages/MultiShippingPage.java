@@ -19,22 +19,24 @@ public class MultiShippingPage extends GenericMethods{
 		Reports.driver=driver;
 		PageFactory.initElements(driver, this);
 		
-	}
+	}//label[contains(text(),'Ship to Multiple Addresses')]
 	
-	@FindBy(how=How.XPATH,using=("//input[@id='multiShipment']"))
+	//@FindBy(how=How.XPATH,using=("//input[@id='multiShipment']"))
+	@FindBy(how=How.XPATH,using=("//label[contains(text(),'Ship to Multiple Addresses')]"))
 	private WebElement multiShipClick;
 	
 	public WebElement getMultiShipClick() {
 		return multiShipClick;
 	}
-	//input[@id='AddToShipment0']
 	@FindBy(how=How.XPATH,using=("//input[@id='AddToShipment0']"))
+	//@FindBy(how=How.XPATH,using=("//div[@id='addProduct0']/div/label"))
 	private WebElement addShippment0;
 	
 	public WebElement getAddShippment0() {
-		return addShippment0;
+		return explicitWait(addShippment0);
 	}
-	@FindBy(how=How.XPATH,using=("//input[@id='AddToShipment1']"))
+	//@FindBy(how=How.XPATH,using=("//input[@id='AddToShipment1']"))
+	@FindBy(how=How.XPATH,using=("//div[@id='addProduct1']/div/label"))
 	private WebElement addShippment1;
 	
 	public WebElement getAddShippment1() {

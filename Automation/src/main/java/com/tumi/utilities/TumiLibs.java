@@ -8,6 +8,7 @@ import org.testng.Assert;
 import com.aventstack.extentreports.Status;
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.webPages.HomePage;
+import com.tumi.webPages.OrderReviewPage;
 
 public class TumiLibs extends GenericMethods {
 
@@ -27,6 +28,11 @@ public class TumiLibs extends GenericMethods {
 	public static void closeSignUpForUS() {
 		try {
 			click(home.getSignupPopup(), "Close SignUp Window");
+
+			click(home.getSignupPopup(), "Close SignUp Window");
+
+			click(home.getUSSignupPopupUS(), "Close SignUp Window");
+
 		} catch (Exception e) {
 		}
 	}
@@ -71,7 +77,23 @@ public class TumiLibs extends GenericMethods {
 		input(guestBillPage.getemail(), testData.get("EmailID"), "Email ID");
 		input(guestBillPage.getPhoneNumber(), testData.get("Phone"), "Phone number");
 		click(guestBillPage.getReviewOrder(), "Review your order");
-		if (guestBillPage.getReviewOrder().isEnabled()) {
+	}
+	public static void addInvalidCardDetails(String sheet, String testCaseName) {
+
+		Map<String, String> testData = ReadTestData.retrieveData(sheet, testCaseName);
+
+		// billing page
+		input(guestBillPage.getNameOnCard(), testData.get("NameOnCard"), "Name on Card");
+
+		// invalid card number
+		input(guestBillPage.getCardNumber(), testData.get("CardNumber"), "Card Number");
+		selectByVisibleText(guestBillPage.getExpiryMonth(), "05", "Expiry Month");
+		selectByVisibleText(guestBillPage.getExpiryYear(), "2020", "Expiry Year");
+		input(guestBillPage.getCvvNumber(), testData.get("CVV"), "Cvv Number");
+		input(guestBillPage.getemail(), testData.get("EmailID"), "Email ID");
+		input(guestBillPage.getPhoneNumber(), testData.get("Phone"), "Phone number");
+		click(guestBillPage.getReviewOrder(), "Review your order");
+		if (review.getPlaceOrder().isEnabled()) {
 			Assert.fail("Able to Proceed Order with invalid details");
 		}
 	}

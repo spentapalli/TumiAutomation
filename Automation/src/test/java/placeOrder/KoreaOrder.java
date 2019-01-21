@@ -31,7 +31,7 @@ public class KoreaOrder extends GenericMethods{
 			delay(2000);
 			
 			// click on proceed to checkout in cart page
-			click(mainCart.getKrProceedToCheckout(), "Cart");
+			click(mainCart.getkrProceedtoCheckout(), "Cart");
 			
 			// singlePageCheckout
 			input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email");
