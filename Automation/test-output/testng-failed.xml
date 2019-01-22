@@ -3,17 +3,17 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.tumi.bindu.LoginFailed">
+      <class name="placeOrder.OrderWithVochercode">
         <methods>
           <include name="endReport"/>
           <include name="startReport"/>
           <include name="verifyTestResult"/>
-          <include name="Verifylogin"/>
+          <include name="testOrderWith"/>
           <include name="launchBrowser"/>
           <include name="removeExistingFiles"/>
           <include name="initiatePageObjects"/>
         </methods>
-      </class> <!-- com.tumi.bindu.LoginFailed -->
+      </class> <!-- placeOrder.OrderWithVochercode -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
