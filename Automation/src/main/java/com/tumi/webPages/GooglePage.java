@@ -24,7 +24,7 @@ public class GooglePage extends GenericMethods{
 	private WebElement googleLogin;
 	
 	public WebElement getGoogleLogin() {
-		return googleLogin;
+		return explicitWait(googleLogin);
 	}
 	
 	 @FindBy(how=How.XPATH, using="//div[@jsname='rwl3qc']")
@@ -41,11 +41,11 @@ public class GooglePage extends GenericMethods{
 				return firstNext;
 			}
 			//input[@name='identifier']		
-    @FindBy(how=How.XPATH, using="//input[@id='identifierId']")
+    @FindBy(how=How.XPATH, using="//input[@name='identifier']")
 	private WebElement email;
 	
 	public WebElement getEmail() {
-		return email;
+		return explicitWait(email);
 	}
 	
 	@FindBy(how=How.XPATH, using="//div[@id='password']/div/div/div/input")

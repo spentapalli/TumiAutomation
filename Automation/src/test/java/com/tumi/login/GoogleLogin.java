@@ -1,4 +1,4 @@
-//TestCase : Confirm Gmail login is successful on clicking "Google" and entering valid Email & password
+//TA-77 : Confirm Gmail login is successful on clicking "Google" and entering valid Email & password
 
 package com.tumi.login;
 import java.util.*;
@@ -33,13 +33,9 @@ public class GoogleLogin extends GenericMethods {
 	@Test(priority = 0)
 	public void verifyGoogleLogin() {
 		
-<<<<<<< HEAD
 		TumiLibs.closeSignUpForUS();
-=======
-		   
 		userGoogleAccount("skurry@coredatalabs.com");
 
->>>>>>> 78637bf3eb91abd36f1bb48accbec333a7447e1d
 		//click(home.getHeaderSignIn(), "SignIn");
 		//click(google.getGoogleLogin(), "Google login");
 		String parentHandle = driver.getWindowHandle();
@@ -81,13 +77,6 @@ public class GoogleLogin extends GenericMethods {
 	}
 
 	public void userGoogleAccount(String data) {
-		click(home.getSelectCountryUS(), "Select US country");
-		click(home.getSelectUS(), "click US");
-		try {
-			if (google.getNoThanks().isDisplayed()) {
-				click(google.getNoThanks(), "offers popup");
-			}
-		} catch (Exception e) {}
 		click(home.getHeaderSignIn(), "Sign In");
 		click(google.getGoogleLogin(), "Google login");
 		input(google.getEmail(), data, "gmail id");

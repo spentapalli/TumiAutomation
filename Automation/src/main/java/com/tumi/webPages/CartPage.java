@@ -76,7 +76,7 @@ public class CartPage {
 		return shopingCartMessege;
 		
 	}
-	
+//////////////////////////////////////////////////////////////////xpaths	
 	@FindBy(how=How.XPATH,using= "//*[contains(text(),'Add a Monogram')]/following-sibling::div/a")
     private List<WebElement> addClassicMonogram;
 	

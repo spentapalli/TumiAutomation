@@ -1,4 +1,4 @@
-//TestCase : Confirm clicking on Sign In link without entering credentials throws error message for normal sign in - N
+//TA-99 : Verify Tumi Login Fail, with wrong credentials
 
 package com.tumi.login;
 
@@ -23,23 +23,11 @@ public class VerifyInvalidRegularLogin extends GenericMethods {
 	@Test
 	public void verifyInvalidUserMessage() {
 
-		TumiLibs.closeSignUpForUsProd();
-		click(home.getSelectCountryUS(), "Select US country");
-		click(home.getSelectUS(), "click US");
-		delay(3000);
-		if (google.getNoThanks().isDisplayed()) {
-			click(google.getNoThanks(), "offers popup");
-		}else {
-			
-		}
+		TumiLibs.closeSignUpForUS();
 		login("Login", "InValidCredentials");
 		
-		/*verifyAssertEquals(getText(home.getInvalidCredentialsError()),
-				repository("home.invalidCredentials"));*/
-		String expectedMessage = "Your username or password was incorrect";
-		String message = home.getInvalidCredentialsError().getText();
-		Assert.assertTrue(message.contains(expectedMessage), "Your error message");
-		System.out.println(message);
+		Assert.fail(getProperty("home.invalidCredentials"));
+		
 
 	}
 

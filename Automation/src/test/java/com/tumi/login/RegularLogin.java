@@ -1,4 +1,4 @@
-//testcase : Confirm Regular login is successful on clicking Sign In and Entering Valid Email address & Password
+//TA-76: Confirm Regular login is successful on clicking Sign In and Entering Valid Email address & Password
 
 package com.tumi.login;
 

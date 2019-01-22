@@ -27,11 +27,11 @@ public class TumiLibs extends GenericMethods {
 
 	public static void closeSignUpForUS() {
 		try {
-<<<<<<< HEAD
+//<<<<<<< HEAD
 			click(home.getSignupPopup(), "Close SignUp Window");
-=======
+//=======
 			click(home.getUSSignupPopupUS(), "Close SignUp Window");
->>>>>>> 78637bf3eb91abd36f1bb48accbec333a7447e1d
+//>>>>>>> 78637bf3eb91abd36f1bb48accbec333a7447e1d
 		} catch (Exception e) {
 		}
 	}
