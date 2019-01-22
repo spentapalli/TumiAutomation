@@ -32,7 +32,7 @@ public class CartPage {
 		
 		return removeProduct;
 	}*/
-	
+
 	
 	@FindBy(how=How.XPATH,using="//button[contains(text(),'Proceed to Checkout')]")
 	private WebElement proceedToCheckout;

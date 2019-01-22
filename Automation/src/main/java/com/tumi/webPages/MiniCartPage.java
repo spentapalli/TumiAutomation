@@ -7,12 +7,13 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
 import com.tumi.reports.Reports;
+import com.tumi.utilities.GenericMethods;
 
 /**
  * @author Shwetha Capo
  *
  */
-public class MiniCartPage {
+public class MiniCartPage extends GenericMethods{
 
 	public MiniCartPage(WebDriver driver) {
 		Reports.driver = driver;
@@ -30,7 +31,7 @@ public class MiniCartPage {
 	
 	public WebElement getProceedCheckOut() {
 		
-		return proceedtoCheck;
+		return  explicitWait(proceedtoCheck);
 	}
 	
 	@FindBy(how=How.XPATH,using="(//a[@href='/cart'])[2]")

@@ -19,26 +19,20 @@ public class OrderWithVochercode extends GenericMethods{
 		Map<String, String>  testData = ReadTestData.retrieveData("PlaceOrder", "OrderWithVochercode");
 		
 		@Test
-		private void testOrderWith() {
+		private void testOrderWith() throws InterruptedException{
 			// Close signUp window
 			 TumiLibs.closeSignUpForUS();
 			input(home.getSearchProduct(), testData.get("SKUID"), "FailedOrder");
 			keyEnter(home.getSearchProduct());
-			try {
-				if (getText(home.getNoProducts()).contains("SORRY")) {
-					Assert.fail("Sorry, no search results");
-				}
-			} catch (Exception e) {
-
-			}
 		
-				
-			click(pdp.getAddToCart(), "Add To Cart");
+	
+		click(pdp.getAddToCart(), "Add To Cart");
 		
 			click(minicart.getProceedCheckOut(),"Proceed to Checkout");
-			click(mainCart.getProceedToCheckout(), "Proceed to Checkout");
-			input(mainCart.getPromocode(),testData.get("VocherId")," Vocher Id");
+		
+			input(mainCart.getPromocode(),testData.get("VocherID")," Vocher Id");
 			click(mainCart.getApply(),"check promocode");
+			click(mainCart.getProceedToCheckout(), "Proceed to Checkout");
 			input(singlePage.getEmailAddress(),testData.get("EmailID"), "Email ID");
 			click(singlePage.getPromotionsAndNews(), "Check Promotions");
 
@@ -49,7 +43,7 @@ public class OrderWithVochercode extends GenericMethods{
 			input(shipping.getAddressLine1(), testData.get("AddressLine1"), "Address Line1");
 			
 			for(WebElement ele : shipping.getListAddressLine1()) {
-				if(getText(ele).equals("1 Beaver Creek Rd, Abbottstown PA 17301")) {
+				if(getText(ele).equals("1001 Durham Ave,South Plainfield NJ 07080")) {
 					click(ele, "AddressList");
 					break;
 				}
@@ -64,7 +58,7 @@ public class OrderWithVochercode extends GenericMethods{
 			 * Add Card Details
 			 * @param: SheetName and TestCaseName
 			 */
-			TumiLibs.addCardDetails("PlaceOrder", "OrderWithMonogram");
+			TumiLibs.addCardDetails("PlaceOrder", "OrderWithVochercode");
 			click(review.getPlaceOrder(), "Place Order");
 			/*delay(4000);
 			captureOrderConfScreen("OrderConfirmation");*/
