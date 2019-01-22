@@ -24,14 +24,14 @@ public class InstaPage extends GenericMethods {
 	private WebElement insta;
 	
 	public WebElement getInsta() {
-		return insta;
+		return explicitWait(insta);
 	}
 	
 	@FindBy(how=How.XPATH, using="//input[@name='username']")
 	private WebElement instaUsername;
 	
 	public WebElement getInstaUsername() {
-		return instaUsername;
+		return explicitWait(instaUsername);
 	}
 
 	public WebElement getInstaPassword() {

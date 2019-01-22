@@ -24,15 +24,7 @@ public class VerifyInvalidGoogleLogin extends GenericMethods {
 	@Test
 	public void verifyInvalidGoogleLogin() throws InterruptedException {
 
-		/*TumiLibs.closeSignUpForUsProd();
-		click(home.getSelectCountryUS(), "Select US country");
-		click(home.getSelectUS(), "click US");
-		delay(4000);
-
-		if (google.getNoThanks().isDisplayed()) {
-			click(google.getNoThanks(), "offers popup");
-		}*/
-
+		TumiLibs.closeSignUpForUS();
 		click(home.getHeaderSignIn(), "SignIn");
 
 		/*
@@ -52,12 +44,13 @@ public class VerifyInvalidGoogleLogin extends GenericMethods {
 		input(google.getPassword(), testData.get("Password"), "Password");
 		click(google.getPasswordNext(), "password next");
 		
-		if(myacc.getSignout().isDisplayed()) {
-			Assert.fail("verifying Invalid google login failed");
-		}
-		//verifyAssertEquals(getText(home.getInvalidCredentialsError()),
-				getProperty("home.invalidCredentials");
+			softAssertEquals(getText(google.getPasswordError()), getProperty("google.passwordError"));
+			softAssertEquals(getText(google.getPasswordBlank()), getProperty("google.passwordBlank"));
+			softAssertEquals(getText(google.getEmailBlankError()), getProperty("google.emailBlankError"));
+			softAssertEquals(getText(google.getEmailError()), getProperty("google.emailError"));
+			softAssertEquals(getText(google.getEmailNotFound()), getProperty("google.emailnotFound"));
 
+		
 	}
 
 }

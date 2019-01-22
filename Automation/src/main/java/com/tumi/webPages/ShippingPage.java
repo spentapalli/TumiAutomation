@@ -9,12 +9,13 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
 import com.tumi.reports.Reports;
+import com.tumi.utilities.GenericMethods;
 
 /**
  * @author Shwetha Capo
  *
  */
-public class ShippingPage {
+public class ShippingPage extends GenericMethods{
 
 	public ShippingPage(WebDriver driver) {
 		Reports.driver = driver;
@@ -25,7 +26,7 @@ public class ShippingPage {
 	
 	public WebElement getFirstName() {
 		
-		return firstName;
+		return explicitWait(firstName);
 	}
 	
 	@FindBy(how=How.XPATH,using="//input[@name='lastName']")
