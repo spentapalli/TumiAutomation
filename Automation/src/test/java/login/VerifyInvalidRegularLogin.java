@@ -1,6 +1,6 @@
 //TA-99 : Verify Tumi Login Fail, with wrong credentials
 
-package com.tumi.login;
+package login;
 
 import java.util.Map;
 

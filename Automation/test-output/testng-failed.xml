@@ -3,17 +3,30 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
+<<<<<<< HEAD
       <class name="placeOrder.TumiOrder">
         <methods>
           <include name="endReport"/>
           <include name="testTumiOrder"/>
           <include name="startReport"/>
           <include name="verifyTestResult"/>
+=======
+      <class name="com.tumi.bindu.LoginFailed">
+        <methods>
+          <include name="endReport"/>
+          <include name="startReport"/>
+          <include name="verifyTestResult"/>
+          <include name="Verifylogin"/>
+>>>>>>> 591fe27e2e9f7d1d7d3b03a90edac64c5766303e
           <include name="launchBrowser"/>
           <include name="removeExistingFiles"/>
           <include name="initiatePageObjects"/>
         </methods>
+<<<<<<< HEAD
       </class> <!-- placeOrder.TumiOrder -->
+=======
+      </class> <!-- com.tumi.bindu.LoginFailed -->
+>>>>>>> 591fe27e2e9f7d1d7d3b03a90edac64c5766303e
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

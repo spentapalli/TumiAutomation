@@ -95,6 +95,7 @@ public class Reports {
 	public static InstaPage insta = null;
 	public static SignInBillingPage signinBill = null;
 	public static ShiipingPageForSignedIn signinShip = null;
+	
 
 	@BeforeTest(alwaysRun = true)
 	public void startReport(ITestContext ctx) {
@@ -168,6 +169,7 @@ public class Reports {
 		checkout = new CheckOutPage();
 		signinBill = new SignInBillingPage(driver);
 		signinShip = new ShiipingPageForSignedIn(driver);
+		
 	}
 
 	@AfterMethod(alwaysRun = true)

@@ -200,8 +200,7 @@ public class HomePage extends GenericMethods {
 
 		return submit;
 	}
-//<<<<<<< HEAD
-	
+
 	@FindBy(how=How.XPATH,using="(//div[@class='dEOOab RxsGPe'])[1]")
 	private WebElement emailBlankError;
 	
@@ -239,11 +238,9 @@ public class HomePage extends GenericMethods {
 		return passwordBlank;
 	}
 	
-	//@FindBy(how=How.XPATH,using="(//div[@class='error-message'])[1]")
-//=======
+	@FindBy(how=How.XPATH,using="(//div[@class='error-message'])[1]")
 
-	@FindBy(how = How.XPATH, using = "(//div[@class='error-message'])[1]")
-//>>>>>>> 78637bf3eb91abd36f1bb48accbec333a7447e1d
+
 	private WebElement invalidCredentials;
 
 	public WebElement getInvalidCredentialsError() {

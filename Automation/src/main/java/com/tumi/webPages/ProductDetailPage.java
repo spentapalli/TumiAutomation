@@ -11,7 +11,7 @@ import org.openqa.selenium.support.PageFactory;
 import com.tumi.reports.Reports;
 import com.tumi.utilities.GenericMethods;
 
-public class ProductDetailPage extends GenericMethods{
+public class ProductDetailPage extends GenericMethods {
 
 	public ProductDetailPage(WebDriver driver) {
 		Reports.driver = driver;

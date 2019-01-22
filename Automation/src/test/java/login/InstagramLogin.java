@@ -1,6 +1,6 @@
 //TestCase : Confirm "Instagram" login is succesful on clicking Instagram and entering Email OR Phone & password
 
-package com.tumi.login;
+package login;
 
 import java.util.Map;
 import java.util.Set;

@@ -13,7 +13,7 @@ import com.tumi.utilities.GenericMethods;
  * @author Shwetha Capo
  *
  */
-public class MiniCartPage extends GenericMethods {
+public class MiniCartPage extends GenericMethods{
 
 	public MiniCartPage(WebDriver driver) {
 		Reports.driver = driver;
@@ -31,7 +31,7 @@ public class MiniCartPage extends GenericMethods {
 	
 	public WebElement getProceedCheckOut() {
 		
-		return explicitWait(proceedtoCheck);
+		return  explicitWait(proceedtoCheck);
 	}
 	
 	@FindBy(how=How.XPATH,using="(//a[@href='/cart'])[2]")
