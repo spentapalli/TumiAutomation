@@ -1,6 +1,7 @@
 //TestCase : Confirm Gmail login is successful on clicking "Google" and entering valid Email & password
 
 package login;
+
 import java.util.*;
 
 import org.testng.Assert;
@@ -14,41 +15,35 @@ import com.tumi.utilities.TumiLibs;
  *
  */
 public class GoogleLogin extends GenericMethods {
-	
-	/* Suuresh - Observations
-	 * Reading Test Data SheetName and TestCaseName are not available in excel
+
+	/*
+	 * Suuresh - Observations Reading Test Data SheetName and TestCaseName are not
+	 * available in excel
 	 * 
-	 * At Priority = 0 - Call userGoogleAccount i.e. called that method in 35 line 
+	 * At Priority = 0 - Call userGoogleAccount i.e. called that method in 35 line
 	 * Update google page locators
-	 *  
+	 * 
 	 * Verification of google offers should be surrender with try catch
 	 * 
 	 */
-	
-	
+
 	// private static final Logger LOG = Logger.getLogger(GoogleLogin.class);
 	public Map<String, String> testData = ReadTestData.retrieveData("Login", "GoogleLogin");
 	public Map<String, String> testData1 = ReadTestData.retrieveData("Login", "InValidCredentials");
 
 	@Test(priority = 0)
 	public void verifyGoogleLogin() {
-		
-
 		TumiLibs.closeSignUpForUS();
-
-		   
 		userGoogleAccount("skurry@coredatalabs.com");
-
-
-		//click(home.getHeaderSignIn(), "SignIn");
-		//click(google.getGoogleLogin(), "Google login");
+		// click(home.getHeaderSignIn(), "SignIn");
+		// click(google.getGoogleLogin(), "Google login");
 		String parentHandle = driver.getWindowHandle();
-		//click(google.getGoogleLogin(), "Google login");
+		// click(google.getGoogleLogin(), "Google login");
 		for (String winHandle : driver.getWindowHandles()) {
 			driver.switchTo().window(winHandle);
 		}
 		userGoogleAccount(testData.get("EmailID"));
-		
+
 		driver.switchTo().window(parentHandle);
 		verifyAssertContains(getText(myacc.getWelcomeMessage()), getProperty("login.success.message"), "D");
 		/*
@@ -59,12 +54,10 @@ public class GoogleLogin extends GenericMethods {
 		 */
 	}
 
-
 	@Test(priority = 1)
 	public void GoogleLoginValidation() {
 
-		String parentHandle = driver.getWindowHandle();
-		//click(google.getGoogleLogin(), "Google login");
+		// click(google.getGoogleLogin(), "Google login");
 		for (String winHandle : driver.getWindowHandles()) {
 			driver.switchTo().window(winHandle);
 		}
@@ -81,19 +74,29 @@ public class GoogleLogin extends GenericMethods {
 	}
 
 	public void userGoogleAccount(String data) {
-		click(home.getSelectCountryUS(), "Select US country");
-		click(home.getSelectUS(), "click US");
 		try {
 			if (google.getNoThanks().isDisplayed()) {
 				click(google.getNoThanks(), "offers popup");
 			}
-		} catch (Exception e) {}
-		click(home.getHeaderSignIn(), "Sign In");
-		click(google.getGoogleLogin(), "Google login");
-		input(google.getEmail(), data, "gmail id");
-		click(google.getFirstNext(), "Next");
-		input(google.getPassword(), testData.get("Password"), "Password");
-		click(google.getPasswordNext(), "password next");
+		} catch (Exception e) {
+		}
+		String parent = driver.getWindowHandle();
+		webclick(home.getHeaderSignIn(), "Sign In");
+		webclick(google.getGoogleLogin(), "Google login");
+		Set<String> set = driver.getWindowHandles();
+		Iterator<String> ite = set.iterator();
+		while (ite.hasNext()) {
+
+			String child = ite.next();
+			if (!parent.equals(child)) {
+
+				driver.switchTo().window(child);
+				input(google.getEmail(), data, "gmail id");
+				webclick(google.getFirstNext(), "Next");
+				input(google.getPassword(), testData.get("Password"), "Password");
+				webclick(google.getPasswordNext(), "password next");
+			}
+		}
 
 	}
 
