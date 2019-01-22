@@ -6,8 +6,6 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Properties;
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -20,7 +18,6 @@ import org.openqa.selenium.io.FileHandler;
 import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
@@ -255,7 +252,7 @@ public class Reports {
 			logger.log(Status.INFO, "Successfully Navigated to " +URL+" Environment");
 		}
 		TumiLibs.verifyVPN();
-		//TumiLibs.closeSignUp();
+		TumiLibs.closeSignUpForUS();
 		TumiLibs.closeSignUpForUsProd();
 	}
 	

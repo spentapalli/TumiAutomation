@@ -32,6 +32,8 @@ import com.aventstack.extentreports.Status;
 import com.tumi.dataProvider.ReadTestData;
 
 public class GenericMethods extends GlobalConstants {
+	
+	public static Actions action;
 
 	public static void captureOrderConfScreen(String name) {
 		Timestamp time = new Timestamp(System.currentTimeMillis());
@@ -291,12 +293,21 @@ public class GenericMethods extends GlobalConstants {
 
 	public String toolTip(WebElement ele) {
 		try {
-			Actions action = new Actions(driver);
+			action = new Actions(driver);
 			action.moveToElement(ele).perform();
 		} catch (Exception e) {
 			Assert.fail("Fail to Fetch Tool Tip " + e.getMessage());
 		}
 		return getText(ele);
+	}
+	
+	public static void mouseHover(WebElement ele) {
+		try {
+			action = new Actions(driver);
+			action.moveToElement(ele).build().perform();
+		} catch (Exception e) {
+			Assert.fail("Fail to MouseHover " + e.getMessage());
+		}
 	}
 
 	public static String getProperty(String propertyName) {
@@ -550,7 +561,7 @@ public class GenericMethods extends GlobalConstants {
 		driver.manage().deleteAllCookies();
 	}
 
-	public void delay(int mili) {
+	public static void delay(int mili) {
 		try {
 			Thread.sleep(mili);
 		} catch (InterruptedException e) {
@@ -590,6 +601,8 @@ public class GenericMethods extends GlobalConstants {
 
 		return Integer.parseInt(name);
 	}
+	
+	
 	
 	public void removeExistingCart() {
 		int cart = parseInt(getText(home.getMinicartCount()));
