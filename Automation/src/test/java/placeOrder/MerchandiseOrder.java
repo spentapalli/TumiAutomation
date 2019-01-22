@@ -16,7 +16,7 @@ public class MerchandiseOrder extends GenericMethods {
 	 */
 	@Test
 	public void readyToShipOrderWithGuest() {
-		
+		TumiLibs.closeSignUpForUS();
 		TumiLibs.addProductToCart("PlaceOrder", "TumiOrder");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
