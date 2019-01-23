@@ -113,18 +113,11 @@ public class Reports {
 	}
 
 	@BeforeClass(alwaysRun = true)
-	public static void launchBrowser() {
-		try {
+	public static void launchBrowser() throws Exception {
 			getBrowser(GenericMethods.getProperty("tumi.browserName"));
 			maximizeBrowser();
 			getURL(GenericMethods.getProperty("tumi.appName"));
 			// driver.navigate().to("https://ca.stg-hybris-akamai.tumi.com");
-			// TumiLibs.closeSignUpForUS();
-			// TumiLibs.closeSignUp();
-			// TumiLibs.acceptCookies();
-		} catch (Exception e) {
-			Assert.fail("Fail to launch Application " + e.getMessage());
-		}
 	}
 
 	//@AfterClass(alwaysRun = true)
@@ -252,8 +245,7 @@ public class Reports {
 			logger.log(Status.INFO, "Successfully Navigated to " +URL+" Environment");
 		}
 		TumiLibs.verifyVPN();
-		TumiLibs.closeSignUpForUS();
-		TumiLibs.closeSignUpForUsProd();
+		
 	}
 	
 	public static void getScreen(String path) {

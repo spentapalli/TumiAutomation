@@ -34,7 +34,7 @@ public class GoogleLogin extends GenericMethods {
 	@Test(priority = 0)
 	public void verifyGoogleLogin() {
 		TumiLibs.closeSignUpForUS();
-		userGoogleAccount("skurry@coredatalabs.com");
+		TumiLibs.signInWithGoogle("Login", "GoogleLogin");
 		// click(home.getHeaderSignIn(), "SignIn");
 		// click(google.getGoogleLogin(), "Google login");
 		String parentHandle = driver.getWindowHandle();
@@ -42,7 +42,7 @@ public class GoogleLogin extends GenericMethods {
 		for (String winHandle : driver.getWindowHandles()) {
 			driver.switchTo().window(winHandle);
 		}
-		userGoogleAccount(testData.get("EmailID"));
+		TumiLibs.signInWithGoogle("Login", "GoogleLogin");
 
 		driver.switchTo().window(parentHandle);
 		verifyAssertContains(getText(myacc.getWelcomeMessage()), getProperty("login.success.message"), "D");
@@ -61,7 +61,7 @@ public class GoogleLogin extends GenericMethods {
 		for (String winHandle : driver.getWindowHandles()) {
 			driver.switchTo().window(winHandle);
 		}
-		userGoogleAccount(testData1.get("EmailID"));
+		TumiLibs.signInWithGoogle("Login", "InValidCredentials");
 		if (myacc.getSignout().isDisplayed()) {
 			Assert.fail("verifying Invalid google login failed");
 		}
@@ -72,32 +72,4 @@ public class GoogleLogin extends GenericMethods {
 		softAssertEquals(getText(google.getPasswordError()), getProperty("home.passwordError"));
 
 	}
-
-	public void userGoogleAccount(String data) {
-		try {
-			if (google.getNoThanks().isDisplayed()) {
-				click(google.getNoThanks(), "offers popup");
-			}
-		} catch (Exception e) {
-		}
-		String parent = driver.getWindowHandle();
-		webclick(home.getHeaderSignIn(), "Sign In");
-		webclick(google.getGoogleLogin(), "Google login");
-		Set<String> set = driver.getWindowHandles();
-		Iterator<String> ite = set.iterator();
-		while (ite.hasNext()) {
-
-			String child = ite.next();
-			if (!parent.equals(child)) {
-
-				driver.switchTo().window(child);
-				input(google.getEmail(), data, "gmail id");
-				webclick(google.getFirstNext(), "Next");
-				input(google.getPassword(), testData.get("Password"), "Password");
-				webclick(google.getPasswordNext(), "password next");
-			}
-		}
-
-	}
-
 }

@@ -1,6 +1,8 @@
 package com.tumi.utilities;
 
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -28,14 +30,14 @@ public class TumiLibs extends GenericMethods {
 
 	public static void closeSignUpForUS() {
 		try {
-			home.getSignupPopup().click();
+			click(home.getSignupPopup(), "Close Pop Up");
 		} catch (Exception e) {
-			logger.log(Status.INFO, "Sign Up Pop Up is not displayed for US");
+			// logger.log(Status.INFO, "Sign Up Pop Up is not displayed for US");
 		}
 		try {
 			home.getCASignupPopup().click();
 		} catch (Exception e) {
-			logger.log(Status.INFO, "Sign Up Pop Up is not displayed for CANADA");
+			// logger.log(Status.INFO, "Sign Up Pop Up is not displayed for CANADA");
 		}
 	}
 
@@ -161,7 +163,7 @@ public class TumiLibs extends GenericMethods {
 	}
 
 	public static void addGiftMessage(String sheet, String testCase) {
-		
+
 		Map<String, String> testData = ReadTestData.retrieveData(sheet, testCase);
 
 		click(gift.getCheckMessage(), "Check Message");
@@ -172,6 +174,33 @@ public class TumiLibs extends GenericMethods {
 
 	public static void addGiftBox() {
 		click(gift.getCheckPremiumGift(), "Premium GiftBox");
+	}
+
+	public static void signInWithGoogle(String sheet, String testCase) {
+
+		Map<String, String> testData = ReadTestData.retrieveData(sheet, testCase);
+
+		try {
+			if (google.getNoThanks().isDisplayed()) {
+				click(google.getNoThanks(), "offers popup");
+			}
+		} catch (Exception e) {
+		}
+		String parent = driver.getWindowHandle();
+		webclick(home.getHeaderSignIn(), "Sign In");
+		webclick(google.getGoogleLogin(), "Google login");
+		Set<String> set = driver.getWindowHandles();
+		Iterator<String> ite = set.iterator();
+		while (ite.hasNext()) {
+			String child = ite.next();
+			if (!parent.equals(child)) {
+				driver.switchTo().window(child);
+				input(google.getEmail(), testData.get("EmailID"), "Gmail Id");
+				webclick(google.getFirstNext(), "Next");
+				input(google.getPassword(), testData.get("Password"), "Password");
+				webclick(google.getPasswordNext(), "password next");
+			}
+		}
 	}
 
 }
