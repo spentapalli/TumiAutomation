@@ -59,6 +59,10 @@ import com.tumi.webPages.SignInBillingPage;
 import com.tumi.webPages.SinglePageCheckout;
 import com.tumi.webPages.TumiStudio;
 
+/**
+ * @author Suuresh
+ *
+ */
 public class Reports {
 	public static ExtentHtmlReporter htmlreport;
 	public static ExtentReports report;
@@ -234,6 +238,9 @@ public class Reports {
 		}
 	}
 	
+	/**
+	 * @param URL
+	 */
 	public static void getURL(String URL) {
 
 		if (URL.equalsIgnoreCase("stage2")) {

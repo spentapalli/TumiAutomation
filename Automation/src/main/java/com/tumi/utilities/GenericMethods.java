@@ -31,14 +31,18 @@ import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.tumi.dataProvider.ReadTestData;
 
+/**
+ * @author Suuresh
+ *
+ */
 public class GenericMethods extends GlobalConstants {
 	
 	public static Actions action;
 
 	public static void captureOrderConfScreen(String name) {
 		Timestamp time = new Timestamp(System.currentTimeMillis());
-		String location = "./Screenshots/Ordres/" + name + time.getTime() + ".png";
-		getScreen("./ExtentReports/Screenshots/Orders/" + name + time.getTime() + ".png");
+		String location = "./ScreenShots/" + name + time.getTime() + ".png";
+		getScreen("./ExtentReports/ScreenShots/" + name + time.getTime() + ".png");
 		try {
 			logger.info("Reference", MediaEntityBuilder.createScreenCaptureFromPath(location).build());
 		} catch (Exception e) {

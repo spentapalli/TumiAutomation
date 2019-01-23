@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
@@ -11,8 +12,11 @@ import org.testng.Assert;
 import com.aventstack.extentreports.Status;
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.webPages.HomePage;
-import com.tumi.webPages.OrderReviewPage;
 
+/**
+ * @author Suuresh
+ *
+ */
 public class TumiLibs extends GenericMethods {
 
 	public static void closeSignUp() {
@@ -21,10 +25,10 @@ public class TumiLibs extends GenericMethods {
 			try {
 				home.getSignupPopup().click();
 			} catch (Exception e) {
-				logger.log(Status.INFO, "SignUp Window is Already Closed");
+				//logger.log(Status.INFO, "SignUp Window is Already Closed");
 			}
 		} catch (Exception e) {
-			logger.log(Status.INFO, "SignUp Window is Not Displayed");
+			//logger.log(Status.INFO, "SignUp Window is Not Displayed");
 		}
 	}
 
@@ -173,7 +177,15 @@ public class TumiLibs extends GenericMethods {
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
 		TumiLibs.addCardDetails("PlaceOrder", "TumiOrderKR");
 		click(review.getPlaceOrder(), "Place Order");
-		delay(7000);
+		do {
+			delay(2000);	
+		}
+		while(driver.findElement(By.xpath("//div[@class='loader-image']")).isDisplayed());
+		
+		if (!driver.findElement(By.xpath("//section[@id='confirmation-info-ctnr']/div/div[1]")).isDisplayed()) {
+			
+			Assert.fail("Faile to Place An Order");
+		}
 		captureOrderConfScreen("OrderConfirmation");
 	}
 

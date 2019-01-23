@@ -2,6 +2,10 @@ package com.tumi.utilities;
 
 import com.tumi.reports.Reports;
 
+/**
+ * @author Suuresh
+ *
+ */
 public class GlobalConstants extends Reports {
 	
 	

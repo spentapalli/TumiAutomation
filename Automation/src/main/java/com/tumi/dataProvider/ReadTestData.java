@@ -15,6 +15,10 @@ import org.testng.Assert;
 
 import com.tumi.utilities.GlobalConstants;
 
+/**
+ * @author Suuresh
+ *
+ */
 public class ReadTestData {
 
 	public static String sPreviousTestCaseName;
