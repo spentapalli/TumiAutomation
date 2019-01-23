@@ -38,7 +38,7 @@ public class GiftServices extends GenericMethods {
 	private WebElement recipientName;
 	
 	public WebElement getRecipientName() {
-		return recipientName;
+		return explicitWait(recipientName);
 	}
 	
 	

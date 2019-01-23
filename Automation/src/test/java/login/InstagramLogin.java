@@ -1,4 +1,5 @@
-//TestCase : Confirm "Instagram" login is succesful on clicking Instagram and entering Email OR Phone & password
+//TA-78 :Verify Login with Instagram Account-- functionality issue.
+//TA    :Verify InLogin with Instagram Account-- functionality issue
 
 package login;
 
@@ -17,28 +18,42 @@ import com.tumi.utilities.TumiLibs;
  */
 public class InstagramLogin extends GenericMethods {
 
-	public Map<String, String> testData = ReadTestData.retrieveData("Login", "InstagramLogin");
+	
 
-	@Test
-	public void verifyInstaLogin() throws InterruptedException {
-		
+	@Test(priority=0)
+	public void verifyInstaValidLogin(){
 		TumiLibs.closeSignUpForUS();
-		click(home.getHeaderSignIn(), "SignIn");
+		instaLogin("Login", "InstagramLogin");
+		/*String parentHandle = driver.getWindowHandle(); 
+		driver.switchTo().window(parentHandle);*/
+		delay(2000);
+		if(myacc.getSignout().isEnabled()) {
+			click(myacc.getSignout(),"Signout");
+		}
+	}
 
-		String parentHandle = driver.getWindowHandle(); // get the current window handle
+	@Test(priority=1)
+	public void inValidInstaLogin(){
+		//TumiLibs.closeSignUpForUS();
+		instaLogin("Login", "VerifyInvalidInstaLogin");
+		delay(4000);
+		verifyAssertEquals(getText(insta.getPasswordErr()), getProperty("insta.passwordError"));
+	}
+	
+	public void instaLogin(String sheetName, String testCaseName) {
+		Map<String, String> testData = ReadTestData.retrieveData(sheetName, testCaseName);
+		
+		click(home.getHeaderSignIn(), "SignIn");
+		String parentHandle = driver.getWindowHandle(); 
 		click(insta.getInsta(), "Instagram");
 		delay(2000);
 		for (String winHandle : driver.getWindowHandles()) {
-			driver.switchTo().window(winHandle); // switch focus of WebDriver to the next found window handle (that's
-													// your newly opened window)
+			driver.switchTo().window(winHandle); 
 		}
-		// code to do something on new window
-
 		input(insta.getInstaUsername(), testData.get("EmailID"), "Username");
 		input(insta.getInstaPassword(), testData.get("Password"), "Password");
 		click(insta.getInstaLogin(), "Login");
-		delay(2000);
 		driver.switchTo().window(parentHandle);
-
 	}
+
 }

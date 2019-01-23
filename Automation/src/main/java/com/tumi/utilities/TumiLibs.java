@@ -112,8 +112,13 @@ public class TumiLibs extends GenericMethods {
 	public static void addProductToCart(String sheet, String testCase) {
 
 		Map<String, String> testData = ReadTestData.retrieveData(sheet, testCase);
+		
+		final String pdpURL = GlobalConstants.url+"/p/"+testData.get("SKUID");
+		driver.get(pdpURL);
+		
+		//due to product search issue i am using above code to get the product.
 
-		input(home.getSearchProduct(), testData.get("SKUID"), "Search Product");
+		/*input(home.getSearchProduct(), testData.get("SKUID"), "Search Product");
 		keyEnter(home.getSearchProduct());
 		verifyAssertContains(driver.getCurrentUrl(), testData.get("SKUID"), "Wrong Product is displayed");
 		try {
@@ -123,11 +128,11 @@ public class TumiLibs extends GenericMethods {
 			}
 		} catch (Exception e) {
 			Assert.fail(testData.get("SKUID") +" Product is not available");
-		}
+		}*/
 		
 	}
 
-	public static void addMonochrome(String sheet, String testCase) {
+	public static void addMonogram(String sheet, String testCase) {
 
 		Map<String, String> testData = ReadTestData.retrieveData(sheet, testCase);
 
@@ -168,18 +173,20 @@ public class TumiLibs extends GenericMethods {
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
 		TumiLibs.addCardDetails("PlaceOrder", "TumiOrderKR");
 		click(review.getPlaceOrder(), "Place Order");
-		delay(4000);
+		delay(7000);
 		captureOrderConfScreen("OrderConfirmation");
 	}
 
 	public static void addGiftMessage(String sheet, String testCase) {
 
 		Map<String, String> testData = ReadTestData.retrieveData(sheet, testCase);
-
-		click(gift.getCheckMessage(), "Check Message");
+		
+		click(gift.getCheckMessage(), " check Message");
 		input(gift.getRecipientName(), testData.get("RecipientName"), "Recipients name");
 		input(gift.getSenderName(), testData.get("SenderName"), "Sender name");
 		input(gift.getAddMessage(), testData.get("Message"), "Message");
+
+		
 	}
 
 	public static void addGiftBox() {

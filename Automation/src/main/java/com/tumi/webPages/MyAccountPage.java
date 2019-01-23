@@ -7,12 +7,13 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
 import com.tumi.reports.Reports;
+import com.tumi.utilities.GenericMethods;
 
 /**
  * @author Shwetha Capo
  *
  */
-public class MyAccountPage {
+public class MyAccountPage extends GenericMethods{
 	
 	public MyAccountPage(WebDriver driver) {
 		Reports.driver = driver;
@@ -99,6 +100,6 @@ public class MyAccountPage {
 	private WebElement signout;
 	
 	public WebElement getSignout() {
-		return signout;
+		return explicitWait(signout);
 	}
 }
