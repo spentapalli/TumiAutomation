@@ -245,7 +245,7 @@ public class Reports {
 			logger.log(Status.INFO, "Successfully Navigated to " +URL+" Environment");
 		}
 		TumiLibs.verifyVPN();
-		
+		TumiLibs.closeSignUp();
 	}
 	
 	public static void getScreen(String path) {

@@ -115,6 +115,16 @@ public class TumiLibs extends GenericMethods {
 
 		input(home.getSearchProduct(), testData.get("SKUID"), "Search Product");
 		keyEnter(home.getSearchProduct());
+		verifyAssertContains(driver.getCurrentUrl(), testData.get("SKUID"), "Wrong Product is displayed");
+		try {
+			if (pdp.getAddToCart().isDisplayed()) {
+				
+				verifyAssertEquals("Add To Cart", getText(pdp.getAddToCart()));
+			}
+		} catch (Exception e) {
+			Assert.fail(testData.get("SKUID") +" Product is not available");
+		}
+		
 	}
 
 	public static void addMonochrome(String sheet, String testCase) {

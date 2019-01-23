@@ -143,7 +143,7 @@ public class GenericMethods extends GlobalConstants {
 	public static WebElement explicitWait(WebElement element) {
 		try {
 			// WebDriverWait Initialization
-			WebDriverWait wait = new WebDriverWait(driver, 60);
+			WebDriverWait wait = new WebDriverWait(driver, 20);
 			wait.until(ExpectedConditions.visibilityOf(element));
 		} catch (Exception e) {
 			e.getMessage();
@@ -154,7 +154,7 @@ public class GenericMethods extends GlobalConstants {
 	public static WebElement elementToBeClickable(WebElement element) {
 		try {
 			// WebDriverWait Initialization
-			WebDriverWait wait = new WebDriverWait(driver, 60);
+			WebDriverWait wait = new WebDriverWait(driver, 20);
 			wait.until(ExpectedConditions.elementToBeClickable(element));
 		} catch (Exception e) {
 			e.getMessage();
@@ -404,6 +404,7 @@ public class GenericMethods extends GlobalConstants {
 
 	public static void keyEnter(WebElement ele) {
 		ele.sendKeys(Keys.ENTER);
+		WaitForJStoLoad();
 	}
 
 	public static void keyTab(WebElement ele) {
