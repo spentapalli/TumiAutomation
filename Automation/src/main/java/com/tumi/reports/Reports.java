@@ -18,6 +18,7 @@ import org.openqa.selenium.io.FileHandler;
 import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
@@ -58,6 +59,8 @@ import com.tumi.webPages.ShippingPage;
 import com.tumi.webPages.SignInBillingPage;
 import com.tumi.webPages.SinglePageCheckout;
 import com.tumi.webPages.TumiStudio;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 /**
  * @author Suuresh
@@ -124,7 +127,7 @@ public class Reports {
 			// driver.navigate().to("https://ca.stg-hybris-akamai.tumi.com");
 	}
 
-	//@AfterClass(alwaysRun = true)
+	@AfterClass(alwaysRun = true)
 	public static void closeBrowser() {
 		driver.close();
 		try {
@@ -219,7 +222,7 @@ public class Reports {
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("disable-infobars");
 			options.addArguments("--disable-notifications");
-			System.setProperty(GlobalConstants.chrome, GlobalConstants.chromePath);
+			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver(options);
 			// logger.log(Status.INFO, "Chrome has been successfully Launched");
 		} else if (browserName.equalsIgnoreCase("ie")) {

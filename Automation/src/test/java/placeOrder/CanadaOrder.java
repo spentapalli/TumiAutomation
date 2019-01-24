@@ -3,6 +3,7 @@ package placeOrder;
 import java.util.Map;
 
 import org.openqa.selenium.WebElement;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.tumi.dataProvider.ReadTestData;
@@ -19,13 +20,14 @@ public class CanadaOrder extends GenericMethods {
 	public Map<String, String> testData = ReadTestData.retrieveData("PlaceOrder", "TumiOrderCA");
 
 	@Test
-	public void testTumiOrder(){
+	@Parameters({"countryName"})
+	public void testTumiOrder(String name){
 
-		TumiLibs.closeSignUpForUsProd();
-		click(home.getSelectCountry(), "US country");
-		click(home.getSelectCountry(), "Korea");
-		delay(4000);
-
+		//TumiLibs.closeSignUpForUsProd();
+		//click(home.getSelectCountry(), "US country");
+		//click(home.getSelectCountry(), "Korea");
+		//delay(4000);
+		TumiLibs.selectCountry(name);
 		/*
 		 * if (google.getNoThanks().isDisplayed()) { click(google.getNoThanks(),
 		 * "offers popup"); }else { }
@@ -59,7 +61,6 @@ public class CanadaOrder extends GenericMethods {
 				break;
 			}
 		}
-
 		/*
 		 * input(shipping.getAddressLine2(), testData.get("AddressLine2"),
 		 * "Address Line2"); input(shipping.getTown(), testData.get("TownCity"),

@@ -2,7 +2,7 @@ package login;
 
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

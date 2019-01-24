@@ -36,7 +36,7 @@ import com.tumi.dataProvider.ReadTestData;
  *
  */
 public class GenericMethods extends GlobalConstants {
-	
+
 	public static Actions action;
 
 	public static void captureOrderConfScreen(String name) {
@@ -58,7 +58,7 @@ public class GenericMethods extends GlobalConstants {
 			input(home.getPassWord(), testData.get("Password"), "Password");
 			click(home.getLogOn(), "Login");
 			click(myacc.getMyAccountClose(), "My Account Close");
-			//removeExistingCart();
+			// removeExistingCart();
 		} catch (Exception e) {
 			Assert.fail("Fail to Login due to " + e.getMessage());
 		}
@@ -74,6 +74,7 @@ public class GenericMethods extends GlobalConstants {
 				WaitForJStoLoad();
 			} else {
 				logger.log(Status.FAIL, "Button is not enabled " + buttonName);
+				Assert.fail(buttonName + " " + "is not Enabled or Unable to interact at this point");
 			}
 		} catch (Exception e) {
 			Assert.fail(buttonName + " " + "is not Enabled or Unable to interact at this point");
@@ -101,6 +102,9 @@ public class GenericMethods extends GlobalConstants {
 				element.sendKeys(Value);
 				logger.log(Status.INFO, "Entered the value in " + fieldName + " as: " + Value);
 				WaitForJStoLoad();
+			} else {
+
+				Assert.fail("Fail to Enter Value in  " + fieldName);
 			}
 		} catch (Exception e) {
 			Assert.fail("Fail to Enter Value in  " + fieldName + e.getMessage());
@@ -113,9 +117,11 @@ public class GenericMethods extends GlobalConstants {
 		try {
 			if (element.isDisplayed()) {
 				text = element.getText().trim();
+			}else {
+				Assert.fail("Unable to Fetch text from" +element);
 			}
 		} catch (Exception e) {
-			Assert.fail("Unable to Fetch text " + e.getMessage());
+			Assert.fail("Unable to Fetch text from" + element + "due to "+e.getMessage());
 		}
 		return text;
 	}
@@ -125,6 +131,8 @@ public class GenericMethods extends GlobalConstants {
 		try {
 			if (element.isDisplayed()) {
 				text = element.getAttribute("innerHTML").trim();
+			}else {
+				Assert.fail("Unable to Fetch text from" +element);
 			}
 		} catch (Exception e) {
 			Assert.fail("Unable to Fetch innerHTML " + e.getMessage());
@@ -137,6 +145,8 @@ public class GenericMethods extends GlobalConstants {
 		try {
 			if (element.isDisplayed()) {
 				text = element.getAttribute("value").trim();
+			}else {
+				Assert.fail("Unable to Fetch text from" +element);
 			}
 		} catch (Exception e) {
 			Assert.fail("Unable to Fetch value " + e.getMessage());
@@ -304,7 +314,7 @@ public class GenericMethods extends GlobalConstants {
 		}
 		return getText(ele);
 	}
-	
+
 	public static void mouseHover(WebElement ele) {
 		try {
 			action = new Actions(driver);
@@ -606,16 +616,14 @@ public class GenericMethods extends GlobalConstants {
 
 		return Integer.parseInt(name);
 	}
-	
-	
-	
+
 	public void removeExistingCart() {
 		int cart = parseInt(getText(home.getMinicartCount()));
 		if (cart != 0) {
 			click(home.getMinicart(), "Mini Cart");
 			click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 			for (WebElement ele : checkout.getRemoveProducts()) {
-				click(ele,getText(ele));
+				click(ele, getText(ele));
 				driver.navigate().refresh();
 			}
 		}

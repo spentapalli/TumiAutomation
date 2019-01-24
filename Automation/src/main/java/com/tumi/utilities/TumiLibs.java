@@ -18,6 +18,8 @@ import com.tumi.webPages.HomePage;
  *
  */
 public class TumiLibs extends GenericMethods {
+	
+	public static String selectedCountry = null;
 
 	public static void closeSignUp() {
 		try {
@@ -25,10 +27,10 @@ public class TumiLibs extends GenericMethods {
 			try {
 				home.getSignupPopup().click();
 			} catch (Exception e) {
-				//logger.log(Status.INFO, "SignUp Window is Already Closed");
+				// logger.log(Status.INFO, "SignUp Window is Already Closed");
 			}
 		} catch (Exception e) {
-			//logger.log(Status.INFO, "SignUp Window is Not Displayed");
+			// logger.log(Status.INFO, "SignUp Window is Not Displayed");
 		}
 	}
 
@@ -116,24 +118,23 @@ public class TumiLibs extends GenericMethods {
 	public static void addProductToCart(String sheet, String testCase) {
 
 		Map<String, String> testData = ReadTestData.retrieveData(sheet, testCase);
-		
-		final String pdpURL = GlobalConstants.url+"/p/"+testData.get("SKUID");
-		driver.get(pdpURL);
-		
-		//due to product search issue i am using above code to get the product.
 
-		/*input(home.getSearchProduct(), testData.get("SKUID"), "Search Product");
-		keyEnter(home.getSearchProduct());
-		verifyAssertContains(driver.getCurrentUrl(), testData.get("SKUID"), "Wrong Product is displayed");
-		try {
-			if (pdp.getAddToCart().isDisplayed()) {
-				
-				verifyAssertEquals("Add To Cart", getText(pdp.getAddToCart()));
-			}
-		} catch (Exception e) {
-			Assert.fail(testData.get("SKUID") +" Product is not available");
-		}*/
-		
+		final String pdpURL = GlobalConstants.url + "/p/" + testData.get("SKUID");
+		driver.get(pdpURL);
+
+		// due to product search issue i am using above code to get the product.
+
+		/*
+		 * input(home.getSearchProduct(), testData.get("SKUID"), "Search Product");
+		 * keyEnter(home.getSearchProduct());
+		 * verifyAssertContains(driver.getCurrentUrl(), testData.get("SKUID"),
+		 * "Wrong Product is displayed"); try { if (pdp.getAddToCart().isDisplayed()) {
+		 * 
+		 * verifyAssertEquals("Add To Cart", getText(pdp.getAddToCart())); } } catch
+		 * (Exception e) { Assert.fail(testData.get("SKUID")
+		 * +" Product is not available"); }
+		 */
+
 	}
 
 	public static void addMonogram(String sheet, String testCase) {
@@ -170,17 +171,16 @@ public class TumiLibs extends GenericMethods {
 				break;
 			}
 		}
-		
+
 		/*
-		 *  added code for Canada
+		 * added code for Canada
 		 * 
 		 */
-		/*for (WebElement ele : shipping.getListAddressLine1()) {
-			if (getText(ele).equals("10 SUMAS WAY, ABBOTSFORD, BC, V2S 8B7")) {
-				click(ele, "AddressList");
-				break;
-			}
-		}*/
+		/*
+		 * for (WebElement ele : shipping.getListAddressLine1()) { if
+		 * (getText(ele).equals("10 SUMAS WAY, ABBOTSFORD, BC, V2S 8B7")) { click(ele,
+		 * "AddressList"); break; } }
+		 */
 		input(shipping.getPostcode(), testData.get("PostCode"), "Post code");
 		input(shipping.getPhoneNumber(), testData.get("Phone"), "Phone Number");
 		click(shipping.getContinueShippingMethod(), "Continue shipping Method");
@@ -190,12 +190,11 @@ public class TumiLibs extends GenericMethods {
 		delay(2000);
 		click(review.getPlaceOrder(), "Place Order");
 		do {
-			delay(2000);	
-		}
-		while(driver.findElement(By.xpath("//div[@class='loader-image']")).isDisplayed());
-		
+			delay(2000);
+		} while (driver.findElement(By.xpath("//div[@class='loader-image']")).isDisplayed());
+
 		if (!driver.findElement(By.xpath("//section[@id='confirmation-info-ctnr']/div/div[1]")).isDisplayed()) {
-			
+
 			Assert.fail("Faile to Place An Order");
 		}
 		captureOrderConfScreen("OrderConfirmation");
@@ -204,26 +203,23 @@ public class TumiLibs extends GenericMethods {
 	public static void addGiftMessage(String sheet, String testCase) {
 
 		Map<String, String> testData = ReadTestData.retrieveData(sheet, testCase);
-		
+
 		click(gift.getCheckMessage(), " check Message");
 		input(gift.getRecipientName(), testData.get("RecipientName"), "Recipients name");
 		input(gift.getSenderName(), testData.get("SenderName"), "Sender name");
 		input(gift.getAddMessage(), testData.get("Message"), "Message");
 
-		
 	}
 
 	public static void addGiftBox() {
 		click(gift.getCheckPremiumGift(), "Premium GiftBox");
 	}
-	
+
 	public static void addVoucherID(String sheet, String testCase) {
 		Map<String, String> testData = ReadTestData.retrieveData(sheet, testCase);
-		input(mainCart.getPromocode(),testData.get("VocherID"), "Voucher Code");
-		click(mainCart.getApply(),"Apply Promocode");
+		input(mainCart.getPromocode(), testData.get("VocherID"), "Voucher Code");
+		click(mainCart.getApply(), "Apply Promocode");
 	}
-	
-	
 
 	public static void signInWithGoogle(String sheet, String testCase) {
 
@@ -251,19 +247,20 @@ public class TumiLibs extends GenericMethods {
 			}
 		}
 	}
-	
-	public static void searchProducts(int i,String data) {
-			input(home.getSearchProduct(),data , "Product Search");
-			if (home.getMatchingProducts().isEmpty()) {
-				final String emptyViewText = driver
-						.findElement(By.xpath("//div[contains(text(),'Sorry, no search results for')]")).getText();
-				if (!emptyViewText.contains("no results")) {
-					throw new RuntimeException(emptyViewText);
-				}
-			} else {
-				home.getMatchingProducts().get(i).click();
+
+	public static void searchProducts(int i, String data) {
+		input(home.getSearchProduct(), data, "Product Search");
+		if (home.getMatchingProducts().isEmpty()) {
+			final String emptyViewText = driver
+					.findElement(By.xpath("//div[contains(text(),'Sorry, no search results for')]")).getText();
+			if (!emptyViewText.contains("no results")) {
+				throw new RuntimeException(emptyViewText);
 			}
+		} else {
+			home.getMatchingProducts().get(i).click();
 		}
+	}
+
 	public static void addMultipleProducts(String sheet, String testCase) {
 		Map<String, String> testData = ReadTestData.retrieveData(sheet, testCase);
 		for (int i = 0; i < 2; i++) {
@@ -273,6 +270,35 @@ public class TumiLibs extends GenericMethods {
 			click(minicart.getContinueShopping(), "Continue shopping");
 		}
 	}
+	
+	public static void countrySelection(String name) {
+		
+		click(home.getHomeCountry(), "Default Country");
+		for (WebElement ele : home.getCountriesList()) {
+
+			if (getText(ele).equalsIgnoreCase(name)) {
+				click(ele,getText(ele));
+				break;
+			}
+		}	
+		selectedCountry = getText(home.getHomeCountry());
+	}
+
+	public static void selectCountry(String name) {
+
+		switch (name.toUpperCase()) {
+		case "US":
+			countrySelection("United States");
+			break;
+		case "CANADA":
+			countrySelection("Canada");
+			break;
+		case "KOREA":
+			countrySelection("Korea");
+			break;
+		default:
+			break;
+		}
+
+	}
 }
-
-

@@ -46,7 +46,7 @@ public class GooglePage extends GenericMethods {
 	private WebElement email;
 
 	public WebElement getEmail() {
-		return explicitWait(email);
+		return email;
 	}
 
 	@FindBy(how = How.XPATH, using = "//div[@id='password']/div/div/div/input")

@@ -12,7 +12,7 @@ import com.aventstack.extentreports.Status;
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
 import com.tumi.utilities.TumiLibs;
-import org.apache.log4j.Logger;
+
 
 /**
  * @author Shwetha Capo
@@ -20,7 +20,7 @@ import org.apache.log4j.Logger;
  */
 public class MyAccPage extends GenericMethods {
 	/* The Constant LOG. */
-	private static final Logger LOG = Logger.getLogger(MyAccPage.class);
+	//private static final Logger LOG = Logger.getLogger(MyAccPage.class);
 	Map<String, String> testData = ReadTestData.retrieveData("Login", "MyAccPage");
 	
 	@Test
