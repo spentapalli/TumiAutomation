@@ -12,7 +12,7 @@ import com.tumi.utilities.TumiLibs;
  */
 
 public class GuestOrderWithGiftBoxnMsg extends GenericMethods{
-	/*TA-103 
+	/*TA-53 
 	 * Verify Order with merchandise Ready to ship + Gift Boxing + Gift Message for Guest User
 	 * */
 	
@@ -25,7 +25,7 @@ public class GuestOrderWithGiftBoxnMsg extends GenericMethods{
 		TumiLibs.addGiftMessage("PlaceOrder", "OrderWithGiftServices");
 		TumiLibs.addGiftBox();
 		click(gift.getContinueGiftService(), "Continue");
-		TumiLibs.completeOrder("PlaceOrder", "TumiOrder");
+		TumiLibs.completeOrder("PlaceOrder", "OrderWithGiftServices");
 
 	}
 

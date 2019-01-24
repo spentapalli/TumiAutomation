@@ -11,7 +11,8 @@ import com.tumi.utilities.TumiLibs;
 public class GuestOrderWithMonogram extends GenericMethods {
 
 	/*
-	 * TA-101 Verify Order with merchandise Ready to ship + Personalization for
+	 * TA-48 
+	 * Verify Order with merchandise Ready to ship + Personalization for
 	 * Guest User.
 	 */
 	@Test
@@ -20,7 +21,6 @@ public class GuestOrderWithMonogram extends GenericMethods {
 		TumiLibs.addMonogram("PlaceOrder", "OrderWithMonogram");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
-		click(gift.getContinueGiftService(), "continue");
 		TumiLibs.completeOrder("PlaceOrder", "OrderWithMonogram");
 	}
 

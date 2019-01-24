@@ -1,5 +1,5 @@
-/* TA-76: Confirm Regular login is successful on clicking Sign In and Entering Valid Email address & Password
-   TA-99 : Verify Tumi Login Fail, with wrong credentials*/
+/* TA-26: Confirm Regular login is successful on clicking Sign In and Entering Valid Email address & Password
+   TA-58 : Verify Tumi Login Fail, with wrong credentials*/
 package login;
 
 import java.util.List;

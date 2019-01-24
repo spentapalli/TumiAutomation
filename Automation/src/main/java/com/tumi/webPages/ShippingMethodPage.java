@@ -20,7 +20,15 @@ public class ShippingMethodPage extends GenericMethods {
 		PageFactory.initElements(driver, this);
 		
 	}
+	/* 
+	 * use this for Us 
+	 * */
 	@FindBy(how=How.XPATH,using="//input[@id='standard-ground-net']")
+	
+	/*
+	 * use this for canada 
+	 * */
+	//@FindBy(how=How.XPATH,using="//input[@id='standard-international-shipping-net']")
 	private WebElement standardShippingMethod;
 	
 	public WebElement getStandardShippingMethod() {

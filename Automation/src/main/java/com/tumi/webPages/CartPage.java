@@ -9,8 +9,9 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
 import com.tumi.reports.Reports;
+import com.tumi.utilities.GenericMethods;
 
-public class CartPage {
+public class CartPage extends GenericMethods {
 	
 	public CartPage(WebDriver driver) {
 		Reports.driver= driver;
@@ -192,7 +193,7 @@ public class CartPage {
 	private WebElement addPromocode;
 	
 	public WebElement getPromocode() {
-		return  addPromocode;
+		return  explicitWait(addPromocode);
 	}
 	@FindBy(how=How.XPATH,using="(//button[@id='signupnewsletter'])[2]")
 	
@@ -202,4 +203,6 @@ public class CartPage {
 		
 		return ApplyClick;
 	}
+	
+	
 }

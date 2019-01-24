@@ -31,9 +31,9 @@ public class MultiShipOrder extends GenericMethods {
 		click(home.getSelectUS(), "click US");
 		delay(3000);
 		click(home.getOffersPopupUsProd(),"offers popup");
-*/
+
 		ProductSearch productSearch = new ProductSearch();
-		/*
+		
 		 * proSearch((Integer) null);;
 		 * 
 		 * click(pdp.getAddToCart(), "Add to Cart");
@@ -42,10 +42,8 @@ public class MultiShipOrder extends GenericMethods {
 
 		for (int i = 1; i < 3; i++) {
 
-			// String i="1";
-			productSearch.proSearch(i);
+			TumiLibs.searchProducts(i, testData.get("PrdouctName"));
 			delay(3000);
-
 			click(pdp.getAddToCart(), "Add to Cart");
 			click(minicart.getContinueShopping(), "Continue shopping");
 

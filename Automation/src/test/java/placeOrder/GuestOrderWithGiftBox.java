@@ -13,7 +13,7 @@ import com.tumi.utilities.TumiLibs;
 
 public class GuestOrderWithGiftBox extends GenericMethods {
 	
-	/* TA-102 
+	/* TA-47 
 	 * Verify Order with merchandise Ready to ship + Gift Boxing for Guest User.
 	 */
 	@Test

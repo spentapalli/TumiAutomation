@@ -18,17 +18,15 @@ import com.tumi.utilities.TumiLibs;
  *
  */
 public class ProductSearch extends GenericMethods{
-public Map<String, String> testData = ReadTestData.retrieveData("Login","PrdouctSearch" );
+public Map<String, String> testData = ReadTestData.retrieveData("PlaceOrder","PrdouctSearch" );
 	
 	@Test
 	public void search() throws InterruptedException{
 		
 		
-		TumiLibs.closeSignUpForUsProd();
-		click(home.getSelectCountryUS(), "Select US country");
-		click(home.getSelectUS(), "click US");
+		TumiLibs.closeSignUpForUS();
 		delay(3000);
-		proSearch(0);
+		proSearch(1);
 	}
 		
 		//TumiLibs.closeSignUpForUS();

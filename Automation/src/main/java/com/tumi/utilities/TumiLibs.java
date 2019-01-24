@@ -170,12 +170,24 @@ public class TumiLibs extends GenericMethods {
 				break;
 			}
 		}
+		
+		/*
+		 *  added code for Canada
+		 * 
+		 */
+		/*for (WebElement ele : shipping.getListAddressLine1()) {
+			if (getText(ele).equals("10 SUMAS WAY, ABBOTSFORD, BC, V2S 8B7")) {
+				click(ele, "AddressList");
+				break;
+			}
+		}*/
 		input(shipping.getPostcode(), testData.get("PostCode"), "Post code");
 		input(shipping.getPhoneNumber(), testData.get("Phone"), "Phone Number");
 		click(shipping.getContinueShippingMethod(), "Continue shipping Method");
 		webclick(shipMethod.getStandardShippingMethod(), "Standard Shipping Method");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
-		TumiLibs.addCardDetails("PlaceOrder", "TumiOrderKR");
+		TumiLibs.addCardDetails("PlaceOrder", "TumiOrder");
+		delay(2000);
 		click(review.getPlaceOrder(), "Place Order");
 		do {
 			delay(2000);	
@@ -204,6 +216,14 @@ public class TumiLibs extends GenericMethods {
 	public static void addGiftBox() {
 		click(gift.getCheckPremiumGift(), "Premium GiftBox");
 	}
+	
+	public static void addVoucherID(String sheet, String testCase) {
+		Map<String, String> testData = ReadTestData.retrieveData(sheet, testCase);
+		input(mainCart.getPromocode(),testData.get("VocherID"), "Voucher Code");
+		click(mainCart.getApply(),"Apply Promocode");
+	}
+	
+	
 
 	public static void signInWithGoogle(String sheet, String testCase) {
 
@@ -231,5 +251,28 @@ public class TumiLibs extends GenericMethods {
 			}
 		}
 	}
-
+	
+	public static void searchProducts(int i,String data) {
+			input(home.getSearchProduct(),data , "Product Search");
+			if (home.getMatchingProducts().isEmpty()) {
+				final String emptyViewText = driver
+						.findElement(By.xpath("//div[contains(text(),'Sorry, no search results for')]")).getText();
+				if (!emptyViewText.contains("no results")) {
+					throw new RuntimeException(emptyViewText);
+				}
+			} else {
+				home.getMatchingProducts().get(i).click();
+			}
+		}
+	public static void addMultipleProducts(String sheet, String testCase) {
+		Map<String, String> testData = ReadTestData.retrieveData(sheet, testCase);
+		for (int i = 0; i < 2; i++) {
+			TumiLibs.searchProducts(i, testData.get("PrdouctName"));
+			delay(3000);
+			click(pdp.getAddToCart(), "Add to Cart");
+			click(minicart.getContinueShopping(), "Continue shopping");
+		}
+	}
 }
+
+

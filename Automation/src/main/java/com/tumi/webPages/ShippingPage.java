@@ -113,7 +113,7 @@ public class ShippingPage extends GenericMethods{
 	
 	public WebElement getContinueShippingMethod() {
 		
-		return continueShippingMethod;
+		return explicitWait(continueShippingMethod);
 	}
 	
 	

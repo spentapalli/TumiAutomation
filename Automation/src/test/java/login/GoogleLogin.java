@@ -14,7 +14,7 @@ public class GoogleLogin extends GenericMethods {
 	Map<String, String> testData = ReadTestData.retrieveData("Login", "GoogleLogin");
 
 	/*
-	 * TA-77 Verify valid Login with Google Account by giving valid credentials.
+	 * TA-19 Verify valid Login with Google Account by giving valid credentials.
 	 */
 	@Test
 	public void verifyValidGoogleLogin() {
