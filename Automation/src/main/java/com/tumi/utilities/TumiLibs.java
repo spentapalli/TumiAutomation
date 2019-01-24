@@ -19,7 +19,7 @@ import com.tumi.webPages.HomePage;
  */
 public class TumiLibs extends GenericMethods {
 	
-	public static String selectedCountry = null;
+	
 
 	public static void closeSignUp() {
 		try {
@@ -36,7 +36,7 @@ public class TumiLibs extends GenericMethods {
 
 	public static void closeSignUpForUS() {
 		try {
-			click(home.getSignupPopup(), "Close Pop Up");
+			home.getSignupPopup().click();
 		} catch (Exception e) {
 			// logger.log(Status.INFO, "Sign Up Pop Up is not displayed for US");
 		}
@@ -281,7 +281,7 @@ public class TumiLibs extends GenericMethods {
 				break;
 			}
 		}	
-		selectedCountry = getText(home.getHomeCountry());
+		
 	}
 
 	public static void selectCountry(String name) {

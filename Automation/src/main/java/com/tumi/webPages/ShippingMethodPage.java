@@ -37,11 +37,11 @@ public class ShippingMethodPage extends GenericMethods {
 
 	public WebElement getStandardShippingMethod() {
 
-		if (TumiLibs.selectedCountry.contains("United States")) {
+		if (selectedCountry.contains("United States")) {
 
 			return explicitWait(usStandardShippingMethod);
 			
-		} else if (TumiLibs.selectedCountry.contains("Canada")) {
+		} else if (selectedCountry.contains("Canada")) {
 
 			return explicitWait(caStandardShippingMethod);
 		}else {

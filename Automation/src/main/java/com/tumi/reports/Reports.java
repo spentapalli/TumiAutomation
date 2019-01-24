@@ -99,6 +99,7 @@ public class Reports {
 	public static InstaPage insta = null;
 	public static SignInBillingPage signinBill = null;
 	public static ShiipingPageForSignedIn signinShip = null;
+	public static String selectedCountry = null;
 	
 
 	@BeforeTest(alwaysRun = true)
@@ -124,6 +125,7 @@ public class Reports {
 			getBrowser(GenericMethods.getProperty("tumi.browserName"));
 			maximizeBrowser();
 			getURL(GenericMethods.getProperty("tumi.appName"));
+			selectedCountry = home.getHomeCountry().getText();
 			// driver.navigate().to("https://ca.stg-hybris-akamai.tumi.com");
 	}
 
