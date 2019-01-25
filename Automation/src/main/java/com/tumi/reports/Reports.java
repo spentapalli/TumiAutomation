@@ -125,7 +125,7 @@ public class Reports {
 			getBrowser(GenericMethods.getProperty("tumi.browserName"));
 			maximizeBrowser();
 			getURL(GenericMethods.getProperty("tumi.appName"));
-			selectedCountry = home.getHomeCountry().getText();
+			
 			// driver.navigate().to("https://ca.stg-hybris-akamai.tumi.com");
 	}
 

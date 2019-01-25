@@ -285,7 +285,7 @@ public class TumiLibs extends GenericMethods {
 	}
 
 	public static void selectCountry(String name) {
-
+		
 		switch (name.toUpperCase()) {
 		case "US":
 			countrySelection("United States");
@@ -297,8 +297,9 @@ public class TumiLibs extends GenericMethods {
 			countrySelection("Korea");
 			break;
 		default:
+			countrySelection("United States");
 			break;
 		}
-
+		selectedCountry = home.getHomeCountry().getText();
 	}
 }
