@@ -38,14 +38,10 @@ public class ShippingMethodPage extends GenericMethods {
 	public WebElement getStandardShippingMethod() {
 
 		if (selectedCountry.contains("United States")) {
-
 			return explicitWait(usStandardShippingMethod);
-			
 		} else if (selectedCountry.contains("Canada")) {
-
 			return explicitWait(caStandardShippingMethod);
-		}else {
-			
+		}else {			
 			return usStandardShippingMethod;
 		}
 

@@ -22,7 +22,7 @@ public class FailedOrder extends GenericMethods {
 	@Test
 	public void testFailedOrder() throws InterruptedException {
 		
-		TumiLibs.closeSignUpForUS();
+		//TumiLibs.closeSignUpForUS();
 		input(home.getSearchProduct(), testData.get("SKUID"), "Search Product");
 		keyEnter(home.getSearchProduct());
 		try {
@@ -36,20 +36,15 @@ public class FailedOrder extends GenericMethods {
 		driver.get(pdpURL);
 */
 		click(pdp.getAddToCart(), "Add To Cart");
-
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
-		
 		click(mainCart.getProceedToCheckout(), "Cart");
-
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email");
 		click(singlePage.getContinueAsGuest(), "Continue As Guest");
 		delay(2000);
-
 		// Shipping page
 		input(shipping.getFirstName(), testData.get("FirstName"), "First Name");
 		input(shipping.getLastName(), testData.get("LastName"), "Last Name");
 		input(shipping.getAddressLine1(), testData.get("AddressLine1"), "Address line1");
-		
 		delay(2000);
 		for (WebElement ele : shipping.getListAddressLine1()) {
 			if (getText(ele).equals("13 E Lefevre Rd, Sterling IL 61081")) {
@@ -57,9 +52,7 @@ public class FailedOrder extends GenericMethods {
 				break;
 			}
 		}
-	
 		input(shipping.getPhoneNumber(), testData.get("Phone"), "Phone Number");
-
 		click(shipping.getContinueShippingMethod(), "Continue shipping Method");
 
 		// shipping method pages

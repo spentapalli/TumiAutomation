@@ -99,7 +99,7 @@ public class Reports {
 	public static InstaPage insta = null;
 	public static SignInBillingPage signinBill = null;
 	public static ShiipingPageForSignedIn signinShip = null;
-	public static String selectedCountry = null;
+	public static String selectedCountry = "test";
 	
 
 	@BeforeTest(alwaysRun = true)
