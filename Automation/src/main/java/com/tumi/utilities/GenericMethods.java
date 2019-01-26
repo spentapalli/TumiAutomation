@@ -41,8 +41,8 @@ public class GenericMethods extends GlobalConstants {
 
 	public static void captureOrderConfScreen(String name) {
 		Timestamp time = new Timestamp(System.currentTimeMillis());
-		String location = "./ScreenShots/" + name + time.getTime() + ".png";
-		getScreen("./ExtentReports/ScreenShots/" + name + time.getTime() + ".png");
+		String location = System.getProperty("user.dir")+"/ScreenShots/" + name + time.getTime() + ".png";
+		getScreen(System.getProperty("user.dir")+"/ExtentReports/ScreenShots/" + name + time.getTime() + ".png");
 		try {
 			logger.info("Reference", MediaEntityBuilder.createScreenCaptureFromPath(location).build());
 		} catch (Exception e) {
