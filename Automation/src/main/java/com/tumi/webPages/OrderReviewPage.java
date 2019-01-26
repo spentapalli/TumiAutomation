@@ -41,7 +41,7 @@ public class OrderReviewPage extends GenericMethods {
 		return editPayment;
 	}
 	
-	@FindBy(how=How.XPATH,using="(//button[@type='submit'])[1]")
+	@FindBy(how=How.XPATH,using="//button[contains(text(),'Place Order')]")
 	private WebElement placeOrder;
 	
 	public WebElement getPlaceOrder() {

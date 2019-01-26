@@ -54,6 +54,14 @@ public class ShippingPage extends GenericMethods{
 		return listaddressLine1;
 	}
 	
+	@FindBy(how=How.XPATH,using="//input[@name='line1']/following::div[2]/div")
+	private WebElement addressList;
+	
+	public WebElement getAddressList() {
+		
+		return addressList;
+	}
+	
 	
 	@FindBy(how=How.XPATH,using="//input[@placeholder='Address Line2']")
 	private WebElement addressLine2;

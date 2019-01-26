@@ -49,6 +49,7 @@ import com.tumi.webPages.MiniCartPage;
 import com.tumi.webPages.MultiShippingPage;
 import com.tumi.webPages.MyAccountPage;
 import com.tumi.webPages.MyProfile;
+import com.tumi.webPages.OrderConfirmationPage;
 import com.tumi.webPages.OrderReviewPage;
 import com.tumi.webPages.PayPalPage;
 import com.tumi.webPages.Personalization;
@@ -99,14 +100,16 @@ public class Reports {
 	public static InstaPage insta = null;
 	public static SignInBillingPage signinBill = null;
 	public static ShiipingPageForSignedIn signinShip = null;
+	public static OrderConfirmationPage confirmation = null;
 	public static String selectedCountry = "test";
+	public static String orderNumber = null;
 	
 
 	@BeforeTest(alwaysRun = true)
 	public void startReport(ITestContext ctx) {
 		timeStamp = new SimpleDateFormat("dd-MMM-yy  hh.mm.ss aa").format(Calendar.getInstance().getTime());
-		String suiteName = ctx.getCurrentXmlTest().getSuite().getName();
-		extentReportPath = System.getProperty("user.dir") + "//ExtentReports//" + suiteName + "-"+" extent.html";
+		//String suiteName = ctx.getCurrentXmlTest().getSuite().getName();
+		extentReportPath = System.getProperty("user.dir") + "/ExtentReports/TumiReport.html";
 		htmlreport = new ExtentHtmlReporter(extentReportPath);
 		htmlreport.loadXMLConfig(new File(System.getProperty("user.dir") + "\\extent-config.xml"));
 		report = new ExtentReports();
@@ -168,7 +171,7 @@ public class Reports {
 		checkout = new CheckOutPage();
 		signinBill = new SignInBillingPage(driver);
 		signinShip = new ShiipingPageForSignedIn(driver);
-		
+		confirmation = new OrderConfirmationPage(driver);
 	}
 
 	@AfterMethod(alwaysRun = true)

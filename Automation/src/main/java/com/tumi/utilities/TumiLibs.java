@@ -18,8 +18,6 @@ import com.tumi.webPages.HomePage;
  *
  */
 public class TumiLibs extends GenericMethods {
-	
-	
 
 	public static void closeSignUp() {
 		try {
@@ -164,14 +162,16 @@ public class TumiLibs extends GenericMethods {
 		input(shipping.getFirstName(), testData.get("FirstName"), "First Name");
 		input(shipping.getLastName(), testData.get("LastName"), "Last Name");
 		input(shipping.getAddressLine1(), testData.get("AddressLine1"), "Address line1");
-		delay(2000);
+		do {
+			delay(2000);
+		} while (!shipping.getAddressList().isDisplayed());
 		for (WebElement ele : shipping.getListAddressLine1()) {
 			if (getText(ele).equals("1001 6Th Ave Ph 1, New York NY 10018")) {
-				click(ele, "AddressList");
+				webclick(ele, "AddressList");
+				delay(2000);
 				break;
 			}
 		}
-
 		/*
 		 * added code for Canada
 		 * 
@@ -185,26 +185,65 @@ public class TumiLibs extends GenericMethods {
 		input(shipping.getPhoneNumber(), testData.get("Phone"), "Phone Number");
 		click(shipping.getContinueShippingMethod(), "Continue shipping Method");
 		webclick(shipMethod.getStandardShippingMethod(), "Standard Shipping Method");
+		String fee = getText(shipMethod.getShippingFree());
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
-		TumiLibs.addCardDetails("PlaceOrder", "TumiOrder");
-		delay(2000);
+		if (!fee.equals("FREE")) {
+			TumiLibs.addCardDetails("PlaceOrder", "TumiOrder");
+		}
 		click(review.getPlaceOrder(), "Place Order");
 		do {
 			delay(2000);
-		} while (driver.findElement(By.xpath("//div[@class='loader-image']")).isDisplayed());
+		} while (confirmation.getWithForConfirmation().isDisplayed());
 
-		if (!driver.findElement(By.xpath("//section[@id='confirmation-info-ctnr']/div/div[1]")).isDisplayed()) {
+		if (!confirmation.getConfirmOrder().isDisplayed()) {
 
 			Assert.fail("Faile to Place An Order");
 		}
+		orderNumber = getText(confirmation.getOrderNumber());
+		logger.log(Status.INFO, "Thank you for Your Order, here is your Order Number " + orderNumber);
 		captureOrderConfScreen("OrderConfirmation");
+	}
+
+	public static void addPromotionalCode(String sheet, String testCase) {
+
+		Map<String, String> testData = ReadTestData.retrieveData(sheet, testCase);
+
+		input(mainCart.getPromocode(), testData.get("VocherID"), "Vocher Id");
+		click(mainCart.getApply(), "Check Promocode");
+
+		try {
+			if (mainCart.getVocherCardFailed().isDisplayed()) {
+				
+				Assert.fail(getText(mainCart.getVocherCardFailed()));
+
+			} else if (!mainCart.getCodeApplied().isDisplayed()) {
+				
+				Assert.fail("Promo Code Remove link is not displayed");
+
+			} else if (!mainCart.getCodeRemove().isDisplayed()) {
+				
+				Assert.fail("Promo Code Applied Message is not displayed");
+
+			} else if (!mainCart.getSubtotalCode().isDisplayed()) {
+				
+				Assert.fail("Promo Code Subtotal is not displayed");
+
+			} else if (mainCart.getVocherCardFailed().isDisplayed()) {
+				
+				Assert.fail(getText(mainCart.getVocherCardFailed()));
+			}
+		} catch (Exception e) {
+			
+			Assert.fail("Vocher Card related Fields are not displayed "+e.getMessage());
+		}
+
 	}
 
 	public static void addGiftMessage(String sheet, String testCase) {
 
 		Map<String, String> testData = ReadTestData.retrieveData(sheet, testCase);
 
-		click(gift.getCheckMessage(), " check Message");
+		domClick(gift.getCheckMessage(), "Check Message");
 		input(gift.getRecipientName(), testData.get("RecipientName"), "Recipients name");
 		input(gift.getSenderName(), testData.get("SenderName"), "Sender name");
 		input(gift.getAddMessage(), testData.get("Message"), "Message");
@@ -270,22 +309,22 @@ public class TumiLibs extends GenericMethods {
 			click(minicart.getContinueShopping(), "Continue shopping");
 		}
 	}
-	
+
 	public static void countrySelection(String name) {
-		
+
 		click(home.getHomeCountry(), "Default Country");
 		for (WebElement ele : home.getCountriesList()) {
 
 			if (getText(ele).equalsIgnoreCase(name)) {
-				click(ele,getText(ele));
+				click(ele, getText(ele));
 				break;
 			}
-		}	
-		
+		}
+
 	}
 
 	public static void selectCountry(String name) {
-		
+
 		switch (name.toUpperCase()) {
 		case "US":
 			countrySelection("United States");

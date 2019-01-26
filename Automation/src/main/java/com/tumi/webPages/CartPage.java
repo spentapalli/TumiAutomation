@@ -77,7 +77,6 @@ public class CartPage extends GenericMethods {
 		return shopingCartMessege;
 		
 	}
-//////////////////////////////////////////////////////////////////xpaths	
 	@FindBy(how=How.XPATH,using= "//*[contains(text(),'Add a Monogram')]/following-sibling::div/a")
     private List<WebElement> addClassicMonogram;
 	
@@ -196,12 +195,45 @@ public class CartPage extends GenericMethods {
 		return  explicitWait(addPromocode);
 	}
 	@FindBy(how=How.XPATH,using="(//button[@id='signupnewsletter'])[2]")
-	
 	private WebElement ApplyClick;
 	
 	public WebElement getApply() {
 		
 		return ApplyClick;
+	}
+	
+	@FindBy(how=How.XPATH,using="//div[@id='globalMessages']")
+	private WebElement vocherCardFailed;
+	
+	public WebElement getVocherCardFailed() {
+		
+		return vocherCardFailed;
+	}
+	
+	
+	
+	@FindBy(how=How.XPATH,using="(//div[contains(text(),'Promotional Code Applied:')])[2]/../form")
+	private WebElement codeRemove;
+	
+	public WebElement getCodeRemove() {
+		
+		return codeRemove;
+	}
+	
+	@FindBy(how=How.XPATH,using="(//div[contains(text(),'Promotional Code Applied:')])[2]")
+	private WebElement codeApplied;
+	
+	public WebElement getCodeApplied() {
+		
+		return codeApplied;
+	}
+	
+	@FindBy(how=How.XPATH,using="//div[contains(text(),'Subtotal')]/../following-sibling::div[1]")
+	private WebElement subtotalCode;
+	
+	public WebElement getSubtotalCode() {
+		
+		return subtotalCode;
 	}
 	
 	

@@ -1,23 +1,25 @@
-package placeOrder;
+package orders.guest;
 
 import org.testng.annotations.Test;
 
-import com.tumi.reports.Reports;
 import com.tumi.utilities.GenericMethods;
 import com.tumi.utilities.TumiLibs;
 
 /**
- * @author Shwetha Capo
+ * @author Suresh
  * 
  */
 
-public class GuestOrderWithGiftBoxnMsg extends GenericMethods{
-	/*TA-53 
-	 * Verify Order with merchandise Ready to ship + Gift Boxing + Gift Message for Guest User
-	 * */
-	
-	@Test
-	public void orderWithGiftBoxnMsgAsGuest() throws Exception {
+public class BackOrderProdcut extends GenericMethods {
+	/*
+	 * TA-16 Verify Order with merchandise Back Order + Gift Boxing + Gift Message
+	 * + Voucher/Promos for Guest User
+	 */
+
+	@Test(description = "Verify Order with merchandise Back Order + "
+			+ "Gift Boxing + Gift Message + Voucher/Promos for Guest User")
+	public void verifyOrderwithBackOrderProduct() throws Exception {
+
 		TumiLibs.addProductToCart("PlaceOrder", "OrderWithGiftServices");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
@@ -25,8 +27,8 @@ public class GuestOrderWithGiftBoxnMsg extends GenericMethods{
 		TumiLibs.addGiftMessage("PlaceOrder", "OrderWithGiftServices");
 		TumiLibs.addGiftBox();
 		click(gift.getContinueGiftService(), "Continue");
+		TumiLibs.addPromotionalCode("PlaceOrder", "PreOrderWithVoucher");
 		TumiLibs.completeOrder("PlaceOrder", "OrderWithGiftServices");
-
 	}
 
 }

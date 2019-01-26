@@ -1,4 +1,4 @@
-package placeOrder;
+package orders.guest;
 
 import org.testng.annotations.Test;
 import com.tumi.utilities.GenericMethods;

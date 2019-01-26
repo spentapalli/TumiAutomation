@@ -19,7 +19,6 @@ public class ShippingMethodPage extends GenericMethods {
 	public ShippingMethodPage(WebDriver driver) {
 		Reports.driver = driver;
 		PageFactory.initElements(driver, this);
-
 	}
 
 	@FindBy(how = How.XPATH, using = "//input[@id='standard-international-shipping-net']")
@@ -38,14 +37,27 @@ public class ShippingMethodPage extends GenericMethods {
 	public WebElement getStandardShippingMethod() {
 
 		if (selectedCountry.contains("United States")) {
+			
 			return explicitWait(usStandardShippingMethod);
+			
 		} else if (selectedCountry.contains("Canada")) {
+			
 			return explicitWait(caStandardShippingMethod);
 		}else {			
-			return usStandardShippingMethod;
+			return explicitWait(usStandardShippingMethod);
 		}
 
 	}
+	
+	@FindBy(how = How.XPATH, using = "//input[@id='standard-ground-net']/../label/div[3]")
+	private WebElement standardShippingFree;
+	
+	public WebElement getShippingFree() {
+		
+		return standardShippingFree;
+	}
+	
+	
 
 	@FindBy(how = How.XPATH, using = "//input[@id='standard-international-shipping-net']")
 	private WebElement caStandardShippingMethod1;
