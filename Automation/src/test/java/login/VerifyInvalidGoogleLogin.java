@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
-import com.tumi.utilities.TumiLibs;
+import com.tumi.utilities.UIFunctions;
 
 /**
  * @author Shwetha Capo
@@ -27,7 +27,7 @@ public class VerifyInvalidGoogleLogin extends GenericMethods {
 	@Test
 	public void verifyInvalidGoogleLogin() throws InterruptedException {
 
-		TumiLibs.closeSignUpForUS();
+		UIFunctions.closeSignUpForUS();
 		click(home.getHeaderSignIn(), "SignIn");
 		click(google.getGoogleLogin(), "Google login");
 		String parentHandle = driver.getWindowHandle();

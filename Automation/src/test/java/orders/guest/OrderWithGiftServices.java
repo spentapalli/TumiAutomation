@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
 import com.tumi.utilities.GlobalConstants;
-import com.tumi.utilities.TumiLibs;
+import com.tumi.utilities.UIFunctions;
 
 /**
  * @author Shwetha Capo
@@ -23,7 +23,7 @@ public class OrderWithGiftServices extends GenericMethods {
 	public void testOrderWithGiftServices() throws InterruptedException {
 
 		// Close signUp window
-		 TumiLibs.closeSignUpForUS();
+		 UIFunctions.closeSignUpForUS();
 		input(home.getSearchProduct(), testData.get("SKUID"), "FailedOrder");
 		keyEnter(home.getSearchProduct());
 		try {
@@ -72,7 +72,7 @@ public class OrderWithGiftServices extends GenericMethods {
 		 * 
 		 * @param: SheetName and TestCaseName
 		 */
-		TumiLibs.addCardDetails("PlaceOrder", "OrderWithGiftServices");
+		UIFunctions.addCardDetails("PlaceOrder", "OrderWithGiftServices");
 		click(review.getPlaceOrder(), "Place Order");
 		/*
 		 * delay(10000); captureOrderConfScreen("OrderConfirmation");

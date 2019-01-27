@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import com.aventstack.extentreports.Status;
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
-import com.tumi.utilities.TumiLibs;
+import com.tumi.utilities.UIFunctions;
 
 public class VerifyCart extends GenericMethods {
 
@@ -45,7 +45,7 @@ public class VerifyCart extends GenericMethods {
 		}
 		click(pdp.getAddToCart(), "Add to Cart");
 		click(minicart.getProceedCheckOut(), "Continue Shopping");
-		verifyAssertInt(TumiLibs.shoppingCartCount(), pdp.getCartRows().size()-1);
+		verifyAssertInt(UIFunctions.shoppingCartCount(), pdp.getCartRows().size()-1);
 	}
 
 	/*Confirm you can edit in the cart
@@ -56,14 +56,14 @@ public class VerifyCart extends GenericMethods {
 		click(pdp.getFEditQuantity(), "Edit First Product");
 		input(pdp.getEnterQuantity(), testData.get("ProductQ"), "Input Quantity");
 		click(pdp.getUpdateQuantity(), "Update Quantity");
-		verifyAssertInt(TumiLibs.shoppingCartCount(), parseInt(testData.get("ProductQ")));
+		verifyAssertInt(UIFunctions.shoppingCartCount(), parseInt(testData.get("ProductQ")));
 		// click(cart.getContinueShopping(), "Continue Shopping");
 	}
 
 	@Test(priority = 2)
 	public void removeCartProduct() {
 		click(pdp.getCartRemove(), "Remove Product");
-		verifyAssertInt(TumiLibs.shoppingCartCount(), pdp.getCartRows().size()-1);
+		verifyAssertInt(UIFunctions.shoppingCartCount(), pdp.getCartRows().size()-1);
 	}
 
 	@Test(priority = 3)

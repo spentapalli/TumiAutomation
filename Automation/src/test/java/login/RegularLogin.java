@@ -11,7 +11,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
-import com.tumi.utilities.TumiLibs;
+import com.tumi.utilities.UIFunctions;
 
 /**
  * @author Shwetha Capo
@@ -23,7 +23,7 @@ public class RegularLogin extends GenericMethods {
 	@Test(priority = 0)
 	public void verifyValidLogin() {
 
-		TumiLibs.closeSignUpForUS();
+		UIFunctions.closeSignUpForUS();
 		login("Login", "TumiLogin");
 		if(myacc.getSignout().isEnabled()) {
 			click(myacc.getSignout(),"Signout");
@@ -33,7 +33,7 @@ public class RegularLogin extends GenericMethods {
 	@Test(priority = 1)
 	public void verifyInvalidUserMessage() {
 
-		TumiLibs.closeSignUpForUS();
+		UIFunctions.closeSignUpForUS();
 		login("Login", "InValidCredentials");
 
 		Assert.fail(getProperty("home.invalidCredentials"));

@@ -17,22 +17,12 @@ import com.tumi.webPages.HomePage;
  * @author Suuresh
  *
  */
-public class TumiLibs extends GenericMethods {
-
-	public static void closeSignUp() {
-		try {
-			HomePage home = PageFactory.initElements(driver, HomePage.class);
-			try {
-				home.getSignupPopup().click();
-			} catch (Exception e) {
-				// logger.log(Status.INFO, "SignUp Window is Already Closed");
-			}
-		} catch (Exception e) {
-			// logger.log(Status.INFO, "SignUp Window is Not Displayed");
-		}
-	}
+public class UIFunctions extends GenericMethods {
 
 	public static void closeSignUpForUS() {
+		
+		HomePage home = PageFactory.initElements(driver, HomePage.class);
+		
 		try {
 			home.getSignupPopup().click();
 		} catch (Exception e) {
@@ -188,7 +178,7 @@ public class TumiLibs extends GenericMethods {
 		String fee = getText(shipMethod.getShippingFree());
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
 		if (!fee.equals("FREE")) {
-			TumiLibs.addCardDetails("PlaceOrder", "TumiOrder");
+			UIFunctions.addCardDetails("PlaceOrder", "TumiOrder");
 		}
 		click(review.getPlaceOrder(), "Place Order");
 		do {
@@ -303,7 +293,7 @@ public class TumiLibs extends GenericMethods {
 	public static void addMultipleProducts(String sheet, String testCase) {
 		Map<String, String> testData = ReadTestData.retrieveData(sheet, testCase);
 		for (int i = 0; i < 2; i++) {
-			TumiLibs.searchProducts(i, testData.get("PrdouctName"));
+			UIFunctions.searchProducts(i, testData.get("PrdouctName"));
 			delay(3000);
 			click(pdp.getAddToCart(), "Add to Cart");
 			click(minicart.getContinueShopping(), "Continue shopping");
@@ -311,6 +301,8 @@ public class TumiLibs extends GenericMethods {
 	}
 
 	public static void countrySelection(String name) {
+		
+		HomePage home = PageFactory.initElements(driver, HomePage.class);
 
 		click(home.getHomeCountry(), "Default Country");
 		for (WebElement ele : home.getCountriesList()) {
@@ -320,11 +312,12 @@ public class TumiLibs extends GenericMethods {
 				break;
 			}
 		}
-
+		selectedCountry = home.getHomeCountry().getText();
+		UIFunctions.closeSignUpForUS();
 	}
 
 	public static void selectCountry(String name) {
-
+		
 		switch (name.toUpperCase()) {
 		case "US":
 			countrySelection("United States");
@@ -339,6 +332,6 @@ public class TumiLibs extends GenericMethods {
 			countrySelection("United States");
 			break;
 		}
-		selectedCountry = home.getHomeCountry().getText();
+		
 	}
 }

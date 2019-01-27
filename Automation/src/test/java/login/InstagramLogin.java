@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
-import com.tumi.utilities.TumiLibs;
+import com.tumi.utilities.UIFunctions;
 
 /**
  * @author Shwetha Capo
@@ -22,7 +22,7 @@ public class InstagramLogin extends GenericMethods {
 
 	@Test(priority=0)
 	public void verifyInstaValidLogin(){
-		TumiLibs.closeSignUpForUS();
+		UIFunctions.closeSignUpForUS();
 		instaLogin("Login", "InstagramLogin");
 		/*String parentHandle = driver.getWindowHandle(); 
 		driver.switchTo().window(parentHandle);*/

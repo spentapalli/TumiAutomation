@@ -3,7 +3,7 @@ package orders.guest;
 import org.testng.annotations.Test;
 
 import com.tumi.utilities.GenericMethods;
-import com.tumi.utilities.TumiLibs;
+import com.tumi.utilities.UIFunctions;
 
 /**
  * @author Shwetha Capo
@@ -18,10 +18,10 @@ public class GuestOrder extends GenericMethods {
 	@Test
 	public void tumiOrderAsGuest() throws InterruptedException {
 
-		TumiLibs.addProductToCart("PlaceOrder", "TumiOrder");
+		UIFunctions.addProductToCart("PlaceOrder", "TumiOrder");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
-		TumiLibs.completeOrder("PlaceOrder", "TumiOrder");
+		UIFunctions.completeOrder("PlaceOrder", "TumiOrder");
 	}
 
 }

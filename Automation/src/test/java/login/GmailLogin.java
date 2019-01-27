@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
-import com.tumi.utilities.TumiLibs;
+import com.tumi.utilities.UIFunctions;
 
 public class GmailLogin extends GenericMethods {
 	public Map<String, String> testData = ReadTestData.retrieveData("Login", "GmailLogin");
@@ -19,7 +19,7 @@ public class GmailLogin extends GenericMethods {
 	@Test
 	public void verifyLogin() throws InterruptedException {
 
-		TumiLibs.closeSignUpForUS();
+		UIFunctions.closeSignUpForUS();
 		click(home.getHeaderSignIn(), "SignIn");
 		click(google.getGoogleLogin(), "Google login");
 

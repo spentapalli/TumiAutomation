@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
-import com.tumi.utilities.TumiLibs;
+import com.tumi.utilities.UIFunctions;
 
 public class OrderWithTwoProducts extends GenericMethods{
 
@@ -49,7 +49,7 @@ public class OrderWithTwoProducts extends GenericMethods{
 		input(shipping.getPhoneNumber(), testData.get("Phone"), "Phone Number");
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
-		TumiLibs.addCardDetails("PlaceOrder", "OrderWithPreorderVochercode");
+		UIFunctions.addCardDetails("PlaceOrder", "OrderWithPreorderVochercode");
 		click(review.getPlaceOrder(), "Place Order");
 
 	}

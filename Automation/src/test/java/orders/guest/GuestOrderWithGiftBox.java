@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 
 import com.tumi.reports.Reports;
 import com.tumi.utilities.GenericMethods;
-import com.tumi.utilities.TumiLibs;
+import com.tumi.utilities.UIFunctions;
 
 /**
  * @author Shwetha Capo
@@ -18,13 +18,13 @@ public class GuestOrderWithGiftBox extends GenericMethods {
 	 */
 	@Test
 	public void orderWithGiftBoxAsGuest() throws Exception {
-		TumiLibs.addProductToCart("PlaceOrder", "OrderWithGiftServices");
+		UIFunctions.addProductToCart("PlaceOrder", "OrderWithGiftServices");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(gift.getMakeThisGift(), "Make this Gift");
-		TumiLibs.addGiftBox();
+		UIFunctions.addGiftBox();
 		click(gift.getContinueGiftService(), "continue");
-		TumiLibs.completeOrder("PlaceOrder", "TumiOrder");
+		UIFunctions.completeOrder("PlaceOrder", "TumiOrder");
 
 	}
 

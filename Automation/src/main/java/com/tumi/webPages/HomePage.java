@@ -287,7 +287,7 @@ public class HomePage extends GenericMethods {
 	private WebElement homeCountry;
 
 	public WebElement getHomeCountry() {
-		return homeCountry;
+		return explicitWait(homeCountry);
 	}
 	
 	@FindBy(how = How.XPATH, using = "//div[@class='select-country']/div/ul/li/a")

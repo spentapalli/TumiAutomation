@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
-import com.tumi.utilities.TumiLibs;
+import com.tumi.utilities.UIFunctions;
 
 /**
  * @author Shwetha Capo
@@ -24,7 +24,7 @@ public Map<String, String> testData = ReadTestData.retrieveData("PlaceOrder","Pr
 	public void search() throws InterruptedException{
 		
 		
-		TumiLibs.closeSignUpForUS();
+		UIFunctions.closeSignUpForUS();
 		delay(3000);
 		proSearch(1);
 	}

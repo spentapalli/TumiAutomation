@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
 import com.tumi.utilities.GlobalConstants;
-import com.tumi.utilities.TumiLibs;
+import com.tumi.utilities.UIFunctions;
 
 /**
  * @author Shwetha Capo
@@ -27,7 +27,7 @@ public class CanadaOrder extends GenericMethods {
 		//click(home.getSelectCountry(), "US country");
 		//click(home.getSelectCountry(), "Korea");
 		//delay(4000);
-		TumiLibs.selectCountry(name);
+		UIFunctions.selectCountry(name);
 		/*
 		 * if (google.getNoThanks().isDisplayed()) { click(google.getNoThanks(),
 		 * "offers popup"); }else { }
@@ -80,7 +80,7 @@ public class CanadaOrder extends GenericMethods {
 		 * Add Card Details
 		 * @param: SheetName and TestCaseName
 		 */
-		TumiLibs.addCardDetails("PlaceOrder", "TumiOrderCA");
+		UIFunctions.addCardDetails("PlaceOrder", "TumiOrderCA");
 		click(review.getPlaceOrder(), "place order");
 	}
 

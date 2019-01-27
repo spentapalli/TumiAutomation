@@ -3,7 +3,7 @@ package orders.guest;
 import org.testng.annotations.Test;
 
 import com.tumi.utilities.GenericMethods;
-import com.tumi.utilities.TumiLibs;
+import com.tumi.utilities.UIFunctions;
 
 /**
  * @author Suresh
@@ -20,15 +20,15 @@ public class OrderWithGiftAndVocherCode extends GenericMethods {
 			+ "Message + Voucher/Promos for Guest User")
 	public void verifyOrderwithGistandVocherCode() throws Exception {
 
-		TumiLibs.addProductToCart("PlaceOrder", "OrderWithGiftServices");
+		UIFunctions.addProductToCart("PlaceOrder", "OrderWithGiftServices");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(gift.getMakeThisGift(), "Make this Gift");
-		TumiLibs.addGiftMessage("PlaceOrder", "OrderWithGiftServices");
-		TumiLibs.addGiftBox();
+		UIFunctions.addGiftMessage("PlaceOrder", "OrderWithGiftServices");
+		UIFunctions.addGiftBox();
 		click(gift.getContinueGiftService(), "Continue");
-		TumiLibs.addPromotionalCode("PlaceOrder", "PreOrderWithVoucher");
-		TumiLibs.completeOrder("PlaceOrder", "OrderWithGiftServices");
+		UIFunctions.addPromotionalCode("PlaceOrder", "PreOrderWithVoucher");
+		UIFunctions.completeOrder("PlaceOrder", "OrderWithGiftServices");
 	}
 
 }

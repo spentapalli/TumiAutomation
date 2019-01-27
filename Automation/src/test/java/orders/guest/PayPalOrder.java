@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
 import com.tumi.utilities.GlobalConstants;
-import com.tumi.utilities.TumiLibs;
+import com.tumi.utilities.UIFunctions;
 
 /**
  * @author Shwetha Capo
@@ -23,7 +23,7 @@ public class PayPalOrder extends GenericMethods {
 	@Test
 	public void testPayPalOrder() throws InterruptedException{
 		
-		TumiLibs.closeSignUpForUS();
+		UIFunctions.closeSignUpForUS();
 		final String pdpURL = GlobalConstants.url+"/p/"+testData.get("SKUID");
 		driver.get(pdpURL);
 		

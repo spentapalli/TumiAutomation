@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
 import com.tumi.utilities.GlobalConstants;
-import com.tumi.utilities.TumiLibs;
+import com.tumi.utilities.UIFunctions;
 
 /**
  * @author Shwetha Capo
@@ -63,7 +63,7 @@ public class FailedOrder extends GenericMethods {
 		 * Add Card Details
 		 * @param: SheetName and TestCaseName
 		 */
-		TumiLibs.addCardDetails("PlaceOrder", "FailedOrder");
+		UIFunctions.addCardDetails("PlaceOrder", "FailedOrder");
 		click(review.getPlaceOrder(), "place order");
 	}
 
