@@ -124,7 +124,7 @@ public class Reports {
 		report.flush();
 	}
 
-	// @BeforeClass(alwaysRun = true)
+	@BeforeClass(alwaysRun = true)
 	public static void launchBrowser() throws Exception {
 		getBrowser(GenericMethods.getProperty("tumi.browserName"));
 		maximizeBrowser();
@@ -133,7 +133,7 @@ public class Reports {
 		// driver.navigate().to("https://ca.stg-hybris-akamai.tumi.com");
 	}
 
-	//@AfterClass(alwaysRun = true)
+	@AfterClass(alwaysRun = true)
 	public static void closeBrowser() {
 		driver.close();
 		try {
