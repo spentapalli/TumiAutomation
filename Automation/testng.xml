@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Tumi Test Report" parallel="none">
+<suite name="TumiReport" parallel="none">
     
 	<test name="Canada">
 		<parameter name="Country" value="CANADA"></parameter>
@@ -8,4 +8,14 @@
 			<class name="orders.guest.OrderWithVochercode" />
 		</classes>
 	</test> <!-- Test -->
+	
+	
+	<test name="US">
+		<parameter name="Country" value="US"></parameter>
+		<classes>
+			<class name="orders.guest.OrderWithVochercode" />
+		</classes>
+	</test> <!-- Test -->
+	
+	
 </suite> <!-- Suite -->
