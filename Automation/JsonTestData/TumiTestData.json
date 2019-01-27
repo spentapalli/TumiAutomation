@@ -35,7 +35,27 @@
 			"ExipryMonth": "4",
 			"ExpiryYear": "2020",
 			"SKUID": "014757D"
-		}					
+		},			
+		
+	"OrderWithTwoProducts":
+		{
+			"EmailID": "skomma@coredatalabs.com",
+			"FirstName": "Test",
+			"LastName" : "TumiLast",
+			"AddressLine1": "10 Sumac Way", 
+			"AddressLine2": "Add",
+			"TownCity": "ABBOTSFORD",
+			"Region": "California",
+			"PostCode": "V4X 1A5",
+			"Phone": "12345678901",
+			"NameOnCard": "test",
+			"CardNumber": "41111111111111",
+			"CVV": "123",
+			"ExipryMonth": "4",
+			"ExpiryYear": "2020",
+			"NoramlSKUID": "014757D",
+			"PreOrderSKUID": "0484660D"
+		}		
 	
 
 

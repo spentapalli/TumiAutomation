@@ -46,6 +46,13 @@ public class ShippingPage extends GenericMethods{
 		return addressLine1;
 	}
 	
+	@FindBy(how=How.XPATH,using="//div[@class='address-picklist']/div")
+	private WebElement selectedAddressLine1;
+	
+	public WebElement getSelectedAddressLine() {
+		return selectedAddressLine1;
+	}
+	
 	@FindBy(how=How.XPATH,using="//input[@name='line1']/following::div[2]/div")
 	private List<WebElement> listaddressLine1;
 	

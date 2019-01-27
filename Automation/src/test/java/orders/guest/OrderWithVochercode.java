@@ -21,7 +21,7 @@ public class OrderWithVochercode extends GenericMethods {
 	 * User
 	 */
 	@Test(description = "Verify Order with merchandise Ready to ship + Voucher Code for Guest User")
-	private void verifyOrderWithVocherCode() throws InterruptedException {
+	public void verifyOrderWithVocherCode() throws InterruptedException {
 
 		TumiLibs.addProductToCart("PlaceOrder", "OrderWithGiftServices");
 		click(pdp.getAddToCart(), "Add To Cart");

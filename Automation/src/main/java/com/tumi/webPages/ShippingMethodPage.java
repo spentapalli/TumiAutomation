@@ -88,7 +88,7 @@ public class ShippingMethodPage extends GenericMethods {
 
 	public WebElement getProceedToPayment() {
 
-		return proceedToPayment;
+		return explicitWait(proceedToPayment);
 	}
 
 }
