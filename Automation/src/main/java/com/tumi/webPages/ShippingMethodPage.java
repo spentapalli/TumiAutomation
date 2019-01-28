@@ -8,65 +8,83 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.tumi.reports.Reports;
 import com.tumi.utilities.GenericMethods;
+import com.tumi.utilities.UIFunctions;
 
 /**
  * @author Shwetha Capo
  *
  */
 public class ShippingMethodPage extends GenericMethods {
-	
+
 	public ShippingMethodPage(WebDriver driver) {
-		Reports.driver= driver;
+		Reports.driver = driver;
 		PageFactory.initElements(driver, this);
-		
 	}
-	/* 
-	 * use this for Us 
-	 * */
-	@FindBy(how=How.XPATH,using="//input[@id='standard-ground-net']")
-	
-	/*
-	 * use this for canada 
-	 * */
-	//@FindBy(how=How.XPATH,using="//input[@id='standard-international-shipping-net']")
-	private WebElement standardShippingMethod;
-	
-	public WebElement getStandardShippingMethod() {
-		
-		return explicitWait(standardShippingMethod);
-	}
-	
-	@FindBy(how=How.XPATH,using="//input[@id='standard-international-shipping-net']")
+
+	@FindBy(how = How.XPATH, using = "//input[@id='standard-international-shipping-net']")
 	private WebElement caStandardShippingMethod;
-	
+	/*
+	 * use this for Us
+	 */
+	@FindBy(how = How.XPATH, using = "//input[@id='standard-ground-net']")
+
+	/*
+	 * use this for canada
+	 */
+	// @FindBy(how=How.XPATH,using="//input[@id='standard-international-shipping-net']")
+	private WebElement usStandardShippingMethod;
+
+	public WebElement getStandardShippingMethod() {
+
+		if (selectedCountry.contains("Canada")) {
+
+			return explicitWait(caStandardShippingMethod);
+			
+		} else {
+			
+			return explicitWait(usStandardShippingMethod);
+		}
+
+	}
+
+	@FindBy(how = How.XPATH, using = "//input[@id='standard-ground-net']/../label/div[3]")
+	private WebElement standardShippingFree;
+
+	public WebElement getShippingFree() {
+
+		return standardShippingFree;
+	}
+
+	@FindBy(how = How.XPATH, using = "//input[@id='standard-international-shipping-net']")
+	private WebElement caStandardShippingMethod1;
+
 	public WebElement getCaStandardShippingMethod() {
-		
+
 		return explicitWait(caStandardShippingMethod);
 	}
-	
-	@FindBy(how=How.XPATH,using="//input[@id='second-day-net']")
+
+	@FindBy(how = How.XPATH, using = "//input[@id='second-day-net']")
 	private WebElement secondDayShippingMethod;
-	
+
 	public WebElement getSecondDayShippingMethod() {
-		
+
 		return explicitWait(secondDayShippingMethod);
 	}
-	
-	@FindBy(how=How.XPATH,using="//input[@id='overnight-net']")
+
+	@FindBy(how = How.XPATH, using = "//input[@id='overnight-net']")
 	private WebElement priorityShippingMethod;
-	
+
 	public WebElement getpriorityShippingMethod() {
-		
+
 		return explicitWait(priorityShippingMethod);
 	}
-	
 
-	@FindBy(how=How.XPATH,using="//button[contains(text(), 'Proceed to Payment')]")
+	@FindBy(how = How.XPATH, using = "//button[contains(text(), 'Proceed to Payment')]")
 	private WebElement proceedToPayment;
-	
+
 	public WebElement getProceedToPayment() {
-		
-		return proceedToPayment;
+
+		return explicitWait(proceedToPayment);
 	}
 
 }

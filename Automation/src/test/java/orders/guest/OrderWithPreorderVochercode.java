@@ -1,4 +1,4 @@
-package placeOrder;
+package orders.guest;
 
 import java.util.Map;
 
@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
-import com.tumi.utilities.TumiLibs;
+import com.tumi.utilities.UIFunctions;
 
 public class OrderWithPreorderVochercode extends GenericMethods {
 	
@@ -16,7 +16,7 @@ public class OrderWithPreorderVochercode extends GenericMethods {
 	@Test
 	private void testOrderWithPreorder() {
 		// Close signUp window
-		 TumiLibs.closeSignUpForUS();
+		 UIFunctions.closeSignUpForUS();
 		input(home.getSearchProduct(), testData.get("SKUID"), "FailedOrder");
 		keyEnter(home.getSearchProduct());
 	
@@ -52,7 +52,7 @@ public class OrderWithPreorderVochercode extends GenericMethods {
 		 * Add Card Details
 		 * @param: SheetName and TestCaseName
 		 */
-		TumiLibs.addCardDetails("PlaceOrder", "OrderWithPreorderVochercode");
+		UIFunctions.addCardDetails("PlaceOrder", "OrderWithPreorderVochercode");
 		click(review.getPlaceOrder(), "Place Order");
 		/*delay(4000);
 		captureOrderConfScreen("OrderConfirmation");*/

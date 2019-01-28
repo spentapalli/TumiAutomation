@@ -13,7 +13,7 @@ import com.tumi.dataProvider.ReadTestData;
 import com.tumi.testcases.ProductSearch;
 import com.tumi.utilities.GenericMethods;
 import com.tumi.utilities.GlobalConstants;
-import com.tumi.utilities.TumiLibs;
+import com.tumi.utilities.UIFunctions;
 
 /**
  * @author Shwetha Capo
@@ -26,7 +26,7 @@ public class MultiShipOrder extends GenericMethods {
 	@Test
 	public void testMultiShipOrder() throws InterruptedException {
 
-		TumiLibs.closeSignUpForUS();
+		UIFunctions.closeSignUpForUS();
 		/*click(home.getSelectCountryUS(), "Select US country");
 		click(home.getSelectUS(), "click US");
 		delay(3000);
@@ -42,7 +42,7 @@ public class MultiShipOrder extends GenericMethods {
 
 		for (int i = 1; i < 3; i++) {
 
-			TumiLibs.searchProducts(i, testData.get("PrdouctName"));
+			UIFunctions.searchProducts(i, testData.get("PrdouctName"));
 			delay(3000);
 			click(pdp.getAddToCart(), "Add to Cart");
 			click(minicart.getContinueShopping(), "Continue shopping");

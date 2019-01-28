@@ -1,14 +1,15 @@
-package placeOrder;
+package orders.guest;
 
 import java.util.Map;
 
 import org.openqa.selenium.WebElement;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
 import com.tumi.utilities.GlobalConstants;
-import com.tumi.utilities.TumiLibs;
+import com.tumi.utilities.UIFunctions;
 
 /**
  * @author Shwetha Capo
@@ -19,13 +20,14 @@ public class CanadaOrder extends GenericMethods {
 	public Map<String, String> testData = ReadTestData.retrieveData("PlaceOrder", "TumiOrderCA");
 
 	@Test
-	public void testTumiOrder(){
+	@Parameters({"countryName"})
+	public void testTumiOrder(String name){
 
-		TumiLibs.closeSignUpForUsProd();
-		click(home.getSelectCountry(), "US country");
-		click(home.getSelectCountry(), "Korea");
-		delay(4000);
-
+		//TumiLibs.closeSignUpForUsProd();
+		//click(home.getSelectCountry(), "US country");
+		//click(home.getSelectCountry(), "Korea");
+		//delay(4000);
+		UIFunctions.selectCountry(name);
 		/*
 		 * if (google.getNoThanks().isDisplayed()) { click(google.getNoThanks(),
 		 * "offers popup"); }else { }
@@ -59,7 +61,6 @@ public class CanadaOrder extends GenericMethods {
 				break;
 			}
 		}
-
 		/*
 		 * input(shipping.getAddressLine2(), testData.get("AddressLine2"),
 		 * "Address Line2"); input(shipping.getTown(), testData.get("TownCity"),
@@ -79,7 +80,7 @@ public class CanadaOrder extends GenericMethods {
 		 * Add Card Details
 		 * @param: SheetName and TestCaseName
 		 */
-		TumiLibs.addCardDetails("PlaceOrder", "TumiOrderCA");
+		UIFunctions.addCardDetails("PlaceOrder", "TumiOrderCA");
 		click(review.getPlaceOrder(), "place order");
 	}
 

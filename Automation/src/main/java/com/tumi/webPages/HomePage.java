@@ -282,5 +282,21 @@ public class HomePage extends GenericMethods {
 	public WebElement getMinicart() {
 		return minicartcount;
 	}
+	
+	@FindBy(how = How.XPATH, using = "//div[contains(@class,'header-country')]/a")
+	private WebElement homeCountry;
+
+	public WebElement getHomeCountry() {
+		return explicitWait(homeCountry);
+	}
+	
+	@FindBy(how = How.XPATH, using = "//div[@class='select-country']/div/ul/li/a")
+	private List<WebElement> countriesList;
+
+	public List<WebElement> getCountriesList() {
+		return countriesList;
+	}
+	
+	
 
 }

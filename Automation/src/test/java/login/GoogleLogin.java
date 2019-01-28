@@ -2,6 +2,7 @@ package login;
 
 import java.util.*;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
@@ -31,14 +32,10 @@ public class GoogleLogin extends GenericMethods {
 
 				driver.switchTo().window(child);
 				input(google.getEmail(), testData.get("EmailID"), "gmail id");
-				click(google.getFirstNext(), "Next");
+				webclick(google.getFirstNext(), "Next");
 				input(google.getPassword(), testData.get("Password"), "Password");
-				click(google.getPasswordNext(), "password next");
-				/*
-				 * Write the code here for confirm your recover email and finally use
-				 * 
-				 * driver.switchTo().window(child).close();
-				 */
+				webclick(google.getPasswordNext(), "password next");
+				driver.close();
 			}
 		}
 		driver.switchTo().window(parentHandle);
@@ -47,6 +44,8 @@ public class GoogleLogin extends GenericMethods {
 				verifyAssertContains(getText(myacc.getWelcomeMessage()), getProperty("login.success.message"),
 						"Faile to Login with Google");
 				click(myacc.getSignout(), "Signout");
+			}else {
+				Assert.fail("Google Login Unsuccessful");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -41,7 +41,7 @@ public class OrderReviewPage extends GenericMethods {
 		return editPayment;
 	}
 	
-	@FindBy(how=How.XPATH,using="(//button[@type='submit'])[1]")
+	@FindBy(how=How.XPATH,using="//button[contains(text(),'Place Order')]")
 	private WebElement placeOrder;
 	
 	public WebElement getPlaceOrder() {
@@ -55,5 +55,20 @@ public class OrderReviewPage extends GenericMethods {
 		return orderNumber;
 	}
 	
+	@FindBy(how=How.XPATH,using="//button[contains(text(),'Review Your Order')]")
+	private WebElement reviewOrder;
+
+	public WebElement getreviewOrder() {
+		return reviewOrder;
+	}
+	
+	
+	
+	@FindBy(how=How.XPATH,using="//script[@id='checkoutMessages']/following::span[1]")
+	private WebElement checkoutMessages;
+
+	public WebElement getCheckoutMessages() {
+		return checkoutMessages;
+	}
 	
 }

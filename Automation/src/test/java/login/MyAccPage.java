@@ -11,8 +11,8 @@ import org.testng.annotations.Test;
 import com.aventstack.extentreports.Status;
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
-import com.tumi.utilities.TumiLibs;
-import org.apache.log4j.Logger;
+import com.tumi.utilities.UIFunctions;
+
 
 /**
  * @author Shwetha Capo
@@ -20,14 +20,14 @@ import org.apache.log4j.Logger;
  */
 public class MyAccPage extends GenericMethods {
 	/* The Constant LOG. */
-	private static final Logger LOG = Logger.getLogger(MyAccPage.class);
+	//private static final Logger LOG = Logger.getLogger(MyAccPage.class);
 	Map<String, String> testData = ReadTestData.retrieveData("Login", "MyAccPage");
 	
 	@Test
 	public void verifyMyAccPage() throws InterruptedException{
 		
 		  // TumiLibs.closeSignUpForUS();
-			TumiLibs.closeSignUpForUsProd();
+			UIFunctions.closeSignUpForUsProd();
 			click(home.getSelectCountryUS(), "Select US country");
 			click(home.getSelectUS(), "click US");
 			//delay(4000);

@@ -1,9 +1,9 @@
-package placeOrder;
+package orders.guest;
 
 import org.testng.annotations.Test;
 
 import com.tumi.utilities.GenericMethods;
-import com.tumi.utilities.TumiLibs;
+import com.tumi.utilities.UIFunctions;
 
 /**
  * @author skurry
@@ -16,8 +16,8 @@ public class MerchandiseOrder extends GenericMethods {
 	 */
 	@Test
 	public void readyToShipOrderWithGuest() {
-		TumiLibs.closeSignUpForUS();
-		TumiLibs.addProductToCart("PlaceOrder", "TumiOrder");
+		UIFunctions.closeSignUpForUS();
+		UIFunctions.addProductToCart("PlaceOrder", "TumiOrder");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 	}

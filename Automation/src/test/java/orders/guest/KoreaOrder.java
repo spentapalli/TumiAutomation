@@ -1,4 +1,4 @@
-package placeOrder;
+package orders.guest;
 
 import java.util.Map;
 

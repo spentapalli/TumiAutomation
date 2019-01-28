@@ -2,13 +2,13 @@ package login;
 
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
-import com.tumi.utilities.TumiLibs;
+import com.tumi.utilities.UIFunctions;
 
 
 /**
@@ -21,7 +21,7 @@ public Map<String, String> testData = ReadTestData.retrieveData("Login", "Verify
 	
 	@Test
 	public void verifyInstaLogin() throws InterruptedException{
-		TumiLibs.closeSignUpForUsProd();
+		UIFunctions.closeSignUpForUsProd();
 		click(home.getSelectCountryUS(), "Select US country");
 		click(home.getSelectUS(), "click US");
 		delay(4000);

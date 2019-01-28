@@ -11,15 +11,15 @@ import org.testng.annotations.Test;
 
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
-import com.tumi.utilities.TumiLibs;
+import com.tumi.utilities.UIFunctions;
 
-public class GmailLogin extends GenericMethods{
+public class GmailLogin extends GenericMethods {
 	public Map<String, String> testData = ReadTestData.retrieveData("Login", "GmailLogin");
 
 	@Test
 	public void verifyLogin() throws InterruptedException {
 
-		TumiLibs.closeSignUpForUS();
+		UIFunctions.closeSignUpForUS();
 		click(home.getHeaderSignIn(), "SignIn");
 		click(google.getGoogleLogin(), "Google login");
 
@@ -69,7 +69,7 @@ public class GmailLogin extends GenericMethods{
 		input(shipping.getLastName(), testData.get("LastName"), "Last Name");
 		input(shipping.getAddressLine1(), testData.get("AddressLine1"), "Address line1");
 		delay(2000);
-		
+
 		for (WebElement ele : shipping.getListAddressLine1()) {
 			if (getText(ele).equals("1001 6Th Ave Ph 1, New York NY 10018")) {
 				click(ele, "AddressList");
@@ -77,7 +77,7 @@ public class GmailLogin extends GenericMethods{
 			}
 		}
 		input(shipping.getPostcode(), testData.get("PostCode"), "Post code");
-		
+
 		input(shipping.getPhoneNumber(), testData.get("Phone"), "Phone Number");
 		click(shipping.getContinueShippingMethod(), "Continue shipping Method");
 
@@ -99,6 +99,5 @@ public class GmailLogin extends GenericMethods{
 		delay(20000);
 
 	}
-
 
 }

@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
-import com.tumi.utilities.TumiLibs;
+import com.tumi.utilities.UIFunctions;
 
 /**
  * @author Shwetha Capo
@@ -20,7 +20,7 @@ public class InvalidCredentials extends GenericMethods {
 	@Test
 	public void verifyInvalidUserMessage() {
 
-		TumiLibs.closeSignUpForUsProd();
+		UIFunctions.closeSignUpForUsProd();
 		click(home.getSelectCountry(), "US country");
 		click(home.getSelectCountry(), "Korea");
 		delay(3000);

@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
-import com.tumi.utilities.TumiLibs;
+import com.tumi.utilities.UIFunctions;
 
 /**
  * @author Shwetha Capo
@@ -21,8 +21,8 @@ public class ProductSearch extends GenericMethods {
 
 	@Test
 	public void search() throws InterruptedException {
-		TumiLibs.closeSignUpForUS();
-		TumiLibs.searchProducts(1, testData.get("PrdouctName"));
+		UIFunctions.closeSignUpForUS();
+		UIFunctions.searchProducts(1, testData.get("PrdouctName"));
 	}
 
 	

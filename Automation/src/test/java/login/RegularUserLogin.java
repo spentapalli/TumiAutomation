@@ -10,7 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
-import com.tumi.utilities.TumiLibs;
+import com.tumi.utilities.UIFunctions;
 
 /**
  * @author Shwetha Capo
@@ -23,7 +23,7 @@ public class RegularUserLogin extends GenericMethods {
 	@Test
 	public void verifyLogin() throws InterruptedException {
 
-		TumiLibs.closeSignUpForUS();
+		UIFunctions.closeSignUpForUS();
 
 		login("Login", "RegularUserLogin");
 		click(home.getCloseMyAccount(), "Close my account window");

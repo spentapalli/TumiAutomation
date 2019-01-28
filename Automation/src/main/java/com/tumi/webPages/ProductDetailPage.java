@@ -18,7 +18,7 @@ public class ProductDetailPage extends GenericMethods {
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(how = How.ID, using = "addToCartBtn")
+	@FindBy(how = How.XPATH, using = "//button[@id='addToCartBtn']")
 	private WebElement addToCart;
 
 	public WebElement getAddToCart() {

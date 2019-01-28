@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
-import com.tumi.utilities.TumiLibs;
+import com.tumi.utilities.UIFunctions;
 
 
 /**
@@ -21,7 +21,7 @@ public class UpdateProfile extends GenericMethods{
 	@Test
 	public void testUpdateProfile(){
 		
-		TumiLibs.closeSignUpForUsProd();
+		UIFunctions.closeSignUpForUsProd();
 		click(home.getSelectCountry(), "US country");
 		click(home.getSelectCountry(), "Korea");
 		delay(3000);
