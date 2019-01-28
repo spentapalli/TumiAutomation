@@ -180,7 +180,6 @@ public class ReadTestData {
 				Iterator<Map.Entry> ite = data.entrySet().iterator();
 
 				while (ite.hasNext()) {
-
 					Map.Entry pair = ite.next();
 					String key = pair.getKey().toString();
 					String value = pair.getValue().toString();
