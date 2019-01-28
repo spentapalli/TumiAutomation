@@ -1,9 +1,9 @@
-package placeOrder;
+package orders.guest;
 
 import org.testng.annotations.Test;
 
 import com.tumi.utilities.GenericMethods;
-import com.tumi.utilities.TumiLibs;
+import com.tumi.utilities.UIFunctions;
 
 /**
  * @author Shwetha Capo
@@ -18,10 +18,10 @@ public class GuestPreOrder extends GenericMethods {
 	@Test
 	public void preOrderAsGuest() throws InterruptedException {
 
-		TumiLibs.addProductToCart("PlaceOrder", "PreOrder");
+		UIFunctions.addProductToCart("PlaceOrder", "PreOrder");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
-		TumiLibs.completeOrder("PlaceOrder", "PreOrder");
+		UIFunctions.completeOrder("PlaceOrder", "PreOrder");
 	}
 
 }

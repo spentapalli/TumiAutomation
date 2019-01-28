@@ -1,4 +1,4 @@
-package placeOrder;
+package orders.guest;
 
 import java.util.Map;
 
@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.testcases.ProductSearch;
 import com.tumi.utilities.GenericMethods;
-import com.tumi.utilities.TumiLibs;
+import com.tumi.utilities.UIFunctions;
 
 
  /**
@@ -23,9 +23,9 @@ public class GuestOrderWithTwoDiffProducts extends GenericMethods {
 	
 	@Test
 	public void verifyGuestOrderWithTwoDiffProducts()throws InterruptedException{
-	TumiLibs.addMultipleProducts("PlaceOrder", "GuestOrderWithTwoDiffProducts");
+	UIFunctions.addMultipleProducts("PlaceOrder", "GuestOrderWithTwoDiffProducts");
 	click(minicart.getMiniCartSymbol(), "Cart Image");
 	click(minicart.getProceedCheckOut(), "Proceed to Checkout");
-	TumiLibs.completeOrder("PlaceOrder", "GuestOrderWithTwoDiffProducts");
+	UIFunctions.completeOrder("PlaceOrder", "GuestOrderWithTwoDiffProducts");
 }
 }

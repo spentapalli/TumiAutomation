@@ -20,6 +20,11 @@ public class LoginPage {
 		PageFactory.initElements(driver, this);
 	}
 	
+	/* korea login window
+	 * @FindBy(how=How.XPATH,using="//font[@class='removeFocusIndicator']/font")
+	 * 
+	 */
+	
 	@FindBy(how=How.XPATH,using="(//a[contains(text(),'Sign In')])[1]")
 	//us
 	//@FindBy(how=How.XPATH,using="//div[@id='signInDiv']")
@@ -29,6 +34,8 @@ public class LoginPage {
 		
 		return loginWindow;
 	}
+	
+	
 	@FindBy(how=How.XPATH,using="//input[@id='j_username']")
 	private WebElement loginUsername;
 	
@@ -53,6 +60,10 @@ public class LoginPage {
 		return rememberMe;
 	}
 	
+	/*Korea forget passowrd
+	 * @FindBy(how=How.XPATH,using="//span[@class='link-underline']/font")
+	 */
+	
 	@FindBy(how=How.XPATH,using="//span[contains(text(),'Forgot password?')]")
 	private WebElement forgetPassword;
 	
@@ -61,6 +72,9 @@ public class LoginPage {
 		return rememberMe;
 	}
 	
+	/*korea signInClick 
+	 * @FindBy(how=How.XPATH,using="(//input[@class='tm-button login-button'])[1]")
+	 */
 	@FindBy(how=How.XPATH,using="//input[@value='Sign in']")
 	private WebElement signInClick;
 	
@@ -68,6 +82,10 @@ public class LoginPage {
 		
 		return signInClick;
 	}
+	
+	/*korea logout
+	 * @FindBy(how=How.XPATH,using="//li[@class='removeFocusIndicator']/a")
+	 */
 	
 	@FindBy(how=How.XPATH,using="//a[@title='Sign Out']")
 	private WebElement logOut;
@@ -84,6 +102,10 @@ public class LoginPage {
 		
 		return UserHi;
 	}
+	
+	/*for Korea after signin close window
+	 * @FindBy(how=How.XPATH,using="(//header[@class='tm-header']/a/span)[4]")
+	 */
 	
 	@FindBy(how=How.XPATH,using="(//header[@class=\"tm-header\"])[2]/a")
 	private WebElement closeWindow;

@@ -27,7 +27,7 @@ public class KoreaOrder extends GenericMethods{
 			click(pdp.getAddToCart(), "Add To Cart");
 			delay(2000);
 			// click on proceed to checkout in Mini cart
-			click(minicart.getKrProceedCheckOut(), "Proceed to Checkout");
+			click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 			delay(2000);
 			
 			// click on proceed to checkout in cart page

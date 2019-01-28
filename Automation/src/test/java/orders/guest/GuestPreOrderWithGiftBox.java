@@ -1,9 +1,9 @@
-package placeOrder;
+package orders.guest;
 
 import org.testng.annotations.Test;
 
 import com.tumi.utilities.GenericMethods;
-import com.tumi.utilities.TumiLibs;
+import com.tumi.utilities.UIFunctions;
 
 /**
  * @author Shwetha Capo
@@ -17,13 +17,13 @@ public class GuestPreOrderWithGiftBox extends GenericMethods {
 	 */
 	@Test
 	public void preOrderWithGiftBoxAsGuest() throws Exception {
-		TumiLibs.addProductToCart("PlaceOrder", "PreOrderWithGiftServices");
+		UIFunctions.addProductToCart("PlaceOrder", "PreOrderWithGiftServices");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(gift.getMakeThisGift(), "Make this Gift");
-		TumiLibs.addGiftBox();
+		UIFunctions.addGiftBox();
 		click(gift.getContinueGiftService(), "continue");
-		TumiLibs.completeOrder("PlaceOrder", "PreOrderWithGiftServices");
+		UIFunctions.completeOrder("PlaceOrder", "PreOrderWithGiftServices");
 
 	}
 

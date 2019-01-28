@@ -13,11 +13,19 @@ import com.tumi.reports.Reports;
  *
  */
 public class SinglePageCheckout {
-	
+
 	public SinglePageCheckout(WebDriver driver) {
 		Reports.driver = driver;
-		PageFactory.initElements(driver,this);
+		PageFactory.initElements(driver, this);
 	}
+
+	/*
+	 * for Korea Expresscheckout
+	 * 
+	 * @FindBy(how = How.XPATH, using =
+	 * "//button[@class='tm-button tm-white-button singlePageCheckout-login tm-login-element removeFocusIndicator']"
+	 * )
+	 */
 
 	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Sign In for Express Checkout')]")
 	private WebElement signInExpressCheckout;
@@ -26,14 +34,20 @@ public class SinglePageCheckout {
 
 		return signInExpressCheckout;
 	}
-	
-	@FindBy(how = How.XPATH, using = "(//input[@name='email'])[1]")
+
+	@FindBy(how = How.XPATH, using = "(//input[@name='email'])[1]") // same for Korea
 	private WebElement emailAddress;
 
 	public WebElement getEmailAddress() {
 
 		return emailAddress;
 	}
+
+	/*
+	 * for Korea continue as guest
+	 * 
+	 * @FindBy(how = How.XPATH, using = "(//button[@type='submit'])[1]")
+	 */
 
 	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Continue as a Guest')]")
 	private WebElement continueAsGuest;
@@ -42,7 +56,12 @@ public class SinglePageCheckout {
 
 		return continueAsGuest;
 	}
-	
+
+	/*
+	 * for Korea promotions and news
+	 * 
+	 * @FindBy(how = How.XPATH, using ="(//label[@class='cvform-lbl-checkbox'])[1]") or (//input[@id='subscribeInfo']/following::label)[1]
+	 */
 	@FindBy(how = How.XPATH, using = "//label[contains(text(),'Send me emails with promotions and news.')]")
 	private WebElement promotionsAndNews;
 
@@ -50,7 +69,5 @@ public class SinglePageCheckout {
 
 		return promotionsAndNews;
 	}
-	
-	
 
 }

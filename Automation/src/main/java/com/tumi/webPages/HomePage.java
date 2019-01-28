@@ -47,6 +47,11 @@ public class HomePage extends GenericMethods {
 
 		return matchingProducts;
 	}
+	/*for Korea
+	 * @FindBy(how = How.XPATH, using = "//div[@id='firstTimeEmailSignupPopup']/div")
+	* private WebElement signupPopupKR;
+	*/
+
 
 	// for Canada
 	@FindBy(how = How.XPATH, using = "//div[@id='firstTimeEmailSignupPopup']/a/span")
@@ -161,6 +166,9 @@ public class HomePage extends GenericMethods {
 		return search;
 
 	}
+	/*Kr
+	 * @FindBy(how = How.XPATH, using = "(//a[@href='#login'])[1]")
+	*/
 
 	@FindBy(how = How.XPATH, using = "(//a[text()='Sign In'])[1]")
 	private WebElement headerSignIn;
@@ -192,6 +200,10 @@ public class HomePage extends GenericMethods {
 
 		return j_password;
 	}
+	
+	/*KR 
+	 * @FindBy(how = How.XPATH, using = "//div[@id='login-option-regular']/input")
+	 */
 
 	@FindBy(how = How.XPATH, using = "//input[@value='Sign in']")
 	private WebElement submit;
@@ -296,6 +308,10 @@ public class HomePage extends GenericMethods {
 	public List<WebElement> getCountriesList() {
 		return countriesList;
 	}
+	
+	
+	
+	
 	
 	
 

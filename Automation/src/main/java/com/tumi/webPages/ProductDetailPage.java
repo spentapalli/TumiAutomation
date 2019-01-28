@@ -18,7 +18,7 @@ public class ProductDetailPage extends GenericMethods {
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(how = How.XPATH, using = "//button[@id='addToCartBtn']")
+	@FindBy(how = How.XPATH, using = "//button[@id='addToCartBtn']") //for korea it is same
 	private WebElement addToCart;
 
 	public WebElement getAddToCart() {
@@ -26,13 +26,16 @@ public class ProductDetailPage extends GenericMethods {
 		return explicitWait(addToCart);
 	}
 
-	@FindBy(how = How.ID, using = "select-qty")
+	@FindBy(how = How.ID, using = "select-qty")  // for KR it is same
 	private WebElement selectQuantity;
 
 	public WebElement getSelectQuantity() {
 
 		return selectQuantity;
 	}
+	/* for Korea airlineCarryonGuide
+	 * @FindBy(how = How.XPATH, using = "//a[@id='airlineCarryOnPopupLink']")
+	 */
 
 	@FindBy(how = How.XPATH, using = "//a[contains(text(),'View the List')]")
 	private WebElement airlineCarryonGuide;
@@ -42,6 +45,10 @@ public class ProductDetailPage extends GenericMethods {
 		return airlineCarryonGuide;
 
 	}
+	
+	/* for Korea Add Monogram 
+	 * @FindBy(how = How.XPATH, using = "//a[@id='monogramming-popup-link']/div")
+	 */
 
 	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Add Now')]")
 	private WebElement addMonogram;
@@ -60,6 +67,9 @@ public class ProductDetailPage extends GenericMethods {
 		return productQuantity;
 
 	}
+	/*for Korea shoopinCart
+	 * @FindBy(how = How.XPATH, using = "//div[@id='cart-items-container']/h2")
+	 */
 
 	@FindBy(how = How.XPATH, using = "//h2[contains(text(),'Shopping Cart')]")
 	private WebElement shoppingCart;
@@ -69,7 +79,7 @@ public class ProductDetailPage extends GenericMethods {
 		return shoppingCart;
 	}
 
-	@FindBy(how = How.XPATH, using = "//div[@role='row']")
+	@FindBy(how = How.XPATH, using = "//div[@role='row']") //same for Korea
 	private List<WebElement> cartRows;
 
 	public List<WebElement> getCartRows() {
@@ -77,7 +87,7 @@ public class ProductDetailPage extends GenericMethods {
 		return cartRows;
 	}
 
-	@FindBy(how = How.XPATH, using = "//div[@id='minicart_data']/span[2]")
+	@FindBy(how = How.XPATH, using = "//div[@id='minicart_data']/span[2]") //same for Korea
 	private WebElement cartCount;
 
 	public WebElement getCartCount() {
@@ -86,43 +96,55 @@ public class ProductDetailPage extends GenericMethods {
 
 	}
 
-	@FindBy(how = How.XPATH, using = "//ul[@class='cart-products']/li")
+	@FindBy(how = How.XPATH, using = "//ul[@class='cart-products']/li") //same for korea
 	private List<WebElement> minicartProducts;
 
 	public List<WebElement> getTotalProductInMiniCart() {
 		return minicartProducts;
 	}
+	
+	/*for Korea minicartPrdouctRemove
+	 * 	@FindBy(how = How.XPATH, using = "//ul[@class='cart-products']/li/following::a[3]")
+	 */
 
-	@FindBy(how = How.XPATH, using = "//ul[@class='cart-products']/li/following::a")
+	@FindBy(how = How.XPATH, using = "//ul[@class='cart-products']/li/following::a") 
 	private List<WebElement> minicartProductsremove;
 
 	public List<WebElement> getMiniCartRemove() {
 		return minicartProductsremove;
 	}
+	
+	/*for Korea cart prdouct remove
+	 * @FindBy(how = How.XPATH, using = "//span[@class='link delete-link']/a")
+	 */
 
-	@FindBy(how = How.XPATH, using = "(//a[text()='Remove'])[1]")
+	@FindBy(how = How.XPATH, using = "(//a[text()='Remove'])[1]") 
 	private List<WebElement> cartProductsremove;
 
 	public WebElement getCartRemove() {
 
 		return minicartProductsremove.get(1);
 	}
+	
+	/*for korea edit quantity
+	 * @FindBy(how = How.XPATH, using = "(//span[@class='cta quick-view-link quick-view-modal'])[1]") 
+	 */
 
-	@FindBy(how = How.XPATH, using = "//span[contains(text(),'Edit')]")
+	@FindBy(how = How.XPATH, using = "//span[contains(text(),'Edit')]")  
 	private WebElement editQuantity;
 
 	public WebElement getFEditQuantity() {
 		return editQuantity;
 	}
 
-	@FindBy(how = How.XPATH, using = "//input[@id='quantity']")
+	@FindBy(how = How.XPATH, using = "//input[@id='quantity']") //same for Korea
 	private WebElement enterQuantity;
 
 	public WebElement getEnterQuantity() {
 		return enterQuantity;
 	}
 
-	@FindBy(how = How.XPATH, using = "//button[@id='updateCartButton']")
+	@FindBy(how = How.XPATH, using = "//button[@id='updateCartButton']") //same for Korea
 	private WebElement updateCartButton;
 
 	public WebElement getUpdateQuantity() {

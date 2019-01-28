@@ -1,9 +1,9 @@
-package placeOrder;
+package orders.guest;
 
 import org.testng.annotations.Test;
 
 import com.tumi.utilities.GenericMethods;
-import com.tumi.utilities.TumiLibs;
+import com.tumi.utilities.UIFunctions;
 
 /**
  * @author Shwetha Capo
@@ -18,11 +18,11 @@ public class GuestPreOrderWithMono extends GenericMethods {
 	 */
 	@Test
 	public void preOrderWithMonogramAsGuest() {
-		TumiLibs.addProductToCart("PlaceOrder", "PreOrderWithMonogram");
-		TumiLibs.addMonogram("PlaceOrder", "PreOrderWithMonogram");
+		UIFunctions.addProductToCart("PlaceOrder", "PreOrderWithMonogram");
+		UIFunctions.addMonogram("PlaceOrder", "PreOrderWithMonogram");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
-		TumiLibs.completeOrder("PlaceOrder", "PreOrderWithMonogram");
+		UIFunctions.completeOrder("PlaceOrder", "PreOrderWithMonogram");
 	}
 
 }
