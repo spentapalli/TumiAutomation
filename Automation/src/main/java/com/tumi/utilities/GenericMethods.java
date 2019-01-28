@@ -57,7 +57,7 @@ public class GenericMethods extends GlobalConstants {
 			input(home.getUserName(), testData.get("EmailID"), "Email Address");
 			input(home.getPassWord(), testData.get("Password"), "Password");
 			click(home.getLogOn(), "Login");
-			click(myacc.getMyAccountClose(), "My Account Close");
+			//click(myacc.getMyAccountClose(), "My Account Close");
 			//removeExistingCart();
 		} catch (Exception e) {
 			Assert.fail("Fail to Login due to " + e.getMessage());

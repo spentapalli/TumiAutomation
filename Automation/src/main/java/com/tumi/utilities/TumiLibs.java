@@ -117,12 +117,12 @@ public class TumiLibs extends GenericMethods {
 
 		Map<String, String> testData = ReadTestData.retrieveData(sheet, testCase);
 		
-		final String pdpURL = GlobalConstants.url+"/p/"+testData.get("SKUID");
-		driver.get(pdpURL);
+		/*final String pdpURL = GlobalConstants.url+"/p/"+testData.get("SKUID");
+		driver.get(pdpURL);*/
 		
 		//due to product search issue i am using above code to get the product.
 
-		/*input(home.getSearchProduct(), testData.get("SKUID"), "Search Product");
+		input(home.getSearchProduct(), testData.get("SKUID"), "Search Product");
 		keyEnter(home.getSearchProduct());
 		verifyAssertContains(driver.getCurrentUrl(), testData.get("SKUID"), "Wrong Product is displayed");
 		try {
@@ -132,7 +132,7 @@ public class TumiLibs extends GenericMethods {
 			}
 		} catch (Exception e) {
 			Assert.fail(testData.get("SKUID") +" Product is not available");
-		}*/
+		}
 		
 	}
 

@@ -25,18 +25,6 @@ public class ProductSearch extends GenericMethods {
 		TumiLibs.searchProducts(1, testData.get("PrdouctName"));
 	}
 
-	/*public void proSearch(int i) {
-
-		input(home.getSearchProduct(), testData.get("PrdouctName"), "Product Search");
-		if (home.getMatchingProducts().isEmpty()) {
-			final String emptyViewText = driver
-					.findElement(By.xpath("//div[contains(text(),'Sorry, no search results for')]")).getText();
-			if (!emptyViewText.contains("no results")) {
-				throw new RuntimeException(emptyViewText);
-			}
-		} else {
-			home.getMatchingProducts().get(i).click();
-		}
-	}*/
+	
 
 }
