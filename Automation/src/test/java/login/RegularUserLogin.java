@@ -23,7 +23,7 @@ public class RegularUserLogin extends GenericMethods {
 	@Test
 	public void verifyLogin() throws InterruptedException {
 
-		UIFunctions.closeSignUpForUS();
+		UIFunctions.closeSignUp();
 
 		login("Login", "RegularUserLogin");
 		click(home.getCloseMyAccount(), "Close my account window");

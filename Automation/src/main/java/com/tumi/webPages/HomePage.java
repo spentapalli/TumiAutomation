@@ -273,6 +273,15 @@ public class HomePage extends GenericMethods {
 	public WebElement getSignupPopup() {
 		return signUpPop;
 	}
+	
+	@FindBy(how = How.XPATH, using = "//div[@id='firstTimeEmailSignupPopup']/div/span")
+	private WebElement koreaSignUpPop;
+
+	public WebElement getKoreaSignupPopup() {
+		return koreaSignUpPop;
+	}
+	
+	
 
 	@FindBy(how = How.XPATH, using = "//div[@id='main-content']/div[2]/h1/span")
 	private WebElement vpnIssue;

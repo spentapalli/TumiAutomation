@@ -21,7 +21,7 @@ public class ProductSearch extends GenericMethods {
 
 	@Test
 	public void search() throws InterruptedException {
-		UIFunctions.closeSignUpForUS();
+		UIFunctions.closeSignUp();
 		UIFunctions.searchProducts(1, testData.get("PrdouctName"));
 	}
 

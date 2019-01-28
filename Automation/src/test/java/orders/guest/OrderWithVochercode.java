@@ -21,10 +21,10 @@ public class OrderWithVochercode extends GenericMethods {
 	 * TA-15 Verify Order with merchandise Ready to ship + Voucher Code for Guest
 	 * User
 	 */
-	@Parameters({"Country"})
-	@Test(description = "Verify Order with merchandise Ready to ship + Voucher Code for Guest User")
+	@Test(dataProvider = "Location", 
+			description = "Verify Order with merchandise Ready to ship + Voucher Code for Guest User")
 	public void verifyOrderWithVocherCode(String name) throws InterruptedException {
-		
+
 		UIFunctions.selectCountry(name);
 		UIFunctions.addProductToCart("PlaceOrder", "OrderWithGiftServices");
 		click(pdp.getAddToCart(), "Add To Cart");

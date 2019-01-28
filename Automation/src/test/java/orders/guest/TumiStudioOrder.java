@@ -22,7 +22,7 @@ public class TumiStudioOrder extends GenericMethods{
 	@Test
 	public void testTumiIdOrder() throws InterruptedException{
 		
-		UIFunctions.closeSignUpForUS();
+		UIFunctions.closeSignUp();
 		final String pdpURL = GlobalConstants.url+"/p/"+testData.get("SKUID");
 		driver.get(pdpURL);
 		

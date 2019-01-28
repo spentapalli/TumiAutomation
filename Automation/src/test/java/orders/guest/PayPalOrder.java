@@ -23,7 +23,7 @@ public class PayPalOrder extends GenericMethods {
 	@Test
 	public void testPayPalOrder() throws InterruptedException{
 		
-		UIFunctions.closeSignUpForUS();
+		UIFunctions.closeSignUp();
 		final String pdpURL = GlobalConstants.url+"/p/"+testData.get("SKUID");
 		driver.get(pdpURL);
 		

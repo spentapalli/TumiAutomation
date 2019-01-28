@@ -24,7 +24,7 @@ public Map<String, String> testData = ReadTestData.retrieveData("PlaceOrder","Pr
 	public void search() throws InterruptedException{
 		
 		
-		UIFunctions.closeSignUpForUS();
+		UIFunctions.closeSignUp();
 		delay(3000);
 		proSearch(1);
 	}

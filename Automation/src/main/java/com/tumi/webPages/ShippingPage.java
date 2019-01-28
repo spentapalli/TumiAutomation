@@ -2,6 +2,7 @@ package com.tumi.webPages;
 
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -69,7 +70,14 @@ public class ShippingPage extends GenericMethods{
 		return addressList;
 	}
 	
+	@FindBy(how=How.XPATH,using="//div[@class='address-picklist']/div")
+	private List<WebElement> addList;
 	
+	public List<WebElement> getAddList() {
+		
+		return addList;
+	}
+
 	@FindBy(how=How.XPATH,using="//input[@placeholder='Address Line2']")
 	private WebElement addressLine2;
 	

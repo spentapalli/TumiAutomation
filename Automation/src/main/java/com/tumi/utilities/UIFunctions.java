@@ -19,20 +19,20 @@ import com.tumi.webPages.HomePage;
  */
 public class UIFunctions extends GenericMethods {
 
-	public static void closeSignUpForUS() {
+	public static void closeSignUp() {
 		
 		HomePage home = PageFactory.initElements(driver, HomePage.class);
 		
 		try {
 			home.getSignupPopup().click();
-		} catch (Exception e) {
-			// logger.log(Status.INFO, "Sign Up Pop Up is not displayed for US");
-		}
+		} catch (Exception e) {}
 		try {
 			home.getCASignupPopup().click();
-		} catch (Exception e) {
-			// logger.log(Status.INFO, "Sign Up Pop Up is not displayed for CANADA");
-		}
+		} catch (Exception e) {}
+		
+		try {
+			home.getKoreaSignupPopup().click();
+		} catch (Exception e) {}
 	}
 
 	public static void closeSignUpForUsProd() {
@@ -155,12 +155,14 @@ public class UIFunctions extends GenericMethods {
 		do {
 			delay(2000);
 		} while (!shipping.getAddressList().isDisplayed());
-		for (WebElement ele : shipping.getListAddressLine1()) {
-			if (getText(ele).equals("1001 6Th Ave Ph 1, New York NY 10018")) {
-				webclick(ele, "AddressList");
-				delay(2000);
+		
+		for (int i = 1; i < shipping.getAddList().size(); i++) {
+		
+			WebElement add= driver.findElement(By.xpath("//div[@class='address-picklist']/div["+i+"]"));
+			if (add.getText().contains("PRINCE RUPERT")) {
+				click(add, "Address Line1");
 				break;
-			}
+			}	
 		}
 		/*
 		 * added code for Canada
@@ -313,7 +315,7 @@ public class UIFunctions extends GenericMethods {
 			}
 		}
 		selectedCountry = home.getHomeCountry().getText();
-		UIFunctions.closeSignUpForUS();
+		UIFunctions.closeSignUp();
 	}
 
 	public static void selectCountry(String name) {

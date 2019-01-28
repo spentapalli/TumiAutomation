@@ -22,7 +22,7 @@ public class InstagramLogin extends GenericMethods {
 
 	@Test(priority=0)
 	public void verifyInstaValidLogin(){
-		UIFunctions.closeSignUpForUS();
+		UIFunctions.closeSignUp();
 		instaLogin("Login", "InstagramLogin");
 		/*String parentHandle = driver.getWindowHandle(); 
 		driver.switchTo().window(parentHandle);*/
