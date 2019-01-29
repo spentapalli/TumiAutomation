@@ -21,7 +21,7 @@ public class ShippingPage extends GenericMethods{
 		Reports.driver = driver;
 		PageFactory.initElements(driver,this);
 	}
-	@FindBy(how=How.XPATH,using="(//input[@name='firstName'])[1]")
+	@FindBy(how=How.XPATH,using="(//input[@name='firstName'])[1]") //same for korea
 	private WebElement firstName;
 	
 	public WebElement getFirstName() {
@@ -29,7 +29,7 @@ public class ShippingPage extends GenericMethods{
 		return explicitWait(firstName);
 	}
 	
-	@FindBy(how=How.XPATH,using="//input[@name='lastName']")
+	@FindBy(how=How.XPATH,using="//input[@name='lastName']") //same for korea
 	private WebElement lastName;
 	
 	public WebElement getLastName() {
@@ -38,7 +38,7 @@ public class ShippingPage extends GenericMethods{
 	}
 	
 
-	@FindBy(how=How.XPATH,using="//input[@name='line1']")
+	@FindBy(how=How.XPATH,using="//input[@name='line1']") //same for korea
 	private WebElement addressLine1;
 	
 	public WebElement getAddressLine1() {
@@ -68,15 +68,22 @@ public class ShippingPage extends GenericMethods{
 		
 		return addressList;
 	}
+	/*FOR KOREA address line2 
+	 * @FindBy(how=How.XPATH,using="//input[@name='line2']")
+	 */
 	
 	
-	@FindBy(how=How.XPATH,using="//input[@placeholder='Address Line2']")
+	@FindBy(how=How.XPATH,using="//input[@placeholder='Address Line2']") 
 	private WebElement addressLine2;
 	
 	public WebElement getAddressLine2() {
 		
 		return addressLine2;
 	}
+	
+	/*FOR KOREA town 
+	 * @FindBy(how=How.XPATH,using="//input[@name='townCity']")
+	 */
 	
 	@FindBy(how=How.XPATH,using="//input[@placeholder='Town / City *']")
 	private WebElement town;
@@ -86,8 +93,9 @@ public class ShippingPage extends GenericMethods{
 		return town;
 	}
 	
+	
 	//select[@name='regionIso']
-	@FindBy(how=How.XPATH,using="//span[@name='regionIso']")
+	@FindBy(how=How.XPATH,using="//span[@name='regionIso']") //this is not avialable for korea
 	private WebElement regionIso;
 	
 	public WebElement getRegionIso() {
@@ -103,9 +111,8 @@ public class ShippingPage extends GenericMethods{
 		return listregionIso;
 	}
 	
-	
 	//@FindBy(how=How.NAME,using="//input[@placeholder='Zip Code *']")
-	@FindBy(how=How.XPATH,using="//input[@name='postcode']")
+	@FindBy(how=How.XPATH,using="//input[@name='postcode']") //same for Korea
 	
 	private WebElement postcode;
 	
@@ -122,6 +129,10 @@ public class ShippingPage extends GenericMethods{
 		
 		return phoneNumber;
 	}
+	/*FOR KOREA continue shipping 
+	 * @FindBy(how=How.XPATH,using="(//button[@type='submit'])[3]")
+	 */
+	
 	
 	@FindBy(how=How.XPATH,using="//button[contains(text(), 'Continue to Shipping Method')]")
     private WebElement continueShippingMethod;

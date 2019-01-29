@@ -22,17 +22,13 @@ public class ShippingMethodPage extends GenericMethods {
 	}
 
 	@FindBy(how = How.XPATH, using = "//input[@id='standard-international-shipping-net']")
-	private WebElement caStandardShippingMethod;
-	/*
-	 * use this for Us
-	 */
-	@FindBy(how = How.XPATH, using = "//input[@id='standard-ground-net']")
-
-	/*
-	 * use this for canada
-	 */
-	// @FindBy(how=How.XPATH,using="//input[@id='standard-international-shipping-net']")
+	private WebElement caStandardShippingMethod; //use this for canada
+	
+	@FindBy(how = How.XPATH, using = "//input[@id='standard-ground-net']") //this is for US
 	private WebElement usStandardShippingMethod;
+	
+	@FindBy(how=How.XPATH,using="//input[@name='deliveryMethodSelected']") //this is for Korea
+	private WebElement krStandardShippingMethod;
 
 	public WebElement getStandardShippingMethod() {
 
@@ -40,8 +36,10 @@ public class ShippingMethodPage extends GenericMethods {
 
 			return explicitWait(caStandardShippingMethod);
 			
-		} else {
+		} else if(selectedCountry.contains("Korea")){
 			
+			return explicitWait(krStandardShippingMethod);
+		}else {
 			return explicitWait(usStandardShippingMethod);
 		}
 
@@ -78,6 +76,11 @@ public class ShippingMethodPage extends GenericMethods {
 
 		return explicitWait(priorityShippingMethod);
 	}
+	
+	@FindBy(how = How.XPATH, using = "//button[@class='tm-button tm-red-button span12 removeFocusIndicator']") // for Korea proceed to payment
+	private WebElement krProceedToPayment;
+	
+	
 
 	@FindBy(how = How.XPATH, using = "//button[contains(text(), 'Proceed to Payment')]")
 	private WebElement proceedToPayment;
