@@ -15,7 +15,7 @@ import com.tumi.utilities.UIFunctions;
  */
 public class OrderWithVochercode extends GenericMethods {
 
-	Map<String, String> testData = ReadTestData.retrieveData("PlaceOrder", "OrderWithVochercode");
+	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestOrders");
 
 	/*
 	 * TA-15 Verify Order with merchandise Ready to ship + Voucher Code for Guest
@@ -26,11 +26,19 @@ public class OrderWithVochercode extends GenericMethods {
 	public void verifyOrderWithVocherCode(String name) throws InterruptedException {
 
 		UIFunctions.selectCountry(name);
-		UIFunctions.addProductToCart("PlaceOrder", "OrderWithGiftServices");
+		UIFunctions.addProductToCart("TumiTestData", "GuestOrders");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
-		UIFunctions.addPromotionalCode("PlaceOrder", "PreOrderWithVoucher");
-		UIFunctions.completeOrder("PlaceOrder", "OrderWithGiftServices");
+		UIFunctions.addPromotionalCode("TumiTestData", "GuestOrders");
+		click(mainCart.getProceedToCheckout(), "Proceed to Checkout");
+		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
+		//UIFunctions.waitForContinueToEnable();
+		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
+		UIFunctions.addGuestDetails();
+		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
+		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
+		UIFunctions.addCardDetails("TumiTestData", "GuestOrders");
+		UIFunctions.completeOrder();
 	}
 
 }

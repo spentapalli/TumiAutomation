@@ -65,7 +65,7 @@ public class UIFunctions extends GenericMethods {
 
 	public static void addCardDetails(String sheet, String testCaseName) {
 
-		Map<String, String> testData = ReadTestData.retrieveData(sheet, testCaseName);
+		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCaseName);
 
 		// billing page
 		input(guestBillPage.getNameOnCard(), testData.get("NameOnCard"), "Name on Card");
@@ -108,10 +108,19 @@ public class UIFunctions extends GenericMethods {
 
 	public static void addProductToCart(String sheet, String testCase) {
 
-		Map<String, String> testData = ReadTestData.retrieveData(sheet, testCase);
+		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
 
 		final String pdpURL = GlobalConstants.url + "/p/" + testData.get("SKUID");
 		driver.get(pdpURL);
+		verifyAssertContains(driver.getCurrentUrl(), testData.get("SKUID"), "Wrong Product is displayed");
+		try {
+			if (pdp.getAddToCart().isDisplayed()) {
+				verifyAssertEquals("Add To Cart", getText(pdp.getAddToCart()));
+			}
+		} catch (Exception e) {
+			Assert.fail(testData.get("SKUID") + " Product is not available");
+		}
+		//click(pdp.getAddToCart(), "Add to Cart");
 
 		// due to product search issue i am using above code to get the product.
 
@@ -130,9 +139,9 @@ public class UIFunctions extends GenericMethods {
 
 	public static void addMonogram(String sheet, String testCase) {
 
-		Map<String, String> testData = ReadTestData.retrieveData(sheet, testCase);
+		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
 
-		mouseHover(mono.getComplimentaryMono());
+		//domClick(mono.getComplimentaryMono(),"Monogram");
 		click(mono.getAddPersonalization(), "Add Personalization");
 		input(mono.getFirstMonoInput(), testData.get("FirstMonoInput"), "First Mono Input");
 		input(mono.getSecondMonoInput(), testData.get("SecondMonoInput"), "Second Mono Input");
@@ -145,7 +154,7 @@ public class UIFunctions extends GenericMethods {
 		delay(3000);
 	}
 
-	public static void completeOrder(String sheet, String testCase) {
+	/*public static void completeOrder(String sheet, String testCase) {
 
 		Map<String, String> testData = ReadTestData.retrieveData(sheet, testCase);
 
@@ -167,15 +176,15 @@ public class UIFunctions extends GenericMethods {
 				break;
 			}
 		}
-		/*
+		
 		 * added code for Canada
 		 * 
-		 */
-		/*
+		 
+		
 		 * for (WebElement ele : shipping.getListAddressLine1()) { if
 		 * (getText(ele).equals("10 SUMAS WAY, ABBOTSFORD, BC, V2S 8B7")) { click(ele,
 		 * "AddressList"); break; } }
-		 */
+		 
 		input(shipping.getPostcode(), testData.get("PostCode"), "Post code");
 		input(shipping.getPhoneNumber(), testData.get("Phone"), "Phone Number");
 		click(shipping.getContinueShippingMethod(), "Continue shipping Method");
@@ -197,12 +206,11 @@ public class UIFunctions extends GenericMethods {
 		orderNumber = getText(confirmation.getOrderNumber());
 		logger.log(Status.INFO, "Thank you for Your Order, here is your Order Number " + orderNumber);
 		captureOrderConfScreen("OrderConfirmation");
-	}
+	}*/
 
 	public static void addGuestDetails() {
 
 		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "OrderWithTwoProducts");
-
 		input(shipping.getFirstName(), testData.get("FirstName"), "First Name");
 		input(shipping.getLastName(), testData.get("LastName"), "Last Name");
 		input(shipping.getAddressLine1(), testData.get("AddressLine1"), "Address Line1");
@@ -245,9 +253,9 @@ public class UIFunctions extends GenericMethods {
 
 	public static void addPromotionalCode(String sheet, String testCase) {
 
-		Map<String, String> testData = ReadTestData.retrieveData(sheet, testCase);
+		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
 
-		input(mainCart.getPromocode(), testData.get("VocherID"), "Vocher Id");
+		input(mainCart.getPromocode(), testData.get("VoucherID"), "Vocher Id");
 		click(mainCart.getApply(), "Check Promocode");
 
 		try {
@@ -280,7 +288,7 @@ public class UIFunctions extends GenericMethods {
 
 	public static void addGiftMessage(String sheet, String testCase) {
 
-		Map<String, String> testData = ReadTestData.retrieveData(sheet, testCase);
+		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
 
 		domClick(gift.getCheckMessage(), "Check Message");
 		input(gift.getRecipientName(), testData.get("RecipientName"), "Recipients name");
@@ -340,10 +348,18 @@ public class UIFunctions extends GenericMethods {
 	}
 
 	public static void addMultipleProducts(String sheet, String testCase) {
-		Map<String, String> testData = ReadTestData.retrieveData(sheet, testCase);
+		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
 		for (int i = 0; i < 2; i++) {
 			UIFunctions.searchProducts(i, testData.get("PrdouctName"));
 			delay(3000);
+			//verifyAssertContains(driver.getCurrentUrl(), testData.get("SKUID"), "Wrong Product is displayed");
+			try {
+				if (pdp.getAddToCart().isDisplayed()) {
+					verifyAssertEquals("Add To Cart", getText(pdp.getAddToCart()));
+				}
+			} catch (Exception e) {
+				Assert.fail(testData.get("SKUID") + " Product is not available");
+			}
 			click(pdp.getAddToCart(), "Add to Cart");
 			click(minicart.getContinueShopping(), "Continue shopping");
 		}

@@ -1,7 +1,10 @@
 package orders.guest;
 
+import java.util.Map;
+
 import org.testng.annotations.Test;
 
+import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
 import com.tumi.utilities.UIFunctions;
 
@@ -10,18 +13,25 @@ import com.tumi.utilities.UIFunctions;
  *
  */
 public class GuestPreOrder extends GenericMethods {
+	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "PreOrderProduct");
 	/*
 	 * TA-112
 	 *  Verify Order with merchandise Pre Order for Guest User
 	 */
 
-	@Test
+	@Test(description = "Verify Order with merchandise Ready to ship for Guest User")
 	public void preOrderAsGuest() throws InterruptedException {
-
-		UIFunctions.addProductToCart("PlaceOrder", "PreOrder");
-		click(pdp.getAddToCart(), "Add To Cart");
+		UIFunctions.addProductToCart("TumiTestData","PreOrderProduct");
+		click(pdp.getAddToCart(),"Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
-		UIFunctions.completeOrder("PlaceOrder", "PreOrder");
-	}
+		click(mainCart.getProceedToCheckout(), "Proceed to Checkout");
+		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
+		//UIFunctions.waitForContinueToEnable();
+		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
+		UIFunctions.addGuestDetails();
+		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
+		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
+		UIFunctions.addCardDetails("TumiTestData", "PreOrderProduct");
+		UIFunctions.completeOrder();	}
 
 }

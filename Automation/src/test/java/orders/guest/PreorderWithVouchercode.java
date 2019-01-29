@@ -12,12 +12,23 @@ import com.tumi.utilities.UIFunctions;
 	
 
 		public class PreorderWithVouchercode extends GenericMethods {
+			Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "PreOrderProduct");
 			@Test
 			public void orderWithAsGuest() {
-				UIFunctions.addProductToCart("PlaceOrder", "PreorderWithVouchercode");
+				
+				UIFunctions.addProductToCart("TumiTestData", "PreOrderProduct");
 				click(pdp.getAddToCart(), "Add To Cart");
 				click(minicart.getProceedCheckOut(), "Proceed to Checkout");
-				UIFunctions.completeOrder("PlaceOrder", "PreorderWithVouchercode");
+				UIFunctions.addPromotionalCode("TumiTestData", "PreOrderProduct");
+				click(mainCart.getProceedToCheckout(), "Proceed to Checkout");
+				input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
+				//UIFunctions.waitForContinueToEnable();
+				click(singlePage.getContinueAsGuest(), "Contiue as Guest");
+				UIFunctions.addGuestDetails();
+				click(shipping.getContinueShippingMethod(), "Contiue Shipping");
+				click(shipMethod.getProceedToPayment(), "Proceed to Payment");
+				UIFunctions.addCardDetails("TumiTestData", "PreOrderProduct");
+				UIFunctions.completeOrder();
 			}
 
 		}

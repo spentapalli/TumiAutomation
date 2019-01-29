@@ -16,16 +16,24 @@ import com.tumi.utilities.UIFunctions;
 		public class BackorderWithVoucher extends GenericMethods{ 
 
 				
-				Map<String, String>  testData = ReadTestData.retrieveData("PlaceOrder", "BackorderWithVoucher");
+			Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "BackOrderProduct");
 				
 				@Test
 			
 				public void orderWithAsGuest() {
-					UIFunctions.addProductToCart("PlaceOrder", "BackorderWithVoucher");
-					click(pdp.getAddToCart(), "Add To Cart");
+					UIFunctions.addProductToCart("TumiTestData","BackOrderProduct");
+					click(pdp.getAddToCart(),"Add to cart");
 					click(minicart.getProceedCheckOut(), "Proceed to Checkout");
-					click(mainCart.getApply(),"check promocode");
-					UIFunctions.completeOrder("PlaceOrder", "BackorderWithVoucher");
+					UIFunctions.addPromotionalCode("TumiTestData", "BackOrderProduct");
+					click(mainCart.getProceedToCheckout(), "Proceed to Checkout");
+					input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
+					//UIFunctions.waitForContinueToEnable();
+					click(singlePage.getContinueAsGuest(), "Contiue as Guest");
+					UIFunctions.addGuestDetails();
+					click(shipping.getContinueShippingMethod(), "Contiue Shipping");
+					click(shipMethod.getProceedToPayment(), "Proceed to Payment");
+					UIFunctions.addCardDetails("TumiTestData", "BackOrderProduct");
+					UIFunctions.completeOrder();
 				}
 
 			}
