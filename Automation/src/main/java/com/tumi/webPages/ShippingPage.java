@@ -1,6 +1,7 @@
 package com.tumi.webPages;
 
 import java.util.List;
+import java.util.Map;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -147,6 +148,12 @@ public class ShippingPage extends GenericMethods {
 			return explicitWait(continueShippingMethod);
 		}
 
+	}
+	@FindBy(how = How.XPATH, using = "//div[@class='address-picklist']/div")
+	private List<WebElement> addList;
+	
+	public List<WebElement> getAddList() {
+		return addList;
 	}
 
 }
