@@ -27,7 +27,7 @@ public class VerifyInvalidGoogleLogin extends GenericMethods {
 	@Test
 	public void verifyInvalidGoogleLogin() throws InterruptedException {
 
-		UIFunctions.closeSignUpForUS();
+		UIFunctions.closeSignUp();
 		click(home.getHeaderSignIn(), "SignIn");
 		click(google.getGoogleLogin(), "Google login");
 		String parentHandle = driver.getWindowHandle();

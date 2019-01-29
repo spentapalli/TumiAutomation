@@ -23,7 +23,7 @@ public class OrderWithGiftServices extends GenericMethods {
 	public void testOrderWithGiftServices() throws InterruptedException {
 
 		// Close signUp window
-		 UIFunctions.closeSignUpForUS();
+		 UIFunctions.closeSignUp();
 		input(home.getSearchProduct(), testData.get("SKUID"), "FailedOrder");
 		keyEnter(home.getSearchProduct());
 		try {

@@ -16,7 +16,7 @@ public class OrderWithPreorderVochercode extends GenericMethods {
 	@Test
 	private void testOrderWithPreorder() {
 		// Close signUp window
-		 UIFunctions.closeSignUpForUS();
+		 UIFunctions.closeSignUp();
 		input(home.getSearchProduct(), testData.get("SKUID"), "FailedOrder");
 		keyEnter(home.getSearchProduct());
 	

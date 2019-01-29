@@ -23,7 +23,7 @@ public class VerifyInvalidRegularLogin extends GenericMethods {
 	@Test
 	public void verifyInvalidUserMessage() {
 
-		UIFunctions.closeSignUpForUS();
+		UIFunctions.closeSignUp();
 		login("Login", "InValidCredentials");
 		
 		Assert.fail(getProperty("home.invalidCredentials"));

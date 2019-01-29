@@ -19,7 +19,7 @@ public class GmailLogin extends GenericMethods {
 	@Test
 	public void verifyLogin() throws InterruptedException {
 
-		UIFunctions.closeSignUpForUS();
+		UIFunctions.closeSignUp();
 		click(home.getHeaderSignIn(), "SignIn");
 		click(google.getGoogleLogin(), "Google login");
 

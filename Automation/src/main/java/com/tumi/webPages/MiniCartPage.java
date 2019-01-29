@@ -40,6 +40,17 @@ public class MiniCartPage extends GenericMethods{
 		
 		return  explicitWait(proceedtoCheck);
 	}
+	
+	@FindBy(how=How.XPATH,using="//button[contains(text(),'Proceed to Checkout')]")
+	private WebElement singlePageCheckout;
+	
+	public WebElement getSinglePageCheckout() {
+		
+		return  explicitWait(singlePageCheckout);
+	}
+	
+	
+	
 	/*for Korea continue shopping
 	 * @FindBy(how=How.XPATH,using="//div[@id='tm-panel-mini-cart']/div/div[2]/a[2]")
 	 */
@@ -49,7 +60,7 @@ public class MiniCartPage extends GenericMethods{
 	
 	public WebElement getContinueShopping() {
 		
-		return continueShopping;
+		return explicitWait(continueShopping);
 	}
 
 }

@@ -26,6 +26,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
+
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
@@ -124,12 +126,12 @@ public class Reports {
 	}
 
 	@BeforeClass(alwaysRun = true)
-	
+
 	public static void launchBrowser() throws Exception {
 		getBrowser(GenericMethods.getProperty("tumi.browserName"));
 		maximizeBrowser();
 		getURL(GenericMethods.getProperty("tumi.appName"));
-		
+
 		// driver.navigate().to("https://ca.stg-hybris-akamai.tumi.com");
 	}
 
@@ -186,7 +188,7 @@ public class Reports {
 			} else if (result.getStatus() == ITestResult.FAILURE) {
 
 				Timestamp time = new Timestamp(System.currentTimeMillis());
-				String screenlocation = System.getProperty("user.dir") +"/Screenshots/" + result.getName() + ""
+				String screenlocation = System.getProperty("user.dir") + "/Screenshots/" + result.getName() + ""
 						+ time.getTime() + ".png";
 				getScreen(System.getProperty("user.dir") + "/ExtentReports/Screenshots/" + result.getName() + ""
 						+ time.getTime() + ".png");
@@ -208,7 +210,7 @@ public class Reports {
 	@BeforeSuite(alwaysRun = true)
 	public static void removeExistingFiles() {
 		try {
-			File files = new File(System.getProperty("user.dir")+"/ExtentReports/Screenshots/");
+			File files = new File(System.getProperty("user.dir") + "/ExtentReports/Screenshots/");
 			for (File file : files.listFiles()) {
 				if (!file.isDirectory()) {
 					file.delete();
@@ -217,6 +219,18 @@ public class Reports {
 		} catch (Exception e) {
 			e.getMessage();
 		}
+	}
+
+	@DataProvider(name = "Location")
+	public static Object[][] credentials() {
+
+		// The number of times data is repeated, test will be executed the same no. of
+		// times
+
+		// Here it will execute two times
+
+		return new Object[][] { { "United States" }, { "Canada" }, { "Korea" } };
+
 	}
 
 	public static void getBrowser(String browserName) throws Exception {
@@ -264,7 +278,7 @@ public class Reports {
 			logger.log(Status.INFO, "Successfully Navigated to " + URL + " Environment");
 		}
 		UIFunctions.verifyVPN();
-		UIFunctions.closeSignUpForUS();
+		UIFunctions.closeSignUp();
 	}
 
 	public static void getScreen(String path) {

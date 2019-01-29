@@ -26,7 +26,7 @@ public class MultiShipOrder extends GenericMethods {
 	@Test
 	public void testMultiShipOrder() throws InterruptedException {
 
-		UIFunctions.closeSignUpForUS();
+		UIFunctions.closeSignUp();
 		/*click(home.getSelectCountryUS(), "Select US country");
 		click(home.getSelectUS(), "click US");
 		delay(3000);
