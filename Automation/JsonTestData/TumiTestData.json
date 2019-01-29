@@ -1,4 +1,55 @@
 {
+
+	
+	"GuestOrders":
+		{
+			"EmailID": "skomma@coredatalabs.com",
+			"FirstName": "Test",
+			"LastName" : "TumiLast",
+			"AddressLine1": "10 Sumac Way", 
+			"AddressLine2": "Add",
+			"TownCity": "ABBOTSFORD",
+			"Region": "California",
+			"PostCode": "V4X 1A5",
+			"Phone": "12345678901",
+			"NameOnCard": "test",
+			"CardNumber": "41111111111111",
+			"CVV": "123",
+			"ExipryMonth": "4",
+			"ExpiryYear": "2020",
+			"NoramlSKUID": "014757D",
+			"PreOrderSKUID": "0484660D",
+			"BackOrderSKUID": "013234CPT",
+			"VoucherID":"T50-F5GD-BTXA-GZWB",
+			"RecipientName":"Test",
+			"SenderName":"User",
+			"Message":"Hello Tumi",
+			"GiftCardnumber":"7018525193950000020",
+			"Pinnumber":"98779393",
+			
+		},
+		
+		"RegisteredOrders":
+		{
+			"EmailID_Google": "emptumi@gmail.com",
+			"Password_Google":"tumi123",
+			"EmailID_login":"Employee.tumi@gmail.com",
+			"Password_login":"Tumi_8864",
+			"EmailId_Instagram":"TumiUS",
+			"Password_Instagram":"tumi123",
+			"NoramlSKUID": "014757D",
+			"PreOrderSKUID": "0484660D",
+			"BackOrderSKUID": "013234CPT",
+			"VoucherID":"T50-F5GD-BTXA-GZWB",
+			"RecipientName":"Test",
+			"SenderName":"User",
+			"Message":"Hello Tumi",
+			"GiftCardnumber":"7018525193950000020",
+			"Pinnumber":"98779393",
+			},
+		
+		
+		
 	"FailedOrder":
 	
 		{
@@ -18,6 +69,7 @@
 			"ExpiryYear": "2020",
 			"SKUID": "014757D"
 		},
+		
 	"BackOrderProduct":
 		{
 			"EmailID": "skomma@coredatalabs.com",
