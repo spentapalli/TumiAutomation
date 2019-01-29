@@ -20,20 +20,18 @@ public class SinglePageCheckout extends GenericMethods {
 		PageFactory.initElements(driver, this);
 	}
 
-	/*
-	 * for Korea Expresscheckout
-	 * 
-	 * @FindBy(how = How.XPATH, using =
-	 * "//button[@class='tm-button tm-white-button singlePageCheckout-login tm-login-element removeFocusIndicator']"
-	 * )
-	 */
+	@FindBy(how = How.XPATH, using = "//button[@class='tm-button tm-white-button singlePageCheckout-login tm-login-element removeFocusIndicator']")
+	private WebElement krSignInExpressCheckout;
 
 	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Sign In for Express Checkout')]")
 	private WebElement signInExpressCheckout;
 
 	public WebElement getSignInExpressCheckout() {
-
-		return signInExpressCheckout;
+		if (selectedCountry.contains("Korea")) {
+			return krSignInExpressCheckout;
+		} else {
+			return signInExpressCheckout;
+		}
 	}
 
 	@FindBy(how = How.XPATH, using = "(//input[@name='email'])[1]") // same for Korea
@@ -43,7 +41,7 @@ public class SinglePageCheckout extends GenericMethods {
 
 		return explicitWait(emailAddress);
 	}
-	
+
 	@FindBy(how = How.XPATH, using = "//button[contains(@class,'disabled-red-button')]") // same for Korea
 	private WebElement continuedisplayed;
 
@@ -52,32 +50,33 @@ public class SinglePageCheckout extends GenericMethods {
 		return explicitWait(continuedisplayed);
 	}
 
-
-	/*
-	 * for Korea continue as guest
-	 * 
-	 * @FindBy(how = How.XPATH, using = "(//button[@type='submit'])[1]")
-	 */
+	@FindBy(how = How.XPATH, using = "(//button[@type='submit'])[1]")
+	private WebElement krContinueAsGuest;
 
 	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Continue as a Guest')]")
 	private WebElement continueAsGuest;
 
 	public WebElement getContinueAsGuest() {
-
-		return explicitWait(continueAsGuest);
+		if (selectedCountry.contains("Korea")) {
+			return explicitWait(krContinueAsGuest);
+		} else {
+			return explicitWait(continueAsGuest);
+		}
 	}
 
-	/*
-	 * for Korea promotions and news
-	 * 
-	 * @FindBy(how = How.XPATH, using ="(//label[@class='cvform-lbl-checkbox'])[1]") or (//input[@id='subscribeInfo']/following::label)[1]
-	 */
+	@FindBy(how = How.XPATH, using = "(//label[@class='cvform-lbl-checkbox'])[1]") // or
+																					// (//input[@id='subscribeInfo']/following::label)[1]
+	private WebElement krPromotionsAndNews;
+
 	@FindBy(how = How.XPATH, using = "//label[contains(text(),'Send me emails with promotions and news.')]")
 	private WebElement promotionsAndNews;
 
 	public WebElement getPromotionsAndNews() {
-
-		return promotionsAndNews;
+		if (selectedCountry.contains("Korea")) {
+			return explicitWait(krPromotionsAndNews);
+		} else {
+			return promotionsAndNews;
+		}
 	}
 
 }

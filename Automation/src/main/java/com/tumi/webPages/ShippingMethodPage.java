@@ -79,15 +79,18 @@ public class ShippingMethodPage extends GenericMethods {
 	
 	@FindBy(how = How.XPATH, using = "//button[@class='tm-button tm-red-button span12 removeFocusIndicator']") // for Korea proceed to payment
 	private WebElement krProceedToPayment;
-	
-	
 
 	@FindBy(how = How.XPATH, using = "//button[contains(text(), 'Proceed to Payment')]")
 	private WebElement proceedToPayment;
 
 	public WebElement getProceedToPayment() {
+		if (selectedCountry.contains("Korea")) {
+
+			return explicitWait(krProceedToPayment);
+		}else {
 
 		return explicitWait(proceedToPayment);
 	}
 
+}
 }

@@ -15,133 +15,138 @@ import com.tumi.utilities.GenericMethods;
  * @author Shwetha Capo
  *
  */
-public class ShippingPage extends GenericMethods{
+public class ShippingPage extends GenericMethods {
 
 	public ShippingPage(WebDriver driver) {
 		Reports.driver = driver;
-		PageFactory.initElements(driver,this);
+		PageFactory.initElements(driver, this);
 	}
-	@FindBy(how=How.XPATH,using="(//input[@name='firstName'])[1]") //same for korea
+
+	@FindBy(how = How.XPATH, using = "(//input[@name='firstName'])[1]") // same for korea
 	private WebElement firstName;
-	
+
 	public WebElement getFirstName() {
-		
+
 		return explicitWait(firstName);
 	}
-	
-	@FindBy(how=How.XPATH,using="//input[@name='lastName']") //same for korea
+
+	@FindBy(how = How.XPATH, using = "//input[@name='lastName']") // same for korea
 	private WebElement lastName;
-	
+
 	public WebElement getLastName() {
-		
+
 		return lastName;
 	}
-	
 
-	@FindBy(how=How.XPATH,using="//input[@name='line1']") //same for korea
+	@FindBy(how = How.XPATH, using = "//input[@name='line1']") // same for korea
 	private WebElement addressLine1;
-	
+
 	public WebElement getAddressLine1() {
-		
+
 		return addressLine1;
 	}
-	
-	@FindBy(how=How.XPATH,using="//div[@class='address-picklist']/div")
+
+	@FindBy(how = How.XPATH, using = "//div[@class='address-picklist']/div")
 	private WebElement selectedAddressLine1;
-	
+
 	public WebElement getSelectedAddressLine() {
 		return selectedAddressLine1;
 	}
-	
-	@FindBy(how=How.XPATH,using="//input[@name='line1']/following::div[2]/div")
+
+	@FindBy(how = How.XPATH, using = "//input[@name='line1']/following::div[2]/div")
 	private List<WebElement> listaddressLine1;
-	
+
 	public List<WebElement> getListAddressLine1() {
-		
+
 		return listaddressLine1;
 	}
-	
-	@FindBy(how=How.XPATH,using="//input[@name='line1']/following::div[2]/div")
+
+	@FindBy(how = How.XPATH, using = "//input[@name='line1']/following::div[2]/div")
 	private WebElement addressList;
-	
+
 	public WebElement getAddressList() {
-		
+
 		return addressList;
 	}
-	/*FOR KOREA address line2 
-	 * @FindBy(how=How.XPATH,using="//input[@name='line2']")
-	 */
-	
-	
-	@FindBy(how=How.XPATH,using="//input[@placeholder='Address Line2']") 
+
+	@FindBy(how = How.XPATH, using = "//input[@name='line2']")
+	private WebElement krAddressLine2;
+
+	@FindBy(how = How.XPATH, using = "//input[@placeholder='Address Line2']")
 	private WebElement addressLine2;
-	
+
 	public WebElement getAddressLine2() {
-		
-		return addressLine2;
+		if (selectedCountry.contains("Korea")) {
+			return krAddressLine2;
+		} else {
+			return addressLine2;
+		}
 	}
-	
-	/*FOR KOREA town 
-	 * @FindBy(how=How.XPATH,using="//input[@name='townCity']")
-	 */
-	
-	@FindBy(how=How.XPATH,using="//input[@placeholder='Town / City *']")
+
+	@FindBy(how = How.XPATH, using = "//input[@name='townCity']")
+	private WebElement krTown;
+
+	@FindBy(how = How.XPATH, using = "//input[@placeholder='Town / City *']")
 	private WebElement town;
-	
+
 	public WebElement getTown() {
-		
-		return town;
+		if (selectedCountry.contains("Korea")) {
+			return krTown;
+		} else {
+			return town;
+		}
 	}
-	
-	
-	//select[@name='regionIso']
-	@FindBy(how=How.XPATH,using="//span[@name='regionIso']") //this is not avialable for korea
+
+	// select[@name='regionIso']
+	@FindBy(how = How.XPATH, using = "//span[@name='regionIso']") // this is not avialable for korea
 	private WebElement regionIso;
-	
+
 	public WebElement getRegionIso() {
-		
+
 		return regionIso;
 	}
-	
-	@FindBy(how=How.XPATH,using="//span[@name='regionIso']/following::ul/li")
+
+	@FindBy(how = How.XPATH, using = "//span[@name='regionIso']/following::ul/li")
 	private List<WebElement> listregionIso;
-	
+
 	public List<WebElement> getListRegionIso() {
-		
+
 		return listregionIso;
 	}
-	
-	//@FindBy(how=How.NAME,using="//input[@placeholder='Zip Code *']")
-	@FindBy(how=How.XPATH,using="//input[@name='postcode']") //same for Korea
-	
+
+	// @FindBy(how=How.NAME,using="//input[@placeholder='Zip Code *']")
+	@FindBy(how = How.XPATH, using = "//input[@name='postcode']") // same for Korea
+
 	private WebElement postcode;
-	
+
 	public WebElement getPostcode() {
-		
+
 		return postcode;
 	}
-	
 
-	@FindBy(how=How.XPATH,using="//input[@name='phone']")
+	@FindBy(how = How.XPATH, using = "//input[@name='phone']")
 	private WebElement phoneNumber;
-	
+
 	public WebElement getPhoneNumber() {
-		
+
 		return phoneNumber;
 	}
-	/*FOR KOREA continue shipping 
-	 * @FindBy(how=How.XPATH,using="(//button[@type='submit'])[3]")
-	 */
-	
-	
-	@FindBy(how=How.XPATH,using="//button[contains(text(), 'Continue to Shipping Method')]")
-    private WebElement continueShippingMethod;
-	
+
+	@FindBy(how = How.XPATH, using = "(//button[@type='submit'])[3]")
+	private WebElement krContinueShippingMethod;
+
+	@FindBy(how = How.XPATH, using = "//button[contains(text(), 'Continue to Shipping Method')]")
+	private WebElement continueShippingMethod;
+
 	public WebElement getContinueShippingMethod() {
-		
-		return explicitWait(continueShippingMethod);
+
+		if (selectedCountry.contains("Korea")) {
+			return explicitWait(krContinueShippingMethod);
+		} else {
+
+			return explicitWait(continueShippingMethod);
+		}
+
 	}
-	
-	
-	
+
 }

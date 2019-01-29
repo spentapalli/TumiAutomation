@@ -7,115 +7,122 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
 import com.tumi.reports.Reports;
+import com.tumi.utilities.GenericMethods;
 
 /**
  * @author Shwetha Capo
  *
  */
-public class LoginPage {
-	
+public class LoginPage extends GenericMethods {
+
 	public LoginPage(WebDriver driver) {
-		
+
 		Reports.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
-	
-	/* korea login window
-	 * @FindBy(how=How.XPATH,using="//font[@class='removeFocusIndicator']/font")
-	 * 
-	 */
-	
-	@FindBy(how=How.XPATH,using="(//a[contains(text(),'Sign In')])[1]")
-	//us
-	//@FindBy(how=How.XPATH,using="//div[@id='signInDiv']")
+
+	@FindBy(how = How.XPATH, using = "//font[@class='removeFocusIndicator']/font")
+	private WebElement krLoginWindow;
+	@FindBy(how = How.XPATH, using = "(//a[contains(text(),'Sign In')])[1]")
+	// us
+	// @FindBy(how=How.XPATH,using="//div[@id='signInDiv']")
 	private WebElement loginWindow;
-	
+
 	public WebElement getLoginWindow() {
-		
-		return loginWindow;
+		if (selectedCountry.contains("Korea")) {
+			return krLoginWindow;
+		} else {
+			return loginWindow;
+		}
 	}
-	
-	
-	@FindBy(how=How.XPATH,using="//input[@id='j_username']")
+
+	@FindBy(how = How.XPATH, using = "//input[@id='j_username']")
 	private WebElement loginUsername;
-	
+
 	public WebElement getLoginUsername() {
-		
-		 return loginUsername;
+
+		return loginUsername;
 	}
-	
-	@FindBy(how=How.XPATH,using="//input[@id='j_password']")
+
+	@FindBy(how = How.XPATH, using = "//input[@id='j_password']")
 	private WebElement loginPassword;
-	
+
 	public WebElement getLoginPassword() {
-		
+
 		return loginPassword;
 	}
-	
-	@FindBy(how=How.ID,using="j_remember")
+
+	@FindBy(how = How.ID, using = "j_remember")
 	private WebElement rememberMe;
-	
+
 	public WebElement getRememberMe() {
-		
+
 		return rememberMe;
 	}
-	
-	/*Korea forget passowrd
-	 * @FindBy(how=How.XPATH,using="//span[@class='link-underline']/font")
-	 */
-	
-	@FindBy(how=How.XPATH,using="//span[contains(text(),'Forgot password?')]")
+
+	@FindBy(how = How.XPATH, using = "//span[@class='link-underline']/font")
+	private WebElement krForgetPassword;
+
+	@FindBy(how = How.XPATH, using = "//span[contains(text(),'Forgot password?')]")
 	private WebElement forgetPassword;
-	
+
 	public WebElement getForgetPAssword() {
-		
-		return rememberMe;
+		if (selectedCountry.contains("Korea")) {
+			return krForgetPassword;
+		} else {
+			return rememberMe;
+		}
 	}
-	
-	/*korea signInClick 
-	 * @FindBy(how=How.XPATH,using="(//input[@class='tm-button login-button'])[1]")
-	 */
-	@FindBy(how=How.XPATH,using="//input[@value='Sign in']")
+
+	@FindBy(how = How.XPATH, using = "(//input[@class='tm-button login-button'])[1]")
+	private WebElement krSignInClick;
+
+	@FindBy(how = How.XPATH, using = "//input[@value='Sign in']")
 	private WebElement signInClick;
-	
+
 	public WebElement getLogOn() {
-		
-		return signInClick;
+		if (selectedCountry.contains("Korea")) {
+			return krSignInClick;
+		} else {
+			return signInClick;
+		}
 	}
-	
-	/*korea logout
-	 * @FindBy(how=How.XPATH,using="//li[@class='removeFocusIndicator']/a")
-	 */
-	
-	@FindBy(how=How.XPATH,using="//a[@title='Sign Out']")
+
+	@FindBy(how = How.XPATH, using = "//li[@class='removeFocusIndicator']/a")
+	private WebElement krLogOut;
+
+	@FindBy(how = How.XPATH, using = "//a[@title='Sign Out']")
 	private WebElement logOut;
-	
+
 	public WebElement getLogOut() {
-		
-		return logOut;
+		if (selectedCountry.contains("Korea")) {
+			return explicitWait(krLogOut);
+		} else {
+			return logOut;
+		}
 	}
-	
-	@FindBy(how=How.XPATH,using="(//a[contains(text(),'Hi, Tumi')])[2]")
+
+	@FindBy(how = How.XPATH, using = "(//a[contains(text(),'Hi, Tumi')])[2]")
 	private WebElement UserHi;
-	
+
 	public WebElement getUserHi() {
-		
+
 		return UserHi;
 	}
-	
-	/*for Korea after signin close window
-	 * @FindBy(how=How.XPATH,using="(//header[@class='tm-header']/a/span)[4]")
-	 */
-	
-	@FindBy(how=How.XPATH,using="(//header[@class=\"tm-header\"])[2]/a")
+
+	@FindBy(how = How.XPATH, using = "(//header[@class='tm-header']/a/span)[4]")
+	private WebElement krCloseWindow;
+
+	@FindBy(how = How.XPATH, using = "(//header[@class=\"tm-header\"])[2]/a")
 	private WebElement closeWindow;
-	
+
 	public WebElement getCloseWindow() {
-		
-		return closeWindow;
+		if (selectedCountry.contains("Korea")) {
+			return krCloseWindow;
+		} else {
+			return closeWindow;
+		}
+
 	}
-	
-	
-	
 
 }

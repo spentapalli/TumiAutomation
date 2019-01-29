@@ -47,10 +47,8 @@ public class HomePage extends GenericMethods {
 
 		return matchingProducts;
 	}
-	/*for Korea
-	 * @FindBy(how = How.XPATH, using = "//div[@id='firstTimeEmailSignupPopup']/div")
-	* private WebElement signupPopupKR;
-	*/
+	@FindBy(how = How.XPATH, using = "//div[@id='firstTimeEmailSignupPopup']/div")///////////////////////////////////////
+	private WebElement signupPopupKR;
 
 
 	// for Canada
@@ -166,16 +164,18 @@ public class HomePage extends GenericMethods {
 		return search;
 
 	}
-	/*Kr
-	 * @FindBy(how = How.XPATH, using = "(//a[@href='#login'])[1]")
-	*/
-
+	 @FindBy(how = How.XPATH, using = "(//a[@href='#login'])[1]")
+	 private WebElement krHeaderSignIn;
 	@FindBy(how = How.XPATH, using = "(//a[text()='Sign In'])[1]")
 	private WebElement headerSignIn;
 
 	public WebElement getHeaderSignIn() {
+			if(selectedCountry.contains("Korea")) {
+				return explicitWait(krHeaderSignIn);
+			}else {
 
 		return explicitWait(headerSignIn);
+	}
 	}
 
 	@FindBy(how = How.XPATH, using = "//li[@id='janrain-instagram']/a")
@@ -201,16 +201,19 @@ public class HomePage extends GenericMethods {
 		return j_password;
 	}
 	
-	/*KR 
-	 * @FindBy(how = How.XPATH, using = "//div[@id='login-option-regular']/input")
-	 */
+	
+	 @FindBy(how = How.XPATH, using = "//div[@id='login-option-regular']/input")
+	 private WebElement krSubmit;
 
 	@FindBy(how = How.XPATH, using = "//input[@value='Sign in']")
 	private WebElement submit;
 
 	public WebElement getLogOn() {
-
+		if(selectedCountry.contains("Korea")) {
+			return krSubmit;
+		}else {
 		return submit;
+	}
 	}
 
 	@FindBy(how=How.XPATH,using="(//div[@class='dEOOab RxsGPe'])[1]")
