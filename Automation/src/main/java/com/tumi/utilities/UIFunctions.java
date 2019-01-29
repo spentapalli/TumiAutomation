@@ -20,19 +20,22 @@ import com.tumi.webPages.HomePage;
 public class UIFunctions extends GenericMethods {
 
 	public static void closeSignUp() {
-		
+
 		HomePage home = PageFactory.initElements(driver, HomePage.class);
-		
+
 		try {
 			home.getSignupPopup().click();
-		} catch (Exception e) {}
+		} catch (Exception e) {
+		}
 		try {
 			home.getCASignupPopup().click();
-		} catch (Exception e) {}
-		
+		} catch (Exception e) {
+		}
+
 		try {
 			home.getKoreaSignupPopup().click();
-		} catch (Exception e) {}
+		} catch (Exception e) {
+		}
 	}
 
 	public static void closeSignUpForUsProd() {
@@ -155,14 +158,14 @@ public class UIFunctions extends GenericMethods {
 		do {
 			delay(2000);
 		} while (!shipping.getAddressList().isDisplayed());
-		
+
 		for (int i = 1; i < shipping.getAddList().size(); i++) {
-		
-			WebElement add= driver.findElement(By.xpath("//div[@class='address-picklist']/div["+i+"]"));
+
+			WebElement add = driver.findElement(By.xpath("//div[@class='address-picklist']/div[" + i + "]"));
 			if (add.getText().contains("PRINCE RUPERT")) {
 				click(add, "Address Line1");
 				break;
-			}	
+			}
 		}
 		/*
 		 * added code for Canada
@@ -196,6 +199,50 @@ public class UIFunctions extends GenericMethods {
 		captureOrderConfScreen("OrderConfirmation");
 	}
 
+	public static void addGuestDetails() {
+
+		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "OrderWithTwoProducts");
+
+		input(shipping.getFirstName(), testData.get("FirstName"), "First Name");
+		input(shipping.getLastName(), testData.get("LastName"), "Last Name");
+		input(shipping.getAddressLine1(), testData.get("AddressLine1"), "Address Line1");
+		explicitWait(shipping.getSelectedAddressLine());
+		for (int i = 1; i < shipping.getAddList().size(); i++) {
+			WebElement add = driver.findElement(By.xpath("//div[@class='address-picklist']/div[" + i + "]"));
+			if (add.getText().contains("Fairport NY 14450")) {
+				click(add, "Address Line1");
+				break;
+			}
+		}
+		input(shipping.getPhoneNumber(), testData.get("Phone"), "Phone Number");
+	}
+
+	public static void waitForContinueToEnable() {
+		try {
+			do {
+				delay(2000);
+			} while (singlePage.isContinueDisabled().isDisplayed());
+		} catch (Exception e) {
+
+		}
+	}
+
+	public static void completeOrder() {
+
+		click(review.getPlaceOrder(), "Place Order");
+		do {
+			delay(2000);
+		} while (confirmation.getWithForConfirmation().isDisplayed());
+
+		if (!confirmation.getConfirmOrder().isDisplayed()) {
+
+			Assert.fail("Faile to Place An Order");
+		}
+		orderNumber = getText(confirmation.getOrderNumber());
+		logger.log(Status.INFO, "Thank you for Your Order, here is your Order Number " + orderNumber);
+		captureOrderConfScreen("OrderConfirmation");
+	}
+
 	public static void addPromotionalCode(String sheet, String testCase) {
 
 		Map<String, String> testData = ReadTestData.retrieveData(sheet, testCase);
@@ -205,28 +252,28 @@ public class UIFunctions extends GenericMethods {
 
 		try {
 			if (mainCart.getVocherCardFailed().isDisplayed()) {
-				
+
 				Assert.fail(getText(mainCart.getVocherCardFailed()));
 
 			} else if (!mainCart.getCodeApplied().isDisplayed()) {
-				
+
 				Assert.fail("Promo Code Remove link is not displayed");
 
 			} else if (!mainCart.getCodeRemove().isDisplayed()) {
-				
+
 				Assert.fail("Promo Code Applied Message is not displayed");
 
 			} else if (!mainCart.getSubtotalCode().isDisplayed()) {
-				
+
 				Assert.fail("Promo Code Subtotal is not displayed");
 
 			} else if (mainCart.getVocherCardFailed().isDisplayed()) {
-				
+
 				Assert.fail(getText(mainCart.getVocherCardFailed()));
 			}
 		} catch (Exception e) {
-			
-			Assert.fail("Vocher Card related Fields are not displayed "+e.getMessage());
+
+			Assert.fail("Vocher Card related Fields are not displayed " + e.getMessage());
 		}
 
 	}
@@ -303,7 +350,7 @@ public class UIFunctions extends GenericMethods {
 	}
 
 	public static void countrySelection(String name) {
-		
+
 		HomePage home = PageFactory.initElements(driver, HomePage.class);
 
 		click(home.getHomeCountry(), "Default Country");
@@ -319,7 +366,7 @@ public class UIFunctions extends GenericMethods {
 	}
 
 	public static void selectCountry(String name) {
-		
+
 		switch (name.toUpperCase()) {
 		case "US":
 			countrySelection("United States");
@@ -334,6 +381,6 @@ public class UIFunctions extends GenericMethods {
 			countrySelection("United States");
 			break;
 		}
-		
+
 	}
 }

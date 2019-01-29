@@ -7,12 +7,13 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
 import com.tumi.reports.Reports;
+import com.tumi.utilities.GenericMethods;
 
 /**
- * @author Shwetha Capo
+ * @author Shwetha Capo , Suresh
  *
  */
-public class SinglePageCheckout {
+public class SinglePageCheckout extends GenericMethods {
 
 	public SinglePageCheckout(WebDriver driver) {
 		Reports.driver = driver;
@@ -40,8 +41,17 @@ public class SinglePageCheckout {
 
 	public WebElement getEmailAddress() {
 
-		return emailAddress;
+		return explicitWait(emailAddress);
 	}
+	
+	@FindBy(how = How.XPATH, using = "//button[contains(@class,'disabled-red-button')]") // same for Korea
+	private WebElement continuedisplayed;
+
+	public WebElement isContinueDisabled() {
+
+		return explicitWait(continuedisplayed);
+	}
+
 
 	/*
 	 * for Korea continue as guest
@@ -54,7 +64,7 @@ public class SinglePageCheckout {
 
 	public WebElement getContinueAsGuest() {
 
-		return continueAsGuest;
+		return explicitWait(continueAsGuest);
 	}
 
 	/*

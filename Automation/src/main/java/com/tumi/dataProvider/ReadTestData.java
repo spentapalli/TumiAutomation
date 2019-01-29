@@ -186,7 +186,6 @@ public class ReadTestData {
 					testData.put(key, value);
 				}
 
-				System.out.println(testData);
 			}else {
 				Assert.fail("FileName OR TestCaseName is not Valid");
 			}
