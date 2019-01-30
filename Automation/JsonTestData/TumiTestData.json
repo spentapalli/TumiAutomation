@@ -97,7 +97,7 @@
 			"RecipientName":"Test",
 			"SenderName":"User",
 			"Message":"Hello Tumi",
-			"GiftCardnumber":"7018525193950000020",
+			"GiftCardnumber":"7018525193950000020"
 		},	
 		
 		"PreOrderProduct":
@@ -124,7 +124,7 @@
 			"RecipientName":"Test",
 			"SenderName":"User",
 			"Message":"Hello Tumi",
-			"GiftCardnumber":"7018525193950000020",
+			"GiftCardnumber":"7018525193950000020"
 		},					
 		
 	"OrderWithTwoProducts":
@@ -146,17 +146,11 @@
 			"NoramlSKUID": "014757D",
 			"PreOrderSKUID": "0484660D",
 			"BackOrderSKUID": "013234CPT"
-		}		
-	
-
-
-
-
-
-
-
-
-
-
-
-}
+		},
+		"PayPalDeatils":
+		{
+			"EmailID": "test@tumi.com",
+			"Password": "passw0rd"
+			
+		},		
+	}

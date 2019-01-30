@@ -126,7 +126,6 @@ public class Reports {
 	}
 
 	@BeforeClass(alwaysRun = true)
-
 	public static void launchBrowser() throws Exception {
 		getBrowser(GenericMethods.getProperty("tumi.browserName"));
 		maximizeBrowser();

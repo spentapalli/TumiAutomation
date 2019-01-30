@@ -40,7 +40,7 @@ public class CartPage extends GenericMethods {
 	
 	public WebElement getProceedToCheckout() {
 		
-		return proceedToCheckout;
+		return explicitWait(proceedToCheckout);
 		
 	}
 	
@@ -303,5 +303,10 @@ public class CartPage extends GenericMethods {
 	private WebElement MonogramApply;
 	public WebElement getMOnogramApply() {
 		return MonogramApply;
+	}
+	@FindBy(how=How.XPATH,using=("//div[@id='cart-summary-container']/div[2]/div/div[2]/div[2]/div[2]"))
+	private WebElement subTotalValue;
+	public WebElement getSubTotalValue() {
+		return subTotalValue;
 	}
 }

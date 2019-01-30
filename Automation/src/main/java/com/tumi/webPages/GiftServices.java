@@ -75,7 +75,7 @@ public class GiftServices extends GenericMethods {
 	private WebElement continueGiftService;
 	
 	public WebElement getContinueGiftService() {
-		return continueGiftService;
+		return explicitWait(continueGiftService);
 	}
 
 }
