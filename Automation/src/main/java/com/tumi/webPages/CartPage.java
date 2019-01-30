@@ -199,7 +199,7 @@ public class CartPage extends GenericMethods {
 	
 	public WebElement getApply() {
 		
-		return ApplyClick;
+		return explicitWait(ApplyClick);
 	}
 	
 	@FindBy(how=How.XPATH,using="//div[@id='globalMessages']")
