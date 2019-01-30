@@ -127,6 +127,50 @@ public class UIFunctions extends GenericMethods {
 		 */
 
 	}
+	
+	public static void addBackOrderProduct(String sheet, String testCase) {
+
+		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
+
+		final String pdpURL = GlobalConstants.url + "/p/" + testData.get("BackOrderSKUID");
+		driver.get(pdpURL);
+
+		// due to product search issue i am using above code to get the product.
+
+		/*
+		 * input(home.getSearchProduct(), testData.get("SKUID"), "Search Product");
+		 * keyEnter(home.getSearchProduct());
+		 * verifyAssertContains(driver.getCurrentUrl(), testData.get("SKUID"),
+		 * "Wrong Product is displayed"); try { if (pdp.getAddToCart().isDisplayed()) {
+		 * 
+		 * verifyAssertEquals("Add To Cart", getText(pdp.getAddToCart())); } } catch
+		 * (Exception e) { Assert.fail(testData.get("SKUID")
+		 * +" Product is not available"); }
+		 */
+
+	}
+	
+	public static void addPrekOrder(String sheet, String testCase) {
+
+		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
+
+		final String pdpURL = GlobalConstants.url + "/p/" + testData.get("PreOrderSKUID");
+		driver.get(pdpURL);
+
+		// due to product search issue i am using above code to get the product.
+
+		/*
+		 * input(home.getSearchProduct(), testData.get("SKUID"), "Search Product");
+		 * keyEnter(home.getSearchProduct());
+		 * verifyAssertContains(driver.getCurrentUrl(), testData.get("SKUID"),
+		 * "Wrong Product is displayed"); try { if (pdp.getAddToCart().isDisplayed()) {
+		 * 
+		 * verifyAssertEquals("Add To Cart", getText(pdp.getAddToCart())); } } catch
+		 * (Exception e) { Assert.fail(testData.get("SKUID")
+		 * +" Product is not available"); }
+		 */
+
+	}
 
 	public static void addMonogram(String sheet, String testCase) {
 
