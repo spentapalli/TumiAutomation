@@ -31,9 +31,10 @@ public class OrderWithGiftAndVocherCode extends GenericMethods {
 		UIFunctions.addGiftMessage("TumiTestData", "GuestOrders");
 		UIFunctions.addGiftBox();
 		click(gift.getContinueGiftService(), "Continue");
-		UIFunctions.addPromotionalCode("TumiTestData", "GuestOrders");
+		UIFunctions.addPromotionalCodeAtCart("TumiTestData", "GuestOrders");
 		click(mainCart.getProceedToCheckout(), "Proceed to Checkout");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
+		UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "GuestOrders");
 		UIFunctions.waitForContinueToEnable();
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		UIFunctions.addGuestDetails();

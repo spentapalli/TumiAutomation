@@ -295,11 +295,12 @@ public class UIFunctions extends GenericMethods {
 		captureOrderConfScreen("OrderConfirmation");
 	}
 
-	public static void addPromotionalCode(String sheet, String testCase) {
+	public static void addPromotionalCodeAtCart(String sheet, String testCase) {
 
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
 
 		input(mainCart.getPromocode(), testData.get("VoucherID"), "Vocher Id");
+		delay(2000);
 		click(mainCart.getApply(), "Check Promocode");
 
 		try {
@@ -327,6 +328,42 @@ public class UIFunctions extends GenericMethods {
 
 			Assert.fail("Vocher Card related Fields are not displayed " + e.getMessage());
 		}
+
+	}
+
+	public static void addPromotionalCodeAtSinglePage(String sheet, String testCase) {
+
+		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
+
+		input(singlePage.getPromocode(), testData.get("VoucherID"), "Vocher Id");
+		click(singlePage.getApply(), "Check Promocode");
+		//delay(2000);
+
+		/*try {
+			if (mainCart.getVocherCardFailed().isDisplayed()) {
+
+				Assert.fail(getText(mainCart.getVocherCardFailed()));
+
+			} else if (!mainCart.getCodeApplied().isDisplayed()) {
+
+				Assert.fail("Promo Code Remove link is not displayed");
+
+			} else if (!mainCart.getCodeRemove().isDisplayed()) {
+
+				Assert.fail("Promo Code Applied Message is not displayed");
+
+			} else if (!mainCart.getSubtotalCode().isDisplayed()) {
+
+				Assert.fail("Promo Code Subtotal is not displayed");
+
+			} else if (mainCart.getVocherCardFailed().isDisplayed()) {
+
+				Assert.fail(getText(mainCart.getVocherCardFailed()));
+			}
+		} catch (Exception e) {
+
+			Assert.fail("Vocher Card related Fields are not displayed " + e.getMessage());
+		}*/
 
 	}
 

@@ -29,10 +29,11 @@ public class OrderWithVochercode extends GenericMethods {
 		UIFunctions.addProductToCart("TumiTestData", "GuestOrders");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
-		UIFunctions.addPromotionalCode("TumiTestData", "GuestOrders");
+		//UIFunctions.addPromotionalCodeAtCart("TumiTestData", "GuestOrders");
 		click(mainCart.getProceedToCheckout(), "Proceed to Checkout");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
-		//UIFunctions.waitForContinueToEnable();
+		UIFunctions.addPromotionalCodeAtCart("TumiTestData", "GuestOrders");
+		UIFunctions.waitForContinueToEnable();
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
