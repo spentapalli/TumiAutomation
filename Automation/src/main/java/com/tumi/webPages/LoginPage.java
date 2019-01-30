@@ -122,7 +122,12 @@ public class LoginPage extends GenericMethods {
 		} else {
 			return closeWindow;
 		}
-
 	}
+	
+
+
+
 
 }
+
+

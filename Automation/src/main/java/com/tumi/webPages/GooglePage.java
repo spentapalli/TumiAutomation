@@ -145,5 +145,10 @@ public class GooglePage extends GenericMethods {
 	 * 
 	 * public WebElement getCancel() { return cancel; }
 	 */
+	
+	
 
 }
+
+
+

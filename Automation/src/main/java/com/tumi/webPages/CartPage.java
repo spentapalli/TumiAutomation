@@ -236,5 +236,72 @@ public class CartPage extends GenericMethods {
 		return subtotalCode;
 	}
 	
-	
+	//Korea-Cart 
+		//editcart--------------------------------
+		@FindBy(how=How.XPATH,using=("//div[@id='cart-items-container']/div/div[1]/div[1]/div[2]/div[6]/span[1]/span"))
+		private WebElement editProductsQuantity;
+		public WebElement geteditQuantity() {
+			return editProductsQuantity; 
+		}
+	//remove------------------------------------
+		@FindBy(how=How.XPATH,using=("//div[@id='cart-items-container']/div[2]/div[1]/div[1]/div[2]/div[6]/span[3]/a"))
+		private WebElement removeProductsQuantity;
+		public WebElement getremoveQuantity() {
+			return removeProductsQuantity;
+		}
+		//proceedtocheckout----------------------------
+	@FindBy(how=How.XPATH,using=("//div[@id='cart-summary-container']/div[2]/div[2]/div[1]/button"))
+	private WebElement proceedtoCart;
+	public WebElement getProceedtoCart() {
+		return  proceedtoCart;
+	}
+	//giftservices-----------------------------------
+	@FindBy(how=How.XPATH,using=("//div[@id='cart-items-container']/div[2]/div[1]/div[1]/div[2]/div[9]/div[2]/a"))
+	private WebElement Makegiftbox;
+	public WebElement getGiftbox() {
+		return Makegiftbox;
+	}
+	@FindBy(how=How.XPATH,using=("//input[@id='giftBox']"))
+	private WebElement GiftBoxservices;
+	public WebElement getGiftBoxservices() {
+		return GiftBoxservices;
+	}
+	@FindBy(how=How.XPATH,using=("//button[@id='giftCardApplyBtn']"))
+	private WebElement GiftBoxcontinueButton;
+	public WebElement GiftboxgetContinueButton() {
+		return  GiftBoxcontinueButton;
+	}
+
+	//Voucher
+	@FindBy(how=How.XPATH,using=("(//input[@name='voucherCode'])[2]"))
+	private WebElement VoucherID;
+	public WebElement getpromocode() {
+	return VoucherID;
+	}
+	@FindBy(how=How.XPATH,using=("(//button[@id='signupnewsletter'])[2]"))
+	private WebElement ApplyVoucher;
+	public WebElement getApplyvoucher() {
+		return ApplyVoucher;
+	}
+	//monogram
+	@FindBy(how=How.XPATH,using=("//a[@id='monogramming-popup-link']"))
+	private WebElement addMonogram;
+	public WebElement getMonogram() {
+		return addMonogram;
+	}
+	@FindBy(how=How.XPATH,using=("(//a[@title='monogram step 2'])[1]"))
+	private WebElement MonogramNextbutton;
+	public WebElement getNextbutton() {
+	return MonogramNextbutton;
+	}
+	@FindBy(how=How.XPATH,using=("(//a[@title='monogram step 3'])[1]"))
+	private WebElement MonogramnextStep;
+	public WebElement getMonogramnextStep() {
+		return MonogramnextStep;
+	}
+	@FindBy(how=How.XPATH,using=("//div[@id='monogram-step3']/div[3]/a[2]"))
+	private WebElement MonogramApply;
+	public WebElement getMOnogramApply() {
+		return MonogramApply;
+	}
 }
