@@ -32,8 +32,9 @@ public class BackOrderProdcut extends GenericMethods {
 		click(gift.getContinueGiftService(), "Continue");
 		//UIFunctions.addPromotionalCodeAtCart("TumiTestData", "BackOrderProduct");
 		click(mainCart.getProceedToCheckout(), "Proceed to Checkout");
-		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "BackOrderProduct");
+		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
+		
 		UIFunctions.waitForContinueToEnable();
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		UIFunctions.addGuestDetails();

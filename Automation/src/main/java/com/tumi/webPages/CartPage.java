@@ -195,13 +195,24 @@ public class CartPage extends GenericMethods {
 	public WebElement getPromocode() {
 		return  explicitWait(addPromocode);
 	}
-	@FindBy(how=How.XPATH,using="(//button[@id='signupnewsletter'])[2]")
+	//@FindBy(how=How.XPATH,using="(//button[@id='signupnewsletter'])[2]") // Wrong Xpath
+	@FindBy(how=How.XPATH,using="//button[contains(text(),'Apply')]")
 	private WebElement ApplyClick;
 	
 	public WebElement getApply() {
 		
 		return explicitWait(ApplyClick);
 	}
+	
+	@FindBy(how=How.XPATH,using="//button[contains(text(),'Apply')]/../../following-sibling::div")
+	private WebElement VocherMsg;
+	
+	public WebElement getVocherMsg() {
+		
+		return explicitWait(VocherMsg);
+	}
+	
+	
 	
 	@FindBy(how=How.XPATH,using="//div[@id='globalMessages']")
 	private WebElement vocherCardFailed;

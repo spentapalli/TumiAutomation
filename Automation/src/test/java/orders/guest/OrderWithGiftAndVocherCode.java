@@ -22,7 +22,7 @@ public class OrderWithGiftAndVocherCode extends GenericMethods {
 
 	@Test(description = "TA-110 Verify Order with merchandise Ready to ship + Gift Boxing + Gift\r\n"
 			+ "Message + Voucher/Promos for Guest User")
-	public void verifyOrderwithGistandVocherCode() throws Exception {
+	public void verifyOrderwithGiftandVocherCode() throws Exception {
 
 		UIFunctions.addProductToCart("TumiTestData", "GuestOrders");
 		click(pdp.getAddToCart(), "Add To Cart");
@@ -33,6 +33,7 @@ public class OrderWithGiftAndVocherCode extends GenericMethods {
 		click(gift.getContinueGiftService(), "Continue");
 		//UIFunctions.addPromotionalCodeAtCart("TumiTestData", "GuestOrders");
 		click(mainCart.getProceedToCheckout(), "Proceed to Checkout");
+		UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "BackOrderProduct");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "GuestOrders");
 		UIFunctions.waitForContinueToEnable();

@@ -18,11 +18,12 @@ import com.tumi.utilities.UIFunctions;
 				
 				UIFunctions.addProductToCart("TumiTestData", "PreOrderProduct");
 				click(pdp.getAddToCart(), "Add To Cart");
-				click(minicart.getProceedCheckOut(), "Proceed to Checkout");
+				click(minicart.getProceedCheckOut(), "Proceed to Cart");
 				//UIFunctions.addPromotionalCodeAtCart("TumiTestData", "PreOrderProduct");
 				click(mainCart.getProceedToCheckout(), "Proceed to Checkout");
-				input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 				UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "PreOrderProduct");
+				input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
+				
 				UIFunctions.waitForContinueToEnable();
 				click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 				UIFunctions.addGuestDetails();

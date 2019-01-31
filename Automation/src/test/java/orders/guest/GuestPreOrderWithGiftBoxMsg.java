@@ -24,14 +24,14 @@ public class GuestPreOrderWithGiftBoxMsg extends GenericMethods{
 	public void orderWithGiftBoxnMsgAsGuest() throws Exception {
 		UIFunctions.addProductToCart("TumiTestData", "PreOrderProduct");
 		click(pdp.getAddToCart(), "Add To Cart");
-		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
+		click(minicart.getProceedCheckOut(), "Proceed to Cart");
 		click(gift.getMakeThisGift(), "Make this Gift");
 		UIFunctions.addGiftMessage("TumiTestData", "PreOrderProduct");
 		UIFunctions.addGiftBox();
 		click(gift.getContinueGiftService(), "Continue");
 		click(mainCart.getProceedToCheckout(), "Proceed to Checkout");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
-		//UIFunctions.waitForContinueToEnable();
+		UIFunctions.waitForContinueToEnable();
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");

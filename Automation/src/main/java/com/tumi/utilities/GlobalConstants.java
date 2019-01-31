@@ -9,7 +9,7 @@ import com.tumi.reports.Reports;
 public class GlobalConstants extends Reports {
 	
 	
-	
+	public static final String countryName = "US";
 	// initiating driver
 
 	// Stage akamai Canada

@@ -1,0 +1,2429 @@
+
+<!DOCTYPE html>
+<html>
+
+
+<head>
+	<meta charset='UTF-8' /> 
+	<meta name='description' content='' />
+	<meta name='robots' content='noodp, noydir' />
+	<meta name='viewport' content='width=device-width, initial-scale=1' />
+	<meta id="timeStampFormat" name="timeStampFormat" content='MMM d, yyyy hh:mm:ss a'/>
+	
+	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600' rel='stylesheet' type='text/css' />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+		<link href='https://cdn.rawgit.com/anshooarora/extentreports-java/b4a58fcfd1e137bd9287244035a7c80d3d73b3af/dist/css/extent.css' type='text/css' rel='stylesheet' />
+	
+	<title>Extent Report</title>
+
+	<style type='text/css'>
+			
+            
+                
+            
+        
+	</style>
+</head>
+
+	<body class='extent standard default hide-overflow '>
+		<div id='theme-selector' alt='Click to toggle theme. To enable by default, use theme configuration.' title='Click to toggle theme. To enable by default, use theme configuration.'>
+			<span><i class='material-icons'>desktop_windows</i></span>
+		</div>
+
+<nav>
+	<div class="nav-wrapper">
+		<a href="#!" class="brand-logo blue darken-3">Extent</a>
+
+		<!-- slideout menu -->
+		<ul id='slide-out' class='side-nav fixed hide-on-med-and-down'>
+			<li class='waves-effect active'><a href='#!' view='test-view' onclick="configureView(0);chartsView('test');"><i class='material-icons'>dashboard</i></a></li>
+						<li class='waves-effect'><a href='#!' view='exception-view' onclick="configureView(2)"><i class='material-icons'>bug_report</i></a></li>
+			<li class='waves-effect'><a href='#!' onclick="configureView(-1);chartsView('dashboard');" view='dashboard-view'><i class='material-icons'>track_changes</i></i></a></li>
+		</ul>
+
+		<!-- report name -->
+		<span class='report-name'>Functional Test Report</span>
+		
+		<!-- report headline -->
+		<span class='report-headline'></span>
+
+		<!-- nav-right -->
+		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
+			<li>
+                <a href='#!'>
+                    <span class='label suite-start-time blue darken-3'>Jan 31, 2019 11:35:27 PM</span>
+				</a>
+			</li>
+			<li>
+                <a href='#!'>
+                    <span class='label blue darken-3'>3.1.5</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+		<!-- container -->
+		<div class='container'>
+
+<div id='test-view' class='view'>
+				
+	<section id='controls'>
+		<div class='controls grey lighten-4'>
+			<!-- test toggle -->
+			<div class='chip transparent'>
+				<a class='dropdown-button tests-toggle' data-activates='tests-toggle' data-constrainwidth='true' data-beloworigin='true' data-hover='true' href='#'>
+					<i class='material-icons'>warning</i> Status
+				</a>
+				<ul id='tests-toggle' class='dropdown-content'>
+											<li status='pass'><a href='#!'>Pass <i class='material-icons green-text'>check_circle</i></a></li>
+						<li status='fail'><a href='#!'>Fail <i class='material-icons red-text'>cancel</i></a></li>
+					<li class='divider'></li>
+					<li status='clear' clear='true'><a href='#!'>Clear Filters <i class='material-icons'>clear</i></a></li>
+				</ul>
+			</div>
+			<!-- test toggle -->
+
+			<!-- category toggle -->
+			<!-- category toggle -->
+
+			<!-- clear filters -->
+			<div class='chip transparent hide'>
+				<a class='' id='clear-filters' alt='Clear Filters' title='Clear Filters'>
+					<i class='material-icons'>close</i> Clear
+				</a>
+			</div>
+			<!-- clear filters -->
+
+			<!-- enable dashboard -->
+			<div id='toggle-test-view-charts' class='chip transparent'>
+				<a class='pink-text' id='enable-dashboard' alt='Enable Dashboard' title='Enable Dashboard'>
+					<i class='material-icons'>track_changes</i> Dashboard
+				</a>
+			</div>
+			<!-- enable dashboard -->
+
+			<!-- search -->
+			<div class='chip transparent' alt='Search Tests' title='Search Tests'>
+				<a href="#" class='search-div'>
+					<i class='material-icons'>search</i> Search
+				</a>
+
+				<div class='input-field left hide'>
+					<input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
+				</div>
+				
+			</div>
+			<!-- search -->
+		</div>
+	</section>
+
+
+<div id='test-view-charts' class='subview-full'>
+	<div id='charts-row' class='row nm-v nm-h'>
+		<div class='col s12 m6 l6 np-h'>
+			<div class='card-panel nm-v'>
+				<div class='left panel-name'>Tests</div>
+				<div class='chart-box'>
+					<canvas id='parent-analysis' width='100' height='80'></canvas>
+				</div>
+				<div class='block text-small'>
+					<span class='tooltipped' data-position='top' data-tooltip='93.548%'><span class='strong'>29</span> test(s) passed</span>
+				</div>
+				<div class='block text-small'>
+					<span class='strong tooltipped' data-position='top' data-tooltip='6.452%'>2</span> test(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+				</div>
+			</div>
+		</div>
+		
+		<div class='col s12 m6 l6 np-h'>
+			<div class='card-panel nm-v'>
+				<div class='left panel-name'>Steps</div>
+				<div class='chart-box'>
+					<canvas id='child-analysis' width='100' height='80'></canvas>
+				</div>
+				<div class='block text-small'>
+					<span class='tooltipped' data-position='top' data-tooltip='3.462%'><span class='strong'>9</span> step(s) passed</span>
+				</div>
+				<div class='block text-small'>
+					<span class='strong tooltipped' data-position='top' data-tooltip='3.077%'>8</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='93.462%'>243</span> others
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</div>
+
+	<div class='subview-left left'>
+		
+		<div class='view-summary'>
+			<h5>Tests</h5>
+			<ul id='test-collection' class='test-collection'>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='1'>
+					<div class='test-heading'>
+						<span class='test-name'>verifyOrderwithBackOrderProduct</span>
+						<span class='test-time'>Jan 31, 2019 11:36:15 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Jan 31, 2019 11:36:15 PM</span>
+	<span class='label end-time'>Jan 31, 2019 11:39:20 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 3m 5s+633ms</span>
+</div>
+	<div class='test-desc'>orders.guest.BackOrderProdcut </div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:36:37 PM</td>
+					<td class='step-details'>Clicked on Add to cart</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:37:00 PM</td>
+					<td class='step-details'>Clicked on Proceed to Checkout</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:37:05 PM</td>
+					<td class='step-details'>Clicked on Make this Gift</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:37:06 PM</td>
+					<td class='step-details'>Successfully Clicked on Check Message</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:37:07 PM</td>
+					<td class='step-details'>Entered the value in Recipients name as: Test</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:37:08 PM</td>
+					<td class='step-details'>Entered the value in Sender name as: User</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:37:08 PM</td>
+					<td class='step-details'>Entered the value in Message as: Hello Tumi</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:37:08 PM</td>
+					<td class='step-details'>Clicked on Premium GiftBox</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:37:25 PM</td>
+					<td class='step-details'>Clicked on Continue</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:37:48 PM</td>
+					<td class='step-details'>Clicked on Proceed to Checkout</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:37:53 PM</td>
+					<td class='step-details'>Entered the value in Vocher Id as: T30-D5L6-E4LR-WEDL</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:37:53 PM</td>
+					<td class='step-details'>Clicked on Check Promocode</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:37:55 PM</td>
+					<td class='step-details'>Entered the value in Email ID as: skomma@coredatalabs.com</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:38:17 PM</td>
+					<td class='step-details'>Clicked on Contiue as Guest</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:38:21 PM</td>
+					<td class='step-details'>Entered the value in First Name as: Test</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:38:21 PM</td>
+					<td class='step-details'>Entered the value in Last Name as: TumiLast</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:38:22 PM</td>
+					<td class='step-details'>Entered the value in Address Line1 as: 10 Sumac Way</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:38:24 PM</td>
+					<td class='step-details'>Clicked on Address Line1</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:38:25 PM</td>
+					<td class='step-details'>Entered the value in Phone Number as: 12345678901</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:38:25 PM</td>
+					<td class='step-details'>Clicked on Contiue Shipping</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:38:29 PM</td>
+					<td class='step-details'>Clicked on Proceed to Payment</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:38:37 PM</td>
+					<td class='step-details'>Entered the value in Name on Card as: test</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:38:37 PM</td>
+					<td class='step-details'>Entered the value in Card Number as: 4111111111111111</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:38:37 PM</td>
+					<td class='step-details'>Selected 05 from Expiry Month</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:38:37 PM</td>
+					<td class='step-details'>Selected 2020 from Expiry Year</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:38:38 PM</td>
+					<td class='step-details'>Entered the value in Cvv Number as: 123</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:38:38 PM</td>
+					<td class='step-details'>Entered the value in Email ID as: skomma@coredatalabs.com</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:38:38 PM</td>
+					<td class='step-details'>Entered the value in Phone number as: 12345678901</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:38:38 PM</td>
+					<td class='step-details'>Clicked on Review your order</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:38:42 PM</td>
+					<td class='step-details'>Clicked on Place Order</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:39:20 PM</td>
+					<td class='step-details'>Thank you for Your Order, here is your Order Number 01348119.</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:39:20 PM</td>
+					<td class='step-details'>Reference<img data-featherlight='C:\Users\Suuresh\Documents\TumiAutomation\Automation/ScreenShots/OrderConfirmation1548958160287.png' width='10%' src='C:\Users\Suuresh\Documents\TumiAutomation\Automation/ScreenShots/OrderConfirmation1548958160287.png' data-src='C:\Users\Suuresh\Documents\TumiAutomation\Automation/ScreenShots/OrderConfirmation1548958160287.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:39:20 PM</td>
+					<td class='step-details'>Test Method : verifyOrderwithBackOrderProductis Passed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='2'>
+					<div class='test-heading'>
+						<span class='test-name'>orderWithGiftBox</span>
+						<span class='test-time'>Jan 31, 2019 11:39:57 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Jan 31, 2019 11:39:57 PM</span>
+	<span class='label end-time'>Jan 31, 2019 11:42:55 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 2m 57s+700ms</span>
+</div>
+	<div class='test-desc'>orders.guest.BackOrderWithGiftBox </div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:40:26 PM</td>
+					<td class='step-details'>Clicked on Add to cart</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:40:43 PM</td>
+					<td class='step-details'>Clicked on Proceed to Checkout</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:40:48 PM</td>
+					<td class='step-details'>Clicked on Make this Gift</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:40:49 PM</td>
+					<td class='step-details'>Clicked on Premium GiftBox</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:41:03 PM</td>
+					<td class='step-details'>Clicked on Continue</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:41:26 PM</td>
+					<td class='step-details'>Clicked on Proceed to Checkout</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:41:32 PM</td>
+					<td class='step-details'>Entered the value in Email ID as: skomma@coredatalabs.com</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:41:54 PM</td>
+					<td class='step-details'>Clicked on Contiue as Guest</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:41:57 PM</td>
+					<td class='step-details'>Entered the value in First Name as: Test</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:41:57 PM</td>
+					<td class='step-details'>Entered the value in Last Name as: TumiLast</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:41:57 PM</td>
+					<td class='step-details'>Entered the value in Address Line1 as: 10 Sumac Way</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:41:59 PM</td>
+					<td class='step-details'>Clicked on Address Line1</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:42:01 PM</td>
+					<td class='step-details'>Entered the value in Phone Number as: 12345678901</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:42:01 PM</td>
+					<td class='step-details'>Clicked on Contiue Shipping</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:42:03 PM</td>
+					<td class='step-details'>Clicked on Proceed to Payment</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:42:10 PM</td>
+					<td class='step-details'>Entered the value in Name on Card as: test</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:42:10 PM</td>
+					<td class='step-details'>Entered the value in Card Number as: 4111111111111111</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:42:10 PM</td>
+					<td class='step-details'>Selected 05 from Expiry Month</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:42:10 PM</td>
+					<td class='step-details'>Selected 2020 from Expiry Year</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:42:11 PM</td>
+					<td class='step-details'>Entered the value in Cvv Number as: 123</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:42:11 PM</td>
+					<td class='step-details'>Entered the value in Email ID as: skomma@coredatalabs.com</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:42:11 PM</td>
+					<td class='step-details'>Entered the value in Phone number as: 12345678901</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:42:12 PM</td>
+					<td class='step-details'>Clicked on Review your order</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:42:15 PM</td>
+					<td class='step-details'>Clicked on Place Order</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:42:55 PM</td>
+					<td class='step-details'>Thank you for Your Order, here is your Order Number 01347123.</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:42:55 PM</td>
+					<td class='step-details'>Reference<img data-featherlight='C:\Users\Suuresh\Documents\TumiAutomation\Automation/ScreenShots/OrderConfirmation1548958375319.png' width='10%' src='C:\Users\Suuresh\Documents\TumiAutomation\Automation/ScreenShots/OrderConfirmation1548958375319.png' data-src='C:\Users\Suuresh\Documents\TumiAutomation\Automation/ScreenShots/OrderConfirmation1548958375319.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:42:55 PM</td>
+					<td class='step-details'>Test Method : orderWithGiftBoxis Passed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='3'>
+					<div class='test-heading'>
+						<span class='test-name'>orderWithAsGuest</span>
+						<span class='test-time'>Jan 31, 2019 11:43:41 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Jan 31, 2019 11:43:41 PM</span>
+	<span class='label end-time'>Jan 31, 2019 11:46:40 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 2m 58s+340ms</span>
+</div>
+	<div class='test-desc'>orders.guest.BackorderWithGiftServices </div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:44:11 PM</td>
+					<td class='step-details'>Clicked on Add to cart</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:44:25 PM</td>
+					<td class='step-details'>Clicked on Proceed to Checkout</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:44:30 PM</td>
+					<td class='step-details'>Clicked on Make this Gift</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:44:31 PM</td>
+					<td class='step-details'>Successfully Clicked on Check Message</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:44:32 PM</td>
+					<td class='step-details'>Entered the value in Recipients name as: Test</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:44:33 PM</td>
+					<td class='step-details'>Entered the value in Sender name as: User</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:44:33 PM</td>
+					<td class='step-details'>Entered the value in Message as: Hello Tumi</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:44:33 PM</td>
+					<td class='step-details'>Clicked on Premium GiftBox</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:44:47 PM</td>
+					<td class='step-details'>Clicked on Continue</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:45:08 PM</td>
+					<td class='step-details'>Clicked on Proceed to Checkout</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:45:14 PM</td>
+					<td class='step-details'>Entered the value in Email ID as: skomma@coredatalabs.com</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:45:36 PM</td>
+					<td class='step-details'>Clicked on Contiue as Guest</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:45:39 PM</td>
+					<td class='step-details'>Entered the value in First Name as: Test</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:45:39 PM</td>
+					<td class='step-details'>Entered the value in Last Name as: TumiLast</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:45:40 PM</td>
+					<td class='step-details'>Entered the value in Address Line1 as: 10 Sumac Way</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:45:42 PM</td>
+					<td class='step-details'>Clicked on Address Line1</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:45:43 PM</td>
+					<td class='step-details'>Entered the value in Phone Number as: 12345678901</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:45:43 PM</td>
+					<td class='step-details'>Clicked on Contiue Shipping</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:45:49 PM</td>
+					<td class='step-details'>Clicked on Proceed to Payment</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:45:54 PM</td>
+					<td class='step-details'>Entered the value in Name on Card as: test</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:45:54 PM</td>
+					<td class='step-details'>Entered the value in Card Number as: 4111111111111111</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:45:54 PM</td>
+					<td class='step-details'>Selected 05 from Expiry Month</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:45:55 PM</td>
+					<td class='step-details'>Selected 2020 from Expiry Year</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:45:55 PM</td>
+					<td class='step-details'>Entered the value in Cvv Number as: 123</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:45:55 PM</td>
+					<td class='step-details'>Entered the value in Email ID as: skomma@coredatalabs.com</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:45:56 PM</td>
+					<td class='step-details'>Entered the value in Phone number as: 12345678901</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:45:56 PM</td>
+					<td class='step-details'>Clicked on Review your order</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:45:59 PM</td>
+					<td class='step-details'>Clicked on Place Order</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:46:39 PM</td>
+					<td class='step-details'>Thank you for Your Order, here is your Order Number 01348121.</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:46:40 PM</td>
+					<td class='step-details'>Reference<img data-featherlight='C:\Users\Suuresh\Documents\TumiAutomation\Automation/ScreenShots/OrderConfirmation1548958599672.png' width='10%' src='C:\Users\Suuresh\Documents\TumiAutomation\Automation/ScreenShots/OrderConfirmation1548958599672.png' data-src='C:\Users\Suuresh\Documents\TumiAutomation\Automation/ScreenShots/OrderConfirmation1548958599672.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:46:40 PM</td>
+					<td class='step-details'>Test Method : orderWithAsGuestis Passed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='4'>
+					<div class='test-heading'>
+						<span class='test-name'>orderWithMonogramAsGuest</span>
+						<span class='test-time'>Jan 31, 2019 11:47:29 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Jan 31, 2019 11:47:29 PM</span>
+	<span class='label end-time'>Jan 31, 2019 11:50:28 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 2m 59s+263ms</span>
+</div>
+	<div class='test-desc'>orders.guest.BackorderWithMonogram </div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:47:55 PM</td>
+					<td class='step-details'>Clicked on Add Personalization</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:47:57 PM</td>
+					<td class='step-details'>Entered the value in First Mono Input as: 1</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:47:57 PM</td>
+					<td class='step-details'>Entered the value in Second Mono Input as: 2</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:47:57 PM</td>
+					<td class='step-details'>Entered the value in Third Mono Input as: 3</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:47:57 PM</td>
+					<td class='step-details'>Clicked on Next</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:47:58 PM</td>
+					<td class='step-details'>Clicked on Serif as Bold</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:48:00 PM</td>
+					<td class='step-details'>Clicked on Color</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:48:01 PM</td>
+					<td class='step-details'>Clicked on Apply</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:48:07 PM</td>
+					<td class='step-details'>Clicked on Add to cart</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:48:27 PM</td>
+					<td class='step-details'>Clicked on Proceed to Checkout</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:48:55 PM</td>
+					<td class='step-details'>Clicked on Proceed to Checkout</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:49:00 PM</td>
+					<td class='step-details'>Entered the value in Email ID as: skomma@coredatalabs.com</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:49:23 PM</td>
+					<td class='step-details'>Clicked on Contiue as Guest</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:49:27 PM</td>
+					<td class='step-details'>Entered the value in First Name as: Test</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:49:27 PM</td>
+					<td class='step-details'>Entered the value in Last Name as: TumiLast</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:49:28 PM</td>
+					<td class='step-details'>Entered the value in Address Line1 as: 10 Sumac Way</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:49:30 PM</td>
+					<td class='step-details'>Clicked on Address Line1</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:49:32 PM</td>
+					<td class='step-details'>Entered the value in Phone Number as: 12345678901</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:49:32 PM</td>
+					<td class='step-details'>Clicked on Contiue Shipping</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:49:35 PM</td>
+					<td class='step-details'>Clicked on Proceed to Payment</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:49:40 PM</td>
+					<td class='step-details'>Entered the value in Name on Card as: test</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:49:40 PM</td>
+					<td class='step-details'>Entered the value in Card Number as: 4111111111111111</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:49:40 PM</td>
+					<td class='step-details'>Selected 05 from Expiry Month</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:49:41 PM</td>
+					<td class='step-details'>Selected 2020 from Expiry Year</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:49:41 PM</td>
+					<td class='step-details'>Entered the value in Cvv Number as: 123</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:49:41 PM</td>
+					<td class='step-details'>Entered the value in Email ID as: skomma@coredatalabs.com</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:49:42 PM</td>
+					<td class='step-details'>Entered the value in Phone number as: 12345678901</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:49:42 PM</td>
+					<td class='step-details'>Clicked on Review your order</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:49:46 PM</td>
+					<td class='step-details'>Clicked on Place Order</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:50:28 PM</td>
+					<td class='step-details'>Thank you for Your Order, here is your Order Number 01347125.</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:50:28 PM</td>
+					<td class='step-details'>Reference<img data-featherlight='C:\Users\Suuresh\Documents\TumiAutomation\Automation/ScreenShots/OrderConfirmation1548958828376.png' width='10%' src='C:\Users\Suuresh\Documents\TumiAutomation\Automation/ScreenShots/OrderConfirmation1548958828376.png' data-src='C:\Users\Suuresh\Documents\TumiAutomation\Automation/ScreenShots/OrderConfirmation1548958828376.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:50:28 PM</td>
+					<td class='step-details'>Test Method : orderWithMonogramAsGuestis Passed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='5'>
+					<div class='test-heading'>
+						<span class='test-name'>orderWithAsGuest</span>
+						<span class='test-time'>Jan 31, 2019 11:51:13 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Jan 31, 2019 11:51:13 PM</span>
+	<span class='label end-time'>Jan 31, 2019 11:53:58 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 2m 45s+414ms</span>
+</div>
+	<div class='test-desc'>orders.guest.BackorderWithVoucher </div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:51:38 PM</td>
+					<td class='step-details'>Clicked on Add to cart</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:51:59 PM</td>
+					<td class='step-details'>Clicked on Proceed to Checkout</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:52:25 PM</td>
+					<td class='step-details'>Clicked on Proceed to Checkout</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:52:30 PM</td>
+					<td class='step-details'>Entered the value in Vocher Id as: T30-D5L6-E4LR-WEDL</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:52:30 PM</td>
+					<td class='step-details'>Clicked on Check Promocode</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:52:32 PM</td>
+					<td class='step-details'>Entered the value in Email ID as: skomma@coredatalabs.com</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:52:54 PM</td>
+					<td class='step-details'>Clicked on Contiue as Guest</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:52:58 PM</td>
+					<td class='step-details'>Entered the value in First Name as: Test</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:52:58 PM</td>
+					<td class='step-details'>Entered the value in Last Name as: TumiLast</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:52:59 PM</td>
+					<td class='step-details'>Entered the value in Address Line1 as: 10 Sumac Way</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:53:01 PM</td>
+					<td class='step-details'>Clicked on Address Line1</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:53:03 PM</td>
+					<td class='step-details'>Entered the value in Phone Number as: 12345678901</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:53:03 PM</td>
+					<td class='step-details'>Clicked on Contiue Shipping</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:53:05 PM</td>
+					<td class='step-details'>Clicked on Proceed to Payment</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:53:11 PM</td>
+					<td class='step-details'>Entered the value in Name on Card as: test</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:53:11 PM</td>
+					<td class='step-details'>Entered the value in Card Number as: 4111111111111111</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:53:11 PM</td>
+					<td class='step-details'>Selected 05 from Expiry Month</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:53:11 PM</td>
+					<td class='step-details'>Selected 2020 from Expiry Year</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:53:12 PM</td>
+					<td class='step-details'>Entered the value in Cvv Number as: 123</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:53:12 PM</td>
+					<td class='step-details'>Entered the value in Email ID as: skomma@coredatalabs.com</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:53:13 PM</td>
+					<td class='step-details'>Entered the value in Phone number as: 12345678901</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:53:13 PM</td>
+					<td class='step-details'>Clicked on Review your order</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:53:16 PM</td>
+					<td class='step-details'>Clicked on Place Order</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:53:58 PM</td>
+					<td class='step-details'>Thank you for Your Order, here is your Order Number 01347127.</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:53:58 PM</td>
+					<td class='step-details'>Reference<img data-featherlight='C:\Users\Suuresh\Documents\TumiAutomation\Automation/ScreenShots/OrderConfirmation1548959038647.png' width='10%' src='C:\Users\Suuresh\Documents\TumiAutomation\Automation/ScreenShots/OrderConfirmation1548959038647.png' data-src='C:\Users\Suuresh\Documents\TumiAutomation\Automation/ScreenShots/OrderConfirmation1548959038647.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:53:58 PM</td>
+					<td class='step-details'>Test Method : orderWithAsGuestis Passed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='6'>
+					<div class='test-heading'>
+						<span class='test-name'>orderWithAsGuest</span>
+						<span class='test-time'>Jan 31, 2019 11:55:52 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Jan 31, 2019 11:55:52 PM</span>
+	<span class='label end-time'>Jan 31, 2019 11:58:21 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 2m 29s+641ms</span>
+</div>
+	<div class='test-desc'>orders.guest.DonationPurchaseOrder </div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:56:25 PM</td>
+					<td class='step-details'>Clicked on Add to cart</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:56:52 PM</td>
+					<td class='step-details'>Clicked on Proceed to Checkout</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:57:15 PM</td>
+					<td class='step-details'>Clicked on Proceed to Checkout</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:57:22 PM</td>
+					<td class='step-details'>Entered the value in Email ID as: skomma@coredatalabs.com</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:57:44 PM</td>
+					<td class='step-details'>Clicked on Contiue as Guest</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:57:48 PM</td>
+					<td class='step-details'>Entered the value in First Name as: Test</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:57:48 PM</td>
+					<td class='step-details'>Entered the value in Last Name as: TumiLast</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:57:49 PM</td>
+					<td class='step-details'>Entered the value in Address Line1 as: 10 Sumac Way</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:57:51 PM</td>
+					<td class='step-details'>Clicked on Address Line1</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:57:52 PM</td>
+					<td class='step-details'>Entered the value in Phone Number as: 12345678901</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:57:52 PM</td>
+					<td class='step-details'>Clicked on Contiue Shipping</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:57:58 PM</td>
+					<td class='step-details'>Clicked on Proceed to Payment</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:58:04 PM</td>
+					<td class='step-details'>Entered the value in Name on Card as: test</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:58:05 PM</td>
+					<td class='step-details'>Entered the value in Card Number as: 4111111111111111</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:58:05 PM</td>
+					<td class='step-details'>Selected 05 from Expiry Month</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:58:05 PM</td>
+					<td class='step-details'>Selected 2020 from Expiry Year</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:58:05 PM</td>
+					<td class='step-details'>Entered the value in Cvv Number as: 123</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:58:06 PM</td>
+					<td class='step-details'>Entered the value in Email ID as: skomma@coredatalabs.com</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:58:06 PM</td>
+					<td class='step-details'>Entered the value in Phone number as: 12345678901</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:58:06 PM</td>
+					<td class='step-details'>Clicked on Review your order</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:58:09 PM</td>
+					<td class='step-details'>Clicked on Place Order</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:58:21 PM</td>
+					<td class='step-details'>Thank you for Your Order, here is your Order Number 01348123.</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:58:21 PM</td>
+					<td class='step-details'>Reference<img data-featherlight='C:\Users\Suuresh\Documents\TumiAutomation\Automation/ScreenShots/OrderConfirmation1548959301373.png' width='10%' src='C:\Users\Suuresh\Documents\TumiAutomation\Automation/ScreenShots/OrderConfirmation1548959301373.png' data-src='C:\Users\Suuresh\Documents\TumiAutomation\Automation/ScreenShots/OrderConfirmation1548959301373.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>11:58:21 PM</td>
+					<td class='step-details'>Test Method : orderWithAsGuestis Passed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  fail' status='fail' bdd='false' test-id='7'>
+					<div class='test-heading'>
+						<span class='test-name'>testFailedOrder</span>
+						<span class='test-time'>Jan 31, 2019 11:59:10 PM</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Jan 31, 2019 11:59:10 PM</span>
+	<span class='label end-time'>Feb 1, 2019 12:00:10 AM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 1m 0s+19ms</span>
+</div>
+	<div class='test-desc'>orders.guest.FailedOrder </div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:59:12 PM</td>
+					<td class='step-details'>Entered the value in Search Product as: 014757D</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>11:59:45 PM</td>
+					<td class='step-details'>Clicked on Add To Cart</td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>12:00:09 AM</td>
+					<td class='step-details'>Button is not enabled Proceed to Checkout</td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>12:00:10 AM</td>
+					<td class='step-details'><span class='label white-text red'>testFailedOrder Test Case Failed</span></td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>12:00:10 AM</td>
+					<td class='step-details'><pre>java.lang.AssertionError: Proceed to Checkout is not Enabled or Unable to interact at this point
+	at org.testng.Assert.fail(Assert.java:96)
+	at com.tumi.utilities.GenericMethods.click(GenericMethods.java:78)
+	at orders.guest.FailedOrder.testFailedOrder(FailedOrder.java:39)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:580)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:716)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:988)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>12:00:10 AM</td>
+					<td class='step-details'>Screen Shot Reference:<img data-featherlight='C:\Users\Suuresh\Documents\TumiAutomation\Automation/Screenshots/testFailedOrder1548959409763.png' width='10%' src='C:\Users\Suuresh\Documents\TumiAutomation\Automation/Screenshots/testFailedOrder1548959409763.png' data-src='C:\Users\Suuresh\Documents\TumiAutomation\Automation/Screenshots/testFailedOrder1548959409763.png'></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  fail' status='fail' bdd='false' test-id='8'>
+					<div class='test-heading'>
+						<span class='test-name'>testFailedOrder</span>
+						<span class='test-time'>Feb 1, 2019 12:00:54 AM</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Feb 1, 2019 12:00:54 AM</span>
+	<span class='label end-time'>Feb 1, 2019 12:02:09 AM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 1m 15s+186ms</span>
+</div>
+	<div class='test-desc'>orders.guest.FailedOrderJson </div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:00:56 AM</td>
+					<td class='step-details'>Entered the value in Search Product as: 014757D</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:01:44 AM</td>
+					<td class='step-details'>Clicked on Add To Cart</td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>12:02:08 AM</td>
+					<td class='step-details'>Button is not enabled Proceed to Checkout</td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>12:02:09 AM</td>
+					<td class='step-details'><span class='label white-text red'>testFailedOrder Test Case Failed</span></td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>12:02:09 AM</td>
+					<td class='step-details'><pre>java.lang.AssertionError: Proceed to Checkout is not Enabled or Unable to interact at this point
+	at org.testng.Assert.fail(Assert.java:96)
+	at com.tumi.utilities.GenericMethods.click(GenericMethods.java:78)
+	at orders.guest.FailedOrderJson.testFailedOrder(FailedOrderJson.java:42)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:580)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:716)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:988)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>12:02:09 AM</td>
+					<td class='step-details'>Screen Shot Reference:<img data-featherlight='C:\Users\Suuresh\Documents\TumiAutomation\Automation/Screenshots/testFailedOrder1548959528892.png' width='10%' src='C:\Users\Suuresh\Documents\TumiAutomation\Automation/Screenshots/testFailedOrder1548959528892.png' data-src='C:\Users\Suuresh\Documents\TumiAutomation\Automation/Screenshots/testFailedOrder1548959528892.png'></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='9'>
+					<div class='test-heading'>
+						<span class='test-name'>orderWithAsGuest</span>
+						<span class='test-time'>Feb 1, 2019 12:02:52 AM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Feb 1, 2019 12:02:52 AM</span>
+	<span class='label end-time'>Feb 1, 2019 12:05:06 AM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 2m 14s+667ms</span>
+</div>
+	<div class='test-desc'>orders.guest.GlobalLocatororder </div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:03:16 AM</td>
+					<td class='step-details'>Clicked on Add to cart</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:03:37 AM</td>
+					<td class='step-details'>Clicked on Proceed to Cart</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:03:55 AM</td>
+					<td class='step-details'>Clicked on Proceed to Checkout</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:04:02 AM</td>
+					<td class='step-details'>Entered the value in Email ID as: skomma@coredatalabs.com</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:04:24 AM</td>
+					<td class='step-details'>Clicked on Contiue as Guest</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:04:27 AM</td>
+					<td class='step-details'>Entered the value in First Name as: Test</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:04:27 AM</td>
+					<td class='step-details'>Entered the value in Last Name as: TumiLast</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:04:27 AM</td>
+					<td class='step-details'>Entered the value in Address Line1 as: 10 Sumac Way</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:04:29 AM</td>
+					<td class='step-details'>Clicked on Address Line1</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:04:31 AM</td>
+					<td class='step-details'>Entered the value in Phone Number as: 12345678901</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:04:31 AM</td>
+					<td class='step-details'>Clicked on Contiue Shipping</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:04:33 AM</td>
+					<td class='step-details'>Clicked on Proceed to Payment</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:04:41 AM</td>
+					<td class='step-details'>Entered the value in Name on Card as: test</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:04:41 AM</td>
+					<td class='step-details'>Entered the value in Card Number as: 4111111111111111</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:04:41 AM</td>
+					<td class='step-details'>Selected 05 from Expiry Month</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:04:42 AM</td>
+					<td class='step-details'>Selected 2020 from Expiry Year</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:04:42 AM</td>
+					<td class='step-details'>Entered the value in Cvv Number as: 123</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:04:42 AM</td>
+					<td class='step-details'>Entered the value in Email ID as: skomma@coredatalabs.com</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:04:43 AM</td>
+					<td class='step-details'>Entered the value in Phone number as: 12345678901</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:04:43 AM</td>
+					<td class='step-details'>Clicked on Review your order</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:04:50 AM</td>
+					<td class='step-details'>Clicked on Place Order</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:05:06 AM</td>
+					<td class='step-details'>Thank you for Your Order, here is your Order Number 01347130.</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:05:06 AM</td>
+					<td class='step-details'>Reference<img data-featherlight='C:\Users\Suuresh\Documents\TumiAutomation\Automation/ScreenShots/OrderConfirmation1548959706337.png' width='10%' src='C:\Users\Suuresh\Documents\TumiAutomation\Automation/ScreenShots/OrderConfirmation1548959706337.png' data-src='C:\Users\Suuresh\Documents\TumiAutomation\Automation/ScreenShots/OrderConfirmation1548959706337.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>12:05:06 AM</td>
+					<td class='step-details'>Test Method : orderWithAsGuestis Passed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='10'>
+					<div class='test-heading'>
+						<span class='test-name'>tumiOrderAsGuest</span>
+						<span class='test-time'>Feb 1, 2019 12:05:51 AM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Feb 1, 2019 12:05:51 AM</span>
+	<span class='label end-time'>Feb 1, 2019 12:09:34 AM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 3m 42s+523ms</span>
+</div>
+	<div class='test-desc'>orders.guest.GuestOrder </div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:08:12 AM</td>
+					<td class='step-details'>Clicked on Add to cart</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:08:23 AM</td>
+					<td class='step-details'>Clicked on Proceed to Checkout</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:08:36 AM</td>
+					<td class='step-details'>Clicked on Proceed to Checkout</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:08:41 AM</td>
+					<td class='step-details'>Entered the value in Email ID as: skomma@coredatalabs.com</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:09:03 AM</td>
+					<td class='step-details'>Clicked on Contiue as Guest</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:09:06 AM</td>
+					<td class='step-details'>Entered the value in First Name as: Test</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:09:06 AM</td>
+					<td class='step-details'>Entered the value in Last Name as: TumiLast</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:09:06 AM</td>
+					<td class='step-details'>Entered the value in Address Line1 as: 10 Sumac Way</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:09:08 AM</td>
+					<td class='step-details'>Clicked on Address Line1</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:09:10 AM</td>
+					<td class='step-details'>Entered the value in Phone Number as: 12345678901</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:09:10 AM</td>
+					<td class='step-details'>Clicked on Contiue Shipping</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:09:12 AM</td>
+					<td class='step-details'>Clicked on Proceed to Payment</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:09:17 AM</td>
+					<td class='step-details'>Entered the value in Name on Card as: test</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:09:17 AM</td>
+					<td class='step-details'>Entered the value in Card Number as: 4111111111111111</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:09:17 AM</td>
+					<td class='step-details'>Selected 05 from Expiry Month</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:09:18 AM</td>
+					<td class='step-details'>Selected 2020 from Expiry Year</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:09:18 AM</td>
+					<td class='step-details'>Entered the value in Cvv Number as: 123</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:09:18 AM</td>
+					<td class='step-details'>Entered the value in Email ID as: skomma@coredatalabs.com</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:09:19 AM</td>
+					<td class='step-details'>Entered the value in Phone number as: 12345678901</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:09:19 AM</td>
+					<td class='step-details'>Clicked on Review your order</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:09:22 AM</td>
+					<td class='step-details'>Clicked on Place Order</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:09:33 AM</td>
+					<td class='step-details'>Thank you for Your Order, here is your Order Number 01348126.</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:09:34 AM</td>
+					<td class='step-details'>Reference<img data-featherlight='C:\Users\Suuresh\Documents\TumiAutomation\Automation/ScreenShots/OrderConfirmation1548959973977.png' width='10%' src='C:\Users\Suuresh\Documents\TumiAutomation\Automation/ScreenShots/OrderConfirmation1548959973977.png' data-src='C:\Users\Suuresh\Documents\TumiAutomation\Automation/ScreenShots/OrderConfirmation1548959973977.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>12:09:34 AM</td>
+					<td class='step-details'>Test Method : tumiOrderAsGuestis Passed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='11'>
+					<div class='test-heading'>
+						<span class='test-name'>orderWithGiftBoxAsGuest</span>
+						<span class='test-time'>Feb 1, 2019 12:09:58 AM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Feb 1, 2019 12:09:58 AM</span>
+	<span class='label end-time'>Feb 1, 2019 12:11:42 AM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 1m 44s+82ms</span>
+</div>
+	<div class='test-desc'>orders.guest.GuestOrderWithGiftBox </div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:10:08 AM</td>
+					<td class='step-details'>Clicked on Add to cart</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:10:18 AM</td>
+					<td class='step-details'>Clicked on Proceed to Checkout</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:10:22 AM</td>
+					<td class='step-details'>Clicked on Make this Gift</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:10:23 AM</td>
+					<td class='step-details'>Clicked on Premium GiftBox</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:10:33 AM</td>
+					<td class='step-details'>Clicked on continue</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:10:44 AM</td>
+					<td class='step-details'>Clicked on Proceed to Checkout</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:10:48 AM</td>
+					<td class='step-details'>Entered the value in Email ID as: skomma@coredatalabs.com</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:11:11 AM</td>
+					<td class='step-details'>Clicked on Contiue as Guest</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:11:13 AM</td>
+					<td class='step-details'>Entered the value in First Name as: Test</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:11:14 AM</td>
+					<td class='step-details'>Entered the value in Last Name as: TumiLast</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:11:14 AM</td>
+					<td class='step-details'>Entered the value in Address Line1 as: 10 Sumac Way</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:11:16 AM</td>
+					<td class='step-details'>Clicked on Address Line1</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:11:17 AM</td>
+					<td class='step-details'>Entered the value in Phone Number as: 12345678901</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:11:17 AM</td>
+					<td class='step-details'>Clicked on Contiue Shipping</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:11:20 AM</td>
+					<td class='step-details'>Clicked on Proceed to Payment</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:11:25 AM</td>
+					<td class='step-details'>Entered the value in Name on Card as: test</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:11:26 AM</td>
+					<td class='step-details'>Entered the value in Card Number as: 4111111111111111</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:11:26 AM</td>
+					<td class='step-details'>Selected 05 from Expiry Month</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:11:26 AM</td>
+					<td class='step-details'>Selected 2020 from Expiry Year</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:11:26 AM</td>
+					<td class='step-details'>Entered the value in Cvv Number as: 123</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:11:27 AM</td>
+					<td class='step-details'>Entered the value in Email ID as: skomma@coredatalabs.com</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:11:27 AM</td>
+					<td class='step-details'>Entered the value in Phone number as: 12345678901</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:11:27 AM</td>
+					<td class='step-details'>Clicked on Review your order</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:11:30 AM</td>
+					<td class='step-details'>Clicked on Place Order</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:11:42 AM</td>
+					<td class='step-details'>Thank you for Your Order, here is your Order Number 01347132.</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:11:42 AM</td>
+					<td class='step-details'>Reference<img data-featherlight='C:\Users\Suuresh\Documents\TumiAutomation\Automation/ScreenShots/OrderConfirmation1548960102257.png' width='10%' src='C:\Users\Suuresh\Documents\TumiAutomation\Automation/ScreenShots/OrderConfirmation1548960102257.png' data-src='C:\Users\Suuresh\Documents\TumiAutomation\Automation/ScreenShots/OrderConfirmation1548960102257.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>12:11:42 AM</td>
+					<td class='step-details'>Test Method : orderWithGiftBoxAsGuestis Passed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='12'>
+					<div class='test-heading'>
+						<span class='test-name'>orderWithGiftBoxnMsgAsGuest</span>
+						<span class='test-time'>Feb 1, 2019 12:12:07 AM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Feb 1, 2019 12:12:07 AM</span>
+	<span class='label end-time'>Feb 1, 2019 12:12:07 AM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+	<div class='test-desc'>orders.guest.GuestOrderWithGiftBoxnMsg </div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='13'>
+					<div class='test-heading'>
+						<span class='test-name'>orderWithMonogramAsGuest</span>
+						<span class='test-time'>Feb 1, 2019 12:12:28 AM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Feb 1, 2019 12:12:28 AM</span>
+	<span class='label end-time'>Feb 1, 2019 12:12:28 AM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+	<div class='test-desc'>orders.guest.GuestOrderWithMonogram </div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='14'>
+					<div class='test-heading'>
+						<span class='test-name'>orderWithPayPalAsGuest</span>
+						<span class='test-time'>Feb 1, 2019 12:12:52 AM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Feb 1, 2019 12:12:52 AM</span>
+	<span class='label end-time'>Feb 1, 2019 12:12:52 AM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+	<div class='test-desc'>orders.guest.GuestOrderWithPayPal </div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='15'>
+					<div class='test-heading'>
+						<span class='test-name'>verifyGuestOrderWithTwoDiffProducts</span>
+						<span class='test-time'>Feb 1, 2019 12:13:16 AM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Feb 1, 2019 12:13:16 AM</span>
+	<span class='label end-time'>Feb 1, 2019 12:13:16 AM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+	<div class='test-desc'>orders.guest.GuestOrderWithTwoDiffProducts </div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='16'>
+					<div class='test-heading'>
+						<span class='test-name'>preOrderWithGiftBox</span>
+						<span class='test-time'>Feb 1, 2019 12:13:41 AM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Feb 1, 2019 12:13:41 AM</span>
+	<span class='label end-time'>Feb 1, 2019 12:13:41 AM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+	<div class='test-desc'>orders.guest.GuestPreOrder </div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='17'>
+					<div class='test-heading'>
+						<span class='test-name'>preOrderWithGiftBoxAsGuest</span>
+						<span class='test-time'>Feb 1, 2019 12:14:06 AM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Feb 1, 2019 12:14:06 AM</span>
+	<span class='label end-time'>Feb 1, 2019 12:14:06 AM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+	<div class='test-desc'>orders.guest.GuestPreOrderWithGiftBox </div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='18'>
+					<div class='test-heading'>
+						<span class='test-name'>orderWithGiftBoxnMsgAsGuest</span>
+						<span class='test-time'>Feb 1, 2019 12:14:19 AM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Feb 1, 2019 12:14:19 AM</span>
+	<span class='label end-time'>Feb 1, 2019 12:14:19 AM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+	<div class='test-desc'>orders.guest.GuestPreOrderWithGiftBoxMsg </div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='19'>
+					<div class='test-heading'>
+						<span class='test-name'>orderWithGiftBoxnMsgAsGuest</span>
+						<span class='test-time'>Feb 1, 2019 12:14:46 AM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Feb 1, 2019 12:14:46 AM</span>
+	<span class='label end-time'>Feb 1, 2019 12:14:46 AM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+	<div class='test-desc'>orders.guest.GuestPreOrderWithGiftBoxMsgVoucher </div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='20'>
+					<div class='test-heading'>
+						<span class='test-name'>preOrderWithMonogramAsGuest</span>
+						<span class='test-time'>Feb 1, 2019 12:15:10 AM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Feb 1, 2019 12:15:10 AM</span>
+	<span class='label end-time'>Feb 1, 2019 12:15:10 AM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+	<div class='test-desc'>orders.guest.GuestPreOrderWithMono </div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='21'>
+					<div class='test-heading'>
+						<span class='test-name'>preOrderAsGuestWithVoucher</span>
+						<span class='test-time'>Feb 1, 2019 12:15:36 AM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Feb 1, 2019 12:15:36 AM</span>
+	<span class='label end-time'>Feb 1, 2019 12:15:36 AM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+	<div class='test-desc'>orders.guest.GuestPreOrderWithVoucher </div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='22'>
+					<div class='test-heading'>
+						<span class='test-name'>testTumiOrder</span>
+						<span class='test-time'>Feb 1, 2019 12:16:00 AM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Feb 1, 2019 12:16:00 AM</span>
+	<span class='label end-time'>Feb 1, 2019 12:16:00 AM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+	<div class='test-desc'>orders.guest.KoreaOrder </div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='23'>
+					<div class='test-heading'>
+						<span class='test-name'>readyToShipOrderWithGuest</span>
+						<span class='test-time'>Feb 1, 2019 12:16:26 AM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Feb 1, 2019 12:16:26 AM</span>
+	<span class='label end-time'>Feb 1, 2019 12:16:26 AM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+	<div class='test-desc'>orders.guest.MerchandiseOrder </div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='24'>
+					<div class='test-heading'>
+						<span class='test-name'>verifyOrderwithGiftandVocherCode</span>
+						<span class='test-time'>Feb 1, 2019 12:16:50 AM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Feb 1, 2019 12:16:50 AM</span>
+	<span class='label end-time'>Feb 1, 2019 12:16:50 AM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+	<div class='test-desc'>orders.guest.OrderWithGiftAndVocherCode </div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='25'>
+					<div class='test-heading'>
+						<span class='test-name'>verifyOrderNormalAndPreOrder</span>
+						<span class='test-time'>Feb 1, 2019 12:17:14 AM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Feb 1, 2019 12:17:14 AM</span>
+	<span class='label end-time'>Feb 1, 2019 12:17:14 AM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+	<div class='test-desc'>orders.guest.OrderWithTwoProducts </div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='26'>
+					<div class='test-heading'>
+						<span class='test-name'>verifyOrderWithVocherCode</span>
+						<span class='test-time'>Feb 1, 2019 12:17:35 AM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Feb 1, 2019 12:17:35 AM</span>
+	<span class='label end-time'>Feb 1, 2019 12:17:35 AM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+	<div class='test-desc'>orders.guest.OrderWithVochercode </div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='27'>
+					<div class='test-heading'>
+						<span class='test-name'>testPayPalOrder</span>
+						<span class='test-time'>Feb 1, 2019 12:18:01 AM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Feb 1, 2019 12:18:01 AM</span>
+	<span class='label end-time'>Feb 1, 2019 12:18:01 AM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+	<div class='test-desc'>orders.guest.PayPalOrder </div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='28'>
+					<div class='test-heading'>
+						<span class='test-name'>orderWithAsGuest</span>
+						<span class='test-time'>Feb 1, 2019 12:18:16 AM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Feb 1, 2019 12:18:16 AM</span>
+	<span class='label end-time'>Feb 1, 2019 12:18:16 AM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+	<div class='test-desc'>orders.guest.PreorderWithVouchercode </div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='29'>
+					<div class='test-heading'>
+						<span class='test-name'>testTumiIdOrder</span>
+						<span class='test-time'>Feb 1, 2019 12:18:38 AM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Feb 1, 2019 12:18:38 AM</span>
+	<span class='label end-time'>Feb 1, 2019 12:18:38 AM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+	<div class='test-desc'>orders.guest.TumiStudioOrder </div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='30'>
+					<div class='test-heading'>
+						<span class='test-name'>verifyOrderNormalAndBackOrder</span>
+						<span class='test-time'>Feb 1, 2019 12:18:41 AM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Feb 1, 2019 12:18:41 AM</span>
+	<span class='label end-time'>Feb 1, 2019 12:18:41 AM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+	<div class='test-desc'>orders.guest.OrderWithTwoProducts </div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='31'>
+					<div class='test-heading'>
+						<span class='test-name'>verifyOrderPreOrderAndBackOrder</span>
+						<span class='test-time'>Feb 1, 2019 12:18:41 AM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Feb 1, 2019 12:18:41 AM</span>
+	<span class='label end-time'>Feb 1, 2019 12:18:41 AM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+	<div class='test-desc'>orders.guest.OrderWithTwoProducts </div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- subview left -->
+
+	<div class='subview-right left'>
+		<div class='view-summary'>
+			<h5 class='test-name'></h5>
+
+			<div id='step-filters' class="right">
+				<span class="blue-text" status="info" alt="info" title="info"><i class="material-icons">info_outline</i></span>
+				<span class="green-text" status="pass" alt="pass" title="pass"><i class="material-icons">check_circle</i></span>
+				<span class="red-text" status="fail" alt="fail" title="fail"><i class="material-icons">cancel</i></span>
+				<span class="red-text text-darken-4" status="fatal" alt="fatal" title="fatal"><i class="material-icons">cancel</i></span>
+				<span class="pink-text text-lighten-1" status="error" alt="error" title="error"><i class="material-icons">error</i></span>
+				<span class="orange-text" alt="warning" status="warning" title="warning"><i class="material-icons">warning</i></span>
+				<span class="teal-text" status="skip" alt="skip" title="skip"><i class="material-icons">redo</i></span>
+				<span status="clear" alt="Clear filters" title="Clear filters"><i class="material-icons">clear</i></span>
+			</div>
+		</div>
+	</div>
+	<!-- subview right -->
+
+</div>
+<!-- test view -->
+<!-- category view -->
+<div id='exception-view' class='view hide'>
+
+    <section id='controls'>
+        <div class='controls grey lighten-4'>
+            <!-- search -->
+            <div class='chip transparent' alt='Search Tests' title='Search Tests'>
+                <a href="#" class='search-div'>
+                    <i class='material-icons'>search</i> Search
+                </a>
+
+                <div class='input-field left hide'>
+                    <input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
+                </div>
+
+            </div>
+            <!-- search -->
+        </div>
+    </section>
+
+    <div class='subview-left left'>
+
+        <div class='view-summary'>
+            <h5>Exceptions</h3>
+                <ul id='exception-collection' class='exception-collection'>
+
+                        <li class='exception displayed active'>
+                            <div class='exception-heading'>
+                                <span class='exception-name'>java.lang.AssertionError</span>
+                                <span class='exception-count right'><span class='label red lighten-1 white-text'>2</span></span>
+                            </div>
+                            <div class='exception-content hide'>
+                                <div class='exception-tests'>
+                                    <table class='bordered table-results'>
+                                        <thead>
+                                        <tr>
+                                            <th>Timestamp</th>
+                                            <th>TestName</th>
+                                            <th>Status</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                                    <tr>
+                                                        <td>Jan 31, 2019 11:59:10 PM</td>
+                                                        <td class='linked' test-id='7'>testFailedOrder</td>
+                                                        <td><pre><pre>java.lang.AssertionError: Proceed to Checkout is not Enabled or Unable to interact at this point
+	at org.testng.Assert.fail(Assert.java:96)
+	at com.tumi.utilities.GenericMethods.click(GenericMethods.java:78)
+	at orders.guest.FailedOrder.testFailedOrder(FailedOrder.java:39)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:580)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:716)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:988)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></pre></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Feb 1, 2019 12:00:54 AM</td>
+                                                        <td class='linked' test-id='8'>testFailedOrder</td>
+                                                        <td><pre><pre>java.lang.AssertionError: Proceed to Checkout is not Enabled or Unable to interact at this point
+	at org.testng.Assert.fail(Assert.java:96)
+	at com.tumi.utilities.GenericMethods.click(GenericMethods.java:78)
+	at orders.guest.FailedOrderJson.testFailedOrder(FailedOrderJson.java:42)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:580)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:716)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:988)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></pre></td>
+                                                    </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </li>
+                </ul>
+        </div>
+    </div>
+
+    <div class='subview-right left'>
+        <div class='view-summary'>
+            <h5 class='exception-name'></h5>
+        </div>
+    </div>
+</div>
+<!-- exception view -->
+<div id='dashboard-view' class='view hide'>
+	<div class='card-panel transparent np-v'>
+		<h5>Dashboard</h5>
+
+		<div class='row'>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Tests
+					<div class='panel-lead'>31</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Steps
+					<div class='panel-lead'>260</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Start
+					<div class='panel-lead'>Jan 31, 2019 11:35:27 PM</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+			 		End
+			 		<div class='panel-lead'>Feb 1, 2019 12:18:41 AM</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Time Taken
+					<div class='panel-lead'>0h 43m 14s+36ms</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- dashboard view -->
+<!-- testrunner-logs view -->
+		</div>
+		<!-- container -->
+
+		<script>
+			var statusGroup = {
+				passParent: 29,
+				failParent: 2,
+				fatalParent: 0,
+				errorParent: 0,
+				warningParent: 0,
+				skipParent: 0,
+				exceptionsParent: 2,
+				
+				passChild: 9,
+				failChild: 8,
+				fatalChild: 0,
+				errorChild: 0,
+				warningChild: 0,
+				skipChild: 0,
+				infoChild: 243,
+				exceptionsChild: 8,
+				
+				passGrandChild: 0,
+				failGrandChild: 0,
+				fatalGrandChild: 0,
+				errorGrandChild: 0,
+				warningGrandChild: 0,
+				skipGrandChild: 0,
+				infoGrandChild: 0,
+				exceptionsGrandChild: 0,
+			};
+		</script>
+		
+			<script src='https://cdn.rawgit.com/anshooarora/extentreports-java/fca20fb7653aade98810546ab96a2a4360e3e712/dist/js/extent.js' type='text/javascript'></script>
+		
+		
+ 		<script type='text/javascript'>
+ 			
+            
+                $(document).ready(function() {
+                    
+                });
+            
+        
+ 		</script>
+	</body>
+	
+</html>

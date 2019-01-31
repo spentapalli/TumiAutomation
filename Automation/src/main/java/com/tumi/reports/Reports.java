@@ -106,7 +106,7 @@ public class Reports {
 	public static SignInBillingPage signinBill = null;
 	public static ShiipingPageForSignedIn signinShip = null;
 	public static OrderConfirmationPage confirmation = null;
-	public static String selectedCountry = "test";
+	public static String selectedCountry = "US";
 	public static String orderNumber = null;
 
 	@BeforeSuite(alwaysRun = true)
@@ -128,12 +128,12 @@ public class Reports {
 	}
 
 	@BeforeClass(alwaysRun = true)
-	@Parameters({"Country"})
-	public static void launchBrowser(String Country) throws Exception {
+	//@Parameters({"Country"})
+	public static void launchBrowser() throws Exception {
 		getBrowser(GenericMethods.getProperty("tumi.browserName"));
 		maximizeBrowser();
 		getURL(GenericMethods.getProperty("tumi.appName"));
-		UIFunctions.selectCountry(Country);
+		UIFunctions.selectCountry(GlobalConstants.countryName);
 		// driver.navigate().to("https://ca.stg-hybris-akamai.tumi.com");
 	}
 
@@ -190,8 +190,7 @@ public class Reports {
 			} else if (result.getStatus() == ITestResult.FAILURE) {
 
 				Timestamp time = new Timestamp(System.currentTimeMillis());
-				String screenlocation = System.getProperty("user.dir") + "/Screenshots/" + result.getName() + ""
-						+ time.getTime() + ".png";
+				String screenlocation = System.getProperty("user.dir") + "/Screenshots/" + result.getName() + ".png";
 				getScreen(System.getProperty("user.dir") + "/ExtentReports/Screenshots/" + result.getName() + ""
 						+ time.getTime() + ".png");
 				logger.fail(MarkupHelper.createLabel(result.getName() + " Test Case Failed", ExtentColor.RED));
@@ -247,7 +246,7 @@ public class Reports {
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("disable-infobars");
 			options.addArguments("--disable-notifications");
-			WebDriverManager.chromedriver().setup();
+			System.setProperty(GlobalConstants.chrome, GlobalConstants.chromePath);
 			driver = new ChromeDriver(options);
 			// logger.log(Status.INFO, "Chrome has been successfully Launched");
 		} else if (browserName.equalsIgnoreCase("ie")) {
@@ -274,7 +273,8 @@ public class Reports {
 		if (URL.equalsIgnoreCase("stage2")) {
 
 			driver.get(GlobalConstants.url);
-
+			GenericMethods.WaitForJStoLoad();
+			
 		} else if (URL.equalsIgnoreCase("")) {
 			driver.get("");
 			logger.log(Status.INFO, "Successfully Navigated to " + URL + " Environment");
