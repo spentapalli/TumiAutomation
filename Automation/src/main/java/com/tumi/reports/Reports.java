@@ -28,6 +28,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Parameters;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
@@ -127,11 +128,12 @@ public class Reports {
 	}
 
 	@BeforeClass(alwaysRun = true)
-	public static void launchBrowser() throws Exception {
+	@Parameters({"Country"})
+	public static void launchBrowser(String Country) throws Exception {
 		getBrowser(GenericMethods.getProperty("tumi.browserName"));
 		maximizeBrowser();
 		getURL(GenericMethods.getProperty("tumi.appName"));
-
+		UIFunctions.selectCountry(Country);
 		// driver.navigate().to("https://ca.stg-hybris-akamai.tumi.com");
 	}
 
