@@ -188,7 +188,8 @@ public class CartPage extends GenericMethods {
 		
 		return giftBoxAdded;
 		}
-	@FindBy(how=How.XPATH,using="(//input[@name='voucherCode'])[2]")
+	//@FindBy(how=How.XPATH,using="(//input[@name='voucherCode'])[2]")
+	@FindBy(how=How.XPATH,using="//input[@name='voucherCode']")
 	private WebElement addPromocode;
 	
 	public WebElement getPromocode() {
