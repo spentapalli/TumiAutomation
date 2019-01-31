@@ -22,7 +22,7 @@ import com.tumi.utilities.UIFunctions;
 				//UIFunctions.addPromotionalCodeAtCart("TumiTestData", "PreOrderProduct");
 				click(mainCart.getProceedToCheckout(), "Proceed to Checkout");
 				input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
-				UIFunctions.addPromotionalCodeAtCart("TumiTestData", "PreOrderProduct");
+				UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "PreOrderProduct");
 				UIFunctions.waitForContinueToEnable();
 				click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 				UIFunctions.addGuestDetails();

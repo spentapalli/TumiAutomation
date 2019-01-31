@@ -20,18 +20,25 @@ public class PayPalPage extends GenericMethods {
 		PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(how=How.XPATH,using="//img[@alt='Checkout with PayPal']")
+	//@FindBy(how=How.XPATH,using="//img[@alt='Checkout with PayPal']")
+	@FindBy(how=How.XPATH,using="//div[@aria-label='paypal']/img[2]")
 	private WebElement payPal;
 	
 	public WebElement getPayPal() {
-		return payPal;
+		return explicitWait(payPal);
+	}
+	@FindBy(how=How.XPATH,using="(//div[@id='paypal-animation-content']/div/div)[1]")
+	private WebElement payPalAnother;
+	
+	public WebElement getPayPalAnother() {
+		return explicitWait(payPalAnother);
 	}
 	
 	@FindBy(how=How.XPATH, using= "//a[contains(text(),'Log In')]")
 	private WebElement payPalLogin;
 	
 	public WebElement getPayPalLogin() {
-		return payPalLogin;
+		return explicitWait(payPalLogin);
 	}
 	
 	@FindBy(how=How.XPATH, using= "//input[@id='email']")
@@ -46,21 +53,21 @@ public class PayPalPage extends GenericMethods {
 	private WebElement next;
 	
 	public WebElement getNext() {
-		return next;
+		return explicitWait(next);
 	}
 	
 	@FindBy(how=How.XPATH, using="//input[@id='password']")
 	private WebElement payPalPassword;
 	
 	public WebElement getPayPalPassword() {
-		return payPalPassword;
+		return explicitWait(payPalPassword);
 	}
 	
 	@FindBy(how=How.XPATH, using="//button[@id='btnLogin']")
 	private WebElement login;
 	
 	public WebElement getLogin() {
-		return login;
+		return explicitWait(login);
 	}
 	
 	//(//div[@id='paymentMethod']//label)[1]
@@ -72,11 +79,12 @@ public class PayPalPage extends GenericMethods {
 	}
 	
 	//(//div[@id='paymentMethod']//label)[2]
-	@FindBy(how=How.XPATH, using="//ul[@data-test-id='fundingInstruments']/li[2]")
+	////ul[@data-test-id='fundingInstruments']/li[2]
+	@FindBy(how=How.XPATH, using="//input[@id='d546777e383511d791ddc41b1942ce1b']/following::label")
 	private WebElement visax111;
 	
 	public WebElement getVisax111() {
-		return visax111;
+		return explicitWait(visax111);
 	}
 	
 	@FindBy(how=How.XPATH, using="//ul[@data-test-id='fundingInstruments']/li[3]")

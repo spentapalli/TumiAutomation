@@ -21,6 +21,7 @@ import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -68,7 +69,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 /**
  * @author Suuresh
- *
+ *clean test -Dsurefire.suiteXmlFiles=regressionTests.xml
  */
 public class Reports {
 	public static ExtentHtmlReporter htmlreport;
@@ -107,7 +108,7 @@ public class Reports {
 	public static String selectedCountry = "test";
 	public static String orderNumber = null;
 
-	@BeforeTest(alwaysRun = true)
+	@BeforeSuite(alwaysRun = true)
 	public void startReport(ITestContext ctx) {
 		timeStamp = new SimpleDateFormat("dd-MMM-yy  hh.mm.ss aa").format(Calendar.getInstance().getTime());
 		// String suiteName = ctx.getCurrentXmlTest().getSuite().getName();
@@ -118,7 +119,7 @@ public class Reports {
 		report.attachReporter(htmlreport);
 	}
 
-	@AfterTest(alwaysRun = true)
+	@AfterSuite(alwaysRun = true)
 	public void endReport() {
 		// writing everything to document
 		// flush() - to write or update test information to your report.
@@ -126,7 +127,6 @@ public class Reports {
 	}
 
 	@BeforeClass(alwaysRun = true)
-
 	public static void launchBrowser() throws Exception {
 		getBrowser(GenericMethods.getProperty("tumi.browserName"));
 		maximizeBrowser();
@@ -135,7 +135,7 @@ public class Reports {
 		// driver.navigate().to("https://ca.stg-hybris-akamai.tumi.com");
 	}
 
-	//@AfterClass(alwaysRun = true)
+	@AfterClass(alwaysRun = true)
 	public static void closeBrowser() {
 		driver.close();
 		try {

@@ -280,11 +280,11 @@ public class UIFunctions extends GenericMethods {
 	}
 
 	public static void completeOrder() {
-
+		delay(2000);
 		click(review.getPlaceOrder(), "Place Order");
 		do {
 			delay(2000);
-		} while (confirmation.getWithForConfirmation().isDisplayed());
+		} while (confirmation.getWithForConfirmation().isDisplayed());////////////
 
 		if (!confirmation.getConfirmOrder().isDisplayed()) {
 
@@ -466,7 +466,7 @@ public class UIFunctions extends GenericMethods {
 
 		switch (name.toUpperCase()) {
 		case "US":
-			countrySelection("United States");
+			//countrySelection("United States");
 			break;
 		case "CANADA":
 			countrySelection("Canada");
@@ -480,4 +480,32 @@ public class UIFunctions extends GenericMethods {
 		}
 
 	}
+	public static void payPalCheckout(String sheet, String testCase) {
+		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
+		String value = getText(mainCart.getSubTotalValue());
+		System.out.println(value);
+		Double dValue=Double.valueOf(value.replace("$", ""));
+		if(dValue.intValue() >= 100) {
+			click(paypal.getPayPalAnother(),"PayPal");
+		}else {
+			
+			click(paypal.getPayPal(),"PayPal");
+		}
+		//click(paypal.getPayPalLogin(),"Paypal login");
+		input(paypal.getPayPalEmail(),testData.get("EmailID"), "EmailID");
+		click(paypal.getNext(),"Next");
+		input(paypal.getPayPalPassword(),testData.get("Password"),"Password");
+		
+		click(paypal.getLogin(),"Login");
+		/*try {
+			do {
+				delay(2000);
+			} while (paypal.getVisax111().isDisplayed());
+		} catch (Exception e) {
+
+		}*/
+		
+		click(paypal.getVisax111(),"Select Visa");
+		click(paypal.getPaypalContinue(),"Continue");
+}
 }
