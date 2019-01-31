@@ -18,7 +18,7 @@ import login.RegularLogin;
 	public class RegisteredOrderWithPayPal extends GenericMethods {
 		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestOrders");
 		
-		/* TA-284
+		/* TA-285
 		 * Verify Order with merchandise Ready to ship with PayPal checkout-Registered user
 		 * 
 		 */

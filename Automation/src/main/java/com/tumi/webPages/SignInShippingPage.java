@@ -1,5 +1,7 @@
 package com.tumi.webPages;
 
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -13,11 +15,21 @@ import com.tumi.utilities.GenericMethods;
  * @author Shwetha Capo
  *
  */
-public class ShiipingPageForSignedIn extends GenericMethods {
-	public ShiipingPageForSignedIn(WebDriver driver) {
+public class SignInShippingPage extends GenericMethods {
+	public SignInShippingPage(WebDriver driver) {
 		Reports.driver= driver;
 		PageFactory.initElements(driver, this);
 	}
+	
+	//input[@id='8913687150615']
+	@FindBy(how=How.XPATH,using="//div[@class='signInCheckout span8 pad15 border_CC removeFocusIndicator']/div[3]")
+	private List<WebElement> defaultAddress;
+	
+	public List<WebElement> getListAddressLine1() {
+
+		return defaultAddress;
+	}
+	
 	@FindBy(how=How.XPATH,using="//input[@id='8913687150615']")
 	private WebElement tellAddress;
 	
@@ -61,4 +73,10 @@ public class ShiipingPageForSignedIn extends GenericMethods {
 		return durham2Address;
 	}
 	
+	@FindBy(how=How.XPATH,using="//input[@id='addNewAddress']")
+	private WebElement addNewAddress;
+	
+	public WebElement getAddNewAddress() {
+		return addNewAddress;
+	}
 }

@@ -58,7 +58,7 @@ import com.tumi.webPages.OrderReviewPage;
 import com.tumi.webPages.PayPalPage;
 import com.tumi.webPages.Personalization;
 import com.tumi.webPages.ProductDetailPage;
-import com.tumi.webPages.ShiipingPageForSignedIn;
+import com.tumi.webPages.SignInShippingPage;
 import com.tumi.webPages.ShippingMethodPage;
 import com.tumi.webPages.ShippingPage;
 import com.tumi.webPages.SignInBillingPage;
@@ -103,7 +103,7 @@ public class Reports {
 	public static GooglePage google = null;
 	public static InstaPage insta = null;
 	public static SignInBillingPage signinBill = null;
-	public static ShiipingPageForSignedIn signinShip = null;
+	public static SignInShippingPage signinShip = null;
 	public static OrderConfirmationPage confirmation = null;
 	public static String selectedCountry = "test";
 	public static String orderNumber = null;
@@ -135,7 +135,7 @@ public class Reports {
 		// driver.navigate().to("https://ca.stg-hybris-akamai.tumi.com");
 	}
 
-	@AfterClass(alwaysRun = true)
+	//@AfterClass(alwaysRun = true)
 	public static void closeBrowser() {
 		driver.close();
 		try {
@@ -173,7 +173,7 @@ public class Reports {
 		register = new CreateAccountPage();
 		checkout = new CheckOutPage();
 		signinBill = new SignInBillingPage(driver);
-		signinShip = new ShiipingPageForSignedIn(driver);
+		signinShip = new SignInShippingPage(driver);
 		confirmation = new OrderConfirmationPage(driver);
 	}
 
