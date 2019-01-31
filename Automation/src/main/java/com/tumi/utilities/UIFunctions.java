@@ -276,7 +276,7 @@ public class UIFunctions extends GenericMethods {
 		domClick(review.getPlaceOrder(), "Place Order");
 		do {
 			delay(2000);
-		} while (confirmation.getWithForConfirmation().isDisplayed());////////////
+		} while (confirmation.getWithForConfirmation().isDisplayed());
 
 		if (!confirmation.getConfirmOrder().isDisplayed()) {
 
@@ -491,4 +491,11 @@ public class UIFunctions extends GenericMethods {
 		click(paypal.getPaypalContinue(),"Continue");
 		click(paypal.getPaypalCheckout(),"Checkout");
 }
+
+	public static void waitForContinueToEnable() {
+		do {
+			delay(1000);
+		} while (singlePage.isContinueDisabled().isDisplayed());
+		
+	}
 }
