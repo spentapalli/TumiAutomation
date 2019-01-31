@@ -77,7 +77,7 @@ public class UIFunctions extends GenericMethods {
 		input(guestBillPage.getCvvNumber(), testData.get("CVV"), "Cvv Number");
 		input(guestBillPage.getemail(), testData.get("EmailID"), "Email ID");
 		input(guestBillPage.getPhoneNumber(), testData.get("Phone"), "Phone number");
-		click(guestBillPage.getReviewOrder(), "Review your order");
+		domClick(guestBillPage.getReviewOrder(), "Review your order");
 	}
 
 	public static void addInvalidCardDetails(String sheet, String testCaseName) {
@@ -269,20 +269,11 @@ public class UIFunctions extends GenericMethods {
 		}
 		input(shipping.getPhoneNumber(), testData.get("Phone"), "Phone Number");
 	}
-
-	public static void waitForContinueToEnable() {
-		try {
-			do {
-				delay(2000);
-			} while (singlePage.isContinueDisabled().isDisplayed());
-		} catch (Exception e) {
-
-		}
-	}
+	
 
 	public static void completeOrder() {
 		delay(2000);
-		click(review.getPlaceOrder(), "Place Order");
+		domClick(review.getPlaceOrder(), "Place Order");
 		do {
 			delay(2000);
 		} while (confirmation.getWithForConfirmation().isDisplayed());////////////

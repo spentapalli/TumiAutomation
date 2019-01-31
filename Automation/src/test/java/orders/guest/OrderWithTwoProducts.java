@@ -59,7 +59,7 @@ public class OrderWithTwoProducts extends GenericMethods {
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(minicart.getSinglePageCheckout(), "Proceed to Single Page Checkout");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
-		UIFunctions.waitForContinueToEnable();
+		//UIFunctions.waitForContinueToEnable();
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");

@@ -31,7 +31,7 @@ public class GuestOrderWithGiftBox extends GenericMethods {
 		click(gift.getContinueGiftService(), "continue");
 		click(mainCart.getProceedToCheckout(), "Proceed to Checkout");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
-		UIFunctions.waitForContinueToEnable();
+		//UIFunctions.waitForContinueToEnable();
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
