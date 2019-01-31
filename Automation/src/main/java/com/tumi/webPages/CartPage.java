@@ -325,9 +325,19 @@ public class CartPage extends GenericMethods {
 	public WebElement getMOnogramApply() {
 		return MonogramApply;
 	}
-	@FindBy(how=How.XPATH,using=("//div[@id='cart-summary-container']/div[2]/div/div[2]/div[2]/div[2]"))
+	@FindBy(how=How.XPATH,using=(""))
 	private WebElement subTotalValue;
 	public WebElement getSubTotalValue() {
 		return subTotalValue;
+	}
+	@FindBy(how=How.XPATH,using=("(//div[@id='cart-summary-container']/div[2]/div/div[2]/div[2]/div[2]"))
+	private WebElement estimatedTotal;
+	public WebElement getEstimatedTotal() {
+		return estimatedTotal;
+	}
+	@FindBy(how=How.XPATH,using=("//div[@id='cart-summary-container']/div[2]/div/div[3]/div[2]/div[2]"))
+	private WebElement estimatedTotalRegistered;
+	public WebElement getEstimatedTotalRegistered() {
+		return estimatedTotalRegistered;
 	}
 }
