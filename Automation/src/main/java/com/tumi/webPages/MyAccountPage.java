@@ -57,8 +57,9 @@ public class MyAccountPage extends GenericMethods{
 	public WebElement getRepairServices() {
 		
 		return repairServices;
-	}//div[@id='tm-panel-login-confirmation']/header/span
-	
+	}
+	//div[@id='tm-panel-login-confirmation']/header/span
+	//Same for korea
 	@FindBy(how=How.XPATH,using="//div[@id='tm-panel-login-confirmation']/header/span")
 	private WebElement welcomeMessage;
 	
@@ -102,4 +103,89 @@ public class MyAccountPage extends GenericMethods{
 	public WebElement getSignout() {
 		return explicitWait(signout);
 	}
+	//Korea
+	//Myacc button
+	@FindBy(how=How.XPATH,using="//div[@id='tm-panel-login-confirmation']/div/div/ul[2]/li[1]/a")
+	private WebElement MyaccButton;
+	public WebElement getMyaccButton() {
+		if(selectedCountry.contains("Korea")) {
+			return signUpMyAccMsg;
+		}else {
+
+	return MyaccButton;
 }
+	}
+		//signin
+		@FindBy(how=How.XPATH,using="//div[@id='tm-panel-login-confirmation']/div/div/ul[2]/li[2]/a")
+		private WebElement krSignout;
+		public WebElement getkrSignout() {
+			if(selectedCountry.contains("Korea")) {
+				return krSignout;
+			}else {
+
+		return signout;
+	}
+	}
+		//viewmyprofile
+
+		@FindBy(how=How.XPATH,using="//div[@id='tm-panel-login-confirmation']/div/div/ul[1]/li[1]/a")
+		private WebElement krviewProfile;
+		
+		public WebElement getkrViewProfile() {
+			if(selectedCountry.contains("Korea")) {
+				return krSignout;
+			}else {
+			return viewProfile;
+			}
+		}
+		////div[@id='tm-panel-login-confirmation']/div/div/ul[1]/li[2]/a
+		@FindBy(how=How.XPATH,using="//div[@id='tm-panel-login-confirmation']/div/div/ul[1]/li[2]/a")
+		private WebElement krpurchasedItems;
+		
+		public WebElement getkrPurchasedItems() {
+			if(selectedCountry.contains("Korea")) {
+				return krpurchasedItems;
+			}else {
+			return purchasedItems;
+			}
+			
+}
+		
+		@FindBy(how=How.XPATH,using="//div[@id='tm-panel-login-confirmation']/div/div/ul[1]/li[3]/a")
+		private WebElement krviewYourOrderStatus;
+		
+		public WebElement getkrViewYourOrderStatus() {
+			if(selectedCountry.contains("Korea")) {
+				return  krviewYourOrderStatus;
+			}else {
+			
+			return viewYourOrderStatus;
+		}
+}
+	
+		@FindBy(how=How.XPATH,using="//div[@id='tm-panel-login-confirmation']/div/div/ul[1]/li[4]/a")
+		private WebElement krregisterYourTumi;
+		
+		public WebElement getkrRegisterYourTumi() {
+			if(selectedCountry.contains("Korea")) {
+				return  krviewYourOrderStatus;
+			}else {
+			
+			return registerYourTumi;
+		}
+}
+		
+		@FindBy(how=How.XPATH,using="//div[@id='tm-panel-login-confirmation']/header/a/span")
+		private WebElement krmyAccountClose;
+		
+		public WebElement getkrMyAccountClose() {
+			if(selectedCountry.contains("Korea")) {
+				return krmyAccountClose;
+			}else {
+			return myAccountClose;
+		}
+		}
+}
+		
+
+

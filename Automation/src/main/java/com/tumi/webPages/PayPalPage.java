@@ -21,7 +21,7 @@ public class PayPalPage extends GenericMethods {
 	}
 	
 	//@FindBy(how=How.XPATH,using="//img[@alt='Checkout with PayPal']")
-	@FindBy(how=How.XPATH,using="//div[@aria-label='paypal']/img[2]")
+	@FindBy(how=How.XPATH,using="(//div[@id='cart-items-container']/following::img)[2]")
 	private WebElement payPal;
 	
 	public WebElement getPayPal() {
@@ -80,7 +80,8 @@ public class PayPalPage extends GenericMethods {
 	
 	//(//div[@id='paymentMethod']//label)[2]
 	////ul[@data-test-id='fundingInstruments']/li[2]
-	@FindBy(how=How.XPATH, using="//input[@id='d546777e383511d791ddc41b1942ce1b']/following::label")
+	//input[@id='d546777e383511d791ddc41b1942ce1b']/following::label
+	@FindBy(how=How.XPATH, using="(//span[@class='fsIcon CARD VISA'])[1]")
 	private WebElement visax111;
 	
 	public WebElement getVisax111() {
@@ -104,10 +105,17 @@ public class PayPalPage extends GenericMethods {
 	
 	
 	//input[@id='confirmButtonTop']
-	@FindBy(how=How.XPATH, using="//div[@id='button']")
+	@FindBy(how=How.XPATH, using="//div[@id='button']")//input[@id='confirmButtonTop']
 	private WebElement paypalContinue;
 
 	public WebElement getPaypalContinue() {
-		return paypalContinue;
+		return explicitWait(paypalContinue);
 	}
+	@FindBy(how=How.XPATH, using="//input[@id='confirmButtonTop']")
+	private WebElement paypalCheckout;
+
+	public WebElement getPaypalCheckout() {
+		return explicitWait(paypalCheckout);
+	}
+	
 }

@@ -44,12 +44,12 @@ public class CartPage extends GenericMethods {
 		
 	}
 	
-	@FindBy(how=How.XPATH, using="")
+	/*@FindBy(how=How.XPATH, using="")
 	private WebElement krProceedtoCheckout;
 	
 	public WebElement getkrProceedtoCheckout() {
-		return krProceedtoCheckout;
-	}
+		return krProceedtoCheckout;*/
+	
 	
 	@FindBy(how=How.XPATH,using= "//img[@alt='Checkout with PayPal']")
     private WebElement payPalProceed;
@@ -256,6 +256,26 @@ public class CartPage extends GenericMethods {
 	public WebElement getProceedtoCart() {
 		return  proceedtoCart;
 	}
+	//updatecart
+	@FindBy(how=How.XPATH,using=("//button[@id='updateCartButton']"))
+	private WebElement UpdateCart;
+	public WebElement getUpdatecart() {
+		return UpdateCart;
+		
+	}
+	@FindBy(how=How.XPATH,using=("//input[@name='quantity']"))
+	private WebElement UpdatecartQuantity;
+	public WebElement getUpdatecartQuantity(){
+		return UpdatecartQuantity;
+		
+	}
+	//ContinueShopping
+	@FindBy(how=How.XPATH,using=("//main[@id='navEnd']/div[3]/div[1]/h2/a"))
+	private WebElement ContinueShopping;
+	public WebElement getContinueshopping() {
+		return ContinueShopping;
+	}
+	
 	//giftservices-----------------------------------
 	@FindBy(how=How.XPATH,using=("//div[@id='cart-items-container']/div[2]/div[1]/div[1]/div[2]/div[9]/div[2]/a"))
 	private WebElement Makegiftbox;
@@ -305,9 +325,19 @@ public class CartPage extends GenericMethods {
 	public WebElement getMOnogramApply() {
 		return MonogramApply;
 	}
-	@FindBy(how=How.XPATH,using=("//div[@id='cart-summary-container']/div[2]/div/div[2]/div[2]/div[2]"))
+	@FindBy(how=How.XPATH,using=(""))
 	private WebElement subTotalValue;
 	public WebElement getSubTotalValue() {
 		return subTotalValue;
+	}
+	@FindBy(how=How.XPATH,using=("(//div[@id='cart-summary-container']/div[2]/div/div[2]/div[2]/div[2]"))
+	private WebElement estimatedTotal;
+	public WebElement getEstimatedTotal() {
+		return estimatedTotal;
+	}
+	@FindBy(how=How.XPATH,using=("//div[@id='cart-summary-container']/div[2]/div/div[3]/div[2]/div[2]"))
+	private WebElement estimatedTotalRegistered;
+	public WebElement getEstimatedTotalRegistered() {
+		return estimatedTotalRegistered;
 	}
 }

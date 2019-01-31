@@ -23,7 +23,7 @@ public class HomePage extends GenericMethods {
 		PageFactory.initElements(driver, this);
 
 	}
-
+//same for korea
 	@FindBy(how = How.XPATH, using = "//input[@id='search']")
 	private WebElement searchProduct;
 
@@ -31,7 +31,7 @@ public class HomePage extends GenericMethods {
 		delay(2000);
 		return searchProduct;
 	}
-
+//lkjjgddsddbffuhjb
 	@FindBy(how = How.XPATH, using = "//main[@id='navEnd']/div[2]/div[1]/div/div")
 	private WebElement NoProducts;
 
@@ -39,7 +39,7 @@ public class HomePage extends GenericMethods {
 		delay(2000);
 		return NoProducts;
 	}
-
+//kjhhfgszbuhtddxfg
 	@FindBy(how = How.XPATH, using = "//ul[@id='matching_products']/li")
 	private List<WebElement> matchingProducts;
 
@@ -47,8 +47,7 @@ public class HomePage extends GenericMethods {
 
 		return matchingProducts;
 	}
-	@FindBy(how = How.XPATH, using = "//div[@id='firstTimeEmailSignupPopup']/div")///////////////////////////////////////
-	private WebElement signupPopupKR;
+	
 
 
 	// for Canada
@@ -276,30 +275,20 @@ public class HomePage extends GenericMethods {
 	public WebElement getSignupPopup() {
 		return signUpPop;
 	}
-	
-	@FindBy(how = How.XPATH, using = "//div[@id='firstTimeEmailSignupPopup']/div/span")
-	private WebElement koreaSignUpPop;
-
-	public WebElement getKoreaSignupPopup() {
-		return koreaSignUpPop;
-	}
-	
-	
-
-	@FindBy(how = How.XPATH, using = "//div[@id='main-content']/div[2]/h1/span")
+   @FindBy(how = How.XPATH, using = "//div[@id='main-content']/div[2]/h1/span")
 	private WebElement vpnIssue;
 
 	public WebElement getVPNDis() {
 		return vpnIssue;
 	}
-
+ //same for korea
 	@FindBy(how = How.XPATH, using = "//div[@id='minicart_data']/span[2]")
 	private WebElement minicartcount;
 
 	public WebElement getMinicartCount() {
 		return minicartcount;
 	}
-
+//same for korea
 	@FindBy(how = How.XPATH, using = "//div[@id='minicart_data']")
 	private WebElement minicart;
 
@@ -321,10 +310,43 @@ public class HomePage extends GenericMethods {
 		return countriesList;
 	}
 	
-	
-	
-	
-	
-	
+	//korea
+	@FindBy(how = How.XPATH, using = "//div[@id='firstTimeEmailSignupPopup']/div/span")
+	private WebElement koreaSignUpPop;
 
+	public WebElement getKoreaSignupPopup() {
+		return koreaSignUpPop;
+		
+	}
+	
+	@FindBy(how = How.XPATH, using = "//section[@id='top-nav']/header/div[1]/div[1]/div[3]/a")
+	private WebElement krheaderFindStore;
+public WebElement getkrHeaderFindStore() {
+		if(selectedCountry.contains("Korea")) {
+			return krheaderFindStore;
+		}else {
+
+		return headerFindStore;
+}
+}
+
+@FindBy(how = How.XPATH, using = "//section[@id='top-nav']/header/div[1]/div[2]/a")
+private WebElement krheaderCustomerService;
+public WebElement getkrHeaderCustomerService() {
+	if(selectedCountry.contains("Korea")) {
+		return krheaderCustomerService;
+	}else {
+	return headerCustomerService;
+}
+}
+@FindBy(how=How.XPATH,using="//form[@id='tm-login-form']/div[4]/div")
+private WebElement krinvalidCredentials;
+public WebElement getkrInvalidCredentialsError() {
+	if(selectedCountry.contains("Korea")) {
+		return krinvalidCredentials;
+	}else {
+	return invalidCredentials;
+
+} 
+}
 }

@@ -5,14 +5,16 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 import com.tumi.reports.Reports;
+import com.tumi.utilities.GenericMethods;
 
 /**
  * @author Shwetha Capo
  *
  */
-public class MyProfile {
+public class MyProfile  extends GenericMethods{
 	
 	public MyProfile(WebDriver driver) {
 		Reports.driver = driver;
@@ -25,21 +27,21 @@ public class MyProfile {
 	public WebElement getTitle() {
 		return title;
 	}
-	
+	//same for korea
 	@FindBy(how=How.XPATH, using="//input[@id='profile.firstName']")
 	private WebElement name;
 	
 	public WebElement getName() {
 		return name;
 	}
-	
+	//same for Korea
 	@FindBy(how=How.XPATH, using="//input[@id='profile.lastName']")
 	private WebElement surname;
 	
 	public WebElement getSurname() {
 		return surname;
 	}
-	
+	//same for korea
 	@FindBy(how=How.XPATH, using="//input[@id='profile.phone']")
 	private WebElement phone;
 	
@@ -47,7 +49,7 @@ public class MyProfile {
 		return phone;
 	}
 	
-	
+	//same for korea
 	@FindBy(how=How.XPATH, using="//input[@id='textNotification']")
 	private WebElement notifications;
 	
@@ -69,5 +71,38 @@ public class MyProfile {
 		return cancel;
 	}
 
-
+@FindBy(how=How.XPATH,using="//span[@name='titleCode']")
+private WebElement krtitle;
+public WebElement getkrTitle() {
+	if(selectedCountry.contains("Korea")) {
+		return  krtitle;
+	}else {
+	return title;
 }
+}
+@FindBy(how=How.XPATH, using="//form[@id='updateProfileForm']/div[3]/button")
+private WebElement krsave;
+
+public WebElement getkrSave() {
+	if(selectedCountry.contains("Korea")) {
+		return  krsave;
+	}else {
+	
+}
+	return save;
+}
+
+@FindBy(how=How.XPATH, using="//form[@id='updateProfileForm']/div[3]/a")
+private WebElement krcancel;
+
+public WebElement getkrCancel() {
+	if(selectedCountry.contains("Korea")) {
+		return krcancel;
+	
+	}else {
+	return cancel;
+}
+}
+}
+
+

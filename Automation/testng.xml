@@ -1,21 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="TumiReport" parallel="none">
-    
-	<!-- <test name="Canada">
-		<parameter name="Country" value="CANADA"></parameter>
-		<classes>
-			<class name="orders.guest.OrderWithVochercode1" />
-		</classes>
-	</test> Test --> 
+ 
 	
 	
 	<test name="OrderWithVochercode">
-		<parameter name="Country" value="US"></parameter>
+		<parameter name="Country" value="Korea"></parameter>
 		<classes>
 			<class name="orders.guest.OrderWithVochercode" />
 		</classes>
 	</test> <!-- Test -->
+<<<<<<< HEAD
 	<test name="BackOrderProdcut">
 		<parameter name="Country" value="US"></parameter>
 		<classes>
@@ -130,16 +125,22 @@
 			<class name="orders.guest.OrderWithGiftAndVocherCode" />
 		</classes>
 	</test> <!-- Test -->
-<!-- 	<test name="OrderWithGiftServices"> -->
-<!-- 		<parameter name="Country" value="US"></parameter> -->
-<!-- 		<classes> -->
-<!-- 			<class name="orders.guest.OrderWithGiftServices" /> -->
-<!-- 		</classes> -->
-<!-- 	</test> Test -->
+	<!-- <test name="OrderWithGiftServices">
+		<parameter name="Country" value="US"></parameter>
+		<classes>
+			<class name="orders.guest.OrderWithGiftServices" />
+		</classes>
+	</test> --> <!-- Test -->
 	<test name="PreorderWithVouchercode">
 		<parameter name="Country" value="US"></parameter>
 		<classes>
 			<class name="orders.guest.PreorderWithVouchercode" />
 		</classes>
-	</test> <!-- Test -->	
-</suite> <!-- Suite -->
+	</test> <!-- Test -->
+	
+=======
+
+>>>>>>> 2a941cf8341861175bdfa24ae3004a83bbab82d4
+	
+	
+</suite>

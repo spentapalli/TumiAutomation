@@ -483,7 +483,8 @@ public class UIFunctions extends GenericMethods {
 	}
 	public static void payPalCheckout(String sheet, String testCase) {
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
-		String value = getText(mainCart.getSubTotalValue());
+		String value = getText(mainCart.getEstimatedTotalRegistered()); //use this for registered user
+		//String value = getText(mainCart.getEstimatedTotal());  //use this for Guest users
 		System.out.println(value);
 		Double dValue=Double.valueOf(value.replace("$", ""));
 		if(dValue.intValue() >= 100) {
@@ -492,21 +493,12 @@ public class UIFunctions extends GenericMethods {
 			
 			click(paypal.getPayPal(),"PayPal");
 		}
-		//click(paypal.getPayPalLogin(),"Paypal login");
 		input(paypal.getPayPalEmail(),testData.get("EmailID"), "EmailID");
 		click(paypal.getNext(),"Next");
 		input(paypal.getPayPalPassword(),testData.get("Password"),"Password");
-		
 		click(paypal.getLogin(),"Login");
-		/*try {
-			do {
-				delay(2000);
-			} while (paypal.getVisax111().isDisplayed());
-		} catch (Exception e) {
-
-		}*/
-		
-		click(paypal.getVisax111(),"Select Visa");
+		domClick(paypal.getVisax111(),"Select Visa");
 		click(paypal.getPaypalContinue(),"Continue");
+		click(paypal.getPaypalCheckout(),"Checkout");
 }
 }

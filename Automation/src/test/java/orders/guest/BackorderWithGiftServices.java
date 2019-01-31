@@ -2,8 +2,7 @@
 	
 package orders.guest;
 
-import org.openqa.selenium.WebElement;
-	import java.util.Map;
+import java.util.Map;
 	
 	import org.testng.annotations.Test;
 
