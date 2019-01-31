@@ -68,7 +68,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 /**
  * @author Suuresh
- *
+ *clean test -Dsurefire.suiteXmlFiles=regressionTests.xml
  */
 public class Reports {
 	public static ExtentHtmlReporter htmlreport;
