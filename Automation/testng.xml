@@ -130,12 +130,12 @@
 			<class name="orders.guest.OrderWithGiftAndVocherCode" />
 		</classes>
 	</test> <!-- Test -->
-	<test name="OrderWithGiftServices">
+	<!-- <test name="OrderWithGiftServices">
 		<parameter name="Country" value="US"></parameter>
 		<classes>
 			<class name="orders.guest.OrderWithGiftServices" />
 		</classes>
-	</test> <!-- Test -->
+	</test> --> <!-- Test -->
 	<test name="PreorderWithVouchercode">
 		<parameter name="Country" value="US"></parameter>
 		<classes>

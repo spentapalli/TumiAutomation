@@ -11,7 +11,7 @@ public class CreateAccountPage extends GenericMethods {
 	public CreateAccountPage() {
 		PageFactory.initElements(driver, this);
 	}
-
+//same as US For Korea
 	@FindBy(how = How.XPATH, using = "//input[@id='register.email']")
 	private WebElement registeremail;
 
@@ -83,7 +83,7 @@ public class CreateAccountPage extends GenericMethods {
 
 		return registerLname;
 	}
-	
+	//Till last name loctaor are same for korea
 	@FindBy(how = How.XPATH, using = "//label[@id='register.lname-error']")
 	private WebElement registerLnameError;
 
@@ -141,6 +141,41 @@ public class CreateAccountPage extends GenericMethods {
 	}
 	
 	
-	
+	//Korea
+	@FindBy(how=How.XPATH,using="//div[@id='tm-panel-login']/div[2]/a")
+private WebElement AcccreateButton;
+	public WebElement getAcccreateButton() {
+		return AcccreateButton;
+	}
+	//selecting country
+	@FindBy(how=How.XPATH,using="//span[@id='register.countrySelectBoxIt']")
+	private WebElement krSelectcountry;
+	public WebElement getkrAddSelectcountry() {
+		return krSelectcountry;
+	}
+	@FindBy(how=How.XPATH,using="//span[@id='register.accountDurationySelectBoxIt']")
+	private WebElement krselectyear;
+	public WebElement getkrSelectyear() {
+		return  krselectyear;
+	}
+	@FindBy(how=How.XPATH,using="//div[@id='tm-panel-register']/div[2]/a")
+	private WebElement krLogin;
+	public WebElement getkrLogin() {
+		return krLogin;
 
+	}
+	@FindBy(how=How.XPATH,using="//input[@id='register.subscribe']")
+	private WebElement krfirstcheckbox;
+	public WebElement getkrfisrtCheckbox() {
+		return krfirstcheckbox;
+	}
+	
+	@FindBy(how=How.XPATH,using="//input[@id='registerLegalCheck']")
+	private WebElement krCheckboxprivacy;
+	public WebElement getKrCheckboxprivacy() {
+		return krCheckboxprivacy;
+	}
 }
+
+
+
