@@ -10,12 +10,12 @@
 	</test> Test --> 
 	
 	
-	<test name="OrderWithVochercode">
+	<!-- <test name="OrderWithVochercode">
 		<parameter name="Country" value="US"></parameter>
 		<classes>
 			<class name="orders.guest.OrderWithVochercode" />
 		</classes>
-	</test> <!-- Test -->
+	</test> --> <!-- Test -->
 	<test name="BackOrderProdcut">
 		<parameter name="Country" value="US"></parameter>
 		<classes>
@@ -128,12 +128,6 @@
 		<parameter name="Country" value="US"></parameter>
 		<classes>
 			<class name="orders.guest.OrderWithGiftAndVocherCode" />
-		</classes>
-	</test> <!-- Test -->
-	<test name="OrderWithGiftServices">
-		<parameter name="Country" value="US"></parameter>
-		<classes>
-			<class name="orders.guest.OrderWithGiftServices" />
 		</classes>
 	</test> <!-- Test -->
 	<test name="PreorderWithVouchercode">
