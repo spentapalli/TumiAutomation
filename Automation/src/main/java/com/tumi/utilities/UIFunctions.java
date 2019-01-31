@@ -121,7 +121,7 @@ public class UIFunctions extends GenericMethods {
 		} catch (Exception e) {
 			Assert.fail(testData.get("SKUID") + " Product is not available");
 		}
-		//click(pdp.getAddToCart(), "Add to Cart");
+		// click(pdp.getAddToCart(), "Add to Cart");
 
 		// due to product search issue i am using above code to get the product.
 
@@ -137,7 +137,7 @@ public class UIFunctions extends GenericMethods {
 		 */
 
 	}
-	
+
 	public static void addBackOrderProduct(String sheet, String testCase) {
 
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
@@ -159,7 +159,7 @@ public class UIFunctions extends GenericMethods {
 		 */
 
 	}
-	
+
 	public static void addPrekOrder(String sheet, String testCase) {
 
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
@@ -186,7 +186,7 @@ public class UIFunctions extends GenericMethods {
 
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
 
-		//domClick(mono.getComplimentaryMono(),"Monogram");
+		// domClick(mono.getComplimentaryMono(),"Monogram");
 		click(mono.getAddPersonalization(), "Add Personalization");
 		input(mono.getFirstMonoInput(), testData.get("FirstMonoInput"), "First Mono Input");
 		input(mono.getSecondMonoInput(), testData.get("SecondMonoInput"), "Second Mono Input");
@@ -199,59 +199,52 @@ public class UIFunctions extends GenericMethods {
 		delay(3000);
 	}
 
-	/*public static void completeOrder(String sheet, String testCase) {
-
-		Map<String, String> testData = ReadTestData.retrieveData(sheet, testCase);
-
-		click(mainCart.getProceedToCheckout(), "Cart");
-		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email");
-		click(singlePage.getContinueAsGuest(), "Continue As Guest");
-		input(shipping.getFirstName(), testData.get("FirstName"), "First Name");
-		input(shipping.getLastName(), testData.get("LastName"), "Last Name");
-		input(shipping.getAddressLine1(), testData.get("AddressLine1"), "Address line1");
-		do {
-			delay(2000);
-		} while (!shipping.getAddressList().isDisplayed());
-
-		for (int i = 1; i < shipping.getAddList().size(); i++) {
-
-			WebElement add = driver.findElement(By.xpath("//div[@class='address-picklist']/div[" + i + "]"));
-			if (add.getText().contains("PRINCE RUPERT")) {
-				click(add, "Address Line1");
-				break;
-			}
-		}
-		
-		 * added code for Canada
-		 * 
-		 
-		
-		 * for (WebElement ele : shipping.getListAddressLine1()) { if
-		 * (getText(ele).equals("10 SUMAS WAY, ABBOTSFORD, BC, V2S 8B7")) { click(ele,
-		 * "AddressList"); break; } }
-		 
-		input(shipping.getPostcode(), testData.get("PostCode"), "Post code");
-		input(shipping.getPhoneNumber(), testData.get("Phone"), "Phone Number");
-		click(shipping.getContinueShippingMethod(), "Continue shipping Method");
-		webclick(shipMethod.getStandardShippingMethod(), "Standard Shipping Method");
-		String fee = getText(shipMethod.getShippingFree());
-		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
-		if (!fee.equals("FREE")) {
-			UIFunctions.addCardDetails("PlaceOrder", "TumiOrder");
-		}
-		click(review.getPlaceOrder(), "Place Order");
-		do {
-			delay(2000);
-		} while (confirmation.getWithForConfirmation().isDisplayed());
-
-		if (!confirmation.getConfirmOrder().isDisplayed()) {
-
-			Assert.fail("Faile to Place An Order");
-		}
-		orderNumber = getText(confirmation.getOrderNumber());
-		logger.log(Status.INFO, "Thank you for Your Order, here is your Order Number " + orderNumber);
-		captureOrderConfScreen("OrderConfirmation");
-	}*/
+	/*
+	 * public static void completeOrder(String sheet, String testCase) {
+	 * 
+	 * Map<String, String> testData = ReadTestData.retrieveData(sheet, testCase);
+	 * 
+	 * click(mainCart.getProceedToCheckout(), "Cart");
+	 * input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email");
+	 * click(singlePage.getContinueAsGuest(), "Continue As Guest");
+	 * input(shipping.getFirstName(), testData.get("FirstName"), "First Name");
+	 * input(shipping.getLastName(), testData.get("LastName"), "Last Name");
+	 * input(shipping.getAddressLine1(), testData.get("AddressLine1"),
+	 * "Address line1"); do { delay(2000); } while
+	 * (!shipping.getAddressList().isDisplayed());
+	 * 
+	 * for (int i = 1; i < shipping.getAddList().size(); i++) {
+	 * 
+	 * WebElement add =
+	 * driver.findElement(By.xpath("//div[@class='address-picklist']/div[" + i +
+	 * "]")); if (add.getText().contains("PRINCE RUPERT")) { click(add,
+	 * "Address Line1"); break; } }
+	 * 
+	 * added code for Canada
+	 * 
+	 * 
+	 * 
+	 * for (WebElement ele : shipping.getListAddressLine1()) { if
+	 * (getText(ele).equals("10 SUMAS WAY, ABBOTSFORD, BC, V2S 8B7")) { click(ele,
+	 * "AddressList"); break; } }
+	 * 
+	 * input(shipping.getPostcode(), testData.get("PostCode"), "Post code");
+	 * input(shipping.getPhoneNumber(), testData.get("Phone"), "Phone Number");
+	 * click(shipping.getContinueShippingMethod(), "Continue shipping Method");
+	 * webclick(shipMethod.getStandardShippingMethod(), "Standard Shipping Method");
+	 * String fee = getText(shipMethod.getShippingFree());
+	 * click(shipMethod.getProceedToPayment(), "Proceed to Payment"); if
+	 * (!fee.equals("FREE")) { UIFunctions.addCardDetails("PlaceOrder",
+	 * "TumiOrder"); } click(review.getPlaceOrder(), "Place Order"); do {
+	 * delay(2000); } while (confirmation.getWithForConfirmation().isDisplayed());
+	 * 
+	 * if (!confirmation.getConfirmOrder().isDisplayed()) {
+	 * 
+	 * Assert.fail("Faile to Place An Order"); } orderNumber =
+	 * getText(confirmation.getOrderNumber()); logger.log(Status.INFO,
+	 * "Thank you for Your Order, here is your Order Number " + orderNumber);
+	 * captureOrderConfScreen("OrderConfirmation"); }
+	 */
 
 	public static void addGuestDetails() {
 
@@ -269,7 +262,6 @@ public class UIFunctions extends GenericMethods {
 		}
 		input(shipping.getPhoneNumber(), testData.get("Phone"), "Phone Number");
 	}
-	
 
 	public static void completeOrder() {
 		delay(2000);
@@ -293,31 +285,31 @@ public class UIFunctions extends GenericMethods {
 
 		input(mainCart.getPromocode(), testData.get("VoucherID"), "Vocher Id");
 		click(mainCart.getApply(), "Check Promocode");
-		/*try {
-			if (mainCart.getVocherCardFailed().isDisplayed()) {
-
-				Assert.fail(getText(mainCart.getVocherCardFailed()));
-
-			} else if (!mainCart.getCodeApplied().isDisplayed()) {
-
-				Assert.fail("Promo Code Remove link is not displayed");
-
-			} else if (!mainCart.getCodeRemove().isDisplayed()) {
-
-				Assert.fail("Promo Code Applied Message is not displayed");
-
-			} else if (!mainCart.getSubtotalCode().isDisplayed()) {
-
-				Assert.fail("Promo Code Subtotal is not displayed");
-
-			} else if (mainCart.getVocherCardFailed().isDisplayed()) {
-
-				Assert.fail(getText(mainCart.getVocherCardFailed()));
-			}
-		} catch (Exception e) {
-
-			Assert.fail("Vocher Card related Fields are not displayed " + e.getMessage());
-		}*/
+		/*
+		 * try { if (mainCart.getVocherCardFailed().isDisplayed()) {
+		 * 
+		 * Assert.fail(getText(mainCart.getVocherCardFailed()));
+		 * 
+		 * } else if (!mainCart.getCodeApplied().isDisplayed()) {
+		 * 
+		 * Assert.fail("Promo Code Remove link is not displayed");
+		 * 
+		 * } else if (!mainCart.getCodeRemove().isDisplayed()) {
+		 * 
+		 * Assert.fail("Promo Code Applied Message is not displayed");
+		 * 
+		 * } else if (!mainCart.getSubtotalCode().isDisplayed()) {
+		 * 
+		 * Assert.fail("Promo Code Subtotal is not displayed");
+		 * 
+		 * } else if (mainCart.getVocherCardFailed().isDisplayed()) {
+		 * 
+		 * Assert.fail(getText(mainCart.getVocherCardFailed())); } } catch (Exception e)
+		 * {
+		 * 
+		 * Assert.fail("Vocher Card related Fields are not displayed " +
+		 * e.getMessage()); }
+		 */
 
 	}
 
@@ -327,33 +319,33 @@ public class UIFunctions extends GenericMethods {
 
 		input(singlePage.getPromocode(), testData.get("VoucherID"), "Vocher Id");
 		click(singlePage.getApply(), "Check Promocode");
-		//delay(2000);
+		// delay(2000);
 
-		/*try {
-			if (mainCart.getVocherCardFailed().isDisplayed()) {
-
-				Assert.fail(getText(mainCart.getVocherCardFailed()));
-
-			} else if (!mainCart.getCodeApplied().isDisplayed()) {
-
-				Assert.fail("Promo Code Remove link is not displayed");
-
-			} else if (!mainCart.getCodeRemove().isDisplayed()) {
-
-				Assert.fail("Promo Code Applied Message is not displayed");
-
-			} else if (!mainCart.getSubtotalCode().isDisplayed()) {
-
-				Assert.fail("Promo Code Subtotal is not displayed");
-
-			} else if (mainCart.getVocherCardFailed().isDisplayed()) {
-
-				Assert.fail(getText(mainCart.getVocherCardFailed()));
-			}
-		} catch (Exception e) {
-
-			Assert.fail("Vocher Card related Fields are not displayed " + e.getMessage());
-		}*/
+		/*
+		 * try { if (mainCart.getVocherCardFailed().isDisplayed()) {
+		 * 
+		 * Assert.fail(getText(mainCart.getVocherCardFailed()));
+		 * 
+		 * } else if (!mainCart.getCodeApplied().isDisplayed()) {
+		 * 
+		 * Assert.fail("Promo Code Remove link is not displayed");
+		 * 
+		 * } else if (!mainCart.getCodeRemove().isDisplayed()) {
+		 * 
+		 * Assert.fail("Promo Code Applied Message is not displayed");
+		 * 
+		 * } else if (!mainCart.getSubtotalCode().isDisplayed()) {
+		 * 
+		 * Assert.fail("Promo Code Subtotal is not displayed");
+		 * 
+		 * } else if (mainCart.getVocherCardFailed().isDisplayed()) {
+		 * 
+		 * Assert.fail(getText(mainCart.getVocherCardFailed())); } } catch (Exception e)
+		 * {
+		 * 
+		 * Assert.fail("Vocher Card related Fields are not displayed " +
+		 * e.getMessage()); }
+		 */
 
 	}
 
@@ -423,7 +415,8 @@ public class UIFunctions extends GenericMethods {
 		for (int i = 0; i < 2; i++) {
 			UIFunctions.searchProducts(i, testData.get("PrdouctName"));
 			delay(3000);
-			//verifyAssertContains(driver.getCurrentUrl(), testData.get("SKUID"), "Wrong Product is displayed");
+			// verifyAssertContains(driver.getCurrentUrl(), testData.get("SKUID"), "Wrong
+			// Product is displayed");
 			try {
 				if (pdp.getAddToCart().isDisplayed()) {
 					verifyAssertEquals("Add To Cart", getText(pdp.getAddToCart()));
@@ -449,7 +442,7 @@ public class UIFunctions extends GenericMethods {
 			}
 		}
 		selectedCountry = home.getHomeCountry().getText();
-		System.out.println("Execution Country is "+selectedCountry);
+		System.out.println("Execution Country is " + selectedCountry);
 		UIFunctions.closeSignUp();
 	}
 
@@ -457,7 +450,7 @@ public class UIFunctions extends GenericMethods {
 
 		switch (name.toUpperCase()) {
 		case "US":
-			//countrySelection("United States");
+			// countrySelection("United States");
 			break;
 		case "CANADA":
 			countrySelection("Canada");
@@ -471,31 +464,33 @@ public class UIFunctions extends GenericMethods {
 		}
 
 	}
+
 	public static void payPalCheckout(String sheet, String testCase) {
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
-		String value = getText(mainCart.getEstimatedTotalRegistered()); //use this for registered user
-		//String value = getText(mainCart.getEstimatedTotal());  //use this for Guest users
+		String value = getText(mainCart.getEstimatedTotalRegistered()); // use this for registered user
+		// String value = getText(mainCart.getEstimatedTotal()); //use this for Guest
+		// users
 		System.out.println(value);
-		Double dValue=Double.valueOf(value.replace("$", ""));
-		if(dValue.intValue() >= 100) {
-			click(paypal.getPayPalAnother(),"PayPal");
-		}else {
-			
-			click(paypal.getPayPal(),"PayPal");
+		Double dValue = Double.valueOf(value.replace("$", ""));
+		if (dValue.intValue() >= 100) {
+			click(paypal.getPayPalAnother(), "PayPal");
+		} else {
+
+			click(paypal.getPayPal(), "PayPal");
 		}
-		input(paypal.getPayPalEmail(),testData.get("EmailID"), "EmailID");
-		click(paypal.getNext(),"Next");
-		input(paypal.getPayPalPassword(),testData.get("Password"),"Password");
-		click(paypal.getLogin(),"Login");
-		domClick(paypal.getVisax111(),"Select Visa");
-		click(paypal.getPaypalContinue(),"Continue");
-		click(paypal.getPaypalCheckout(),"Checkout");
-}
+		input(paypal.getPayPalEmail(), testData.get("EmailID"), "EmailID");
+		click(paypal.getNext(), "Next");
+		input(paypal.getPayPalPassword(), testData.get("Password"), "Password");
+		click(paypal.getLogin(), "Login");
+		domClick(paypal.getVisax111(), "Select Visa");
+		click(paypal.getPaypalContinue(), "Continue");
+		click(paypal.getPaypalCheckout(), "Checkout");
+	}
 
 	public static void waitForContinueToEnable() {
-		do {
-			delay(1000);
-		} while (singlePage.isContinueDisabled().isDisplayed());
 		
+		do {
+			delay(2000);	
+		} while (singlePage.isContinueDisabled().isDisplayed());
 	}
 }
