@@ -459,6 +459,7 @@ public class UIFunctions extends GenericMethods {
 			}
 		}
 		selectedCountry = home.getHomeCountry().getText();
+		System.out.println("Execution Country is "+selectedCountry);
 		UIFunctions.closeSignUp();
 	}
 
