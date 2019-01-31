@@ -20,8 +20,10 @@ public class OrderWithVochercode extends GenericMethods {
 	/*
 	 * TA-15 Verify Order with merchandise Ready to ship + Voucher Code for Guest
 	 * User
+	 * 
+	 * dataProvider = "Location",
 	 */
-	@Test(dataProvider = "Location", 
+	@Test( 
 			description = "Verify Order with merchandise Ready to ship + Voucher Code for Guest User")
 	public void verifyOrderWithVocherCode(String name) throws InterruptedException {
 

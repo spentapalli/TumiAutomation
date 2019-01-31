@@ -20,7 +20,8 @@ public class PayPalPage extends GenericMethods {
 		PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(how=How.XPATH,using="//img[@alt='Checkout with PayPal']")
+	//@FindBy(how=How.XPATH,using="//img[@alt='Checkout with PayPal']")
+	@FindBy(how=How.XPATH,using="//div[@aria-label='paypal']/img[2]")
 	private WebElement payPal;
 	
 	public WebElement getPayPal() {

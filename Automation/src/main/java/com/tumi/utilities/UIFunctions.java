@@ -19,7 +19,6 @@ import com.tumi.webPages.HomePage;
  */
 public class UIFunctions extends GenericMethods {
 
-	private static String value2;
 	public static void closeSignUp() {
 
 		HomePage home = PageFactory.initElements(driver, HomePage.class);
@@ -467,7 +466,7 @@ public class UIFunctions extends GenericMethods {
 
 		switch (name.toUpperCase()) {
 		case "US":
-			countrySelection("United States");
+			//countrySelection("United States");
 			break;
 		case "CANADA":
 			countrySelection("Canada");
