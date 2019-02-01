@@ -26,10 +26,10 @@ public class GuestOrderWithMonogram extends GenericMethods {
 		UIFunctions.addProductToCart("TumiTestData","GuestOrders");
 		UIFunctions.addMonogram("TumiTestData", "GuestOrders");
 		click(pdp.getAddToCart(),"Add to cart");
-		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
+		click(minicart.getProceedCheckOut(), "Proceed to Cart");
 		click(mainCart.getProceedToCheckout(), "Proceed to Checkout");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
-		//UIFunctions.waitForContinueToEnable();
+		UIFunctions.waitForContinueToEnable();
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");

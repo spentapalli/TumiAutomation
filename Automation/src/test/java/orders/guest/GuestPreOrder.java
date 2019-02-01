@@ -20,13 +20,13 @@ public class GuestPreOrder extends GenericMethods {
 	 */
 
 	@Test(description = "Verify Order with merchandise Ready to ship for Guest User")
-	public void preOrderAsGuest() throws InterruptedException {
+	public void preOrderWithGiftBox() throws InterruptedException {
 		UIFunctions.addProductToCart("TumiTestData","PreOrderProduct");
 		click(pdp.getAddToCart(),"Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(mainCart.getProceedToCheckout(), "Proceed to Checkout");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
-		//UIFunctions.waitForContinueToEnable();
+		UIFunctions.waitForContinueToEnable();
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");

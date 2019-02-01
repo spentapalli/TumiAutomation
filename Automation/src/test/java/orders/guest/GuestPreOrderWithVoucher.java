@@ -27,6 +27,7 @@ public class GuestPreOrderWithVoucher extends GenericMethods {
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		//UIFunctions.addPromotionalCodeAtCart("TumiTestData", "PreOrderProduct");
 		click(mainCart.getProceedToCheckout(), "Proceed to Checkout");
+		UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "BackOrderProduct");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "PreOrderProduct");
 		//UIFunctions.waitForContinueToEnable();

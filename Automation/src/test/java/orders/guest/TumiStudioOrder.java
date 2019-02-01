@@ -3,9 +3,7 @@ package orders.guest;
 import java.util.Map;
 
 
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
-
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
 import com.tumi.utilities.GlobalConstants;
@@ -17,7 +15,7 @@ import com.tumi.utilities.UIFunctions;
  */
 public class TumiStudioOrder extends GenericMethods{
 	
-	Map<String, String> testData= ReadTestData.retrieveData("Login", "TumiStudioOrder");
+	Map<String, String> testData= ReadTestData.getJsonData("Login", "TumiStudioOrder");
 	
 	@Test
 	public void testTumiIdOrder() throws InterruptedException{

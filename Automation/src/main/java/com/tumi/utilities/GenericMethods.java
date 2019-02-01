@@ -102,7 +102,7 @@ public class GenericMethods extends GlobalConstants {
 				// To enter current value
 				element.sendKeys(Value);
 				logger.log(Status.INFO, "Entered the value in " + fieldName + " as: " + Value);
-				WaitForJStoLoad();
+				//WaitForJStoLoad();
 			} else {
 
 				Assert.fail("Fail to Enter Value in  " + fieldName);
