@@ -10,7 +10,6 @@
 			<class name="orders.guest.OrderWithVochercode" />
 		</classes>
 	</test> <!-- Test -->
-<<<<<<< HEAD
 	<test name="BackOrderProdcut">
 		<parameter name="Country" value="US"></parameter>
 		<classes>
@@ -138,9 +137,28 @@
 		</classes>
 	</test> <!-- Test -->
 	
-=======
-
->>>>>>> 2a941cf8341861175bdfa24ae3004a83bbab82d4
-	
-	
+<test name="GuestOrderWithPayPal">
+		<parameter name="Country" value="US"></parameter>
+		<classes>
+			<class name="orders.guest.GuestOrderWithPayPal"/>
+		</classes>
+	</test> <!-- Test -->
+	<test name="RegisteredOrderWithPayPal">
+		<parameter name="Country" value="US"></parameter>
+		<classes>
+			<class name="orders.registered.RegisteredOrderWithPayPal" />
+		</classes>
+	</test> <!-- Test -->
+		<test name="RegisterOrderWithVoucher">
+		<parameter name="Country" value="US"></parameter>
+		<classes>
+			<class name="orders.registered.RegisterOrderWithVoucher" />
+		</classes>
+	</test> <!-- Test -->
+		<test name="RegisteredOrder">
+		<parameter name="Country" value="US"></parameter>
+		<classes>
+			<class name="orders.registered.RegisterOrderWithVoucher" />
+		</classes>
+	</test> <!-- Test -->
 </suite>
