@@ -483,7 +483,6 @@ public class UIFunctions extends GenericMethods {
 		if (dValue.intValue() >= 100) {
 			click(paypal.getPayPalAnother(), "PayPal");
 		} else {
-
 			click(paypal.getPayPal(), "PayPal");
 		}
 		input(paypal.getPayPalEmail(), testData.get("EmailID"), "EmailID");

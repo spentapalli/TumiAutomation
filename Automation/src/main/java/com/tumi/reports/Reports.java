@@ -14,8 +14,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.io.FileHandler;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
@@ -247,6 +249,13 @@ public class Reports {
 
 		} else if (browserName.equalsIgnoreCase("firefox")) {
 
+			FirefoxProfile geoDisabled = new FirefoxProfile();
+			geoDisabled.setPreference("geo.enabled", false);
+			geoDisabled.setPreference("geo.provider.use_corelocation", false);
+			geoDisabled.setPreference("geo.prompt.testing", false);
+			geoDisabled.setPreference("geo.prompt.testing.allow", false);
+			DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+			capabilities.setCapability(FirefoxDriver.PROFILE, geoDisabled);
 			System.setProperty(GlobalConstants.firefox, GlobalConstants.firefoxPath);
 			driver = new FirefoxDriver();
 			logger.log(Status.INFO, "Firefox Browser is initiated Execution");
