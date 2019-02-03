@@ -69,8 +69,7 @@ import com.tumi.webPages.TumiStudio;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 /**
- * @author Suuresh
- *clean test -Dsurefire.suiteXmlFiles=regressionTests.xml
+ * @author Suuresh clean test -Dsurefire.suiteXmlFiles=regressionTests.xml
  */
 public class Reports {
 	public static ExtentHtmlReporter htmlreport;
@@ -108,6 +107,7 @@ public class Reports {
 	public static OrderConfirmationPage confirmation = null;
 	public static String selectedCountry = "US";
 	public static String orderNumber = null;
+	public static String browserName = null;
 
 	@BeforeSuite(alwaysRun = true)
 	public void startReport(ITestContext ctx) {
@@ -128,16 +128,16 @@ public class Reports {
 	}
 
 	@BeforeClass(alwaysRun = true)
-	//@Parameters({"Country"})
+	// @Parameters({"Country"})
 	public static void launchBrowser() throws Exception {
-		getBrowser(GenericMethods.getProperty("tumi.browserName"));
+		getBrowser();
 		maximizeBrowser();
 		getURL(GenericMethods.getProperty("tumi.appName"));
-		UIFunctions.selectCountry(GlobalConstants.countryName);
+		UIFunctions.selectCountry();
 		// driver.navigate().to("https://ca.stg-hybris-akamai.tumi.com");
 	}
 
-	//@AfterClass(alwaysRun = true)
+	@AfterClass(alwaysRun = true)
 	public static void closeBrowser() {
 		driver.close();
 		try {
@@ -234,26 +234,35 @@ public class Reports {
 
 	}
 
-	public static void getBrowser(String browserName) throws Exception {
-		browser = browserName;
+	public static void getBrowser() throws Exception {
+		
+		logger = report.createTest("Browser Name");
 
-		if (browserName.equalsIgnoreCase("firefox")) {
+		browserName = System.getProperty("env");
+		
+		System.out.println("Jenkins Parameter "+browserName);
 
-			System.setProperty(GlobalConstants.firefox, GlobalConstants.firefoxPath);
-			driver = new FirefoxDriver();
+		if (null == browserName || browserName.isEmpty()||
+				browserName.equalsIgnoreCase("chrome")) {
 
-		} else if (browserName.equalsIgnoreCase("Chrome")) {
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("disable-infobars");
 			options.addArguments("--disable-notifications");
 			System.setProperty(GlobalConstants.chrome, GlobalConstants.chromePath);
 			driver = new ChromeDriver(options);
-			// logger.log(Status.INFO, "Chrome has been successfully Launched");
+			logger.log(Status.INFO, "Chrome Browser is initiated Execution");
+
+		} else if (browserName.equalsIgnoreCase("firefox")) {
+
+			System.setProperty(GlobalConstants.firefox, GlobalConstants.firefoxPath);
+			driver = new FirefoxDriver();
+			logger.log(Status.INFO, "Firefox Browser is initiated Execution");
+
 		} else if (browserName.equalsIgnoreCase("ie")) {
+
 			System.setProperty(GlobalConstants.ie, GlobalConstants.iePath);
 			driver = new InternetExplorerDriver();
-		} else {
-			Assert.fail("No Browser has been selected");
+			logger.log(Status.INFO, "InternetExplorer Browser is initiated Execution");	
 		}
 	}
 
@@ -274,7 +283,7 @@ public class Reports {
 
 			driver.get(GlobalConstants.url);
 			GenericMethods.WaitForJStoLoad();
-			
+
 		} else if (URL.equalsIgnoreCase("")) {
 			driver.get("");
 			logger.log(Status.INFO, "Successfully Navigated to " + URL + " Environment");

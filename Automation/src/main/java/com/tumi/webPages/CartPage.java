@@ -17,13 +17,21 @@ public class CartPage extends GenericMethods {
 		Reports.driver= driver;
 	    PageFactory.initElements(driver, this);
 	}
-	
-	@FindBy(how=How.XPATH,using="//a[contains(text(),'Edit')][1]")
+
+	@FindBy(how=How.XPATH,using="//input[@id='select-qty']")
 	private WebElement editProductQuantity;
 	
 	public WebElement getEditProductQuantity() {
 		
 		return editProductQuantity;
+	}
+	
+	@FindBy(how=How.XPATH,using="//a[contains(text(),'Edit')][1]")
+	private WebElement editMonogramQuantity;
+	
+	public WebElement getEditMonogramQuantity() {
+		
+		return editMonogramQuantity;
 	}
 	
 	/*@FindBy(how=How.XPATH,using="//a[@class='cta removeFocusIndicator']")

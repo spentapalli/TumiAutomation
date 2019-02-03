@@ -2,8 +2,12 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite">
   <test thread-count="5" name="Test">
-    <packages>
-      <package name="orders.guest"/>
-    </packages>
+    <classes>
+        
+        <class name="orders.guest.OrderWithVochercode"></class>
+        
+    </classes>
+      
+    
   </test> <!-- Test -->
 </suite> <!-- Suite -->

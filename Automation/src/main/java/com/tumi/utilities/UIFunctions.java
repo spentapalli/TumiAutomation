@@ -6,6 +6,8 @@ import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
@@ -18,7 +20,7 @@ import com.tumi.webPages.HomePage;
  *
  */
 public class UIFunctions extends GenericMethods {
-
+	
 	public static void closeSignUp() {
 
 		HomePage home = PageFactory.initElements(driver, HomePage.class);
@@ -160,7 +162,7 @@ public class UIFunctions extends GenericMethods {
 
 	}
 
-	public static void addPrekOrder(String sheet, String testCase) {
+	public static void addPreOrder(String sheet, String testCase) {
 
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
 
@@ -446,23 +448,27 @@ public class UIFunctions extends GenericMethods {
 		UIFunctions.closeSignUp();
 	}
 
-	public static void selectCountry(String name) {
+	public static void selectCountry() {
+		
+		logger = report.createTest("Country");
 
-		switch (name.toUpperCase()) {
-		case "US":
-			// countrySelection("United States");
-			break;
-		case "CANADA":
+		String countryName = System.getProperty("country");
+
+		if (null == countryName || countryName.isEmpty()||
+				countryName.toUpperCase().equalsIgnoreCase("US")) {
+
+			logger.log(Status.INFO, "Execution initiated for US");
+			
+		}else if (countryName.toUpperCase().equalsIgnoreCase("CANADA")) {
+			 
 			countrySelection("Canada");
-			break;
-		case "KOREA":
+			logger.log(Status.INFO, "Execution initiated for Canada");
+			
+		}else if (countryName.toUpperCase().equalsIgnoreCase("KOREA")) {
+			
 			countrySelection("Korea");
-			break;
-		default:
-			countrySelection("United States");
-			break;
+			logger.log(Status.INFO, "Execution initiated for Korea");
 		}
-
 	}
 
 	public static void payPalCheckout(String sheet, String testCase) {
@@ -488,9 +494,9 @@ public class UIFunctions extends GenericMethods {
 	}
 
 	public static void waitForContinueToEnable() {
-		
-		do {
-			delay(2000);	
-		} while (singlePage.isContinueDisabled().isDisplayed());
+
+		//do {
+			delay(2000);
+		//} while (!singlePage.isContinueDisabled().isDisplayed());
 	}
 }
