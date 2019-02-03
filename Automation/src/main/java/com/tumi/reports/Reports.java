@@ -238,7 +238,7 @@ public class Reports {
 		
 		logger = report.createTest("Browser Name");
 
-		browserName = System.getProperty("env");
+		browserName = System.getProperty("browsername");
 		
 		System.out.println("Jenkins Parameter "+browserName);
 
