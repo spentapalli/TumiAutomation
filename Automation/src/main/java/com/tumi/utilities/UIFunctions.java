@@ -452,7 +452,9 @@ public class UIFunctions extends GenericMethods {
 		
 		logger = report.createTest("Country");
 
-		String countryName = System.getProperty("country");
+		String countryName = System.getProperty("countryName");
+		
+		System.out.println("Country Name "+countryName);
 
 		if (null == countryName || countryName.isEmpty()||
 				countryName.toUpperCase().equalsIgnoreCase("US")) {
