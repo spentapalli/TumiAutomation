@@ -110,7 +110,8 @@ public class Reports {
 		// String suiteName = ctx.getCurrentXmlTest().getSuite().getName();
 		extentReportPath = System.getProperty("user.dir") + "/ExtentReports/TumiReport.html";
 		htmlreport = new ExtentHtmlReporter(extentReportPath);
-		//htmlreport.loadDefaultConfig(new File(System.getProperty("user.dir") + "\\extent-config.xml"));
+		// htmlreport.loadDefaultConfig(new File(System.getProperty("user.dir") +
+		// "\\extent-config.xml"));
 		report = new ExtentReports();
 		report.attachReporter(htmlreport);
 	}
@@ -230,15 +231,14 @@ public class Reports {
 	}
 
 	public static void getBrowser() throws Exception {
-		
+
 		logger = report.createTest("Browser Name");
 
 		browserName = System.getProperty("browsername");
-		
-		System.out.println("Jenkins Parameter "+browserName);
 
-		if (null == browserName || browserName.isEmpty()||
-				browserName.equalsIgnoreCase("chrome")) {
+		System.out.println("Jenkins Parameter " + browserName);
+
+		if (null == browserName || browserName.isEmpty() || browserName.equalsIgnoreCase("chrome")) {
 
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("disable-infobars");
@@ -264,7 +264,7 @@ public class Reports {
 
 			System.setProperty(GlobalConstants.ie, GlobalConstants.iePath);
 			driver = new InternetExplorerDriver();
-			logger.log(Status.INFO, "InternetExplorer Browser is initiated Execution");	
+			logger.log(Status.INFO, "InternetExplorer Browser is initiated Execution");
 		}
 	}
 
@@ -284,6 +284,9 @@ public class Reports {
 		if (URL.equalsIgnoreCase("stage2")) {
 
 			driver.get(GlobalConstants.url);
+			if (browserName.equals("ie")) {
+				driver.get("javascript:document.getElementById('overridelink').click();");
+			}
 			GenericMethods.WaitForJStoLoad();
 
 		} else if (URL.equalsIgnoreCase("")) {
