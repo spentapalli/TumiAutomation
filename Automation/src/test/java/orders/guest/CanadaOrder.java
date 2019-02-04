@@ -27,7 +27,7 @@ public class CanadaOrder extends GenericMethods {
 		//click(home.getSelectCountry(), "US country");
 		//click(home.getSelectCountry(), "Korea");
 		//delay(4000);
-		UIFunctions.selectCountry(name);
+		//UIFunctions.selectCountry();
 		/*
 		 * if (google.getNoThanks().isDisplayed()) { click(google.getNoThanks(),
 		 * "offers popup"); }else { }

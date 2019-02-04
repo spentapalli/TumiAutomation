@@ -41,8 +41,8 @@ public class GenericMethods extends GlobalConstants {
 
 	public static void captureOrderConfScreen(String name) {
 		Timestamp time = new Timestamp(System.currentTimeMillis());
-		String location = System.getProperty("user.dir")+"/ScreenShots/" + name + time.getTime() + ".png";
-		getScreen(System.getProperty("user.dir")+"/ExtentReports/ScreenShots/" + name + time.getTime() + ".png");
+		String location = System.getProperty("user.dir") + "/ScreenShots/" + name + time.getTime() + ".png";
+		getScreen(System.getProperty("user.dir") + "/ExtentReports/ScreenShots/" + name + time.getTime() + ".png");
 		try {
 			logger.info("Reference", MediaEntityBuilder.createScreenCaptureFromPath(location).build());
 		} catch (Exception e) {
@@ -58,8 +58,8 @@ public class GenericMethods extends GlobalConstants {
 			input(home.getPassWord(), testData.get("Password_login"), "Password");
 			click(home.getLogOn(), "Login");
 
-			//click(myacc.getMyAccountClose(), "My Account Close");
-			//removeExistingCart();
+			// click(myacc.getMyAccountClose(), "My Account Close");
+			// removeExistingCart();
 		} catch (Exception e) {
 			Assert.fail("Fail to Login due to " + e.getMessage());
 		}
@@ -102,7 +102,7 @@ public class GenericMethods extends GlobalConstants {
 				// To enter current value
 				element.sendKeys(Value);
 				logger.log(Status.INFO, "Entered the value in " + fieldName + " as: " + Value);
-				//WaitForJStoLoad();
+				// WaitForJStoLoad();
 			} else {
 
 				Assert.fail("Fail to Enter Value in  " + fieldName);
@@ -118,11 +118,12 @@ public class GenericMethods extends GlobalConstants {
 		try {
 			if (element.isDisplayed()) {
 				text = element.getText().trim();
-			}else {
-				//Assert.fail("Unable to Fetch text from" +element);
+			} else {
+				// Assert.fail("Unable to Fetch text from" +element);
 			}
 		} catch (Exception e) {
-			//Assert.fail("Unable to Fetch text from" + element + "due to "+e.getMessage());
+			// Assert.fail("Unable to Fetch text from" + element + "due to
+			// "+e.getMessage());
 		}
 		return text;
 	}
@@ -132,8 +133,8 @@ public class GenericMethods extends GlobalConstants {
 		try {
 			if (element.isDisplayed()) {
 				text = element.getAttribute("innerHTML").trim();
-			}else {
-				Assert.fail("Unable to Fetch text from" +element);
+			} else {
+				Assert.fail("Unable to Fetch text from" + element);
 			}
 		} catch (Exception e) {
 			Assert.fail("Unable to Fetch innerHTML " + e.getMessage());
@@ -146,8 +147,8 @@ public class GenericMethods extends GlobalConstants {
 		try {
 			if (element.isDisplayed()) {
 				text = element.getAttribute("value").trim();
-			}else {
-				Assert.fail("Unable to Fetch text from" +element);
+			} else {
+				Assert.fail("Unable to Fetch text from" + element);
 			}
 		} catch (Exception e) {
 			Assert.fail("Unable to Fetch value " + e.getMessage());
@@ -341,26 +342,24 @@ public class GenericMethods extends GlobalConstants {
 
 	public static void killSession() {
 		try {
-			switch (browser.toUpperCase()) {
-			case "CHROME":
+
+			if (null == browserName.toUpperCase() || browserName.toUpperCase().isEmpty()
+					|| browserName.toUpperCase().equals("CHROME")) {
 				try {
 					Runtime.getRuntime().exec("taskkill /im chromedriver.exe /f");
 				} catch (Exception e) {
 					Runtime.getRuntime().exec("pkill chrome");
 					Runtime.getRuntime().exec("pkill chromedriver");
 				}
-				break;
-			case "FIREFOX":
+			} else if (browserName.toUpperCase().equals("FIREFOX")) {
 				try {
 					Runtime.getRuntime().exec("taskkill /F /IM geckodriver.exe");
 				} catch (Exception e) {
 					Runtime.getRuntime().exec("pkill firefox");
 					Runtime.getRuntime().exec("pkill geckodriver");
 				}
-
-			default:
-				driver.quit();
-				break;
+			} else if (browserName.toUpperCase().equals("IE")) {
+				Runtime.getRuntime().exec("taskkill /F /IM IEDriverServer.exe");
 			}
 		} catch (Exception e) {
 			Assert.fail("Unable to Kill the Session");

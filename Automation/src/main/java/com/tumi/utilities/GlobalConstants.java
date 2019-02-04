@@ -49,7 +49,5 @@ public class GlobalConstants extends Reports {
 
 	public static String excelPath = System.getProperty("user.dir")+"/TestData/Tumi.xlsx";
 	public static String propertiesPath = System.getProperty("user.dir")+"/Validations/FlagMessages.properties";
-
 	
-
 }

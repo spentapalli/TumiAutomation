@@ -22,7 +22,7 @@
 		<dependency>
 			<groupId>com.aventstack</groupId>
 			<artifactId>extentreports</artifactId>
-			<version>3.1.5</version>
+			<version>4.0.0</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
@@ -79,6 +79,10 @@
 					<artifactId>maven-surefire-plugin</artifactId>
 					<version>2.21.0</version>
 					<configuration>
+						<systemPropertyVariables>
+							<browsername>chrome</browsername>
+							<countryName>US</countryName>
+						</systemPropertyVariables>
 						<forkCount>0</forkCount>
 						<executable>C:\Program Files\Java\jdk1.8.0_161\bin\javac.exe</executable>
 						<suiteXmlFiles>

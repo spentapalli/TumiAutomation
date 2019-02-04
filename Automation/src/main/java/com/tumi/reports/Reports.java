@@ -14,22 +14,19 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.io.FileHandler;
-import org.testng.Assert;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Parameters;
-
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
@@ -66,11 +63,8 @@ import com.tumi.webPages.SignInBillingPage;
 import com.tumi.webPages.SinglePageCheckout;
 import com.tumi.webPages.TumiStudio;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
-
 /**
- * @author Suuresh
- *clean test -Dsurefire.suiteXmlFiles=regressionTests.xml
+ * @author Suuresh clean test -Dsurefire.suiteXmlFiles=regressionTests.xml
  */
 public class Reports {
 	public static ExtentHtmlReporter htmlreport;
@@ -108,6 +102,7 @@ public class Reports {
 	public static OrderConfirmationPage confirmation = null;
 	public static String selectedCountry = "US";
 	public static String orderNumber = null;
+	public static String browserName = null;
 
 	@BeforeSuite(alwaysRun = true)
 	public void startReport(ITestContext ctx) {
@@ -115,7 +110,7 @@ public class Reports {
 		// String suiteName = ctx.getCurrentXmlTest().getSuite().getName();
 		extentReportPath = System.getProperty("user.dir") + "/ExtentReports/TumiReport.html";
 		htmlreport = new ExtentHtmlReporter(extentReportPath);
-		htmlreport.loadXMLConfig(new File(System.getProperty("user.dir") + "\\extent-config.xml"));
+		//htmlreport.loadDefaultConfig(new File(System.getProperty("user.dir") + "\\extent-config.xml"));
 		report = new ExtentReports();
 		report.attachReporter(htmlreport);
 	}
@@ -128,16 +123,16 @@ public class Reports {
 	}
 
 	@BeforeClass(alwaysRun = true)
-	//@Parameters({"Country"})
+	// @Parameters({"Country"})
 	public static void launchBrowser() throws Exception {
-		getBrowser(GenericMethods.getProperty("tumi.browserName"));
+		getBrowser();
 		maximizeBrowser();
 		getURL(GenericMethods.getProperty("tumi.appName"));
-		UIFunctions.selectCountry(GlobalConstants.countryName);
+		UIFunctions.selectCountry();
 		// driver.navigate().to("https://ca.stg-hybris-akamai.tumi.com");
 	}
 
-	//@AfterClass(alwaysRun = true)
+	@AfterClass(alwaysRun = true)
 	public static void closeBrowser() {
 		driver.close();
 		try {
@@ -234,26 +229,42 @@ public class Reports {
 
 	}
 
-	public static void getBrowser(String browserName) throws Exception {
-		browser = browserName;
+	public static void getBrowser() throws Exception {
+		
+		logger = report.createTest("Browser Name");
 
-		if (browserName.equalsIgnoreCase("firefox")) {
+		browserName = System.getProperty("browsername");
+		
+		System.out.println("Jenkins Parameter "+browserName);
 
-			System.setProperty(GlobalConstants.firefox, GlobalConstants.firefoxPath);
-			driver = new FirefoxDriver();
+		if (null == browserName || browserName.isEmpty()||
+				browserName.equalsIgnoreCase("chrome")) {
 
-		} else if (browserName.equalsIgnoreCase("Chrome")) {
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("disable-infobars");
 			options.addArguments("--disable-notifications");
 			System.setProperty(GlobalConstants.chrome, GlobalConstants.chromePath);
 			driver = new ChromeDriver(options);
-			// logger.log(Status.INFO, "Chrome has been successfully Launched");
+			logger.log(Status.INFO, "Chrome Browser is initiated Execution");
+
+		} else if (browserName.equalsIgnoreCase("firefox")) {
+
+			FirefoxProfile geoDisabled = new FirefoxProfile();
+			geoDisabled.setPreference("geo.enabled", false);
+			geoDisabled.setPreference("geo.provider.use_corelocation", false);
+			geoDisabled.setPreference("geo.prompt.testing", false);
+			geoDisabled.setPreference("geo.prompt.testing.allow", false);
+			DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+			capabilities.setCapability(FirefoxDriver.PROFILE, geoDisabled);
+			System.setProperty(GlobalConstants.firefox, GlobalConstants.firefoxPath);
+			driver = new FirefoxDriver();
+			logger.log(Status.INFO, "Firefox Browser is initiated Execution");
+
 		} else if (browserName.equalsIgnoreCase("ie")) {
+
 			System.setProperty(GlobalConstants.ie, GlobalConstants.iePath);
 			driver = new InternetExplorerDriver();
-		} else {
-			Assert.fail("No Browser has been selected");
+			logger.log(Status.INFO, "InternetExplorer Browser is initiated Execution");	
 		}
 	}
 
@@ -274,7 +285,7 @@ public class Reports {
 
 			driver.get(GlobalConstants.url);
 			GenericMethods.WaitForJStoLoad();
-			
+
 		} else if (URL.equalsIgnoreCase("")) {
 			driver.get("");
 			logger.log(Status.INFO, "Successfully Navigated to " + URL + " Environment");
