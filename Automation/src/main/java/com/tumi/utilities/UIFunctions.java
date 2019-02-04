@@ -7,6 +7,7 @@ import java.util.Set;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 import com.aventstack.extentreports.Status;
@@ -493,4 +494,81 @@ public class UIFunctions extends GenericMethods {
 			delay(2000);	
 		} while (singlePage.isContinueDisabled().isDisplayed());
 	}
+	public static void addMultiship() {
+
+		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "OrderWithTwoProducts");
+		click(multiShip.getMultiShipClick(), "MultiShipment");
+		delay(2000);
+		domClick(multiShip.getAddShippment0(), "add shipment 1");
+		addMultishipGuestDeatils(testData.get("shipment1"),testData.get("AddressLine1"));
+		click(multiShip.getNext(), "Continue next shipping");
+		webclick(shipMethod.getStandardShippingMethod(), "Standard Shipping Method");
+		click(multiShip.getNextShipment(), "Continue next shipment");
+		delay(3000);
+		domClick(multiShip.getAddShippment0(), "add shipment 2");
+		addMultishipGuestDeatils(testData.get("shipment2"),testData.get("nextAddressLine1"));
+		click(multiShip.getNext(), "Continue next shipping");
+		webclick(shipMethod.getpriorityShippingMethod(), "Priority Shipping Method");
+		click(shipMethod.getProceedToPayment(),"Proceed to Payment");
+	}
+	public static void addMultishipForRegistered() {
+
+		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "OrderWithTwoProducts");
+		click(multiShip.getMultiShipClick(), "MultiShipment");
+		delay(2000);
+		domClick(multiShip.getAddShippment0(), "add shipment 1");
+		domClick(signinBill.getAddNewPay(),"Add new Payment");
+		addMultishipGuestDeatils(testData.get("shipment1"),testData.get("AddressLine1"));
+		click(multiShip.getNext(), "Continue next shipping");
+		webclick(shipMethod.getStandardShippingMethod(), "Standard Shipping Method");
+		click(multiShip.getNextShipment(), "Continue next shipment");
+		delay(3000);
+		domClick(multiShip.getAddShippment0(), "add shipment 2");
+		domClick(signinBill.getAddNewPay(),"Add new Payment");
+		addMultishipGuestDeatils(testData.get("shipment2"),testData.get("nextAddressLine1"));
+		click(multiShip.getNext(), "Continue next shipping");
+		webclick(shipMethod.getpriorityShippingMethod(), "Priority Shipping Method");
+		click(shipMethod.getProceedToPayment(),"Proceed to Payment");
+	}
+	public static void addMultishipGuestDeatils(String data, String data1) {
+		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "OrderWithTwoProducts");
+		input(shipping.getFirstName(), testData.get("FirstName"), "First Name");
+		input(shipping.getLastName(), testData.get("LastName"), "Last Name");
+		input(shipping.getAddressLine1(), data1 , "Address Line1");
+		explicitWait(shipping.getSelectedAddressLine());
+		for (int i = 1; i < shipping.getAddList().size(); i++) {
+			WebElement add = driver.findElement(By.xpath("//div[@class='address-picklist']/div[" + i + "]"));
+			if (add.getText().contains(data)) {
+				click(add, "Address Line1");
+				break;
+			}
+		}
+		input(shipping.getPhoneNumber(), testData.get("Phone"), "Phone Number");
+	}
+	public static void addMultishipAddressWithCardDeatils(String sheet, String testCaseName) {
+			Map<String, String> testData = ReadTestData.getJsonData(sheet, testCaseName);
+
+			// billing page
+			input(guestBillPage.getNameOnCard(), testData.get("NameOnCard"), "Name on Card");
+
+			input(guestBillPage.getCardNumber(), testData.get("CardNumber"), "Card Number");
+			selectByVisibleText(guestBillPage.getExpiryMonth(), "05", "Expiry Month");
+			selectByVisibleText(guestBillPage.getExpiryYear(), "2020", "Expiry Year");
+			input(guestBillPage.getCvvNumber(), testData.get("CVV"), "Cvv Number");
+			input(guestBillPage.getemail(), testData.get("EmailID"), "Email ID");
+			input(guestBillPage.getPhoneNumber(), testData.get("Phone"), "Phone number");
+			input(shipping.getFirstName(), testData.get("FirstName"), "First Name");
+			input(shipping.getLastName(), testData.get("LastName"), "Last Name");
+			input(shipping.getAddressLine1(), testData.get("AddressLine1"), "Address line1");
+			input(shipping.getTown(), testData.get("TownCity"), "Town");
+			Select dropdown = new Select(driver.findElement(By.name("regionIso")));
+			dropdown.selectByVisibleText("New Jersey");
+			click(shipping.getRegionIso(),"Region");
+			input(shipping.getPostcode(), testData.get("PostCode"), "postal code");
+			domClick(guestBillPage.getReviewOrder(), "Review your order");
+			
+		}
+		
+	
+
 }

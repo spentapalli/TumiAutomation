@@ -26,10 +26,10 @@ public class MultiShippingPage extends GenericMethods{
 	private WebElement multiShipClick;
 	
 	public WebElement getMultiShipClick() {
-		return multiShipClick;
+		return explicitWait(multiShipClick);
 	}
-	@FindBy(how=How.XPATH,using=("//input[@id='AddToShipment0']"))
-	//@FindBy(how=How.XPATH,using=("//div[@id='addProduct0']/div/label"))
+	//@FindBy(how=How.XPATH,using=("//input[@id='AddToShipment0']"))
+	@FindBy(how=How.XPATH,using=("//div[@id='addProduct0']/div/input"))
 	private WebElement addShippment0;
 	
 	public WebElement getAddShippment0() {
@@ -52,7 +52,7 @@ public class MultiShippingPage extends GenericMethods{
 	private WebElement nextShipment;
 	
 	public WebElement getNextShipment() {
-		return nextShipment;
+		return explicitWait(nextShipment);
 	}
 	
 	

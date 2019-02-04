@@ -117,6 +117,7 @@
 		"FirstName": "Test",
 		"LastName": "TumiLast",
 		"AddressLine1": "10 Sumac Way",
+		"nextAddressLine1":"1001 6Th Ave",
 		"AddressLine2": "Add",
 		"TownCity": "ABBOTSFORD",
 		"Region": "California",
@@ -129,7 +130,9 @@
 		"ExpiryYear": "2020",
 		"NoramlSKUID": "014757D",
 		"PreOrderSKUID": "0484660D",
-		"BackOrderSKUID": "013234CPT"
+		"BackOrderSKUID": "013234CPT",
+		"shipment1":"Fairport NY 14450",
+		"shipment2":"Albany GA 31701"
 	},
 	"PayPalDeatils": {
 		"EmailID": "test@tumi.com",
