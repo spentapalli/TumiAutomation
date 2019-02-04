@@ -48,6 +48,30 @@ public class TA extends GenericMethods {
 		UIFunctions.addCardDetails("TumiTestData", "PreOrderProduct");
 		UIFunctions.completeOrder();
 	}
+	//TA30
+	@Test(description = "Verify Order with 2 'Pre Order' Items, One Pre Order SKU + One Pre Order SKU with Personalization-Guest user")
+	public void verifyGuestOrderWithTwoPersonalizePreOrder() {
+
+		UIFunctions.addProductToCart("TumiTestData", "PreOrderProduct");
+		click(pdp.getAddToCart(), "Add To Cart");
+		click(minicart.getContinueShopping(), "Continue Shopping");
+		UIFunctions.addProductToCart("TumiTestData", "PreOrderProduct");
+		click(pdp.getAddToCart(), "Add To Cart");
+		UIFunctions.addMonogram("TumiTestData", "PreOrderProduct");
+		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
+		click(gift.getMakeThisGift(), "Make this Gift");
+		UIFunctions.addGiftBox();
+		click(gift.getContinueGiftService(), "continue");
+		click(mainCart.getProceedToCheckout(), "Proceed to Checkout");
+		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
+		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
+		UIFunctions.addGuestDetails();
+		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
+		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
+		UIFunctions.addCardDetails("TumiTestData", "GuestOrders");
+		UIFunctions.completeOrder();
+	}
+	
 	//TA31
 	@Test(priority=2,description = "Verify Order with 2 'Pre Order' Items, One Pre Order SKU + One Pre Order SKU with Gift boxing-Guest user")
 	public void verifyGuestOrderWithTwoPreOrder() {
@@ -165,5 +189,44 @@ public class TA extends GenericMethods {
 		UIFunctions.addCardDetails("TumiTestData", "GuestOrders");
 		UIFunctions.completeOrder();
 	}
+	//TA24
+	@Test(priority=7,description = "Verify Order with 'Back Order' SKU + Global locator-Guest user")
+	public void verifyGuestOrderWithBackOrderAndGloabalLocator() {
+
+	UIFunctions.addProductToCart("TumiTestData", "BackOrderProduct");
+	click(pdp.getAddToCart(), "Add To Cart");
+	click(minicart.getContinueShopping(), "Continue Shopping");
 	
+	
+	}
+	//TA25
+	@Test(priority=8,description = "Verify Order with 'Pre Order' SKU + Global locator-Guest user")
+	public void verifyGuestOrderWithPreOrderAndGloabalLocator() {
+
+	UIFunctions.addProductToCart("TumiTestData", "PreOrderProduct");
+	click(pdp.getAddToCart(), "Add To Cart");
+	click(minicart.getContinueShopping(), "Continue Shopping");
+	
+	
+	}
+	//TA21
+	@Test(priority=9,description = "Verify Order with 'Back Order' SKU + Donation purchase-Guest user")
+	public void verifyGuestOrderWithBackOrderAndDonation() {
+
+	UIFunctions.addProductToCart("TumiTestData", "BackOrderProduct");
+	click(pdp.getAddToCart(), "Add To Cart");
+	click(minicart.getContinueShopping(), "Continue Shopping");
+	
+	
+	}
+	//TA28
+	@Test(priority=10,description = "Verify Order with 'Pre Order' SKU + Donation purchase-Guest user")
+	public void verifyGuestOrderWithPreOrderAndDonation() {
+
+	UIFunctions.addProductToCart("TumiTestData", "PreOrderProduct");
+	click(pdp.getAddToCart(), "Add To Cart");
+	click(minicart.getContinueShopping(), "Continue Shopping");
+	
+	
+	}
 }
