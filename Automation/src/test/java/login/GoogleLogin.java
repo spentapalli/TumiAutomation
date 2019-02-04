@@ -17,7 +17,7 @@ public class GoogleLogin extends GenericMethods {
 	/*
 	 * TA-19 Verify valid Login with Google Account by giving valid credentials.
 	 */
-	@Test
+	@Test(description=" TA- 19 Verify valid Login with Google Account by giving valid credentials")
 	public void verifyValidGoogleLogin() {
 
 		// TumiLibs.closeSignUpForUS();

@@ -4,161 +4,66 @@
  
 	
 	
-	<test name="OrderWithVochercode">
-		<parameter name="Country" value="Korea"></parameter>
-		<classes>
-			<class name="orders.guest.OrderWithVochercode" />
-		</classes>
-	</test> <!-- Test -->
-	<test name="BackOrderProdcut">
-		<parameter name="Country" value="US"></parameter>
-		<classes>
-			<class name="orders.guest.BackOrderProdcut" />
-		</classes>
-	</test> <!-- Test -->
-	<test name="BackOrderWithGiftBox">
-		<parameter name="Country" value="US"></parameter>
-		<classes>
-			<class name="orders.guest.BackOrderWithGiftBox" />
-		</classes>
-	</test> <!-- Test -->
-	<test name="BackorderWithGiftServices">
-		<parameter name="Country" value="US"></parameter>
-		<classes>
-			<class name="orders.guest.BackorderWithGiftServices" />
-		</classes>
-	</test> <!-- Test -->
-	<test name="BackorderWithMonogram">
-		<parameter name="Country" value="US"></parameter>
-		<classes>
-			<class name="orders.guest.BackorderWithMonogram" />
-		</classes>
-	</test> <!-- Test -->
-	<test name="BackorderWithVoucher">
-		<parameter name="Country" value="US"></parameter>
-		<classes>
-			<class name="orders.guest.BackorderWithVoucher" />
-		</classes>
-	</test> <!-- Test -->
-	<test name="DonationPurchaseOrder">
-		<parameter name="Country" value="US"></parameter>
-		<classes>
-			<class name="orders.guest.DonationPurchaseOrder" />
-		</classes>
-	</test> <!-- Test -->
-	<test name="GlobalLocatororder">
-		<parameter name="Country" value="US"></parameter>
+	
+	<!-- Test -->
+	<!--<test name="GlobalLocatororder">
 		<classes>
 			<class name="orders.guest.GlobalLocatororder" />
 		</classes>
 	</test> <!-- Test -->
-	<test name="GuestOrder">
+	<!-- <test name="GuestOrderWithMultiShipment">
 		<parameter name="Country" value="US"></parameter>
 		<classes>
-			<class name="orders.guest.GuestOrder" />
+			<class name="orders.guest.GuestOrderWithMultiShipment" />
 		</classes>
-	</test> <!-- Test -->
-	<test name="GuestOrderWithGiftBox">
-		<parameter name="Country" value="US"></parameter>
-		<classes>
-			<class name="orders.guest.GuestOrderWithGiftBox" />
-		</classes>
-	</test> <!-- Test -->
-	<test name="GuestOrderWithGiftBoxnMsg">
-		<parameter name="Country" value="US"></parameter>
-		<classes>
-			<class name="orders.guest.GuestOrderWithGiftBoxnMsg" />
-		</classes>
-	</test> <!-- Test -->
-	<test name="GuestOrderWithMonogram">
-		<parameter name="Country" value="US"></parameter>
-		<classes>
-			<class name="orders.guest.GuestOrderWithMonogram" />
-		</classes>
-	</test> <!-- Test -->
+	</test> Test
 	<test name="GuestOrderWithTwoDiffProducts">
 		<parameter name="Country" value="US"></parameter>
 		<classes>
 			<class name="orders.guest.GuestOrderWithTwoDiffProducts" />
 		</classes>
-	</test> <!-- Test -->
-	<test name="GuestPreOrder">
+	</test>Test
+	<test name="OrderWithGiftBox">
 		<parameter name="Country" value="US"></parameter>
 		<classes>
-			<class name="orders.guest.GuestPreOrder" />
+			<class name="orders.guest.OrderWithGiftBox" />
 		</classes>
-	</test> <!-- Test -->
-	<test name="GuestPreOrderWithGiftBox">
+	</test>Test
+	<test name="OrderWithMonogram">
 		<parameter name="Country" value="US"></parameter>
 		<classes>
-			<class name="orders.guest.GuestPreOrderWithGiftBox" />
+			<class name="orders.guest.OrderWithMonogram" />
 		</classes>
-	</test> <!-- Test -->
-	<test name="GuestPreOrderWithGiftBoxMsg">
+	</test>Test
+	<test name="OrderWithVochercode">
 		<parameter name="Country" value="US"></parameter>
 		<classes>
-			<class name="orders.guest.GuestPreOrderWithGiftBoxMsg" />
+			<class name="orders.guest.OrderWithVochercode" />
 		</classes>
-	</test> <!-- Test -->
-	<test name="GuestPreOrderWithGiftBoxMsgVoucher">
-		<parameter name="Country" value="US"></parameter>
-		<classes>
-			<class name="orders.guest.GuestPreOrderWithGiftBoxMsgVoucher" />
-		</classes>
-	</test> <!-- Test -->
-	<test name="GuestPreOrderWithMono">
-		<parameter name="Country" value="US"></parameter>
-		<classes>
-			<class name="orders.guest.GuestPreOrderWithMono" />
-		</classes>
-	</test> <!-- Test -->
-	<test name="GuestPreOrderWithVoucher">
-		<parameter name="Country" value="US"></parameter>
-		<classes>
-			<class name="orders.guest.GuestPreOrderWithVoucher" />
-		</classes>
-	</test> <!-- Test -->
-	<test name="OrderWithGiftAndVocherCode">
-		<parameter name="Country" value="US"></parameter>
-		<classes>
-			<class name="orders.guest.OrderWithGiftAndVocherCode" />
-		</classes>
-	</test> <!-- Test -->
-	<!-- <test name="OrderWithGiftServices">
-		<parameter name="Country" value="US"></parameter>
-		<classes>
-			<class name="orders.guest.OrderWithGiftServices" />
-		</classes>
-	</test> --> <!-- Test -->
-	<test name="PreorderWithVouchercode">
-		<parameter name="Country" value="US"></parameter>
-		<classes>
-			<class name="orders.guest.PreorderWithVouchercode" />
-		</classes>
-	</test> <!-- Test -->
-	
-<test name="GuestOrderWithPayPal">
-		<parameter name="Country" value="US"></parameter>
-		<classes>
-			<class name="orders.guest.GuestOrderWithPayPal"/>
-		</classes>
-	</test> <!-- Test -->
+	</test>
+	 Test
 	<test name="RegisteredOrderWithPayPal">
 		<parameter name="Country" value="US"></parameter>
 		<classes>
 			<class name="orders.registered.RegisteredOrderWithPayPal" />
 		</classes>
-	</test> <!-- Test -->
+	</test> Test
 		<test name="RegisterOrderWithVoucher">
 		<parameter name="Country" value="US"></parameter>
 		<classes>
 			<class name="orders.registered.RegisterOrderWithVoucher" />
 		</classes>
-	</test> <!-- Test -->
+	</test> Test
 		<test name="RegisteredOrder">
 		<parameter name="Country" value="US"></parameter>
 		<classes>
-			<class name="orders.registered.RegisterOrderWithVoucher" />
+			<class name="orders.registered.RegisteredOrder" />
 		</classes>
-	</test> <!-- Test -->
+	</test> Test
+	<test name="RegisteredOrderWithMultishipment">
+		<parameter name="Country" value="US"></parameter>
+		<classes>
+			<class name="orders.registered.RegisteredOrderWithMultishipment" />
+		</classes>
+	</test>  -->
 </suite>

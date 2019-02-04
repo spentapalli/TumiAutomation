@@ -23,7 +23,7 @@ public class GuestOrder extends GenericMethods {
 	 * TA-100 Verify Order with merchandise Ready to ship for Guest User
 	 */
 
-	@Test(priority = 0, description = "Verify Order with merchandise Ready to ship for Guest User")
+	@Test(priority = 0, description = " TA- 100 Verify Order with merchandise Ready to ship for Guest User")
 	public void tumiOrderAsGuest() throws InterruptedException {
 
 		UIFunctions.addProductToCart("TumiTestData", "GuestOrders");
@@ -59,7 +59,7 @@ public class GuestOrder extends GenericMethods {
 		UIFunctions.completeOrder();
 	}
 
-	@Test(priority = 2, description = "TA- 112,Verify Order with merchandise Ready to ship for Guest User")
+	@Test(priority = 2, description = "TA- 112,Verify Order with merchandise Pre Order for Guest User")
 	public void preOrderAsGuest() throws InterruptedException {
 
 		UIFunctions.addProductToCart("TumiTestData", "PreOrderProduct");
@@ -137,10 +137,10 @@ public class GuestOrder extends GenericMethods {
 	
 	@Test(priority=5,description = "TA-284 Verify Order with merchandise Ready to ship with PayPal checkout-Guest user")
 	public void orderWithPayPalAsGuest() throws Exception {
-		UIFunctions.addProductToCart("TumiTestData","GuestOrders");
+		UIFunctions.addProductToCart("TumiTestData","GuestOrders");//
 		click(pdp.getAddToCart(),"Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
-		UIFunctions.payPalCheckout("TumiTestData","PayPalDeatils");
+		UIFunctions.payPalCheckout("TumiTestData","PayPalDeatils",mainCart.getEstimatedTotal());
 		UIFunctions.completeOrder();
 	}
 	

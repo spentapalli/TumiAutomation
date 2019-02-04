@@ -1,10 +1,8 @@
-
 <!DOCTYPE html>
 <html>
 
-
 <head>
-	<meta charset='UTF-8' /> 
+	<meta charset='utf-8' /> 
 	<meta name='description' content='' />
 	<meta name='robots' content='noodp, noydir' />
 	<meta name='viewport' content='width=device-width, initial-scale=1' />
@@ -12,283 +10,347 @@
 	
 	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600' rel='stylesheet' type='text/css' />
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-
-		<link href='https://cdn.rawgit.com/anshooarora/extentreports-java/b4a58fcfd1e137bd9287244035a7c80d3d73b3af/dist/css/extent.css' type='text/css' rel='stylesheet' />
+	<link href='https://cdn.rawgit.com/extent-framework/extent-github-cdn/191775216e8ce53c38791eb07a1d2f31d0ae11b5/v3html/css/extent.css' type='text/css' rel='stylesheet' />
 	
-	<title>Extent Report</title>
+	<title>ExtentReports</title>
 
 	<style type='text/css'>
-			
-            
-                
-            
-        
+		/* json-tree */
+		.jstBracket,.jstComma,.jstValue{white-space:pre-wrap}.jstValue{font-size:10px;font-weight:400;font-family:"Lucida Console",Monaco,monospace}.jstProperty{color:#666;word-wrap:break-word}.jstBool{color:#2525CC}.jstNum{color:#D036D0}.jstNull{color:gray}.jstStr{color:#2DB669}.jstFold:after{content:' -';cursor:pointer}.jstExpand{white-space:normal}.jstExpand:after{content:' +';cursor:pointer}.jstFolded{white-space:normal!important}.jstHiddenBlock{display:none}
 	</style>
+	
+	<script type="text/javascript">
+		/*! json-tree - v0.2.2 - 2017-09-25, MIT LICENSE */
+		var JSONTree=function(){var n={"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#x27;","/":"&#x2F;"},t=0,r=0;this.create=function(n,t){return r+=1,N(u(n,0,!1),{class:"jstValue"})};var e=function(t){return t.replace(/[&<>'"]/g,function(t){return n[t]})},s=function(){return r+"_"+t++},u=function(n,t,r){if(null===n)return f(r?t:0);switch(typeof n){case"boolean":return l(n,r?t:0);case"number":return i(n,r?t:0);case"string":return o(n,r?t:0);default:return n instanceof Array?a(n,t,r):c(n,t,r)}},c=function(n,t,r){var e=s(),u=Object.keys(n).map(function(r){return j(r,n[r],t+1,!0)}).join(m()),c=[g("{",r?t:0,e),N(u,{id:e}),p("}",t)].join("\n");return N(c,{})},a=function(n,t,r){var e=s(),c=n.map(function(n){return u(n,t+1,!0)}).join(m());return[g("[",r?t:0,e),N(c,{id:e}),p("]",t)].join("\n")},o=function(n,t){var r=e(JSON.stringify(n));return N(v(r,t),{class:"jstStr"})},i=function(n,t){return N(v(n,t),{class:"jstNum"})},l=function(n,t){return N(v(n,t),{class:"jstBool"})},f=function(n){return N(v("null",n),{class:"jstNull"})},j=function(n,t,r){var s=v(e(JSON.stringify(n))+": ",r),c=N(u(t,r,!1),{});return N(s+c,{class:"jstProperty"})},m=function(){return N(",\n",{class:"jstComma"})},N=function(n,t){return d("span",t,n)},d=function(n,t,r){return"<"+n+Object.keys(t).map(function(n){return" "+n+'="'+t[n]+'"'}).join("")+">"+r+"</"+n+">"},g=function(n,t,r){return N(v(n,t),{class:"jstBracket"})+N("",{class:"jstFold",onclick:"JSONTree.toggle('"+r+"')"})};this.toggle=function(n){var t=document.getElementById(n),r=t.parentNode,e=t.previousElementSibling;""===t.className?(t.className="jstHiddenBlock",r.className="jstFolded",e.className="jstExpand"):(t.className="",r.className="",e.className="jstFold")};var p=function(n,t){return N(v(n,t),{})},v=function(n,t){return Array(2*t+1).join(" ")+n};return this}();
+	</script>
 </head>
-
 	<body class='extent standard default hide-overflow '>
 		<div id='theme-selector' alt='Click to toggle theme. To enable by default, use theme configuration.' title='Click to toggle theme. To enable by default, use theme configuration.'>
 			<span><i class='material-icons'>desktop_windows</i></span>
 		</div>
-
 <nav>
 	<div class="nav-wrapper">
-		<a href="#!" class="brand-logo blue darken-3">Extent</a>
-
+		<a href="#!" class="brand-logo black"><img src="https://cdn.rawgit.com/extent-framework/extent-github-cdn/d74480e/commons/img/logo.png"></a>
 		<!-- slideout menu -->
 		<ul id='slide-out' class='side-nav fixed hide-on-med-and-down'>
 			<li class='waves-effect active'><a href='#!' view='test-view' onclick="configureView(0);chartsView('test');"><i class='material-icons'>dashboard</i></a></li>
 						<li class='waves-effect'><a href='#!' view='exception-view' onclick="configureView(2)"><i class='material-icons'>bug_report</i></a></li>
-			<li class='waves-effect'><a href='#!' onclick="configureView(-1);chartsView('dashboard');" view='dashboard-view'><i class='material-icons'>track_changes</i></i></a></li>
+			<li class='waves-effect'><a href='#!' onclick="configureView(-1);chartsView('dashboard');" view='dashboard-view'><i class='material-icons'>track_changes</i></a></li>
 		</ul>
-
 		<!-- report name -->
-		<span class='report-name'>Functional Test Report</span>
-		
+		<span class='report-name'>ExtentReports</span>
 		<!-- report headline -->
 		<span class='report-headline'></span>
-
 		<!-- nav-right -->
 		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
-			<li>
-                <a href='#!'>
-                    <span class='label suite-start-time blue darken-3'>Feb 1, 2019 07:28:54 PM</span>
-				</a>
-			</li>
-			<li>
-                <a href='#!'>
-                    <span class='label blue darken-3'>3.1.5</span>
-				</a>
-			</li>
+			<a href='#!'>
+			<span class='label blue darken-3 suite-start-time'>Feb 4, 2019 06:39:47 PM</span>
+			</a>
 		</ul>
 	</div>
-</nav>
-
-		<!-- container -->
+</nav>		<!-- container -->
 		<div class='container'>
-
 <div id='test-view' class='view'>
-				
 	<section id='controls'>
 		<div class='controls grey lighten-4'>
 			<!-- test toggle -->
 			<div class='chip transparent'>
 				<a class='dropdown-button tests-toggle' data-activates='tests-toggle' data-constrainwidth='true' data-beloworigin='true' data-hover='true' href='#'>
-					<i class='material-icons'>warning</i> Status
+				<i class='material-icons'>warning</i> Status
 				</a>
 				<ul id='tests-toggle' class='dropdown-content'>
-											<li status='pass'><a href='#!'>Pass <i class='material-icons green-text'>check_circle</i></a></li>
-						<li status='fail'><a href='#!'>Fail <i class='material-icons red-text'>cancel</i></a></li>
+										<li status='pass'><a href='#!'>Pass <i class='material-icons green-text'>check_circle</i></a></li>
+					<li status='fail'><a href='#!'>Fail <i class='material-icons red-text'>cancel</i></a></li>
 					<li class='divider'></li>
 					<li status='clear' clear='true'><a href='#!'>Clear Filters <i class='material-icons'>clear</i></a></li>
 				</ul>
 			</div>
 			<!-- test toggle -->
-
 			<!-- category toggle -->
 			<!-- category toggle -->
-
 			<!-- clear filters -->
 			<div class='chip transparent hide'>
 				<a class='' id='clear-filters' alt='Clear Filters' title='Clear Filters'>
-					<i class='material-icons'>close</i> Clear
+				<i class='material-icons'>close</i> Clear
 				</a>
 			</div>
 			<!-- clear filters -->
-
 			<!-- enable dashboard -->
 			<div id='toggle-test-view-charts' class='chip transparent'>
 				<a class='pink-text' id='enable-dashboard' alt='Enable Dashboard' title='Enable Dashboard'>
-					<i class='material-icons'>track_changes</i> Dashboard
+				<i class='material-icons'>track_changes</i> Dashboard
 				</a>
 			</div>
 			<!-- enable dashboard -->
-
 			<!-- search -->
 			<div class='chip transparent' alt='Search Tests' title='Search Tests'>
 				<a href="#" class='search-div'>
-					<i class='material-icons'>search</i> Search
+				<i class='material-icons'>search</i> Search
 				</a>
-
 				<div class='input-field left hide'>
 					<input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
 				</div>
-				
 			</div>
 			<!-- search -->
 		</div>
 	</section>
-
-
 <div id='test-view-charts' class='subview-full'>
 	<div id='charts-row' class='row nm-v nm-h'>
 		<div class='col s12 m6 l6 np-h'>
 			<div class='card-panel nm-v'>
 				<div class='left panel-name'>Tests</div>
-				<div class='chart-box'>
+				<div class='chart-box' style="max-height:94px;">
 					<canvas id='parent-analysis' width='100' height='80'></canvas>
 				</div>
 				<div class='block text-small'>
-					<span class='tooltipped' data-position='top' data-tooltip='0%'><span class='strong'>0</span> test(s) passed</span>
+					<span class='tooltipped' data-position='top' data-tooltip='66.667%'><span class='strong'>2</span> test(s) passed</span>
 				</div>
 				<div class='block text-small'>
-					<span class='strong tooltipped' data-position='top' data-tooltip='100%'>1</span> test(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+					<span class='strong tooltipped' data-position='top' data-tooltip='33.333%'>1</span> test(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
 				</div>
 			</div>
 		</div>
-		
-		<div class='col s12 m6 l6 np-h'>
-			<div class='card-panel nm-v'>
-				<div class='left panel-name'>Steps</div>
-				<div class='chart-box'>
-					<canvas id='child-analysis' width='100' height='80'></canvas>
-				</div>
-				<div class='block text-small'>
-					<span class='tooltipped' data-position='top' data-tooltip='0%'><span class='strong'>0</span> step(s) passed</span>
-				</div>
-				<div class='block text-small'>
-					<span class='strong tooltipped' data-position='top' data-tooltip='15.789%'>3</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='84.211%'>16</span> others
-				</div>
-			</div>
-		</div>
-		
 	</div>
-</div>
-
-	<div class='subview-left left'>
-		
+	<div id="timeline-chart" class="row nm-v nm-h">
+		<div class="col s12 m12 l12 np-h">
+			<div class="card-panel">
+				<div class='left panel-name'>Timeline (seconds)</div>
+				<div class="chart-box" style="width:98%;max-height:145px;">
+					<canvas id="timeline" height="120"></canvas>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>	<div class='subview-left left'>
 		<div class='view-summary'>
-			<h5>Tests</h5>
 			<ul id='test-collection' class='test-collection'>
-				
-				
-				<li class='test displayed active  fail' status='fail' bdd='false' test-id='1'>
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='1'>
 					<div class='test-heading'>
-						<span class='test-name'>verifyRegisteredOrderWithMutlishipment</span>
-						<span class='test-time'>Feb 1, 2019 07:29:17 PM</span>
+						<span class='test-name'>Browser Name</span>
+						<span class='test-time'>Feb 4, 2019 06:39:47 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Feb 4, 2019 06:39:47 PM</span>
+	<span class='label end-time'>Feb 4, 2019 06:39:52 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 4s+682ms</span>
+</div>
+<div class='test-steps'>
+	<table class='bordered table-results'>
+		<thead>
+			<tr>
+				<th>Status</th>
+				<th>Timestamp</th>
+				<th>Details</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class='log' status='info'>
+				<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+				<td class='timestamp'>6:39:52 PM</td>
+				<td class='step-details'>
+						Firefox Browser is initiated Execution
+					
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+					</div>
+				</li>
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='2'>
+					<div class='test-heading'>
+						<span class='test-name'>Country</span>
+						<span class='test-time'>Feb 4, 2019 06:40:32 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Feb 4, 2019 06:40:32 PM</span>
+	<span class='label end-time'>Feb 4, 2019 06:40:32 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+<div class='test-steps'>
+	<table class='bordered table-results'>
+		<thead>
+			<tr>
+				<th>Status</th>
+				<th>Timestamp</th>
+				<th>Details</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class='log' status='info'>
+				<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+				<td class='timestamp'>6:40:32 PM</td>
+				<td class='step-details'>
+						Execution initiated for US
+					
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+					</div>
+				</li>
+				<li class='test displayed active  fail' status='fail' bdd='false' test-id='3'>
+					<div class='test-heading'>
+						<span class='test-name'>orderWithAsGuest</span>
+						<span class='test-time'>Feb 4, 2019 06:40:32 PM</span>
 						<span class='test-status right fail'>fail</span>
 					</div>
 					<div class='test-content hide'>
 <div class='test-time-info'>
-	<span class='label start-time'>Feb 1, 2019 07:29:17 PM</span>
-	<span class='label end-time'>Feb 1, 2019 07:31:12 PM</span>
-	<span class='label time-taken grey lighten-1 white-text'>0h 1m 54s+879ms</span>
+	<span class='label start-time'>Feb 4, 2019 06:40:32 PM</span>
+	<span class='label end-time'>Feb 4, 2019 06:42:19 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 1m 46s+615ms</span>
 </div>
-	<div class='test-desc'>orders.registered.RegisteredOrderWithMultishipment </div>
-	<div class='test-steps'>
-		<table class='bordered table-results'>
-			<thead>
-				<tr>
-					<th>Status</th>
-					<th>Timestamp</th>
-					<th>Details</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr class='log' status='info'>
-					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:29:17 PM</td>
-					<td class='step-details'>Clicked on Sign In</td>
-				</tr>
-				<tr class='log' status='info'>
-					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:29:19 PM</td>
-					<td class='step-details'>Entered the value in Email Address as: Employee.tumi@gmail.com</td>
-				</tr>
-				<tr class='log' status='info'>
-					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:29:19 PM</td>
-					<td class='step-details'>Entered the value in Password as: Tumi_8864</td>
-				</tr>
-				<tr class='log' status='info'>
-					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:29:19 PM</td>
-					<td class='step-details'>Clicked on Login</td>
-				</tr>
-				<tr class='log' status='info'>
-					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:29:22 PM</td>
-					<td class='step-details'>Clicked on My Account Close</td>
-				</tr>
-				<tr class='log' status='info'>
-					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:29:28 PM</td>
-					<td class='step-details'>Entered the value in Product Search as: tag</td>
-				</tr>
-				<tr class='log' status='info'>
-					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:29:36 PM</td>
-					<td class='step-details'>Clicked on Add to Cart</td>
-				</tr>
-				<tr class='log' status='info'>
-					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:29:39 PM</td>
-					<td class='step-details'>Clicked on Continue shopping</td>
-				</tr>
-				<tr class='log' status='info'>
-					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:29:42 PM</td>
-					<td class='step-details'>Entered the value in Product Search as: tag</td>
-				</tr>
-				<tr class='log' status='info'>
-					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:29:57 PM</td>
-					<td class='step-details'>Clicked on Add to Cart</td>
-				</tr>
-				<tr class='log' status='info'>
-					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:30:00 PM</td>
-					<td class='step-details'>Clicked on Continue shopping</td>
-				</tr>
-				<tr class='log' status='info'>
-					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:30:01 PM</td>
-					<td class='step-details'>Clicked on Cart Image</td>
-				</tr>
-				<tr class='log' status='info'>
-					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:30:11 PM</td>
-					<td class='step-details'>Clicked on Proceed to Checkout</td>
-				</tr>
-				<tr class='log' status='info'>
-					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:30:23 PM</td>
-					<td class='step-details'>Clicked on Proceed to Checkout</td>
-				</tr>
-				<tr class='log' status='info'>
-					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:30:27 PM</td>
-					<td class='step-details'>Clicked on MultiShipment</td>
-				</tr>
-				<tr class='log' status='info'>
-					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:30:51 PM</td>
-					<td class='step-details'>Successfully Clicked on add shipment 1</td>
-				</tr>
-				<tr class='log' status='fail'>
-					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
-					<td class='timestamp'>7:31:12 PM</td>
-					<td class='step-details'><span class='label white-text red'>verifyRegisteredOrderWithMutlishipment Test Case Failed</span></td>
-				</tr>
-				<tr class='log' status='fail'>
-					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
-					<td class='timestamp'>7:31:12 PM</td>
-					<td class='step-details'><pre>java.lang.AssertionError: Fail to Enter Value in  First Nameno such element: Unable to locate element: {"method":"xpath","selector":"(//input[@name='firstName'])[1]"}
-  (Session info: chrome=71.0.3578.98)
-  (Driver info: chromedriver=2.44.609538 (b655c5a60b0b544917107a59d4153d4bf78e1b90),platform=Windows NT 10.0.17134 x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 0 milliseconds
-For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+<div class='test-desc'>orders.guest.GlobalLocatororder </div>
+<div class='test-steps'>
+	<table class='bordered table-results'>
+		<thead>
+			<tr>
+				<th>Status</th>
+				<th>Timestamp</th>
+				<th>Details</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class='log' status='info'>
+				<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+				<td class='timestamp'>6:41:02 PM</td>
+				<td class='step-details'>
+						Clicked on Add to cart
+					
+				</td>
+			</tr>
+			<tr class='log' status='info'>
+				<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+				<td class='timestamp'>6:41:28 PM</td>
+				<td class='step-details'>
+						Clicked on Proceed to Cart
+					
+				</td>
+			</tr>
+			<tr class='log' status='info'>
+				<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+				<td class='timestamp'>6:41:59 PM</td>
+				<td class='step-details'>
+						Clicked on Proceed to Checkout
+					
+				</td>
+			</tr>
+			<tr class='log' status='info'>
+				<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+				<td class='timestamp'>6:42:03 PM</td>
+				<td class='step-details'>
+						Entered the value in Email ID as: skomma@coredatalabs.com
+					
+				</td>
+			</tr>
+			<tr class='log' status='info'>
+				<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+				<td class='timestamp'>6:42:06 PM</td>
+				<td class='step-details'>
+						Clicked on Contiue as Guest
+					
+				</td>
+			</tr>
+			<tr class='log' status='info'>
+				<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+				<td class='timestamp'>6:42:07 PM</td>
+				<td class='step-details'>
+						Entered the value in First Name as: Test
+					
+				</td>
+			</tr>
+			<tr class='log' status='info'>
+				<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+				<td class='timestamp'>6:42:08 PM</td>
+				<td class='step-details'>
+						Entered the value in Last Name as: TumiLast
+					
+				</td>
+			</tr>
+			<tr class='log' status='info'>
+				<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+				<td class='timestamp'>6:42:08 PM</td>
+				<td class='step-details'>
+						Entered the value in Address Line1 as: 10 Sumac Way
+					
+				</td>
+			</tr>
+			<tr class='log' status='info'>
+				<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+				<td class='timestamp'>6:42:11 PM</td>
+				<td class='step-details'>
+						Clicked on Address Line1
+					
+				</td>
+			</tr>
+			<tr class='log' status='info'>
+				<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+				<td class='timestamp'>6:42:12 PM</td>
+				<td class='step-details'>
+						Entered the value in Phone Number as: 12345678901
+					
+				</td>
+			</tr>
+			<tr class='log' status='info'>
+				<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+				<td class='timestamp'>6:42:13 PM</td>
+				<td class='step-details'>
+						Clicked on Contiue Shipping
+					
+				</td>
+			</tr>
+			<tr class='log' status='info'>
+				<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+				<td class='timestamp'>6:42:15 PM</td>
+				<td class='step-details'>
+						Clicked on Proceed to Payment
+					
+				</td>
+			</tr>
+			<tr class='log' status='info'>
+				<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+				<td class='timestamp'>6:42:18 PM</td>
+				<td class='step-details'>
+						Entered the value in Name on Card as: test
+					
+				</td>
+			</tr>
+			<tr class='log' status='info'>
+				<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+				<td class='timestamp'>6:42:19 PM</td>
+				<td class='step-details'>
+						Entered the value in Card Number as: 4111111111111111
+					
+				</td>
+			</tr>
+			<tr class='log' status='fail'>
+				<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+				<td class='timestamp'>6:42:19 PM</td>
+				<td class='step-details'>
+						<span class='badge white-text red'>orderWithAsGuest Test Case Failed</span>
+					
+				</td>
+			</tr>
+			<tr class='log' status='fail'>
+				<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+				<td class='timestamp'>6:42:19 PM</td>
+				<td class='step-details'>
+						<pre>java.lang.AssertionError: Fail to Select 05 from Expiry MonthError Element <option> could not be scrolled into view
 Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'DESKTOP-EMMIUAA', ip: '10.30.152.14', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_171'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.44.609538 (b655c5a60b0b54..., userDataDir: C:\Users\Capo\AppData\Local...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:58131}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: ignore, unhandledPromptBehavior: ignore, version: 71.0.3578.98, webStorageEnabled: true}
-Session ID: 3cf660035717f222ce13dfdfa603ffbc
-*** Element info: {Using=xpath, value=(//input[@name='firstName'])[1]}
+System info: host: 'DESKTOP-EMMIUAA', ip: '10.30.152.68', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_171'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 65.0, javascriptEnabled: true, moz:accessibilityChecks: false, moz:geckodriverVersion: 0.24.0, moz:headless: false, moz:processID: 55000, moz:profile: C:\Users\Capo\AppData\Local..., moz:shutdownTimeout: 60000, moz:useNonSpecCompliantPointerOrigin: false, moz:webdriverClick: true, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, platformVersion: 10.0, rotatable: false, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: 21c9a2aa-effd-48c9-b37e-a1db02ece61a
 	at org.testng.Assert.fail(Assert.java:96)
-	at com.tumi.utilities.GenericMethods.input(GenericMethods.java:111)
-	at com.tumi.utilities.UIFunctions.addMultishipGuestDeatils(UIFunctions.java:535)
-	at com.tumi.utilities.UIFunctions.addMultiship(UIFunctions.java:503)
-	at orders.registered.RegisteredOrderWithMultishipment.verifyRegisteredOrderWithMutlishipment(RegisteredOrderWithMultishipment.java:26)
+	at com.tumi.utilities.GenericMethods.selectByVisibleText(GenericMethods.java:186)
+	at com.tumi.utilities.UIFunctions.addCardDetails(UIFunctions.java:78)
+	at orders.guest.GlobalLocatororder.orderWithAsGuest(GlobalLocatororder.java:28)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -314,27 +376,30 @@ Session ID: 3cf660035717f222ce13dfdfa603ffbc
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-</pre></td>
-				</tr>
-				<tr class='log' status='fail'>
-					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
-					<td class='timestamp'>7:31:12 PM</td>
-					<td class='step-details'>Screen Shot Reference:<img data-featherlight='C:\Users\Capo\Documents\TumiAutomation\TumiAutomation\TumiAutomation\Automation/Screenshots/verifyRegisteredOrderWithMutlishipment.png' width='10%' src='C:\Users\Capo\Documents\TumiAutomation\TumiAutomation\TumiAutomation\Automation/Screenshots/verifyRegisteredOrderWithMutlishipment.png' data-src='C:\Users\Capo\Documents\TumiAutomation\TumiAutomation\TumiAutomation\Automation/Screenshots/verifyRegisteredOrderWithMutlishipment.png'></td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+</pre>
+					
+				</td>
+			</tr>
+			<tr class='log' status='fail'>
+				<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+				<td class='timestamp'>6:42:19 PM</td>
+				<td class='step-details'>
+						Screen Shot Reference:
+					<img class='r-img' onerror='this.style.display="none"' data-featherlight='C:\Users\Capo\Documents\TumiAutomation\TumiAutomation\TumiAutomation\Automation/Screenshots/orderWithAsGuest.png' src='C:\Users\Capo\Documents\TumiAutomation\TumiAutomation\TumiAutomation\Automation/Screenshots/orderWithAsGuest.png' data-src='C:\Users\Capo\Documents\TumiAutomation\TumiAutomation\TumiAutomation\Automation/Screenshots/orderWithAsGuest.png'>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
 					</div>
 				</li>
 			</ul>
 		</div>
 	</div>
 	<!-- subview left -->
-
 	<div class='subview-right left'>
 		<div class='view-summary'>
 			<h5 class='test-name'></h5>
-
 			<div id='step-filters' class="right">
 				<span class="blue-text" status="info" alt="info" title="info"><i class="material-icons">info_outline</i></span>
 				<span class="green-text" status="pass" alt="pass" title="pass"><i class="material-icons">check_circle</i></span>
@@ -348,70 +413,55 @@ Session ID: 3cf660035717f222ce13dfdfa603ffbc
 		</div>
 	</div>
 	<!-- subview right -->
-
 </div>
-<!-- test view -->
-<!-- category view -->
-<div id='exception-view' class='view hide'>
-
-    <section id='controls'>
-        <div class='controls grey lighten-4'>
-            <!-- search -->
-            <div class='chip transparent' alt='Search Tests' title='Search Tests'>
-                <a href="#" class='search-div'>
-                    <i class='material-icons'>search</i> Search
-                </a>
-
-                <div class='input-field left hide'>
-                    <input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
-                </div>
-
-            </div>
-            <!-- search -->
-        </div>
-    </section>
-
-    <div class='subview-left left'>
-
-        <div class='view-summary'>
-            <h5>Exceptions</h3>
-                <ul id='exception-collection' class='exception-collection'>
-
-                        <li class='exception displayed active'>
-                            <div class='exception-heading'>
-                                <span class='exception-name'>java.lang.AssertionError</span>
-                                <span class='exception-count right'><span class='label red lighten-1 white-text'>1</span></span>
-                            </div>
-                            <div class='exception-content hide'>
-                                <div class='exception-tests'>
-                                    <table class='bordered table-results'>
-                                        <thead>
-                                        <tr>
-                                            <th>Timestamp</th>
-                                            <th>TestName</th>
-                                            <th>Status</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                                    <tr>
-                                                        <td>Feb 1, 2019 07:29:17 PM</td>
-                                                        <td class='linked' test-id='1'>verifyRegisteredOrderWithMutlishipment</td>
-                                                        <td><pre><pre>java.lang.AssertionError: Fail to Enter Value in  First Nameno such element: Unable to locate element: {"method":"xpath","selector":"(//input[@name='firstName'])[1]"}
-  (Session info: chrome=71.0.3578.98)
-  (Driver info: chromedriver=2.44.609538 (b655c5a60b0b544917107a59d4153d4bf78e1b90),platform=Windows NT 10.0.17134 x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 0 milliseconds
-For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+<!-- test view --><!-- category view --><div id='exception-view' class='view hide'>
+	<section id='controls'>
+		<div class='controls grey lighten-4'>
+			<!-- search -->
+			<div class='chip transparent' alt='Search Tests' title='Search Tests'>
+				<a href="#" class='search-div'>
+				<i class='material-icons'>search</i> Search
+				</a>
+				<div class='input-field left hide'>
+					<input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
+				</div>
+			</div>
+			<!-- search -->
+		</div>
+	</section>
+	<div class='subview-left left'>
+		<div class='view-summary'>
+			<ul id='exception-collection' class='exception-collection'>
+				<li class='exception displayed active'>
+					<div class='exception-heading'>
+						<span class='exception-name'>java.lang.AssertionError</span>
+						<span class='exception-count right'><span class='label red lighten-1 white-text'>1</span></span>
+					</div>
+					<div class='exception-content hide'>
+						<div class='exception-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Feb 4, 2019 06:40:32 PM</td>
+										<td class='linked' test-id='3'>orderWithAsGuest</td>
+										<td>
+											<pre>java.lang.AssertionError: Fail to Select 05 from Expiry MonthError Element <option> could not be scrolled into view
 Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'DESKTOP-EMMIUAA', ip: '10.30.152.14', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_171'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.44.609538 (b655c5a60b0b54..., userDataDir: C:\Users\Capo\AppData\Local...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:58131}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: ignore, unhandledPromptBehavior: ignore, version: 71.0.3578.98, webStorageEnabled: true}
-Session ID: 3cf660035717f222ce13dfdfa603ffbc
-*** Element info: {Using=xpath, value=(//input[@name='firstName'])[1]}
+System info: host: 'DESKTOP-EMMIUAA', ip: '10.30.152.68', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_171'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 65.0, javascriptEnabled: true, moz:accessibilityChecks: false, moz:geckodriverVersion: 0.24.0, moz:headless: false, moz:processID: 55000, moz:profile: C:\Users\Capo\AppData\Local..., moz:shutdownTimeout: 60000, moz:useNonSpecCompliantPointerOrigin: false, moz:webdriverClick: true, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, platformVersion: 10.0, rotatable: false, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: 21c9a2aa-effd-48c9-b37e-a1db02ece61a
 	at org.testng.Assert.fail(Assert.java:96)
-	at com.tumi.utilities.GenericMethods.input(GenericMethods.java:111)
-	at com.tumi.utilities.UIFunctions.addMultishipGuestDeatils(UIFunctions.java:535)
-	at com.tumi.utilities.UIFunctions.addMultiship(UIFunctions.java:503)
-	at orders.registered.RegisteredOrderWithMultishipment.verifyRegisteredOrderWithMutlishipment(RegisteredOrderWithMultishipment.java:26)
+	at com.tumi.utilities.GenericMethods.selectByVisibleText(GenericMethods.java:186)
+	at com.tumi.utilities.UIFunctions.addCardDetails(UIFunctions.java:78)
+	at orders.guest.GlobalLocatororder.orderWithAsGuest(GlobalLocatororder.java:28)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -437,25 +487,24 @@ Session ID: 3cf660035717f222ce13dfdfa603ffbc
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-</pre></pre></td>
-                                                    </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </li>
-                </ul>
-        </div>
-    </div>
-
-    <div class='subview-right left'>
-        <div class='view-summary'>
-            <h5 class='exception-name'></h5>
-        </div>
-    </div>
+</pre>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class='subview-right left'>
+		<div class='view-summary'>
+			<h5 class='exception-name'></h5>
+		</div>
+	</div>
 </div>
-<!-- exception view -->
-<div id='dashboard-view' class='view hide'>
+<!-- exception view --><div id='dashboard-view' class='view hide'>
 	<div class='card-panel transparent np-v'>
 		<h5>Dashboard</h5>
 
@@ -463,44 +512,42 @@ Session ID: 3cf660035717f222ce13dfdfa603ffbc
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Tests
-					<div class='panel-lead'>1</div>
+					<div class='panel-lead'>3</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Steps
-					<div class='panel-lead'>19</div>
+					<div class='panel-lead'>0</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Start
-					<div class='panel-lead'>Feb 1, 2019 07:28:54 PM</div>
+					<div class='panel-lead'>Feb 4, 2019 06:39:47 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 			 		End
-			 		<div class='panel-lead'>Feb 1, 2019 07:31:12 PM</div>
+			 		<div class='panel-lead'>Feb 4, 2019 06:39:47 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Time Taken
-					<div class='panel-lead'>0h 2m 18s+125ms</div>
+					<div class='panel-lead'>0h 0m 0s+0ms</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
 <!-- dashboard view -->
-<!-- testrunner-logs view -->
-		</div>
+<!-- testrunner-logs view -->		</div>
 		<!-- container -->
-
 		<script>
 			var statusGroup = {
-				passParent: 0,
+				passParent: 2,
 				failParent: 1,
 				fatalParent: 0,
 				errorParent: 0,
@@ -509,13 +556,14 @@ Session ID: 3cf660035717f222ce13dfdfa603ffbc
 				exceptionsParent: 1,
 				
 				passChild: 0,
-				failChild: 3,
+				failChild: 0,
 				fatalChild: 0,
 				errorChild: 0,
 				warningChild: 0,
 				skipChild: 0,
-				infoChild: 16,
-				exceptionsChild: 3,
+				infoChild: 0,
+				debugChild: 0,
+				exceptionsChild: 0,
 				
 				passGrandChild: 0,
 				failGrandChild: 0,
@@ -524,22 +572,17 @@ Session ID: 3cf660035717f222ce13dfdfa603ffbc
 				warningGrandChild: 0,
 				skipGrandChild: 0,
 				infoGrandChild: 0,
+				debugGrandChild: 0,
 				exceptionsGrandChild: 0,
 			};
 		</script>
-		
-			<script src='https://cdn.rawgit.com/anshooarora/extentreports-java/fca20fb7653aade98810546ab96a2a4360e3e712/dist/js/extent.js' type='text/javascript'></script>
-		
-		
- 		<script type='text/javascript'>
- 			
-            
-                $(document).ready(function() {
-                    
-                });
-            
-        
- 		</script>
+		<script>
+			var timeline = {
+			        "Browser Name":4.682,"Country":0,"orderWithAsGuest":106.615
+			};
+		</script>
+		<script src='https://cdn.rawgit.com/extent-framework/extent-github-cdn/master/v3html/js/extent.js' type='text/javascript'></script>
+		<script type='text/javascript'>
+		</script>
 	</body>
-	
 </html>

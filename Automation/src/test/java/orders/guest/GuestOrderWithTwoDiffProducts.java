@@ -23,7 +23,7 @@ public class GuestOrderWithTwoDiffProducts extends GenericMethods {
 	 * 
 	 */
 	
-	@Test(description = "Verify Order with 2 'Ready to Ship' Items with different SKU/sPurchase-Guest user")
+	@Test(description = "TA - 1 Verify Order with 2 'Ready to Ship' Items with different SKU/sPurchase-Guest user")
 	public void verifyGuestOrderWithTwoDiffProducts()throws InterruptedException{
 		
 		

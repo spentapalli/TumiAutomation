@@ -7,7 +7,7 @@ import com.tumi.utilities.GenericMethods;
 import com.tumi.utilities.UIFunctions;
 
 /**
- * @author Suuresh
+ * @author Shwetha, Suuresh
  *
  */
 public class OrderWithVochercode extends GenericMethods {
@@ -20,7 +20,7 @@ public class OrderWithVochercode extends GenericMethods {
 	 * 
 	 * dataProvider = "Location",
 	 */
-	@Test(priority = 0, description = "Verify Order with merchandise Ready to ship + Voucher Code for Guest User")
+	@Test(priority = 0, description = " TA -15 Verify Order with merchandise Ready to ship + Voucher Code for Guest User")
 	public void verifyOrderWithVocherCode() throws InterruptedException {
 		String msg = null;
 		UIFunctions.addProductToCart("TumiTestData", "GuestOrders");
@@ -46,7 +46,7 @@ public class OrderWithVochercode extends GenericMethods {
 		UIFunctions.completeOrder();
 	}
 
-	@Test(priority = 1)
+	@Test(priority = 1, description="TA-103 Verify Order With Merchandise BackOrder + Voucher Card with Guest User")
 	public void backOrderWithVocherAsGuest() {
 		UIFunctions.addProductToCart("TumiTestData", "BackOrderProduct");
 		click(pdp.getAddToCart(), "Add to cart");
@@ -64,7 +64,7 @@ public class OrderWithVochercode extends GenericMethods {
 		UIFunctions.completeOrder();
 	}
 
-	@Test(priority = 2, description = " Verify Order with merchandise Pre Order + Voucher Code for Guest User")
+	@Test(priority = 2, description = " TA - 106 Verify Order with merchandise Pre Order + Voucher Code for Guest User")
 	public void preOrderVocherAsGuest() throws InterruptedException {
 		UIFunctions.addProductToCart("TumiTestData", "PreOrderProduct");
 		click(pdp.getAddToCart(), "Add to cart");
