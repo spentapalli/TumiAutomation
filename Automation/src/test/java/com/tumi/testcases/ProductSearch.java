@@ -1,11 +1,7 @@
 package com.tumi.testcases;
 
-import java.util.List;
-
 import java.util.Map;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
 import com.tumi.dataProvider.ReadTestData;

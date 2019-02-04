@@ -1,9 +1,7 @@
 package cart;
 
-import java.util.ArrayList;
 import java.util.Map;
 
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

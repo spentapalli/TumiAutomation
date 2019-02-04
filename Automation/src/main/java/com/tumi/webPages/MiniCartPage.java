@@ -43,7 +43,7 @@ public class MiniCartPage extends GenericMethods {
 	private WebElement proceedtoCheck;
 
 	public WebElement getProceedCheckOut() {
-		if (selectedCountry.contains("Korea")) {
+		if (selectedCountry.contains("대한민국")) {
 			return explicitWait(krProceedtoCheck);
 		} else {
 			return explicitWait(proceedtoCheck);

@@ -1,7 +1,5 @@
 package multishipment;
 
-import java.util.List;
-
 import java.util.Map;
 
 import org.openqa.selenium.By;
@@ -10,9 +8,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
 import com.tumi.dataProvider.ReadTestData;
-import com.tumi.testcases.ProductSearch;
 import com.tumi.utilities.GenericMethods;
-import com.tumi.utilities.GlobalConstants;
 import com.tumi.utilities.UIFunctions;
 
 /**
