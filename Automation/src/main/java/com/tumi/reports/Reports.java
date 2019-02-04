@@ -110,7 +110,7 @@ public class Reports {
 		// String suiteName = ctx.getCurrentXmlTest().getSuite().getName();
 		extentReportPath = System.getProperty("user.dir") + "/ExtentReports/TumiReport.html";
 		htmlreport = new ExtentHtmlReporter(extentReportPath);
-		htmlreport.loadXMLConfig(new File(System.getProperty("user.dir") + "\\extent-config.xml"));
+		//htmlreport.loadDefaultConfig(new File(System.getProperty("user.dir") + "\\extent-config.xml"));
 		report = new ExtentReports();
 		report.attachReporter(htmlreport);
 	}
