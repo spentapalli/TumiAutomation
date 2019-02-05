@@ -93,40 +93,19 @@ public class GuestOrder extends GenericMethods {
 		UIFunctions.completeOrder();
 	}
 
-	@Test(priority = 4, description = "Verify whether the user is able to place an order with invalid credit card details")
+	@Test(priority = 4, description = "TA- 8 Verify order fail with wrong card details for Guest user")
 	public void orderWithWrongCardDetails() throws InterruptedException {
-
-		input(home.getSearchProduct(), testData1.get("SKUID"), "Search Product");
-		keyEnter(home.getSearchProduct());
-		try {
-			if (getText(home.getNoProducts()).contains("SORRY")) {
-				Assert.fail("Sorry, no search results");
-			}
-		} catch (Exception e) {
-
-		}
-		click(pdp.getAddToCart(), "Add To Cart");
-		click(minicart.getProceedCheckOut(), "Proceed to Cart");
+		UIFunctions.addProductToCart("TumiTestData", "GuestOrders");
+		click(pdp.getAddToCart(), "Add to cart");
+		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(mainCart.getProceedToCheckout(), "Proceed to Checkout");
-		input(singlePage.getEmailAddress(), testData1.get("EmailID"), "Email");
+		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		UIFunctions.waitForContinueToEnable();
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
-		input(shipping.getFirstName(), testData1.get("FirstName"), "First Name");
-		input(shipping.getLastName(), testData1.get("LastName"), "Last Name");
-		input(shipping.getAddressLine1(), testData1.get("AddressLine1"), "Address line1");
-		explicitWait(shipping.getSelectedAddressLine());
-		for (int i = 1; i < shipping.getAddList().size(); i++) {
-			WebElement add = driver.findElement(By.xpath("//div[@class='address-picklist']/div[" + i + "]"));
-			if (add.getText().contains("Fairport NY 14450")) {
-				click(add, "Address Line1");
-				break;
-			}
-		}
-		input(shipping.getPhoneNumber(), testData1.get("Phone"), "Phone Number");
-		click(shipping.getContinueShippingMethod(), "Continue shipping Method");
-		webclick(shipMethod.getStandardShippingMethod(), "Standard Shipping Method");
+		UIFunctions.addGuestDetails();
+		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
-		UIFunctions.addCardDetails("PlaceOrder", "FailedOrder");
+		UIFunctions.addCardDetails("TumiTestData", "FailedOrder");
 		click(review.getreviewOrder(), "Review Order");
 		if (review.getCheckoutMessages().isDisplayed()) {
 			verifyAssertContains(getText(review.getCheckoutMessages()), getProperty("checkout.Messages"),

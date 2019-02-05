@@ -32,13 +32,13 @@ public class ShippingMethodPage extends GenericMethods {
 
 	public WebElement getStandardShippingMethod() {
 
-		if (selectedCountry.contains("Canada")) {
+		if (selectedCountry.contains("배송하기: 대한민국")) {
 
-			return explicitWait(caStandardShippingMethod);
-			
-		} else if(selectedCountry.contains("Korea")){
-			
 			return explicitWait(krStandardShippingMethod);
+			
+		} else if(selectedCountry.contains("Canada")){
+			
+			return explicitWait(caStandardShippingMethod);
 		}else {
 			return explicitWait(usStandardShippingMethod);
 		}
@@ -77,14 +77,14 @@ public class ShippingMethodPage extends GenericMethods {
 		return explicitWait(priorityShippingMethod);
 	}
 	
-	@FindBy(how = How.XPATH, using = "//button[@class='tm-button tm-red-button span12 removeFocusIndicator']") // for Korea proceed to payment
+	@FindBy(how = How.XPATH, using = "(//script[@id='checkoutMessages']/following::button)[3]") // for Korea proceed to payment
 	private WebElement krProceedToPayment;
 
 	@FindBy(how = How.XPATH, using = "//button[contains(text(), 'Proceed to Payment')]")
 	private WebElement proceedToPayment;
 
 	public WebElement getProceedToPayment() {
-		if (selectedCountry.contains("Korea")) {
+		if (selectedCountry.contains("배송하기: 대한민국")) {
 
 			return explicitWait(krProceedToPayment);
 		}else {

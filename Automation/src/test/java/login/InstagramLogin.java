@@ -18,12 +18,15 @@ import com.tumi.utilities.UIFunctions;
  */
 public class InstagramLogin extends GenericMethods {
 
-	
+	/* TA-18 :
+	 * Verify Login with Instagram Account-- functionality issue
+	 * 
+	 */
 
 	@Test(priority=0, description="TA-18 :Verify Login with Instagram Account")
 	public void verifyInstaValidLogin(){
 		UIFunctions.closeSignUp();
-		instaLogin("Login", "InstagramLogin");
+		instaLogin("TumiTestData", "InstagramLogin");
 		/*String parentHandle = driver.getWindowHandle(); 
 		driver.switchTo().window(parentHandle);*/
 		delay(2000);
@@ -31,17 +34,20 @@ public class InstagramLogin extends GenericMethods {
 			click(myacc.getSignout(),"Signout");
 		}
 	}
-
-	@Test(priority=1)
+	/* TA-177 :
+	 * Verify Login fail, with wrong Instagram Account credentials
+	 * 
+	 */
+	@Test(priority=1,description=" TA-177 :Verify Login fail, with wrong Instagram Account credentials " )
 	public void inValidInstaLogin(){
 		//TumiLibs.closeSignUpForUS();
-		instaLogin("Login", "VerifyInvalidInstaLogin");
+		instaLogin("TumiTestData", "VerifyInvalidInstaLogin");
 		delay(4000);
 		verifyAssertEquals(getText(insta.getPasswordErr()), getProperty("insta.passwordError"));
 	}
 	
 	public void instaLogin(String sheetName, String testCaseName) {
-		Map<String, String> testData = ReadTestData.retrieveData(sheetName, testCaseName);
+		Map<String, String> testData = ReadTestData.getJsonData(sheetName, testCaseName);
 		
 		click(home.getHeaderSignIn(), "SignIn");
 		String parentHandle = driver.getWindowHandle(); 

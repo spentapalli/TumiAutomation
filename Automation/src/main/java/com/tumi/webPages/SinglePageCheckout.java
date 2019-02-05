@@ -57,7 +57,7 @@ public class SinglePageCheckout extends GenericMethods {
 	private WebElement continueAsGuest;
 
 	public WebElement getContinueAsGuest() {
-		if (selectedCountry.contains("Korea")) {
+		if (selectedCountry.contains("배송하기: 대한민국")) {
 			return explicitWait(krContinueAsGuest);
 		} else {
 			return explicitWait(continueAsGuest);

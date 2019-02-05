@@ -39,11 +39,12 @@ public class MiniCartPage extends GenericMethods {
 		return explicitWait(krProceedtoCheck);
 	}
 
-	@FindBy(how = How.XPATH, using = "//a[@title='Proceed to Checkout']")
+	@FindBy(how = How.XPATH, using = "//div[@id='tm-panel-mini-cart']/div/div[2]/a[1]")
 	private WebElement proceedtoCheck;
 
+	//in suresh system getting "ëŒ€í•œë¯¼êµ­"
 	public WebElement getProceedCheckOut() {
-		if (selectedCountry.contains("대한민국")) {
+		if (selectedCountry.contains("배송하기: 대한민국")) {
 			return explicitWait(krProceedtoCheck);
 		} else {
 			return explicitWait(proceedtoCheck);
