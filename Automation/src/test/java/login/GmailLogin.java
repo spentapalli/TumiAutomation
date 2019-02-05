@@ -14,7 +14,7 @@ import com.tumi.utilities.GenericMethods;
 import com.tumi.utilities.UIFunctions;
 
 public class GmailLogin extends GenericMethods {
-	public Map<String, String> testData = ReadTestData.retrieveData("Login", "GmailLogin");
+	public Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GmailLogin");
 
 	@Test
 	public void verifyLogin() throws InterruptedException {
@@ -47,7 +47,7 @@ public class GmailLogin extends GenericMethods {
 		driver.switchTo().window(pwindow);
 
 		click(home.getCloseMyAccount(), "Close my account window");
-		input(home.getSearch(), testData.get("PrdouctName"), "Product search");
+		input(home.getSearchProduct(), testData.get("PrdouctName"), "Product search"); ////////////////
 		WebElement dropdown = driver.findElement(By.id("matching_products"));
 		List<WebElement> allSearchResults = dropdown.findElements(By.tagName("li"));
 		if (allSearchResults.isEmpty()) {
@@ -64,7 +64,7 @@ public class GmailLogin extends GenericMethods {
 
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 
-		click(mainCart.getProceedToCheckout(), "Cart");
+		click(mainCart.getProceedCart(), "Cart");
 		input(shipping.getFirstName(), testData.get("FirstName"), "First Name");
 		input(shipping.getLastName(), testData.get("LastName"), "Last Name");
 		input(shipping.getAddressLine1(), testData.get("AddressLine1"), "Address line1");

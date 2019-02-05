@@ -26,7 +26,7 @@ public class OrderWithGiftBox extends GenericMethods {
 		click(gift.getMakeThisGift(), "Make this Gift");
 		UIFunctions.addGiftBox();
 		click(gift.getContinueGiftService(), "Continue");
-		click(mainCart.getProceedToCheckout(), "Proceed to Checkout");
+		click(mainCart.getProceedCart(), "Proceed to Checkout");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		UIFunctions.waitForContinueToEnable();
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
@@ -49,7 +49,7 @@ public class OrderWithGiftBox extends GenericMethods {
 		UIFunctions.addGiftBox();
 
 		click(gift.getContinueGiftService(), "Continue");
-		click(mainCart.getProceedToCheckout(), "Proceed to Checkout");
+		click(mainCart.getProceedCart(), "Proceed to Checkout");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		UIFunctions.waitForContinueToEnable();
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
@@ -68,7 +68,7 @@ public class OrderWithGiftBox extends GenericMethods {
 		click(gift.getMakeThisGift(), "Make this Gift");
 		UIFunctions.addGiftBox();
 		click(gift.getContinueGiftService(), "continue");
-		click(mainCart.getProceedToCheckout(), "Proceed to Checkout");
+		click(mainCart.getProceedCart(), "Proceed to Checkout");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		UIFunctions.waitForContinueToEnable();
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
@@ -89,7 +89,7 @@ public class OrderWithGiftBox extends GenericMethods {
 		UIFunctions.addGiftMessage("TumiTestData", "GuestOrders");
 		UIFunctions.addGiftBox();
 		click(gift.getContinueGiftService(), "Continue");
-		click(mainCart.getProceedToCheckout(), "Proceed to Checkout");
+		click(mainCart.getProceedCart(), "Proceed to Checkout");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		UIFunctions.waitForContinueToEnable();
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
@@ -109,7 +109,7 @@ public class OrderWithGiftBox extends GenericMethods {
 		click(gift.getMakeThisGift(), "Make this Gift");
 		UIFunctions.addGiftBox();
 		click(gift.getContinueGiftService(), "Continue");
-		click(mainCart.getProceedToCheckout(), "Proceed to Checkout");
+		click(mainCart.getProceedCart(), "Proceed to Checkout");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		UIFunctions.waitForContinueToEnable();
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
@@ -129,7 +129,7 @@ public class OrderWithGiftBox extends GenericMethods {
 		UIFunctions.addGiftMessage("TumiTestData", "PreOrderProduct");
 		UIFunctions.addGiftBox();
 		click(gift.getContinueGiftService(), "Continue");
-		click(mainCart.getProceedToCheckout(), "Proceed to Checkout");
+		click(mainCart.getProceedCart(), "Proceed to Checkout");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		UIFunctions.waitForContinueToEnable();
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
@@ -151,7 +151,7 @@ public class OrderWithGiftBox extends GenericMethods {
 		UIFunctions.addGiftBox();
 		click(gift.getContinueGiftService(), "Continue");
 		// UIFunctions.addPromotionalCodeAtCart("TumiTestData", "PreOrderProduct");
-		click(mainCart.getProceedToCheckout(), "Proceed to Checkout");
+		click(mainCart.getProceedCart(), "Proceed to Checkout");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "PreOrderProduct");
 		UIFunctions.waitForContinueToEnable();

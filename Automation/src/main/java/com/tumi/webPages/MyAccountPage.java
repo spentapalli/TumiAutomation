@@ -104,14 +104,17 @@ public class MyAccountPage extends GenericMethods {
 
 	@FindBy(how = How.XPATH, using = "//a[@href='#create-account']")
 	private WebElement createAcc;
-
-	@FindBy(how = How.XPATH, using = "(//h3[contains(text(),'My Account')])[2]")
-	private WebElement signUpMyAccMsg;
-
 	public WebElement getCreateAcc() {
 		return createAcc;
 
 	}
+
+	@FindBy(how = How.XPATH, using = "(//h3[contains(text(),'My Account')])[2]")
+	private WebElement signUpMyAccMsg;
+	public WebElement getSignUpMyAccMsg() {
+		return signUpMyAccMsg;
+	}
+	
 
 	@FindBy(how = How.XPATH, using = "(//a[contains(text(),'Sign Out')])[3]")
 	private WebElement signout;
@@ -136,11 +139,10 @@ public class MyAccountPage extends GenericMethods {
 }
 	}
 }
-/*
- * //signout public WebElement getSignUpMyAccMsg() {
-		return signUpMyAccMsg;
- * 
- * public WebElement getkrSignout() { if(selectedCountry.contains("Korea")) {
+
+ 
+  
+ /* public WebElement getkrSignout() { if(selectedCountry.contains("Korea")) {
  * return krSignout; }else {
  * 
  * return signout; } } //viewmyprofile

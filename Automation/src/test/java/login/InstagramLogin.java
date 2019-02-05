@@ -38,7 +38,7 @@ public class InstagramLogin extends GenericMethods {
 	 * Verify Login fail, with wrong Instagram Account credentials
 	 * 
 	 */
-	@Test(priority=1,description=" TA-177 :Verify Login fail, with wrong Instagram Account credentials " )
+	//@Test(priority=1,description=" TA-177 :Verify Login fail, with wrong Instagram Account credentials " )
 	public void inValidInstaLogin(){
 		//TumiLibs.closeSignUpForUS();
 		instaLogin("TumiTestData", "VerifyInvalidInstaLogin");

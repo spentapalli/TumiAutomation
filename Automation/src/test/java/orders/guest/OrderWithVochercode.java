@@ -27,7 +27,7 @@ public class OrderWithVochercode extends GenericMethods {
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		// UIFunctions.addPromotionalCodeAtCart("TumiTestData", "GuestOrders");
-		click(mainCart.getProceedToCheckout(), "Proceed to Checkout");
+		click(mainCart.getProceedCart(), "Proceed to Checkout");
 		UIFunctions.addPromotionalCodeAtCart("TumiTestData", "GuestOrders");
 		if (mainCart.getVocherMsg().isDisplayed()) {
 			msg = getText(mainCart.getVocherMsg());
@@ -52,7 +52,7 @@ public class OrderWithVochercode extends GenericMethods {
 		click(pdp.getAddToCart(), "Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		// UIFunctions.addPromotionalCodeAtCart("TumiTestData", "BackOrderProduct");
-		click(mainCart.getProceedToCheckout(), "Proceed to Checkout");
+		click(mainCart.getProceedCart(), "Proceed to Checkout");
 		UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "BackOrderProduct");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		UIFunctions.waitForContinueToEnable();
@@ -70,7 +70,7 @@ public class OrderWithVochercode extends GenericMethods {
 		click(pdp.getAddToCart(), "Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		// UIFunctions.addPromotionalCodeAtCart("TumiTestData", "PreOrderProduct");
-		click(mainCart.getProceedToCheckout(), "Proceed to Checkout");
+		click(mainCart.getProceedCart(), "Proceed to Checkout");
 		UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "BackOrderProduct");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "PreOrderProduct");
@@ -95,7 +95,7 @@ public class OrderWithVochercode extends GenericMethods {
 		UIFunctions.addGiftBox();
 		click(gift.getContinueGiftService(), "Continue");
 		//UIFunctions.addPromotionalCodeAtCart("TumiTestData", "GuestOrders");
-		click(mainCart.getProceedToCheckout(), "Proceed to Checkout");
+		click(mainCart.getProceedCart(), "Proceed to Checkout");
 		UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "BackOrderProduct");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "GuestOrders");

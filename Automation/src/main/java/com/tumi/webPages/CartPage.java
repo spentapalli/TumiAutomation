@@ -39,24 +39,28 @@ public class CartPage extends GenericMethods {
 
 	@FindBy(how = How.XPATH, using = "//a[@class='cta removeFocusIndicator']")
 	private WebElement removeProduct;
-	
+
 	@FindBy(how = How.XPATH, using = ("//div[@id='cart-items-container']/div[2]/div[1]/div[1]/div[2]/div[6]/span[3]/a"))
 	private WebElement krremoveProductsQuantity;
-	
+
 	public WebElement getRemoveProduct() {
 
 		return removeProduct;
 	}
 
-	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Proceed to Checkout')]")
+	
+	@FindBy(how=How.XPATH,using=("//div[@id='cart-summary-container']/div[2]/div[2]/div[1]/button"))
+	private WebElement krProceedtoCart;
+	
+	@FindBy(how=How.XPATH,using="//button[contains(text(),'Proceed to Checkout')]")
 	private WebElement proceedToCheckout;
-	@FindBy(how = How.XPATH, using = ("//div[@id='cart-summary-container']/div[2]/div[2]/div[1]/button"))
-	private WebElement krproceedtoCart;
-
-	public WebElement getProceedToCheckout() {
-
-		return explicitWait(proceedToCheckout);
-
+	
+	public WebElement getProceedCart() {
+		if (selectedCountry.contains("배송하기: 대한민국")) {
+			return explicitWait(krProceedtoCart);
+		} else {
+			return explicitWait(proceedToCheckout);
+		}
 	}
 
 	@FindBy(how = How.XPATH, using = "//img[@alt='Checkout with PayPal']")
@@ -133,9 +137,10 @@ public class CartPage extends GenericMethods {
 
 	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Make this a Gift')]")
 	private List<WebElement> makeGiftBox;
-	
+
 	@FindBy(how = How.XPATH, using = ("//div[@id='cart-items-container']/div[2]/div[1]/div[1]/div[2]/div[9]/div[2]/a"))
 	private WebElement krMakegiftbox;
+
 	public WebElement getMakeGiftBox() {
 
 		return makeGiftBox.get(1);
@@ -176,7 +181,8 @@ public class CartPage extends GenericMethods {
 		return addMessege;
 
 	}
-    //same for korea
+
+	// same for korea
 	@FindBy(how = How.XPATH, using = "//input[@id='giftBox']")
 	private WebElement standardGiftBoxing;
 
@@ -185,10 +191,10 @@ public class CartPage extends GenericMethods {
 		return standardGiftBoxing;
 
 	}
+
 //same for korea
 	@FindBy(how = How.XPATH, using = "//button[@id='giftCardApplyBtn']")
 	private WebElement continueButton;
-	
 
 	public WebElement getContinueButton() {
 
@@ -267,15 +273,14 @@ public class CartPage extends GenericMethods {
 	}
 
 	// Korea-Cart
-	//updatecart
-	  
-	  @FindBy(how=How.XPATH,using=("//button[@id='updateCartButton']"))
-	   private WebElement UpdateCart;
-	  public WebElement getUpdatecart() { 
-		  return UpdateCart;
-	  }
-	  
-	
+	// updatecart
+
+	@FindBy(how = How.XPATH, using = ("//button[@id='updateCartButton']"))
+	private WebElement UpdateCart;
+
+	public WebElement getUpdatecart() {
+		return UpdateCart;
+	}
 
 	@FindBy(how = How.XPATH, using = ("//input[@name='quantity']"))
 	private WebElement UpdatecartQuantity;
@@ -317,7 +322,6 @@ public class CartPage extends GenericMethods {
 	 * public WebElement getApplyvoucher() { return ApplyVoucher; }
 	 */
 
-	
 	@FindBy(how = How.XPATH, using = (""))
 	private WebElement subTotalValue;
 

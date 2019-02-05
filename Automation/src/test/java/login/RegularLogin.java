@@ -26,7 +26,7 @@ public class RegularLogin extends GenericMethods {
 	@Test(priority = 0, description="TA-26: Verify Login with Tumi account")
 	public void verifyValidLogin() {
 
-		login("Login", "TumiLogin");
+		login("TumiTestData", "TumiLogin");
 		try {
 			if (myacc.getSignout().isDisplayed()) {
 				verifyAssertContains(getText(myacc.getWelcomeMessage()), getProperty("login.success.message"),

@@ -12,7 +12,7 @@ import com.tumi.utilities.GenericMethods;
  *
  */
 public class GoogleLogin extends GenericMethods {
-	Map<String, String> testData = ReadTestData.retrieveData("Login", "GoogleLogin");
+	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GoogleLogin");
 
 	/*
 	 * TA-19 Verify valid Login with Google Account by giving valid credentials.

@@ -156,6 +156,21 @@
 		"TownCity": "ABCD",
 		"PostCode": "12345",
 		"Phone": "021234567"
+	},
+	
+	"TumiLogin":{
+	"Email_id":"Employee.tumi@gmail.com",
+	"password":"Tumi_8864"
+	},
+	
+	"GoogleLogin":{
+	"EmailID":"emptumi@gmail.com",
+	"Password":"tumi123"
+	},
+	
+	"InstagramLogin":{
+	"EmailID":"emptumi@gmail.com",
+	"Password":"tumi123"
 	}
 	
 }

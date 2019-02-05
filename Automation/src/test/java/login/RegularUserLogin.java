@@ -18,7 +18,7 @@ import com.tumi.utilities.UIFunctions;
  */
 public class RegularUserLogin extends GenericMethods {
 
-	public Map<String, String> testData = ReadTestData.retrieveData("Login", "TumiLogin");
+	public Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "TumiLogin");
 
 	@Test
 	public void verifyLogin() throws InterruptedException {
@@ -27,7 +27,7 @@ public class RegularUserLogin extends GenericMethods {
 
 		login("Login", "RegularUserLogin");
 		click(home.getCloseMyAccount(), "Close my account window");
-		input(home.getSearch(), testData.get("PrdouctName"), "Product search");
+		input(home.getSearchProduct(), testData.get("PrdouctName"), "Product search");
 		WebElement dropdown = driver.findElement(By.id("matching_products"));
 		List<WebElement> allSearchResults = dropdown.findElements(By.tagName("li"));
 		if (allSearchResults.isEmpty()) {
@@ -44,7 +44,7 @@ public class RegularUserLogin extends GenericMethods {
 
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 
-		click(mainCart.getProceedToCheckout(), "Cart");
+		click(mainCart.getProceedCart(), "Cart");
 
 		click(signinShip.getDurhamAddress1(), "Shipping address");
 		click(shipping.getContinueShippingMethod(), "Continue shipping Method");
