@@ -18,6 +18,7 @@ import com.tumi.utilities.GenericMethods;
  */
 public class HomePage extends GenericMethods {
 
+	
 	public HomePage(WebDriver driver) {
 		Reports.driver = driver;
 		PageFactory.initElements(driver, this);
@@ -146,54 +147,47 @@ public class HomePage extends GenericMethods {
 		return selectLanguage;
 
 	}
-
+	 @FindBy(how = How.XPATH, using = "//section[@id='top-nav']/header/div[1]/div[1]/div[3]/a")
+	    private WebElement krheaderFindStore;
+	 
 	@FindBy(how = How.XPATH, using = "(//a[text()='Find a Store'])[1]")
 	private WebElement headerFindStore;
 	
-   @FindBy(how = How.XPATH, using = "//section[@id='top-nav']/header/div[1]/div[1]/div[3]/a")
-    private WebElement krheaderFindStore;
-   
-public WebElement getkrHeaderFindStore() {
-	if(selectedCountry.contains("Korea")) {
-		return krheaderFindStore;
-	}else {
-
+	public WebElement getkrHeaderFindStore() {
+	if (selectedCountry.contains("배송하기: 대한민국")) {
+		return explicitWait(krheaderFindStore);
+		} else {
 	return headerFindStore;
 
 	}
 	}
-
+	@FindBy(how = How.XPATH, using = "//section[@id='top-nav']/header/div[1]/div[2]/a")
+	private WebElement krheaderCustomerService;
+	
 	@FindBy(how = How.XPATH, using = "(//a[text()='Customer Service'])[1]")
 	private WebElement headerCustomerService;
-
-@FindBy(how = How.XPATH, using = "//section[@id='top-nav']/header/div[1]/div[2]/a")
-private WebElement krheaderCustomerService;
-
-	public WebElement getkrHeaderCustomerService() {
+public WebElement getkrHeaderCustomerService() {
 	
-	  if(selectedCountry.contains("Korea")) 
-	  { return krheaderCustomerService;
-	  }else {
-	  
-	  { 
+		if (selectedCountry.contains("배송하기: 대한민국")) {
+			return explicitWait(krheaderCustomerService);
+			} else {
+	   
 		  return headerCustomerService;
 	  }
 	  }
 	  
 	
-	  }
-	
-	//same for korea
 	 @FindBy(how = How.XPATH, using = "(//a[@href='#login'])[1]")
 	 private WebElement krHeaderSignIn;
+	 
 	@FindBy(how = How.XPATH, using = "(//a[text()='Sign In'])[1]")
 	private WebElement headerSignIn;
 
 	public WebElement getHeaderSignIn() {
-			if(selectedCountry.contains("Korea")) {
-				return explicitWait(krHeaderSignIn);
-			}else {
-
+		if (selectedCountry.contains("배송하기: 대한민국")) {
+			return explicitWait(krHeaderSignIn);
+			} else {
+	  
 		return explicitWait(headerSignIn);
 	}
 	}
@@ -220,8 +214,7 @@ private WebElement krheaderCustomerService;
 
 		return j_password;
 	}
-	
-	//same for korea
+
 	 @FindBy(how = How.XPATH, using = "//div[@id='login-option-regular']/input")
 	 private WebElement krSubmit;
 
@@ -229,9 +222,9 @@ private WebElement krheaderCustomerService;
 	private WebElement submit;
 
 	public WebElement getLogOn() {
-		if(selectedCountry.contains("Korea")) {
-			return krSubmit;
-		}else {
+		if (selectedCountry.contains("배송하기: 대한민국")) {
+			return explicitWait(krSubmit);
+			} else {
 		return submit;
 	}
 	}
@@ -273,20 +266,22 @@ private WebElement krheaderCustomerService;
 		return passwordBlank;
 	}
 	
-	@FindBy(how=How.XPATH,using="(//div[@class='error-message'])[1]")
-      private WebElement invalidCredentials;
+
 	
 	@FindBy(how=How.XPATH,using="//form[@id='tm-login-form']/div[4]/div")
 	private WebElement krinvalidCredentials;
-	/*public WebElement getkrInvalidCredentialsError() {
-		if(selectedCountry.contains("Korea")) {
-			return krinvalidCredentials;
-		}else {*/
-		//return invalidCredentials;
-
+	
+	@FindBy(how=How.XPATH,using="(//div[@class='error-message'])[1]")
+    private WebElement invalidCredentials;
+	
 	public WebElement getInvalidCredentialsError() {
+		if (selectedCountry.contains("배송하기: 대한민국")) {
+			return explicitWait(krinvalidCredentials);
+			} else {
+		
 
 		return invalidCredentials;
+	}
 	}
 
 	@FindBy(how = How.XPATH, using = "//div[@id='tm-panel-login-confirmation']/header/a")
