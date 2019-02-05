@@ -1,6 +1,7 @@
 package com.tumi.utilities;
 
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -21,7 +22,7 @@ import com.tumi.webPages.HomePage;
  *
  */
 public class UIFunctions extends GenericMethods {
-	
+
 	public static void closeSignUp() {
 
 		HomePage home = PageFactory.initElements(driver, HomePage.class);
@@ -75,14 +76,60 @@ public class UIFunctions extends GenericMethods {
 
 		// invalid card number
 		input(guestBillPage.getCardNumber(), testData.get("CardNumber"), "Card Number");
-		selectByVisibleText(guestBillPage.getExpiryMonth(), "05", "Expiry Month");
-		selectByVisibleText(guestBillPage.getExpiryYear(), "2020", "Expiry Year");
+		if (browserName.equals("firefox")) {
+			selectMonthInFF();
+			selectYearInFF();
+		}else {
+			selectByVisibleText(guestBillPage.getExpiryMonth(), "05", "Expiry Month");
+			selectByVisibleText(guestBillPage.getExpiryYear(), "2020", "Expiry Year");
+		}
 		input(guestBillPage.getCvvNumber(), testData.get("CVV"), "Cvv Number");
 		input(guestBillPage.getemail(), testData.get("EmailID"), "Email ID");
 		input(guestBillPage.getPhoneNumber(), testData.get("Phone"), "Phone number");
 		domClick(guestBillPage.getReviewOrder(), "Review your order");
-		//elect sel = new Select(new WebDriverWait(driver,30).until(ExpectedConditions.visibilityOfElementLocated(By.name("country"))));
-	   // sel.selectByVisibleText("Albania");
+		// elect sel = new Select(new
+		// WebDriverWait(driver,30).until(ExpectedConditions.visibilityOfElementLocated(By.name("country"))));
+		// sel.selectByVisibleText("Albania");
+	}
+
+	public static void selectMonthInFF() {
+
+		driver.findElement(By.xpath("//span[@data-val='Month']")).click();
+		delay(2000);
+		List<WebElement> months = driver.findElements(By.xpath("//span[@data-val='Month']/following::ul[1]/li/a"));
+
+		for (int i = 1; i < months.size(); i++) {
+
+			WebElement month = driver
+					.findElement(By.xpath("//span[@data-val='Month']/following::ul[1]/li[" + i + "]/a"));
+
+			if (getText(month).equals("05")) {
+
+				month.click();
+				delay(2000);
+				break;
+			}
+		}
+	}
+	
+	public static void selectYearInFF() {
+
+		driver.findElement(By.xpath("//span[@data-val='Year']")).click();
+		delay(2000);
+		List<WebElement> years = driver.findElements(By.xpath("//span[@data-val='Year']/following::ul[1]/li/a"));
+
+		for (int i = 1; i < years.size(); i++) {
+
+			WebElement year = driver
+					.findElement(By.xpath("//span[@data-val='Year']/following::ul[1]/li[" + i + "]/a"));
+
+			if (getText(year).equals("2020")) {
+
+				year.click();
+				delay(2000);
+				break;
+			}
+		}
 	}
 
 	public static void addInvalidCardDetails(String sheet, String testCaseName) {
@@ -117,8 +164,8 @@ public class UIFunctions extends GenericMethods {
 
 		final String pdpURL = GlobalConstants.url + "/p/" + testData.get("SKUID");
 		driver.get(pdpURL);
-		WaitForJStoLoad();
-		
+		// WaitForJStoLoad();
+
 		// commented below for Korea order, because getting error here
 		/*
 		 * verifyAssertContains(driver.getCurrentUrl(), testData.get("SKUID"),
@@ -453,27 +500,26 @@ public class UIFunctions extends GenericMethods {
 	}
 
 	public static void selectCountry() {
-		
-		logger = report.createTest("Country");
+
+		//logger = report.createTest("Country");
 
 		String countryName = System.getProperty("countryName");
-		
-		System.out.println("Country Name "+countryName);
 
-		if (null == countryName || countryName.isEmpty()||
-				countryName.toUpperCase().equalsIgnoreCase("US")) {
+		System.out.println("Country Name " + countryName);
 
-			logger.log(Status.INFO, "Execution initiated for US");
-			
-		}else if (countryName.toUpperCase().equalsIgnoreCase("CANADA")) {
-			 
+		if (null == countryName || countryName.isEmpty() || countryName.toUpperCase().equalsIgnoreCase("US")) {
+
+			//logger.log(Status.INFO, "Execution initiated for US");
+
+		} else if (countryName.toUpperCase().equalsIgnoreCase("CANADA")) {
+
 			countrySelection("Canada");
-			logger.log(Status.INFO, "Execution initiated for Canada");
-			
-		}else if (countryName.toUpperCase().equalsIgnoreCase("KOREA")) {
-			
+			//logger.log(Status.INFO, "Execution initiated for Canada");
+
+		} else if (countryName.toUpperCase().equalsIgnoreCase("KOREA")) {
+
 			countrySelection("Korea");
-			logger.log(Status.INFO, "Execution initiated for Korea");
+			//logger.log(Status.INFO, "Execution initiated for Korea");
 		}
 	}
 
@@ -500,51 +546,54 @@ public class UIFunctions extends GenericMethods {
 
 	public static void waitForContinueToEnable() {
 
-		//do {
-			delay(2000);
-		//} while (!singlePage.isContinueDisabled().isDisplayed());
+		// do {
+		delay(2000);
+		// } while (!singlePage.isContinueDisabled().isDisplayed());
 	}
+
 	public static void addMultiship() {
 
 		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "OrderWithTwoProducts");
 		click(multiShip.getMultiShipClick(), "MultiShipment");
 		delay(2000);
 		domClick(multiShip.getAddShippment0(), "add shipment 1");
-		addMultishipGuestDeatils(testData.get("shipment1"),testData.get("AddressLine1"));
+		addMultishipGuestDeatils(testData.get("shipment1"), testData.get("AddressLine1"));
 		click(multiShip.getNext(), "Continue next shipping");
 		webclick(shipMethod.getStandardShippingMethod(), "Standard Shipping Method");
 		click(multiShip.getNextShipment(), "Continue next shipment");
 		delay(3000);
 		domClick(multiShip.getAddShippment0(), "add shipment 2");
-		addMultishipGuestDeatils(testData.get("shipment2"),testData.get("nextAddressLine1"));
+		addMultishipGuestDeatils(testData.get("shipment2"), testData.get("nextAddressLine1"));
 		click(multiShip.getNext(), "Continue next shipping");
 		webclick(shipMethod.getpriorityShippingMethod(), "Priority Shipping Method");
-		click(shipMethod.getProceedToPayment(),"Proceed to Payment");
+		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
 	}
+
 	public static void addMultishipForRegistered() {
 
 		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "OrderWithTwoProducts");
 		click(multiShip.getMultiShipClick(), "MultiShipment");
 		delay(2000);
 		domClick(multiShip.getAddShippment0(), "add shipment 1");
-		domClick(signinBill.getAddNewAddress(),"Add new address");
-		addMultishipGuestDeatils(testData.get("shipment1"),testData.get("AddressLine1"));
+		domClick(signinBill.getAddNewAddress(), "Add new address");
+		addMultishipGuestDeatils(testData.get("shipment1"), testData.get("AddressLine1"));
 		click(multiShip.getNext(), "Continue next shipping");
 		webclick(shipMethod.getStandardShippingMethod(), "Standard Shipping Method");
 		click(multiShip.getNextShipment(), "Continue next shipment");
 		delay(3000);
 		domClick(multiShip.getAddShippment0(), "add shipment 2");
-		domClick(signinBill.getAddNewAddress(),"Add new address");
-		addMultishipGuestDeatils(testData.get("shipment2"),testData.get("nextAddressLine1"));
+		domClick(signinBill.getAddNewAddress(), "Add new address");
+		addMultishipGuestDeatils(testData.get("shipment2"), testData.get("nextAddressLine1"));
 		click(multiShip.getNext(), "Continue next shipping");
 		webclick(shipMethod.getpriorityShippingMethod(), "Priority Shipping Method");
-		click(shipMethod.getProceedToPayment(),"Proceed to Payment");
+		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
 	}
+
 	public static void addMultishipGuestDeatils(String data, String data1) {
 		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "OrderWithTwoProducts");
 		input(shipping.getFirstName(), testData.get("FirstName"), "First Name");
 		input(shipping.getLastName(), testData.get("LastName"), "Last Name");
-		input(shipping.getAddressLine1(), data1 , "Address Line1");
+		input(shipping.getAddressLine1(), data1, "Address Line1");
 		explicitWait(shipping.getSelectedAddressLine());
 		for (int i = 1; i < shipping.getAddList().size(); i++) {
 			WebElement add = driver.findElement(By.xpath("//div[@class='address-picklist']/div[" + i + "]"));
@@ -555,30 +604,29 @@ public class UIFunctions extends GenericMethods {
 		}
 		input(shipping.getPhoneNumber(), testData.get("Phone"), "Phone Number");
 	}
+
 	public static void addMultishipAddressWithCardDeatils(String sheet, String testCaseName) {
-			Map<String, String> testData = ReadTestData.getJsonData(sheet, testCaseName);
+		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCaseName);
 
-			// billing page
-			input(guestBillPage.getNameOnCard(), testData.get("NameOnCard"), "Name on Card");
+		// billing page
+		input(guestBillPage.getNameOnCard(), testData.get("NameOnCard"), "Name on Card");
 
-			input(guestBillPage.getCardNumber(), testData.get("CardNumber"), "Card Number");
-			selectByVisibleText(guestBillPage.getExpiryMonth(), "05", "Expiry Month");
-			selectByVisibleText(guestBillPage.getExpiryYear(), "2020", "Expiry Year");
-			input(guestBillPage.getCvvNumber(), testData.get("CVV"), "Cvv Number");
-			input(guestBillPage.getemail(), testData.get("EmailID"), "Email ID");
-			input(guestBillPage.getPhoneNumber(), testData.get("Phone"), "Phone number");
-			input(shipping.getFirstName(), testData.get("FirstName"), "First Name");
-			input(shipping.getLastName(), testData.get("LastName"), "Last Name");
-			input(shipping.getAddressLine1(), testData.get("AddressLine1"), "Address line1");
-			input(shipping.getTown(), testData.get("TownCity"), "Town");
-			Select dropdown = new Select(driver.findElement(By.name("regionIso")));
-			dropdown.selectByVisibleText("New Jersey");
-			click(shipping.getRegionIso(),"Region");
-			input(shipping.getPostcode(), testData.get("PostCode"), "postal code");
-			domClick(guestBillPage.getReviewOrder(), "Review your order");
-			
-		}
-		
-	
+		input(guestBillPage.getCardNumber(), testData.get("CardNumber"), "Card Number");
+		selectByVisibleText(guestBillPage.getExpiryMonth(), "05", "Expiry Month");
+		selectByVisibleText(guestBillPage.getExpiryYear(), "2020", "Expiry Year");
+		input(guestBillPage.getCvvNumber(), testData.get("CVV"), "Cvv Number");
+		input(guestBillPage.getemail(), testData.get("EmailID"), "Email ID");
+		input(guestBillPage.getPhoneNumber(), testData.get("Phone"), "Phone number");
+		input(shipping.getFirstName(), testData.get("FirstName"), "First Name");
+		input(shipping.getLastName(), testData.get("LastName"), "Last Name");
+		input(shipping.getAddressLine1(), testData.get("AddressLine1"), "Address line1");
+		input(shipping.getTown(), testData.get("TownCity"), "Town");
+		Select dropdown = new Select(driver.findElement(By.name("regionIso")));
+		dropdown.selectByVisibleText("New Jersey");
+		click(shipping.getRegionIso(), "Region");
+		input(shipping.getPostcode(), testData.get("PostCode"), "postal code");
+		domClick(guestBillPage.getReviewOrder(), "Review your order");
+
+	}
 
 }
