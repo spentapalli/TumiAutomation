@@ -22,8 +22,8 @@ public class RegisteredOrderWithMultishipment extends GenericMethods {
 		UIFunctions.addMultipleProducts("TumiTestData", "GuestOrders");
 		click(minicart.getMiniCartSymbol(), "Cart Image");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
-		click(mainCart.getProceedToCheckout(), "Proceed to Checkout");
-		UIFunctions.addMultiship();
+		click(mainCart.getProceedCart(), "Proceed to Checkout");
+		UIFunctions.addMultishipForRegistered();
 		domClick(signinBill.getAddNewPay(),"Add new Payment");
 		UIFunctions.addMultishipAddressWithCardDeatils("TumiTestData", "GuestOrders");
 		UIFunctions.completeOrder();

@@ -21,11 +21,17 @@ public class MyProfile  extends GenericMethods{
 		PageFactory.initElements(driver, this);
 	}
 	
+	@FindBy(how=How.XPATH,using="//span[@name='titleCode']")
+	private WebElement krtitle;
+	
 	@FindBy(how=How.XPATH, using="//i[@id='profile.titleSelectBoxItArrow']")
 	private WebElement title;
-	
 	public WebElement getTitle() {
+		if (selectedCountry.contains("배송하기: 대한민국")) {
+			return explicitWait(krtitle);
+			} else {
 		return title;
+	}
 	}
 	//same for korea
 	@FindBy(how=How.XPATH, using="//input[@id='profile.firstName']")
@@ -56,53 +62,34 @@ public class MyProfile  extends GenericMethods{
 	public WebElement getNotifications() {
 		return notifications;
 	}
+	@FindBy(how=How.XPATH, using="//form[@id='updateProfileForm']/div[3]/button")
+	private WebElement krsave;
 	
 	@FindBy(how=How.XPATH, using="//button[contains(text(),'Save Updates')]")
 	private WebElement save;
-	
-	public WebElement getSave() {
+ public WebElement getSave() {
+		if (selectedCountry.contains("배송하기: 대한민국")) {
+			return explicitWait(krsave);
+			} else {
+			
 		return save;
 	}
-
+	}
+	@FindBy(how=How.XPATH, using="//form[@id='updateProfileForm']/div[3]/a")
+	private WebElement krcancel;
+	
 	@FindBy(how=How.XPATH, using="//a[contains(text(),'Cancel')]")
 	private WebElement cancel;
-
-	public WebElement getCancel() {
+ public WebElement getCancel() {
+		if (selectedCountry.contains("배송하기: 대한민국")) {
+			return explicitWait(krcancel);
+			} else {
+			
 		return cancel;
 	}
+	}
 
-@FindBy(how=How.XPATH,using="//span[@name='titleCode']")
-private WebElement krtitle;
-public WebElement getkrTitle() {
-	if(selectedCountry.contains("Korea")) {
-		return  krtitle;
-	}else {
-	return title;
-}
-}
-@FindBy(how=How.XPATH, using="//form[@id='updateProfileForm']/div[3]/button")
-private WebElement krsave;
-
-public WebElement getkrSave() {
-	if(selectedCountry.contains("Korea")) {
-		return  krsave;
-	}else {
-	
-}
-	return save;
 }
 
-@FindBy(how=How.XPATH, using="//form[@id='updateProfileForm']/div[3]/a")
-private WebElement krcancel;
-
-public WebElement getkrCancel() {
-	if(selectedCountry.contains("Korea")) {
-		return krcancel;
-	
-	}else {
-	return cancel;
-}
-}
-}
 
 

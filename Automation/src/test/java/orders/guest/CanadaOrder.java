@@ -42,7 +42,7 @@ public class CanadaOrder extends GenericMethods {
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 
 		// click on proceed to checkout in cart page
-		click(mainCart.getProceedToCheckout(), "Cart");
+		click(mainCart.getProceedCart(), "Cart");
 
 		// singlePageCheckout
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email");

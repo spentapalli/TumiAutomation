@@ -18,7 +18,7 @@ import com.tumi.utilities.UIFunctions;
 			UIFunctions.addProductToCart("TumiTestData","GuestOrders");
 			click(pdp.getAddToCart(),"Add to cart");
 			click(minicart.getProceedCheckOut(), "Proceed to Cart");
-			click(mainCart.getProceedToCheckout(), "Proceed to Checkout");
+			click(mainCart.getProceedCart(), "Proceed to Checkout");
 			input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 			UIFunctions.waitForContinueToEnable();
 			click(singlePage.getContinueAsGuest(), "Contiue as Guest");
@@ -27,6 +27,7 @@ import com.tumi.utilities.UIFunctions;
 			click(shipMethod.getProceedToPayment(), "Proceed to Payment");
 			UIFunctions.addCardDetails("TumiTestData", "GuestOrders");
 			UIFunctions.completeOrder();
+			 
 		}
 
 	}

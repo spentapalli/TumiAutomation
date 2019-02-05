@@ -1,4 +1,4 @@
-//TA-78 :Verify Login with Instagram Account-- functionality issue.
+//TA-18 :Verify Login with Instagram Account-- functionality issue.
 //TA    :Verify InLogin with Instagram Account-- functionality issue
 
 package login;
@@ -20,7 +20,7 @@ public class InstagramLogin extends GenericMethods {
 
 	
 
-	@Test(priority=0)
+	@Test(priority=0, description="TA-18 :Verify Login with Instagram Account")
 	public void verifyInstaValidLogin(){
 		UIFunctions.closeSignUp();
 		instaLogin("Login", "InstagramLogin");

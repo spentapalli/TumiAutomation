@@ -17,16 +17,17 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.io.FileHandler;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
+
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
@@ -56,10 +57,10 @@ import com.tumi.webPages.OrderReviewPage;
 import com.tumi.webPages.PayPalPage;
 import com.tumi.webPages.Personalization;
 import com.tumi.webPages.ProductDetailPage;
-import com.tumi.webPages.SignInShippingPage;
 import com.tumi.webPages.ShippingMethodPage;
 import com.tumi.webPages.ShippingPage;
 import com.tumi.webPages.SignInBillingPage;
+import com.tumi.webPages.SignInShippingPage;
 import com.tumi.webPages.SinglePageCheckout;
 import com.tumi.webPages.TumiStudio;
 
@@ -129,11 +130,15 @@ public class Reports {
 		getBrowser();
 		maximizeBrowser();
 		getURL(GenericMethods.getProperty("tumi.appName"));
+		if (browserName.equals("ie")) {
+			GenericMethods.delay(10000);
+			driver.navigate().to("javascript:document.getElementById('overridelink').click()");
+		}
 		UIFunctions.selectCountry();
 		// driver.navigate().to("https://ca.stg-hybris-akamai.tumi.com");
 	}
 
-	@AfterClass(alwaysRun = true)
+	// @AfterClass(alwaysRun = true)
 	public static void closeBrowser() {
 		driver.close();
 		try {
@@ -262,8 +267,10 @@ public class Reports {
 
 		} else if (browserName.equalsIgnoreCase("ie")) {
 
+			DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
+			capabilities.setCapability(InternetExplorerDriver.INITIAL_BROWSER_URL, GlobalConstants.url);
 			System.setProperty(GlobalConstants.ie, GlobalConstants.iePath);
-			driver = new InternetExplorerDriver();
+			driver = new InternetExplorerDriver(capabilities);
 			logger.log(Status.INFO, "InternetExplorer Browser is initiated Execution");
 		}
 	}
@@ -283,11 +290,12 @@ public class Reports {
 
 		if (URL.equalsIgnoreCase("stage2")) {
 
-			driver.get(GlobalConstants.url);
-			if (browserName.equals("ie")) {
-				driver.get("javascript:document.getElementById('overridelink').click();");
+			if (!browserName.equals("ie")) {
+				driver.get(GlobalConstants.url);
 			}
-			GenericMethods.WaitForJStoLoad();
+			if (!browserName.equals("ie")) {
+				GenericMethods.WaitForJStoLoad();
+			}
 
 		} else if (URL.equalsIgnoreCase("")) {
 			driver.get("");

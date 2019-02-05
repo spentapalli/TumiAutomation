@@ -80,7 +80,7 @@
 					<version>2.21.0</version>
 					<configuration>
 						<systemPropertyVariables>
-							<browsername>chrome</browsername>
+							<browsername>Firefox</browsername>
 							<countryName>US</countryName>
 						</systemPropertyVariables>
 						<forkCount>0</forkCount>

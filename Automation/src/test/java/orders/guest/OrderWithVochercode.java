@@ -7,7 +7,7 @@ import com.tumi.utilities.GenericMethods;
 import com.tumi.utilities.UIFunctions;
 
 /**
- * @author Suuresh
+ * @author Shwetha, Suuresh
  *
  */
 public class OrderWithVochercode extends GenericMethods {
@@ -20,14 +20,14 @@ public class OrderWithVochercode extends GenericMethods {
 	 * 
 	 * dataProvider = "Location",
 	 */
-	@Test(priority = 0, description = "Verify Order with merchandise Ready to ship + Voucher Code for Guest User")
+	@Test(priority = 0, description = " TA -15 Verify Order with merchandise Ready to ship + Voucher Code for Guest User")
 	public void verifyOrderWithVocherCode() throws InterruptedException {
 		String msg = null;
 		UIFunctions.addProductToCart("TumiTestData", "GuestOrders");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		// UIFunctions.addPromotionalCodeAtCart("TumiTestData", "GuestOrders");
-		click(mainCart.getProceedToCheckout(), "Proceed to Checkout");
+		click(mainCart.getProceedCart(), "Proceed to Checkout");
 		UIFunctions.addPromotionalCodeAtCart("TumiTestData", "GuestOrders");
 		if (mainCart.getVocherMsg().isDisplayed()) {
 			msg = getText(mainCart.getVocherMsg());
@@ -46,13 +46,13 @@ public class OrderWithVochercode extends GenericMethods {
 		UIFunctions.completeOrder();
 	}
 
-	@Test(priority = 1)
+	@Test(priority = 1, description="TA-103 Verify Order With Merchandise BackOrder + Voucher Card with Guest User")
 	public void backOrderWithVocherAsGuest() {
 		UIFunctions.addProductToCart("TumiTestData", "BackOrderProduct");
 		click(pdp.getAddToCart(), "Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		// UIFunctions.addPromotionalCodeAtCart("TumiTestData", "BackOrderProduct");
-		click(mainCart.getProceedToCheckout(), "Proceed to Checkout");
+		click(mainCart.getProceedCart(), "Proceed to Checkout");
 		UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "BackOrderProduct");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		UIFunctions.waitForContinueToEnable();
@@ -64,13 +64,13 @@ public class OrderWithVochercode extends GenericMethods {
 		UIFunctions.completeOrder();
 	}
 
-	@Test(priority = 2, description = " Verify Order with merchandise Pre Order + Voucher Code for Guest User")
+	@Test(priority = 2, description = " TA - 106 Verify Order with merchandise Pre Order + Voucher Code for Guest User")
 	public void preOrderVocherAsGuest() throws InterruptedException {
 		UIFunctions.addProductToCart("TumiTestData", "PreOrderProduct");
 		click(pdp.getAddToCart(), "Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		// UIFunctions.addPromotionalCodeAtCart("TumiTestData", "PreOrderProduct");
-		click(mainCart.getProceedToCheckout(), "Proceed to Checkout");
+		click(mainCart.getProceedCart(), "Proceed to Checkout");
 		UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "BackOrderProduct");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "PreOrderProduct");
@@ -95,7 +95,7 @@ public class OrderWithVochercode extends GenericMethods {
 		UIFunctions.addGiftBox();
 		click(gift.getContinueGiftService(), "Continue");
 		//UIFunctions.addPromotionalCodeAtCart("TumiTestData", "GuestOrders");
-		click(mainCart.getProceedToCheckout(), "Proceed to Checkout");
+		click(mainCart.getProceedCart(), "Proceed to Checkout");
 		UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "BackOrderProduct");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "GuestOrders");

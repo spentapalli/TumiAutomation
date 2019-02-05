@@ -1,5 +1,5 @@
-/* TA-26: Confirm Regular login is successful on clicking Sign In and Entering Valid Email address & Password
-   TA-58 : Verify Tumi Login Fail, with wrong credentials*/
+
+   
 package login;
 
 import java.util.List;
@@ -17,9 +17,13 @@ import com.tumi.utilities.GenericMethods;
  *
  */
 public class RegularLogin extends GenericMethods {
+	/* 
+	 * TA-26: Confirm Regular login is successful on clicking Sign In and Entering Valid Email address & Password
+	 * TA-58 : Verify Tumi Login Fail, with wrong credentials
+	 */
 
 	
-	@Test(priority = 0)
+	@Test(priority = 0, description="TA-26: Verify Login with Tumi account")
 	public void verifyValidLogin() {
 
 		login("Login", "TumiLogin");
@@ -34,7 +38,7 @@ public class RegularLogin extends GenericMethods {
 		}
 	}
 
-	@Test(priority = 1)
+	@Test(priority = 1, description = "TA-58 : Verify Tumi Login Fail, with wrong credentials")
 	public void verifyInvalidUserMessage() {
 
 		login("Login", "InValidCredentials");

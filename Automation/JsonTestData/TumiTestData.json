@@ -137,5 +137,17 @@
 	"PayPalDeatils": {
 		"EmailID": "test@tumi.com",
 		"Password": "passw0rd"
+	},
+	"Products": {
+		"NormalProduct": "00171B",
+		"BackOrderProduct": "0484706D",
+		"PreOrderPRoduct": "0484660D",
+		"DonationProduct": "TUMISTJUDE250",
+		"GlobalLocatorProduct":"1111301041",
+		"PromoCode20":"FixedDollar20",
+		"PromoCode30":"T30-D5L6-E4LR-WEDL"
 	}
-}
+	
+	
+
+

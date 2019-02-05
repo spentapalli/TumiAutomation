@@ -1,7 +1,5 @@
 package multishipment;
 
-import java.util.List;
-
 import java.util.Map;
 
 import org.openqa.selenium.By;
@@ -10,9 +8,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
 import com.tumi.dataProvider.ReadTestData;
-import com.tumi.testcases.ProductSearch;
 import com.tumi.utilities.GenericMethods;
-import com.tumi.utilities.GlobalConstants;
 import com.tumi.utilities.UIFunctions;
 
 /**
@@ -50,7 +46,7 @@ public class MultiShipOrder extends GenericMethods {
 		}
 		click(minicart.getMiniCartSymbol(), "Cart Image");
 		click(minicart.getProceedCheckOut(), "proceed to checkout");
-		click(mainCart.getProceedToCheckout(), "Cart");
+		click(mainCart.getProceedCart(), "Cart");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email");
 		click(singlePage.getContinueAsGuest(), "Continue As Guest");
 		delay(2000);
