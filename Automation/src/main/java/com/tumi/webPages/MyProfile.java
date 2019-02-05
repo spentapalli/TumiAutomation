@@ -23,6 +23,8 @@ public class MyProfile  extends GenericMethods{
 	
 	@FindBy(how=How.XPATH, using="//i[@id='profile.titleSelectBoxItArrow']")
 	private WebElement title;
+	@FindBy(how=How.XPATH,using="//span[@name='titleCode']")
+	private WebElement krtitle;
 	
 	public WebElement getTitle() {
 		return title;
@@ -59,6 +61,8 @@ public class MyProfile  extends GenericMethods{
 	
 	@FindBy(how=How.XPATH, using="//button[contains(text(),'Save Updates')]")
 	private WebElement save;
+	@FindBy(how=How.XPATH, using="//form[@id='updateProfileForm']/div[3]/button")
+	private WebElement krsave;
 	
 	public WebElement getSave() {
 		return save;
@@ -67,42 +71,14 @@ public class MyProfile  extends GenericMethods{
 	@FindBy(how=How.XPATH, using="//a[contains(text(),'Cancel')]")
 	private WebElement cancel;
 
+	@FindBy(how=How.XPATH, using="//form[@id='updateProfileForm']/div[3]/a")
+	private WebElement krcancel;
 	public WebElement getCancel() {
 		return cancel;
 	}
 
-@FindBy(how=How.XPATH,using="//span[@name='titleCode']")
-private WebElement krtitle;
-public WebElement getkrTitle() {
-	if(selectedCountry.contains("Korea")) {
-		return  krtitle;
-	}else {
-	return title;
-}
-}
-@FindBy(how=How.XPATH, using="//form[@id='updateProfileForm']/div[3]/button")
-private WebElement krsave;
 
-public WebElement getkrSave() {
-	if(selectedCountry.contains("Korea")) {
-		return  krsave;
-	}else {
-	
-}
-	return save;
 }
 
-@FindBy(how=How.XPATH, using="//form[@id='updateProfileForm']/div[3]/a")
-private WebElement krcancel;
-
-public WebElement getkrCancel() {
-	if(selectedCountry.contains("Korea")) {
-		return krcancel;
-	
-	}else {
-	return cancel;
-}
-}
-}
 
 

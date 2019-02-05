@@ -143,9 +143,9 @@ public class CreateAccountPage extends GenericMethods {
 	
 	//Korea
 	@FindBy(how=How.XPATH,using="//div[@id='tm-panel-login']/div[2]/a")
-private WebElement AcccreateButton;
-	public WebElement getAcccreateButton() {
-		return AcccreateButton;
+private WebElement krAcccreateButton;
+	public WebElement getkrAcccreateButton() {
+		return krAcccreateButton;
 	}
 	//selecting country
 	@FindBy(how=How.XPATH,using="//span[@id='register.countrySelectBoxIt']")

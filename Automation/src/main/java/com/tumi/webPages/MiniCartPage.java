@@ -54,7 +54,7 @@ public class MiniCartPage extends GenericMethods {
 	private WebElement singlePageCheckout;
 
 	public WebElement getSinglePageCheckout() {
-
+          
 		return explicitWait(singlePageCheckout);
 	}
 
@@ -65,7 +65,7 @@ public class MiniCartPage extends GenericMethods {
 	private WebElement continueShopping;
 
 	public WebElement getContinueShopping() {
-		if (selectedCountry.contains("Korea")) {
+		if (selectedCountry.contains("대한민국")) {
 			return explicitWait(krContinueShopping);
 		} else {
 			return explicitWait(continueShopping);
