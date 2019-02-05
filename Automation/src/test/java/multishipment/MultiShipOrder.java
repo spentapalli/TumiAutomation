@@ -46,7 +46,7 @@ public class MultiShipOrder extends GenericMethods {
 		}
 		click(minicart.getMiniCartSymbol(), "Cart Image");
 		click(minicart.getProceedCheckOut(), "proceed to checkout");
-		click(mainCart.getProceedToCheckout(), "Cart");
+		click(mainCart.getProceedCart(), "Cart");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email");
 		click(singlePage.getContinueAsGuest(), "Continue As Guest");
 		delay(2000);

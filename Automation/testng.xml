@@ -5,65 +5,72 @@
 	
 	
 	
-	<!-- Test -->
-	<!--<test name="GlobalLocatororder">
+	
+	<test name="GlobalLocatororder">
 		<classes>
 			<class name="orders.guest.GlobalLocatororder" />
 		</classes>
-	</test> <!-- Test -->
-	<!-- <test name="GuestOrderWithMultiShipment">
+	</test> 
+	 <test name="GuestOrderWithMultiShipment">
 		<parameter name="Country" value="US"></parameter>
 		<classes>
 			<class name="orders.guest.GuestOrderWithMultiShipment" />
 		</classes>
-	</test> Test
+	</test> 
+	 <test name="GuestOrder">
+		<parameter name="Country" value="US"></parameter>
+		<classes>
+			<class name="orders.guest.GuestOrder" />
+		</classes>
+	</test> 
 	<test name="GuestOrderWithTwoDiffProducts">
 		<parameter name="Country" value="US"></parameter>
 		<classes>
 			<class name="orders.guest.GuestOrderWithTwoDiffProducts" />
 		</classes>
-	</test>Test
+	</test>
 	<test name="OrderWithGiftBox">
 		<parameter name="Country" value="US"></parameter>
 		<classes>
 			<class name="orders.guest.OrderWithGiftBox" />
 		</classes>
-	</test>Test
+	</test>
 	<test name="OrderWithMonogram">
 		<parameter name="Country" value="US"></parameter>
 		<classes>
 			<class name="orders.guest.OrderWithMonogram" />
 		</classes>
-	</test>Test
+	</test>
 	<test name="OrderWithVochercode">
 		<parameter name="Country" value="US"></parameter>
 		<classes>
 			<class name="orders.guest.OrderWithVochercode" />
 		</classes>
 	</test>
-	 Test
+	
 	<test name="RegisteredOrderWithPayPal">
 		<parameter name="Country" value="US"></parameter>
 		<classes>
 			<class name="orders.registered.RegisteredOrderWithPayPal" />
 		</classes>
-	</test> Test
+	</test> 
 		<test name="RegisterOrderWithVoucher">
 		<parameter name="Country" value="US"></parameter>
 		<classes>
 			<class name="orders.registered.RegisterOrderWithVoucher" />
 		</classes>
-	</test> Test
+	</test>
 		<test name="RegisteredOrder">
 		<parameter name="Country" value="US"></parameter>
 		<classes>
 			<class name="orders.registered.RegisteredOrder" />
 		</classes>
-	</test> Test
+	</test> 
 	<test name="RegisteredOrderWithMultishipment">
 		<parameter name="Country" value="US"></parameter>
 		<classes>
 			<class name="orders.registered.RegisteredOrderWithMultishipment" />
 		</classes>
-	</test>  -->
+	
+	</test> 
 </suite>

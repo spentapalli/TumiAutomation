@@ -21,7 +21,7 @@ public class TA extends GenericMethods {
 		click(minicart.getContinueShopping(), "Continue Shopping");
 		UIFunctions.addMonogram("TumiTestData", "RegisteredOrders");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
-		click(mainCart.getProceedToCheckout(), "Proceed to Checkout");
+		click(mainCart.getProceedCart(), "Proceed to Checkout");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		UIFunctions.addGuestDetails();
@@ -39,7 +39,7 @@ public class TA extends GenericMethods {
 		click(minicart.getContinueShopping(), "Continue Shopping");
 		UIFunctions.addMonogram("TumiTestData", "BackOrderProduct");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
-		click(mainCart.getProceedToCheckout(), "Proceed to Checkout");
+		click(mainCart.getProceedCart(), "Proceed to Checkout");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		UIFunctions.addGuestDetails();
@@ -62,7 +62,7 @@ public class TA extends GenericMethods {
 		click(gift.getMakeThisGift(), "Make this Gift");
 		UIFunctions.addGiftBox();
 		click(gift.getContinueGiftService(), "continue");
-		click(mainCart.getProceedToCheckout(), "Proceed to Checkout");
+		click(mainCart.getProceedCart(), "Proceed to Checkout");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		UIFunctions.addGuestDetails();
@@ -85,7 +85,7 @@ public class TA extends GenericMethods {
 	click(gift.getMakeThisGift(), "Make this Gift");
 	UIFunctions.addGiftBox();
 	click(gift.getContinueGiftService(), "continue");
-	click(mainCart.getProceedToCheckout(), "Proceed to Checkout");
+	click(mainCart.getProceedCart(), "Proceed to Checkout");
 	input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 	click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 	UIFunctions.addGuestDetails();
@@ -107,7 +107,7 @@ public class TA extends GenericMethods {
 	click(gift.getMakeThisGift(), "Make this Gift");
 	UIFunctions.addGiftBox();
 	click(gift.getContinueGiftService(), "continue");
-	click(mainCart.getProceedToCheckout(), "Proceed to Checkout");
+	click(mainCart.getProceedCart(), "Proceed to Checkout");
 	input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 	click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 	UIFunctions.addGuestDetails();
@@ -131,7 +131,7 @@ public class TA extends GenericMethods {
 		click(gift.getMakeThisGift(), "Make this Gift");
 		UIFunctions.addGiftBox();
 		click(gift.getContinueGiftService(), "continue");
-		click(mainCart.getProceedToCheckout(), "Proceed to Checkout");
+		click(mainCart.getProceedCart(), "Proceed to Checkout");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		UIFunctions.addGuestDetails();
@@ -155,7 +155,7 @@ public class TA extends GenericMethods {
 		click(gift.getMakeThisGift(), "Make this Gift");
 		UIFunctions.addGiftBox();
 		click(gift.getContinueGiftService(), "continue");
-		click(mainCart.getProceedToCheckout(), "Proceed to Checkout");
+		click(mainCart.getProceedCart(), "Proceed to Checkout");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		UIFunctions.addGuestDetails();
@@ -180,7 +180,7 @@ public class TA extends GenericMethods {
 		click(gift.getMakeThisGift(), "Make this Gift");
 		UIFunctions.addGiftBox();
 		click(gift.getContinueGiftService(), "continue");
-		click(mainCart.getProceedToCheckout(), "Proceed to Checkout");
+		click(mainCart.getProceedCart(), "Proceed to Checkout");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		UIFunctions.addGuestDetails();

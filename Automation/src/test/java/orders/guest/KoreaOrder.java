@@ -74,7 +74,7 @@ public class KoreaOrder extends GenericMethods {
 		click(pdp.getAddToCart(), "Add to cart");
 		delay(2000);
 		click(minicart.getKrProceedToCheck(), "Proceed to Checkout");
-		click(mainCart.getProceedtoCart(), "Cart");
+		//click(mainCart.getProceedtoCart(), "Cart");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		UIFunctions.addGuestDetails();

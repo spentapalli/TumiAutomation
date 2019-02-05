@@ -27,7 +27,7 @@ public class SinglePageCheckout extends GenericMethods {
 	private WebElement signInExpressCheckout;
 
 	public WebElement getSignInExpressCheckout() {
-		if (selectedCountry.contains("Korea")) {
+		if (selectedCountry.contains("배송하기: 대한민국")) {
 			return krSignInExpressCheckout;
 		} else {
 			return signInExpressCheckout;
@@ -57,7 +57,7 @@ public class SinglePageCheckout extends GenericMethods {
 	private WebElement continueAsGuest;
 
 	public WebElement getContinueAsGuest() {
-		if (selectedCountry.contains("Korea")) {
+		if (selectedCountry.contains("배송하기: 대한민국")) {
 			return explicitWait(krContinueAsGuest);
 		} else {
 			return explicitWait(continueAsGuest);
@@ -72,7 +72,7 @@ public class SinglePageCheckout extends GenericMethods {
 	private WebElement promotionsAndNews;
 
 	public WebElement getPromotionsAndNews() {
-		if (selectedCountry.contains("Korea")) {
+		if (selectedCountry.contains("배송하기: 대한민국")) {
 			return explicitWait(krPromotionsAndNews);
 		} else {
 			return promotionsAndNews;

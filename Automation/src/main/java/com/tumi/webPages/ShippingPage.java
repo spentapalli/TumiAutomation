@@ -77,7 +77,7 @@ public class ShippingPage extends GenericMethods {
 	private WebElement addressLine2;
 
 	public WebElement getAddressLine2() {
-		if (selectedCountry.contains("Korea")) {
+		if (selectedCountry.contains("배송하기: 대한민국")) {
 			return krAddressLine2;
 		} else {
 			return addressLine2;
@@ -91,7 +91,7 @@ public class ShippingPage extends GenericMethods {
 	private WebElement town;
 
 	public WebElement getTown() {
-		if (selectedCountry.contains("Korea")) {
+		if (selectedCountry.contains("배송하기: 대한민국")) {
 			return krTown;
 		} else {
 			return town;
@@ -141,7 +141,7 @@ public class ShippingPage extends GenericMethods {
 
 	public WebElement getContinueShippingMethod() {
 
-		if (selectedCountry.contains("Korea")) {
+		if (selectedCountry.contains("배송하기: 대한민국")) {
 			return explicitWait(krContinueShippingMethod);
 		} else {
 

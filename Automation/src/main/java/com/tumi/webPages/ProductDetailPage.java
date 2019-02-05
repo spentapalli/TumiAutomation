@@ -48,7 +48,7 @@ public class ProductDetailPage extends GenericMethods {
 	private WebElement airlineCarryonGuide;
 
 	public WebElement getAirlineCarryonGuide() {
-		if(selectedCountry.contains("Korea")) {
+		if (selectedCountry.contains("배송하기: 대한민국")) {
 			return krAirlineCarryonGuide;
 		}else {
 		return airlineCarryonGuide;
@@ -62,7 +62,7 @@ public class ProductDetailPage extends GenericMethods {
 	private WebElement addMonogram;
 
 	public WebElement getAddMonogram() {
-		if(selectedCountry.contains("Korea")) {
+		if (selectedCountry.contains("배송하기: 대한민국")) {
 			return krAddMonogram;
 		}else {
 		return addMonogram;
@@ -85,7 +85,7 @@ public class ProductDetailPage extends GenericMethods {
 	private WebElement shoppingCart;
 
 	public WebElement getShoppingCart() {
-		if(selectedCountry.contains("Korea")) {
+		if (selectedCountry.contains("배송하기: 대한민국")) {
 			return krShoppingCart;
 		}else {
 		return shoppingCart;
@@ -123,7 +123,7 @@ public class ProductDetailPage extends GenericMethods {
 	private List<WebElement> minicartProductsremove;
 
 	public List<WebElement> getMiniCartRemove() {
-		if(selectedCountry.contains("Korea")) {
+		if (selectedCountry.contains("배송하기: 대한민국")) {
 			return krMinicartProductsremove;
 		}else {
 		return minicartProductsremove;
@@ -137,7 +137,7 @@ public class ProductDetailPage extends GenericMethods {
 	private List<WebElement> cartProductsremove;
 
 	public WebElement getCartRemove() {
-		if(selectedCountry.contains("Korea")) {
+		if (selectedCountry.contains("배송하기: 대한민국")) {
 			return krMinicartProductsremove.get(1);
 		}else {
 
@@ -152,7 +152,7 @@ public class ProductDetailPage extends GenericMethods {
 	private WebElement editQuantity;
 
 	public WebElement getFEditQuantity() {
-		if(selectedCountry.contains("Korea")) {
+		if (selectedCountry.contains("배송하기: 대한민국")) {
 			return krEditQuantity;
 		}else {
 		return editQuantity;

@@ -20,6 +20,7 @@ public class LoginPage extends GenericMethods {
 		Reports.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
+	
 
 	@FindBy(how = How.XPATH, using = "//font[@class='removeFocusIndicator']/font")
 	private WebElement krLoginWindow;
@@ -29,9 +30,9 @@ public class LoginPage extends GenericMethods {
 	private WebElement loginWindow;
 
 	public WebElement getLoginWindow() {
-		if (selectedCountry.contains("Korea")) {
-			return krLoginWindow;
-		} else {
+		if (selectedCountry.contains("배송하기: 대한민국")) {
+			return explicitWait(krLoginWindow);
+			} else {
 			return loginWindow;
 		}
 	}
@@ -67,7 +68,7 @@ public class LoginPage extends GenericMethods {
 	private WebElement forgetPassword;
 
 	public WebElement getForgetPAssword() {
-		if (selectedCountry.contains("Korea")) {
+		if (selectedCountry.contains("배송하기: 대한민국")) {
 			return krForgetPassword;
 		} else {
 			return rememberMe;
@@ -81,7 +82,7 @@ public class LoginPage extends GenericMethods {
 	private WebElement signInClick;
 
 	public WebElement getLogOn() {
-		if (selectedCountry.contains("Korea")) {
+		if (selectedCountry.contains("배송하기: 대한민국")) {
 			return krSignInClick;
 		} else {
 			return signInClick;
@@ -95,7 +96,7 @@ public class LoginPage extends GenericMethods {
 	private WebElement logOut;
 
 	public WebElement getLogOut() {
-		if (selectedCountry.contains("Korea")) {
+		if (selectedCountry.contains("배송하기: 대한민국")) {
 			return explicitWait(krLogOut);
 		} else {
 			return logOut;
@@ -117,7 +118,7 @@ public class LoginPage extends GenericMethods {
 	private WebElement closeWindow;
 
 	public WebElement getCloseWindow() {
-		if (selectedCountry.contains("Korea")) {
+		if (selectedCountry.contains("배송하기: 대한민국")) {
 			return krCloseWindow;
 		} else {
 			return closeWindow;

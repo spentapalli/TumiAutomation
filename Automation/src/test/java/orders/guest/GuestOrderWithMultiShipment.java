@@ -24,7 +24,7 @@ public class GuestOrderWithMultiShipment extends GenericMethods {
 		UIFunctions.addMultipleProducts("TumiTestData", "GuestOrders");
 		click(minicart.getMiniCartSymbol(), "Cart Image");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
-		click(mainCart.getProceedToCheckout(), "Proceed to Checkout");
+		click(mainCart.getProceedCart(), "Proceed to Checkout");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		//UIFunctions.waitForContinueToEnable();
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");

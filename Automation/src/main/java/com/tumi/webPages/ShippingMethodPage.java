@@ -36,7 +36,7 @@ public class ShippingMethodPage extends GenericMethods {
 
 			return explicitWait(caStandardShippingMethod);
 			
-		} else if(selectedCountry.contains("Korea")){
+		} else if (selectedCountry.contains("배송하기: 대한민국")) {
 			
 			return explicitWait(krStandardShippingMethod);
 		}else {
@@ -84,8 +84,7 @@ public class ShippingMethodPage extends GenericMethods {
 	private WebElement proceedToPayment;
 
 	public WebElement getProceedToPayment() {
-		if (selectedCountry.contains("Korea")) {
-
+		if (selectedCountry.contains("배송하기: 대한민국")) {
 			return explicitWait(krProceedToPayment);
 		}else {
 
