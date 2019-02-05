@@ -27,6 +27,7 @@ import com.tumi.utilities.UIFunctions;
 			click(shipMethod.getProceedToPayment(), "Proceed to Payment");
 			UIFunctions.addCardDetails("TumiTestData", "GuestOrders");
 			UIFunctions.completeOrder();
+			 
 		}
 
 	}

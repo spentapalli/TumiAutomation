@@ -12,350 +12,329 @@ import com.tumi.reports.Reports;
 import com.tumi.utilities.GenericMethods;
 
 public class CartPage extends GenericMethods {
-	
+
 	public CartPage(WebDriver driver) {
-		Reports.driver= driver;
-	    PageFactory.initElements(driver, this);
+		Reports.driver = driver;
+		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(how=How.XPATH,using="//input[@id='select-qty']")
+	@FindBy(how = How.XPATH, using = "//input[@id='select-qty']")
 	private WebElement editProductQuantity;
-	
+	@FindBy(how = How.XPATH, using = ("//div[@id='cart-items-container']/div/div[1]/div[1]/div[2]/div[6]/span[1]/span"))
+
+	private WebElement editProductsQuantity;
+
 	public WebElement getEditProductQuantity() {
-		
+
 		return editProductQuantity;
 	}
-	
-	@FindBy(how=How.XPATH,using="//a[contains(text(),'Edit')][1]")
+
+	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Edit')][1]")
 	private WebElement editMonogramQuantity;
-	
+
 	public WebElement getEditMonogramQuantity() {
-		
+
 		return editMonogramQuantity;
 	}
-	
-	/*@FindBy(how=How.XPATH,using="//a[@class='cta removeFocusIndicator']")
+
+	@FindBy(how = How.XPATH, using = "//a[@class='cta removeFocusIndicator']")
 	private WebElement removeProduct;
 	
+	@FindBy(how = How.XPATH, using = ("//div[@id='cart-items-container']/div[2]/div[1]/div[1]/div[2]/div[6]/span[3]/a"))
+	private WebElement krremoveProductsQuantity;
+	
 	public WebElement getRemoveProduct() {
-		
+
 		return removeProduct;
-	}*/
+	}
 
-	
-	@FindBy(how=How.XPATH,using="//button[contains(text(),'Proceed to Checkout')]")
+	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Proceed to Checkout')]")
 	private WebElement proceedToCheckout;
-	
+	@FindBy(how = How.XPATH, using = ("//div[@id='cart-summary-container']/div[2]/div[2]/div[1]/button"))
+	private WebElement krproceedtoCart;
+
 	public WebElement getProceedToCheckout() {
-		
+
 		return explicitWait(proceedToCheckout);
-		
-	}
-	
-	/*@FindBy(how=How.XPATH, using="")
-	private WebElement krProceedtoCheckout;
-	
-	public WebElement getkrProceedtoCheckout() {
-		return krProceedtoCheckout;*/
-	
-	
-	@FindBy(how=How.XPATH,using= "//img[@alt='Checkout with PayPal']")
-    private WebElement payPalProceed;
-	
-	public WebElement getPayPalProceed() {
-		
-		return payPalProceed;
-		
-	}
-	
-	@FindBy(how=How.XPATH,using= "(//a[contains(text(), 'Remove')])[1]")
-    private WebElement removeItemInCart;
-	
-	public WebElement getRemoveItemInCart() {
-		
-		return removeItemInCart;
-		
-	}
-	
-	@FindBy(how=How.XPATH,using= "//div[contains(@class, 'empty-cart')]/p")
-    private WebElement shopingCartMessege;
-	
-	public WebElement getShopingCartMessege() {
-		
-		return shopingCartMessege;
-		
-	}
-	@FindBy(how=How.XPATH,using= "//*[contains(text(),'Add a Monogram')]/following-sibling::div/a")
-    private List<WebElement> addClassicMonogram;
-	
-	public WebElement getAddClassicMonogram() {
-		
-		return addClassicMonogram.get(1);
-		
-	}
-	
-	@FindBy(how=How.XPATH,using= "(//a[contains(text(),'Metal ($15/letter)')])[1]")
-    private WebElement addMetalMonogram;
-	
-	public WebElement getAddMetalMonogram() {
-		
-		return addMetalMonogram;
-		
+
 	}
 
-	@FindBy(how=How.XPATH,using= "(//a[contains(text(),'Next')])[2]")
-    private WebElement clickNext;
-	
+	@FindBy(how = How.XPATH, using = "//img[@alt='Checkout with PayPal']")
+	private WebElement payPalProceed;
+
+	public WebElement getPayPalProceed() {
+
+		return payPalProceed;
+
+	}
+
+	@FindBy(how = How.XPATH, using = "(//a[contains(text(), 'Remove')])[1]")
+	private WebElement removeItemInCart;
+
+	public WebElement getRemoveItemInCart() {
+
+		return removeItemInCart;
+
+	}
+
+	@FindBy(how = How.XPATH, using = "//div[contains(@class, 'empty-cart')]/p")
+	private WebElement shopingCartMessege;
+
+	public WebElement getShopingCartMessege() {
+
+		return shopingCartMessege;
+
+	}
+
+	@FindBy(how = How.XPATH, using = "//*[contains(text(),'Add a Monogram')]/following-sibling::div/a")
+	private List<WebElement> addClassicMonogram;
+
+	public WebElement getAddClassicMonogram() {
+
+		return addClassicMonogram.get(1);
+
+	}
+
+	@FindBy(how = How.XPATH, using = "(//a[contains(text(),'Metal ($15/letter)')])[1]")
+	private WebElement addMetalMonogram;
+
+	public WebElement getAddMetalMonogram() {
+
+		return addMetalMonogram;
+
+	}
+
+	@FindBy(how = How.XPATH, using = "(//a[contains(text(),'Next')])[2]")
+	private WebElement clickNext;
+
 	public WebElement getClickNext() {
-		
+
 		return clickNext;
-		
+
 	}
-	
-	@FindBy(how=How.XPATH,using= "(//a[contains(text(),'Apply')])[1]")
-    private WebElement clickApply;
-	
+
+	@FindBy(how = How.XPATH, using = "(//a[contains(text(),'Apply')])[1]")
+	private WebElement clickApply;
+
 	public WebElement getClickApply() {
-		
+
 		return clickApply;
-		
+
 	}
-	
-	@FindBy(how=How.XPATH,using= "(//div[contains(@class,'added-monogram')]/div/span/following::span)[1]")
-    private WebElement monogramMessege;
-	
+
+	@FindBy(how = How.XPATH, using = "(//div[contains(@class,'added-monogram')]/div/span/following::span)[1]")
+	private WebElement monogramMessege;
+
 	public WebElement getMonogramMessege() {
-		
+
 		return monogramMessege;
-		
+
 	}
-	
-	@FindBy(how=How.XPATH,using="//a[contains(text(),'Make this a Gift')]")
+
+	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Make this a Gift')]")
 	private List<WebElement> makeGiftBox;
 	
+	@FindBy(how = How.XPATH, using = ("//div[@id='cart-items-container']/div[2]/div[1]/div[1]/div[2]/div[9]/div[2]/a"))
+	private WebElement krMakegiftbox;
 	public WebElement getMakeGiftBox() {
-		
+
 		return makeGiftBox.get(1);
 	}
-	
-	@FindBy(how=How.XPATH,using= "//input[@id='giftMessage']")
-    private WebElement includeGiftMessege;
-	
+
+	@FindBy(how = How.XPATH, using = "//input[@id='giftMessage']")
+	private WebElement includeGiftMessege;
+
 	public WebElement getIncludeGiftMessege() {
-		
+
 		return includeGiftMessege;
-		
+
 	}
-	
-	@FindBy(how=How.XPATH,using= "//input[@id='to']")
-    private WebElement recipientName;
-	
+
+	@FindBy(how = How.XPATH, using = "//input[@id='to']")
+	private WebElement recipientName;
+
 	public WebElement getRecipientName() {
-		
+
 		return recipientName;
-		
+
 	}
-	@FindBy(how=How.XPATH,using= "//input[@id='from']")
-    private WebElement senderName;
-	
+
+	@FindBy(how = How.XPATH, using = "//input[@id='from']")
+	private WebElement senderName;
+
 	public WebElement getSenderName() {
-		
+
 		return senderName;
-		
+
 	}
-	@FindBy(how=How.XPATH,using= "//textarea[@id='message']")
-    private WebElement addMessege;
-	
+
+	@FindBy(how = How.XPATH, using = "//textarea[@id='message']")
+	private WebElement addMessege;
+
 	public WebElement getAddMessege() {
-		
+
 		return addMessege;
-		
+
 	}
-	@FindBy(how=How.XPATH,using= "//input[@id='giftBox']")
-    private WebElement standardGiftBoxing;
-	
+    //same for korea
+	@FindBy(how = How.XPATH, using = "//input[@id='giftBox']")
+	private WebElement standardGiftBoxing;
+
 	public WebElement getStandardGiftBoxing() {
-		
+
 		return standardGiftBoxing;
-		
+
 	}
+//same for korea
+	@FindBy(how = How.XPATH, using = "//button[@id='giftCardApplyBtn']")
+	private WebElement continueButton;
 	
-	@FindBy(how=How.XPATH,using= "//button[@id='giftCardApplyBtn']")
-    private WebElement continueButton;
-	
+
 	public WebElement getContinueButton() {
-		
+
 		return continueButton;
-		
+
 	}
-	
-	@FindBy(how=How.XPATH,using= "//div[@id='cart-items-container']/div/div/div/div/div/div/div/strong[1]")
-    private WebElement giftBoxAdded;
-	
+
+	@FindBy(how = How.XPATH, using = "//div[@id='cart-items-container']/div/div/div/div/div/div/div/strong[1]")
+	private WebElement giftBoxAdded;
+
 	public WebElement getGiftBoxAdded() {
-		
+
 		return giftBoxAdded;
-		}
-	//@FindBy(how=How.XPATH,using="(//input[@name='voucherCode'])[2]")
-	@FindBy(how=How.XPATH,using="//input[@name='voucherCode']")
-	private WebElement addPromocode;
-	
-	public WebElement getPromocode() {
-		return  explicitWait(addPromocode);
 	}
-	//@FindBy(how=How.XPATH,using="(//button[@id='signupnewsletter'])[2]") // Wrong Xpath
-	@FindBy(how=How.XPATH,using="//button[contains(text(),'Apply')]")
+
+	// @FindBy(how=How.XPATH,using="(//input[@name='voucherCode'])[2]")
+	@FindBy(how = How.XPATH, using = "//input[@name='voucherCode']")
+	private WebElement addPromocode;
+	@FindBy(how = How.XPATH, using = ("(//input[@name='voucherCode'])[2]"))
+	private WebElement krVoucherID;
+
+	public WebElement getPromocode() {
+		return explicitWait(addPromocode);
+	}
+
+	// @FindBy(how=How.XPATH,using="(//button[@id='signupnewsletter'])[2]") // Wrong
+	// Xpath
+	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Apply')]")
 	private WebElement ApplyClick;
-	
+	@FindBy(how = How.XPATH, using = ("(//button[@id='signupnewsletter'])[2]"))
+	private WebElement krApplyVoucher;
+
 	public WebElement getApply() {
-		
+
 		return explicitWait(ApplyClick);
 	}
-	
-	@FindBy(how=How.XPATH,using="//button[contains(text(),'Apply')]/../../following-sibling::div")
+
+	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Apply')]/../../following-sibling::div")
 	private WebElement VocherMsg;
-	
+
 	public WebElement getVocherMsg() {
-		
+
 		return explicitWait(VocherMsg);
 	}
-	
-	
-	
-	@FindBy(how=How.XPATH,using="//div[@id='globalMessages']")
+
+	@FindBy(how = How.XPATH, using = "//div[@id='globalMessages']")
 	private WebElement vocherCardFailed;
-	
+
 	public WebElement getVocherCardFailed() {
-		
+
 		return vocherCardFailed;
 	}
-	
-	
-	
-	@FindBy(how=How.XPATH,using="(//div[contains(text(),'Promotional Code Applied:')])[2]/../form")
+
+	@FindBy(how = How.XPATH, using = "(//div[contains(text(),'Promotional Code Applied:')])[2]/../form")
 	private WebElement codeRemove;
-	
+
 	public WebElement getCodeRemove() {
-		
+
 		return codeRemove;
 	}
-	
-	@FindBy(how=How.XPATH,using="(//div[contains(text(),'Promotional Code Applied:')])[2]")
+
+	@FindBy(how = How.XPATH, using = "(//div[contains(text(),'Promotional Code Applied:')])[2]")
 	private WebElement codeApplied;
-	
+
 	public WebElement getCodeApplied() {
-		
+
 		return codeApplied;
 	}
-	
-	@FindBy(how=How.XPATH,using="//div[contains(text(),'Subtotal')]/../following-sibling::div[1]")
+
+	@FindBy(how = How.XPATH, using = "//div[contains(text(),'Subtotal')]/../following-sibling::div[1]")
 	private WebElement subtotalCode;
-	
+
 	public WebElement getSubtotalCode() {
-		
+
 		return subtotalCode;
 	}
-	
-	//Korea-Cart 
-		//editcart--------------------------------
-		@FindBy(how=How.XPATH,using=("//div[@id='cart-items-container']/div/div[1]/div[1]/div[2]/div[6]/span[1]/span"))
-		private WebElement editProductsQuantity;
-		public WebElement geteditQuantity() {
-			return editProductsQuantity; 
-		}
-	//remove------------------------------------
-		@FindBy(how=How.XPATH,using=("//div[@id='cart-items-container']/div[2]/div[1]/div[1]/div[2]/div[6]/span[3]/a"))
-		private WebElement removeProductsQuantity;
-		public WebElement getremoveQuantity() {
-			return removeProductsQuantity;
-		}
-		//proceedtocheckout----------------------------
-	@FindBy(how=How.XPATH,using=("//div[@id='cart-summary-container']/div[2]/div[2]/div[1]/button"))
-	private WebElement proceedtoCart;
-	public WebElement getProceedtoCart() {
-		return  proceedtoCart;
-	}
+
+	// Korea-Cart
 	//updatecart
-	@FindBy(how=How.XPATH,using=("//button[@id='updateCartButton']"))
-	private WebElement UpdateCart;
-	public WebElement getUpdatecart() {
-		return UpdateCart;
-		
-	}
-	@FindBy(how=How.XPATH,using=("//input[@name='quantity']"))
+	  
+	  @FindBy(how=How.XPATH,using=("//button[@id='updateCartButton']"))
+	   private WebElement UpdateCart;
+	  public WebElement getUpdatecart() { 
+		  return UpdateCart;
+	  }
+	  
+	
+
+	@FindBy(how = How.XPATH, using = ("//input[@name='quantity']"))
 	private WebElement UpdatecartQuantity;
-	public WebElement getUpdatecartQuantity(){
+
+	public WebElement getUpdatecartQuantity() {
 		return UpdatecartQuantity;
-		
+
 	}
-	//ContinueShopping
-	@FindBy(how=How.XPATH,using=("//main[@id='navEnd']/div[3]/div[1]/h2/a"))
+
+	// ContinueShopping
+	@FindBy(how = How.XPATH, using = ("//main[@id='navEnd']/div[3]/div[1]/h2/a"))
 	private WebElement ContinueShopping;
+
 	public WebElement getContinueshopping() {
 		return ContinueShopping;
 	}
-	
-	//giftservices-----------------------------------
-	@FindBy(how=How.XPATH,using=("//div[@id='cart-items-container']/div[2]/div[1]/div[1]/div[2]/div[9]/div[2]/a"))
-	private WebElement Makegiftbox;
-	public WebElement getGiftbox() {
-		return Makegiftbox;
-	}
-	@FindBy(how=How.XPATH,using=("//input[@id='giftBox']"))
-	private WebElement GiftBoxservices;
-	public WebElement getGiftBoxservices() {
-		return GiftBoxservices;
-	}
-	@FindBy(how=How.XPATH,using=("//button[@id='giftCardApplyBtn']"))
-	private WebElement GiftBoxcontinueButton;
-	public WebElement GiftboxgetContinueButton() {
-		return  GiftBoxcontinueButton;
-	}
+	/*
+	 * // giftservices-----------------------------------
+	 * 
+	 * 
+	 * public WebElement getGiftbox() { return Makegiftbox; }
+	 * 
+	 * 
+	 * 
+	 * public WebElement getGiftBoxservices() { return GiftBoxservices; }
+	 * 
+	 * 
+	 * 
+	 * public WebElement GiftboxgetContinueButton() { return GiftBoxcontinueButton;
+	 * }
+	 * 
+	 * // Voucher
+	 * 
+	 * 
+	 * public WebElement getpromocode() { return VoucherID; }
+	 * 
+	 * 
+	 * 
+	 * public WebElement getApplyvoucher() { return ApplyVoucher; }
+	 */
 
-	//Voucher
-	@FindBy(how=How.XPATH,using=("(//input[@name='voucherCode'])[2]"))
-	private WebElement VoucherID;
-	public WebElement getpromocode() {
-	return VoucherID;
-	}
-	@FindBy(how=How.XPATH,using=("(//button[@id='signupnewsletter'])[2]"))
-	private WebElement ApplyVoucher;
-	public WebElement getApplyvoucher() {
-		return ApplyVoucher;
-	}
-	//monogram
-	@FindBy(how=How.XPATH,using=("//a[@id='monogramming-popup-link']"))
-	private WebElement addMonogram;
-	public WebElement getMonogram() {
-		return addMonogram;
-	}
-	@FindBy(how=How.XPATH,using=("(//a[@title='monogram step 2'])[1]"))
-	private WebElement MonogramNextbutton;
-	public WebElement getNextbutton() {
-	return MonogramNextbutton;
-	}
-	@FindBy(how=How.XPATH,using=("(//a[@title='monogram step 3'])[1]"))
-	private WebElement MonogramnextStep;
-	public WebElement getMonogramnextStep() {
-		return MonogramnextStep;
-	}
-	@FindBy(how=How.XPATH,using=("//div[@id='monogram-step3']/div[3]/a[2]"))
-	private WebElement MonogramApply;
-	public WebElement getMOnogramApply() {
-		return MonogramApply;
-	}
-	@FindBy(how=How.XPATH,using=(""))
+	
+	@FindBy(how = How.XPATH, using = (""))
 	private WebElement subTotalValue;
+
 	public WebElement getSubTotalValue() {
 		return subTotalValue;
 	}
-	@FindBy(how=How.XPATH,using=("(//div[@id='cart-summary-container']/div[2]/div/div[2]/div[2]/div[2]"))
+
+	@FindBy(how = How.XPATH, using = ("(//div[@id='cart-summary-container']/div[2]/div/div[2]/div[2]/div[2]"))
 	private WebElement estimatedTotal;
+
 	public WebElement getEstimatedTotal() {
 		return estimatedTotal;
 	}
-	@FindBy(how=How.XPATH,using=("//div[@id='cart-summary-container']/div[2]/div/div[3]/div[2]/div[2]"))
+
+	@FindBy(how = How.XPATH, using = ("//div[@id='cart-summary-container']/div[2]/div/div[3]/div[2]/div[2]"))
 	private WebElement estimatedTotalRegistered;
+
 	public WebElement getEstimatedTotalRegistered() {
 		return estimatedTotalRegistered;
 	}
