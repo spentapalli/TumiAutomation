@@ -87,7 +87,7 @@ public class ShippingMethodPage extends GenericMethods {
 		if (selectedCountry.contains("배송하기: 대한민국")) {
 			return explicitWait(krProceedToPayment);
 		}else {
-
+			
 		return explicitWait(proceedToPayment);
 	}
 
