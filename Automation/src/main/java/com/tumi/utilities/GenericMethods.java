@@ -5,7 +5,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -40,9 +39,10 @@ public class GenericMethods extends GlobalConstants {
 	public static Actions action;
 
 	public static void captureOrderConfScreen(String name) {
-		Timestamp time = new Timestamp(System.currentTimeMillis());
-		String location = System.getProperty("user.dir") + "/ScreenShots/" + name + time.getTime() + ".png";
-		getScreen(System.getProperty("user.dir") + "/ExtentReports/ScreenShots/" + name + time.getTime() + ".png");
+		//Timestamp time = new Timestamp(System.currentTimeMillis());
+		
+		getScreen("./ExtentReports/ScreenShots/" + name + ".png");
+		String location = "./ScreenShots/" + name + ".png";
 		try {
 			logger.info("Reference", MediaEntityBuilder.createScreenCaptureFromPath(location).build());
 		} catch (Exception e) {

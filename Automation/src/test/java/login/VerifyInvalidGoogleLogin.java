@@ -13,13 +13,13 @@ import com.tumi.utilities.UIFunctions;
  *
  */
 public class VerifyInvalidGoogleLogin extends GenericMethods {
-	public Map<String, String> testData = ReadTestData.retrieveData("Login", "InValidCredentials");
+	public Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "InValidCredentials");
 	
-	/* TA-
+	/* TA-162
 	 * Verify in-valid Login with Google Account by giving wrong credentials.
 	 * */
 
-	@Test
+	@Test(description = "TA - 162 Verify in-valid Login with Google Account by giving wrong credentials.")
 	public void verifyInvalidGoogleLogin() throws InterruptedException {
 
 		UIFunctions.closeSignUp();

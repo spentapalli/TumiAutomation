@@ -13,7 +13,7 @@ public class GlobalConstants extends Reports {
 	// initiating driver
 
 	// Stage akamai Canada
-	// public static String url = "https://ca.stg-hybris-akamai.tumi.com";
+	//public static String url = "https://ca.stg-hybris-akamai.tumi.com";
 
 	 //Stage Akamai US
 	//public static String url = "https://www.stg-hybris-akamai.tumi.com";
@@ -23,7 +23,7 @@ public class GlobalConstants extends Reports {
 	public static String url = "https://www.hybris-stage2.tumi.com/";
 	
 	//Satge2 Korea
-	//public static String url = "https://kr.hybris-stage2.tumi.com/";
+	public static String url = "https://kr.hybris-stage2.tumi.com/";
 	
 	//Stage2 Canada
 	//public static String url = "https://ca.hybris-stage2.tumi.com/";

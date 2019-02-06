@@ -18,7 +18,7 @@ import com.tumi.utilities.UIFunctions;
  */
 public class RegularUserLogin extends GenericMethods {
 
-	public Map<String, String> testData = ReadTestData.retrieveData("Login", "TumiLogin");
+	public Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "TumiLogin");
 
 	@Test
 	public void verifyLogin() throws InterruptedException {

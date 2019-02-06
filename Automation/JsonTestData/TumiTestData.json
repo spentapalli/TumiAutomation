@@ -117,7 +117,7 @@
 		"FirstName": "Test",
 		"LastName": "TumiLast",
 		"AddressLine1": "10 Sumac Way",
-		"nextAddressLine1":"1001 6Th Ave",
+		"nextAddressLine1": "1001 6Th Ave",
 		"AddressLine2": "Add",
 		"TownCity": "ABBOTSFORD",
 		"Region": "California",
@@ -131,8 +131,8 @@
 		"NoramlSKUID": "014757D",
 		"PreOrderSKUID": "0484660D",
 		"BackOrderSKUID": "013234CPT",
-		"shipment1":"Fairport NY 14450",
-		"shipment2":"Albany GA 31701"
+		"shipment1": "Fairport NY 14450",
+		"shipment2": "Albany GA 31701"
 	},
 	"PayPalDeatils": {
 		"EmailID": "test@tumi.com",
@@ -143,11 +143,34 @@
 		"BackOrderProduct": "0484706D",
 		"PreOrderPRoduct": "0484660D",
 		"DonationProduct": "TUMISTJUDE250",
-		"GlobalLocatorProduct":"1111301041",
-		"PromoCode20":"FixedDollar20",
-		"PromoCode30":"T30-D5L6-E4LR-WEDL"
+		"GlobalLocatorProduct": "1111301041",
+		"TumiIDPRoduct":"0117474T999",
+		"PromoCode20": "FixedDollar20",
+		"PromoCode30": "T30-D5L6-E4LR-WEDL"
+	},
+	"GuestDeatilsForKorea": {
+		"FirstName": "Test",
+		"LastName": "TumiLast",
+		"AddressLine1": "siolute",
+		"AddressLine2": "Add",
+		"TownCity": "ABCD",
+		"PostCode": "12345",
+		"Phone": "021234567"
+	},
+	
+	"TumiLogin":{
+	"Email_id":"Employee.tumi@gmail.com",
+	"password":"Tumi_8864"
+	},
+	
+	"GoogleLogin":{
+	"EmailID":"emptumi@gmail.com",
+	"Password":"tumi123"
+	},
+	
+	"InstagramLogin":{
+	"EmailID":"emptumi@gmail.com",
+	"Password":"tumi123"
 	}
 	
-	
-
-
+}

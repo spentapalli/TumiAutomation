@@ -82,7 +82,7 @@ public class LoginPage extends GenericMethods {
 	private WebElement signInClick;
 
 	public WebElement getLogOn() {
-		if (selectedCountry.contains("배송하기: 대한민국")) {
+		if (selectedCountry.contains("ë°°ì†¡í•˜ê¸°: ëŒ€í•œë¯¼êµ­")) {
 			return krSignInClick;
 		} else {
 			return signInClick;

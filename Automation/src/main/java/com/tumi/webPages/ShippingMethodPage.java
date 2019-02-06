@@ -77,7 +77,7 @@ public class ShippingMethodPage extends GenericMethods {
 		return explicitWait(priorityShippingMethod);
 	}
 	
-	@FindBy(how = How.XPATH, using = "//button[@class='tm-button tm-red-button span12 removeFocusIndicator']") // for Korea proceed to payment
+	@FindBy(how = How.XPATH, using = "(//script[@id='checkoutMessages']/following::button)[3]") // for Korea proceed to payment
 	private WebElement krProceedToPayment;
 
 	@FindBy(how = How.XPATH, using = "//button[contains(text(), 'Proceed to Payment')]")
@@ -87,7 +87,7 @@ public class ShippingMethodPage extends GenericMethods {
 		if (selectedCountry.contains("배송하기: 대한민국")) {
 			return explicitWait(krProceedToPayment);
 		}else {
-
+			
 		return explicitWait(proceedToPayment);
 	}
 

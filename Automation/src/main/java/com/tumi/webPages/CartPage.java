@@ -12,24 +12,25 @@ import com.tumi.reports.Reports;
 import com.tumi.utilities.GenericMethods;
 
 public class CartPage extends GenericMethods {
-	
 
 	public CartPage(WebDriver driver) {
 		Reports.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
+
 	@FindBy(how = How.XPATH, using = ("//div[@id='cart-items-container']/div/div[1]/div[1]/div[2]/div[6]/span[1]/span"))
-private WebElement kreditProductsQuantity;
-	
+	private WebElement kreditProductsQuantity;
+
 	@FindBy(how = How.XPATH, using = "//input[@id='select-qty']")
 	private WebElement editProductQuantity;
+
 	public WebElement getEditProductQuantity() {
 		if (selectedCountry.contains("배송하기: 대한민국")) {
 			return explicitWait(kreditProductsQuantity);
-			} else {
+		} else {
 
-		return editProductQuantity;
-	}
+			return editProductQuantity;
+		}
 	}
 
 	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Edit')][1]")
@@ -39,33 +40,34 @@ private WebElement kreditProductsQuantity;
 
 		return editMonogramQuantity;
 	}
+
 	@FindBy(how = How.XPATH, using = ("//div[@id='cart-items-container']/div[2]/div[1]/div[1]/div[2]/div[6]/span[3]/a"))
 	private WebElement krremoveProductsQuantity;
-	
+
 	@FindBy(how = How.XPATH, using = "//a[@class='cta removeFocusIndicator']")
 	private WebElement removeProduct;
+
 	public WebElement getRemoveProduct() {
 		if (selectedCountry.contains("배송하기: 대한민국")) {
 			return explicitWait(krremoveProductsQuantity);
-			} else {
-			
-		return removeProduct;
-	}
+		} else {
+
+			return removeProduct;
+		}
 	}
 
-	@FindBy(how=How.XPATH,using=("//div[@id='cart-summary-container']/div[2]/div[2]/div[1]/button"))
+	@FindBy(how = How.XPATH, using = ("//div[@id='cart-summary-container']/div[2]/div[2]/div[1]/button"))
 	private WebElement krProceedtoCart;
 
-	@FindBy(how=How.XPATH,using="//button[contains(text(),'Proceed to Checkout')]")
+	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Proceed to Checkout')]")
 	private WebElement proceedToCheckout;
 
 	public WebElement getProceedCart() {
-	if (selectedCountry.contains("배송하기: 대한민국")) {
-	return explicitWait(krProceedtoCart);
-	} else {
-	return explicitWait(proceedToCheckout);
-	}
-	
+		if (selectedCountry.contains("배송하기: 대한민국")) {
+			return explicitWait(krProceedtoCart);
+		} else {
+			return explicitWait(proceedToCheckout);
+		}
 
 	}
 
@@ -140,18 +142,20 @@ private WebElement kreditProductsQuantity;
 		return monogramMessege;
 
 	}
+
 	@FindBy(how = How.XPATH, using = ("//div[@id='cart-items-container']/div[2]/div[1]/div[1]/div[2]/div[9]/div[2]/a"))
 	private WebElement krMakegiftbox;
-	
+
 	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Make this a Gift')]")
 	private List<WebElement> makeGiftBox;
+
 	public WebElement getMakeGiftBox() {
 		if (selectedCountry.contains("배송하기: 대한민국")) {
 			return explicitWait(krMakegiftbox);
-			} else {
-		
-		return makeGiftBox.get(1);
-	}
+		} else {
+
+			return makeGiftBox.get(1);
+		}
 	}
 
 	@FindBy(how = How.XPATH, using = "//input[@id='giftMessage']")
@@ -189,7 +193,8 @@ private WebElement kreditProductsQuantity;
 		return addMessege;
 
 	}
-    //same for korea
+
+	// same for korea
 	@FindBy(how = How.XPATH, using = "//input[@id='giftBox']")
 	private WebElement standardGiftBoxing;
 
@@ -198,10 +203,10 @@ private WebElement kreditProductsQuantity;
 		return standardGiftBoxing;
 
 	}
+
 //same for korea
 	@FindBy(how = How.XPATH, using = "//button[@id='giftCardApplyBtn']")
 	private WebElement continueButton;
-	
 
 	public WebElement getContinueButton() {
 
@@ -216,21 +221,22 @@ private WebElement kreditProductsQuantity;
 
 		return giftBoxAdded;
 	}
+
 	@FindBy(how = How.XPATH, using = ("(//input[@name='voucherCode'])[2]"))
 	private WebElement krVoucherID;
 
 	@FindBy(how = How.XPATH, using = "//input[@name='voucherCode']")
 	private WebElement addPromocode;
-	
 
 	public WebElement getPromocode() {
 		if (selectedCountry.contains("배송하기: 대한민국")) {
 			return explicitWait(krVoucherID);
-			} else {
-			
-		return explicitWait(addPromocode);
+		} else {
+
+			return explicitWait(addPromocode);
+		}
 	}
-}
+
 	@FindBy(how = How.XPATH, using = ("(//button[@id='signupnewsletter'])[2]"))
 	private WebElement krApplyVoucher;
 
@@ -240,9 +246,9 @@ private WebElement kreditProductsQuantity;
 	public WebElement getApply() {
 		if (selectedCountry.contains("배송하기: 대한민국")) {
 			return explicitWait(krApplyVoucher);
-			} else {
+		} else {
 			return explicitWait(ApplyClick);
-	}
+		}
 	}
 
 	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Apply')]/../../following-sibling::div")
@@ -286,15 +292,14 @@ private WebElement kreditProductsQuantity;
 	}
 
 	// Korea-Cart
-	//updatecart
-	  
-	  @FindBy(how=How.XPATH,using=("//button[@id='updateCartButton']"))
-	   private WebElement UpdateCart;
-	  public WebElement getUpdatecart() { 
-		  return UpdateCart;
-	  }
-	  
-	
+	// updatecart
+
+	@FindBy(how = How.XPATH, using = ("//button[@id='updateCartButton']"))
+	private WebElement UpdateCart;
+
+	public WebElement getUpdatecart() {
+		return UpdateCart;
+	}
 
 	@FindBy(how = How.XPATH, using = ("//input[@name='quantity']"))
 	private WebElement UpdatecartQuantity;
@@ -312,7 +317,6 @@ private WebElement kreditProductsQuantity;
 		return ContinueShopping;
 	}
 
-	
 	@FindBy(how = How.XPATH, using = (""))
 	private WebElement subTotalValue;
 

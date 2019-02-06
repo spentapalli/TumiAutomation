@@ -17,10 +17,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.io.FileHandler;
-import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.testng.ITestContext;
 import org.testng.ITestResult;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
@@ -106,13 +105,12 @@ public class Reports {
 	public static String browserName = null;
 
 	@BeforeSuite(alwaysRun = true)
-	public void startReport(ITestContext ctx) {
+	public void startReport() {
 		timeStamp = new SimpleDateFormat("dd-MMM-yy  hh.mm.ss aa").format(Calendar.getInstance().getTime());
-		// String suiteName = ctx.getCurrentXmlTest().getSuite().getName();
 		extentReportPath = System.getProperty("user.dir") + "/ExtentReports/TumiReport.html";
 		htmlreport = new ExtentHtmlReporter(extentReportPath);
-		// htmlreport.loadDefaultConfig(new File(System.getProperty("user.dir") +
-		// "\\extent-config.xml"));
+		htmlreport.loadXMLConfig(new File(System.getProperty("user.dir") +
+		"\\extent-config.xml"));
 		report = new ExtentReports();
 		report.attachReporter(htmlreport);
 	}
@@ -125,20 +123,24 @@ public class Reports {
 	}
 
 	@BeforeClass(alwaysRun = true)
-	// @Parameters({"Country"})
 	public static void launchBrowser() throws Exception {
 		getBrowser();
 		maximizeBrowser();
-		getURL(GenericMethods.getProperty("tumi.appName"));
+		
 		if (browserName.equals("ie")) {
-			GenericMethods.delay(10000);
+			GenericMethods.delay(2000);
 			driver.navigate().to("javascript:document.getElementById('overridelink').click()");
+			UIFunctions.WaitForJStoLoad();
+			UIFunctions.verifyVPN();
+			UIFunctions.closeSignUp();
+		}else {
+			getURL(GenericMethods.getProperty("tumi.appName"));
 		}
 		UIFunctions.selectCountry();
 		// driver.navigate().to("https://ca.stg-hybris-akamai.tumi.com");
 	}
 
-	// @AfterClass(alwaysRun = true)
+	@AfterClass(alwaysRun = true)
 	public static void closeBrowser() {
 		driver.close();
 		try {
@@ -190,10 +192,10 @@ public class Reports {
 
 			} else if (result.getStatus() == ITestResult.FAILURE) {
 
-				Timestamp time = new Timestamp(System.currentTimeMillis());
-				String screenlocation = System.getProperty("user.dir") + "/Screenshots/" + result.getName() + ".png";
-				getScreen(System.getProperty("user.dir") + "/ExtentReports/Screenshots/" + result.getName() + ""
-						+ time.getTime() + ".png");
+				//Timestamp time = new Timestamp(System.currentTimeMillis());
+				
+				getScreen("./ExtentReports/Screenshots/" + result.getName() + ".png");
+				String screenlocation = "./Screenshots/" + result.getName() + ".png";
 				logger.fail(MarkupHelper.createLabel(result.getName() + " Test Case Failed", ExtentColor.RED));
 				logger.fail(result.getThrowable());
 				logger.fail("Screen Shot Reference:  ",
@@ -237,7 +239,7 @@ public class Reports {
 
 	public static void getBrowser() throws Exception {
 
-		logger = report.createTest("Browser Name");
+		//logger = report.createTest("Browser Name");
 
 		browserName = System.getProperty("browsername");
 
@@ -250,7 +252,7 @@ public class Reports {
 			options.addArguments("--disable-notifications");
 			System.setProperty(GlobalConstants.chrome, GlobalConstants.chromePath);
 			driver = new ChromeDriver(options);
-			logger.log(Status.INFO, "Chrome Browser is initiated Execution");
+			//logger.log(Status.INFO, "Chrome Browser is initiated Execution");
 
 		} else if (browserName.equalsIgnoreCase("firefox")) {
 
@@ -262,16 +264,18 @@ public class Reports {
 			DesiredCapabilities capabilities = DesiredCapabilities.firefox();
 			capabilities.setCapability(FirefoxDriver.PROFILE, geoDisabled);
 			System.setProperty(GlobalConstants.firefox, GlobalConstants.firefoxPath);
-			driver = new FirefoxDriver();
-			logger.log(Status.INFO, "Firefox Browser is initiated Execution");
+			driver = new FirefoxDriver(capabilities);
+			//logger.log(Status.INFO, "Firefox Browser is initiated Execution");
 
 		} else if (browserName.equalsIgnoreCase("ie")) {
 
 			DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
+			capabilities.setCapability("ignoreZoomSetting", true);
+			capabilities.setCapability("nativeEvents",false);
 			capabilities.setCapability(InternetExplorerDriver.INITIAL_BROWSER_URL, GlobalConstants.url);
 			System.setProperty(GlobalConstants.ie, GlobalConstants.iePath);
 			driver = new InternetExplorerDriver(capabilities);
-			logger.log(Status.INFO, "InternetExplorer Browser is initiated Execution");
+			//logger.log(Status.INFO, "InternetExplorer Browser is initiated Execution");
 		}
 	}
 
@@ -293,9 +297,7 @@ public class Reports {
 			if (!browserName.equals("ie")) {
 				driver.get(GlobalConstants.url);
 			}
-			if (!browserName.equals("ie")) {
-				GenericMethods.WaitForJStoLoad();
-			}
+			GenericMethods.WaitForJStoLoad();
 
 		} else if (URL.equalsIgnoreCase("")) {
 			driver.get("");
