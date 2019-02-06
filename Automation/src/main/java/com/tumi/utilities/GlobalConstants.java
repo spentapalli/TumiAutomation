@@ -20,10 +20,10 @@ public class GlobalConstants extends Reports {
 	// https://www.stg-hybris-akamai.tumi.com/p/continental-expandable-2-wheeled-carry-on-022021CHYA/
 
 	// Stage2 US
-	public static String url = "https://www.hybris-stage2.tumi.com/";
+	//public static String url = "https://www.hybris-stage2.tumi.com/";
 	
 	//Satge2 Korea
-	//public static String url = "https://kr.hybris-stage2.tumi.com/";
+	public static String url = "https://kr.hybris-stage2.tumi.com/";
 	
 	//Stage2 Canada
 	//public static String url = "https://ca.hybris-stage2.tumi.com/";

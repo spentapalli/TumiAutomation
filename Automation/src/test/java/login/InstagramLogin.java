@@ -25,7 +25,6 @@ public class InstagramLogin extends GenericMethods {
 
 	@Test(priority=0, description="TA-18 :Verify Login with Instagram Account")
 	public void verifyInstaValidLogin(){
-		UIFunctions.closeSignUp();
 		instaLogin("TumiTestData", "InstagramLogin");
 		/*String parentHandle = driver.getWindowHandle(); 
 		driver.switchTo().window(parentHandle);*/
