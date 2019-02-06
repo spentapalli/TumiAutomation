@@ -12,7 +12,7 @@ import com.tumi.utilities.UIFunctions;
 	
 
 	public class GlobalLocatororder extends GenericMethods {
-		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestOrders");
+		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData","GuestOrders");
 		@Test
 		public void orderWithAsGuest() {
 			UIFunctions.addProductToCart("TumiTestData","GuestOrders");
@@ -25,7 +25,7 @@ import com.tumi.utilities.UIFunctions;
 			UIFunctions.addGuestDetails();
 			click(shipping.getContinueShippingMethod(), "Contiue Shipping");
 			click(shipMethod.getProceedToPayment(), "Proceed to Payment");
-			UIFunctions.addCardDetails("TumiTestData", "GuestOrders");
+			UIFunctions.addCardDetails("TumiTestData","GuestOrders");
 			UIFunctions.completeOrder();
 			 
 		}
