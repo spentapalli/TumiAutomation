@@ -1,8 +1,10 @@
 package orders.guest;
 
+import java.util.List;
 import java.util.Map;
 
-
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
 import com.tumi.dataProvider.ReadTestData;
@@ -28,9 +30,35 @@ public class OrderWithGiftBox extends GenericMethods {
 		click(gift.getContinueGiftService(), "Continue");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
+		driver.findElement(By.xpath("//h2[contains(text(),'Checkout as a Guest')]")).click();
+	
 		UIFunctions.waitForContinueToEnable();
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
-		UIFunctions.addGuestDetails();
+		input(shipping.getFirstName(), testData.get("FirstName"), "First Name");
+		input(shipping.getLastName(), testData.get("LastName"), "Last Name");
+		input(shipping.getAddressLine1(), "100 Alabama", "Address Line1");
+		driver.findElement(By.xpath("//input[@placeholder='Address Line2']")).click();
+		
+		
+		domClick(driver.findElement(By.xpath("//select[@name='regionIso']/following::span[1]/span/span[2]")),"");
+		delay(2000);
+		List<WebElement> ele = driver.findElements(By.xpath("//select[@name='regionIso']/following::span[1]/ul/li"));
+		
+		for (int i = 1; i < ele.size(); i++) {
+			
+			WebElement region = driver.findElement(By.xpath("//select[@name='regionIso']/following::span[1]/ul/li["+i+"]"));
+			if (getText(region).equals("Alabama")) {
+				
+				region.click();
+				delay(5000);
+				break;
+			}
+		}
+		driver.findElement(By.xpath("//input[@name='townCity']")).sendKeys("Muscle Shoals");
+		driver.findElement(By.xpath("//input[@name='postcode']")).sendKeys("35661-6507");
+		driver.findElement(By.xpath("//input[@name='phone']")).sendKeys("9877939354");
+		driver.findElement(By.xpath("//h2[contains(text(),'Order Summary')]")).click();
+		//UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
 		UIFunctions.addCardDetails("TumiTestData", "BackOrderProduct");
