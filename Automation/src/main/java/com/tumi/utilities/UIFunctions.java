@@ -500,6 +500,7 @@ public class UIFunctions extends GenericMethods {
 		HomePage home = PageFactory.initElements(driver, HomePage.class);
 
 		click(home.getHomeCountry(), "Default Country");
+		delay(3000);
 		for (WebElement ele : home.getCountriesList()) {
 
 			if (getText(ele).equalsIgnoreCase(name)) {
@@ -530,7 +531,6 @@ public class UIFunctions extends GenericMethods {
 			//logger.log(Status.INFO, "Execution initiated for Canada");
 
 		} else if (countryName.toUpperCase().equalsIgnoreCase("KOREA")) {
-
 			countrySelection("Korea");
 			//logger.log(Status.INFO, "Execution initiated for Korea");
 		}
@@ -554,8 +554,11 @@ public class UIFunctions extends GenericMethods {
 		click(paypal.getLogin(), "Login");
 		domClick(paypal.getVisax111(), "Select Visa");
 		click(paypal.getPaypalContinue(), "Continue");
+		delay(3000);
 		click(paypal.getPaypalCheckout(), "Checkout");
 	}
+	
+	
 
 	public static void waitForContinueToEnable() {
 

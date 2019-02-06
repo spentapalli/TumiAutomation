@@ -84,6 +84,7 @@ public class ShippingMethodPage extends GenericMethods {
 	private WebElement proceedToPayment;
 
 	public WebElement getProceedToPayment() {
+		delay(2000);
 		if (selectedCountry.contains("배송하기: 대한민국")) {
 			return explicitWait(krProceedToPayment);
 		}else {
