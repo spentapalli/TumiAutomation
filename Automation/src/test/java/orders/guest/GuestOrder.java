@@ -114,16 +114,7 @@ public class GuestOrder extends GenericMethods {
 
 	}
 	
-	@Test(priority=5,description = "TA-284 Verify Order with merchandise Ready to ship with PayPal checkout-Guest user")
-	public void orderWithPayPalAsGuest() throws Exception {
-		UIFunctions.addProductToCart("TumiTestData","GuestOrders");//
-		click(pdp.getAddToCart(),"Add to cart");
-		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
-		UIFunctions.payPalCheckout("TumiTestData","PayPalDeatils",mainCart.getEstimatedTotal());
-		UIFunctions.completeOrder();
-	}
-	
-	@Test(priority=6,description = "TA-1 Verify Order with 2 'Ready to Ship' Items with different SKU/sPurchase-Guest user")
+	@Test(priority=5,description = "TA-1 Verify Order with 2 'Ready to Ship' Items with different SKU/sPurchase-Guest user")
 	public void orderWithTwoDiffProducts() throws InterruptedException {
 
 		UIFunctions.addMultipleProducts("TumiTestData", "GuestOrders");

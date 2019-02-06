@@ -59,6 +59,12 @@
 			<class name="orders.guest.OrderWithVochercode" />
 		</classes>
 	</test>
+	<test name="GuestOrderWithPaypal">
+		<parameter name="Country" value="US"></parameter>
+		<classes>
+			<class name="orders.guest.GuestOrderWithPaypal" />
+		</classes>
+	</test>
 
 	<test name="RegisteredOrderWithPayPal">
 		<parameter name="Country" value="US"></parameter>
@@ -105,4 +111,5 @@
 			<class name="login.RegularLogin" />
 		</classes>
 	</test>
+
 </suite>
