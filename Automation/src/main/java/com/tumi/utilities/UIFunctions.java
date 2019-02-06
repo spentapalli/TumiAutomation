@@ -87,8 +87,8 @@ public class UIFunctions extends GenericMethods {
 		input(guestBillPage.getemail(), testData.get("EmailID"), "Email ID");
 		input(guestBillPage.getPhoneNumber(), testData.get("Phone"), "Phone number");
 		domClick(guestBillPage.getReviewOrder(), "Review your order");
-<<<<<<< HEAD
-=======
+
+
 		// elect sel = new Select(new
 		// WebDriverWait(driver,30).until(ExpectedConditions.visibilityOfElementLocated(By.name("country"))));
 		// sel.selectByVisibleText("Albania");
@@ -132,7 +132,7 @@ public class UIFunctions extends GenericMethods {
 				break;
 			}
 		}
->>>>>>> acfbd68623bfa8c55bfa0e481a5525b9a5d5fd98
+
 	}
 
 	public static void addInvalidCardDetails(String sheet, String testCaseName) {
@@ -236,7 +236,15 @@ public class UIFunctions extends GenericMethods {
 		 * (Exception e) { Assert.fail(testData.get("SKUID")
 		 * +" Product is not available"); }
 		 */
+		
 
+	}
+	public static void addGlobalLocatorProduct(String sheet, String testCase) {
+
+		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
+
+		final String pdpURL = GlobalConstants.url + "/p/" + testData.get("GlobalLocatorProductSKUID");
+		driver.get(pdpURL);
 	}
 
 	public static void addMonogram(String sheet, String testCase) {
@@ -643,23 +651,8 @@ public class UIFunctions extends GenericMethods {
 		input(shipping.getPostcode(), testData.get("PostCode"), "postal code");
 		domClick(guestBillPage.getReviewOrder(), "Review your order");
 
-<<<<<<< HEAD
-			input(guestBillPage.getCardNumber(), testData.get("CardNumber"), "Card Number");
-			selectByVisibleText(guestBillPage.getExpiryMonth(), "05", "Expiry Month");
-			selectByVisibleText(guestBillPage.getExpiryYear(), "2020", "Expiry Year");
-			input(guestBillPage.getCvvNumber(), testData.get("CVV"), "Cvv Number");
-			input(guestBillPage.getemail(), testData.get("EmailID"), "Email ID");
-			input(guestBillPage.getPhoneNumber(), testData.get("Phone"), "Phone number");
-			input(shipping.getFirstName(), testData.get("FirstName"), "First Name");
-			input(shipping.getLastName(), testData.get("LastName"), "Last Name");
-			input(shipping.getAddressLine1(), testData.get("AddressLine1"), "Address line1");
-			input(shipping.getTown(), testData.get("TownCity"), "Town");
-			Select dropdown = new Select(driver.findElement(By.name("regionIso")));
-			dropdown.selectByVisibleText("New Jersey");
-			click(shipping.getRegionIso(),"Region");
-			input(shipping.getPostcode(), testData.get("PostCode"), "postal code");
-			domClick(guestBillPage.getReviewOrder(), "Review your order");
-			
+
+		
 		}
 	public static void addTumiStudio() {
 		click(tumiId.getTumiIdDesign(),"click on TumiID");
@@ -700,8 +693,7 @@ public class UIFunctions extends GenericMethods {
 		click(tumiId.getCheckBox(), "Check for both apply");
 		click(tumiId.getApply(),"Apply");
 		click(tumiId.getSaveDesign(),"Save");
-=======
->>>>>>> acfbd68623bfa8c55bfa0e481a5525b9a5d5fd98
+
 	}
 
 }

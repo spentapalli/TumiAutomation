@@ -15,7 +15,7 @@ import com.tumi.utilities.UIFunctions;
 		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData","GuestOrders");
 		@Test
 		public void orderWithAsGuest() {
-			UIFunctions.addProductToCart("TumiTestData","GuestOrders");
+			UIFunctions.addProductToCart("TumiTestData","GlobalLocatorProduct");
 			click(pdp.getAddToCart(),"Add to cart");
 			click(minicart.getProceedCheckOut(), "Proceed to Cart");
 			click(mainCart.getProceedCart(), "Proceed to Checkout");
@@ -25,7 +25,7 @@ import com.tumi.utilities.UIFunctions;
 			UIFunctions.addGuestDetails();
 			click(shipping.getContinueShippingMethod(), "Contiue Shipping");
 			click(shipMethod.getProceedToPayment(), "Proceed to Payment");
-			UIFunctions.addCardDetails("TumiTestData","GuestOrders");
+			UIFunctions.addCardDetails("TumiTestData","GlobalLocatorProduct");
 			UIFunctions.completeOrder();
 			 
 		}
