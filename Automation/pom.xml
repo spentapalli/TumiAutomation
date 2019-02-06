@@ -80,7 +80,7 @@
 					<version>2.21.0</version>
 					<configuration>
 						<systemPropertyVariables>
-							<browsername>firefox</browsername>
+							<browsername>ie</browsername>
 							<countryName>US</countryName>
 						</systemPropertyVariables>
 						<forkCount>0</forkCount>

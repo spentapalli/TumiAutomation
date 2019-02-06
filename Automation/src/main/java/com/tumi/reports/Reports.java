@@ -270,6 +270,8 @@ public class Reports {
 		} else if (browserName.equalsIgnoreCase("ie")) {
 
 			DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
+			capabilities.setCapability("ignoreZoomSetting", true);
+			capabilities.setCapability("nativeEvents",false);
 			capabilities.setCapability(InternetExplorerDriver.INITIAL_BROWSER_URL, GlobalConstants.url);
 			System.setProperty(GlobalConstants.ie, GlobalConstants.iePath);
 			driver = new InternetExplorerDriver(capabilities);
