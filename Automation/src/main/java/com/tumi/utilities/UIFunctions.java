@@ -18,7 +18,7 @@ import com.tumi.dataProvider.ReadTestData;
 import com.tumi.webPages.HomePage;
 
 /**
- * @author Suuresh, Shwetha
+ * @author Suuresh
  *
  */
 public class UIFunctions extends GenericMethods {
@@ -87,6 +87,8 @@ public class UIFunctions extends GenericMethods {
 		input(guestBillPage.getemail(), testData.get("EmailID"), "Email ID");
 		input(guestBillPage.getPhoneNumber(), testData.get("Phone"), "Phone number");
 		domClick(guestBillPage.getReviewOrder(), "Review your order");
+
+
 		// elect sel = new Select(new
 		// WebDriverWait(driver,30).until(ExpectedConditions.visibilityOfElementLocated(By.name("country"))));
 		// sel.selectByVisibleText("Albania");
@@ -130,6 +132,7 @@ public class UIFunctions extends GenericMethods {
 				break;
 			}
 		}
+
 	}
 
 	public static void addInvalidCardDetails(String sheet, String testCaseName) {
@@ -233,7 +236,15 @@ public class UIFunctions extends GenericMethods {
 		 * (Exception e) { Assert.fail(testData.get("SKUID")
 		 * +" Product is not available"); }
 		 */
+		
 
+	}
+	public static void addGlobalLocatorProduct(String sheet, String testCase) {
+
+		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
+
+		final String pdpURL = GlobalConstants.url + "/p/" + testData.get("GlobalLocatorProductSKUID");
+		driver.get(pdpURL);
 	}
 
 	public static void addMonogram(String sheet, String testCase) {
@@ -642,6 +653,9 @@ public class UIFunctions extends GenericMethods {
 		click(shipping.getRegionIso(), "Region");
 		input(shipping.getPostcode(), testData.get("PostCode"), "postal code");
 		domClick(guestBillPage.getReviewOrder(), "Review your order");
+
+
+		
 		}
 	public static void addTumiStudio() {
 		click(tumiId.getTumiIdDesign(),"click on TumiID");
@@ -682,6 +696,7 @@ public class UIFunctions extends GenericMethods {
 		click(tumiId.getCheckBox(), "Check for both apply");
 		click(tumiId.getApply(),"Apply");
 		click(tumiId.getSaveDesign(),"Save");
+
 	}
 
 }
