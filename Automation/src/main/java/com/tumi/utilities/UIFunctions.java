@@ -87,6 +87,8 @@ public class UIFunctions extends GenericMethods {
 		input(guestBillPage.getemail(), testData.get("EmailID"), "Email ID");
 		input(guestBillPage.getPhoneNumber(), testData.get("Phone"), "Phone number");
 		domClick(guestBillPage.getReviewOrder(), "Review your order");
+
+
 		// elect sel = new Select(new
 		// WebDriverWait(driver,30).until(ExpectedConditions.visibilityOfElementLocated(By.name("country"))));
 		// sel.selectByVisibleText("Albania");
@@ -130,6 +132,7 @@ public class UIFunctions extends GenericMethods {
 				break;
 			}
 		}
+
 	}
 
 	public static void addInvalidCardDetails(String sheet, String testCaseName) {
@@ -167,13 +170,14 @@ public class UIFunctions extends GenericMethods {
 		// WaitForJStoLoad();
 
 		// commented below for Korea order, because getting error here
-		/*
-		 * verifyAssertContains(driver.getCurrentUrl(), testData.get("SKUID"),
-		 * "Wrong Product is displayed"); try { if (pdp.getAddToCart().isDisplayed()) {
-		 * verifyAssertEquals("Add To Cart", getText(pdp.getAddToCart())); } } catch
-		 * (Exception e) { Assert.fail(testData.get("SKUID") +
-		 * " Product is not available"); }
-		 */
+		/*verifyAssertContains(driver.getCurrentUrl(), testData.get("SKUID"), "Wrong Product is displayed");
+		try {
+			if (pdp.getAddToCart().isDisplayed()) {
+				verifyAssertEquals("Add To Cart", getText(pdp.getAddToCart()));
+			}
+		} catch (Exception e) {
+			Assert.fail(testData.get("SKUID") + " Product is not available");
+		}*/
 		// click(pdp.getAddToCart(), "Add to Cart");
 
 		// due to product search issue i am using above code to get the product.
@@ -232,7 +236,15 @@ public class UIFunctions extends GenericMethods {
 		 * (Exception e) { Assert.fail(testData.get("SKUID")
 		 * +" Product is not available"); }
 		 */
+		
 
+	}
+	public static void addGlobalLocatorProduct(String sheet, String testCase) {
+
+		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
+
+		final String pdpURL = GlobalConstants.url + "/p/" + testData.get("GlobalLocatorProductSKUID");
+		driver.get(pdpURL);
 	}
 
 	public static void addMonogram(String sheet, String testCase) {
@@ -300,6 +312,17 @@ public class UIFunctions extends GenericMethods {
 	 */
 
 	public static void addGuestDetails() {
+		if (selectedCountry.contains("배송하기: 대한민국")) {
+			Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestDeatilsForKorea");
+			input(shipping.getFirstName(), testData.get("FirstName"), "First Name");
+			input(shipping.getLastName(), testData.get("LastName"), "Last Name");
+			input(shipping.getAddressLine1(), testData.get("AddressLine1"), "Address Line1");
+			input(shipping.getTown(),testData.get("TownCity"),"Town");
+			input(shipping.getPostcode(),testData.get("PostCode"),"PostCode");
+			input(shipping.getPhoneNumber(), testData.get("Phone"), "Phone Number");
+			}
+		
+		else {
 
 		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "OrderWithTwoProducts");
 		input(shipping.getFirstName(), testData.get("FirstName"), "First Name");
@@ -314,6 +337,7 @@ public class UIFunctions extends GenericMethods {
 			}
 		}
 		input(shipping.getPhoneNumber(), testData.get("Phone"), "Phone Number");
+		}
 	}
 
 	public static void completeOrder() {
@@ -487,6 +511,7 @@ public class UIFunctions extends GenericMethods {
 		HomePage home = PageFactory.initElements(driver, HomePage.class);
 
 		click(home.getHomeCountry(), "Default Country");
+		delay(3000);
 		for (WebElement ele : home.getCountriesList()) {
 
 			if (getText(ele).equalsIgnoreCase(name)) {
@@ -517,7 +542,6 @@ public class UIFunctions extends GenericMethods {
 			//logger.log(Status.INFO, "Execution initiated for Canada");
 
 		} else if (countryName.toUpperCase().equalsIgnoreCase("KOREA")) {
-
 			countrySelection("Korea");
 			//logger.log(Status.INFO, "Execution initiated for Korea");
 		}
@@ -541,8 +565,11 @@ public class UIFunctions extends GenericMethods {
 		click(paypal.getLogin(), "Login");
 		domClick(paypal.getVisax111(), "Select Visa");
 		click(paypal.getPaypalContinue(), "Continue");
+		delay(3000);
 		click(paypal.getPaypalCheckout(), "Checkout");
 	}
+	
+	
 
 	public static void waitForContinueToEnable() {
 
@@ -626,6 +653,49 @@ public class UIFunctions extends GenericMethods {
 		click(shipping.getRegionIso(), "Region");
 		input(shipping.getPostcode(), testData.get("PostCode"), "postal code");
 		domClick(guestBillPage.getReviewOrder(), "Review your order");
+
+
+		
+		}
+	public static void addTumiStudio() {
+		click(tumiId.getTumiIdDesign(),"click on TumiID");
+		delay(2000);
+		//click(tumiId.getMainBody(),"Main Body");
+		click(tumiId.getShadowGrayColor(),"Main Body in Shadow gray Color");
+		delay(2000);
+		click(tumiId.getFrontPocket(),"Front Pocket");
+		click(tumiId.getBlackColor(),"Front Pocket Red Color");
+		click(tumiId.getSidePockets(), "Side Pockets");
+		click(tumiId.getAtlanticBlueColor(), "Side Pocket Blue Color");
+		click(tumiId.getPatchnTag(), "Patch & Tag");
+		click(tumiId.getRedColor(),"Patch n Tag in Red color");
+		click(tumiId.getWebbing(), "Webbing");
+		click(tumiId.getBlackColor(), "Webbing Color");
+		click(tumiId.getLeatherAccents(),"Leather Accents");
+		click(tumiId.getAtlanticBlueColor(),"Leather in Blue color");
+		click(tumiId.getHardWare(), "Hard Ware");
+		click(tumiId.getGoldColor(), "Hardware in Gold Color");
+		click(tumiId.getExternalZipper(), "External Zipper");
+		click(tumiId.getAtlanticBlueColor(), "External Zipper in blue color");
+		click(tumiId.getAccentZipper(), "Accent Zipper");
+		click(tumiId.getGoldColor(),"Accent in gold color");
+		click(tumiId.getInteriorLining(), "Interior Lining");
+		click(tumiId.getFossilColor(),"Interior in Fossil color");
+		//monogram
+		click(tumiId.getMonograming(),"tumiIdgramming");
+		delay(2000);
+		click(tumiId.getHeart(),"Heart symbol");
+		click(tumiId.getHeart(),"Heart symbol");
+		click(tumiId.getHeart(),"Heart Symbol");
+		/*input(tumiId.getFirstInput(), tumiId.getHeart(), "First tumiId Input");
+		input(tumiId.getSecondInput(), tumiId.getHeart(), "Second tumiId Input");
+		input(tumiId.getThirdInput(), tumiId.getHeart(), "Third tumiId Input");*/
+		click(tumiId.getFirstNext(),"Next");
+		click(tumiId.getTumiWhiteColor(),"White color");
+		click(tumiId.getSecondNext(), "Next");
+		click(tumiId.getCheckBox(), "Check for both apply");
+		click(tumiId.getApply(),"Apply");
+		click(tumiId.getSaveDesign(),"Save");
 
 	}
 

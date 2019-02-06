@@ -20,7 +20,7 @@ public class OrderWithVochercode extends GenericMethods {
 	 * 
 	 * dataProvider = "Location",
 	 */
-	@Test(priority = 0, description = " TA -15 Verify Order with merchandise Ready to ship + Voucher Code for Guest User")
+	@Test(priority = 0, description = " TA -51 Verify Order with merchandise Ready to ship + Voucher Code for Guest User")
 	public void verifyOrderWithVocherCode() throws InterruptedException {
 		String msg = null;
 		UIFunctions.addProductToCart("TumiTestData", "GuestOrders");

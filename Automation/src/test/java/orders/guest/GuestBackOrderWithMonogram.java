@@ -2,29 +2,29 @@ package orders.guest;
 
 import java.util.Map;
 
-
 import org.testng.annotations.Test;
+
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
-import com.tumi.utilities.GlobalConstants;
 import com.tumi.utilities.UIFunctions;
 
 /**
- * @author Shwetha  Capo
+ * @author Shwetha Capo
  *
  */
-public class TumiStudioOrder extends GenericMethods{
+public class GuestBackOrderWithMonogram extends GenericMethods {
+
+	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "BackOrderProduct");
+	
 	/*
-	 * TA-10 verify order with Tumi studio - Guest user
-	 * */
-	
-	Map<String, String> testData= ReadTestData.getJsonData("TumiTestData", "GuestOrders");
-	
-	@Test(description ="TA-10 verify order with Tumi studio - Guest user")
-	public void testTumiIdOrder() throws InterruptedException{
-		
-		UIFunctions.addProductToCart("TumiTestData", "Products");
-		UIFunctions.addTumiStudio();
+	 * TA-108 Verify Order with merchandise Back Order + Personalization for Guest
+	 * User .
+	 */
+
+	@Test(description = "TA-108 Verify Order with BackOrder +Personalization")
+	public void backOrderWithMonogramAsGuest() {
+		UIFunctions.addProductToCart("TumiTestData", "BackOrderProduct");
+		UIFunctions.addMonogram("TumiTestData", "BackOrderProduct");
 		click(pdp.getAddToCart(), "Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
@@ -34,9 +34,8 @@ public class TumiStudioOrder extends GenericMethods{
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
-		UIFunctions.addCardDetails("TumiTestData", "GuestOrders");
+		UIFunctions.addCardDetails("TumiTestData", "BackOrderProduct");
 		UIFunctions.completeOrder();
 	}
 
-	
 }

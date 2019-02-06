@@ -23,19 +23,7 @@ public class MultiShipOrder extends GenericMethods {
 	public void testMultiShipOrder() throws InterruptedException {
 
 		UIFunctions.closeSignUp();
-		/*click(home.getSelectCountryUS(), "Select US country");
-		click(home.getSelectUS(), "click US");
-		delay(3000);
-		click(home.getOffersPopupUsProd(),"offers popup");
-
-		ProductSearch productSearch = new ProductSearch();
 		
-		 * proSearch((Integer) null);;
-		 * 
-		 * click(pdp.getAddToCart(), "Add to Cart");
-		 * click(cart.getContinueShopping(),"Continue shopping")
-		 */;
-
 		for (int i = 1; i < 3; i++) {
 
 			UIFunctions.searchProducts(i, testData.get("PrdouctName"));
