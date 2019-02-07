@@ -38,7 +38,7 @@ public class RegularLogin extends GenericMethods {
 		}
 	}
 
-	@Test(priority = 1, description = "TA-58 : Verify Tumi Login Fail, with wrong credentials")
+	//@Test(priority = 1, description = "TA-58 : Verify Tumi Login Fail, with wrong credentials")
 	public void verifyInvalidUserMessage() {
 
 		login("Login", "InValidCredentials");

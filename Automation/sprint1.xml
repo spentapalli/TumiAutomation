@@ -1,33 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="TumiReport" parallel="none">
- 
-	
-	
-	
-	
+
 	<test name="GlobalLocatororder">
 		<classes>
 			<class name="orders.guest.GlobalLocatororder" />
 		</classes>
-	</test> 
-	 <test name="GuestOrderWithMultiShipment">
+	</test>
+	<test name="GuestOrderWithMultiShipment">
 		<parameter name="Country" value="US"></parameter>
 		<classes>
 			<class name="orders.guest.GuestOrderWithMultiShipment" />
 		</classes>
-	</test> 
-	 <test name="GuestOrder">
+	</test>
+	<test name="GuestOrder">
 		<parameter name="Country" value="US"></parameter>
 		<classes>
 			<class name="orders.guest.GuestOrder" />
 		</classes>
-	</test> 
-	
+	</test>
+	<test name="GuestOrderWithTwoDiffProducts">
+		<parameter name="Country" value="US"></parameter>
+		<classes>
+			<class name="orders.guest.GuestOrderWithTwoDiffProducts" />
+		</classes>
+	</test>
 	<test name="OrderWithGiftBox">
 		<parameter name="Country" value="US"></parameter>
 		<classes>
 			<class name="orders.guest.OrderWithGiftBox" />
+		</classes>
+	</test>
+	<test name="GuestBackOrderWithMonogram">
+		<parameter name="Country" value="US"></parameter>
+		<classes>
+			<class name="orders.guest.GuestBackOrderWithMonogram" />
+		</classes>
+	</test>
+	<test name="GuestPreOrderWithMonogram">
+		<parameter name="Country" value="US"></parameter>
+		<classes>
+			<class name="orders.guest.GuestPreOrderWithMonogram" />
 		</classes>
 	</test>
 	<test name="OrderWithMonogram">
@@ -42,56 +55,57 @@
 			<class name="orders.guest.OrderWithVochercode" />
 		</classes>
 	</test>
-	
+	<test name="GuestOrderWithPaypal">
+		<parameter name="Country" value="US"></parameter>
+		<classes>
+			<class name="orders.guest.GuestOrderWithPaypal" />
+		</classes>
+	</test>
+
 	<test name="RegisteredOrderWithPayPal">
 		<parameter name="Country" value="US"></parameter>
 		<classes>
 			<class name="orders.registered.RegisteredOrderWithPayPal" />
 		</classes>
-	</test> 
-		<test name="RegisterOrderWithVoucher">
+	</test>
+	<test name="RegisterOrderWithVoucher">
 		<parameter name="Country" value="US"></parameter>
 		<classes>
 			<class name="orders.registered.RegisterOrderWithVoucher" />
 		</classes>
 	</test>
-		<test name="RegisteredOrder">
+	<test name="RegisteredOrder">
 		<parameter name="Country" value="US"></parameter>
 		<classes>
 			<class name="orders.registered.RegisteredOrder" />
 		</classes>
-	</test> 
+	</test>
 	<test name="RegisteredOrderWithMultishipment">
 		<parameter name="Country" value="US"></parameter>
 		<classes>
-			<class name="orders.registered.RegisteredOrderWithMultishipment" />
+			<class
+				name="orders.registered.RegisteredOrderWithMultishipment" />
 		</classes>
-	
-	</test> 
 
-		<test name="GoogleLogin">
+	</test>
+	<test name="GoogleLogin">
 		<parameter name="Country" value="US"></parameter>
 		<classes>
 			<class name="login.GoogleLogin" />
-			</classes>
-		</test>
-		<test name="InstgramLogin">
+		</classes>
+	</test>
+	<test name="InstgramLogin">
 		<parameter name="Country" value="US"></parameter>
 		<classes>
 			<class name="login.InstagramLogin" />
-			</classes>
-		</test>
-		
-		<test name="RegularLogin">
+		</classes>
+	</test>
+
+	<test name="RegularLogin">
 		<parameter name="Country" value="US"></parameter>
 		<classes>
 			<class name="login.RegularLogin" />
-			</classes>
-		</test>
-		<test name="VerifyInvalidRegularLogin">
-		<parameter name="Country" value="US"></parameter>
-		<classes>
-			<class name="login.VerifyInvalidRegularLogin" />
-			</classes>
-		</test>
+		</classes>
+	</test>
+
 </suite>

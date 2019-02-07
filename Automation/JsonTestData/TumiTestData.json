@@ -32,8 +32,8 @@
 	"RegisteredOrders": {
 		"EmailID_Google": "emptumi@gmail.com",
 		"Password_Google": "tumi123",
-		"EmailID_login": "Employee.tumi@gmail.com",
-		"Password_login": "Tumi_8864",
+		"EmailID": "Employee.tumi@gmail.com",
+		"Password": "Tumi_8864",
 		"EmailId_Instagram": "TumiUS",
 		"Password_Instagram": "tumi123",
 		"NoramlSKUID": "014757D",
@@ -56,7 +56,7 @@
 		"Region": "California",
 		"PostCode": "V4X 1A5",
 		"Phone": "12345678901",
-		"NameOnCard": "test", 	
+		"NameOnCard": "test",
 		"CardNumber": "4111111111111111",
 		"CVV": "123",
 		"ExipryMonth": "4",
@@ -186,18 +186,18 @@
 	},
 	
 	"TumiLogin":{
-	"Email_id":"Employee.tumi@gmail.com",
-	"password":"Tumi_8864"
+	"EmailID":"Employee.tumi@gmail.com",
+	"Password":"Tumi_8864"
 	},
 	
 	"GoogleLogin":{
-	"EmailID":"emptumi@gmail.com",
-	"Password":"tumi123"
+	"EmailID":"emptumi",
+	"Password":"tumi1234"
 	},
 	
 	"InstagramLogin":{
 	"EmailID":"emptumi@gmail.com",
-	"Password":"tumi123"
+	"Password":"tumi1234"
 	}
 	
 }

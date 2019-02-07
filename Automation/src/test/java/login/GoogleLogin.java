@@ -35,7 +35,6 @@ public class GoogleLogin extends GenericMethods {
 				webclick(google.getFirstNext(), "Next");
 				input(google.getPassword(), testData.get("Password"), "Password");
 				webclick(google.getPasswordNext(), "password next");
-				driver.close();
 			}
 		}
 		driver.switchTo().window(parentHandle);

@@ -80,8 +80,8 @@
 					<version>2.21.0</version>
 					<configuration>
 						<systemPropertyVariables>
-							<browsername>chrome</browsername>
-							<countryName>US</countryName>
+							<browsername>ie</browsername>
+							<countryName>KOREA</countryName>
 						</systemPropertyVariables>
 						<forkCount>0</forkCount>
 						<executable>C:\Program Files\Java\jdk1.8.0_161\bin\javac.exe</executable>

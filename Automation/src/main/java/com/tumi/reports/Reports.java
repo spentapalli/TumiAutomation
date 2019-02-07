@@ -2,7 +2,6 @@ package com.tumi.reports;
 
 import java.io.File;
 import java.lang.reflect.Method;
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Properties;
@@ -139,6 +138,7 @@ public class Reports {
 		UIFunctions.selectCountry();
 		// driver.navigate().to("https://ca.stg-hybris-akamai.tumi.com");
 	}
+	
 
 	@AfterClass(alwaysRun = true)
 	public static void closeBrowser() {
