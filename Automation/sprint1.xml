@@ -23,12 +23,7 @@
 			<class name="orders.guest.GuestOrder" />
 		</classes>
 	</test> 
-	<test name="GuestOrderWithTwoDiffProducts">
-		<parameter name="Country" value="US"></parameter>
-		<classes>
-			<class name="orders.guest.GuestOrderWithTwoDiffProducts" />
-		</classes>
-	</test>
+	
 	<test name="OrderWithGiftBox">
 		<parameter name="Country" value="US"></parameter>
 		<classes>
@@ -73,12 +68,7 @@
 		</classes>
 	
 	</test> 
-	<test name="GmailLogin">
-		<parameter name="Country" value="US"></parameter>
-		<classes>
-			<class name="login.GmailLogin" />
-			</classes>
-		</test>
+
 		<test name="GoogleLogin">
 		<parameter name="Country" value="US"></parameter>
 		<classes>
@@ -96,6 +86,12 @@
 		<parameter name="Country" value="US"></parameter>
 		<classes>
 			<class name="login.RegularLogin" />
+			</classes>
+		</test>
+		<test name="VerifyInvalidRegularLogin">
+		<parameter name="Country" value="US"></parameter>
+		<classes>
+			<class name="login.VerifyInvalidRegularLogin" />
 			</classes>
 		</test>
 </suite>

@@ -20,10 +20,10 @@ public class GuestOrder extends GenericMethods {
 	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestOrders");
 	Map<String, String> testData1 = ReadTestData.getJsonData("TumiTestData", "FailedOrder");
 	/*
-	 * TA-100 Verify Order with merchandise Ready to ship for Guest User
+	 * TA-57 Verify Order with merchandise Ready to ship for Guest User
 	 */
 
-	@Test(priority = 0, description = " TA- 100 Verify Order with merchandise Ready to ship for Guest User")
+	@Test(priority = 0, description = " TA- 57 Verify Order with merchandise Ready to ship for Guest User")
 	public void tumiOrderAsGuest() throws InterruptedException {
 
 		UIFunctions.addProductToCart("TumiTestData", "GuestOrders");
@@ -92,12 +92,12 @@ public class GuestOrder extends GenericMethods {
 		UIFunctions.addCardDetails("TumiTestData", "GuestOrders");
 		UIFunctions.completeOrder();
 	}
+	@Test(priority = 4, description = "TA_15 Verify Place Order with Tender Change(GiftCard+Credit/Debit Card)-Guest user")
+	public void TenderChangeOrderAsGuest() {
 
-	@Test(priority = 4, description = "TA- 8 Verify order fail with wrong card details for Guest user")
-	public void orderWithWrongCardDetails() throws InterruptedException {
-		UIFunctions.addProductToCart("TumiTestData", "GuestOrders");
+		UIFunctions.addProductToCart("TumiTestData", "BackOrderProduct");
 		click(pdp.getAddToCart(), "Add to cart");
-		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
+		click(minicart.getProceedCheckOut(), "Proceed to Cart");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		UIFunctions.waitForContinueToEnable();
@@ -105,14 +105,9 @@ public class GuestOrder extends GenericMethods {
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
-		UIFunctions.addCardDetails("TumiTestData", "FailedOrder");
-		click(review.getreviewOrder(), "Review Order");
-		if (review.getCheckoutMessages().isDisplayed()) {
-			verifyAssertContains(getText(review.getCheckoutMessages()), getProperty("checkout.Messages"),
-					"Order Proceeded with Invalid Cart details");
-		}
-
-	}
+		UIFunctions.addCardDetails("TumiTestData", "BackOrderProduct");
+		UIFunctions.completeOrder();
+	}	
 	
 	@Test(priority=5,description = "TA-284 Verify Order with merchandise Ready to ship with PayPal checkout-Guest user")
 	public void orderWithPayPalAsGuest() throws Exception {
