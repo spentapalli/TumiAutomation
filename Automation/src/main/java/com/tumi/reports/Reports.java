@@ -2,7 +2,6 @@ package com.tumi.reports;
 
 import java.io.File;
 import java.lang.reflect.Method;
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Properties;
@@ -141,7 +140,7 @@ public class Reports {
 	}
 	
 
-	//@AfterClass(alwaysRun = true)
+	@AfterClass(alwaysRun = true)
 	public static void closeBrowser() {
 		driver.close();
 		try {
