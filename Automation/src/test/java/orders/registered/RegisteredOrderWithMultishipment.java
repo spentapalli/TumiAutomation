@@ -27,8 +27,6 @@ public class RegisteredOrderWithMultishipment extends GenericMethods {
 		domClick(signinBill.getAddNewPay(),"Add new Payment");
 		UIFunctions.addMultishipAddressWithCardDeatils("TumiTestData", "GuestOrders");
 		UIFunctions.completeOrder();
-
-		
 	}
 
 }

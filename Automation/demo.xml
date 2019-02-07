@@ -1,26 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite">
-  <test thread-count="5" name="ProductSearch">
-    <classes>
-      <class name="login.ProductSearch"/>
-    </classes>
-  </test> <!-- Test -->
-  <test name="InstagramLogin">
+
+	<test name="OrderWithGiftBox">
 		<classes>
-			<class name="login.InstagramLogin" />
+			<class name="orders.guest.OrderWithGiftBox">
+				<methods>
+					<include name="backOrderWithGiftBox"></include>
+				</methods>
+			</class>
 		</classes>
 	</test>
-	
-	<!-- add orderWithMonogramAsGuest() from "OrderWithMonogram" class >>>>>>>>>>>>>...............-->
-	<!-- <test name="">
-		<classes>
-			<class name="orders.guest." />
-		</classes>
-	</test> -->
+
 	<test name="RegisteredOrderWithMultishipment">
 		<classes>
-			<class name="orders.registered.RegisteredOrderWithMultishipment" />
+			<class
+				name="orders.registered.RegisteredOrderWithMultishipment" />
 		</classes>
 	</test>
 </suite> <!-- Suite -->
