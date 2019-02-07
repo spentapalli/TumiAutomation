@@ -510,12 +510,12 @@ public class UIFunctions extends GenericMethods {
 
 		HomePage home = PageFactory.initElements(driver, HomePage.class);
 
-		click(home.getHomeCountry(), "Default Country");
+		home.getHomeCountry().click();
 		delay(3000);
 		for (WebElement ele : home.getCountriesList()) {
 
 			if (getText(ele).equalsIgnoreCase(name)) {
-				click(ele, getText(ele));
+				ele.click();
 				break;
 			}
 		}
