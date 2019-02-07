@@ -605,7 +605,9 @@ public class UIFunctions extends GenericMethods {
 	}
 
 	public static void waitForContinueToEnable() {
-		driver.findElement(By.xpath("//h2[contains(text(),'Checkout as a Guest')]")).click();
+		try {
+			driver.findElement(By.xpath("//h2[contains(text(),'Checkout as a Guest')]")).click();
+		} catch (Exception e) {}
 		// do {
 		delay(2000);
 		// } while (!singlePage.isContinueDisabled().isDisplayed());
