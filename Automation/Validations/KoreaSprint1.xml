@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="TumiReport" parallel="none">
+
+	<test name="GuestOrder">
+		<classes>
+			<class name="orders.guest.GuestOrder" >
+			<methods><include name="tumiOrderAsGuest()"></include>
+			</methods>
+			</class>
+		</classes>
+	</test>
+	
+	<test name="OrderWithMonogram">
+		<parameter name="Country" value="US"></parameter>
+		<classes>
+			<class name="orders.guest.OrderWithMonogram" />
+		</classes>
+	</test>
+	
+	<test name="InstgramLogin">
+		<parameter name="Country" value="US"></parameter>
+		<classes>
+			<class name="login.InstagramLogin" />
+		</classes>
+	</test>
+
+	<test name="RegularLogin">
+		<parameter name="Country" value="US"></parameter>
+		<classes>
+			<class name="login.RegularLogin" />
+		</classes>
+	</test>
+	
+</suite>
