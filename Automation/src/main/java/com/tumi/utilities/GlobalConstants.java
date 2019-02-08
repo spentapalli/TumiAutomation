@@ -26,7 +26,7 @@ public class GlobalConstants extends Reports {
 	public static String urlkr = "https://kr.hybris-stage2.tumi.com/";
 	
 	//Stage2 Canada
-  public static String urlca = "https://ca.hybris-stage2.tumi.com/";
+	public static String urlca = "https://ca.hybris-stage2.tumi.com/";
    
 	// Production
 	// public static String url = "https://www.tumi.com";

@@ -19,7 +19,7 @@ import com.tumi.dataProvider.ReadTestData;
 import com.tumi.webPages.HomePage;
 
 /**
- * @author Suuresh
+ * @author Suuresh, Shwetha
  *
  */
 public class UIFunctions extends GenericMethods {
@@ -71,7 +71,7 @@ public class UIFunctions extends GenericMethods {
 	public static void addCardDetails(String sheet, String testCaseName) {
 
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCaseName);
-
+  
 		// billing page
 		input(guestBillPage.getNameOnCard(), testData.get("NameOnCard"), "Name on Card");
 
@@ -161,57 +161,50 @@ public class UIFunctions extends GenericMethods {
 		return cartCount;
 	}
 
-	/*
-	 * public static void addProductToCart(String sheet, String testCase) {
-	 * 
-	 * Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
-	 * 
-	 * final String pdpURL = GlobalConstants.url + "/p/" + testData.get("SKUID");
-	 * driver.get(pdpURL); // WaitForJStoLoad();
-	 * 
-	 * // commented below for Korea order, because getting error here
-	 * 
-	 * verifyAssertContains(driver.getCurrentUrl(), testData.get("SKUID"),
-	 * "Wrong Product is displayed"); try { if (pdp.getAddToCart().isDisplayed()) {
-	 * verifyAssertEquals("Add To Cart", getText(pdp.getAddToCart())); } } catch
-	 * (Exception e) { Assert.fail(testData.get("SKUID") +
-	 * " Product is not available"); }
-	 * 
-	 * // click(pdp.getAddToCart(), "Add to Cart");
-	 * 
-	 * // due to product search issue i am using above code to get the product.
-	 * 
-	 * 
-	 * input(home.getSearchProduct(), testData.get("SKUID"), "Search Product");
-	 * keyEnter(home.getSearchProduct());
-	 * verifyAssertContains(driver.getCurrentUrl(), testData.get("SKUID"),
-	 * "Wrong Product is displayed"); try { if (pdp.getAddToCart().isDisplayed()) {
-	 * 
-	 * verifyAssertEquals("Add To Cart", getText(pdp.getAddToCart())); } } catch
-	 * (Exception e) { Assert.fail(testData.get("SKUID")
-	 * +" Product is not available"); }
-	 * 
-	 * 
-	 * }
-	 */ public static void addProductToCart(String sheet, String testCase) {
+	public static void addProductToCart(String sheet, String testCase) {
 
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
 
 		if (selectedCountry.contains("배송하기: 대한민국")) {
-		final String pdpURL = GlobalConstants.urlkr + "/p/" + testData.get("SKUID");
-		driver.get(pdpURL);
+			final String pdpURL = GlobalConstants.urlkr + "/p/" + testData.get("SKUID");
+			driver.get(pdpURL);
 
 		} else if (selectedCountry.contains("Canada")) {
 
-		final String pdpURL = GlobalConstants.urlca + "/p/" + testData.get("SKUID");
-		driver.get(pdpURL);
+			final String pdpURL = GlobalConstants.urlca + "/p/" + testData.get("SKUID");
+			driver.get(pdpURL);
 
 		} else {
 
-		final String pdpURL = GlobalConstants.url + "/p/" + testData.get("SKUID");
-		driver.get(pdpURL);
+			final String pdpURL = GlobalConstants.url + "/p/" + testData.get("SKUID");
+			driver.get(pdpURL);
 		}
-	 }
+		// WaitForJStoLoad();
+
+		// commented below for Korea order, because getting error here
+		/*
+		 * verifyAssertContains(driver.getCurrentUrl(), testData.get("SKUID"),
+		 * "Wrong Product is displayed"); try { if (pdp.getAddToCart().isDisplayed()) {
+		 * verifyAssertEquals("Add To Cart", getText(pdp.getAddToCart())); } } catch
+		 * (Exception e) { Assert.fail(testData.get("SKUID") +
+		 * " Product is not available"); }
+		 */
+		// click(pdp.getAddToCart(), "Add to Cart");
+
+		// due to product search issue i am using above code to get the product.
+
+		/*
+		 * input(home.getSearchProduct(), testData.get("SKUID"), "Search Product");
+		 * keyEnter(home.getSearchProduct());
+		 * verifyAssertContains(driver.getCurrentUrl(), testData.get("SKUID"),
+		 * "Wrong Product is displayed"); try { if (pdp.getAddToCart().isDisplayed()) {
+		 * 
+		 * verifyAssertEquals("Add To Cart", getText(pdp.getAddToCart())); } } catch
+		 * (Exception e) { Assert.fail(testData.get("SKUID")
+		 * +" Product is not available"); }
+		 */
+
+	}
 
 	public static void addBackOrderProduct(String sheet, String testCase) {
 
@@ -360,7 +353,7 @@ public class UIFunctions extends GenericMethods {
 			driver.findElement(By.xpath("//h2[contains(text(),'Order Summary')]")).click();
 		} else {
 
-			if (selectedCountry.contains("ë°°ì†¡í•˜ê¸°: ëŒ€í•œë¯¼êµ­")) {
+			if (selectedCountry.contains("배송하기: 대한민국")) {
 				Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestDeatilsForKorea");
 				input(shipping.getFirstName(), testData.get("FirstName"), "First Name");
 				input(shipping.getLastName(), testData.get("LastName"), "Last Name");
@@ -376,13 +369,34 @@ public class UIFunctions extends GenericMethods {
 				input(shipping.getLastName(), testData.get("LastName"), "Last Name");
 				input(shipping.getAddressLine1(), testData.get("AddressLine1"), "Address Line1");
 				explicitWait(shipping.getSelectedAddressLine());
-				for (int i = 1; i < shipping.getAddList().size(); i++) {
-					WebElement add = driver.findElement(By.xpath("//div[@class='address-picklist']/div[" + i + "]"));
-					if (add.getText().contains("Fairport NY 14450")) {
-						click(add, "Address Line1");
-						break;
+				if (selectedCountry.contains("Canada")) {
+					for (WebElement ele : shipping.getListAddressLine1()) {
+						if (getText(ele).contains("ABBOTSFORD, BC")) {
+							delay(2000);
+							click(ele, "AddressList");
+							break;
+						}
 					}
+					/*
+					 * for (int i = 1; i < shipping.getAddListCA().size(); i++) { WebElement add =
+					 * driver.findElement(By.xpath(
+					 * "(//div[contains(@class,'address-picklist')]/div)[1][" + i + "]")); if
+					 * (add.getText().contains("ABBOTSFORD")) { //, BC, V2S 8B7 click(add,
+					 * "Address Line1"); break; } }
+					 */
+
+				} else {
+					for (int i = 1; i < shipping.getAddList().size(); i++) {
+						WebElement add = driver
+								.findElement(By.xpath("//div[@class='address-picklist']/div[" + i + "]"));
+						if (add.getText().contains("Fairport NY 14450")) {
+							click(add, "Address Line1");
+							break;
+						}
+					}
+
 				}
+
 				input(shipping.getPhoneNumber(), testData.get("Phone"), "Phone Number");
 			}
 		}
@@ -594,6 +608,7 @@ public class UIFunctions extends GenericMethods {
 		} else if (countryName.toUpperCase().equalsIgnoreCase("CANADA")) {
 
 			countrySelection("Canada");
+			
 			// logger.log(Status.INFO, "Execution initiated for Canada");
 
 		} else if (countryName.toUpperCase().equalsIgnoreCase("KOREA")) {
@@ -638,17 +653,26 @@ public class UIFunctions extends GenericMethods {
 
 		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "OrderWithTwoProducts");
 		click(multiShip.getMultiShipClick(), "MultiShipment");
-		delay(2000);
+		//delay(2000);
 		domClick(multiShip.getAddShippment0(), "add shipment 1");
+		if (selectedCountry.contains("Canada")){
+			addMultishipGuestDeatils(testData.get("shipmentCA1"), testData.get("AddressLine1"));
+		}else {
 		addMultishipGuestDeatils(testData.get("shipment1"), testData.get("AddressLine1"));
+		}
 		click(multiShip.getNext(), "Continue next shipping");
 		webclick(shipMethod.getStandardShippingMethod(), "Standard Shipping Method");
 		click(multiShip.getNextShipment(), "Continue next shipment");
 		delay(3000);
 		domClick(multiShip.getAddShippment0(), "add shipment 2");
-		addMultishipGuestDeatils(testData.get("shipment2"), testData.get("nextAddressLine1"));
+		if (selectedCountry.contains("Canada")){
+			addMultishipGuestDeatils(testData.get("shipmentCA2"), testData.get("nextAddressLine1"));
+		}else {
+			addMultishipGuestDeatils(testData.get("shipment2"), testData.get("nextAddressLine1"));
+		}
+		
 		click(multiShip.getNext(), "Continue next shipping");
-		webclick(shipMethod.getpriorityShippingMethod(), "Priority Shipping Method");
+		webclick(shipMethod.getStandardShippingMethod(), "Standard Shipping Method");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
 	}
 
@@ -659,16 +683,24 @@ public class UIFunctions extends GenericMethods {
 		delay(2000);
 		domClick(multiShip.getAddShippment0(), "add shipment 1");
 		domClick(signinBill.getAddNewAddress(), "Add new address");
+		if (selectedCountry.contains("Canada")){
+			addMultishipGuestDeatils(testData.get("shipmentCA1"), testData.get("AddressLine1"));
+		}else {
 		addMultishipGuestDeatils(testData.get("shipment1"), testData.get("AddressLine1"));
+		}
 		click(multiShip.getNext(), "Continue next shipping");
 		webclick(shipMethod.getStandardShippingMethod(), "Standard Shipping Method");
 		click(multiShip.getNextShipment(), "Continue next shipment");
 		delay(3000);
 		domClick(multiShip.getAddShippment0(), "add shipment 2");
 		domClick(signinBill.getAddNewAddress(), "Add new address");
-		addMultishipGuestDeatils(testData.get("shipment2"), testData.get("nextAddressLine1"));
+		if (selectedCountry.contains("Canada")){
+			addMultishipGuestDeatils(testData.get("shipmentCA2"), testData.get("nextAddressLine1"));
+		}else {
+			addMultishipGuestDeatils(testData.get("shipment2"), testData.get("nextAddressLine1"));
+		}
 		click(multiShip.getNext(), "Continue next shipping");
-		webclick(shipMethod.getpriorityShippingMethod(), "Priority Shipping Method");
+		webclick(shipMethod.getStandardShippingMethod(), "Standard Shipping Method");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
 	}
 
@@ -677,12 +709,33 @@ public class UIFunctions extends GenericMethods {
 		input(shipping.getFirstName(), testData.get("FirstName"), "First Name");
 		input(shipping.getLastName(), testData.get("LastName"), "Last Name");
 		input(shipping.getAddressLine1(), data1, "Address Line1");
-		explicitWait(shipping.getSelectedAddressLine());
-		for (int i = 1; i < shipping.getAddList().size(); i++) {
-			WebElement add = driver.findElement(By.xpath("//div[@class='address-picklist']/div[" + i + "]"));
-			if (add.getText().contains(data)) {
-				click(add, "Address Line1");
-				break;
+		explicitWait(shipping.getSelectedAddressLine());//input[@name='line1']/following::div[3]
+		if (selectedCountry.contains("Canada")) {
+			for (WebElement ele : shipping.getListAddressLine1()) {
+				if (getText(ele).contains("ABBOTSFORD, BC")) {
+					delay(2000);
+					click(ele, "AddressList");
+					break;
+				}else if (getText(ele).contains("HOPE, BC")) {
+					delay(2000);
+					click(ele, "AddressList");
+					break;
+				}
+			/*for (int i = 1; i < shipping.getAddListCA().size(); i++) {
+				WebElement add = driver.findElement(By.xpath("//input[@name='line1']/following::div[2]/div[" + i + "]"));
+				if (add.getText().contains(data)) {
+					click(add, "Address Line1");
+					break;
+				}
+			}*/
+			}
+		} else {
+			for (int i = 1; i < shipping.getAddList().size(); i++) {
+				WebElement add = driver.findElement(By.xpath("//div[@class='address-picklist']/div[" + i + "]"));
+				if (add.getText().contains(data)) {
+					click(add, "Address Line1");
+					break;
+				}
 			}
 		}
 		input(shipping.getPhoneNumber(), testData.get("Phone"), "Phone Number");
@@ -695,8 +748,14 @@ public class UIFunctions extends GenericMethods {
 		input(guestBillPage.getNameOnCard(), testData.get("NameOnCard"), "Name on Card");
 
 		input(guestBillPage.getCardNumber(), testData.get("CardNumber"), "Card Number");
-		selectByVisibleText(guestBillPage.getExpiryMonth(), "05", "Expiry Month");
-		selectByVisibleText(guestBillPage.getExpiryYear(), "2020", "Expiry Year");
+		if (browserName.equals("firefox")) {
+			selectMonthInFF();
+			selectYearInFF();
+		} else {
+			selectByVisibleText(guestBillPage.getExpiryMonth(), "05", "Expiry Month");
+			selectByVisibleText(guestBillPage.getExpiryYear(), "2020", "Expiry Year");
+		}
+		
 		input(guestBillPage.getCvvNumber(), testData.get("CVV"), "Cvv Number");
 		input(guestBillPage.getemail(), testData.get("EmailID"), "Email ID");
 		input(guestBillPage.getPhoneNumber(), testData.get("Phone"), "Phone number");
@@ -704,10 +763,18 @@ public class UIFunctions extends GenericMethods {
 		input(shipping.getLastName(), testData.get("LastName"), "Last Name");
 		input(shipping.getAddressLine1(), testData.get("AddressLine1"), "Address line1");
 		input(shipping.getTown(), testData.get("TownCity"), "Town");
+		if (selectedCountry.contains("Canada")) {
+			Select dropdown = new Select(driver.findElement(By.name("regionIso")));
+			dropdown.selectByVisibleText("British Columbia");
+			click(shipping.getRegionIso(), "Region");
+			input(shipping.getPostcode(), testData.get("CAPostCode"), "postal code");
+		}else {
 		Select dropdown = new Select(driver.findElement(By.name("regionIso")));
 		dropdown.selectByVisibleText("New Jersey");
 		click(shipping.getRegionIso(), "Region");
 		input(shipping.getPostcode(), testData.get("PostCode"), "postal code");
+	}
+		
 		domClick(guestBillPage.getReviewOrder(), "Review your order");
 
 	}
@@ -755,31 +822,32 @@ public class UIFunctions extends GenericMethods {
 		click(tumiId.getSaveDesign(), "Save");
 
 	}
+	
+public static void GiftCard(String sheet,String testCase) {
+	Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
+	final String pdpURL = GlobalConstants.url + "/p/" + testData.get("SKUID");
+	driver.get(pdpURL);
+	//Gift card
+	        click(guestBillPage.getGiftcardButton(),"Gift Card Button");
+			
+			input(guestBillPage.getGiftcard(),testData.get("GiftCardNo"),"Gift Card number");
+			input(guestBillPage.getGiftpin(),testData.get("GiftPinNo"),"Gift Pin number");
+			click(guestBillPage.getaddGiftcardApply(),"Gift Card Apply Button");
+			input(guestBillPage.getNameOnCard(), testData.get("NameOnCard"), "Name on Card");
 
-	public static void GiftCard(String sheet, String testCase) {
-		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
+			// invalid card number
+			input(guestBillPage.getCardNumber(), testData.get("CardNumber"), "Card Number");
+			if (browserName.equals("firefox")) {
+				selectMonthInFF();
+				selectYearInFF();
+			}else {
+				selectByVisibleText(guestBillPage.getExpiryMonth(), "05", "Expiry Month");
+				selectByVisibleText(guestBillPage.getExpiryYear(), "2020", "Expiry Year");
+			}
+			input(guestBillPage.getCvvNumber(), testData.get("CVV"), "Cvv Number");
+			input(guestBillPage.getemail(), testData.get("EmailID"), "Email ID");
+			input(guestBillPage.getPhoneNumber(), testData.get("Phone"), "Phone number");
+			domClick(guestBillPage.getReviewOrder(), "Review your order");
 
-		// Gift card
-		click(guestBillPage.getGiftcardButton(), "Gift Card Button");
-
-		input(guestBillPage.getGiftcard(), testData.get("GiftCardnumber"), "Gift Card number");
-		input(guestBillPage.getGiftpin(), testData.get("Pinnumber"), "Gift Pin number");
-		click(guestBillPage.getaddGiftcardApply(), "Gift Card Apply Button");
-		input(guestBillPage.getNameOnCard(), testData.get("NameOnCard"), "Name on Card");
-
-		// invalid card number
-		input(guestBillPage.getCardNumber(), testData.get("CardNumber"), "Card Number");
-		if (browserName.equals("firefox")) {
-			selectMonthInFF();
-			selectYearInFF();
-		} else {
-			selectByVisibleText(guestBillPage.getExpiryMonth(), "05", "Expiry Month");
-			selectByVisibleText(guestBillPage.getExpiryYear(), "2020", "Expiry Year");
-		}
-		input(guestBillPage.getCvvNumber(), testData.get("CVV"), "Cvv Number");
-		input(guestBillPage.getemail(), testData.get("EmailID"), "Email ID");
-		input(guestBillPage.getPhoneNumber(), testData.get("Phone"), "Phone number");
-		domClick(guestBillPage.getReviewOrder(), "Review your order");
-
-	}
+}
 }

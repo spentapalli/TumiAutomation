@@ -18,7 +18,7 @@ public class KoreaOrder extends GenericMethods {
 	public Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestOrders");
 
 	@Test
-	public void verifyKoreaOrder() throws Exception {
+	public void verifyKoreaOrder() throws InterruptedException {
 		UIFunctions.addProductToCart("TumiTestData", "GuestOrders");
 		click(pdp.getAddToCart(), "Add to cart");
 		delay(2000);

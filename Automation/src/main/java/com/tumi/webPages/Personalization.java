@@ -77,9 +77,17 @@ public class Personalization extends GenericMethods {
 	
 	@FindBy(how=How.XPATH, using="(//a[contains(text(),'Next')])[2]")
 	private WebElement next;
+			
+	@FindBy(how=How.XPATH, using="(//div[@class='monogram-btn-cntr']/a[2])[1]")
+	private WebElement krnext;
 	
 	public WebElement getNext() {
+		if(selectedCountry.contains("배송하기: 대한민국")) {
+			return explicitWait(krnext);
+		}else {
+			
 		return explicitWait(next);
+	}
 	}
 	
 	@FindBy(how=How.XPATH, using="//input[@name='monogram_initial_1']")
@@ -240,10 +248,20 @@ public class Personalization extends GenericMethods {
 	
 	@FindBy(how=How.XPATH, using="(//a[contains(text(),'Apply')])[1]")
 	private WebElement apply;
+	@FindBy(how=How.XPATH, using="(//div[@class='monogram-btn-cntr']/a[2])[2]")
+	private WebElement krApply;
 	
-	public WebElement getApply() {
-		return explicitWait(apply);
+	public WebElement getApply() {	if(selectedCountry.contains("배송하기: 대한민국")) {
+		
+			return explicitWait(krApply);
+		}else {
+			
+			return explicitWait(apply);
 	}
+	}
+	
+}		
+	
 
 
-}
+
