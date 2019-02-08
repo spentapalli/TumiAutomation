@@ -9,6 +9,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
@@ -70,7 +71,7 @@ public class UIFunctions extends GenericMethods {
 	public static void addCardDetails(String sheet, String testCaseName) {
 
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCaseName);
-
+  
 		// billing page
 		input(guestBillPage.getNameOnCard(), testData.get("NameOnCard"), "Name on Card");
 
@@ -821,5 +822,32 @@ public class UIFunctions extends GenericMethods {
 		click(tumiId.getSaveDesign(), "Save");
 
 	}
+	
+public static void GiftCard(String sheet,String testCase) {
+	Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
+	final String pdpURL = GlobalConstants.url + "/p/" + testData.get("SKUID");
+	driver.get(pdpURL);
+	//Gift card
+	        click(guestBillPage.getGiftcardButton(),"Gift Card Button");
+			
+			input(guestBillPage.getGiftcard(),testData.get("GiftCardNo"),"Gift Card number");
+			input(guestBillPage.getGiftpin(),testData.get("GiftPinNo"),"Gift Pin number");
+			click(guestBillPage.getaddGiftcardApply(),"Gift Card Apply Button");
+			input(guestBillPage.getNameOnCard(), testData.get("NameOnCard"), "Name on Card");
 
+			// invalid card number
+			input(guestBillPage.getCardNumber(), testData.get("CardNumber"), "Card Number");
+			if (browserName.equals("firefox")) {
+				selectMonthInFF();
+				selectYearInFF();
+			}else {
+				selectByVisibleText(guestBillPage.getExpiryMonth(), "05", "Expiry Month");
+				selectByVisibleText(guestBillPage.getExpiryYear(), "2020", "Expiry Year");
+			}
+			input(guestBillPage.getCvvNumber(), testData.get("CVV"), "Cvv Number");
+			input(guestBillPage.getemail(), testData.get("EmailID"), "Email ID");
+			input(guestBillPage.getPhoneNumber(), testData.get("Phone"), "Phone number");
+			domClick(guestBillPage.getReviewOrder(), "Review your order");
+
+}
 }

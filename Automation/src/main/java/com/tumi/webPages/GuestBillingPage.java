@@ -163,9 +163,35 @@ public class GuestBillingPage extends GenericMethods {
 	
 
 
+	@FindBy(how = How.XPATH, using = "//div[@id='accordion__title-9']")
+	private WebElement GiftcardButton;
+
+	public WebElement getGiftcardButton() {
+		return GiftcardButton;
+	}
+
+	@FindBy(how = How.XPATH, using = "//input[@name='giftCardNumber']")
+	private WebElement addGiftcard;
+
+	public WebElement getGiftcard() {
+		return addGiftcard;
+	}
+
+	@FindBy(how = How.XPATH, using = "//input[@name='giftCardPin']")
+	private WebElement addGiftpin;
+
+	public WebElement getGiftpin() {
+		return addGiftpin;
+
+	}
+
+	@FindBy(how = How.XPATH, using = "(//button[@type='submit'])[1]")
+	private WebElement addGiftcardApply;
+
+	public WebElement getaddGiftcardApply() {
+		return addGiftcardApply;
 
 
-
-
+	}
 
 }
