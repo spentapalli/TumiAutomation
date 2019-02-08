@@ -71,7 +71,7 @@ public class UIFunctions extends GenericMethods {
 	public static void addCardDetails(String sheet, String testCaseName) {
 
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCaseName);
-  
+
 		// billing page
 		input(guestBillPage.getNameOnCard(), testData.get("NameOnCard"), "Name on Card");
 
@@ -161,38 +161,57 @@ public class UIFunctions extends GenericMethods {
 		return cartCount;
 	}
 
-	public static void addProductToCart(String sheet, String testCase) {
+	/*
+	 * public static void addProductToCart(String sheet, String testCase) {
+	 * 
+	 * Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
+	 * 
+	 * final String pdpURL = GlobalConstants.url + "/p/" + testData.get("SKUID");
+	 * driver.get(pdpURL); // WaitForJStoLoad();
+	 * 
+	 * // commented below for Korea order, because getting error here
+	 * 
+	 * verifyAssertContains(driver.getCurrentUrl(), testData.get("SKUID"),
+	 * "Wrong Product is displayed"); try { if (pdp.getAddToCart().isDisplayed()) {
+	 * verifyAssertEquals("Add To Cart", getText(pdp.getAddToCart())); } } catch
+	 * (Exception e) { Assert.fail(testData.get("SKUID") +
+	 * " Product is not available"); }
+	 * 
+	 * // click(pdp.getAddToCart(), "Add to Cart");
+	 * 
+	 * // due to product search issue i am using above code to get the product.
+	 * 
+	 * 
+	 * input(home.getSearchProduct(), testData.get("SKUID"), "Search Product");
+	 * keyEnter(home.getSearchProduct());
+	 * verifyAssertContains(driver.getCurrentUrl(), testData.get("SKUID"),
+	 * "Wrong Product is displayed"); try { if (pdp.getAddToCart().isDisplayed()) {
+	 * 
+	 * verifyAssertEquals("Add To Cart", getText(pdp.getAddToCart())); } } catch
+	 * (Exception e) { Assert.fail(testData.get("SKUID")
+	 * +" Product is not available"); }
+	 * 
+	 * 
+	 * }
+	 */ public static void addProductToCart(String sheet, String testCase) {
 
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
 
+		if (selectedCountry.contains("배송하기: 대한민국")) {
+		final String pdpURL = GlobalConstants.urlkr + "/p/" + testData.get("SKUID");
+		driver.get(pdpURL);
+
+		} else if (selectedCountry.contains("Canada")) {
+
+		final String pdpURL = GlobalConstants.urlca + "/p/" + testData.get("SKUID");
+		driver.get(pdpURL);
+
+		} else {
+
 		final String pdpURL = GlobalConstants.url + "/p/" + testData.get("SKUID");
 		driver.get(pdpURL);
-		// WaitForJStoLoad();
-
-		// commented below for Korea order, because getting error here
-		/*
-		 * verifyAssertContains(driver.getCurrentUrl(), testData.get("SKUID"),
-		 * "Wrong Product is displayed"); try { if (pdp.getAddToCart().isDisplayed()) {
-		 * verifyAssertEquals("Add To Cart", getText(pdp.getAddToCart())); } } catch
-		 * (Exception e) { Assert.fail(testData.get("SKUID") +
-		 * " Product is not available"); }
-		 */
-		// click(pdp.getAddToCart(), "Add to Cart");
-
-		// due to product search issue i am using above code to get the product.
-
-		/*
-		 * input(home.getSearchProduct(), testData.get("SKUID"), "Search Product");
-		 * keyEnter(home.getSearchProduct());
-		 * verifyAssertContains(driver.getCurrentUrl(), testData.get("SKUID"),
-		 * "Wrong Product is displayed"); try { if (pdp.getAddToCart().isDisplayed()) {
-		 * 
-		 * verifyAssertEquals("Add To Cart", getText(pdp.getAddToCart())); } } catch
-		 * (Exception e) { Assert.fail(testData.get("SKUID")
-		 * +" Product is not available"); }
-		 */
-
-	}
+		}
+	 }
 
 	public static void addBackOrderProduct(String sheet, String testCase) {
 
@@ -341,7 +360,7 @@ public class UIFunctions extends GenericMethods {
 			driver.findElement(By.xpath("//h2[contains(text(),'Order Summary')]")).click();
 		} else {
 
-			if (selectedCountry.contains("배송하기: 대한민국")) {
+			if (selectedCountry.contains("ë°°ì†¡í•˜ê¸°: ëŒ€í•œë¯¼êµ­")) {
 				Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestDeatilsForKorea");
 				input(shipping.getFirstName(), testData.get("FirstName"), "First Name");
 				input(shipping.getLastName(), testData.get("LastName"), "Last Name");
@@ -608,7 +627,8 @@ public class UIFunctions extends GenericMethods {
 	public static void waitForContinueToEnable() {
 		try {
 			driver.findElement(By.xpath("//h2[contains(text(),'Checkout as a Guest')]")).click();
-		} catch (Exception e) {}
+		} catch (Exception e) {
+		}
 		// do {
 		delay(2000);
 		// } while (!singlePage.isContinueDisabled().isDisplayed());
@@ -735,32 +755,31 @@ public class UIFunctions extends GenericMethods {
 		click(tumiId.getSaveDesign(), "Save");
 
 	}
-	
-public static void GiftCard(String sheet,String testCase) {
-	Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
-	final String pdpURL = GlobalConstants.url + "/p/" + testData.get("SKUID");
-	driver.get(pdpURL);
-	//Gift card
-	        click(guestBillPage.getGiftcardButton(),"Gift Card Button");
-			
-			input(guestBillPage.getGiftcard(),testData.get("GiftCardNo"),"Gift Card number");
-			input(guestBillPage.getGiftpin(),testData.get("GiftPinNo"),"Gift Pin number");
-			click(guestBillPage.getaddGiftcardApply(),"Gift Card Apply Button");
-			input(guestBillPage.getNameOnCard(), testData.get("NameOnCard"), "Name on Card");
 
-			// invalid card number
-			input(guestBillPage.getCardNumber(), testData.get("CardNumber"), "Card Number");
-			if (browserName.equals("firefox")) {
-				selectMonthInFF();
-				selectYearInFF();
-			}else {
-				selectByVisibleText(guestBillPage.getExpiryMonth(), "05", "Expiry Month");
-				selectByVisibleText(guestBillPage.getExpiryYear(), "2020", "Expiry Year");
-			}
-			input(guestBillPage.getCvvNumber(), testData.get("CVV"), "Cvv Number");
-			input(guestBillPage.getemail(), testData.get("EmailID"), "Email ID");
-			input(guestBillPage.getPhoneNumber(), testData.get("Phone"), "Phone number");
-			domClick(guestBillPage.getReviewOrder(), "Review your order");
+	public static void GiftCard(String sheet, String testCase) {
+		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
 
-}
+		// Gift card
+		click(guestBillPage.getGiftcardButton(), "Gift Card Button");
+
+		input(guestBillPage.getGiftcard(), testData.get("GiftCardnumber"), "Gift Card number");
+		input(guestBillPage.getGiftpin(), testData.get("Pinnumber"), "Gift Pin number");
+		click(guestBillPage.getaddGiftcardApply(), "Gift Card Apply Button");
+		input(guestBillPage.getNameOnCard(), testData.get("NameOnCard"), "Name on Card");
+
+		// invalid card number
+		input(guestBillPage.getCardNumber(), testData.get("CardNumber"), "Card Number");
+		if (browserName.equals("firefox")) {
+			selectMonthInFF();
+			selectYearInFF();
+		} else {
+			selectByVisibleText(guestBillPage.getExpiryMonth(), "05", "Expiry Month");
+			selectByVisibleText(guestBillPage.getExpiryYear(), "2020", "Expiry Year");
+		}
+		input(guestBillPage.getCvvNumber(), testData.get("CVV"), "Cvv Number");
+		input(guestBillPage.getemail(), testData.get("EmailID"), "Email ID");
+		input(guestBillPage.getPhoneNumber(), testData.get("Phone"), "Phone number");
+		domClick(guestBillPage.getReviewOrder(), "Review your order");
+
+	}
 }

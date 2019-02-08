@@ -1,0 +1,31 @@
+package orders.guest;
+
+import java.util.Map;
+
+import org.testng.annotations.Test;
+
+import com.tumi.dataProvider.ReadTestData;
+import com.tumi.utilities.GenericMethods;
+import com.tumi.utilities.UIFunctions;
+
+public class TenderChange extends GenericMethods{
+	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData","GuestOrders");
+	
+	@Test(priority = 4, description = "TA_15 Verify Place Order with Tender Change(GiftCard+Credit/Debit Card)-Guest user")
+	public void TenderChangeOrderAsGuest() {
+
+		UIFunctions.addProductToCart("TumiTestData", "BackOrderProduct");
+		click(pdp.getAddToCart(), "Add to cart");
+		click(minicart.getProceedCheckOut(), "Proceed to Cart");
+		click(mainCart.getProceedCart(), "Proceed to Checkout");
+		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
+		UIFunctions.waitForContinueToEnable();
+		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
+		UIFunctions.addGuestDetails();
+		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
+		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
+		UIFunctions.GiftCard("TumiTestData", "BackOrderProduct");
+		UIFunctions.completeOrder();
+	}	
+
+}

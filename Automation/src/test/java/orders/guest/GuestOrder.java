@@ -92,22 +92,8 @@ public class GuestOrder extends GenericMethods {
 		UIFunctions.addCardDetails("TumiTestData", "GuestOrders");
 		UIFunctions.completeOrder();
 	}
-	@Test(priority = 4, description = "TA_15 Verify Place Order with Tender Change(GiftCard+Credit/Debit Card)-Guest user")
-	public void TenderChangeOrderAsGuest() {
 
-		UIFunctions.addProductToCart("TumiTestData", "BackOrderProduct");
-		click(pdp.getAddToCart(), "Add to cart");
-		click(minicart.getProceedCheckOut(), "Proceed to Cart");
-		click(mainCart.getProceedCart(), "Proceed to Checkout");
-		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
-		UIFunctions.waitForContinueToEnable();
-		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
-		UIFunctions.addGuestDetails();
-		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
-		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
-		UIFunctions.addCardDetails("TumiTestData", "BackOrderProduct");
-		UIFunctions.completeOrder();
-	}	
+
 	
 	@Test(priority=5,description = "TA-1 Verify Order with 2 'Ready to Ship' Items with different SKU/sPurchase-Guest user")
 	public void orderWithTwoDiffProducts() throws InterruptedException {

@@ -167,7 +167,7 @@ public class GuestBillingPage extends GenericMethods {
 	private WebElement GiftcardButton;
 
 	public WebElement getGiftcardButton() {
-		return GiftcardButton;
+		return explicitWait(GiftcardButton);
 	}
 
 	@FindBy(how = How.XPATH, using = "//input[@name='giftCardNumber']")
