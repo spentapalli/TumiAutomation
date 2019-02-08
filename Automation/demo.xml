@@ -2,20 +2,20 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite">
 
-	<test name="OrderWithGiftBox">
+	
+	<test name="GuestOrder">
 		<classes>
-			<class name="orders.guest.OrderWithGiftBox">
-				<methods>
-					<include name="backOrderWithGiftBox"></include>
-				</methods>
+			<class name="orders.guest.GuestOrder" >
+			<methods><include name="tumiOrderAsGuest()"></include>
+			</methods>
 			</class>
 		</classes>
 	</test>
 
-	<test name="RegisteredOrderWithMultishipment">
+	<test name="GuestOrderWithMultiShipment">
 		<classes>
 			<class
-				name="orders.registered.RegisteredOrderWithMultishipment" />
+				name="orders.guest.GuestOrderWithMultiShipment" />
 		</classes>
 	</test>
 </suite> <!-- Suite -->

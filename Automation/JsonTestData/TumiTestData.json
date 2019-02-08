@@ -27,7 +27,8 @@
 		"PrdouctName": "tag",
 		"FirstMonoInput": "1",
 		"SecondMonoInput": "2",
-		"ThirdMonoInput": "3"
+		"ThirdMonoInput": "3",
+		"CAPostCode":"V2S 8B7"
 	},
 	"RegisteredOrders": {
 		"EmailID_Google": "emptumi@gmail.com",
@@ -158,7 +159,9 @@
 		"PreOrderSKUID": "0484660D",
 		"BackOrderSKUID": "013234CPT",
 		"shipment1": "Fairport NY 14450",
-		"shipment2": "Albany GA 31701"
+		"shipment2": "Albany GA 31701",
+		"shipmentCA1":"ABBOTSFORD",
+		"shipmentCA2":"HOPE, BC, V0X 1L4"
 	},
 	"PayPalDeatils": {
 		"EmailID": "test@tumi.com",
@@ -195,8 +198,8 @@
 	},
 	
 	"InstagramLogin":{
-	"EmailID":"emptumi@gmail.com",
-	"Password":"tumi1234"
+	"EmailID":"TumiUS",
+	"Password":"tumi123"
 	}
 	
 }

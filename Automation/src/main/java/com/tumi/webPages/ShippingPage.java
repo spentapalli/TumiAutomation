@@ -155,5 +155,12 @@ public class ShippingPage extends GenericMethods {
 	public List<WebElement> getAddList() {
 		return addList;
 	}
+	
+	@FindBy(how = How.XPATH, using = "//input[@name='line1']/following::div[2]/div")
+	private List<WebElement> addListCA;
+	
+	public List<WebElement> getAddListCA() {
+		return addListCA;
+	}
 
 }
