@@ -140,7 +140,7 @@ public class Reports {
 	}
 	
 
-	//@AfterClass(alwaysRun = true)
+	@AfterClass(alwaysRun = true)
 	public static void closeBrowser() {
 		driver.close();
 		try {
