@@ -108,7 +108,7 @@
 	<test name="GuestOrderWithPaypal">
 		<parameter name="Country" value="US"></parameter>
 		<classes>
-			<class name="login.GuestOrderWithPaypal" />
+			<class name="orders.guest.GuestOrderWithPaypal" />
 		</classes>
 	</test>
 </suite>
