@@ -37,7 +37,7 @@ public class OrderConfirmationPage extends GenericMethods {
 	
 	public WebElement getOrderNumber() {
 		
-		return orderNumber;
+		return explicitWait(orderNumber);
 	}
 	
 	

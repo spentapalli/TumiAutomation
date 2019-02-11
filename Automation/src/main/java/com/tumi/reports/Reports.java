@@ -108,8 +108,7 @@ public class Reports {
 		timeStamp = new SimpleDateFormat("dd-MMM-yy  hh.mm.ss aa").format(Calendar.getInstance().getTime());
 		extentReportPath = System.getProperty("user.dir") + "/ExtentReports/TumiReport.html";
 		htmlreport = new ExtentHtmlReporter(extentReportPath);
-		htmlreport.loadXMLConfig(new File(System.getProperty("user.dir") +
-		"\\extent-config.xml"));
+		htmlreport.loadXMLConfig(new File(System.getProperty("user.dir") + "\\extent-config.xml"));
 		report = new ExtentReports();
 		report.attachReporter(htmlreport);
 	}
@@ -119,35 +118,34 @@ public class Reports {
 		// writing everything to document
 		// flush() - to write or update test information to your report.
 		report.flush();
+		try {
+			GenericMethods.killSession();
+		} catch (Exception e) {
+			logger.log(Status.INFO, "Unable to Kill Browser Instance");
+		}
 	}
 
 	@BeforeClass(alwaysRun = true)
 	public static void launchBrowser() throws Exception {
 		getBrowser();
 		maximizeBrowser();
-		
+
 		if (browserName.equals("ie")) {
 			GenericMethods.delay(2000);
 			driver.navigate().to("javascript:document.getElementById('overridelink').click()");
 			UIFunctions.WaitForJStoLoad();
 			UIFunctions.verifyVPN();
 			UIFunctions.closeSignUp();
-		}else {
+		} else {
 			getURL(GenericMethods.getProperty("tumi.appName"));
 		}
 		UIFunctions.selectCountry();
 		// driver.navigate().to("https://ca.stg-hybris-akamai.tumi.com");
 	}
-	
 
 	@AfterClass(alwaysRun = true)
 	public static void closeBrowser() {
 		driver.close();
-		try {
-			GenericMethods.killSession();
-		} catch (Exception e) {
-			logger.log(Status.INFO, "Unable to Kill Browser Instance");
-		}
 	}
 
 	@BeforeMethod(alwaysRun = true)
@@ -186,26 +184,17 @@ public class Reports {
 	public void verifyTestResult(ITestResult result) {
 
 		try {
-			if (result.getStatus() == ITestResult.SUCCESS) {
+			if (result.getStatus() == ITestResult.FAILURE) {
 
-				logger.log(Status.PASS, "Test Method : " + result.getName() + "is Passed");
+				// Timestamp time = new Timestamp(System.currentTimeMillis());
 
-			} else if (result.getStatus() == ITestResult.FAILURE) {
-
-				//Timestamp time = new Timestamp(System.currentTimeMillis());
-				
 				getScreen("./ExtentReports/Screenshots/" + result.getName() + ".png");
 				String screenlocation = "./Screenshots/" + result.getName() + ".png";
 				logger.fail(MarkupHelper.createLabel(result.getName() + " Test Case Failed", ExtentColor.RED));
 				logger.fail(result.getThrowable());
 				logger.fail("Screen Shot Reference:  ",
 						MediaEntityBuilder.createScreenCaptureFromPath(screenlocation).build());
-
-			} else if (result.getStatus() == ITestResult.SKIP) {
-
-				logger.log(Status.SKIP, "Test Method : " + result.getName() + "is Skipped");
 			}
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -239,7 +228,7 @@ public class Reports {
 
 	public static void getBrowser() throws Exception {
 
-		//logger = report.createTest("Browser Name");
+		// logger = report.createTest("Browser Name");
 
 		browserName = System.getProperty("browsername");
 
@@ -252,7 +241,7 @@ public class Reports {
 			options.addArguments("--disable-notifications");
 			System.setProperty(GlobalConstants.chrome, GlobalConstants.chromePath);
 			driver = new ChromeDriver(options);
-			//logger.log(Status.INFO, "Chrome Browser is initiated Execution");
+			// logger.log(Status.INFO, "Chrome Browser is initiated Execution");
 
 		} else if (browserName.equalsIgnoreCase("firefox")) {
 
@@ -265,17 +254,17 @@ public class Reports {
 			capabilities.setCapability(FirefoxDriver.PROFILE, geoDisabled);
 			System.setProperty(GlobalConstants.firefox, GlobalConstants.firefoxPath);
 			driver = new FirefoxDriver(capabilities);
-			//logger.log(Status.INFO, "Firefox Browser is initiated Execution");
+			// logger.log(Status.INFO, "Firefox Browser is initiated Execution");
 
 		} else if (browserName.equalsIgnoreCase("ie")) {
 
 			DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
 			capabilities.setCapability("ignoreZoomSetting", true);
-			capabilities.setCapability("nativeEvents",false);
+			capabilities.setCapability("nativeEvents", false);
 			capabilities.setCapability(InternetExplorerDriver.INITIAL_BROWSER_URL, GlobalConstants.url);
 			System.setProperty(GlobalConstants.ie, GlobalConstants.iePath);
 			driver = new InternetExplorerDriver(capabilities);
-			//logger.log(Status.INFO, "InternetExplorer Browser is initiated Execution");
+			// logger.log(Status.INFO, "InternetExplorer Browser is initiated Execution");
 		}
 	}
 
