@@ -3,19 +3,25 @@
 <suite name="Suite">
 
 	
-	<test name="GuestOrder">
+	<!-- <test name="GuestOrder">
 		<classes>
 			<class name="orders.guest.GuestOrder" >
 			<methods><include name="tumiOrderAsGuest()"></include>
 			</methods>
 			</class>
 		</classes>
+	</test> -->
+<test name="RegisteredOrder">
+		<classes>
+			<class
+				name="orders.registered.RegisteredOrder" />
+		</classes>
 	</test>
-
 	<test name="GuestOrderWithMultiShipment">
 		<classes>
 			<class
 				name="orders.guest.GuestOrderWithMultiShipment" />
 		</classes>
 	</test>
-</suite> <!-- Suite -->
+	
+</suite> 
