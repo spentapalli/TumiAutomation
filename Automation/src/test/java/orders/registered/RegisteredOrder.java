@@ -22,7 +22,7 @@ public class RegisteredOrder extends GenericMethods {
 	 */
 	@Test(description = " TA - 184 Verify Order with merchandise Ready to ship-Registered User")
 	public void tumiOrderAsRegistered() throws Exception {
-		login("TumiTestData", "RegisteredOrders");
+		login("TumiTestData", "TumiLogin");
 		UIFunctions.addProductToCart("TumiTestData","GuestOrders");
 		click(pdp.getAddToCart(),"Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
