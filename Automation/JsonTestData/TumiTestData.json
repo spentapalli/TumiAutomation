@@ -87,8 +87,7 @@
 		"RecipientName": "Test",
 		"SenderName": "User",
 		"Message": "Hello Tumi",
-			"GiftCardnumber": "7018525193950000020",
-		"Pinnumber": "98779393",
+		"GiftCardnumber": "7018525193950000020"
 	},
 	"PreOrderProduct": {
 		"EmailID": "skomma@coredatalabs.com",

@@ -20,7 +20,7 @@ public class RegisteredOrder extends GenericMethods {
 	 * Verify Order with merchandise Ready to ship-Registered User
 	 * 
 	 */
-	@Test(description = " Verify Order with merchandise Ready to ship-Registered User")
+	@Test(description = " TA - 184 Verify Order with merchandise Ready to ship-Registered User")
 	public void tumiOrderAsRegistered() throws Exception {
 		login("TumiTestData", "RegisteredOrders");
 		UIFunctions.addProductToCart("TumiTestData","GuestOrders");
@@ -36,5 +36,6 @@ public class RegisteredOrder extends GenericMethods {
 		UIFunctions.completeOrder();
 	}
 
+	
 }
 
