@@ -436,7 +436,7 @@ public class UIFunctions extends GenericMethods {
 
 	public static void completeOrder() {
 
-		click(review.getPlaceOrder(), "Place Order");
+		domClick(review.getPlaceOrder(), "Place Order");
 		
 		do {
 			delay(2000);
