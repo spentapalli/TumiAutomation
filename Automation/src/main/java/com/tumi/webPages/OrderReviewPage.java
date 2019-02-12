@@ -55,7 +55,7 @@ public class OrderReviewPage extends GenericMethods {
 	
 	public WebElement getPlaceOrder() {
 		
-		return explicitWait(placeOrder);
+		return elementToBeClickable(placeOrder);
 	}
 	@FindBy(how=How.XPATH,using="//section[@id='confirmation-info-ctnr']/div/div/b")
 	private WebElement orderNumber;

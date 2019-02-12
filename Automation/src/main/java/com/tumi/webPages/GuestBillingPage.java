@@ -75,7 +75,7 @@ public class GuestBillingPage extends GenericMethods {
 	
 	public WebElement getPhoneNumber() {
 		
-		return phoneNumber;
+		return explicitWait(phoneNumber);
 	}
 	
 	@FindBy(how=How.XPATH,using="//input[@id='shippingAddressForBilling']")

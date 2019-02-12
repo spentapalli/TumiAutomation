@@ -87,7 +87,7 @@ public class UIFunctions extends GenericMethods {
 		input(guestBillPage.getCvvNumber(), testData.get("CVV"), "Cvv Number");
 		input(guestBillPage.getemail(), testData.get("EmailID"), "Email ID");
 		input(guestBillPage.getPhoneNumber(), testData.get("Phone"), "Phone number");
-		webclick(review.getOrderSummary(), "Order Summary");
+		//webclick(review.getOrderSummary(), "Order Summary");
 		domClick(guestBillPage.getReviewOrder(), "Review your order");
 
 		// elect sel = new Select(new
@@ -133,6 +133,38 @@ public class UIFunctions extends GenericMethods {
 			}
 		}
 
+	}
+	public static void selectStateInFF() {
+		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData","GuestOrders");
+
+		driver.findElement(By.xpath("//span[@name='regionIso']/span[3]")).click();
+		delay(2000);
+		List<WebElement> states = driver.findElements(By.xpath("//span[@name='regionIso']/following::ul/li/a"));
+
+		for (int i = 1; i < states.size(); i++) {
+
+			WebElement state = driver
+					.findElement(By.xpath("//span[@name='regionIso']/following::ul/li[" + i + "]/a"));
+		
+
+			if (getText(state).equals("British Columbia")) {
+
+				state.click();
+				delay(2000);
+				input(shipping.getPostcode(), testData.get("CAPostCode"), "postal code");
+				break;
+			}
+			else {
+				if (getText(state).equals("New Jersey")) {
+
+					state.click();
+					delay(2000);
+					input(shipping.getPostcode(), testData.get("PostCode"), "postal code");
+					break;
+				
+			}
+		}	
+	}
 	}
 
 	public static void addInvalidCardDetails(String sheet, String testCaseName) {
@@ -404,8 +436,8 @@ public class UIFunctions extends GenericMethods {
 
 	public static void completeOrder() {
 
-		delay(2000);
 		domClick(review.getPlaceOrder(), "Place Order");
+		
 		do {
 			delay(2000);
 		} while (confirmation.getWithForConfirmation().isDisplayed());
@@ -416,8 +448,9 @@ public class UIFunctions extends GenericMethods {
 		}
 		orderNumber = getText(confirmation.getOrderNumber());
 		logger.log(Status.INFO, "Thank you for Your Order, here is your Order Number " + orderNumber);
-		captureOrderConfScreen("OrderConfirmation");
 		delay(3000);
+		captureOrderConfScreen("OrderConfirmation");
+		
 	}
 
 	public static void addPromotionalCodeAtCart(String sheet, String testCase) {
@@ -663,7 +696,6 @@ public class UIFunctions extends GenericMethods {
 		click(multiShip.getNext(), "Continue next shipping");
 		webclick(shipMethod.getStandardShippingMethod(), "Standard Shipping Method");
 		click(multiShip.getNextShipment(), "Continue next shipment");
-		delay(3000);
 		domClick(multiShip.getAddShippment0(), "add shipment 2");
 		if (selectedCountry.contains("Canada")){
 			addMultishipGuestDeatils(testData.get("shipmentCA2"), testData.get("nextAddressLine1"));
@@ -746,8 +778,8 @@ public class UIFunctions extends GenericMethods {
 
 		// billing page
 		input(guestBillPage.getNameOnCard(), testData.get("NameOnCard"), "Name on Card");
-
 		input(guestBillPage.getCardNumber(), testData.get("CardNumber"), "Card Number");
+		
 		if (browserName.equals("firefox")) {
 			selectMonthInFF();
 			selectYearInFF();
@@ -763,12 +795,10 @@ public class UIFunctions extends GenericMethods {
 		input(shipping.getLastName(), testData.get("LastName"), "Last Name");
 		input(shipping.getAddressLine1(), testData.get("AddressLine1"), "Address line1");
 		input(shipping.getTown(), testData.get("TownCity"), "Town");
-		if (selectedCountry.contains("Canada")) {
-			Select dropdown = new Select(driver.findElement(By.name("regionIso")));
-			dropdown.selectByVisibleText("British Columbia");
-			click(shipping.getRegionIso(), "Region");
-			input(shipping.getPostcode(), testData.get("CAPostCode"), "postal code");
-		}else {
+		if (browserName.equals("firefox")) {
+				selectStateInFF();
+		}
+		else {
 		Select dropdown = new Select(driver.findElement(By.name("regionIso")));
 		dropdown.selectByVisibleText("New Jersey");
 		click(shipping.getRegionIso(), "Region");
@@ -780,7 +810,7 @@ public class UIFunctions extends GenericMethods {
 	}
 
 	public static void addTumiStudio() {
-		click(tumiId.getTumiIdDesign(), "click on TumiID");
+		click(tumiId.getTumiIdDesign(), "TumiID");
 		delay(2000);
 		// click(tumiId.getMainBody(),"Main Body");
 		click(tumiId.getShadowGrayColor(), "Main Body in Shadow gray Color");
