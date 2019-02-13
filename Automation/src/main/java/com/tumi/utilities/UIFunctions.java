@@ -798,7 +798,13 @@ public class UIFunctions extends GenericMethods {
 		if (browserName.equals("firefox")) {
 				selectStateInFF();
 		}
-		else {
+		else if(selectedCountry.contains("Canada")) {
+			Select dropdown = new Select(driver.findElement(By.name("regionIso")));
+			dropdown.selectByVisibleText("British Columbia");
+			click(shipping.getRegionIso(), "Region");
+			input(shipping.getPostcode(), testData.get("CAPostCode"), "postal code");
+		}else {
+			
 		Select dropdown = new Select(driver.findElement(By.name("regionIso")));
 		dropdown.selectByVisibleText("New Jersey");
 		click(shipping.getRegionIso(), "Region");
