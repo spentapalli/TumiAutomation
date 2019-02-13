@@ -2,6 +2,7 @@ package orders.guest;
 
 import java.util.Map;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.tumi.dataProvider.ReadTestData;
@@ -9,7 +10,7 @@ import com.tumi.utilities.GenericMethods;
 import com.tumi.utilities.UIFunctions;
 
 /**
- * @author Suresh , Shwetha Capo
+ * @author Shwetha
  *
  */
 public class Sprint2 extends GenericMethods {
@@ -19,7 +20,7 @@ public class Sprint2 extends GenericMethods {
 	 *  Verify Order with merchandise Ready to ship with Gift message for Guest User
 	 */
 	
-	@Test(priority = 0, description = " TA- 178 Verify Order with merchandise Ready to ship with Gift message for Guest User")
+	//@Test(priority = 0, description = " TA- 178 Verify Order with merchandise Ready to ship with Gift message for Guest User")
 	public void orderWithGiftMsgAsGuest()  {
 
 		UIFunctions.addProductToCart("TumiTestData", "GuestOrders");
@@ -39,7 +40,7 @@ public class Sprint2 extends GenericMethods {
 		UIFunctions.completeOrder();
 	}
 	
-	@Test(priority = 1, description = " TA- 179 Verify Order with merchandise Pre order Ready to ship with Gift message for Guest User")
+	//@Test(priority = 1, description = " TA- 179 Verify Order with merchandise Pre order Ready to ship with Gift message for Guest User")
 	public void preOrderWithGiftMsgAsGuest(){
 
 		UIFunctions.addProductToCart("TumiTestData", "PreOrderProduct");
@@ -59,7 +60,7 @@ public class Sprint2 extends GenericMethods {
 		UIFunctions.completeOrder();
 	}
 	
-	@Test(priority = 2, description = " TA- 180 Verify Order with merchandise Back order Ready to ship with Gift message for Guest User")
+	//@Test(priority = 2, description = " TA- 180 Verify Order with merchandise Back order Ready to ship with Gift message for Guest User")
 	public void backOrderWithGiftMsgAsGuest(){
 
 		UIFunctions.addProductToCart("TumiTestData", "PreOrderProduct");
@@ -79,7 +80,7 @@ public class Sprint2 extends GenericMethods {
 		UIFunctions.completeOrder();
 	}
 	
-	@Test(priority = 3, description = " TA- 185 Verify Order with merchandise Ready to ship + Personalization - Registered User")
+	//@Test(priority = 3, description = " TA- 185 Verify Order with merchandise Ready to ship + Personalization - Registered User")
 	public void orderWithMonogramAsRegistered()  {
 
 		login("TumiTestData", "RegisteredOrders");
@@ -97,7 +98,7 @@ public class Sprint2 extends GenericMethods {
 		UIFunctions.completeOrder();
 	}
 	
-	@Test(priority = 4, description = " TA- 186 Verify Order with merchandise Ready to ship + Gift Boxing - Registered User")
+	//@Test(priority = 4, description = " TA- 186 Verify Order with merchandise Ready to ship + Gift Boxing - Registered User")
 	public void orderWithGiftboxAsRegistered()  {
 
 		login("TumiTestData", "RegisteredOrders");
@@ -117,7 +118,7 @@ public class Sprint2 extends GenericMethods {
 		UIFunctions.completeOrder();
 	}
 	
-	@Test(priority = 5, description = " TA- 187 Verify Order with merchandise Ready to ship + Gift Message - Registered User")
+	//@Test(priority = 5, description = " TA- 187 Verify Order with merchandise Ready to ship + Gift Message - Registered User")
 	public void orderWithGiftMsgAsRegistered()  {
 
 		login("TumiTestData", "RegisteredOrders");
@@ -137,7 +138,7 @@ public class Sprint2 extends GenericMethods {
 		UIFunctions.completeOrder();
 	}
 	
-	@Test(priority = 6, description = " TA- 188 Verify Order with merchandise Ready to ship + Gift Message + Gift Box - Registered User")
+	//@Test(priority = 6, description = " TA- 188 Verify Order with merchandise Ready to ship + Gift Message + Gift Box - Registered User")
 	public void orderWithGiftMsgNBoxAsRegistered()  {
 
 		login("TumiTestData", "RegisteredOrders");
@@ -158,7 +159,7 @@ public class Sprint2 extends GenericMethods {
 		UIFunctions.completeOrder();
 	}
 	
-	@Test(priority = 7, description = " TA- 190 Verify Order with merchandise Ready to ship + Gift Message + Gift Box + Voucher - Registered User")
+	//@Test(priority = 7, description = " TA- 190 Verify Order with merchandise Ready to ship + Gift Message + Gift Box + Voucher - Registered User")
 	public void orderWithGiftMsgNBoxVoucherAsRegistered()  {
 
 		login("TumiTestData", "RegisteredOrders");
@@ -192,11 +193,18 @@ public class Sprint2 extends GenericMethods {
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
 		UIFunctions.addCardDetails("TumiTestData", "FailedOrder");
-		click(review.getreviewOrder(), "Review Order");
-		if (review.getCheckoutMessages().isDisplayed()) {
-			verifyAssertContains(getText(review.getCheckoutMessages()), getProperty("checkout.Messages"),
-					"Order Proceeded with Invalid Cart details");
+		try {
+			if (review.getCheckoutMessages().isDisplayed()) {
+				delay(2000);
+				if(getText(review.getCheckoutMessages()).contains(getProperty("checkout.Messages"))){
+					Assert.fail("Order is incompleted with invalid card details");
+				}
+			}
+		} catch (Exception e) {
+			Assert.fail("Order is completed with invalid card details");
 		}
+		UIFunctions.completeOrder();
 	}
+	
 
 }

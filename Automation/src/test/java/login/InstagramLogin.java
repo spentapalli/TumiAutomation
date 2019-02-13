@@ -33,17 +33,6 @@ public class InstagramLogin extends GenericMethods {
 			click(myacc.getSignout(),"Signout");
 		}
 	}
-	/* TA-177 :
-	 * Verify Login fail, with wrong Instagram Account credentials
-	 * 
-	 */
-	//@Test(priority=1,description=" TA-177 :Verify Login fail, with wrong Instagram Account credentials " )
-	public void inValidInstaLogin(){
-		//TumiLibs.closeSignUpForUS();
-		instaLogin("TumiTestData", "VerifyInvalidInstaLogin");
-		delay(4000);
-		verifyAssertEquals(getText(insta.getPasswordErr()), getProperty("insta.passwordError"));
-	}
 	
 	public void instaLogin(String sheetName, String testCaseName) {
 		Map<String, String> testData = ReadTestData.getJsonData(sheetName, testCaseName);

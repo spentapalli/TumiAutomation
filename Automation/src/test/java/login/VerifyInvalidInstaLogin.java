@@ -1,7 +1,8 @@
 package login;
 
+import java.util.Iterator;
 import java.util.Map;
-
+import java.util.Set;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -17,44 +18,50 @@ import com.tumi.utilities.UIFunctions;
  */
 public class VerifyInvalidInstaLogin extends GenericMethods{
 	
-public Map<String, String> testData = ReadTestData.retrieveData("Login", "VerifyInvalidInstaLogin");
+public Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "VerifyInvalidInstaLogin");
 	
-	@Test
-	public void verifyInstaLogin() throws InterruptedException{
-		UIFunctions.closeSignUpForUsProd();
-		click(home.getSelectCountryUS(), "Select US country");
-		click(home.getSelectUS(), "click US");
-		delay(4000);
-		if (google.getNoThanks().isDisplayed()) {
-			click(google.getNoThanks(), "offers popup");
-		}else {
+	
+		/* TA-177 :
+		 * Verify Login fail, with wrong Instagram Account credentials
+		 * 
+		 */
+		@Test(priority=1,description=" TA-177 :Verify Login fail, with wrong Instagram Account credentials " )
+		public void inValidInstaLogin(){
+			Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "InValidGoogleCredentials");
 			
-		}
-		/*if(home.getOffersPopupUsProd().isDisplayed()) {
-		click(home.getOffersPopupUsProd(),"offers popup");
-	}*/
-		click(home.getHeaderSignIn(), "SignIn");
-		
-		String parentHandle = driver.getWindowHandle(); // get the current window handle
-		click(insta.getInsta(),"Instagram");
-		delay(4000);
-		for (String winHandle : driver.getWindowHandles()) {
-		    driver.switchTo().window(winHandle); // switch focus of WebDriver to the next found window handle (that's your newly opened window)
-		}
-		//code to do something on new window
-		
-		input(insta.getInstaUsername(),testData.get("EmailID"),"Username");
-		input(insta.getInstaPassword(),testData.get("Password"), "Password");
-		click(insta.getInstaLogin(),"Login");
-		delay(4000);
-		//driver.switchTo().window(parentHandle);
-		/*String expectedMessage = "Sorry, your password was incorrect. Please double-check your password";
-		String message = insta.getPasswordErr().getText();
-		Assert.assertTrue(message.contains(expectedMessage), "Your error message");
-		System.out.println(message);*/
-		verifyAssertEquals(getText(insta.getPasswordErr()), getProperty("insta.passwordError"));
-		
-	    
+			click(home.getHeaderSignIn(), "SignIn");
+			click(insta.getInsta(), "Instagram");
+			delay(2000);
+			String parentHandle = driver.getWindowHandle();
+			Set<String> childs = driver.getWindowHandles();
+			Iterator<String> ite = childs.iterator();
+			while (ite.hasNext()) {
+				String child = ite.next();
+				if (!parentHandle.equals(child)) {
+
+					driver.switchTo().window(child);
+					input(insta.getInstaUsername(), testData.get("EmailID"), "Username");
+					input(insta.getInstaPassword(), testData.get("Password"), "Password");
+					click(insta.getInstaLogin(), "Login");
+					delay(2000);
+				}
+			}
+			softAssertEquals(getText(insta.getPasswordErr()), getProperty("insta.passwordError"));
+			softAssertEquals(getText(insta.getInstaErr()), getProperty("insta.error"));
+			softAssertEquals(getText(insta.getUsernameErr()), getProperty("insta.usernameError"));
+			
+			
+			driver.switchTo().window(parentHandle);
+			try {
+				if(myacc.getSignout().isDisplayed()) {
+					Assert.fail("signout is displayed with invalid user");
+				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
 		
 	}
 

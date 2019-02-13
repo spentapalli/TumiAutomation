@@ -37,6 +37,7 @@
 		"Password": "Tumi_8864",
 		"EmailId_Instagram": "TumiUS",
 		"Password_Instagram": "tumi123",
+		"SKUID":"022020D2",
 		"NoramlSKUID": "014757D",
 		"PreOrderSKUID": "0484660D",
 		"BackOrderSKUID": "013234CPT",
@@ -58,7 +59,7 @@
 		"PostCode": "V4X 1A5",
 		"Phone": "12345678901",
 		"NameOnCard": "test",
-		"CardNumber": "4111111111111111",
+		"CardNumber": "41111111111111",
 		"CVV": "123",
 		"ExipryMonth": "4",
 		"ExpiryYear": "2020",
@@ -161,9 +162,9 @@
 		"shipment1": "Fairport NY 14450",
 		"shipment2": "Albany GA 31701",
 		"shipmentCA1":"ABBOTSFORD",
-		"shipmentCA2":"HOPE, BC, V0X 1L4"
-			"RecipientName": "Test",
-		"SenderName": "User",
+		"shipmentCA2":"HOPE, BC, V0X 1L4",
+		"RecipientName": "Test",
+		"SenderName": "User"
 	},
 	"PayPalDeatils": {
 		"EmailID": "test@tumi.com",
@@ -190,13 +191,18 @@
 	},
 	
 	"TumiLogin":{
-	"EmailID":"Employee.tumi@gmail.com",
-	"Password":"Tumi_8864"
+	"EmailID":"skomma@coredatalabs.com",
+	"Password":"tumi1234"
 	},
 	
 	"GoogleLogin":{
 	"EmailID":"emptumi",
 	"Password":"tumi1234"
+	},
+	
+	"InValidGoogleCredentials":{
+	"EmailID":"emptumi@gmail.com",
+	"Password":"tumi12"
 	},
 	
 	"InstagramLogin":{

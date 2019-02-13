@@ -56,6 +56,7 @@ public class OrderReviewPage extends GenericMethods {
 	public WebElement getPlaceOrder() {
 		
 		return elementToBeClickable(placeOrder);
+		//return explicitWait(placeOrder);
 	}
 	@FindBy(how=How.XPATH,using="//section[@id='confirmation-info-ctnr']/div/div/b")
 	private WebElement orderNumber;
@@ -68,7 +69,7 @@ public class OrderReviewPage extends GenericMethods {
 	private WebElement reviewOrder;
 
 	public WebElement getreviewOrder() {
-		return reviewOrder;
+		return explicitWait(reviewOrder);
 	}
 	
 	
@@ -77,7 +78,7 @@ public class OrderReviewPage extends GenericMethods {
 	private WebElement checkoutMessages;
 
 	public WebElement getCheckoutMessages() {
-		return checkoutMessages;
+		return explicitWait(checkoutMessages);
 	}
 	
 }

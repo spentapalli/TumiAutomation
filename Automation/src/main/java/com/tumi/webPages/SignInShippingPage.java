@@ -77,6 +77,6 @@ public class SignInShippingPage extends GenericMethods {
 	private WebElement addNewAddress;
 	
 	public WebElement getAddNewAddress() {
-		return addNewAddress;
+		return explicitWait(addNewAddress);
 	}
 }

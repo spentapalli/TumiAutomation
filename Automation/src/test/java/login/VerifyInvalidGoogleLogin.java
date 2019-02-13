@@ -13,7 +13,7 @@ import com.tumi.utilities.UIFunctions;
  *
  */
 public class VerifyInvalidGoogleLogin extends GenericMethods {
-	public Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "InValidCredentials");
+	public Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "InValidGoogleCredentials");
 	
 	/* TA-162
 	 * Verify in-valid Login with Google Account by giving wrong credentials.
@@ -35,7 +35,7 @@ public class VerifyInvalidGoogleLogin extends GenericMethods {
 		input(google.getPassword(), testData.get("Password"), "Password");
 		click(google.getPasswordNext(), "password next");
 		if(myacc.getSignout().isDisplayed()) {
-			Assert.fail(getProperty("google.passwordError"));
+			Assert.fail("signout is displayed with invalid user");
 		}
 
 		softAssertEquals(getText(google.getPasswordError()), getProperty("google.passwordError"));
