@@ -31,7 +31,8 @@ public class GoogleLogin extends GenericMethods {
 			if (!parentHandle.equals(child)) {
 
 				driver.switchTo().window(child);
-				input(google.getEmail(), testData.get("EmailID"), "gmail id");
+				delay(2000);
+				input(google.getEmail(),testData.get("EmailID"), "gmail id");
 				webclick(google.getFirstNext(), "Next");
 				input(google.getPassword(), testData.get("Password"), "Password");
 				webclick(google.getPasswordNext(), "password next");

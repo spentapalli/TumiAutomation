@@ -18,6 +18,7 @@
 		"PreOrderSKUID": "0484660D",
 		"BackOrderSKUID": "013234CPT",
 		"GlobalLocatorProductSKUID":"1111301041",
+		"DonationPurchaseSKUID":"TUMISTJUDE250",
 		"VoucherID": "T30-D5L6-E4LR-WEDL",
 		"RecipientName": "Test",
 		"SenderName": "User",
@@ -28,7 +29,8 @@
 		"FirstMonoInput": "1",
 		"SecondMonoInput": "2",
 		"ThirdMonoInput": "3",
-		"CAPostCode":"V2S 8B7"
+		"CAPostCode":"V2S 8B7",
+		"TumiIDPRoduct":"0117474T999"
 	},
 	"RegisteredOrders": {
 		"EmailID_Google": "emptumi@gmail.com",
@@ -142,6 +144,41 @@
 		"Message": "Hello Tumi",
 		"GiftCardnumber": "7018525193950000020"
 	},
+	"DonationPurchase":{
+	    "EmailID": "skomma@coredatalabs.com",
+		"FirstName": "Test",
+		"LastName": "TumiLast",
+		"AddressLine1": "1 LEFEUVRE RD",
+		"AddressLine2": "Add",
+		"TownCity": "ABBOTSFORD",
+		"Region": "California",
+		"PostCode": "V4X 1A5",
+		"Phone": "12345678901",
+		"NameOnCard": "test",
+		"CardNumber": "4111111111111111",
+		"CVV": "123",
+		"ExipryMonth": "4",
+		"ExpiryYear": "2020",
+		"SKUID":"TUMISTJUDE250"
+	},
+	"TumiIDPRoduct":{
+         "EmailID": "skomma@coredatalabs.com",
+		"FirstName": "Test",
+		"LastName": "TumiLast",
+		"AddressLine1": "1 LEFEUVRE RD",
+		"AddressLine2": "Add",
+		"TownCity": "ABBOTSFORD",
+		"Region": "California",
+		"PostCode": "V4X 1A5",
+		"Phone": "12345678901",
+		"NameOnCard": "test",
+		"CardNumber": "4111111111111111",
+		"CVV": "123",
+		"ExipryMonth": "4",
+		"ExpiryYear": "2020",
+		"SKUID":"0117474T999"
+		},
+	
 	"OrderWithTwoProducts": {
 		"EmailID": "skomma@coredatalabs.com",
 		"FirstName": "Test",
@@ -190,6 +227,7 @@
 		"TownCity": "ABCD",
 		"PostCode": "12345",
 		"Phone": "021234567"
+		"SKUID":"222389AT2"
 	},
 	
 	"TumiLogin":{
@@ -210,6 +248,11 @@
 	"InstagramLogin":{
 	"EmailID":"TumiUS",
 	"Password":"tumi123"
+	},
+	"InValidInstagramCredentials":{
+	"EmailID":"TumiUS",
+	"Password":"tumi12"
 	}
+	
 	
 }

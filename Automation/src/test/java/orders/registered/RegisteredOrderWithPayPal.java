@@ -24,7 +24,7 @@ import login.RegularLogin;
 		 */
 		@Test(description = " TA-285 Verify Order with merchandise Ready to ship with PayPal checkout-Registered user")
 		public void orderWithPayPalAsRegistered() throws Exception {
-			login("TumiTestData", "TumiLogin");
+			login("TumiTestData","TumiLogin");
 			UIFunctions.addProductToCart("TumiTestData","GuestOrders");
 			click(pdp.getAddToCart(),"Add to cart");
 			click(minicart.getProceedCheckOut(), "Proceed to Checkout");
