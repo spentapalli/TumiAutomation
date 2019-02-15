@@ -85,14 +85,16 @@ public class MyAccountPage extends GenericMethods {
 	
 
 	
-	// Same for korea
+	//same for korea
 	@FindBy(how = How.XPATH, using = "//div[@id='tm-panel-login-confirmation']/header/span")
 	private WebElement welcomeMessage;
 
 	public WebElement getWelcomeMessage() {
-
+	
+	
 		return welcomeMessage;
 	}
+	
 
 	@FindBy(how = How.XPATH, using = "//h4[contains(text(),'New here?')]")
 	private WebElement newHereMessage;

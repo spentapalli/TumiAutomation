@@ -18,7 +18,7 @@ import com.tumi.utilities.UIFunctions;
  */
 public class VerifyInvalidInstaLogin extends GenericMethods{
 	
-public Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "VerifyInvalidInstaLogin");
+public Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "InValidInstagramCredentials");
 	
 	
 		/* TA-177 :

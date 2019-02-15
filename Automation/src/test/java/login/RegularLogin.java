@@ -55,5 +55,5 @@ public class RegularLogin extends GenericMethods {
 		//Assert.fail(getProperty("home.invalidCredentials"));
 
 	}
-
 }
+
