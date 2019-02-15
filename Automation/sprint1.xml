@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="TumiReport" parallel="none">
-
-
-
-
+ <suite name="TumiReport">
 
 	<test name="GlobalLocatororder">
 		<classes>
@@ -66,10 +62,10 @@
 			<class name="orders.registered.RegisteredOrderWithPayPal" />
 		</classes>
 	</test>
-	<test name="RegisterOrderWithVoucher">
+	<test name="RegisterOrderWithGiftMsg">
 		<parameter name="Country" value="US"></parameter>
 		<classes>
-			<class name="orders.registered.RegisterOrderWithVoucher" />
+			<class name="orders.registered.RegisterOrderWithGiftMsg" />
 		</classes>
 	</test>
 	<test name="RegisteredOrder">

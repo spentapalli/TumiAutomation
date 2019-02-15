@@ -57,12 +57,20 @@ public class GenericMethods extends GlobalConstants {
 			input(home.getUserName(), testData.get("EmailID"), "Email Address");
 			input(home.getPassWord(), testData.get("Password"), "Password");
 			click(home.getLogOn(), "Login");
+			
+				if (myacc.getSignout().isDisplayed()) {
+					verifyAssertContains(getText(myacc.getWelcomeMessage()), getProperty("login.success.message"),
+							"Successfully logged with Regular user valid credentials");
+					
+				}else {
+					Assert.fail("user signin is failed");
+				}
 
-			// click(myacc.getMyAccountClose(), "My Account Close");
-			// removeExistingCart();
+			click(myacc.getMyAccountClose(), "My Account Close");
 		} catch (Exception e) {
 			Assert.fail("Fail to Login due to " + e.getMessage());
 		}
+		//removeExistingCart();
 	}
 
 	public static void click(WebElement element, String buttonName) {
@@ -620,12 +628,16 @@ public class GenericMethods extends GlobalConstants {
 	public void removeExistingCart() {
 		int cart = parseInt(getText(home.getMinicartCount()));
 		if (cart != 0) {
+			delay(2000);
 			click(home.getMinicart(), "Mini Cart");
-			click(minicart.getProceedCheckOut(), "Proceed to Checkout");
-			for (WebElement ele : checkout.getRemoveProducts()) {
+			//click(minicart.getProceedCheckOut(), "Proceed to Checkout");
+			for (WebElement ele : checkout.getRemoveMinicartProducts()) {
+				delay(2000);
 				click(ele, getText(ele));
-				driver.navigate().refresh();
+				//driver.navigate().refresh();
 			}
+			
+			
 		}
 	}
 }
