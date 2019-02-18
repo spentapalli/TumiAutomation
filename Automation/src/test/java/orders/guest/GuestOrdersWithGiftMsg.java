@@ -42,7 +42,7 @@ public class GuestOrdersWithGiftMsg extends GenericMethods {
 		UIFunctions.completeOrder();
 	}
 
-	@Test(priority = 1, description = "Sprint 2- TA- 179 Verify Order with merchandise Pre order Ready to ship with Gift message for Guest User")
+	//@Test(priority = 1, description = "Sprint 2- TA- 179 Verify Order with merchandise Pre order Ready to ship with Gift message for Guest User")
 	public void preOrderWithGiftMsgAsGuest() {
 
 		UIFunctions.addProductToCart("TumiTestData", "PreOrderProduct");
@@ -62,7 +62,7 @@ public class GuestOrdersWithGiftMsg extends GenericMethods {
 		UIFunctions.completeOrder();
 	}
 
-	@Test(priority = 2, description = "Sprint 2- TA- 180 Verify Order with merchandise Back order Ready to ship with Gift message for Guest User")
+	//@Test(priority = 2, description = "Sprint 2- TA- 180 Verify Order with merchandise Back order Ready to ship with Gift message for Guest User")
 	public void backOrderWithGiftMsgAsGuest() {
 
 		UIFunctions.addProductToCart("TumiTestData", "BackOrderProduct");

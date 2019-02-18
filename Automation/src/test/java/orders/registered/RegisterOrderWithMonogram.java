@@ -5,6 +5,11 @@ import org.testng.annotations.Test;
 import com.tumi.utilities.GenericMethods;
 import com.tumi.utilities.UIFunctions;
 
+
+/**
+ * @author Shwetha Capo
+ *
+ */
 public class RegisterOrderWithMonogram extends GenericMethods {
 	
 	@Test(description = " Sprint 2- TA- 185 Verify Order with merchandise Ready to ship + Personalization - Registered User")

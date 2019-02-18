@@ -240,7 +240,7 @@ public class UIFunctions extends GenericMethods {
 
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
 
-		final String pdpURL = GlobalConstants.url + "/p/" + testData.get("BackOrderSKUID");
+		final String pdpURL = GlobalConstants.url + "/p/" + testData.get("BackSKUID");
 		driver.get(pdpURL);
 
 		// due to product search issue i am using above code to get the product.
@@ -291,9 +291,13 @@ public class UIFunctions extends GenericMethods {
 	public static void addMonogram(String sheet, String testCase) {
 
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
+		
+		click(mono.getAddPersonalization(), "Add Personalization");
+		if(selectedCountry.contains("배송하기: 대한민국")) {
+			click(mono.getKoreaFirstStep(),"next step");
+		}
 
 		// domClick(mono.getComplimentaryMono(),"Monogram");
-		click(mono.getAddPersonalization(), "Add Personalization");
 		input(mono.getFirstMonoInput(), testData.get("FirstMonoInput"), "First Mono Input");
 		input(mono.getSecondMonoInput(), testData.get("SecondMonoInput"), "Second Mono Input");
 		input(mono.getThirdMonoInput(), testData.get("ThirdMonoInput"), "Third Mono Input");
@@ -535,7 +539,7 @@ public class UIFunctions extends GenericMethods {
 	public static void addGiftBox() {
 		
 		if (selectedCountry.contains("배송하기: 대한민국")) {
-			click(gift.getCheckStandardGift(), "Stanadard gift box");
+			domClick(gift.getCheckStandardGift(), "Stanadard gift box");
 			
 		}else {
 		click(gift.getCheckPremiumGift(), "Premium GiftBox");
