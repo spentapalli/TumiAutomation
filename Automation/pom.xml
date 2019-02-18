@@ -80,8 +80,8 @@
 					<version>2.21.0</version>
 					<configuration>
 						<systemPropertyVariables>
-							<browsername>chrome</browsername>
-							<countryName>CANADA</countryName>
+							<browsername>Chrome</browsername>
+							<countryName>Canada</countryName>
 						</systemPropertyVariables>
 						<forkCount>0</forkCount>
 						<executable>C:\Program Files\Java\jdk1.8.0_161\bin\javac.exe</executable>
