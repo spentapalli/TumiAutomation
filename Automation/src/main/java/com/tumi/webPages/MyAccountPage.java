@@ -112,7 +112,7 @@ public WebElement getMyAccountClose() {
 		if (selectedCountry.contains("배송하기: 대한민국")) {
 			return explicitWait(krmyAccountClose);
 			} else {
-		return myAccountClose;
+		return explicitWait(myAccountClose);
 	}
 	}
 
