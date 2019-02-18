@@ -8,6 +8,10 @@ import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
 import com.tumi.utilities.UIFunctions;
 
+/**
+ * @author Suresh
+ *
+ */
 public class TA extends GenericMethods {
 
 	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestOrders");
@@ -192,8 +196,7 @@ public class TA extends GenericMethods {
 	//TA24
 	@Test(priority=7,description = "Verify Order with 'Back Order' SKU + Global locator-Guest user")
 	public void verifyGuestOrderWithBackOrderAndGloabalLocator() {
-
-	UIFunctions.addProductToCart("TumiTestData", "BackOrderProduct");
+    UIFunctions.addProductToCart("TumiTestData", "BackOrderProduct");
 	click(pdp.getAddToCart(), "Add To Cart");
 	click(minicart.getContinueShopping(), "Continue Shopping");
 	
