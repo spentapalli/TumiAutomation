@@ -71,8 +71,8 @@ public class UIFunctions extends GenericMethods {
 	public static void addCardDetails(String sheet, String testCaseName) {
 
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCaseName);
-  
-		// billing page                                    
+
+		// billing page
 		input(guestBillPage.getNameOnCard(), testData.get("NameOnCard"), "Name on Card");
 
 		// invalid card number
@@ -87,7 +87,7 @@ public class UIFunctions extends GenericMethods {
 		input(guestBillPage.getCvvNumber(), testData.get("CVV"), "Cvv Number");
 		input(guestBillPage.getemail(), testData.get("EmailID"), "Email ID");
 		input(guestBillPage.getPhoneNumber(), testData.get("Phone"), "Phone number");
-		//webclick(review.getOrderSummary(), "Order Summary");
+		// webclick(review.getOrderSummary(), "Order Summary");
 		domClick(guestBillPage.getReviewOrder(), "Review your order");
 
 		// elect sel = new Select(new
@@ -134,8 +134,9 @@ public class UIFunctions extends GenericMethods {
 		}
 
 	}
+
 	public static void selectStateInFF() {
-		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData","GuestOrders");
+		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestOrders");
 
 		driver.findElement(By.xpath("//span[@name='regionIso']/span[3]")).click();
 		delay(2000);
@@ -143,9 +144,7 @@ public class UIFunctions extends GenericMethods {
 
 		for (int i = 1; i < states.size(); i++) {
 
-			WebElement state = driver
-					.findElement(By.xpath("//span[@name='regionIso']/following::ul/li[" + i + "]/a"));
-		
+			WebElement state = driver.findElement(By.xpath("//span[@name='regionIso']/following::ul/li[" + i + "]/a"));
 
 			if (getText(state).equals("British Columbia")) {
 
@@ -153,18 +152,17 @@ public class UIFunctions extends GenericMethods {
 				delay(2000);
 				input(shipping.getPostcode(), testData.get("CAPostCode"), "postal code");
 				break;
-			}
-			else {
+			} else {
 				if (getText(state).equals("New Jersey")) {
 
 					state.click();
 					delay(2000);
 					input(shipping.getPostcode(), testData.get("PostCode"), "postal code");
 					break;
-				
+
+				}
 			}
-		}	
-	}
+		}
 	}
 
 	public static void addInvalidCardDetails(String sheet, String testCaseName) {
@@ -198,7 +196,7 @@ public class UIFunctions extends GenericMethods {
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
 
 		if (selectedCountry.contains("배송하기: 대한민국")) {
-			final String pdpURL = GlobalConstants.urlkr + "/p/" + testData.get("SKUID");
+			final String pdpURL = GlobalConstants.urlkr + "/p/" + testData.get("KrSKUID"); //for getting monogram available product for korea.
 			driver.get(pdpURL);
 
 		} else if (selectedCountry.contains("Canada")) {
@@ -437,7 +435,7 @@ public class UIFunctions extends GenericMethods {
 	public static void completeOrder() {
 
 		domClick(review.getPlaceOrder(), "Place Order");
-		
+
 		do {
 			delay(2000);
 		} while (confirmation.getWithForConfirmation().isDisplayed());
@@ -450,7 +448,7 @@ public class UIFunctions extends GenericMethods {
 		logger.log(Status.INFO, "Thank you for Your Order, here is your Order Number " + orderNumber);
 		delay(3000);
 		captureOrderConfScreen("OrderConfirmation");
-		
+
 	}
 
 	public static void addPromotionalCodeAtCart(String sheet, String testCase) {
@@ -535,7 +533,14 @@ public class UIFunctions extends GenericMethods {
 	}
 
 	public static void addGiftBox() {
+		
+		if (selectedCountry.contains("배송하기: 대한민국")) {
+			click(gift.getCheckStandardGift(), "Stanadard gift box");
+			
+		}else {
 		click(gift.getCheckPremiumGift(), "Premium GiftBox");
+		}
+		
 	}
 
 	public static void addVoucherID(String sheet, String testCase) {
@@ -641,7 +646,7 @@ public class UIFunctions extends GenericMethods {
 		} else if (countryName.toUpperCase().equalsIgnoreCase("CANADA")) {
 
 			countrySelection("Canada");
-			
+
 			// logger.log(Status.INFO, "Execution initiated for Canada");
 
 		} else if (countryName.toUpperCase().equalsIgnoreCase("KOREA")) {
@@ -686,23 +691,23 @@ public class UIFunctions extends GenericMethods {
 
 		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "OrderWithTwoProducts");
 		click(multiShip.getMultiShipClick(), "MultiShipment");
-		//delay(2000);
+		// delay(2000);
 		domClick(multiShip.getAddShippment0(), "add shipment 1");
-		if (selectedCountry.contains("Canada")){
+		if (selectedCountry.contains("Canada")) {
 			addMultishipGuestDeatils(testData.get("shipmentCA1"), testData.get("AddressLine1"));
-		}else {
-		addMultishipGuestDeatils(testData.get("shipment1"), testData.get("AddressLine1"));
+		} else {
+			addMultishipGuestDeatils(testData.get("shipment1"), testData.get("AddressLine1"));
 		}
 		click(multiShip.getNext(), "Continue next shipping");
 		webclick(shipMethod.getStandardShippingMethod(), "Standard Shipping Method");
 		click(multiShip.getNextShipment(), "Continue next shipment");
 		domClick(multiShip.getAddShippment0(), "add shipment 2");
-		if (selectedCountry.contains("Canada")){
+		if (selectedCountry.contains("Canada")) {
 			addMultishipGuestDeatils(testData.get("shipmentCA2"), testData.get("nextAddressLine1"));
-		}else {
+		} else {
 			addMultishipGuestDeatils(testData.get("shipment2"), testData.get("nextAddressLine1"));
 		}
-		
+
 		click(multiShip.getNext(), "Continue next shipping");
 		webclick(shipMethod.getStandardShippingMethod(), "Standard Shipping Method");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
@@ -715,10 +720,10 @@ public class UIFunctions extends GenericMethods {
 		delay(2000);
 		domClick(multiShip.getAddShippment0(), "add shipment 1");
 		domClick(signinBill.getAddNewAddress(), "Add new address");
-		if (selectedCountry.contains("Canada")){
+		if (selectedCountry.contains("Canada")) {
 			addMultishipGuestDeatils(testData.get("shipmentCA1"), testData.get("AddressLine1"));
-		}else {
-		addMultishipGuestDeatils(testData.get("shipment1"), testData.get("AddressLine1"));
+		} else {
+			addMultishipGuestDeatils(testData.get("shipment1"), testData.get("AddressLine1"));
 		}
 		click(multiShip.getNext(), "Continue next shipping");
 		webclick(shipMethod.getStandardShippingMethod(), "Standard Shipping Method");
@@ -726,9 +731,9 @@ public class UIFunctions extends GenericMethods {
 		delay(3000);
 		domClick(multiShip.getAddShippment0(), "add shipment 2");
 		domClick(signinBill.getAddNewAddress(), "Add new address");
-		if (selectedCountry.contains("Canada")){
+		if (selectedCountry.contains("Canada")) {
 			addMultishipGuestDeatils(testData.get("shipmentCA2"), testData.get("nextAddressLine1"));
-		}else {
+		} else {
 			addMultishipGuestDeatils(testData.get("shipment2"), testData.get("nextAddressLine1"));
 		}
 		click(multiShip.getNext(), "Continue next shipping");
@@ -741,25 +746,24 @@ public class UIFunctions extends GenericMethods {
 		input(shipping.getFirstName(), testData.get("FirstName"), "First Name");
 		input(shipping.getLastName(), testData.get("LastName"), "Last Name");
 		input(shipping.getAddressLine1(), data1, "Address Line1");
-		explicitWait(shipping.getSelectedAddressLine());//input[@name='line1']/following::div[3]
+		explicitWait(shipping.getSelectedAddressLine());// input[@name='line1']/following::div[3]
 		if (selectedCountry.contains("Canada")) {
 			for (WebElement ele : shipping.getListAddressLine1()) {
 				if (getText(ele).contains("ABBOTSFORD, BC")) {
 					delay(2000);
 					click(ele, "AddressList");
 					break;
-				}else if (getText(ele).contains("HOPE, BC")) {
+				} else if (getText(ele).contains("HOPE, BC")) {
 					delay(2000);
 					click(ele, "AddressList");
 					break;
 				}
-			/*for (int i = 1; i < shipping.getAddListCA().size(); i++) {
-				WebElement add = driver.findElement(By.xpath("//input[@name='line1']/following::div[2]/div[" + i + "]"));
-				if (add.getText().contains(data)) {
-					click(add, "Address Line1");
-					break;
-				}
-			}*/
+				/*
+				 * for (int i = 1; i < shipping.getAddListCA().size(); i++) { WebElement add =
+				 * driver.findElement(By.xpath("//input[@name='line1']/following::div[2]/div[" +
+				 * i + "]")); if (add.getText().contains(data)) { click(add, "Address Line1");
+				 * break; } }
+				 */
 			}
 		} else {
 			for (int i = 1; i < shipping.getAddList().size(); i++) {
@@ -779,7 +783,7 @@ public class UIFunctions extends GenericMethods {
 		// billing page
 		input(guestBillPage.getNameOnCard(), testData.get("NameOnCard"), "Name on Card");
 		input(guestBillPage.getCardNumber(), testData.get("CardNumber"), "Card Number");
-		
+
 		if (browserName.equals("firefox")) {
 			selectMonthInFF();
 			selectYearInFF();
@@ -787,7 +791,7 @@ public class UIFunctions extends GenericMethods {
 			selectByVisibleText(guestBillPage.getExpiryMonth(), "05", "Expiry Month");
 			selectByVisibleText(guestBillPage.getExpiryYear(), "2020", "Expiry Year");
 		}
-		
+
 		input(guestBillPage.getCvvNumber(), testData.get("CVV"), "Cvv Number");
 		input(guestBillPage.getemail(), testData.get("EmailID"), "Email ID");
 		input(guestBillPage.getPhoneNumber(), testData.get("Phone"), "Phone number");
@@ -796,21 +800,20 @@ public class UIFunctions extends GenericMethods {
 		input(shipping.getAddressLine1(), testData.get("AddressLine1"), "Address line1");
 		input(shipping.getTown(), testData.get("TownCity"), "Town");
 		if (browserName.equals("firefox")) {
-				selectStateInFF();
-		}
-		else if(selectedCountry.contains("Canada")) {
+			selectStateInFF();
+		} else if (selectedCountry.contains("Canada")) {
 			Select dropdown = new Select(driver.findElement(By.name("regionIso")));
 			dropdown.selectByVisibleText("British Columbia");
 			click(shipping.getRegionIso(), "Region");
 			input(shipping.getPostcode(), testData.get("CAPostCode"), "postal code");
-		}else {
-			
-		Select dropdown = new Select(driver.findElement(By.name("regionIso")));
-		dropdown.selectByVisibleText("New Jersey");
-		click(shipping.getRegionIso(), "Region");
-		input(shipping.getPostcode(), testData.get("PostCode"), "postal code");
-	}
-		
+		} else {
+
+			Select dropdown = new Select(driver.findElement(By.name("regionIso")));
+			dropdown.selectByVisibleText("New Jersey");
+			click(shipping.getRegionIso(), "Region");
+			input(shipping.getPostcode(), testData.get("PostCode"), "postal code");
+		}
+
 		domClick(guestBillPage.getReviewOrder(), "Review your order");
 
 	}
@@ -818,72 +821,157 @@ public class UIFunctions extends GenericMethods {
 	public static void addTumiStudio() {
 		click(tumiId.getTumiIdDesign(), "TumiID");
 		delay(2000);
-		// click(tumiId.getMainBody(),"Main Body");
-		click(tumiId.getShadowGrayColor(), "Main Body in Shadow gray Color");
-		delay(2000);
+
+		for (WebElement ele : tumiId.getMainBodyList()) {
+			if (getText(ele).contains("Shadow Grey")) {
+				delay(2000);
+				click(ele, "MainBody color");
+				break;
+			}
+		}
 		click(tumiId.getFrontPocket(), "Front Pocket");
-		click(tumiId.getBlackColor(), "Front Pocket Red Color");
-		click(tumiId.getSidePockets(), "Side Pockets");
-		click(tumiId.getAtlanticBlueColor(), "Side Pocket Blue Color");
+
+		for (WebElement ele : tumiId.getFrontPocketList()) {
+			if (getText(ele).contains("Black")) {
+				delay(2000);
+				click(ele, "Front Pocket color");
+				break;
+			}
+		}
+		click(tumiId.getSidePocket(), "Side Pocket");
+
+		for (WebElement ele : tumiId.getSidePocketList()) {
+			if (getText(ele).contains("Atlantic")) {
+				delay(2000);
+				click(ele, "Side Pocket color");
+				break;
+			}
+		}
+
 		click(tumiId.getPatchnTag(), "Patch & Tag");
-		click(tumiId.getRedColor(), "Patch n Tag in Red color");
+
+		for (WebElement ele : tumiId.getPatchnTagList()) {
+			if (getText(ele).contains("TUMI red")) {
+				delay(2000);
+				click(ele, "Patch n Tag color");
+				break;
+			}
+		}
+
 		click(tumiId.getWebbing(), "Webbing");
-		click(tumiId.getBlackColor(), "Webbing Color");
+
+		for (WebElement ele : tumiId.getWebbingList()) {
+			if (getText(ele).contains("Black")) {
+				delay(2000);
+				click(ele, "Webbing color");
+				break;
+			}
+		}
+
 		click(tumiId.getLeatherAccents(), "Leather Accents");
-		click(tumiId.getAtlanticBlueColor(), "Leather in Blue color");
+
+		for (WebElement ele : tumiId.getLeatherAccentsList()) {
+			if (getText(ele).contains("Atlantic")) {
+				delay(2000);
+				click(ele, "Webbing color");
+				break;
+			}
+		}
+
 		click(tumiId.getHardWare(), "Hard Ware");
-		click(tumiId.getGoldColor(), "Hardware in Gold Color");
+
+		for (WebElement ele : tumiId.getHardwareList()) {
+			if (getText(ele).contains("Gold")) {
+				delay(2000);
+				click(ele, "Hardware color");
+				break;
+			}
+		}
+
 		click(tumiId.getExternalZipper(), "External Zipper");
-		click(tumiId.getAtlanticBlueColor(), "External Zipper in blue color");
+
+		for (WebElement ele : tumiId.getExternalZipperList()) {
+			if (getText(ele).contains("Atlantic")) {
+				delay(2000);
+				click(ele, "External Zipper color");
+				break;
+			}
+		}
+
 		click(tumiId.getAccentZipper(), "Accent Zipper");
-		click(tumiId.getGoldColor(), "Accent in gold color");
+
+		for (WebElement ele : tumiId.getAccentZipperList()) {
+			if (getText(ele).contains("Gold")) {
+				delay(2000);
+				click(ele, "Accent Zipper color");
+				break;
+			}
+		}
+
 		click(tumiId.getInteriorLining(), "Interior Lining");
-		click(tumiId.getFossilColor(), "Interior in Fossil color");
-		// monogram
-		click(tumiId.getMonograming(), "tumiIdgramming");
+
+		for (WebElement ele : tumiId.getAccentZipperList()) {
+			if (getText(ele).contains("Light Fossil")) {
+				delay(2000);
+				click(ele, "Interior Lining color");
+				break;
+			}
+		}
+		click(tumiId.getMonogram(), "tumiIdgramming");
 		delay(2000);
-		click(tumiId.getHeart(), "Heart symbol");
-		click(tumiId.getHeart(), "Heart symbol");
-		click(tumiId.getHeart(), "Heart Symbol");
-		/*
-		 * input(tumiId.getFirstInput(), tumiId.getHeart(), "First tumiId Input");
-		 * input(tumiId.getSecondInput(), tumiId.getHeart(), "Second tumiId Input");
-		 * input(tumiId.getThirdInput(), tumiId.getHeart(), "Third tumiId Input");
-		 */
+
+		for (int i = 1; i <= 3; i++) {
+			for (WebElement ele : tumiId.getFirstStepIntials()) {
+				if (getText(ele).contains("2")) {
+					delay(2000);
+					click(ele, "Heart");
+					break;
+				}
+			}
+		}
+
 		click(tumiId.getFirstNext(), "Next");
-		click(tumiId.getTumiWhiteColor(), "White color");
+
+		for (WebElement ele : tumiId.getChooseColor()) {
+			if (getText(ele).contains("White")) {
+				delay(2000);
+				click(ele, "color");
+				break;
+			}
+		}
+
 		click(tumiId.getSecondNext(), "Next");
 		click(tumiId.getCheckBox(), "Check for both apply");
 		click(tumiId.getApply(), "Apply");
 		click(tumiId.getSaveDesign(), "Save");
 
 	}
-	
-public static void GiftCard(String sheet,String testCase) {
-	Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
-	final String pdpURL = GlobalConstants.url + "/p/" + testData.get("SKUID");
-	driver.get(pdpURL);
-	//Gift card
-	        click(guestBillPage.getGiftcardButton(),"Gift Card Button");
-			
-			input(guestBillPage.getGiftcard(),testData.get("GiftCardNo"),"Gift Card number");
-			input(guestBillPage.getGiftpin(),testData.get("GiftPinNo"),"Gift Pin number");
-			click(guestBillPage.getaddGiftcardApply(),"Gift Card Apply Button");
-			input(guestBillPage.getNameOnCard(), testData.get("NameOnCard"), "Name on Card");
 
-			// invalid card number
-			input(guestBillPage.getCardNumber(), testData.get("CardNumber"), "Card Number");
-			if (browserName.equals("firefox")) {
-				selectMonthInFF();
-				selectYearInFF();
-			}else {
-				selectByVisibleText(guestBillPage.getExpiryMonth(), "05", "Expiry Month");
-				selectByVisibleText(guestBillPage.getExpiryYear(), "2020", "Expiry Year");
-			}
-			input(guestBillPage.getCvvNumber(), testData.get("CVV"), "Cvv Number");
-			input(guestBillPage.getemail(), testData.get("EmailID"), "Email ID");
-			input(guestBillPage.getPhoneNumber(), testData.get("Phone"), "Phone number");
-			domClick(guestBillPage.getReviewOrder(), "Review your order");
+	public static void GiftCard(String sheet, String testCase) {
+		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
+		final String pdpURL = GlobalConstants.url + "/p/" + testData.get("SKUID");
+		driver.get(pdpURL);
+		// Gift card
+		click(guestBillPage.getGiftcardButton(), "Gift Card Button");
 
-}
+		input(guestBillPage.getGiftcard(), testData.get("GiftCardNo"), "Gift Card number");
+		input(guestBillPage.getGiftpin(), testData.get("GiftPinNo"), "Gift Pin number");
+		click(guestBillPage.getaddGiftcardApply(), "Gift Card Apply Button");
+		input(guestBillPage.getNameOnCard(), testData.get("NameOnCard"), "Name on Card");
+
+		// invalid card number
+		input(guestBillPage.getCardNumber(), testData.get("CardNumber"), "Card Number");
+		if (browserName.equals("firefox")) {
+			selectMonthInFF();
+			selectYearInFF();
+		} else {
+			selectByVisibleText(guestBillPage.getExpiryMonth(), "05", "Expiry Month");
+			selectByVisibleText(guestBillPage.getExpiryYear(), "2020", "Expiry Year");
+		}
+		input(guestBillPage.getCvvNumber(), testData.get("CVV"), "Cvv Number");
+		input(guestBillPage.getemail(), testData.get("EmailID"), "Email ID");
+		input(guestBillPage.getPhoneNumber(), testData.get("Phone"), "Phone number");
+		domClick(guestBillPage.getReviewOrder(), "Review your order");
+
+	}
 }

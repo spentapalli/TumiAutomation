@@ -1,4 +1,4 @@
-//TA-58 : Verify Tumi Login Fail, with wrong credentials
+
 
 package login;
 
@@ -19,8 +19,12 @@ import com.tumi.utilities.UIFunctions;
 public class VerifyInvalidRegularLogin extends GenericMethods {
 	
 	public Map<String, String> testData = ReadTestData.retrieveData("Login", "InValidCredentials");
+	
+	/*TA-58 : 
+	Verify Tumi Login Fail, with wrong credentials
+	*/
 
-	@Test
+	@Test(priority = 1, description = "TA-58 : Verify Tumi Login Fail, with wrong credentials")
 	public void verifyInvalidUserMessage() {
 
 		UIFunctions.closeSignUp();
