@@ -15,6 +15,7 @@
 		"ExipryMonth": "4",
 		"ExpiryYear": "2020",
 		"SKUID":"00171B",
+		"KrSKUID":"0222389AT2",
 		"PreOrderSKUID": "0484660D",
 		"BackOrderSKUID": "013234CPT",
 		"GlobalLocatorProductSKUID":"1111301041",
@@ -29,8 +30,7 @@
 		"FirstMonoInput": "1",
 		"SecondMonoInput": "2",
 		"ThirdMonoInput": "3",
-		"CAPostCode":"V2S 8B7",
-		"TumiIDPRoduct":"0117474T999"
+		"CAPostCode":"V2S 8B7"
 	},
 	"RegisteredOrders": {
 		"EmailID_Google": "emptumi@gmail.com",
@@ -41,7 +41,8 @@
 		"EmailID": "Vendor.tumi@gmail.com",
 		"Password": "Tumi_8864",
 		"Password_Instagram": "tumi123",
-		"SKUID":"022020D2",
+		"SKUID":"022061D2",
+		"KrSKUID":"0222389AT2",
 		"NoramlSKUID": "014757D",
 		"PreOrderSKUID": "0484660D",
 		"BackOrderSKUID": "013234CPT",
@@ -226,7 +227,7 @@
 		"AddressLine2": "Add",
 		"TownCity": "ABCD",
 		"PostCode": "12345",
-		"Phone": "021234567"
+		"Phone": "021234567",
 		"SKUID":"222389AT2"
 	},
 	
@@ -252,6 +253,10 @@
 	"InValidInstagramCredentials":{
 	"EmailID":"TumiUS",
 	"Password":"tumi12"
+	},
+	
+	"TumiStudio":{
+	"SKUID":"0117474T999"
 	}
 	
 	

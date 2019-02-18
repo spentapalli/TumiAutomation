@@ -23,7 +23,7 @@ public class TumiStudioOrder extends GenericMethods{
 	@Test(description ="TA-10 verify order with Tumi studio - Guest user")
 	public void testTumiIdOrder() throws InterruptedException{
 		
-		UIFunctions.addProductToCart("TumiTestData","TumiIDPRoduct");
+		UIFunctions.addProductToCart("TumiTestData","TumiStudio");
 		UIFunctions.addTumiStudio();
 		click(pdp.getAddToCart(), "Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");

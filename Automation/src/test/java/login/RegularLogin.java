@@ -40,22 +40,5 @@ public class RegularLogin extends GenericMethods {
 		}*/
 	}
 
-	@Test(priority = 1, description = "TA-58 : Verify Tumi Login Fail, with wrong credentials")
-	public void verifyInvalidUserMessage() {
-
-		login("TumiTestData", "InValidGoogleCredentials");
-		/*try {
-			if (myacc.getSignout().isDisplayed()) {
-				verifyAssertContains(getText(myacc.getWelcomeMessage()), getProperty("login.success.message"),
-						"Failed to login with regular user with wrong credentials");
-				click(myacc.getSignout(), "Signout");
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}*/
-
-		//Assert.fail(getProperty("home.invalidCredentials"));
-
-	}
 }
 
