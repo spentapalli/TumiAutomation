@@ -4,6 +4,8 @@ import java.io.File;
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 import org.openqa.selenium.Dimension;
@@ -61,6 +63,8 @@ import com.tumi.webPages.SignInBillingPage;
 import com.tumi.webPages.SignInShippingPage;
 import com.tumi.webPages.SinglePageCheckout;
 import com.tumi.webPages.TumiStudio;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 /**
  * @author Suuresh clean test -Dsurefire.suiteXmlFiles=regressionTests.xml
@@ -125,11 +129,30 @@ public class Reports {
 		}
 	}
 
+	public static void launchMobile(String name) {
+
+		/*
+		 * Device Name: iPhone X,Galaxy S5 Pixel 2
+		 */
+		System.setProperty(GlobalConstants.chrome, GlobalConstants.chromePath);
+
+		Map<String, String> emu = new HashMap<String, String>();
+		emu.put("deviceName", name);
+		Map<String, Object> options = new HashMap<String, Object>();
+		options.put("mobileEmulation", emu);
+		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+		ChromeOptions chromeOpt = new ChromeOptions();
+		chromeOpt.addArguments("disable-infobars");
+		chromeOpt.addArguments("--disable-notifications");
+		chromeOpt.merge(capabilities);
+		driver = new ChromeDriver(capabilities);
+	}
+
 	@BeforeClass(alwaysRun = true)
 	public static void launchBrowser() throws Exception {
 		getBrowser();
 		maximizeBrowser();
-
 		if (browserName.equals("ie")) {
 			GenericMethods.delay(2000);
 			driver.navigate().to("javascript:document.getElementById('overridelink').click()");
@@ -139,11 +162,12 @@ public class Reports {
 		} else {
 			getURL(GenericMethods.getProperty("tumi.appName"));
 		}
+
 		UIFunctions.selectCountry();
 		// driver.navigate().to("https://ca.stg-hybris-akamai.tumi.com");
 	}
 
-	//@AfterClass(alwaysRun = true)
+	@AfterClass(alwaysRun = true)
 	public static void closeBrowser() {
 		driver.close();
 	}
@@ -226,13 +250,14 @@ public class Reports {
 
 	}
 
+	@SuppressWarnings("deprecation")
 	public static void getBrowser() throws Exception {
 
 		// logger = report.createTest("Browser Name");
 
 		browserName = System.getProperty("browsername");
 
-		System.out.println("Jenkins Parameter " + browserName);
+		System.out.println("Parameter " + browserName);
 
 		if (null == browserName || browserName.isEmpty() || browserName.equalsIgnoreCase("chrome")) {
 
@@ -241,6 +266,7 @@ public class Reports {
 			options.addArguments("--disable-notifications");
 			System.setProperty(GlobalConstants.chrome, GlobalConstants.chromePath);
 			driver = new ChromeDriver(options);
+
 			// logger.log(Status.INFO, "Chrome Browser is initiated Execution");
 
 		} else if (browserName.equalsIgnoreCase("firefox")) {
@@ -265,6 +291,10 @@ public class Reports {
 			System.setProperty(GlobalConstants.ie, GlobalConstants.iePath);
 			driver = new InternetExplorerDriver(capabilities);
 			// logger.log(Status.INFO, "InternetExplorer Browser is initiated Execution");
+			
+		} else if (browserName.equalsIgnoreCase("mobile")) {
+
+			launchMobile("iPhone X");
 		}
 	}
 

@@ -3,7 +3,7 @@
 <suite name="Suite">
 	<test thread-count="5" name="Test">
 		<classes>
-			<class name="orders.guest.OrderWithGiftBoxIE">
+			<class name="orders.guest.OrderWithGiftBox">
 				<methods>
 					<include name="backOrderWithGiftBox">
 					</include>

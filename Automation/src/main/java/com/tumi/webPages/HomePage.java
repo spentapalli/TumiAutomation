@@ -333,6 +333,14 @@ public WebElement getkrHeaderCustomerService() {
 	}
 
 		
+	// Mobile
+	@FindBy(how = How.XPATH, using = "//select[@name='country']")
+	private WebElement mobileCountry;
+
+	public WebElement getMobileCountry() {
+		
+		return mobileCountry;
+	}
 	
 	
 	

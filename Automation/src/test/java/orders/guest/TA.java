@@ -8,6 +8,10 @@ import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
 import com.tumi.utilities.UIFunctions;
 
+/**
+ * @author Suresh
+ *
+ */
 public class TA extends GenericMethods {
 
 	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestOrders");
