@@ -292,14 +292,14 @@ public class GenericMethods extends GlobalConstants {
 		return strWebPageTitle;
 	}
 
-	public void scrollDown() {
+	public static void scrollDown(int num) {
 
 		JavascriptExecutor jse = (JavascriptExecutor) driver;
-		jse.executeScript("window.scrollBy(0,200)", "");
+		jse.executeScript("window.scrollBy(0,"+num+")", "");
 		WaitForJStoLoad();
 	}
 
-	public void scrollUp() {
+	public static void scrollUp() {
 		JavascriptExecutor jse = (JavascriptExecutor) driver;
 		jse.executeScript("window.scrollBy(250,0)", "");
 		WaitForJStoLoad();

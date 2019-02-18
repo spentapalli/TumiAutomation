@@ -62,12 +62,7 @@
 			<class name="orders.registered.RegisteredOrderWithPayPal" />
 		</classes>
 	</test>
-	<test name="RegisterOrderWithGiftMsg">
-		<parameter name="Country" value="US"></parameter>
-		<classes>
-			<class name="orders.registered.RegisterOrderWithGiftMsg" />
-		</classes>
-	</test>
+	
 	<test name="RegisteredOrder">
 		<parameter name="Country" value="US"></parameter>
 		<classes>
