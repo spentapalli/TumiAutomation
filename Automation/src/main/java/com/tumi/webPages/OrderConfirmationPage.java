@@ -40,6 +40,15 @@ public class OrderConfirmationPage extends GenericMethods {
 		return explicitWait(orderNumber);
 	}
 	
+
+	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Sign Out')][1]")
+	private WebElement signoutAtConfirm;
+	
+	public WebElement getSignoutAtConfirm() {
+		
+		return signoutAtConfirm;
+	}
+	
 	
 
 }

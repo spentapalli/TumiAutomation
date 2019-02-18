@@ -75,6 +75,7 @@ public class UIFunctions extends GenericMethods {
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCaseName);
 
 		// billing page
+
 		input(guestBillPage.getNameOnCard(), testData.get("NameOnCard"), "Name on Card");
 
 		// invalid card number

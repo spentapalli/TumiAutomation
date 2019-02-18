@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="TumiReport" parallel="none">
+<test name="TwoOrderForGuestUser">
+		<classes>
+			<class name="orders.guest.TwoOrderForGuestUser" />
+		</classes>
+	</test>
+
+
+
+<!-- <test name="TumiStudioOrder">
+		<classes>
+			<class name="orders.guest.TumiStudioOrder" />
+		</classes>
+	</test> -->
+
+<test name="GuestOrderFail">
+		<classes>
+			<class name="orders.guest.GuestOrderFail" />
+		</classes>
+	</test>
+	
+	<test name="RegisterOrderWithMonogram">
+		<classes>
+			<class name="orders.registered.RegisterOrderWithMonogram" />
+		</classes>
+	</test>
+	<test name="RegisterOrderWithGiftServices">
+		<classes>
+			<class name="orders.registered.RegisterOrderWithGiftServices" />
+		</classes>
+	</test>
+<test name="GuestOrdersWithGiftMsg">
+		<classes>
+			<class name="orders.guest.GuestOrdersWithGiftMsg" />
+		</classes>
+	</test>
+	<test name="VerifyInvalidGoogleLogin">
+		<classes>
+			<class name="login.VerifyInvalidGoogleLogin" />
+		</classes>
+	</test>
+	<test name="VerifyInvalidInstaLogin">
+		<classes>
+			<class name="login.VerifyInvalidInstaLogin" />
+		</classes>
+	</test>
+
+	
+</suite>

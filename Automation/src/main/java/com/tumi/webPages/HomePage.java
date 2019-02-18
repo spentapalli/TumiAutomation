@@ -315,7 +315,7 @@ public WebElement getkrHeaderCustomerService() {
 	private WebElement minicart;
 
 	public WebElement getMinicart() {
-		return minicartcount;
+		return explicitWait(minicartcount);
 	}
 	
 	@FindBy(how = How.XPATH, using = "//div[contains(@class,'header-country')]/a")

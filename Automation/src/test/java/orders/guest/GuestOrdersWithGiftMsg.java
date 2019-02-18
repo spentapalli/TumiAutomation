@@ -2,8 +2,6 @@ package orders.guest;
 
 import java.util.Map;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -12,23 +10,27 @@ import com.tumi.utilities.GenericMethods;
 import com.tumi.utilities.UIFunctions;
 
 /**
- * @author Suresh , Shwetha Capo
+ * @author Shwetha
  *
  */
-public class GuestOrder extends GenericMethods {
+public class GuestOrdersWithGiftMsg extends GenericMethods {
 	
 	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestOrders");
-	Map<String, String> testData1 = ReadTestData.getJsonData("TumiTestData", "FailedOrder");
+
 	/*
-	 * TA-57 Verify Order with merchandise Ready to ship for Guest User
+	 * TA- 178 Verify Order with merchandise Ready to ship with Gift message for
+	 * Guest User
 	 */
 
-	@Test(priority = 0, description = " TA- 57 Verify Order with merchandise Ready to ship for Guest User")
-	public void tumiOrderAsGuest() throws InterruptedException {
+	@Test(priority = 0, description = "Sprint 2- TA- 178 Verify Order with merchandise Ready to ship with Gift message for Guest User")
+	public void orderWithGiftMsgAsGuest() {
 
 		UIFunctions.addProductToCart("TumiTestData", "GuestOrders");
 		click(pdp.getAddToCart(), "Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
+		click(gift.getMakeThisGift(), "Make this Gift");
+		UIFunctions.addGiftMessage("TumiTestData", "GuestOrders");
+		click(gift.getContinueGiftService(), "Continue");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		UIFunctions.waitForContinueToEnable();
@@ -40,31 +42,15 @@ public class GuestOrder extends GenericMethods {
 		UIFunctions.completeOrder();
 	}
 
-	@Test(priority = 1, description = " TA-16 Verify Order with merchandise Back Order + "
-			+ "Gift Boxing + Gift Message + Voucher/Promos for Guest User")
-	public void backOrderAsGuest() throws Exception {
-
-		UIFunctions.addProductToCart("TumiTestData", "BackOrderProduct");
-		click(pdp.getAddToCart(), "Add to cart");
-		click(minicart.getProceedCheckOut(), "Proceed to Cart");
-		click(mainCart.getProceedCart(), "Proceed to Checkout");
-		UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "BackOrderProduct");
-		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
-		UIFunctions.waitForContinueToEnable();
-		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
-		UIFunctions.addGuestDetails();
-		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
-		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
-		UIFunctions.addCardDetails("TumiTestData", "BackOrderProduct");
-		UIFunctions.completeOrder();
-	}
-
-	@Test(priority = 2, description = "TA- 112,Verify Order with merchandise Pre Order for Guest User")
-	public void preOrderAsGuest() throws InterruptedException {
+	@Test(priority = 1, description = "Sprint 2- TA- 179 Verify Order with merchandise Pre order Ready to ship with Gift message for Guest User")
+	public void preOrderWithGiftMsgAsGuest() {
 
 		UIFunctions.addProductToCart("TumiTestData", "PreOrderProduct");
 		click(pdp.getAddToCart(), "Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
+		click(gift.getMakeThisGift(), "Make this Gift");
+		UIFunctions.addGiftMessage("TumiTestData", "GuestOrders");
+		click(gift.getContinueGiftService(), "Continue");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		UIFunctions.waitForContinueToEnable();
@@ -72,16 +58,19 @@ public class GuestOrder extends GenericMethods {
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
-		UIFunctions.addCardDetails("TumiTestData", "PreOrderProduct");
+		UIFunctions.addCardDetails("TumiTestData", "GuestOrders");
 		UIFunctions.completeOrder();
 	}
 
-	@Test(priority = 3, description = "TA_11 Verify Order with Donation purchase")
-	public void donationPurchaseOrderAsGuest() {
+	@Test(priority = 2, description = "Sprint 2- TA- 180 Verify Order with merchandise Back order Ready to ship with Gift message for Guest User")
+	public void backOrderWithGiftMsgAsGuest() {
 
-		UIFunctions.addProductToCart("TumiTestData","DonationPurchase");
+		UIFunctions.addProductToCart("TumiTestData", "BackOrderProduct");
 		click(pdp.getAddToCart(), "Add to cart");
-		click(minicart.getProceedCheckOut(), "Proceed to Cart");
+		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
+		click(gift.getMakeThisGift(), "Make this Gift");
+		UIFunctions.addGiftMessage("TumiTestData", "GuestOrders");
+		click(gift.getContinueGiftService(), "Continue");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		UIFunctions.waitForContinueToEnable();
@@ -94,6 +83,5 @@ public class GuestOrder extends GenericMethods {
 	}
 
 
-	
 	
 }
