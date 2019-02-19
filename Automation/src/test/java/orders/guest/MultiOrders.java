@@ -20,6 +20,7 @@ public class MultiOrders extends GenericMethods {
 	public void verifyGuestOrderWithTwoBackOrderProducts() {
 
 		UIFunctions.addProductToCart("TumiTestData", "BackOrderProduct");
+		UIFunctions.removeMonogram();
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getContinueShopping(), "Continue Shopping");
 		UIFunctions.addMonogram("TumiTestData", "BackOrderProduct");
@@ -39,9 +40,11 @@ public class MultiOrders extends GenericMethods {
 	public void verifyGuestOrderWithBackOrderAndDonation() {
 
 		UIFunctions.addProductToCart("TumiTestData", "DonationPurchase");
+		UIFunctions.removeMonogram();
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getContinueShopping(), "Continue Shopping");
 		UIFunctions.addProductToCart("TumiTestData", "BackOrderProduct");
+		UIFunctions.removeMonogram();
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
@@ -59,9 +62,11 @@ public class MultiOrders extends GenericMethods {
 	public void verifyGuestOrderWithTwoBackOrder() {
 
 		UIFunctions.addProductToCart("TumiTestData", "BackOrderProduct");
+		UIFunctions.removeMonogram();
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getContinueShopping(), "Continue Shopping");
 		UIFunctions.addProductToCart("TumiTestData", "BackOrderProduct");
+		UIFunctions.removeMonogram();
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(gift.getMakeThisGift(), "Make this Gift");
@@ -81,9 +86,11 @@ public class MultiOrders extends GenericMethods {
 	public void verifyGuestOrderWithBackOrderAndGloabalLocator() {
 
 		UIFunctions.addProductToCart("TumiTestData", "GlobalLocatorProduct");
+		UIFunctions.removeMonogram();
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getContinueShopping(), "Continue Shopping");
 		UIFunctions.addProductToCart("TumiTestData", "BackOrderProduct");
+		UIFunctions.removeMonogram();
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");

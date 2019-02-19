@@ -119,11 +119,33 @@ public class Personalization extends GenericMethods {
 		return thirdMonoInput;
 	}
 	
-	@FindBy(how=How.XPATH, using="")
+	@FindBy(how=How.XPATH, using="//a[contains(text(),'Remove')]")
 	private WebElement remove;
 	
+	@FindBy(how=How.XPATH, using="//span[contains(@class,'edit-remove-monogram')]/a[2]")
+	private WebElement kRremove;
+	
 	public WebElement getRemove() {
+		if (selectedCountry.contains("배송하기: 대한민국")) {
+			return kRremove;
+			
+		}else {
 		return remove;
+	}
+	}
+	@FindBy(how=How.XPATH, using="//span[contains(text(),'Classic Monogram Added')]")
+	private WebElement monoAdded;
+	
+	@FindBy(how=How.XPATH, using="//span[contains(text(),'Classic Monogram Added')]")
+	private WebElement krMonoAdded;
+	
+	public WebElement getMonoAdded() {
+		if (selectedCountry.contains("배송하기: 대한민국")) {
+			return krMonoAdded;
+			
+		}else {
+		return monoAdded;
+	}
 	}
 	
 	@FindBy(how=How.XPATH, using="//div[@id='monogram-step3']/div[2]/div/label")

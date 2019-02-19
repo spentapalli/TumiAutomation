@@ -304,6 +304,16 @@ public class UIFunctions extends GenericMethods {
 		click(mono.getApply(), "Apply");
 		delay(3000);
 	}
+	
+	public static void removeMonogram() {
+		try {
+			if(mono.getRemove().isDisplayed()) {
+				click(mono.getRemove(),"Removed added monogram");
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+		}
+	}
 
 	/*
 	 * public static void completeOrder(String sheet, String testCase) {

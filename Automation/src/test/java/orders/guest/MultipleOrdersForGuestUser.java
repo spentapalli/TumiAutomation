@@ -139,9 +139,11 @@ public class MultipleOrdersForGuestUser extends GenericMethods {
 		public void verifyGuestOrderWithPreOrderAndDonation() {
 
 			UIFunctions.addProductToCart("TumiTestData", "PreOrderProduct");
+			UIFunctions.removeMonogram();
 			click(pdp.getAddToCart(), "Add To Cart");
 			click(minicart.getContinueShopping(), "Continue Shopping");
 			 UIFunctions.addProductToCart("TumiTestData","DonationPurchase");
+			 UIFunctions.removeMonogram();
 			 click(pdp.getAddToCart(), "Add To Cart");
 		    click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 			click(mainCart.getProceedCart(), "Proceed to Checkout");
@@ -158,9 +160,11 @@ public class MultipleOrdersForGuestUser extends GenericMethods {
 		public void verifyGuestOrderWithPreOrderAndGloabalLocator() {
 
 		UIFunctions.addProductToCart("TumiTestData", "PreOrderProduct");
+		UIFunctions.removeMonogram();
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getContinueShopping(), "Continue Shopping");
 		 UIFunctions.addProductToCart("TumiTestData","GlobalLocatorProduct");
+		 UIFunctions.removeMonogram();
 		 click(pdp.getAddToCart(), "Add To Cart");
 	    click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
@@ -180,10 +184,11 @@ public class MultipleOrdersForGuestUser extends GenericMethods {
 	public void verifyGuestOrderWithTwoPersonalizePreOrder() {
 
 		UIFunctions.addProductToCart("TumiTestData", "PreOrderProduct");
-		
+		UIFunctions.removeMonogram();
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getContinueShopping(), "Continue Shopping");
 		 UIFunctions.addProductToCart("TumiTestData","PreOrderProduct");
+		 UIFunctions.removeMonogram();
 		 UIFunctions.addMonogram("TumiTestData", "PreOrderProduct");
 		 click(pdp.getAddToCart(), "Add To Cart");
 	    click(minicart.getProceedCheckOut(), "Proceed to Checkout");

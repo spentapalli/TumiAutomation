@@ -14,15 +14,16 @@ import com.tumi.utilities.UIFunctions;
 
 public class ThreeOrderForGuestUser extends GenericMethods {
 	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestOrders");
-	Map<String, String> testData1 = ReadTestData.getJsonData("TumiTestData", "FailedOrder");
 	
 	  @Test(priority = 1,description = "Verify Order with 3 'BackOrder' Items, OneBack Order SKU + One Back Order SKU with Personalization + One Back Order SKU with Gift boxing-Guest user")
 	  public void verifyThreeOrderWithGiftMsgAndPersonalizationForGuestUser() {
 		  UIFunctions.addProductToCart("TumiTestData", "BackOrderProduct");
 		  input(mainCart.getEditProductQuantity(), "2", "Edit Product Quantity");
+		  UIFunctions.removeMonogram();
 			click(pdp.getAddToCart(), "Add To Cart");
 			click(minicart.getContinueShopping(), "Continue Shopping");
 			UIFunctions.addProductToCart("TumiTestData", "BackOrderProduct");
+			UIFunctions.removeMonogram();
 			UIFunctions.addMonogram("TumiTestData", "BackOrderProduct");
 			click(pdp.getAddToCart(), "Add To Cart");
 			click(minicart.getProceedCheckOut(), "Proceed to Checkout");
@@ -44,9 +45,11 @@ public class ThreeOrderForGuestUser extends GenericMethods {
 			
 			UIFunctions.addProductToCart("TumiTestData", "PreOrderProduct");
 			input(mainCart.getEditProductQuantity(), "2", "Edit Product Quantity");
+			UIFunctions.removeMonogram();
 			click(pdp.getAddToCart(), "Add To Cart");
 			click(minicart.getContinueShopping(), "Continue Shopping");
 			UIFunctions.addProductToCart("TumiTestData", "PreOrderProduct");
+			UIFunctions.removeMonogram();
 			UIFunctions.addMonogram("TumiTestData", "PreOrderProduct");
 			click(pdp.getAddToCart(), "Add To Cart");
 			click(minicart.getProceedCheckOut(), "Proceed to Checkout");
@@ -69,10 +72,12 @@ public class ThreeOrderForGuestUser extends GenericMethods {
 
 			UIFunctions.addProductToCart("TumiTestData", "GuestOrders");
 			input(mainCart.getEditProductQuantity(), "2", "Edit Product Quantity");
+			UIFunctions.removeMonogram();
 			click(pdp.getAddToCart(), "Add To Cart");
 			click(minicart.getContinueShopping(), "Continue Shopping");
 			UIFunctions.addProductToCart("TumiTestData", "GuestOrders");
-	     	UIFunctions.addMonogram("TumiTestData", "RegisteredOrders");
+			UIFunctions.removeMonogram();
+	     	UIFunctions.addMonogram("TumiTestData", "GuestOrders");
 			click(pdp.getAddToCart(), "Add To Cart");
 			click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 			click(gift.getMakeThisGift(), "Make this Gift");

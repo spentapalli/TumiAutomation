@@ -8,11 +8,15 @@ import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
 import com.tumi.utilities.UIFunctions;
 
+
+/**
+ * @author Shwetha Capo
+ *
+ */
 public class RegisterOrderWithGiftServices extends GenericMethods {
 	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestOrders");
 	
-	//@Test(priority = 0, description = " Sprint 2- TA- 186 Verify Order with merchandise Ready to ship + Gift Boxing - Registered User")
-
+	@Test(priority = 0, description = " Sprint 2- TA- 186 Verify Order with merchandise Ready to ship + Gift Boxing - Registered User")
 	public void orderWithGiftboxAsRegistered() {
 
 		login("TumiTestData", "TumiLogin");
@@ -33,7 +37,7 @@ public class RegisterOrderWithGiftServices extends GenericMethods {
 		click(confirmation.getSignoutAtConfirm(), "Signout");
 	}
 
-//	@Test(priority = 1, description = " TA - 187 Verify Order with merchandise Ready to ship + Gift Message-Registered User")
+   @Test(priority = 1, description = " TA - 187 Verify Order with merchandise Ready to ship + Gift Message-Registered User")
 
 	public void orderWithGiftMsgAsRegistered() {
 		login("TumiTestData", "RegisteredOrders");
@@ -54,7 +58,7 @@ public class RegisterOrderWithGiftServices extends GenericMethods {
 		click(confirmation.getSignoutAtConfirm(), "Signout");
 	}
 
-	//@Test(priority = 2, description = " TA- 188 Verify Order with merchandise Ready to ship + Gift Message + Gift Box - Registered User")
+	@Test(priority = 2, description = " TA- 188 Verify Order with merchandise Ready to ship + Gift Message + Gift Box - Registered User")
 	public void orderWithGiftMsgNBoxAsRegistered() {
 
 		login("TumiTestData", "RegisteredOrders");
