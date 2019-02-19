@@ -1,5 +1,6 @@
 package com.tumi.webPages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -44,6 +45,7 @@ public class MiniCartPage extends GenericMethods {
 
 	//in suresh system getting "ëŒ€í•œë¯¼êµ­"
 	public WebElement getProceedCheckOut() {
+		
 		if (selectedCountry.contains("배송하기: 대한민국")) {
 			return explicitWait(krProceedtoCheck);
 		} else {

@@ -20,6 +20,13 @@ public class Personalization extends GenericMethods {
 		PageFactory.initElements(driver, this);
 	}
 	
+	@FindBy(how=How.XPATH,using="//div[contains(@class,'monogram-btn-cntr metal-btn')]/a")
+	private WebElement koreaFirstStep;
+	
+	public WebElement getKoreaFirstStep() {
+		return koreaFirstStep;
+	}
+	
 	@FindBy(how=How.XPATH,using="(//a[@id='monogramming-popup-link'])[1]/span")
 	private WebElement addPersonalization;
 	
