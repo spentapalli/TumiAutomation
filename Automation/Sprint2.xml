@@ -6,6 +6,11 @@
 			<class name="orders.guest.TwoOrderForGuestUser" />
 		</classes>
 	</test>
+	<test name="MultiOrders">
+		<classes>
+			<class name="orders.guest.MultiOrders" />
+		</classes>
+	</test>
  <test name="TumiStudioOrder">
 		<classes>
 			<class name="orders.guest.TumiStudioOrder" />
