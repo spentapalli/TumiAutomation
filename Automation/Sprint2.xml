@@ -6,11 +6,28 @@
 			<class name="orders.guest.TwoOrderForGuestUser" />
 		</classes>
 	</test>
- <test name="TumiStudioOrder">
+<!--  <test name="TumiStudioOrder">
 		<classes>
 			<class name="orders.guest.TumiStudioOrder" />
 		</classes>
-	</test> 
+	</test>  -->
+	<test name="MultipleOrdersForGuestUser">
+		<classes>
+			<class name="orders.guest.MultipleOrdersForGuestUser" />
+		</classes>
+	</test>
+	<test name="ThreeOrderForGuestUser">
+		<classes>
+			<class name="orders.guest.ThreeOrderForGuestUser" />
+		</classes>
+	</test>
+	
+	<test name="MultiOrders.java">
+		<classes>
+			<class name="orders.guest.MultiOrders" />
+		</classes>
+	</test>
+
 
 <test name="GuestOrderFail">
 		<classes>

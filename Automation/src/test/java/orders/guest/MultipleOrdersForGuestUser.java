@@ -115,13 +115,14 @@ public class MultipleOrdersForGuestUser extends GenericMethods {
 				}
 	//TA113
 	@Test(priority=5,description = "Verify Order with 2 'Ready to Ship' Items, One regular in stock SKU + One in stock SKU with Personalization-Guest user")
-	public void verifyGuestOrderWithTwoReadyToShipProducts() {
+	public void verifyTwoReadyToShipProductsWithMonogram() {
 
 		UIFunctions.addProductToCart("TumiTestData", "GuestOrders");
-		UIFunctions.addMonogram("TumiTestData", "BackOrderProduct");
+		
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getContinueShopping(), "Continue Shopping");
 		 UIFunctions.addProductToCart("TumiTestData","GuestOrders");
+		 UIFunctions.addMonogram("TumiTestData", "BackOrderProduct");
 		 click(pdp.getAddToCart(), "Add To Cart");
 	    click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
@@ -153,7 +154,7 @@ public class MultipleOrdersForGuestUser extends GenericMethods {
 			UIFunctions.completeOrder();
 		}
 		//TA25
-		@Test(priority=7,description = "Verify Order with 'Pre Order' SKU + Global locator-Guest user")
+	@Test(priority=7,description = "Verify Order with 'Pre Order' SKU + Global locator-Guest user")
 		public void verifyGuestOrderWithPreOrderAndGloabalLocator() {
 
 		UIFunctions.addProductToCart("TumiTestData", "PreOrderProduct");
@@ -179,10 +180,11 @@ public class MultipleOrdersForGuestUser extends GenericMethods {
 	public void verifyGuestOrderWithTwoPersonalizePreOrder() {
 
 		UIFunctions.addProductToCart("TumiTestData", "PreOrderProduct");
-		UIFunctions.addMonogram("TumiTestData", "BackOrderProduct");
+		
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getContinueShopping(), "Continue Shopping");
 		 UIFunctions.addProductToCart("TumiTestData","PreOrderProduct");
+		 UIFunctions.addMonogram("TumiTestData", "PreOrderProduct");
 		 click(pdp.getAddToCart(), "Add To Cart");
 	    click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
