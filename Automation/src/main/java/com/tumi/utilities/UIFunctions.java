@@ -823,7 +823,7 @@ public class UIFunctions extends GenericMethods {
 	}
 
 	public static void addTumiStudio() {
-		click(tumiId.getTumiIdDesign(), "TumiID");
+		click(tumiId.getTumiIdDesign(), "TumiID");  
 		delay(2000);
 
 		for (WebElement ele : tumiId.getMainBodyList()) {
