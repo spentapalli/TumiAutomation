@@ -64,8 +64,6 @@ import com.tumi.webPages.SignInShippingPage;
 import com.tumi.webPages.SinglePageCheckout;
 import com.tumi.webPages.TumiStudio;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
-
 /**
  * @author Suuresh clean test -Dsurefire.suiteXmlFiles=regressionTests.xml
  */
@@ -129,6 +127,7 @@ public class Reports {
 		}
 	}
 
+	@SuppressWarnings("deprecation")
 	public static void launchMobile(String name) {
 
 		/*
@@ -160,7 +159,7 @@ public class Reports {
 			UIFunctions.verifyVPN();
 			UIFunctions.closeSignUp();
 		} else {
-			getURL(GenericMethods.getProperty("tumi.appName"));
+			getURL();
 		}
 
 		UIFunctions.selectCountry();
@@ -291,7 +290,7 @@ public class Reports {
 			System.setProperty(GlobalConstants.ie, GlobalConstants.iePath);
 			driver = new InternetExplorerDriver(capabilities);
 			// logger.log(Status.INFO, "InternetExplorer Browser is initiated Execution");
-			
+
 		} else if (browserName.equalsIgnoreCase("mobile")) {
 
 			launchMobile("iPhone X");
@@ -309,18 +308,22 @@ public class Reports {
 	/**
 	 * @param URL
 	 */
-	public static void getURL(String URL) {
+	public static void getURL() {
 
-		if (URL.equalsIgnoreCase("stage2")) {
+		String url = System.getProperty("applicationUrl");
+
+		System.out.println("Application Name " + url);
+
+		if (null == url || url.isEmpty() || url.toLowerCase().equalsIgnoreCase("stage2")) {
 
 			if (!browserName.equals("ie")) {
 				driver.get(GlobalConstants.url);
 			}
-			GenericMethods.WaitForJStoLoad();
-
-		} else if (URL.equalsIgnoreCase("")) {
-			driver.get("");
-			logger.log(Status.INFO, "Successfully Navigated to " + URL + " Environment");
+		} else if (url.toLowerCase().equalsIgnoreCase("akamai")) {
+			
+			if (!browserName.equals("ie")) {
+				driver.get(GlobalConstants.akamaiUrl);
+			}
 		}
 		UIFunctions.verifyVPN();
 		UIFunctions.closeSignUp();

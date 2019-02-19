@@ -29,7 +29,11 @@ public class ProductDetailPage extends GenericMethods {
 	private WebElement addToCart;
 
 	public WebElement getAddToCart() {
-
+		
+		if (browserName.equals("mobile")) {
+			scrollDown(300);
+		}
+		
 		return explicitWait(addToCart);
 	}
 

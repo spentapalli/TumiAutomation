@@ -26,13 +26,20 @@ public class GiftServices extends GenericMethods {
 
 	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Make this a Gift')]")
 	private WebElement makeGiftBox;
+	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Gift Card/Services')]")
+	private WebElement makeGiftCard;
 
 	public WebElement getMakeThisGift() {
-		if (selectedCountry.contains("배송하기: 대한민국")) {
-			return explicitWait(krMakegiftbox);
-		} else {
+		if (browserName.equals("mobile")) {
+			return makeGiftCard;
+		}else {
+			if (selectedCountry.contains("배송하기: 대한민국")) {
+				return explicitWait(krMakegiftbox);
+			} else {
 
-		return makeGiftBox;
+			return makeGiftBox;
+			}
+		
 		}
 	}
 

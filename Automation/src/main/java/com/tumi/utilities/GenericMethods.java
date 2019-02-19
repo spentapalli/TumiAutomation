@@ -39,8 +39,8 @@ public class GenericMethods extends GlobalConstants {
 	public static Actions action;
 
 	public static void captureOrderConfScreen(String name) {
-		//Timestamp time = new Timestamp(System.currentTimeMillis());
-		
+		// Timestamp time = new Timestamp(System.currentTimeMillis());
+
 		getScreen("./ExtentReports/ScreenShots/" + name + ".png");
 		String location = "./ScreenShots/" + name + ".png";
 		try {
@@ -57,20 +57,20 @@ public class GenericMethods extends GlobalConstants {
 			input(home.getUserName(), testData.get("EmailID"), "Email Address");
 			input(home.getPassWord(), testData.get("Password"), "Password");
 			click(home.getLogOn(), "Login");
-			
-				if (myacc.getSignout().isDisplayed()) {
-					verifyAssertContains(getText(myacc.getWelcomeMessage()), getProperty("login.success.message"),
-							"Successfully logged with Regular user valid credentials");
-					
-				}else {
-					Assert.fail("user signin is failed");
-				}
+
+			if (myacc.getSignout().isDisplayed()) {
+				verifyAssertContains(getText(myacc.getWelcomeMessage()), getProperty("login.success.message"),
+						"Successfully logged with Regular user valid credentials");
+
+			} else {
+				Assert.fail("user signin is failed");
+			}
 
 			click(myacc.getMyAccountClose(), "My Account Close");
 		} catch (Exception e) {
 			Assert.fail("Fail to Login due to " + e.getMessage());
 		}
-		//removeExistingCart();
+		// removeExistingCart();
 	}
 
 	public static void click(WebElement element, String buttonName) {
@@ -225,6 +225,14 @@ public class GenericMethods extends GlobalConstants {
 		}
 	}
 
+	public static void jsClick(WebElement element) {
+
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		executor.executeScript("arguments[0].click();", element);
+		WaitForJStoLoad();
+
+	}
+
 	public static boolean WaitForJStoLoad() {
 		boolean jsLoad = false;
 		try {
@@ -295,7 +303,7 @@ public class GenericMethods extends GlobalConstants {
 	public static void scrollDown(int num) {
 
 		JavascriptExecutor jse = (JavascriptExecutor) driver;
-		jse.executeScript("window.scrollBy(0,"+num+")", "");
+		jse.executeScript("window.scrollBy(0," + num + ")", "");
 		WaitForJStoLoad();
 	}
 
@@ -630,14 +638,13 @@ public class GenericMethods extends GlobalConstants {
 		if (cart != 0) {
 			delay(2000);
 			click(home.getMinicart(), "Mini Cart");
-			//click(minicart.getProceedCheckOut(), "Proceed to Checkout");
+			// click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 			for (WebElement ele : checkout.getRemoveMinicartProducts()) {
 				delay(2000);
 				click(ele, getText(ele));
-				//driver.navigate().refresh();
+				// driver.navigate().refresh();
 			}
-			
-			
+
 		}
 	}
 }

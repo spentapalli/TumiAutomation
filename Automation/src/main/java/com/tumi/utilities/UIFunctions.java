@@ -7,9 +7,6 @@ import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
@@ -24,7 +21,7 @@ import com.tumi.webPages.HomePage;
  */
 public class UIFunctions extends GenericMethods {
 
-	public static Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "MobileTestData");
+	//public static Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "MobileTestData");
 
 	public static void closeSignUp() {
 

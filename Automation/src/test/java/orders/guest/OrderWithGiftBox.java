@@ -2,6 +2,7 @@ package orders.guest;
 
 import java.util.Map;
 
+import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
 import com.tumi.dataProvider.ReadTestData;
@@ -21,11 +22,18 @@ public class OrderWithGiftBox extends GenericMethods {
 
 		UIFunctions.addProductToCart("TumiTestData", "BackOrderProduct");
 		click(pdp.getAddToCart(), "Add to cart");
-		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
-		click(gift.getMakeThisGift(), "Make this Gift");
-		UIFunctions.addGiftBox();
-		click(gift.getContinueGiftService(), "Continue");
-		click(mainCart.getProceedCart(), "Proceed to Checkout");
+		if (browserName.equals("mobile")) {
+			driver.findElement(By.xpath("//span[@id='cart_content']")).click();
+			scrollDown(500);
+			mainCart.getProceedCart().click();
+		} else {
+			click(minicart.getProceedCheckOut(), "Proceed to Cart");
+			click(gift.getMakeThisGift(), "Make this Gift");
+			UIFunctions.addGiftBox();
+			click(gift.getContinueGiftService(), "Continue");
+			click(mainCart.getProceedCart(), "Proceed to Checkout");
+		}
+
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		UIFunctions.waitForContinueToEnable();
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
@@ -38,11 +46,10 @@ public class OrderWithGiftBox extends GenericMethods {
 	}
 
 	@Test(priority = 2, description = "TA-109 Verify Order with merchandise Back Order for Guest ")
-	
 	public void backOrderAsGuest() {
 		UIFunctions.addProductToCart("TumiTestData", "BackOrderProduct");
 		click(pdp.getAddToCart(), "Add to cart");
-		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
+		click(minicart.getProceedCheckOut(), "Proceed to Cart");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "BackOrderProduct");
@@ -180,5 +187,4 @@ public class OrderWithGiftBox extends GenericMethods {
 		UIFunctions.completeOrder();
 	}
 
-	
 }
