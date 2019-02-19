@@ -46,7 +46,7 @@ public class TwoOrderForGuestUser extends GenericMethods {
 		UIFunctions.addProductToCart("TumiTestData","PreOrderProduct");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getContinueShopping(), "Continue Shopping");
-		UIFunctions.addProductToCart("TumiTestData","OrderWithTwoProducts");
+		UIFunctions.addProductToCart("TumiTestData","PreOrderProduct");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(gift.getMakeThisGift(), "Make this Gift");
@@ -67,7 +67,7 @@ public class TwoOrderForGuestUser extends GenericMethods {
               UIFunctions.addProductToCart("TumiTestData","BackOrderProduct");
               click(pdp.getAddToCart(), "Add To Cart");
               click(minicart.getContinueShopping(), "Continue Shopping");
-              UIFunctions.addProductToCart("TumiTestData","OrderWithTwoProducts");
+              UIFunctions.addProductToCart("TumiTestData","BackOrderProduct");
               click(pdp.getAddToCart(), "Add To Cart");
               click(minicart.getProceedCheckOut(), "Proceed to Checkout");
               click(gift.getMakeThisGift(), "Make this Gift");
@@ -83,8 +83,8 @@ public class TwoOrderForGuestUser extends GenericMethods {
                  UIFunctions.completeOrder();
 }
 		//TA-114
-		@Test(priority = 3,description = "Verify Order with 2 'Ready to Ship' Items, One regular in stock SKU + One in stock SKU with Gift boxing-Guest user")
-		public void verifyTwoInstockWithGiftMsgrForGuestUser() {
+		@Test(priority = 4,description = "Verify Order with 2 'Ready to Ship' Items, One regular in stock SKU + One in stock SKU with Gift boxing-Guest user")
+		public void verifyTwoInstockWithGiftMsg() {
               UIFunctions.addProductToCart("TumiTestData","GuestOrders");
               click(pdp.getAddToCart(), "Add To Cart");
               click(minicart.getContinueShopping(), "Continue Shopping");
@@ -105,8 +105,8 @@ public class TwoOrderForGuestUser extends GenericMethods {
 }
 		
 		//TA31
-		@Test(priority=2,description = "Verify Order with 2 'Pre Order' Items, One Pre Order SKU + One Pre Order SKU with Gift boxing-Guest user")
-		public void verifyGuestOrderWithTwoPreOrder() {
+		@Test(priority=5,description = "Verify Order with 2 'Pre Order' Items, One Pre Order SKU + One Pre Order SKU with Gift boxing-Guest user")
+		public void verifyWithTwoPreOrderWithGiftBox() {
 
 		UIFunctions.addProductToCart("TumiTestData", "PreOrderProduct");
 		click(pdp.getAddToCart(), "Add To Cart");

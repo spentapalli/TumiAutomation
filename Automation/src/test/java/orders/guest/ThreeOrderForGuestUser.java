@@ -14,15 +14,16 @@ import com.tumi.utilities.UIFunctions;
 
 public class ThreeOrderForGuestUser extends GenericMethods {
 	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestOrders");
+	Map<String, String> testData1 = ReadTestData.getJsonData("TumiTestData", "FailedOrder");
 	
-	  @Test(priority = 0,description = "Verify Order with 3 'BackOrder' Items, OneBack Order SKU + One Back Order SKU with Personalization + One Back Order SKU with Gift boxing-Guest user")
+	  @Test(priority = 1,description = "Verify Order with 3 'BackOrder' Items, OneBack Order SKU + One Back Order SKU with Personalization + One Back Order SKU with Gift boxing-Guest user")
 	  public void verifyThreeOrderWithGiftMsgAndPersonalizationForGuestUser() {
 		  UIFunctions.addProductToCart("TumiTestData", "BackOrderProduct");
 		  input(mainCart.getEditProductQuantity(), "2", "Edit Product Quantity");
 			click(pdp.getAddToCart(), "Add To Cart");
 			click(minicart.getContinueShopping(), "Continue Shopping");
 			UIFunctions.addProductToCart("TumiTestData", "BackOrderProduct");
-			UIFunctions.addMonogram("TumiTestData", "PreOrderProduct");
+			UIFunctions.addMonogram("TumiTestData", "BackOrderProduct");
 			click(pdp.getAddToCart(), "Add To Cart");
 			click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 			click(gift.getMakeThisGift(), "Make this Gift");
@@ -38,7 +39,7 @@ public class ThreeOrderForGuestUser extends GenericMethods {
 			UIFunctions.completeOrder();
 	  }
 
-		@Test(priority = 1,description = "Verify Order with 3 'Pre Order' Items, One PreOrder SKU + One Pre Order SKU with Personalization + One pre Order SKU with Gift boxing-Guest user")
+		@Test(priority = 2,description = "Verify Order with 3 'Pre Order' Items, One PreOrder SKU + One Pre Order SKU with Personalization + One pre Order SKU with Gift boxing-Guest user")
 		public void verifyThreePreorderWithGiftMsgAndPersonalizationForGuestUser() {
 			
 			UIFunctions.addProductToCart("TumiTestData", "PreOrderProduct");
@@ -63,7 +64,7 @@ public class ThreeOrderForGuestUser extends GenericMethods {
 
 		}
 	
-		@Test(priority=2,description = "Verify Order with 3 'Ready to Ship' Items, One regular in stock SKU + One in stock SKU with Personalization + One in stock SKU with Gift boxing-Guest user")
+		@Test(priority=3,description = "Verify Order with 3 'Ready to Ship' Items, One regular in stock SKU + One in stock SKU with Personalization + One in stock SKU with Gift boxing-Guest user")
 		public void verifyGuestOrderWithThreeReadyToShipProducts() {
 
 			UIFunctions.addProductToCart("TumiTestData", "GuestOrders");
@@ -71,7 +72,7 @@ public class ThreeOrderForGuestUser extends GenericMethods {
 			click(pdp.getAddToCart(), "Add To Cart");
 			click(minicart.getContinueShopping(), "Continue Shopping");
 			UIFunctions.addProductToCart("TumiTestData", "GuestOrders");
-	     	UIFunctions.addMonogram("TumiTestData", "GuestOrders");
+	     	UIFunctions.addMonogram("TumiTestData", "RegisteredOrders");
 			click(pdp.getAddToCart(), "Add To Cart");
 			click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 			click(gift.getMakeThisGift(), "Make this Gift");
