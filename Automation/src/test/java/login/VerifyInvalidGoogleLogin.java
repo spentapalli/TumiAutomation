@@ -1,6 +1,9 @@
 package login;
 
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -26,23 +29,35 @@ public class VerifyInvalidGoogleLogin extends GenericMethods {
 		click(home.getHeaderSignIn(), "SignIn");
 		click(google.getGoogleLogin(), "Google login");
 		String parentHandle = driver.getWindowHandle();
-		for (String winHandle : driver.getWindowHandles()) {
-			driver.switchTo().window(winHandle);
-		}
-		input(google.getEmail(), testData.get("EmailID"), "gmail id");
-		click(google.getFirstNext(), "Next");
-		delay(2000);
-		input(google.getPassword(), testData.get("Password"), "Password");
-		click(google.getPasswordNext(), "password next");
-		if(myacc.getSignout().isDisplayed()) {
-			Assert.fail("signout is displayed with invalid user");
-		}
+		Set<String> childs = driver.getWindowHandles();
+		Iterator<String> ite = childs.iterator();
+		while (ite.hasNext()) {
+			String child = ite.next();
+			if (!parentHandle.equals(child)) {
 
+				driver.switchTo().window(child);
+				input(google.getEmail(), testData.get("EmailID"), "gmail id");
+				click(google.getFirstNext(), "Next");
+				delay(2000);
+				input(google.getPassword(), testData.get("Password"), "Password");
+				click(google.getPasswordNext(), "password next");
+			}
+		}
+		
 		softAssertEquals(getText(google.getPasswordError()), getProperty("google.passwordError"));
 		softAssertEquals(getText(google.getPasswordBlank()), getProperty("google.passwordBlank"));
 		softAssertEquals(getText(google.getEmailBlankError()), getProperty("google.emailBlankError"));
 		softAssertEquals(getText(google.getEmailError()), getProperty("google.emailError"));
 		softAssertEquals(getText(google.getEmailNotFound()), getProperty("google.emailnotFound"));
+		driver.switchTo().window(parentHandle);
+		try {
+			if(myacc.getSignout().isDisplayed()) {
+				Assert.fail("signout is displayed with invalid user");
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 

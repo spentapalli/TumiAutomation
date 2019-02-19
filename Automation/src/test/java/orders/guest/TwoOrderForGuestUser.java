@@ -82,5 +82,48 @@ public class TwoOrderForGuestUser extends GenericMethods {
           UIFunctions.addCardDetails("TumiTestData", "GuestOrders");
                  UIFunctions.completeOrder();
 }
+		//TA-31
+		@Test(priority = 3,description = "Verify Order with 2 'Ready to Ship' Items, One regular in stock SKU + One in stock SKU with Gift boxing-Guest user")
+		public void verifyTwoInstockWithGiftMsgrForGuestUser() {
+              UIFunctions.addProductToCart("TumiTestData","GuestOrders");
+              click(pdp.getAddToCart(), "Add To Cart");
+              click(minicart.getContinueShopping(), "Continue Shopping");
+              UIFunctions.addProductToCart("TumiTestData","OrderWithTwoProducts");
+              click(pdp.getAddToCart(), "Add To Cart");
+              click(minicart.getProceedCheckOut(), "Proceed to Checkout");
+              click(gift.getMakeThisGift(), "Make this Gift");
+      		UIFunctions.addGiftBox();
+      		click(gift.getContinueGiftService(), "Continue");
+             click(mainCart.getProceedCart(), "Proceed to Checkout");
+             input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
+            click(singlePage.getContinueAsGuest(), "Contiue as Guest");
+          UIFunctions.addGuestDetails();
+          click(shipping.getContinueShippingMethod(), "Contiue Shipping");
+           click(shipMethod.getProceedToPayment(), "Proceed to Payment");
+          UIFunctions.addCardDetails("TumiTestData", "GuestOrders");
+                 UIFunctions.completeOrder();
 }
+		
+		//TA31
+		@Test(priority=2,description = "Verify Order with 2 'Pre Order' Items, One Pre Order SKU + One Pre Order SKU with Gift boxing-Guest user")
+		public void verifyGuestOrderWithTwoPreOrder() {
 
+		UIFunctions.addProductToCart("TumiTestData", "PreOrderProduct");
+		click(pdp.getAddToCart(), "Add To Cart");
+		click(minicart.getContinueShopping(), "Continue Shopping");
+		UIFunctions.addProductToCart("TumiTestData", "PreOrderProduct");
+		click(pdp.getAddToCart(), "Add To Cart");
+		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
+		click(gift.getMakeThisGift(), "Make this Gift");
+		UIFunctions.addGiftBox();
+		click(gift.getContinueGiftService(), "continue");
+		click(mainCart.getProceedCart(), "Proceed to Checkout");
+		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
+		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
+		UIFunctions.addGuestDetails();
+		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
+		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
+		UIFunctions.addCardDetails("TumiTestData", "GuestOrders");
+		UIFunctions.completeOrder();
+		}
+}
