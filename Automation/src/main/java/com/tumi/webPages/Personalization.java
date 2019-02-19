@@ -89,7 +89,8 @@ public class Personalization extends GenericMethods {
 	private WebElement krnext;
 	
 	public WebElement getNext() {
-		if(selectedCountry.contains("배송하기: 대한민국")) {
+		if (selectedCountry.contains("배송하기: 대한민국")) {
+	
 			return explicitWait(krnext);
 		}else {
 			
@@ -258,7 +259,8 @@ public class Personalization extends GenericMethods {
 	@FindBy(how=How.XPATH, using="(//div[@class='monogram-btn-cntr']/a[2])[2]")
 	private WebElement krApply;
 	
-	public WebElement getApply() {	if(selectedCountry.contains("배송하기: 대한민국")) {
+	public WebElement getApply() {
+		if (selectedCountry.contains("배송하기: 대한민국"))  {
 		
 			return explicitWait(krApply);
 		}else {

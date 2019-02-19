@@ -18,8 +18,8 @@ public class OrderWithMonogram extends GenericMethods {
 	
 	@Test(priority=0,description = " TA - 48 Verify Order with merchandise Ready to ship + Personalization for  Guest User.")
 	public void orderWithMonogramAsGuest() {
-		UIFunctions.addProductToCart("TumiTestData","GuestOrders");
-		UIFunctions.addMonogram("TumiTestData", "GuestOrders");
+		UIFunctions.addProductToCart("TumiTestData","GuestDeatilsForKorea");
+		UIFunctions.addMonogram("TumiTestData", "GuestDeatilsForKorea");
 		click(pdp.getAddToCart(),"Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Cart");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");

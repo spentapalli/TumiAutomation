@@ -7,9 +7,6 @@ import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
@@ -23,6 +20,8 @@ import com.tumi.webPages.HomePage;
  *
  */
 public class UIFunctions extends GenericMethods {
+
+	//public static Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "MobileTestData");
 
 	public static void closeSignUp() {
 
@@ -73,6 +72,7 @@ public class UIFunctions extends GenericMethods {
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCaseName);
 
 		// billing page
+
 		input(guestBillPage.getNameOnCard(), testData.get("NameOnCard"), "Name on Card");
 
 		// invalid card number
@@ -196,7 +196,7 @@ public class UIFunctions extends GenericMethods {
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
 
 		if (selectedCountry.contains("배송하기: 대한민국")) {
-			final String pdpURL = GlobalConstants.urlkr + "/p/" + testData.get("KrSKUID"); //for getting monogram available product for korea.
+			final String pdpURL = GlobalConstants.urlkr + "/p/" + testData.get("SKUID");
 			driver.get(pdpURL);
 
 		} else if (selectedCountry.contains("Canada")) {
@@ -240,7 +240,7 @@ public class UIFunctions extends GenericMethods {
 
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
 
-		final String pdpURL = GlobalConstants.url + "/p/" + testData.get("BackSKUID");
+		final String pdpURL = GlobalConstants.url + "/p/" + testData.get("BackOrderSKUID");
 		driver.get(pdpURL);
 
 		// due to product search issue i am using above code to get the product.
@@ -291,13 +291,9 @@ public class UIFunctions extends GenericMethods {
 	public static void addMonogram(String sheet, String testCase) {
 
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
-		
-		click(mono.getAddPersonalization(), "Add Personalization");
-		if(selectedCountry.contains("배송하기: 대한민국")) {
-			click(mono.getKoreaFirstStep(),"next step");
-		}
 
 		// domClick(mono.getComplimentaryMono(),"Monogram");
+		click(mono.getAddPersonalization(), "Add Personalization");
 		input(mono.getFirstMonoInput(), testData.get("FirstMonoInput"), "First Mono Input");
 		input(mono.getSecondMonoInput(), testData.get("SecondMonoInput"), "Second Mono Input");
 		input(mono.getThirdMonoInput(), testData.get("ThirdMonoInput"), "Third Mono Input");
@@ -537,14 +533,7 @@ public class UIFunctions extends GenericMethods {
 	}
 
 	public static void addGiftBox() {
-		
-		if (selectedCountry.contains("배송하기: 대한민국")) {
-			domClick(gift.getCheckStandardGift(), "Stanadard gift box");
-			
-		}else {
 		click(gift.getCheckPremiumGift(), "Premium GiftBox");
-		}
-		
 	}
 
 	public static void addVoucherID(String sheet, String testCase) {
@@ -615,7 +604,6 @@ public class UIFunctions extends GenericMethods {
 	public static void countrySelection(String name) {
 
 		HomePage home = PageFactory.initElements(driver, HomePage.class);
-
 		home.getHomeCountry().click();
 		delay(3000);
 		for (WebElement ele : home.getCountriesList()) {
@@ -633,11 +621,13 @@ public class UIFunctions extends GenericMethods {
 		selectedCountry = home.getHomeCountry().getText();
 		System.out.println("Execution Country is " + selectedCountry);
 		UIFunctions.closeSignUp();
+
 	}
 
 	public static void selectCountry() {
 
 		// logger = report.createTest("Country");
+		HomePage home = PageFactory.initElements(driver, HomePage.class);
 
 		String countryName = System.getProperty("countryName");
 
@@ -649,12 +639,26 @@ public class UIFunctions extends GenericMethods {
 
 		} else if (countryName.toUpperCase().equalsIgnoreCase("CANADA")) {
 
-			countrySelection("Canada");
+			if (browserName.equals("mobile")) {
+				// GenericMethods.scrollDown(1200);
+				new Select(home.getMobileCountry()).selectByVisibleText("Canada");
+				selectedCountry = getFirstSelectedOption(home.getMobileCountry());
+			
+			} else {
+				countrySelection("Canada");
+			}
 
 			// logger.log(Status.INFO, "Execution initiated for Canada");
 
 		} else if (countryName.toUpperCase().equalsIgnoreCase("KOREA")) {
-			countrySelection("Korea");
+
+			if (browserName.equals("mobile")) {
+				selectByValue(home.getMobileCountry(), "KR", "Country Name");
+				selectedCountry = getFirstSelectedOption(home.getMobileCountry());
+			} else {
+				countrySelection("Korea");
+			}
+
 			// logger.log(Status.INFO, "Execution initiated for Korea");
 		}
 	}
@@ -825,125 +829,40 @@ public class UIFunctions extends GenericMethods {
 	public static void addTumiStudio() {
 		click(tumiId.getTumiIdDesign(), "TumiID");  
 		delay(2000);
-
-		for (WebElement ele : tumiId.getMainBodyList()) {
-			if (getText(ele).contains("Shadow Grey")) {
-				delay(2000);
-				click(ele, "MainBody color");
-				break;
-			}
-		}
-		click(tumiId.getFrontPocket(), "Front Pocket");
-
-		for (WebElement ele : tumiId.getFrontPocketList()) {
-			if (getText(ele).contains("Black")) {
-				delay(2000);
-				click(ele, "Front Pocket color");
-				break;
-			}
-		}
-		click(tumiId.getSidePocket(), "Side Pocket");
-
-		for (WebElement ele : tumiId.getSidePocketList()) {
-			if (getText(ele).contains("Atlantic")) {
-				delay(2000);
-				click(ele, "Side Pocket color");
-				break;
-			}
-		}
-
-		click(tumiId.getPatchnTag(), "Patch & Tag");
-
-		for (WebElement ele : tumiId.getPatchnTagList()) {
-			if (getText(ele).contains("TUMI red")) {
-				delay(2000);
-				click(ele, "Patch n Tag color");
-				break;
-			}
-		}
-
-		click(tumiId.getWebbing(), "Webbing");
-
-		for (WebElement ele : tumiId.getWebbingList()) {
-			if (getText(ele).contains("Black")) {
-				delay(2000);
-				click(ele, "Webbing color");
-				break;
-			}
-		}
-
-		click(tumiId.getLeatherAccents(), "Leather Accents");
-
-		for (WebElement ele : tumiId.getLeatherAccentsList()) {
-			if (getText(ele).contains("Atlantic")) {
-				delay(2000);
-				click(ele, "Webbing color");
-				break;
-			}
-		}
-
-		click(tumiId.getHardWare(), "Hard Ware");
-
-		for (WebElement ele : tumiId.getHardwareList()) {
-			if (getText(ele).contains("Gold")) {
-				delay(2000);
-				click(ele, "Hardware color");
-				break;
-			}
-		}
-
-		click(tumiId.getExternalZipper(), "External Zipper");
-
-		for (WebElement ele : tumiId.getExternalZipperList()) {
-			if (getText(ele).contains("Atlantic")) {
-				delay(2000);
-				click(ele, "External Zipper color");
-				break;
-			}
-		}
-
-		click(tumiId.getAccentZipper(), "Accent Zipper");
-
-		for (WebElement ele : tumiId.getAccentZipperList()) {
-			if (getText(ele).contains("Gold")) {
-				delay(2000);
-				click(ele, "Accent Zipper color");
-				break;
-			}
-		}
-
-		click(tumiId.getInteriorLining(), "Interior Lining");
-
-		for (WebElement ele : tumiId.getAccentZipperList()) {
-			if (getText(ele).contains("Light Fossil")) {
-				delay(2000);
-				click(ele, "Interior Lining color");
-				break;
-			}
-		}
-		click(tumiId.getMonogram(), "tumiIdgramming");
+		// click(tumiId.getMainBody(),"Main Body");
+		click(tumiId.getShadowGrayColor(), "Main Body in Shadow gray Color");
 		delay(2000);
-
-		for (int i = 1; i <= 3; i++) {
-			for (WebElement ele : tumiId.getFirstStepIntials()) {
-				if (getText(ele).contains("2")) {
-					delay(2000);
-					click(ele, "Heart");
-					break;
-				}
-			}
-		}
-
+		click(tumiId.getFrontPocket(), "Front Pocket");
+		click(tumiId.getBlackColor(), "Front Pocket Red Color");
+		click(tumiId.getSidePockets(), "Side Pockets");
+		click(tumiId.getAtlanticBlueColor(), "Side Pocket Blue Color");
+		click(tumiId.getPatchnTag(), "Patch & Tag");
+		click(tumiId.getRedColor(), "Patch n Tag in Red color");
+		click(tumiId.getWebbing(), "Webbing");
+		click(tumiId.getBlackColor(), "Webbing Color");
+		click(tumiId.getLeatherAccents(), "Leather Accents");
+		click(tumiId.getAtlanticBlueColor(), "Leather in Blue color");
+		click(tumiId.getHardWare(), "Hard Ware");
+		click(tumiId.getGoldColor(), "Hardware in Gold Color");
+		click(tumiId.getExternalZipper(), "External Zipper");
+		click(tumiId.getAtlanticBlueColor(), "External Zipper in blue color");
+		click(tumiId.getAccentZipper(), "Accent Zipper");
+		click(tumiId.getGoldColor(), "Accent in gold color");
+		click(tumiId.getInteriorLining(), "Interior Lining");
+		click(tumiId.getFossilColor(), "Interior in Fossil color");
+		// monogram
+		click(tumiId.getMonograming(), "tumiIdgramming");
+		delay(2000);
+		click(tumiId.getHeart(), "Heart symbol");
+		click(tumiId.getHeart(), "Heart symbol");
+		click(tumiId.getHeart(), "Heart Symbol");
+		/*
+		 * input(tumiId.getFirstInput(), tumiId.getHeart(), "First tumiId Input");
+		 * input(tumiId.getSecondInput(), tumiId.getHeart(), "Second tumiId Input");
+		 * input(tumiId.getThirdInput(), tumiId.getHeart(), "Third tumiId Input");
+		 */
 		click(tumiId.getFirstNext(), "Next");
-
-		for (WebElement ele : tumiId.getChooseColor()) {
-			if (getText(ele).contains("White")) {
-				delay(2000);
-				click(ele, "color");
-				break;
-			}
-		}
-
+		click(tumiId.getTumiWhiteColor(), "White color");
 		click(tumiId.getSecondNext(), "Next");
 		click(tumiId.getCheckBox(), "Check for both apply");
 		click(tumiId.getApply(), "Apply");

@@ -80,8 +80,9 @@
 					<version>2.21.0</version>
 					<configuration>
 						<systemPropertyVariables>
-							<browsername>Chrome</browsername>
-							<countryName>Canada</countryName>
+							<browsername>mobile</browsername>
+							<countryName>US</countryName>
+							<applicationUrl>stage2</applicationUrl>
 						</systemPropertyVariables>
 						<forkCount>0</forkCount>
 						<executable>C:\Program Files\Java\jdk1.8.0_161\bin\javac.exe</executable>
