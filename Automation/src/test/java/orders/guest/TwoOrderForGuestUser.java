@@ -82,7 +82,7 @@ public class TwoOrderForGuestUser extends GenericMethods {
           UIFunctions.addCardDetails("TumiTestData", "GuestOrders");
                  UIFunctions.completeOrder();
 }
-		//TA-31
+		//TA-114
 		@Test(priority = 3,description = "Verify Order with 2 'Ready to Ship' Items, One regular in stock SKU + One in stock SKU with Gift boxing-Guest user")
 		public void verifyTwoInstockWithGiftMsgrForGuestUser() {
               UIFunctions.addProductToCart("TumiTestData","GuestOrders");
