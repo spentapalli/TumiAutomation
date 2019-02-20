@@ -87,7 +87,8 @@
 						<forkCount>0</forkCount>
 						<executable>C:\Program Files\Java\jdk1.8.0_161\bin\javac.exe</executable>
 						<suiteXmlFiles>
-							<suiteXmlFile>GOrders.xml</suiteXmlFile>
+							<suiteXmlFile>sprint1.xml</suiteXmlFile>
+							<suiteXmlFile>sprint2.xml</suiteXmlFile>
 						</suiteXmlFiles>
 					</configuration>
 				</plugin>
