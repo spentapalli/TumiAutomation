@@ -80,8 +80,8 @@
 					<version>2.21.0</version>
 					<configuration>
 						<systemPropertyVariables>
-							<browsername>mobile</browsername>
-							<countryName>US</countryName>
+							<browsername>Chrome</browsername>
+							<countryName>Canada</countryName>
 							<applicationUrl>stage2</applicationUrl>
 						</systemPropertyVariables>
 						<forkCount>0</forkCount>
