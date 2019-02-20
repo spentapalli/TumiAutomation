@@ -81,7 +81,7 @@
 					<configuration>
 						<systemPropertyVariables>
 							<browsername>Chrome</browsername>
-							<countryName>Canada</countryName>
+							<countryName>US</countryName>
 							<applicationUrl>stage2</applicationUrl>
 						</systemPropertyVariables>
 						<forkCount>0</forkCount>
