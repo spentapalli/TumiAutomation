@@ -25,12 +25,9 @@ public class CartPage extends GenericMethods {
 	private WebElement editProductQuantity;
 
 	public WebElement getEditProductQuantity() {
-		if (selectedCountry.contains("배송하기: 대한민국")) {
-			return explicitWait(kreditProductsQuantity);
-		} else {
-
+		
 			return editProductQuantity;
-		}
+		
 	}
 
 	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Edit')][1]")

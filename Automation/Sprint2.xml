@@ -1,23 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="TumiReport" parallel="none">
-	<test name="TwoOrderForGuestUser">
-		<classes>
-			<class name="orders.guest.TwoOrderForGuestUser" />
+
+	<test name="TumiStudioOrder"> 
+		<classes> 
+			<class name="orders.guest.TumiStudioOrder"/> 
 		</classes>
-	</test>
-	<!-- <test name="TumiStudioOrder"> <classes> <class name="orders.guest.TumiStudioOrder" 
-		/> </classes> </test> -->
-	<test name="MultipleOrdersForGuestUser">
-		<classes>
-			<class name="orders.guest.MultipleOrdersForGuestUser" />
-		</classes>
-	</test>
-	<test name="ThreeOrderForGuestUser">
-		<classes>
-			<class name="orders.guest.ThreeOrderForGuestUser" />
-		</classes>
-	</test>
+   </test>
 
 	<test name="MultiOrders.java">
 		<classes>
@@ -45,6 +34,21 @@
 	<test name="GuestOrdersWithGiftMsg">
 		<classes>
 			<class name="orders.guest.GuestOrdersWithGiftMsg" />
+		</classes>
+	</test>
+	<test name="TwoOrderForGuestUser">
+		<classes>
+			<class name="orders.guest.TwoOrderForGuestUser" />
+		</classes>
+	</test>
+	<test name="MultipleOrdersForGuestUser">
+		<classes>
+			<class name="orders.guest.MultipleOrdersForGuestUser" />
+		</classes>
+	</test>
+	<test name="ThreeOrderForGuestUser">
+		<classes>
+			<class name="orders.guest.ThreeOrderForGuestUser" />
 		</classes>
 	</test>
 	<test name="VerifyInvalidGoogleLogin">

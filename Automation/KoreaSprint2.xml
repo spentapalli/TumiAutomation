@@ -14,35 +14,36 @@
 	</test>
 	<test name="ThreeOrderForGuestUser">
 		<classes>
-			<class name="orders.guest.ThreeOrderForGuestUser" >
-			<methods>
-			<include name="verifyGuestOrderWithThreeReadyToShipProducts">
-			</include>
-   
-    </methods>
-    </class>
+			<class name="orders.guest.ThreeOrderForGuestUser">
+				<methods>
+					<include
+						name="verifyGuestOrderWithThreeReadyToShipProducts">
+					</include>
+
+				</methods>
+			</class>
 		</classes>
 	</test>
 	<test name="TwoOrderForGuestUser">
 		<classes>
-			<class name="orders.guest.TwoOrderForGuestUser" >
-			<methods>
-			<include name="verifyTwoInstockWithGiftMsg">
-			</include>
-   
-    </methods>
-    </class>
+			<class name="orders.guest.TwoOrderForGuestUser">
+				<methods>
+					<include name="verifyTwoInstockWithGiftBox">
+					</include>
+
+				</methods>
+			</class>
 		</classes>
 	</test>
 	<test name="MultipleOrdersForGuestUser">
 		<classes>
-			<class name="orders.guest.MultipleOrdersForGuestUser" >
-			<methods>
-			<include name="verifyTwoReadyToShipProductsWithMonogram">
-			</include>
-   
-    </methods>
-    </class>
+			<class name="orders.guest.MultipleOrdersForGuestUser">
+				<methods>
+					<include name="verifyTwoReadyToShipProductsWithMonogram">
+					</include>
+
+				</methods>
+			</class>
 		</classes>
 	</test>
 	<test name="RegisterOrderWithMonogram">
@@ -52,13 +53,13 @@
 	</test>
 	<test name="RegisterOrderWithGiftServices">
 		<classes>
-			<class name="orders.guest.RegisterOrderWithGiftServices" >
-			<methods>
-			<include name="	orderWithGiftboxAsRegistered">
-			</include>
-   
-    </methods>
-    </class>
+			<class name="orders.registered.RegisterOrderWithGiftServices">
+				<methods>
+					<include name="orderWithGiftboxAsRegistered">
+					</include>
+
+				</methods>
+			</class>
 		</classes>
 	</test>
 </suite>

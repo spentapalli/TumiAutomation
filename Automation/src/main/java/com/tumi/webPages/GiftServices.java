@@ -26,6 +26,7 @@ public class GiftServices extends GenericMethods {
 
 	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Make this a Gift')]")
 	private WebElement makeGiftBox;
+	
 	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Gift Card/Services')]")
 	private WebElement makeGiftCard;
 
@@ -82,6 +83,7 @@ public class GiftServices extends GenericMethods {
 	
 		return explicitWait(checkPremiumGift);
 	}
+	
 	
 	@FindBy(how=How.XPATH, using="//input[@id='giftBox']")
 	private WebElement checkStandardGift;
