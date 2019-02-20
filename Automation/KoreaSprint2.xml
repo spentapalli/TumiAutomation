@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="TumiReport" parallel="none">
 
-	<test name="VerifyInvalidGoogleLogin">
+	<!-- <test name="VerifyInvalidGoogleLogin">
 		<classes>
 			<class name="login.VerifyInvalidGoogleLogin" />
 		</classes>
@@ -11,7 +11,7 @@
 		<classes>
 			<class name="login.VerifyInvalidInstaLogin" />
 		</classes>
-	</test>
+	</test> -->
 	<test name="ThreeOrderForGuestUser">
 		<classes>
 			<class name="orders.guest.ThreeOrderForGuestUser">
