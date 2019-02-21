@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="TumiReport" parallel="none">
-
+<test name="TwoOrderForGuestUser">
+		<classes>
+			<class name="orders.guest.TwoOrderForGuestUser" >
+			<methods>
+			<include name="verifyTwoInstockWithGiftBox()">
+			</include>
+    </methods>
+    </class>
+		</classes>
+	</test>
 	<test name="VerifyInvalidGoogleLogin">
 		<classes>
 			<class name="login.VerifyInvalidGoogleLogin" />
@@ -23,17 +32,7 @@
     </class>
 		</classes>
 	</test>
-	<test name="TwoOrderForGuestUser">
-		<classes>
-			<class name="orders.guest.TwoOrderForGuestUser" >
-			<methods>
-			<include name="verifyTwoInstockWithGiftMsg">
-			</include>
-   
-    </methods>
-    </class>
-		</classes>
-	</test>
+	
 	<test name="MultipleOrdersForGuestUser">
 		<classes>
 			<class name="orders.guest.MultipleOrdersForGuestUser" >
@@ -52,7 +51,7 @@
 	</test>
 	<test name="RegisterOrderWithGiftServices">
 		<classes>
-			<class name="orders.guest.RegisterOrderWithGiftServices" >
+			<class name="orders.registered.RegisterOrderWithGiftServices" >
 			<methods>
 			<include name="	orderWithGiftboxAsRegistered">
 			</include>

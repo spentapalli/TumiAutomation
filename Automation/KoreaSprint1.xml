@@ -21,39 +21,39 @@
 	</test>
 	
 <test name="OrderWithMonogram">
-		<parameter name="Country" value="US"></parameter>
+		
 		<classes>
 			<class name="orders.guest.OrderWithMonogram" />
 		</classes>
 	</test>
 	<test name="RegisteredOrder">
-		<parameter name="Country" value="US"></parameter>
+		
 		<classes>
 			<class name="orders.registered.RegisteredOrder" />
 		</classes>
 	</test>
 	<test name="RegisterOrderWithVoucher">
-		<parameter name="Country" value="US"></parameter>
+		
 		<classes>
 			<class name="orders.registered.RegisterOrderWithVoucher" />
 		</classes>
 	</test>
 	
 	<test name="GoogleLogin">
-		<parameter name="Country" value="US"></parameter>
+		
 		<classes>
 			<class name="login.GoogleLogin" />
 		</classes>
 	</test>
 	<test name="InstagramLogin">
-		<parameter name="Country" value="US"></parameter>
+		
 		<classes>
 			<class name="login.InstagramLogin" />
 		</classes>
 	</test>
 
 	<test name="RegularLogin">
-		<parameter name="Country" value="US"></parameter>
+		
 		<classes>
 			<class name="login.RegularLogin" />
 		</classes>
