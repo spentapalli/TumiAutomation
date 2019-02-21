@@ -152,6 +152,7 @@ public class Reports {
 	public static void launchBrowser() throws Exception {
 		getBrowser();
 		maximizeBrowser();
+		
 		if (browserName.equals("ie")) {
 			GenericMethods.delay(2000);
 			driver.navigate().to("javascript:document.getElementById('overridelink').click()");
@@ -166,7 +167,7 @@ public class Reports {
 		// driver.navigate().to("https://ca.stg-hybris-akamai.tumi.com");
 	}
 
-	//@AfterClass(alwaysRun = true)
+	@AfterClass(alwaysRun = true)
 	public static void closeBrowser() {
 		driver.close();
 	}
@@ -299,6 +300,7 @@ public class Reports {
 
 	public static void maximizeBrowser() {
 		driver.manage().window().maximize();
+		GenericMethods.deleteAllCookies();
 		/*
 		 * try { if (OSFinder.isWindows()) { driver.manage().window().maximize(); } else
 		 * { driver.manage().window().setSize(new Dimension(1600, 900)); } } catch
@@ -322,7 +324,7 @@ public class Reports {
 				driver.get(GlobalConstants.url);
 			}
 		} else if (url.toLowerCase().equalsIgnoreCase("akamai")) {
-			
+
 			if (!browserName.equals("ie")) {
 				driver.get(GlobalConstants.akamaiUrl);
 			}

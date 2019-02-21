@@ -588,8 +588,9 @@ public class GenericMethods extends GlobalConstants {
 	/**
 	 * Desc: Delete All Cookies
 	 */
-	public void deleteAllCookies() {
+	public static void deleteAllCookies() {
 		driver.manage().deleteAllCookies();
+		delay(2000);
 	}
 
 	public static void delay(int mili) {

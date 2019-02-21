@@ -829,13 +829,13 @@ public class UIFunctions extends GenericMethods {
 	}
 
 	public static void addTumiStudio() {
-		click(tumiId.getTumiIdDesign(), "TumiID");
+		domClick(tumiId.getTumiIdDesign(), "TumiID");
 		delay(2000);
 
 		for (WebElement ele : tumiId.getMainBodyList()) {
 			if (getText(ele).contains("Shadow Grey")) {
 				delay(2000);
-				click(ele, "MainBody color");
+				click(ele, "Main Body color");
 				break;
 			}
 		}
