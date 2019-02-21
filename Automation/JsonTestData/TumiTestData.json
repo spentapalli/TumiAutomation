@@ -26,7 +26,7 @@
 		"Message": "Hello Tumi",
 		"GiftCardnumber": "7018525193950000020",
 		"Pinnumber": "98779393",
-		"ProductName": "tag",
+		"PrdouctName": "tag",
 		"FirstMonoInput": "1",
 		"SecondMonoInput": "2",
 		"ThirdMonoInput": "3",
@@ -85,7 +85,7 @@
 		"CVV": "123",
 		"ExipryMonth": "4",
 		"ExpiryYear": "2020",
-		"SKUID": "13234CPT",
+		"SKUID":"13234CPT",
 		"FirstMonoInput": "1",
 		"SecondMonoInput": "2",
 		"ThirdMonoInput": "3",
@@ -242,7 +242,7 @@
 	},
 	
 	"InValidGoogleCredentials":{
-	"EmailID":"emptumi@gmail.com",
+	"EmailID":"Employee.tumi@gmail.com",
 	"Password":"tumi12"
 	},
 	

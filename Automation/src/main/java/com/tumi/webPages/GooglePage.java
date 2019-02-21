@@ -108,7 +108,7 @@ public class GooglePage extends GenericMethods {
 		return emailNotFound;
 	}
 
-	@FindBy(how = How.XPATH, using = "(//div[@class='GQ8Pzc'])")
+	@FindBy(how = How.XPATH, using = "//div[@id='password']/div[2]/div[2]/div")
 	private WebElement passwordError;
 
 	public WebElement getPasswordError() {

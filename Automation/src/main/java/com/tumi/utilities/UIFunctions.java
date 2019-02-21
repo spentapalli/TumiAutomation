@@ -545,7 +545,7 @@ public class UIFunctions extends GenericMethods {
 	public static void addGiftBox() {
 		
 		if (selectedCountry.contains("배송하기: 대한민국")) {
-			domClick(gift.getCheckStandardGift(), "Stanadard gift box");
+			click(gift.getCheckStandardGift(), "Stanadard gift box");
 			
 		}else {
 		click(gift.getCheckPremiumGift(), "Premium GiftBox");

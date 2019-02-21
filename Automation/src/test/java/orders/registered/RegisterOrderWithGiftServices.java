@@ -40,7 +40,7 @@ public class RegisterOrderWithGiftServices extends GenericMethods {
    @Test(priority = 1, description = " TA - 187 Verify Order with merchandise Ready to ship + Gift Message-Registered User")
 
 	public void orderWithGiftMsgAsRegistered() {
-		login("TumiTestData", "TumiLogin");
+		login("TumiTestData", "RegisteredOrders");
 		UIFunctions.addProductToCart("TumiTestData", "GuestOrders");
 		click(pdp.getAddToCart(), "Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
@@ -61,7 +61,7 @@ public class RegisterOrderWithGiftServices extends GenericMethods {
 	@Test(priority = 2, description = " TA- 188 Verify Order with merchandise Ready to ship + Gift Message + Gift Box - Registered User")
 	public void orderWithGiftMsgNBoxAsRegistered() {
 
-		login("TumiTestData", "TumiLogin");
+		login("TumiTestData", "RegisteredOrders");
 		UIFunctions.addProductToCart("TumiTestData", "GuestOrders");
 		click(pdp.getAddToCart(), "Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
@@ -83,7 +83,7 @@ public class RegisterOrderWithGiftServices extends GenericMethods {
 	@Test(priority = 3, description = " TA- 190 Verify Order with merchandise Ready to ship + Gift Message + Gift Box + Voucher - Registered User")
 	public void orderWithGiftMsgNBoxVoucherAsRegistered() {
 
-		login("TumiTestData", "TumiLogin");
+		login("TumiTestData", "RegisteredOrders");
 		UIFunctions.addProductToCart("TumiTestData", "RegisteredOrders");
 		click(pdp.getAddToCart(), "Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
