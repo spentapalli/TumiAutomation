@@ -80,8 +80,8 @@
 					<version>2.21.0</version>
 					<configuration>
 						<systemPropertyVariables>
-							<browsername>Chrome</browsername>
-							<countryName>US</countryName>
+							<browsername>Firfox</browsername>
+							<countryName>Korea</countryName>
 							<applicationUrl>stage2</applicationUrl>
 						</systemPropertyVariables>
 						<forkCount>0</forkCount>
