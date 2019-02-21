@@ -35,14 +35,13 @@ public class GuestOrderFail extends GenericMethods {
 		try {
 			if (review.getCheckoutMessages().isDisplayed()) {
 				delay(2000);
-				if (getText(review.getCheckoutMessages()).contains(getProperty("checkout.Messages"))) {
-					Assert.fail("Order is incompleted with invalid card details");
+				if (!getText(review.getCheckoutMessages()).contains(getProperty("checkout.Messages"))) {
+					Assert.fail("Order is completed with invalid card details");
 				}
 			}
 		} catch (Exception e) {
 			Assert.fail("Order is completed with invalid card details");
 		}
-		UIFunctions.completeOrder();
 	}
 
 

@@ -83,13 +83,6 @@ public class MyAccountPage extends GenericMethods {
 		return repairServices;
 	}
 	
-	@FindBy(how = How.XPATH, using = "(//h3[contains(text(),'My Account')])[1]")
-	private WebElement myAccMsg;
-
-	public WebElement getMyAccMsg() {
-		return myAccMsg;
-	}
-	
 
 	
 	//same for korea

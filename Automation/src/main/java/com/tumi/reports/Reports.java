@@ -298,14 +298,12 @@ public class Reports {
 	}
 
 	public static void maximizeBrowser() {
-		driver.manage().window().maximize();
-		/*
-		 * try { if (OSFinder.isWindows()) { driver.manage().window().maximize(); } else
-		 * { driver.manage().window().setSize(new Dimension(1600, 900)); } } catch
-		 * (Exception e) {
-		 * 
-		 * e.printStackTrace(); }
-		 */}
+		if (OSFinder.isWindows()) {
+			driver.manage().window().maximize();
+		} else {
+			driver.manage().window().setSize(new Dimension(1600, 900));
+		}
+	}
 
 	/**
 	 * @param URL

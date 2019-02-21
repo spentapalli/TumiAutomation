@@ -44,12 +44,12 @@ public Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "
 					input(insta.getInstaPassword(), testData.get("Password"), "Password");
 					click(insta.getInstaLogin(), "Login");
 					delay(2000);
+					/*softAssertEquals(getText(insta.getInstaErr()), getProperty("insta.error"));
+					softAssertEquals(getText(insta.getPasswordErr()), getProperty("insta.passwordError"));
+					softAssertEquals(getText(insta.getUsernameErr()), getProperty("insta.usernameError"));*/
+					
 				}
 			}
-			softAssertEquals(getText(insta.getPasswordErr()), getProperty("insta.passwordError"));
-			softAssertEquals(getText(insta.getInstaErr()), getProperty("insta.error"));
-			softAssertEquals(getText(insta.getUsernameErr()), getProperty("insta.usernameError"));
-			
 			
 			driver.switchTo().window(parentHandle);
 			try {

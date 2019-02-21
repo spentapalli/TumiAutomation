@@ -41,14 +41,17 @@ public class VerifyInvalidGoogleLogin extends GenericMethods {
 				delay(2000);
 				input(google.getPassword(), testData.get("Password"), "Password");
 				click(google.getPasswordNext(), "password next");
+				
+				/*
+				softAssertEquals(getText(google.getPasswordError()), getProperty("google.passwordError"));
+				softAssertEquals(getText(google.getPasswordBlank()), getProperty("google.passwordBlank"));
+				softAssertEquals(getText(google.getEmailBlankError()), getProperty("google.emailBlankError"));
+				softAssertEquals(getText(google.getEmailError()), getProperty("google.emailError"));
+				softAssertEquals(getText(google.getEmailNotFound()), getProperty("google.emailnotFound"));*/
 			}
 		}
 		
-		softAssertEquals(getText(google.getPasswordError()), getProperty("google.passwordError"));
-		softAssertEquals(getText(google.getPasswordBlank()), getProperty("google.passwordBlank"));
-		softAssertEquals(getText(google.getEmailBlankError()), getProperty("google.emailBlankError"));
-		softAssertEquals(getText(google.getEmailError()), getProperty("google.emailError"));
-		softAssertEquals(getText(google.getEmailNotFound()), getProperty("google.emailnotFound"));
+		
 		driver.switchTo().window(parentHandle);
 		try {
 			if(myacc.getSignout().isDisplayed()) {

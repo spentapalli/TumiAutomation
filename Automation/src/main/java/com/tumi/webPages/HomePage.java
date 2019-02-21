@@ -18,12 +18,12 @@ import com.tumi.utilities.GenericMethods;
  */
 public class HomePage extends GenericMethods {
 
+	
 	public HomePage(WebDriver driver) {
 		Reports.driver = driver;
 		PageFactory.initElements(driver, this);
 
 	}
-
 //same for korea
 	@FindBy(how = How.XPATH, using = "//input[@id='search']")
 	private WebElement searchProduct;
@@ -32,7 +32,6 @@ public class HomePage extends GenericMethods {
 		delay(2000);
 		return searchProduct;
 	}
-
 //same for korea
 	@FindBy(how = How.XPATH, using = "//main[@id='navEnd']/div[2]/div[1]/div/div")
 	private WebElement NoProducts;
@@ -41,7 +40,6 @@ public class HomePage extends GenericMethods {
 		delay(2000);
 		return NoProducts;
 	}
-
 //kjhhfgszbuhtddxfg
 	@FindBy(how = How.XPATH, using = "//ul[@id='matching_products']/li")
 	private List<WebElement> matchingProducts;
@@ -50,6 +48,8 @@ public class HomePage extends GenericMethods {
 
 		return matchingProducts;
 	}
+	
+
 
 	// for Canada
 	@FindBy(how = How.XPATH, using = "//div[@id='firstTimeEmailSignupPopup']/a/span")
@@ -75,10 +75,10 @@ public class HomePage extends GenericMethods {
 	public WebElement getSignupPopupUsProd() {
 
 		return signupPopupUsProd;
-
+		
 	}
-
-	// korea
+	
+	//korea
 	@FindBy(how = How.XPATH, using = "//div[@id='firstTimeEmailSignupPopup']/div/span")
 	private WebElement koreaSignUpPop;
 
@@ -114,7 +114,6 @@ public class HomePage extends GenericMethods {
 	public WebElement getSelectKorea() {
 		return selectKorea;
 	}
-
 //jfhfgsfjsdfjsdgz
 	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Close')]")
 	private WebElement acceptCookies;
@@ -124,36 +123,20 @@ public class HomePage extends GenericMethods {
 		return acceptCookies;
 	}
 
-	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Location')]")
+	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Location: United States')]")
+	private WebElement selectCountryUS;
+
+	public WebElement getSelectCountryUS() {
+
+		return selectCountryUS;
+	}
+
+	@FindBy(how = How.XPATH, using = "//a[text()='Location: Canada']")
 	private WebElement selectCountry;
 
 	public WebElement getSelectCountry() {
 
 		return selectCountry;
-	}
-
-	@FindBy(how = How.XPATH, using = "(//a[contains(text(),'United States')])[2]")
-	private WebElement selectCountryUS;
-
-	public WebElement getSelectCountryUS() {
-
-		return explicitWait(selectCountryUS);
-	}
-
-	@FindBy(how = How.XPATH, using = "(//a[contains(text(),'Canada')])[2]")
-	private WebElement selectCountryCA;
-
-	public WebElement getSelectCountryCA() {
-
-		return explicitWait(selectCountryCA);
-	}
-
-	@FindBy(how = How.XPATH, using = "(//a[contains(text(),'대한민국')])[2]")
-	private WebElement selectCountryKR;
-
-	public WebElement getSelectCountryKR() {
-
-		return explicitWait(selectCountryKR);
 	}
 
 	@FindBy(how = How.XPATH, using = "//i[@id='lang-selectorSelectBoxItArrow']")
@@ -164,83 +147,50 @@ public class HomePage extends GenericMethods {
 		return selectLanguage;
 
 	}
-
-	@FindBy(how = How.XPATH, using = "//span[@id='lang-selectorSelectBoxItContainer']")
-	private WebElement selectLanguageContainer;
-
-	public WebElement getSelectLanguageContainer() {
-
-		return selectLanguageContainer;
-
-	}
-
-	@FindBy(how = How.XPATH, using = "(//a[contains(text(),'Español')])[1]")
-	private WebElement selectSpanishLanguage;
-
-	public WebElement getSelectSpanishLanguage() {
-
-		return explicitWait(selectSpanishLanguage);
-
-	}
-
-	@FindBy(how = How.XPATH, using = "(//a[contains(text(),'Français')])[1]")
-	private WebElement selectFrenchLanguage;
-
-	public WebElement getSelectFrenchLanguage() {
-
-		return explicitWait(selectFrenchLanguage);
-
-	}
-
-	@FindBy(how = How.XPATH, using = "//section[@id='top-nav']/header/div[1]/div[1]/div[3]/a")
-	private WebElement krheaderFindStore;
-
+	 @FindBy(how = How.XPATH, using = "//section[@id='top-nav']/header/div[1]/div[1]/div[3]/a")
+	    private WebElement krheaderFindStore;
+	 
 	@FindBy(how = How.XPATH, using = "(//a[text()='Find a Store'])[1]")
 	private WebElement headerFindStore;
-
-	public WebElement getHeaderFindStore() {
-		if (selectedCountry.contains("배송하기: 대한민국")) {
-
-			return explicitWait(krheaderFindStore);
-
+	
+	public WebElement getkrHeaderFindStore() {
+	if (selectedCountry.contains("배송하기: 대한민국")) {
+		return explicitWait(krheaderFindStore);
 		} else {
+	return headerFindStore;
 
-			return headerFindStore;
-
-		}
 	}
-
+	}
 	@FindBy(how = How.XPATH, using = "//section[@id='top-nav']/header/div[1]/div[2]/a")
 	private WebElement krheaderCustomerService;
-
+	
 	@FindBy(how = How.XPATH, using = "(//a[text()='Customer Service'])[1]")
 	private WebElement headerCustomerService;
-
-	public WebElement getHeaderCustomerService() {
-
+public WebElement getkrHeaderCustomerService() {
+	
 		if (selectedCountry.contains("배송하기: 대한민국")) {
 			return explicitWait(krheaderCustomerService);
-		} else {
-
-			return headerCustomerService;
-		}
-	}
-
-	@FindBy(how = How.XPATH, using = "(//a[@href='#login'])[1]")
-	private WebElement krHeaderSignIn;
-
+			} else {
+	   
+		  return headerCustomerService;
+	  }
+	  }
+	  
+	
+	 @FindBy(how = How.XPATH, using = "(//a[@href='#login'])[1]")
+	 private WebElement krHeaderSignIn;
+	 
 	@FindBy(how = How.XPATH, using = "(//a[text()='Sign In'])[1]")
 	private WebElement headerSignIn;
 
 	public WebElement getHeaderSignIn() {
 		if (selectedCountry.contains("배송하기: 대한민국")) {
 			return explicitWait(krHeaderSignIn);
-		} else {
-
-			return explicitWait(headerSignIn);
-		}
+			} else {
+	  
+		return explicitWait(headerSignIn);
 	}
-
+	}
 //same for korea
 	@FindBy(how = How.XPATH, using = "//li[@id='janrain-instagram']/a")
 	private WebElement instaLogin;
@@ -265,8 +215,8 @@ public class HomePage extends GenericMethods {
 		return j_password;
 	}
 
-	@FindBy(how = How.XPATH, using = "//div[@id='login-option-regular']/input")
-	private WebElement krSubmit;
+	 @FindBy(how = How.XPATH, using = "//div[@id='login-option-regular']/input")
+	 private WebElement krSubmit;
 
 	@FindBy(how = How.XPATH, using = "//input[@value='Sign in']")
 	private WebElement submit;
@@ -274,24 +224,23 @@ public class HomePage extends GenericMethods {
 	public WebElement getLogOn() {
 		if (selectedCountry.contains("배송하기: 대한민국")) {
 			return explicitWait(krSubmit);
-		} else {
-			return submit;
-		}
+			} else {
+		return submit;
+	}
 	}
 
-	@FindBy(how = How.XPATH, using = "(//div[@class='dEOOab RxsGPe'])[1]")
+	@FindBy(how=How.XPATH,using="(//div[@class='dEOOab RxsGPe'])[1]")
 	private WebElement emailBlankError;
-
+	
 	public WebElement getEmailBlankError() {
-
+		
 		return emailBlankError;
 	}
-
-	@FindBy(how = How.XPATH, using = "//label[@id='j_password-error']")
+	@FindBy(how=How.XPATH,using="//label[@id='j_password-error']")
 	private WebElement emailRegularError;
-
+	
 	public WebElement getEmailRegularError() {
-
+		
 		return emailRegularError;
 	}
 
@@ -302,36 +251,37 @@ public class HomePage extends GenericMethods {
 
 		return emailBlank;
 	}
-
-	@FindBy(how = How.XPATH, using = "//label[@id='j_password-error']")
+	@FindBy(how=How.XPATH,using="//label[@id='j_password-error']")
 	private WebElement passwordRegularError;
-
+	
 	public WebElement getPasswordRegularError() {
-
+		
 		return passwordRegularError;
 	}
-
-	@FindBy(how = How.XPATH, using = "//div[@class='GQ8Pzc']")
+	@FindBy(how=How.XPATH,using="//div[@class='GQ8Pzc']")
 	private WebElement passwordBlank;
-
+	
 	public WebElement getPasswordBlank() {
-
+		
 		return passwordBlank;
 	}
+	
 
-	@FindBy(how = How.XPATH, using = "//form[@id='tm-login-form']/div[4]/div")
+	
+	@FindBy(how=How.XPATH,using="//form[@id='tm-login-form']/div[4]/div")
 	private WebElement krinvalidCredentials;
-
-	@FindBy(how = How.XPATH, using = "(//div[@class='error-message'])[1]")
-	private WebElement invalidCredentials;
-
+	
+	@FindBy(how=How.XPATH,using="(//div[@class='error-message'])[1]")
+    private WebElement invalidCredentials;
+	
 	public WebElement getInvalidCredentialsError() {
 		if (selectedCountry.contains("배송하기: 대한민국")) {
 			return explicitWait(krinvalidCredentials);
-		} else {
+			} else {
+		
 
-			return invalidCredentials;
-		}
+		return invalidCredentials;
+	}
 	}
 
 	@FindBy(how = How.XPATH, using = "//div[@id='tm-panel-login-confirmation']/header/a")
@@ -347,22 +297,19 @@ public class HomePage extends GenericMethods {
 	public WebElement getSignupPopup() {
 		return signUpPop;
 	}
-
-	@FindBy(how = How.XPATH, using = "//div[@id='main-content']/div[2]/h1/span")
+   @FindBy(how = How.XPATH, using = "//div[@id='main-content']/div[2]/h1/span")
 	private WebElement vpnIssue;
 
 	public WebElement getVPNDis() {
 		return vpnIssue;
 	}
-
-	// same for korea
+ //same for korea
 	@FindBy(how = How.XPATH, using = "//div[@id='minicart_data']/span[2]")
 	private WebElement minicartcount;
 
 	public WebElement getMinicartCount() {
 		return minicartcount;
 	}
-
 //same for korea
 	@FindBy(how = How.XPATH, using = "//div[@id='minicart_data']")
 	private WebElement minicart;
@@ -370,14 +317,14 @@ public class HomePage extends GenericMethods {
 	public WebElement getMinicart() {
 		return explicitWait(minicartcount);
 	}
-
+	
 	@FindBy(how = How.XPATH, using = "//div[contains(@class,'header-country')]/a")
 	private WebElement homeCountry;
 
 	public WebElement getHomeCountry() {
 		return explicitWait(homeCountry);
 	}
-
+	
 	@FindBy(how = How.XPATH, using = "//div[@class='select-country']/div/ul/li/a")
 	private List<WebElement> countriesList;
 
@@ -385,13 +332,23 @@ public class HomePage extends GenericMethods {
 		return countriesList;
 	}
 
+		
 	// Mobile
 	@FindBy(how = How.XPATH, using = "//select[@name='country']")
 	private WebElement mobileCountry;
 
 	public WebElement getMobileCountry() {
-
+		
 		return mobileCountry;
 	}
+	
+	
+	
 
 }
+
+
+
+
+
+

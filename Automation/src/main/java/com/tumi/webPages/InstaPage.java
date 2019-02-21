@@ -38,6 +38,9 @@ public class InstaPage extends GenericMethods {
 		return instaPassword;
 	}
 
+	@FindBy(how=How.XPATH, using="//div[contains(text(),'Log in')]")
+	private WebElement instaLogin;
+	
 	public WebElement getInstaLogin() {
 		return instaLogin;
 	}
@@ -45,8 +48,7 @@ public class InstaPage extends GenericMethods {
 	@FindBy(how=How.XPATH, using="//input[@name='password']")
 	private WebElement instaPassword;
 	
-	@FindBy(how=How.XPATH, using="//button[contains(text(),'Log in')]")
-	private WebElement instaLogin;
+	
 	
 	@FindBy(how=How.XPATH, using="//div[@class='eiCW-']/p")
 	private WebElement passwordErr;

@@ -2,6 +2,7 @@ package orders.guest;
 
 import java.util.Map;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.tumi.dataProvider.ReadTestData;
