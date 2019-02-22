@@ -18,6 +18,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.io.FileHandler;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
@@ -152,6 +153,7 @@ public class Reports {
 	public static void launchBrowser() throws Exception {
 		getBrowser();
 		maximizeBrowser();
+		
 		if (browserName.equals("ie")) {
 			GenericMethods.delay(2000);
 			driver.navigate().to("javascript:document.getElementById('overridelink').click()");
@@ -166,7 +168,7 @@ public class Reports {
 		// driver.navigate().to("https://ca.stg-hybris-akamai.tumi.com");
 	}
 
-	//@AfterClass(alwaysRun = true)
+	@AfterClass(alwaysRun = true)
 	public static void closeBrowser() {
 		driver.close();
 	}
@@ -210,11 +212,11 @@ public class Reports {
 			if (result.getStatus() == ITestResult.FAILURE) {
 
 				// Timestamp time = new Timestamp(System.currentTimeMillis());
-
-				getScreen("./ExtentReports/Screenshots/" + result.getName() + ".png");
-				String screenlocation = "./Screenshots/" + result.getName() + ".png";
 				logger.fail(MarkupHelper.createLabel(result.getName() + " Test Case Failed", ExtentColor.RED));
 				logger.fail(result.getThrowable());
+				getScreen("./ExtentReports/Screenshots/" + result.getName() + ".png");
+				String screenlocation = System.getProperty("user.dir")+"/Screenshots/" + result.getName() + ".png";
+				
 				logger.fail("Screen Shot Reference:  ",
 						MediaEntityBuilder.createScreenCaptureFromPath(screenlocation).build());
 			}
@@ -286,6 +288,7 @@ public class Reports {
 			DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
 			capabilities.setCapability("ignoreZoomSetting", true);
 			capabilities.setCapability("nativeEvents", false);
+			capabilities.setCapability(CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION, true);
 			capabilities.setCapability(InternetExplorerDriver.INITIAL_BROWSER_URL, GlobalConstants.url);
 			System.setProperty(GlobalConstants.ie, GlobalConstants.iePath);
 			driver = new InternetExplorerDriver(capabilities);
@@ -298,12 +301,15 @@ public class Reports {
 	}
 
 	public static void maximizeBrowser() {
-		if (OSFinder.isWindows()) {
-			driver.manage().window().maximize();
-		} else {
-			driver.manage().window().setSize(new Dimension(1600, 900));
-		}
-	}
+		driver.manage().window().maximize();
+		GenericMethods.deleteAllCookies();
+		/*
+		 * try { if (OSFinder.isWindows()) { driver.manage().window().maximize(); } else
+		 * { driver.manage().window().setSize(new Dimension(1600, 900)); } } catch
+		 * (Exception e) {
+		 * 
+		 * e.printStackTrace(); }
+		 */}
 
 	/**
 	 * @param URL
@@ -320,7 +326,7 @@ public class Reports {
 				driver.get(GlobalConstants.url);
 			}
 		} else if (url.toLowerCase().equalsIgnoreCase("akamai")) {
-			
+
 			if (!browserName.equals("ie")) {
 				driver.get(GlobalConstants.akamaiUrl);
 			}
