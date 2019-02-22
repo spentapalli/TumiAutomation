@@ -842,18 +842,20 @@ public class UIFunctions extends GenericMethods {
 		click(tumiId.getFrontPocket(), "Front Pocket");
 
 		for (WebElement ele : tumiId.getFrontPocketList()) {
-			if (getText(ele).contains("Black")) {
+			if (getText(ele).contains("Atlantic")) {
 				delay(2000);
 				click(ele, "Front Pocket color");
+				delay(2000);
 				break;
 			}
 		}
 		click(tumiId.getSidePocket(), "Side Pocket");
 
 		for (WebElement ele : tumiId.getSidePocketList()) {
-			if (getText(ele).contains("Atlantic")) {
+			if (getText(ele).contains("Tumi Red")) {
 				delay(2000);
 				click(ele, "Side Pocket color");
+				delay(2000);
 				break;
 			}
 		}
@@ -864,6 +866,7 @@ public class UIFunctions extends GenericMethods {
 			if (getText(ele).contains("TUMI red")) {
 				delay(2000);
 				click(ele, "Patch n Tag color");
+				delay(2000);
 				break;
 			}
 		}
@@ -874,6 +877,7 @@ public class UIFunctions extends GenericMethods {
 			if (getText(ele).contains("Black")) {
 				delay(2000);
 				click(ele, "Webbing color");
+				delay(2000);
 				break;
 			}
 		}
@@ -881,9 +885,10 @@ public class UIFunctions extends GenericMethods {
 		click(tumiId.getLeatherAccents(), "Leather Accents");
 
 		for (WebElement ele : tumiId.getLeatherAccentsList()) {
-			if (getText(ele).contains("Atlantic")) {
+			if (getText(ele).contains("Black Leather")) {
 				delay(2000);
 				click(ele, "Webbing color");
+				delay(2000);
 				break;
 			}
 		}
@@ -894,6 +899,7 @@ public class UIFunctions extends GenericMethods {
 			if (getText(ele).contains("Gold")) {
 				delay(2000);
 				click(ele, "Hardware color");
+				delay(2000);
 				break;
 			}
 		}
