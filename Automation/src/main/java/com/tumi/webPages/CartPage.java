@@ -18,19 +18,13 @@ public class CartPage extends GenericMethods {
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(how = How.XPATH, using = ("//div[@id='cart-items-container']/div/div[1]/div[1]/div[2]/div[6]/span[1]/span"))
-	private WebElement kreditProductsQuantity;
 
 	@FindBy(how = How.XPATH, using = "//input[@id='select-qty']")
 	private WebElement editProductQuantity;
 
 	public WebElement getEditProductQuantity() {
-		if (selectedCountry.contains("배송하기: 대한민국")) {
-			return explicitWait(kreditProductsQuantity);
-		} else {
-
+		
 			return editProductQuantity;
-		}
 	}
 
 	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Edit')][1]")
