@@ -212,11 +212,11 @@ public class Reports {
 			if (result.getStatus() == ITestResult.FAILURE) {
 
 				// Timestamp time = new Timestamp(System.currentTimeMillis());
-
-				getScreen("./ExtentReports/Screenshots/" + result.getName() + ".png");
-				String screenlocation = "./Screenshots/" + result.getName() + ".png";
 				logger.fail(MarkupHelper.createLabel(result.getName() + " Test Case Failed", ExtentColor.RED));
 				logger.fail(result.getThrowable());
+				getScreen("./ExtentReports/Screenshots/" + result.getName() + ".png");
+				String screenlocation = System.getProperty("user.dir")+"/Screenshots/" + result.getName() + ".png";
+				
 				logger.fail("Screen Shot Reference:  ",
 						MediaEntityBuilder.createScreenCaptureFromPath(screenlocation).build());
 			}
