@@ -195,8 +195,9 @@ public class UIFunctions extends GenericMethods {
 
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
 
-		if (selectedCountry.contains("배송하기: 대한민국")) {
-			final String pdpURL = GlobalConstants.urlkr + "/p/" + testData.get("KrSKUID"); //for getting monogram available product for korea.
+		if (selectedCountry.equals("US")) {
+
+			final String pdpURL = GlobalConstants.url + "/p/" + testData.get("SKUID");
 			driver.get(pdpURL);
 
 		} else if (selectedCountry.contains("Canada")) {
@@ -206,7 +207,7 @@ public class UIFunctions extends GenericMethods {
 
 		} else {
 
-			final String pdpURL = GlobalConstants.url + "/p/" + testData.get("SKUID");
+			final String pdpURL = GlobalConstants.urlkr + "/p/" + testData.get("SKUID"); 
 			driver.get(pdpURL);
 		}
 		// WaitForJStoLoad();
@@ -304,11 +305,11 @@ public class UIFunctions extends GenericMethods {
 		click(mono.getApply(), "Apply");
 		delay(3000);
 	}
-	
+
 	public static void removeMonogram() {
 		try {
-			if(mono.getRemove().isDisplayed()) {
-				click(mono.getRemove(),"Removed added monogram");
+			if (mono.getRemove().isDisplayed()) {
+				click(mono.getRemove(), "Removed added monogram");
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -543,14 +544,14 @@ public class UIFunctions extends GenericMethods {
 	}
 
 	public static void addGiftBox() {
-		
+
 		if (selectedCountry.contains("배송하기: 대한민국")) {
 			click(gift.getCheckStandardGift(), "Stanadard gift box");
-			
-		}else {
-		click(gift.getCheckPremiumGift(), "Premium GiftBox");
+
+		} else {
+			click(gift.getCheckPremiumGift(), "Premium GiftBox");
 		}
-		
+
 	}
 
 	public static void addVoucherID(String sheet, String testCase) {
