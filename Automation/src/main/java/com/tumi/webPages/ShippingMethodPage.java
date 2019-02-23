@@ -85,11 +85,12 @@ public class ShippingMethodPage extends GenericMethods {
 
 	public WebElement getProceedToPayment() {
 		delay(2000);
-		if (selectedCountry.contains("배송하기: 대한민국")) {
-			return explicitWait(krProceedToPayment);
+		if (selectedCountry.contains("US")||
+				selectedCountry.contains("Canada")) {
+			return explicitWait(proceedToPayment);
 		}else {
 			
-		return explicitWait(proceedToPayment);
+		return explicitWait(krProceedToPayment);
 	}
 
 }

@@ -63,10 +63,11 @@ public class CartPage extends GenericMethods {
 	private WebElement proceedToCheckout;
 
 	public WebElement getProceedCart() {
-		if (selectedCountry.contains("배송하기: 대한민국")) {
-			return explicitWait(krProceedtoCart);
-		} else {
+		if (selectedCountry.contains("US")||
+				selectedCountry.contains("Canada")) {
 			return explicitWait(proceedToCheckout);
+		} else {
+			return explicitWait(krProceedtoCart);
 		}
 
 	}

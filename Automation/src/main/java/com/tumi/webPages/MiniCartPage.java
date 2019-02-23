@@ -46,10 +46,11 @@ public class MiniCartPage extends GenericMethods {
 	//in suresh system getting "ëŒ€í•œë¯¼êµ­"
 	public WebElement getProceedCheckOut() {
 		
-		if (selectedCountry.contains("배송하기: 대한민국")) {
-			return explicitWait(krProceedtoCheck);
-		} else {
+		if (selectedCountry.contains("US")||
+				selectedCountry.contains("Canada")) {
 			return explicitWait(proceedtoCheck);
+		} else {
+			return explicitWait(krProceedtoCheck);
 		}
 	}
 
