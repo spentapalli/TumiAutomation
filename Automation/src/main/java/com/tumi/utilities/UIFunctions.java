@@ -915,95 +915,103 @@ public class UIFunctions extends GenericMethods {
 
 		for (WebElement ele : tumiId.getMainBodyList()) {
 			if (getText(ele).contains("Shadow Grey")) {
-				delay(2000);
 				click(ele, "MainBody color");
 				break;
 			}
 		}
 		click(tumiId.getFrontPocket(), "Front Pocket");
+		delay(2000);
 
 		for (WebElement ele : tumiId.getFrontPocketList()) {
 			if (getText(ele).contains("Black")) {
-				delay(2000);
+				
 				webclick(ele, "Front Pocket color");
 				break;
 			}
 		}
 		click(tumiId.getSidePocket(), "Side Pocket");
+		delay(2000);
 
 		for (WebElement ele : tumiId.getSidePocketList()) {
 			if (getText(ele).contains("Atlantic")) {
-				delay(2000);
+				
 				webclick(ele, "Side Pocket color");
 				break;
 			}
 		}
 
 		click(tumiId.getPatchnTag(), "Patch & Tag");
+		delay(2000);
 
 		for (WebElement ele : tumiId.getPatchnTagList()) {
 			if (getText(ele).contains("TUMI red")) {
-				delay(2000);
+				
 				domClick(ele, "Patch n Tag color");
 				break;
 			}
 		}
 
 		click(tumiId.getWebbing(), "Webbing");
+		delay(2000);
 
 		for (WebElement ele : tumiId.getWebbingList()) {
 			if (getText(ele).contains("Black")) {
-				delay(2000);
+				
 				domClick(ele, "Webbing color");
 				break;
 			}
 		}
 
 		click(tumiId.getLeatherAccents(), "Leather Accents");
+		delay(2000);
 
 		for (WebElement ele : tumiId.getLeatherAccentsList()) {
 			if (getText(ele).contains("Atlantic")) {
-				delay(2000);
-				click(ele, "Webbing color");
+			
+				click(ele, "Leather Accents color");
 				break;
 			}
 		}
 
 		click(tumiId.getHardWare(), "Hard Ware");
+		delay(2000);
 
 		for (WebElement ele : tumiId.getHardwareList()) {
 			if (getText(ele).contains("Gold")) {
-				delay(2000);
+			
 				click(ele, "Hardware color");
 				break;
 			}
 		}
 
 		click(tumiId.getExternalZipper(), "External Zipper");
+		delay(2000);
 
 		for (WebElement ele : tumiId.getExternalZipperList()) {
 			if (getText(ele).contains("Atlantic")) {
-				delay(2000);
+				
 				click(ele, "External Zipper color");
 				break;
 			}
 		}
 
 		click(tumiId.getAccentZipper(), "Accent Zipper");
+		delay(2000);
 
 		for (WebElement ele : tumiId.getAccentZipperList()) {
 			if (getText(ele).contains("Gold")) {
-				delay(2000);
+				
 				click(ele, "Accent Zipper color");
 				break;
 			}
 		}
 
 		click(tumiId.getInteriorLining(), "Interior Lining");
+		delay(2000);
 
-		for (WebElement ele : tumiId.getAccentZipperList()) {
+		for (WebElement ele : tumiId.getinteriorLiningList()) {
 			if (getText(ele).contains("Light Fossil")) {
-				delay(2000);
+				
 				click(ele, "Interior Lining color");
 				break;
 			}
