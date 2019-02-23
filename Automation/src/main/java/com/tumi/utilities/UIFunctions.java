@@ -312,7 +312,6 @@ public class UIFunctions extends GenericMethods {
 				click(mono.getRemove(), "Removed added monogram");
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 		}
 	}
 
@@ -546,7 +545,7 @@ public class UIFunctions extends GenericMethods {
 	public static void addGiftBox() {
 
 		if (selectedCountry.contains("배송하기: 대한민국")) {
-			click(gift.getCheckStandardGift(), "Stanadard gift box");
+			domClick(gift.getCheckStandardGift(), "Stanadard gift box");
 
 		} else {
 			click(gift.getCheckPremiumGift(), "Premium GiftBox");
@@ -828,107 +827,54 @@ public class UIFunctions extends GenericMethods {
 		domClick(guestBillPage.getReviewOrder(), "Review your order");
 
 	}
-
-	public static void addTumiStudio() {
-		webclick(tumiId.getTumiIdDesign(), "TumiID");
+	
+	public static void addTumiID() {
+	
+		
+		
+		click(tumiId.getTumiIdDesign(), "TumiID");
 		delay(2000);
-
-		for (WebElement ele : tumiId.getMainBodyList()) {
-			if (getText(ele).contains("Shadow Grey")) {
-				delay(2000);
-				webclick(ele, "Main Body color");
-				break;
-			}
-		}
-		webclick(tumiId.getFrontPocket(), "Front Pocket");
-
-		for (WebElement ele : tumiId.getFrontPocketList()) {
-			if (getText(ele).contains("Black")) {
-				delay(2000);
-				webclick(ele, "Front Pocket color");
-				break;
-			}
-		}
-		webclick(tumiId.getSidePocket(), "Side Pocket");
-
-		for (WebElement ele : tumiId.getSidePocketList()) {
-			if (getText(ele).contains("Atlantic")) {
-				delay(2000);
-				webclick(ele, "Side Pocket color");
-				break;
-			}
-		}
-
-		webclick(tumiId.getPatchnTag(), "Patch & Tag");
-
-		for (WebElement ele : tumiId.getPatchnTagList()) {
-			if (getText(ele).contains("TUMI red")) {
-				delay(2000);
-				webclick(ele, "Patch n Tag color");
-				break;
-			}
-		}
-
-		webclick(tumiId.getWebbing(), "Webbing");
-
-		for (WebElement ele : tumiId.getWebbingList()) {
-			if (getText(ele).contains("Black")) {
-				delay(2000);
-				webclick(ele, "Webbing color");
-				break;
-			}
-		}
-
-		webclick(tumiId.getLeatherAccents(), "Leather Accents");
-
-		for (WebElement ele : tumiId.getLeatherAccentsList()) {
-			if (getText(ele).contains("Atlantic")) {
-				delay(2000);
-				webclick(ele, "Webbing color");
-				break;
-			}
-		}
-
-		webclick(tumiId.getHardWare(), "Hard Ware");
-
-		for (WebElement ele : tumiId.getHardwareList()) {
-			if (getText(ele).contains("Gold")) {
-				delay(2000);
-				webclick(ele, "Hardware color");
-				break;
-			}
-		}
-
-		webclick(tumiId.getExternalZipper(), "External Zipper");
-
-		for (WebElement ele : tumiId.getExternalZipperList()) {
-			if (getText(ele).contains("Atlantic")) {
-				delay(2000);
-				webclick(ele, "External Zipper color");
-				break;
-			}
-		}
-
-		webclick(tumiId.getAccentZipper(), "Accent Zipper");
-
-		for (WebElement ele : tumiId.getAccentZipperList()) {
-			if (getText(ele).contains("Gold")) {
-				delay(2000);
-				webclick(ele, "Accent Zipper color");
-				break;
-			}
-		}
-
-		webclick(tumiId.getInteriorLining(), "Interior Lining");
-
-		for (WebElement ele : tumiId.getAccentZipperList()) {
-			if (getText(ele).contains("Light Fossil")) {
-				delay(2000);
-				webclick(ele, "Interior Lining color");
-				break;
-			}
-		}
-		webclick(tumiId.getMonogram(), "tumiIdgramming");
+		
+		click(tumiId.getShadowGrayColor(),"Main body color");
+		delay(2000);
+		
+		click(tumiId.getFrontPocket(),"Front pocket");
+		webclick(tumiId.getAtlanticBlueColor(),"Front pocket in atlantic blue color");
+		delay(2000);
+		
+		click(tumiId.getSidePocket(),"Side pockets");
+		click(tumiId.getRedColor(),"Side pockets in red color");
+		delay(2000);
+		
+		click(tumiId.getPatchnTag(),"Patch n Tag");
+		click(tumiId.getBlackColor(),"Patch n Tag in black color");
+		delay(2000);
+		
+		click(tumiId.getWebbing(),"Webbing");
+		click(tumiId.getBlackColor(),"Webbing in black color");
+		delay(2000);
+		
+		click(tumiId.getLeatherAccents(),"Leather accents");
+		click(tumiId.getBlackColor(),"Leather accents in black color");
+		delay(2000);
+		
+		click(tumiId.getHardWare(),"Hardware");
+		click(tumiId.getGoldColor(),"Hardware in Gold color");
+		delay(2000);
+		
+		click(tumiId.getExternalZipper(),"External Zipper");
+		click(tumiId.getBlackColor(),"External zipper in black color");
+		delay(2000);
+		
+		click(tumiId.getAccentZipper(),"accent zipper");
+		click(tumiId.getGoldColor(),"Anccent Zipper in gold color");
+		delay(2000);
+		
+		click(tumiId.getInteriorLining(),"Interior Lining");
+		click(tumiId.getFossilColor(),"Interior lining in fossil color");
+		delay(2000);
+		
+		click(tumiId.getMonogram(), "tumiIdgramming");
 		delay(2000);
 
 		for (int i = 1; i <= 3; i++) {
@@ -941,7 +887,7 @@ public class UIFunctions extends GenericMethods {
 			}
 		}
 
-		webclick(tumiId.getFirstNext(), "Next");
+		click(tumiId.getFirstNext(), "Next");
 
 		for (WebElement ele : tumiId.getChooseColor()) {
 			if (getText(ele).contains("White")) {
@@ -956,8 +902,139 @@ public class UIFunctions extends GenericMethods {
 		click(tumiId.getApply(), "Apply");
 		click(tumiId.getSaveDesign(), "Save");
 
+		
+
+		
 	}
 
+	public static void addTumiStudio() {
+		click(tumiId.getTumiIdDesign(), "TumiID");
+		delay(2000);
+
+		for (WebElement ele : tumiId.getMainBodyList()) {
+			if (getText(ele).contains("Shadow Grey")) {
+				delay(2000);
+				click(ele, "MainBody color");
+				break;
+			}
+		}
+		click(tumiId.getFrontPocket(), "Front Pocket");
+
+		for (WebElement ele : tumiId.getFrontPocketList()) {
+			if (getText(ele).contains("Black")) {
+				delay(2000);
+				webclick(ele, "Front Pocket color");
+				break;
+			}
+		}
+		click(tumiId.getSidePocket(), "Side Pocket");
+
+		for (WebElement ele : tumiId.getSidePocketList()) {
+			if (getText(ele).contains("Atlantic")) {
+				delay(2000);
+				webclick(ele, "Side Pocket color");
+				break;
+			}
+		}
+
+		click(tumiId.getPatchnTag(), "Patch & Tag");
+
+		for (WebElement ele : tumiId.getPatchnTagList()) {
+			if (getText(ele).contains("TUMI red")) {
+				delay(2000);
+				domClick(ele, "Patch n Tag color");
+				break;
+			}
+		}
+
+		click(tumiId.getWebbing(), "Webbing");
+
+		for (WebElement ele : tumiId.getWebbingList()) {
+			if (getText(ele).contains("Black")) {
+				delay(2000);
+				domClick(ele, "Webbing color");
+				break;
+			}
+		}
+
+		click(tumiId.getLeatherAccents(), "Leather Accents");
+
+		for (WebElement ele : tumiId.getLeatherAccentsList()) {
+			if (getText(ele).contains("Atlantic")) {
+				delay(2000);
+				click(ele, "Webbing color");
+				break;
+			}
+		}
+
+		click(tumiId.getHardWare(), "Hard Ware");
+
+		for (WebElement ele : tumiId.getHardwareList()) {
+			if (getText(ele).contains("Gold")) {
+				delay(2000);
+				click(ele, "Hardware color");
+				break;
+			}
+		}
+
+		click(tumiId.getExternalZipper(), "External Zipper");
+
+		for (WebElement ele : tumiId.getExternalZipperList()) {
+			if (getText(ele).contains("Atlantic")) {
+				delay(2000);
+				click(ele, "External Zipper color");
+				break;
+			}
+		}
+
+		click(tumiId.getAccentZipper(), "Accent Zipper");
+
+		for (WebElement ele : tumiId.getAccentZipperList()) {
+			if (getText(ele).contains("Gold")) {
+				delay(2000);
+				click(ele, "Accent Zipper color");
+				break;
+			}
+		}
+
+		click(tumiId.getInteriorLining(), "Interior Lining");
+
+		for (WebElement ele : tumiId.getAccentZipperList()) {
+			if (getText(ele).contains("Light Fossil")) {
+				delay(2000);
+				click(ele, "Interior Lining color");
+				break;
+			}
+		}
+		click(tumiId.getMonogram(), "tumiIdgramming");
+		delay(2000);
+
+		for (int i = 1; i <= 3; i++) {
+			for (WebElement ele : tumiId.getFirstStepIntials()) {
+				if (getText(ele).contains("2")) {
+					delay(2000);
+					click(ele, "Heart");
+					break;
+				}
+			}
+		}
+
+		click(tumiId.getFirstNext(), "Next");
+
+		for (WebElement ele : tumiId.getChooseColor()) {
+			if (getText(ele).contains("White")) {
+				delay(2000);
+				click(ele, "color");
+				break;
+			}
+		}
+
+		click(tumiId.getSecondNext(), "Next");
+		click(tumiId.getCheckBox(), "Check for both apply");
+		click(tumiId.getApply(), "Apply");
+		click(tumiId.getSaveDesign(), "Save");
+
+	}
 	public static void GiftCard(String sheet, String testCase) {
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
 		final String pdpURL = GlobalConstants.url + "/p/" + testData.get("SKUID");
