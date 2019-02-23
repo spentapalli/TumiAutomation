@@ -331,6 +331,9 @@ public class Reports {
 				driver.get(GlobalConstants.akamaiUrl);
 			}
 		}
+		UIFunctions.closeSignUp();
+		UIFunctions.delay(5000);
+		UIFunctions.verifyAppStatus();
 		UIFunctions.verifyVPN();
 		UIFunctions.closeSignUp();
 	}

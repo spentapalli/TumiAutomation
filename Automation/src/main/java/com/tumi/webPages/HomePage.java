@@ -351,6 +351,14 @@ public class HomePage extends GenericMethods {
 	public WebElement getSignupPopup() {
 		return signUpPop;
 	}
+	
+	@FindBy(how = How.XPATH, using = "//button[contains(text(),'No Thanks')]")
+	private WebElement noThanks;
+
+	public WebElement getNoThanks() {
+		return noThanks;
+	}
+	
 
 	@FindBy(how = How.XPATH, using = "//div[@id='main-content']/div[2]/h1/span")
 	private WebElement vpnIssue;

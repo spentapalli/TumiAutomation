@@ -26,6 +26,11 @@ public class UIFunctions extends GenericMethods {
 		HomePage home = PageFactory.initElements(driver, HomePage.class);
 
 		try {
+			home.getNoThanks().click();
+		} catch (Exception e) {
+		}
+
+		try {
 			home.getSignupPopup().click();
 		} catch (Exception e) {
 		}
@@ -189,7 +194,7 @@ public class UIFunctions extends GenericMethods {
 	}
 
 	public static void addProductToCart(String sheet, String testCase) {
-		
+
 		removeExistingCart();
 
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
@@ -206,7 +211,7 @@ public class UIFunctions extends GenericMethods {
 
 		} else {
 
-			final String pdpURL = GlobalConstants.urlkr + "/p/" + testData.get("KrSKUID"); 
+			final String pdpURL = GlobalConstants.urlkr + "/p/" + testData.get("KrSKUID");
 			driver.get(pdpURL);
 		}
 		// WaitForJStoLoad();
@@ -393,8 +398,7 @@ public class UIFunctions extends GenericMethods {
 			driver.findElement(By.xpath("//h2[contains(text(),'Order Summary')]")).click();
 		} else {
 
-			if (!selectedCountry.contains("US")||
-					!selectedCountry.contains("Canada")) {
+			if (!selectedCountry.contains("US") || !selectedCountry.contains("Canada")) {
 				Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "OrderWithTwoProducts");
 				input(shipping.getFirstName(), testData.get("FirstName"), "First Name");
 				input(shipping.getLastName(), testData.get("LastName"), "Last Name");
@@ -434,7 +438,7 @@ public class UIFunctions extends GenericMethods {
 			else {
 
 				Map<String, String> korea = ReadTestData.getJsonData("TumiTestData", "GuestDeatilsForKorea");
-				
+
 				input(shipping.getFirstName(), korea.get("FirstName"), "First Name");
 				input(shipping.getLastName(), korea.get("LastName"), "Last Name");
 				input(shipping.getAddressLine1(), korea.get("AddressLine1"), "Address Line1");
@@ -958,6 +962,12 @@ public class UIFunctions extends GenericMethods {
 		click(tumiId.getApply(), "Apply");
 		click(tumiId.getSaveDesign(), "Save");
 
+	}
+
+	public static void verifyAppStatus() {
+		if (driver.getTitle().equals("Tumi Maintenance")) {
+			Assert.fail(getText(driver.findElement(By.xpath("//div[@class='content-body']"))));
+		}
 	}
 
 	public static void GiftCard(String sheet, String testCase) {
