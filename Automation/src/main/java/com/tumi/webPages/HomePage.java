@@ -233,11 +233,14 @@ public class HomePage extends GenericMethods {
 	private WebElement headerSignIn;
 
 	public WebElement getHeaderSignIn() {
-		if (selectedCountry.contains("배송하기: 대한민국")) {
-			return explicitWait(krHeaderSignIn);
+		
+		if (selectedCountry.contains("US")||
+				selectedCountry.contains("Canada")) {
+			
+			return explicitWait(headerSignIn);
 		} else {
 
-			return explicitWait(headerSignIn);
+			return explicitWait(krHeaderSignIn);
 		}
 	}
 
@@ -272,10 +275,11 @@ public class HomePage extends GenericMethods {
 	private WebElement submit;
 
 	public WebElement getLogOn() {
-		if (selectedCountry.contains("배송하기: 대한민국")) {
-			return explicitWait(krSubmit);
+		if (selectedCountry.contains("US")||
+				selectedCountry.contains("Canada")) {
+			return explicitWait(submit);
 		} else {
-			return submit;
+			return krSubmit;
 		}
 	}
 

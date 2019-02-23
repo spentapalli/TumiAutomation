@@ -21,7 +21,7 @@ public class RegisterOrderWithVoucher extends GenericMethods{
 		login("TumiTestData", "TumiLogin");
 		UIFunctions.addProductToCart("TumiTestData", "RegisteredOrders");
 		click(pdp.getAddToCart(), "Add to cart");
-		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
+		click(minicart.getProceedCheckOut(), "Proceed to Cart");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
 		domClick(signinShip.getAddNewAddress(), "Add new Address");
 		UIFunctions.addGuestDetails();

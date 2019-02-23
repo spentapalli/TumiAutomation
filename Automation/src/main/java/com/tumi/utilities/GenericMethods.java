@@ -13,8 +13,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Properties;
-
-import org.bson.diagnostics.Loggers;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -55,20 +53,18 @@ public class GenericMethods extends GlobalConstants {
 	public void login(String sheetName, String testCaseName) {
 		try {
 			Map<String, String> testData = ReadTestData.getJsonData(sheetName, testCaseName);
+
 			click(home.getHeaderSignIn(), "Sign In");
 			input(home.getUserName(), testData.get("EmailID"), "Email Address");
 			input(home.getPassWord(), testData.get("Password"), "Password");
 			click(home.getLogOn(), "Login");
 
 			if (myacc.getSignout().isDisplayed()) {
-				
-				if(selectedCountry.contains("배송하기: 대한민국")) {
-					Loggers.getLogger("Succesfuuly logged with credentials");
-					
-				}else {
-				verifyAssertContains(getText(myacc.getWelcomeMessage()), getProperty("login.success.message"),
-						"Successfully logged with Regular user valid credentials");
-				}
+				logger.log(Status.INFO, "Successfully logged with Regular user valid credentials");
+				/*
+				 * }else { logger.log(Status.INFO,
+				 * "Successfully logged with Regular user valid credentials"); }
+				 */
 
 			} else {
 				Assert.fail("user signin is failed");
@@ -637,23 +633,27 @@ public class GenericMethods extends GlobalConstants {
 		softAssertion.assertAll();
 	}
 
-	public int parseInt(String name) {
+	public static int parseInt(String name) {
 
 		return Integer.parseInt(name);
 	}
 
-	public void removeExistingCart() {
-		int cart = parseInt(getText(home.getMinicartCount()));
-		if (cart != 0) {
-			delay(2000);
-			click(home.getMinicart(), "Mini Cart");
-			// click(minicart.getProceedCheckOut(), "Proceed to Checkout");
-			for (WebElement ele : checkout.getRemoveMinicartProducts()) {
+	public static void removeExistingCart() {
+		try {
+			int cart = parseInt(getText(home.getMinicartCount()));
+			if (cart != 0) {
 				delay(2000);
-				click(ele, getText(ele));
-				// driver.navigate().refresh();
+				click(home.getMinicart(), "Mini Cart");
+				// click(minicart.getProceedCheckOut(), "Proceed to Checkout");
+				for (WebElement ele : checkout.getRemoveMinicartProducts()) {
+					click(checkout.getRemoveProduct(), "Remove Existing Product");
+					delay(5000);
+					// explicitWait(checkout.getremoveMinicart());
+				}
 			}
+		} catch (Exception e) {
 
+			e.printStackTrace();
 		}
 	}
 }

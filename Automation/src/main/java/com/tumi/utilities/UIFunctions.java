@@ -7,9 +7,6 @@ import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
@@ -192,6 +189,8 @@ public class UIFunctions extends GenericMethods {
 	}
 
 	public static void addProductToCart(String sheet, String testCase) {
+		
+		removeExistingCart();
 
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
 
@@ -207,7 +206,7 @@ public class UIFunctions extends GenericMethods {
 
 		} else {
 
-			final String pdpURL = GlobalConstants.urlkr + "/p/" + testData.get("SKUID"); 
+			final String pdpURL = GlobalConstants.urlkr + "/p/" + testData.get("KrSKUID"); 
 			driver.get(pdpURL);
 		}
 		// WaitForJStoLoad();
@@ -393,17 +392,8 @@ public class UIFunctions extends GenericMethods {
 			driver.findElement(By.xpath("//h2[contains(text(),'Order Summary')]")).click();
 		} else {
 
-			if (selectedCountry.contains("배송하기: 대한민국")) {
-				Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestDeatilsForKorea");
-				input(shipping.getFirstName(), testData.get("FirstName"), "First Name");
-				input(shipping.getLastName(), testData.get("LastName"), "Last Name");
-				input(shipping.getAddressLine1(), testData.get("AddressLine1"), "Address Line1");
-				input(shipping.getTown(), testData.get("TownCity"), "Town");
-				input(shipping.getPostcode(), testData.get("PostCode"), "PostCode");
-				input(shipping.getPhoneNumber(), testData.get("Phone"), "Phone Number");
-			}
-
-			else {
+			if (!selectedCountry.contains("US")||
+					!selectedCountry.contains("Canada")) {
 				Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "OrderWithTwoProducts");
 				input(shipping.getFirstName(), testData.get("FirstName"), "First Name");
 				input(shipping.getLastName(), testData.get("LastName"), "Last Name");
@@ -438,6 +428,18 @@ public class UIFunctions extends GenericMethods {
 				}
 
 				input(shipping.getPhoneNumber(), testData.get("Phone"), "Phone Number");
+			}
+
+			else {
+
+				Map<String, String> korea = ReadTestData.getJsonData("TumiTestData", "GuestDeatilsForKorea");
+				
+				input(shipping.getFirstName(), korea.get("FirstName"), "First Name");
+				input(shipping.getLastName(), korea.get("LastName"), "Last Name");
+				input(shipping.getAddressLine1(), korea.get("AddressLine1"), "Address Line1");
+				input(shipping.getTown(), korea.get("TownCity"), "Town");
+				input(shipping.getPostcode(), korea.get("PostCode"), "PostCode");
+				input(shipping.getPhoneNumber(), korea.get("Phone"), "Phone Number");
 			}
 		}
 	}
