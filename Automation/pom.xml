@@ -80,7 +80,7 @@
 					<version>2.21.0</version>
 					<configuration>
 						<systemPropertyVariables>
-							<browsername>chrome</browsername>
+							<browsername>Chrome</browsername>
 							<countryName>US</countryName>
 							<applicationUrl>stage2</applicationUrl>
 						</systemPropertyVariables>
@@ -96,5 +96,5 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-
 </project>
+
