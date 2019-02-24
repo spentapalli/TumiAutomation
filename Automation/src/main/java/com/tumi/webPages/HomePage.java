@@ -7,8 +7,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
-
 import com.tumi.reports.Reports;
 import com.tumi.utilities.GenericMethods;
 
@@ -351,6 +349,15 @@ public class HomePage extends GenericMethods {
 	public WebElement getSignupPopup() {
 		return signUpPop;
 	}
+	
+	@FindBy(how = How.XPATH, using = "//button[contains(text(),'No Thanks')]")
+	private WebElement noThanks;
+
+	public WebElement getNoThanks() {
+		return noThanks;
+	}
+	
+	
 
 	@FindBy(how = How.XPATH, using = "//div[@id='main-content']/div[2]/h1/span")
 	private WebElement vpnIssue;

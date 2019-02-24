@@ -24,6 +24,10 @@ public class UIFunctions extends GenericMethods {
 	public static void closeSignUp() {
 
 		HomePage home = PageFactory.initElements(driver, HomePage.class);
+		delay(5000);
+		try {
+			home.getNoThanks().click();
+		} catch (Exception e) {}
 
 		try {
 			home.getSignupPopup().click();
@@ -832,7 +836,7 @@ public class UIFunctions extends GenericMethods {
 	
 	public static void addTumiStudio() {
 		click(tumiId.getTumiIdDesign(), "TumiID");
-		delay(2000);
+		delay(5000);
 
 		for (WebElement ele : tumiId.getMainBodyList()) {
 			if (getText(ele).contains("Shadow Grey")) {
