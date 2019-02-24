@@ -1,5 +1,9 @@
 package com.tumi.utilities;
 
+import java.awt.Rectangle;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -13,6 +17,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Properties;
+
+import javax.imageio.ImageIO;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -30,6 +37,10 @@ import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.tumi.dataProvider.ReadTestData;
 
+import ru.yandex.qatools.ashot.AShot;
+import ru.yandex.qatools.ashot.Screenshot;
+import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
+
 /**
  * @author Suuresh
  *
@@ -39,9 +50,11 @@ public class GenericMethods extends GlobalConstants {
 	public static Actions action;
 
 	public static void captureOrderConfScreen(String name) {
-		// Timestamp time = new Timestamp(System.currentTimeMillis());
-
-		getScreen("./ExtentReports/ScreenShots/" + name + ".png");
+		try {
+			BufferedImage image = new Robot().createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
+			ImageIO.write(image, "png", new File("./ExtentReports/ScreenShots/" + name + ".png"));
+		} catch (Exception e1) {}
+		//getScreen("./ExtentReports/ScreenShots/" + name + ".png");
 		String location = "./ScreenShots/" + name + ".png";
 		try {
 			logger.info("Reference", MediaEntityBuilder.createScreenCaptureFromPath(location).build());
