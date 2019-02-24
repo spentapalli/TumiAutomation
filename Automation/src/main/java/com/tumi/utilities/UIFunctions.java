@@ -27,6 +27,7 @@ public class UIFunctions extends GenericMethods {
 		delay(5000);
 		try {
 			home.getNoThanks().click();
+			delay(5000);
 		} catch (Exception e) {}
 
 		try {
