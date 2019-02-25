@@ -30,10 +30,12 @@ public class LoginPage extends GenericMethods {
 	private WebElement loginWindow;
 
 	public WebElement getLoginWindow() {
-		if (selectedCountry.contains("배송하기: 대한민국")) {
-			return explicitWait(krLoginWindow);
-			} else {
+		if (selectedCountry.contains("US")||
+				selectedCountry.contains("Canada")) {
 			return loginWindow;
+			} else {
+			
+			return explicitWait(krLoginWindow);
 		}
 	}
 
@@ -68,10 +70,12 @@ public class LoginPage extends GenericMethods {
 	private WebElement forgetPassword;
 
 	public WebElement getForgetPAssword() {
-		if (selectedCountry.contains("배송하기: 대한민국")) {
-			return krForgetPassword;
-		} else {
+		if (selectedCountry.contains("US")||
+				selectedCountry.contains("Canada")) {
 			return rememberMe;
+			
+		} else {
+			return krForgetPassword;
 		}
 	}
 
@@ -82,10 +86,12 @@ public class LoginPage extends GenericMethods {
 	private WebElement signInClick;
 
 	public WebElement getLogOn() {
-		if (selectedCountry.contains("ë°°ì†¡í•˜ê¸°: ëŒ€í•œë¯¼êµ­")) {
-			return krSignInClick;
-		} else {
+		if (selectedCountry.contains("US")||
+				selectedCountry.contains("Canada")) {
 			return signInClick;
+			
+		} else {
+			return krSignInClick;
 		}
 	}
 
@@ -96,10 +102,12 @@ public class LoginPage extends GenericMethods {
 	private WebElement logOut;
 
 	public WebElement getLogOut() {
-		if (selectedCountry.contains("배송하기: 대한민국")) {
-			return explicitWait(krLogOut);
-		} else {
+		if (selectedCountry.contains("US")||
+				selectedCountry.contains("Canada")) {
 			return logOut;
+			
+		} else {
+			return explicitWait(krLogOut);
 		}
 	}
 
@@ -118,10 +126,12 @@ public class LoginPage extends GenericMethods {
 	private WebElement closeWindow;
 
 	public WebElement getCloseWindow() {
-		if (selectedCountry.contains("배송하기: 대한민국")) {
-			return krCloseWindow;
-		} else {
+		if (selectedCountry.contains("US")||
+				selectedCountry.contains("Canada")) {
 			return closeWindow;
+			
+		} else {
+			return krCloseWindow;
 		}
 	}
 	

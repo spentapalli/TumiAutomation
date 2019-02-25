@@ -33,11 +33,12 @@ public class GiftServices extends GenericMethods {
 		if (browserName.equals("mobile")) {
 			return makeGiftCard;
 		}else {
-			if (selectedCountry.contains("배송하기: 대한민국")) {
-				return explicitWait(krMakegiftbox);
+			if (selectedCountry.contains("US")||
+					selectedCountry.contains("Canada")) {
+				return makeGiftBox;
 			} else {
-
-			return makeGiftBox;
+				return explicitWait(krMakegiftbox);
+			
 			}
 		
 		}

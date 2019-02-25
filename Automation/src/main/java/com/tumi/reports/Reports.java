@@ -287,7 +287,7 @@ public class Reports {
 			capabilities.setCapability("ignoreZoomSetting", true);
 			capabilities.setCapability("nativeEvents", false);
 			capabilities.setCapability(CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION, true);
-			capabilities.setCapability(InternetExplorerDriver.INITIAL_BROWSER_URL, GlobalConstants.url);
+			capabilities.setCapability(InternetExplorerDriver.INITIAL_BROWSER_URL, GlobalConstants.S2);
 			System.setProperty(GlobalConstants.ie, GlobalConstants.iePath);
 			driver = new InternetExplorerDriver(capabilities);
 			// logger.log(Status.INFO, "InternetExplorer Browser is initiated Execution");

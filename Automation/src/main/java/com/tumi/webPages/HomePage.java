@@ -197,13 +197,14 @@ public class HomePage extends GenericMethods {
 	private WebElement headerFindStore;
 
 	public WebElement getHeaderFindStore() {
-		if (selectedCountry.contains("배송하기: 대한민국")) {
-
-			return explicitWait(krheaderFindStore);
+		if (selectedCountry.contains("US")||
+				selectedCountry.contains("Canada")) {
+			return headerFindStore;
+			
 
 		} else {
 
-			return headerFindStore;
+			return explicitWait(krheaderFindStore);
 
 		}
 	}
@@ -216,11 +217,13 @@ public class HomePage extends GenericMethods {
 
 	public WebElement getHeaderCustomerService() {
 
-		if (selectedCountry.contains("배송하기: 대한민국")) {
-			return explicitWait(krheaderCustomerService);
+		if (selectedCountry.contains("US")||
+				selectedCountry.contains("Canada")) {
+			return headerCustomerService;
+			
 		} else {
 
-			return headerCustomerService;
+			return explicitWait(krheaderCustomerService);
 		}
 	}
 
@@ -328,11 +331,12 @@ public class HomePage extends GenericMethods {
 	private WebElement invalidCredentials;
 
 	public WebElement getInvalidCredentialsError() {
-		if (selectedCountry.contains("배송하기: 대한민국")) {
-			return explicitWait(krinvalidCredentials);
+		if (selectedCountry.contains("US")||
+				selectedCountry.contains("Canada")) {
+			return explicitWait(invalidCredentials);
 		} else {
 
-			return invalidCredentials;
+			return (krinvalidCredentials);
 		}
 	}
 

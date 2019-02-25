@@ -75,10 +75,12 @@ public class ShippingPage extends GenericMethods {
 	private WebElement addressLine2;
 
 	public WebElement getAddressLine2() {
-		if (selectedCountry.contains("배송하기: 대한민국")) {
-			return krAddressLine2;
-		} else {
+		if (selectedCountry.contains("US")||
+				selectedCountry.contains("Canada")) {
 			return addressLine2;
+		} else {
+			return krAddressLine2;
+	
 		}
 	}
 
@@ -140,11 +142,12 @@ public class ShippingPage extends GenericMethods {
 
 	public WebElement getContinueShippingMethod() {
 
-		if (selectedCountry.contains("배송하기: 대한민국")) {
-			return explicitWait(krContinueShippingMethod);
-		} else {
-
+		if (selectedCountry.contains("US")||
+				selectedCountry.contains("Canada")) {
 			return explicitWait(continueShippingMethod);
+		} else {
+			return explicitWait(krContinueShippingMethod);
+			
 		}
 
 	}

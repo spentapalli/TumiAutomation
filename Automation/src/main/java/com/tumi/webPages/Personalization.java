@@ -89,12 +89,13 @@ public class Personalization extends GenericMethods {
 	private WebElement krnext;
 	
 	public WebElement getNext() {
-		if (selectedCountry.contains("배송하기: 대한민국")) {
-	
-			return explicitWait(krnext);
-		}else {
+		 if (selectedCountry.contains("US")||
+					selectedCountry.contains("Canada")) {
+			 return explicitWait(next);
 			
-		return explicitWait(next);
+		}else {
+			return explicitWait(krnext);
+		
 	}
 	}
 	
@@ -126,11 +127,13 @@ public class Personalization extends GenericMethods {
 	private WebElement kRremove;
 	
 	public WebElement getRemove() {
-		if (selectedCountry.contains("배송하기: 대한민국")) {
-			return kRremove;
+		 if (selectedCountry.contains("US")||
+					selectedCountry.contains("Canada")) {
+			
+			return remove;
 			
 		}else {
-		return remove;
+			return kRremove;
 	}
 	}
 	@FindBy(how=How.XPATH, using="//span[contains(text(),'Classic Monogram Added')]")
@@ -140,11 +143,13 @@ public class Personalization extends GenericMethods {
 	private WebElement krMonoAdded;
 	
 	public WebElement getMonoAdded() {
-		if (selectedCountry.contains("배송하기: 대한민국")) {
-			return krMonoAdded;
+		 if (selectedCountry.contains("US")||
+					selectedCountry.contains("Canada")) {
+				return monoAdded;
 			
 		}else {
-		return monoAdded;
+			return krMonoAdded;
+	
 	}
 	}
 	
@@ -282,12 +287,14 @@ public class Personalization extends GenericMethods {
 	private WebElement krApply;
 	
 	public WebElement getApply() {
-		if (selectedCountry.contains("배송하기: 대한민국"))  {
+		 if (selectedCountry.contains("US")||
+					selectedCountry.contains("Canada")) {
+			 return explicitWait(apply);
 		
-			return explicitWait(krApply);
-		}else {
 			
-			return explicitWait(apply);
+		}else {
+			return explicitWait(krApply);
+			
 	}
 	}
 	

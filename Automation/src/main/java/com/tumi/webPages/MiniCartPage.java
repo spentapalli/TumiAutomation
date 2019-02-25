@@ -69,10 +69,12 @@ public class MiniCartPage extends GenericMethods {
 	private WebElement continueShopping;
 
 	public WebElement getContinueShopping() {
-		if (selectedCountry.contains("대한민국")) {
-			return explicitWait(krContinueShopping);
-		} else {
+		if (selectedCountry.contains("US")||
+				selectedCountry.contains("Canada")) {
 			return explicitWait(continueShopping);
+		} else {
+			
+			return explicitWait(krContinueShopping);
 		}
 	}
 

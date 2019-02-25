@@ -27,10 +27,12 @@ public class SinglePageCheckout extends GenericMethods {
 	private WebElement signInExpressCheckout;
 
 	public WebElement getSignInExpressCheckout() {
-		if (selectedCountry.contains("배송하기: 대한민국")) {
-			return krSignInExpressCheckout;
-		} else {
+		if (selectedCountry.contains("US")||
+				selectedCountry.contains("Canada")) {
+			
 			return signInExpressCheckout;
+		} else {
+			return krSignInExpressCheckout;
 		}
 	}
 
@@ -57,10 +59,12 @@ public class SinglePageCheckout extends GenericMethods {
 	private WebElement continueAsGuest;
 
 	public WebElement getContinueAsGuest() {
-		if (selectedCountry.contains("배송하기: 대한민국")) {
-			return explicitWait(krContinueAsGuest);
-		} else {
+		if (selectedCountry.contains("US")||
+				selectedCountry.contains("Canada")) {
+			
 			return explicitWait(continueAsGuest);
+		} else {
+			return explicitWait(krContinueAsGuest);
 		}
 	}
 
@@ -72,10 +76,12 @@ public class SinglePageCheckout extends GenericMethods {
 	private WebElement promotionsAndNews;
 
 	public WebElement getPromotionsAndNews() {
-		if (selectedCountry.contains("배송하기: 대한민국")) {
-			return explicitWait(krPromotionsAndNews);
-		} else {
+		if (selectedCountry.contains("US")||
+				selectedCountry.contains("Canada")) {
 			return promotionsAndNews;
+		} else {
+			return explicitWait(krPromotionsAndNews);
+			
 		}
 	}
 	

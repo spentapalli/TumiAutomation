@@ -52,7 +52,8 @@ public class ProductDetailPage extends GenericMethods {
 	private WebElement airlineCarryonGuide;
 
 	public WebElement getAirlineCarryonGuide() {
-		if (selectedCountry.contains("배송하기: 대한민국")) {
+		 if (selectedCountry.contains("US")||
+					selectedCountry.contains("Canada")) {
 			return krAirlineCarryonGuide;
 		}else {
 		return airlineCarryonGuide;
@@ -66,11 +67,14 @@ public class ProductDetailPage extends GenericMethods {
 	private WebElement addMonogram;
 
 	public WebElement getAddMonogram() {
-		if (selectedCountry.contains("배송하기: 대한민국")) {
-			return krAddMonogram;
+		 if (selectedCountry.contains("US")||
+					selectedCountry.contains("Canada")) {
+				return addMonogram;
 		}else {
-		return addMonogram;
+	
+		return krAddMonogram;
 		}
+		 
 	}
 
 	@FindBy(how = How.XPATH, using = "//input[@id='select-qty']")
@@ -89,10 +93,12 @@ public class ProductDetailPage extends GenericMethods {
 	private WebElement shoppingCart;
 
 	public WebElement getShoppingCart() {
-		if (selectedCountry.contains("배송하기: 대한민국")) {
-			return krShoppingCart;
+		 if (selectedCountry.contains("US")||
+					selectedCountry.contains("Canada")) {
+				return shoppingCart;
 		}else {
-		return shoppingCart;
+	
+		return krShoppingCart;
 	}
 	}
 
@@ -127,10 +133,12 @@ public class ProductDetailPage extends GenericMethods {
 	private List<WebElement> minicartProductsremove;
 
 	public List<WebElement> getMiniCartRemove() {
-		if (selectedCountry.contains("배송하기: 대한민국")) {
-			return krMinicartProductsremove;
+		 if (selectedCountry.contains("US")||
+					selectedCountry.contains("Canada")) {
+			 return minicartProductsremove;
 		}else {
-		return minicartProductsremove;
+		
+		return krMinicartProductsremove;
 	}
 	}
 	
@@ -141,11 +149,12 @@ public class ProductDetailPage extends GenericMethods {
 	private List<WebElement> cartProductsremove;
 
 	public WebElement getCartRemove() {
-		if (selectedCountry.contains("배송하기: 대한민국")) {
-			return krMinicartProductsremove.get(1);
+		 if (selectedCountry.contains("US")||
+					selectedCountry.contains("Canada")) {
+			 return minicartProductsremove.get(1);
 		}else {
-
-		return minicartProductsremove.get(1);
+			return krMinicartProductsremove.get(1);
+		
 	}
 	}
 	
@@ -156,7 +165,8 @@ public class ProductDetailPage extends GenericMethods {
 	private WebElement editQuantity;
 
 	public WebElement getFEditQuantity() {
-		if (selectedCountry.contains("배송하기: 대한민국")) {
+		if (selectedCountry.contains("US")||
+				selectedCountry.contains("Canada")) {
 			return krEditQuantity;
 		}else {
 		return editQuantity;

@@ -194,14 +194,14 @@ public class UIFunctions extends GenericMethods {
 	}
 
 	public static void addProductToCart(String sheet, String testCase) {
-		
-		removeExistingCart();
+		UIFunctions.closeSignUp();
+		//removeExistingCart();
 
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
 
 		if (selectedCountry.equals("US")) {
 
-			final String pdpURL = GlobalConstants.url + "/p/" + testData.get("SKUID");
+			final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("SKUID");
 			driver.get(pdpURL);
 
 		} else if (selectedCountry.contains("Canada")) {
@@ -245,7 +245,7 @@ public class UIFunctions extends GenericMethods {
 
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
 
-		final String pdpURL = GlobalConstants.url + "/p/" + testData.get("BackOrderSKUID");
+		final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("BackOrderSKUID");
 		driver.get(pdpURL);
 
 		// due to product search issue i am using above code to get the product.
@@ -267,7 +267,7 @@ public class UIFunctions extends GenericMethods {
 
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
 
-		final String pdpURL = GlobalConstants.url + "/p/" + testData.get("PreOrderSKUID");
+		final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("PreOrderSKUID");
 		driver.get(pdpURL);
 
 		// due to product search issue i am using above code to get the product.
@@ -289,7 +289,7 @@ public class UIFunctions extends GenericMethods {
 
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
 
-		final String pdpURL = GlobalConstants.url + "/p/" + testData.get("GlobalLocatorProductSKUID");
+		final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("GlobalLocatorProductSKUID");
 		driver.get(pdpURL);
 	}
 
@@ -551,11 +551,13 @@ public class UIFunctions extends GenericMethods {
 
 	public static void addGiftBox() {
 
-		if (selectedCountry.contains("배송하기: 대한민국")) {
-			domClick(gift.getCheckStandardGift(), "Stanadard gift box");
+		if (selectedCountry.contains("US")||
+				selectedCountry.contains("Canada")) {
+			click(gift.getCheckPremiumGift(), "Premium GiftBox");
 
 		} else {
-			click(gift.getCheckPremiumGift(), "Premium GiftBox");
+		
+			domClick(gift.getCheckStandardGift(), "Stanadard gift box");
 		}
 
 	}
@@ -973,7 +975,7 @@ public class UIFunctions extends GenericMethods {
 	}
 	public static void GiftCard(String sheet, String testCase) {
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
-		final String pdpURL = GlobalConstants.url + "/p/" + testData.get("SKUID");
+		final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("SKUID");
 		driver.get(pdpURL);
 		// Gift card
 		click(guestBillPage.getGiftcardButton(), "Gift Card Button");
