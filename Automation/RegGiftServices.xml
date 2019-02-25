@@ -3,10 +3,8 @@
 <suite name="Suite">
   <test thread-count="5" name="Test">
     <classes>
-      <class name="orders.registered.RegisterOrderWithGiftServices">
-      <methods>
-      <include name="orderWithGiftboxAsRegistered"></include>
-      </methods>
+      <class name="orders.registered.RegisterOrderWithVoucher">
+      
       </class>
     </classes>
   </test> <!-- Test -->
