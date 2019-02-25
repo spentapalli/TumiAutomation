@@ -201,8 +201,13 @@ public class UIFunctions extends GenericMethods {
 
 		if (selectedCountry.equals("US")) {
 
-			final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("SKUID");
+			if(applicationURL.equeals("stage2")){
+				final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("SKUID");
 			driver.get(pdpURL);
+			}else{
+				final String pdpURL = GlobalConstants.S3 + "/p/" + testData.get("SKUID");
+			driver.get(pdpURL);
+			}
 
 		} else if (selectedCountry.contains("Canada")) {
 
