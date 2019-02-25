@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -38,7 +37,6 @@ import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.tumi.utilities.GenericMethods;
 import com.tumi.utilities.GlobalConstants;
-import com.tumi.utilities.OSFinder;
 import com.tumi.utilities.UIFunctions;
 import com.tumi.webPages.CartPage;
 import com.tumi.webPages.CheckOutPage;
@@ -107,7 +105,7 @@ public class Reports {
 	public static String browserName = null;
 
 	@BeforeSuite(alwaysRun = true)
-	public void startReport() {
+	public void extentReportConfiguration() {
 		timeStamp = new SimpleDateFormat("dd-MMM-yy  hh.mm.ss aa").format(Calendar.getInstance().getTime());
 		extentReportPath = System.getProperty("user.dir") + "/ExtentReports/TumiReport.html";
 		htmlreport = new ExtentHtmlReporter(extentReportPath);
@@ -149,8 +147,8 @@ public class Reports {
 		driver = new ChromeDriver(capabilities);
 	}
 
-	@BeforeClass(alwaysRun = true)
-	public static void launchBrowser() throws Exception {
+	@BeforeMethod(alwaysRun = true)
+	public static void initiateApplication() throws Exception {
 		getBrowser();
 		maximizeBrowser();
 		
@@ -168,7 +166,7 @@ public class Reports {
 		// driver.navigate().to("https://ca.stg-hybris-akamai.tumi.com");
 	}
 
-	@AfterClass(alwaysRun = true)
+	@AfterMethod(alwaysRun = true)
 	public static void closeBrowser() {
 		driver.close();
 	}

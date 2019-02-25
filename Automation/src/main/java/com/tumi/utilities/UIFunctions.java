@@ -7,9 +7,6 @@ import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
@@ -27,6 +24,11 @@ public class UIFunctions extends GenericMethods {
 	public static void closeSignUp() {
 
 		HomePage home = PageFactory.initElements(driver, HomePage.class);
+		delay(5000);
+		try {
+			home.getNoThanks().click();
+			delay(5000);
+		} catch (Exception e) {}
 
 		try {
 			home.getSignupPopup().click();
@@ -192,6 +194,8 @@ public class UIFunctions extends GenericMethods {
 	}
 
 	public static void addProductToCart(String sheet, String testCase) {
+		
+		removeExistingCart();
 
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
 
@@ -207,7 +211,7 @@ public class UIFunctions extends GenericMethods {
 
 		} else {
 
-			final String pdpURL = GlobalConstants.urlkr + "/p/" + testData.get("SKUID"); 
+			final String pdpURL = GlobalConstants.urlkr + "/p/" + testData.get("KrSKUID"); 
 			driver.get(pdpURL);
 		}
 		// WaitForJStoLoad();
@@ -312,7 +316,6 @@ public class UIFunctions extends GenericMethods {
 				click(mono.getRemove(), "Removed added monogram");
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 		}
 	}
 
@@ -394,17 +397,8 @@ public class UIFunctions extends GenericMethods {
 			driver.findElement(By.xpath("//h2[contains(text(),'Order Summary')]")).click();
 		} else {
 
-			if (selectedCountry.contains("배송하기: 대한민국")) {
-				Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestDeatilsForKorea");
-				input(shipping.getFirstName(), testData.get("FirstName"), "First Name");
-				input(shipping.getLastName(), testData.get("LastName"), "Last Name");
-				input(shipping.getAddressLine1(), testData.get("AddressLine1"), "Address Line1");
-				input(shipping.getTown(), testData.get("TownCity"), "Town");
-				input(shipping.getPostcode(), testData.get("PostCode"), "PostCode");
-				input(shipping.getPhoneNumber(), testData.get("Phone"), "Phone Number");
-			}
-
-			else {
+			if (!selectedCountry.contains("US")||
+					!selectedCountry.contains("Canada")) {
 				Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "OrderWithTwoProducts");
 				input(shipping.getFirstName(), testData.get("FirstName"), "First Name");
 				input(shipping.getLastName(), testData.get("LastName"), "Last Name");
@@ -439,6 +433,18 @@ public class UIFunctions extends GenericMethods {
 				}
 
 				input(shipping.getPhoneNumber(), testData.get("Phone"), "Phone Number");
+			}
+
+			else {
+
+				Map<String, String> korea = ReadTestData.getJsonData("TumiTestData", "GuestDeatilsForKorea");
+				
+				input(shipping.getFirstName(), korea.get("FirstName"), "First Name");
+				input(shipping.getLastName(), korea.get("LastName"), "Last Name");
+				input(shipping.getAddressLine1(), korea.get("AddressLine1"), "Address Line1");
+				input(shipping.getTown(), korea.get("TownCity"), "Town");
+				input(shipping.getPostcode(), korea.get("PostCode"), "PostCode");
+				input(shipping.getPhoneNumber(), korea.get("Phone"), "Phone Number");
 			}
 		}
 	}
@@ -546,7 +552,7 @@ public class UIFunctions extends GenericMethods {
 	public static void addGiftBox() {
 
 		if (selectedCountry.contains("배송하기: 대한민국")) {
-			click(gift.getCheckStandardGift(), "Stanadard gift box");
+			domClick(gift.getCheckStandardGift(), "Stanadard gift box");
 
 		} else {
 			click(gift.getCheckPremiumGift(), "Premium GiftBox");
@@ -828,125 +834,133 @@ public class UIFunctions extends GenericMethods {
 		domClick(guestBillPage.getReviewOrder(), "Review your order");
 
 	}
-
+	
 	public static void addTumiStudio() {
-		webclick(tumiId.getTumiIdDesign(), "TumiID");
-		delay(2000);
+		click(tumiId.getTumiIdDesign(), "TumiID");
+		delay(5000);
 
 		for (WebElement ele : tumiId.getMainBodyList()) {
 			if (getText(ele).contains("Shadow Grey")) {
-				delay(2000);
-				webclick(ele, "Main Body color");
+				click(ele, "MainBody color");
 				break;
 			}
 		}
-		webclick(tumiId.getFrontPocket(), "Front Pocket");
+		click(tumiId.getFrontPocket(), "Front Pocket");
+		delay(2000);
 
 		for (WebElement ele : tumiId.getFrontPocketList()) {
 			if (getText(ele).contains("Black")) {
-				delay(2000);
+				
 				webclick(ele, "Front Pocket color");
 				break;
 			}
 		}
-		webclick(tumiId.getSidePocket(), "Side Pocket");
+		click(tumiId.getSidePocket(), "Side Pocket");
+		delay(2000);
 
 		for (WebElement ele : tumiId.getSidePocketList()) {
 			if (getText(ele).contains("Atlantic")) {
-				delay(2000);
+				
 				webclick(ele, "Side Pocket color");
 				break;
 			}
 		}
 
-		webclick(tumiId.getPatchnTag(), "Patch & Tag");
+		click(tumiId.getPatchnTag(), "Patch & Tag");
+		delay(2000);
 
 		for (WebElement ele : tumiId.getPatchnTagList()) {
 			if (getText(ele).contains("TUMI red")) {
-				delay(2000);
-				webclick(ele, "Patch n Tag color");
+				
+				domClick(ele, "Patch n Tag color");
 				break;
 			}
 		}
 
-		webclick(tumiId.getWebbing(), "Webbing");
+		click(tumiId.getWebbing(), "Webbing");
+		delay(2000);
 
 		for (WebElement ele : tumiId.getWebbingList()) {
 			if (getText(ele).contains("Black")) {
-				delay(2000);
-				webclick(ele, "Webbing color");
+				
+				domClick(ele, "Webbing color");
 				break;
 			}
 		}
 
-		webclick(tumiId.getLeatherAccents(), "Leather Accents");
+		click(tumiId.getLeatherAccents(), "Leather Accents");
+		delay(2000);
 
 		for (WebElement ele : tumiId.getLeatherAccentsList()) {
 			if (getText(ele).contains("Atlantic")) {
-				delay(2000);
-				webclick(ele, "Webbing color");
+			
+				click(ele, "Leather Accents color");
 				break;
 			}
 		}
 
-		webclick(tumiId.getHardWare(), "Hard Ware");
+		click(tumiId.getHardWare(), "Hard Ware");
+		delay(2000);
 
 		for (WebElement ele : tumiId.getHardwareList()) {
 			if (getText(ele).contains("Gold")) {
-				delay(2000);
-				webclick(ele, "Hardware color");
+			
+				click(ele, "Hardware color");
 				break;
 			}
 		}
 
-		webclick(tumiId.getExternalZipper(), "External Zipper");
+		click(tumiId.getExternalZipper(), "External Zipper");
+		delay(2000);
 
 		for (WebElement ele : tumiId.getExternalZipperList()) {
 			if (getText(ele).contains("Atlantic")) {
-				delay(2000);
-				webclick(ele, "External Zipper color");
+				
+				click(ele, "External Zipper color");
 				break;
 			}
 		}
 
-		webclick(tumiId.getAccentZipper(), "Accent Zipper");
+		click(tumiId.getAccentZipper(), "Accent Zipper");
+		delay(2000);
 
 		for (WebElement ele : tumiId.getAccentZipperList()) {
 			if (getText(ele).contains("Gold")) {
-				delay(2000);
-				webclick(ele, "Accent Zipper color");
+				
+				click(ele, "Accent Zipper color");
 				break;
 			}
 		}
 
-		webclick(tumiId.getInteriorLining(), "Interior Lining");
+		click(tumiId.getInteriorLining(), "Interior Lining");
+		delay(2000);
 
-		for (WebElement ele : tumiId.getAccentZipperList()) {
+		for (WebElement ele : tumiId.getinteriorLiningList()) {
 			if (getText(ele).contains("Light Fossil")) {
-				delay(2000);
-				webclick(ele, "Interior Lining color");
+				
+				click(ele, "Interior Lining color");
 				break;
 			}
 		}
-		webclick(tumiId.getMonogram(), "tumiIdgramming");
+		click(tumiId.getMonogram(), "tumiIdgramming");
 		delay(2000);
 
 		for (int i = 1; i <= 3; i++) {
 			for (WebElement ele : tumiId.getFirstStepIntials()) {
 				if (getText(ele).contains("2")) {
 					delay(2000);
-					webclick(ele, "Heart");
+					click(ele, "Heart");
 					break;
 				}
 			}
 		}
 
-		webclick(tumiId.getFirstNext(), "Next");
+		click(tumiId.getFirstNext(), "Next");
 
 		for (WebElement ele : tumiId.getChooseColor()) {
 			if (getText(ele).contains("White")) {
 				delay(2000);
-				webclick(ele, "color");
+				click(ele, "color");
 				break;
 			}
 		}
@@ -957,7 +971,6 @@ public class UIFunctions extends GenericMethods {
 		click(tumiId.getSaveDesign(), "Save");
 
 	}
-
 	public static void GiftCard(String sheet, String testCase) {
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
 		final String pdpURL = GlobalConstants.url + "/p/" + testData.get("SKUID");

@@ -19,62 +19,63 @@ public class MyAccountPage extends GenericMethods {
 		Reports.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
-	
- @FindBy(how = How.XPATH, using = "//div[@id='tm-panel-login-confirmation']/div/div/ul[1]/li[1]/a")
- private WebElement krviewProfile;
 
-@FindBy(how = How.XPATH, using = "(//a[@title='View Your Profile'])[2]")
+	@FindBy(how = How.XPATH, using = "//div[@id='tm-panel-login-confirmation']/div/div/ul[1]/li[1]/a")
+	private WebElement krviewProfile;
+
+	@FindBy(how = How.XPATH, using = "(//a[@title='View Your Profile'])[2]")
 	private WebElement viewProfile;
 
 	public WebElement getViewProfile() {
 		if (selectedCountry.contains("배송하기: 대한민국")) {
 			return explicitWait(krviewProfile);
-			} else {
+		} else {
 			return viewProfile;
+		}
 	}
-	}
+
 	@FindBy(how = How.XPATH, using = "//div[@id='tm-panel-login-confirmation']/div/div/ul[1]/li[2]/a")
 	private WebElement krpurchasedItems;
-	
+
 	@FindBy(how = How.XPATH, using = "(//a[@title='Purchased Items'])[2]")
 	private WebElement purchasedItems;
-	
 
 	public WebElement getPurchasedItems() {
 		if (selectedCountry.contains("배송하기: 대한민국")) {
 			return explicitWait(krpurchasedItems);
-			} else {
-		return purchasedItems;
+		} else {
+			return purchasedItems;
+		}
 	}
-	}
-	@FindBy(how=How.XPATH,using="//div[@id='tm-panel-login-confirmation']/div/div/ul[1]/li[3]/a") 
+
+	@FindBy(how = How.XPATH, using = "//div[@id='tm-panel-login-confirmation']/div/div/ul[1]/li[3]/a")
 	private WebElement krviewYourOrderStatus;
-	
+
 	@FindBy(how = How.XPATH, using = "(//a[@title='View Your Order Status'])[2]")
 	private WebElement viewYourOrderStatus;
 
-  public WebElement getViewYourOrderStatus() {
+	public WebElement getViewYourOrderStatus() {
 		if (selectedCountry.contains("배송하기: 대한민국")) {
 			return explicitWait(krviewYourOrderStatus);
-			} else {
-		return viewYourOrderStatus;
+		} else {
+			return viewYourOrderStatus;
+		}
 	}
-  }
 
 	@FindBy(how = How.XPATH, using = "//div[@id='tm-panel-login-confirmation']/div/div/ul[1]/li[4]/a")
 	private WebElement krregisterYourTumi;
-	
+
 	@FindBy(how = How.XPATH, using = "(//a[@title='Register Your TUMI'])[2]")
 	private WebElement registerYourTumi;
-	
-   public WebElement getRegisterYourTumi() {
-	if (selectedCountry.contains("배송하기: 대한민국")) {
-		return explicitWait(krregisterYourTumi);
+
+	public WebElement getRegisterYourTumi() {
+		if (selectedCountry.contains("배송하기: 대한민국")) {
+			return explicitWait(krregisterYourTumi);
 		} else {
 
-		return registerYourTumi;
+			return registerYourTumi;
+		}
 	}
-   }
 
 	@FindBy(how = How.XPATH, using = "(//a[@title='Repair Services'])[2]")
 	private WebElement repairServices;
@@ -82,26 +83,22 @@ public class MyAccountPage extends GenericMethods {
 	public WebElement getRepairServices() {
 		return repairServices;
 	}
-	
+
 	@FindBy(how = How.XPATH, using = "(//h3[contains(text(),'My Account')])[1]")
 	private WebElement myAccMsg;
 
 	public WebElement getMyAccMsg() {
 		return myAccMsg;
 	}
-	
 
-	
-	//same for korea
+	// same for korea
 	@FindBy(how = How.XPATH, using = "//div[@id='tm-panel-login-confirmation']/header/span")
 	private WebElement welcomeMessage;
 
 	public WebElement getWelcomeMessage() {
-	
-	
+
 		return welcomeMessage;
 	}
-	
 
 	@FindBy(how = How.XPATH, using = "//h4[contains(text(),'New here?')]")
 	private WebElement newHereMessage;
@@ -109,46 +106,51 @@ public class MyAccountPage extends GenericMethods {
 	public WebElement getNewHereMessage() {
 		return newHereMessage;
 	}
+
 	@FindBy(how = How.XPATH, using = "//div[@id='tm-panel-login-confirmation']/header/a/span")
 	private WebElement krmyAccountClose;
-	
+
 	@FindBy(how = How.XPATH, using = "(//a[@title='Close'])[4]")
 	private WebElement myAccountClose;
 
-public WebElement getMyAccountClose() {
-		if (selectedCountry.contains("배송하기: 대한민국")) {
+	public WebElement getMyAccountClose() {
+
+		/*
+		 * if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
+		 * return explicitWait(myAccountClose); } else {
+		 */
 			return explicitWait(krmyAccountClose);
-			} else {
-		return explicitWait(myAccountClose);
-	}
+		//}
 	}
 
 	@FindBy(how = How.XPATH, using = "//a[@href='#create-account']")
 	private WebElement createAcc;
+
 	public WebElement getCreateAcc() {
 		return createAcc;
 
 	}
+
 	@FindBy(how = How.XPATH, using = "(//h3[contains(text(),'My Account')])[2]")
 	private WebElement signUpMyAccMsg;
-	 public WebElement getSignUpMyAccMsg() {
-			return signUpMyAccMsg;
 
-	
+	public WebElement getSignUpMyAccMsg() {
+		return signUpMyAccMsg;
+
 	}
-	 @FindBy(how = How.XPATH, using = "//div[@id='tm-panel-login-confirmation']/div/div/ul[2]/li[2]/a")
-		private WebElement krSignout;
 
+	@FindBy(how = How.XPATH, using = "//div[@id='tm-panel-login-confirmation']/div/div/ul[2]/li[2]/a")
+	private WebElement krSignout;
 
 	@FindBy(how = How.XPATH, using = "(//a[contains(text(),'Sign Out')])[3]")
 	private WebElement signout;
-	
+
 	public WebElement getSignout() {
-		if (selectedCountry.contains("배송하기: 대한민국")) {
+		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
+			return explicitWait(signout);
+		} else {
 			return explicitWait(krSignout);
-			} else {
-		return explicitWait(signout);
-	}
+		}
 	}
 
 	// Korea
@@ -157,15 +159,11 @@ public WebElement getMyAccountClose() {
 	private WebElement MyaccButton;
 
 	public WebElement getMyaccButton() {
-		if(selectedCountry.contains("Korea")) {
+		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
+			return MyaccButton;
+		} else {
+
 			return signUpMyAccMsg;
-		}else {
-
-	return MyaccButton;
+		}
+	}
 }
-	}
-	}
-	
-
-
- 

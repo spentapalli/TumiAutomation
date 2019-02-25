@@ -7,8 +7,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
-
 import com.tumi.reports.Reports;
 import com.tumi.utilities.GenericMethods;
 
@@ -233,11 +231,14 @@ public class HomePage extends GenericMethods {
 	private WebElement headerSignIn;
 
 	public WebElement getHeaderSignIn() {
-		if (selectedCountry.contains("배송하기: 대한민국")) {
-			return explicitWait(krHeaderSignIn);
+		
+		if (selectedCountry.contains("US")||
+				selectedCountry.contains("Canada")) {
+			
+			return explicitWait(headerSignIn);
 		} else {
 
-			return explicitWait(headerSignIn);
+			return explicitWait(krHeaderSignIn);
 		}
 	}
 
@@ -272,10 +273,11 @@ public class HomePage extends GenericMethods {
 	private WebElement submit;
 
 	public WebElement getLogOn() {
-		if (selectedCountry.contains("배송하기: 대한민국")) {
-			return explicitWait(krSubmit);
+		if (selectedCountry.contains("US")||
+				selectedCountry.contains("Canada")) {
+			return explicitWait(submit);
 		} else {
-			return submit;
+			return krSubmit;
 		}
 	}
 
@@ -347,6 +349,15 @@ public class HomePage extends GenericMethods {
 	public WebElement getSignupPopup() {
 		return signUpPop;
 	}
+	
+	@FindBy(how = How.XPATH, using = "//button[contains(text(),'No Thanks')]")
+	private WebElement noThanks;
+
+	public WebElement getNoThanks() {
+		return noThanks;
+	}
+	
+	
 
 	@FindBy(how = How.XPATH, using = "//div[@id='main-content']/div[2]/h1/span")
 	private WebElement vpnIssue;

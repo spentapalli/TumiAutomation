@@ -17,8 +17,9 @@ public class RegisteredOrderWithMultishipment extends GenericMethods {
 	 */
 	@Test(description = " Verify Order with 2 'Ready to Ship' Items with different SKU/sPurchase with Multishipment-Registered User")
 	public void verifyRegisteredOrderWithMutlishipment()throws InterruptedException{
+		
 		login("TumiTestData", "RegisteredOrders");
-		click(myacc.getMyAccountClose(), "My Account Close");
+		//click(myacc.getMyAccountClose(), "My Account Close");
 		UIFunctions.addMultipleProducts("TumiTestData", "GuestOrders");
 		click(minicart.getMiniCartSymbol(), "Cart Image");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");

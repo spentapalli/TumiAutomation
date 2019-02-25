@@ -6,7 +6,6 @@ import java.util.Map;
 import org.testng.annotations.Test;
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
-import com.tumi.utilities.GlobalConstants;
 import com.tumi.utilities.UIFunctions;
 
 /**
@@ -25,6 +24,8 @@ public class TumiStudioOrder extends GenericMethods{
 		
 		UIFunctions.addProductToCart("TumiTestData","TumiStudio");
 		UIFunctions.addTumiStudio();
+		//UIFunctions.addTumiID();
+		delay(2000);
 		click(pdp.getAddToCart(), "Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");

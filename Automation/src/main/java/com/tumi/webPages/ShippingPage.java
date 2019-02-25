@@ -1,8 +1,6 @@
  package com.tumi.webPages;
 
 import java.util.List;
-import java.util.Map;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -91,10 +89,11 @@ public class ShippingPage extends GenericMethods {
 	private WebElement town;
 
 	public WebElement getTown() {
-		if (selectedCountry.contains("배송하기: 대한민국")) {
-			return krTown;
-		} else {
+		if (selectedCountry.contains("US")||
+				selectedCountry.contains("Canada")) {
 			return town;
+		} else {
+			return krTown;
 		}
 	}
 
