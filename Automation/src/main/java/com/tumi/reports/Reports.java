@@ -103,6 +103,7 @@ public class Reports {
 	public static String selectedCountry = "US";
 	public static String orderNumber = null;
 	public static String browserName = null;
+	public static String applicationUrl =null;
 
 	@BeforeSuite(alwaysRun = true)
 	public void extentReportConfiguration() {
@@ -314,16 +315,16 @@ public class Reports {
 	 */
 	public static void getURL() {
 
-		String url = System.getProperty("applicationUrl");
+		applicationUrl = System.getProperty("applicationUrl");
 
-		System.out.println("Application Name " + url);
+		System.out.println("Application Name " + applicationUrl);
 
-		if (null == url || url.isEmpty() || url.toLowerCase().equalsIgnoreCase("stage2")) {
+		if (null == applicationUrl || applicationUrl.isEmpty() || applicationUrl.toLowerCase().equalsIgnoreCase("stage2")) {
 
 			if (!browserName.equals("ie")) {
 				driver.get(GlobalConstants.S2);
 			}
-		} else if (url.toLowerCase().equalsIgnoreCase("stage3")) {
+		} else if (applicationUrl.toLowerCase().equalsIgnoreCase("stage3")) {
 
 			if (!browserName.equals("ie")) {
 				driver.get(GlobalConstants.S3);

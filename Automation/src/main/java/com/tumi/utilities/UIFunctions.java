@@ -28,7 +28,8 @@ public class UIFunctions extends GenericMethods {
 		try {
 			home.getNoThanks().click();
 			delay(5000);
-		} catch (Exception e) {}
+		} catch (Exception e) {
+		}
 
 		try {
 			home.getSignupPopup().click();
@@ -195,18 +196,20 @@ public class UIFunctions extends GenericMethods {
 
 	public static void addProductToCart(String sheet, String testCase) {
 		UIFunctions.closeSignUp();
-		//removeExistingCart();
+		// removeExistingCart();
 
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
 
 		if (selectedCountry.equals("US")) {
 
-			if(applicationURL.equeals("stage2")){
+			if (applicationUrl.equals("stage2")) {
+
 				final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("SKUID");
-			driver.get(pdpURL);
-			}else{
+				driver.get(pdpURL);
+			} else {
+				
 				final String pdpURL = GlobalConstants.S3 + "/p/" + testData.get("SKUID");
-			driver.get(pdpURL);
+				driver.get(pdpURL);
 			}
 
 		} else if (selectedCountry.contains("Canada")) {
@@ -216,7 +219,7 @@ public class UIFunctions extends GenericMethods {
 
 		} else {
 
-			final String pdpURL = GlobalConstants.urlkr + "/p/" + testData.get("KrSKUID"); 
+			final String pdpURL = GlobalConstants.urlkr + "/p/" + testData.get("KrSKUID");
 			driver.get(pdpURL);
 		}
 		// WaitForJStoLoad();
@@ -402,8 +405,7 @@ public class UIFunctions extends GenericMethods {
 			driver.findElement(By.xpath("//h2[contains(text(),'Order Summary')]")).click();
 		} else {
 
-			if (!selectedCountry.contains("US")||
-					!selectedCountry.contains("Canada")) {
+			if (!selectedCountry.contains("US") || !selectedCountry.contains("Canada")) {
 				Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "OrderWithTwoProducts");
 				input(shipping.getFirstName(), testData.get("FirstName"), "First Name");
 				input(shipping.getLastName(), testData.get("LastName"), "Last Name");
@@ -443,7 +445,7 @@ public class UIFunctions extends GenericMethods {
 			else {
 
 				Map<String, String> korea = ReadTestData.getJsonData("TumiTestData", "GuestDeatilsForKorea");
-				
+
 				input(shipping.getFirstName(), korea.get("FirstName"), "First Name");
 				input(shipping.getLastName(), korea.get("LastName"), "Last Name");
 				input(shipping.getAddressLine1(), korea.get("AddressLine1"), "Address Line1");
@@ -556,12 +558,11 @@ public class UIFunctions extends GenericMethods {
 
 	public static void addGiftBox() {
 
-		if (selectedCountry.contains("US")||
-				selectedCountry.contains("Canada")) {
+		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
 			click(gift.getCheckPremiumGift(), "Premium GiftBox");
 
 		} else {
-		
+
 			domClick(gift.getCheckStandardGift(), "Stanadard gift box");
 		}
 
@@ -841,7 +842,7 @@ public class UIFunctions extends GenericMethods {
 		domClick(guestBillPage.getReviewOrder(), "Review your order");
 
 	}
-	
+
 	public static void addTumiStudio() {
 		click(tumiId.getTumiIdDesign(), "TumiID");
 		delay(5000);
@@ -857,7 +858,7 @@ public class UIFunctions extends GenericMethods {
 
 		for (WebElement ele : tumiId.getFrontPocketList()) {
 			if (getText(ele).contains("Black")) {
-				
+
 				webclick(ele, "Front Pocket color");
 				break;
 			}
@@ -867,7 +868,7 @@ public class UIFunctions extends GenericMethods {
 
 		for (WebElement ele : tumiId.getSidePocketList()) {
 			if (getText(ele).contains("Atlantic")) {
-				
+
 				webclick(ele, "Side Pocket color");
 				break;
 			}
@@ -878,7 +879,7 @@ public class UIFunctions extends GenericMethods {
 
 		for (WebElement ele : tumiId.getPatchnTagList()) {
 			if (getText(ele).contains("TUMI red")) {
-				
+
 				domClick(ele, "Patch n Tag color");
 				break;
 			}
@@ -889,7 +890,7 @@ public class UIFunctions extends GenericMethods {
 
 		for (WebElement ele : tumiId.getWebbingList()) {
 			if (getText(ele).contains("Black")) {
-				
+
 				domClick(ele, "Webbing color");
 				break;
 			}
@@ -900,7 +901,7 @@ public class UIFunctions extends GenericMethods {
 
 		for (WebElement ele : tumiId.getLeatherAccentsList()) {
 			if (getText(ele).contains("Atlantic")) {
-			
+
 				click(ele, "Leather Accents color");
 				break;
 			}
@@ -911,7 +912,7 @@ public class UIFunctions extends GenericMethods {
 
 		for (WebElement ele : tumiId.getHardwareList()) {
 			if (getText(ele).contains("Gold")) {
-			
+
 				click(ele, "Hardware color");
 				break;
 			}
@@ -922,7 +923,7 @@ public class UIFunctions extends GenericMethods {
 
 		for (WebElement ele : tumiId.getExternalZipperList()) {
 			if (getText(ele).contains("Atlantic")) {
-				
+
 				click(ele, "External Zipper color");
 				break;
 			}
@@ -933,7 +934,7 @@ public class UIFunctions extends GenericMethods {
 
 		for (WebElement ele : tumiId.getAccentZipperList()) {
 			if (getText(ele).contains("Gold")) {
-				
+
 				click(ele, "Accent Zipper color");
 				break;
 			}
@@ -944,7 +945,7 @@ public class UIFunctions extends GenericMethods {
 
 		for (WebElement ele : tumiId.getinteriorLiningList()) {
 			if (getText(ele).contains("Light Fossil")) {
-				
+
 				click(ele, "Interior Lining color");
 				break;
 			}
@@ -978,6 +979,7 @@ public class UIFunctions extends GenericMethods {
 		click(tumiId.getSaveDesign(), "Save");
 
 	}
+
 	public static void GiftCard(String sheet, String testCase) {
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
 		final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("SKUID");

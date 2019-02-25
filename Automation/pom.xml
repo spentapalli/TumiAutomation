@@ -97,6 +97,8 @@
 						<suiteXmlFiles>
 							<suiteXmlFile>sprint1.xml</suiteXmlFile>
 							<suiteXmlFile>sprint2.xml</suiteXmlFile>
+							<suiteXmlFile>RegGiftServices.xml</suiteXmlFile>
+							
 						</suiteXmlFiles>
 					</configuration>
 				</plugin>
