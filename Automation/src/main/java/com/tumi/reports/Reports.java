@@ -321,12 +321,12 @@ public class Reports {
 		if (null == url || url.isEmpty() || url.toLowerCase().equalsIgnoreCase("stage2")) {
 
 			if (!browserName.equals("ie")) {
-				driver.get(GlobalConstants.url);
+				driver.get(GlobalConstants.S2);
 			}
-		} else if (url.toLowerCase().equalsIgnoreCase("akamai")) {
+		} else if (url.toLowerCase().equalsIgnoreCase("stage3")) {
 
 			if (!browserName.equals("ie")) {
-				driver.get(GlobalConstants.akamaiUrl);
+				driver.get(GlobalConstants.S3);
 			}
 		}
 		UIFunctions.verifyVPN();
