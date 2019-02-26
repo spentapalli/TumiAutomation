@@ -611,7 +611,7 @@ public class UIFunctions extends GenericMethods {
 	public static void addMultipleProducts(String sheet, String testCase) {
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
 		for (int i = 0; i < 2; i++) {
-			UIFunctions.searchProducts(i, testData.get("PrdouctName"));
+			UIFunctions.searchProducts(i, testData.get("ProductName"));
 			delay(3000);
 			// verifyAssertContains(driver.getCurrentUrl(), testData.get("SKUID"), "Wrong
 			// Product is displayed");
