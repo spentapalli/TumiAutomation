@@ -42,11 +42,13 @@ public class CartPage extends GenericMethods {
 	private WebElement removeProduct;
 
 	public WebElement getRemoveProduct() {
-		if (selectedCountry.contains("배송하기: 대한민국")) {
-			return explicitWait(krremoveProductsQuantity);
+		if (selectedCountry.contains("US")||
+				selectedCountry.contains("Canada")) {
+			return removeProduct;
+			
 		} else {
 
-			return removeProduct;
+			return krremoveProductsQuantity;
 		}
 	}
 
@@ -145,11 +147,13 @@ public class CartPage extends GenericMethods {
 	private List<WebElement> makeGiftBox;
 
 	public WebElement getMakeGiftBox() {
-		if (selectedCountry.contains("배송하기: 대한민국")) {
-			return explicitWait(krMakegiftbox);
+		if (selectedCountry.contains("US")||
+				selectedCountry.contains("Canada")) {
+			
+			return makeGiftBox.get(1);
 		} else {
 
-			return makeGiftBox.get(1);
+			return explicitWait(krMakegiftbox);
 		}
 	}
 
@@ -224,11 +228,13 @@ public class CartPage extends GenericMethods {
 	private WebElement addPromocode;
 
 	public WebElement getPromocode() {
-		if (selectedCountry.contains("배송하기: 대한민국")) {
-			return explicitWait(krVoucherID);
-		} else {
-
+		if (selectedCountry.contains("US")||
+				selectedCountry.contains("Canada")) {
 			return explicitWait(addPromocode);
+			
+		} else {
+			return explicitWait(krVoucherID);
+			
 		}
 	}
 
@@ -239,10 +245,12 @@ public class CartPage extends GenericMethods {
 	private WebElement ApplyClick;
 
 	public WebElement getApply() {
-		if (selectedCountry.contains("배송하기: 대한민국")) {
-			return explicitWait(krApplyVoucher);
-		} else {
+		if (selectedCountry.contains("US")||
+				selectedCountry.contains("Canada")) {
 			return explicitWait(ApplyClick);
+			
+		} else {
+			return explicitWait(krApplyVoucher);
 		}
 	}
 

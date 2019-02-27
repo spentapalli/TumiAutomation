@@ -27,10 +27,12 @@ public class MyProfile  extends GenericMethods{
 	@FindBy(how=How.XPATH, using="//i[@id='profile.titleSelectBoxItArrow']")
 	private WebElement title;
 	public WebElement getTitle() {
-		if (selectedCountry.contains("배송하기: 대한민국")) {
-			return explicitWait(krtitle);
+		if (selectedCountry.contains("US")||
+				selectedCountry.contains("Canada")) {
+			return title;
 			} else {
-		return title;
+	
+		return explicitWait(krtitle);
 	}
 	}
 	//same for korea
@@ -68,11 +70,12 @@ public class MyProfile  extends GenericMethods{
 	@FindBy(how=How.XPATH, using="//button[contains(text(),'Save Updates')]")
 	private WebElement save;
  public WebElement getSave() {
-		if (selectedCountry.contains("배송하기: 대한민국")) {
-			return explicitWait(krsave);
+	 if (selectedCountry.contains("US")||
+				selectedCountry.contains("Canada")) {
+				return save;
 			} else {
-			
-		return save;
+				return explicitWait(krsave);
+	
 	}
 	}
 	@FindBy(how=How.XPATH, using="//form[@id='updateProfileForm']/div[3]/a")
@@ -81,11 +84,12 @@ public class MyProfile  extends GenericMethods{
 	@FindBy(how=How.XPATH, using="//a[contains(text(),'Cancel')]")
 	private WebElement cancel;
  public WebElement getCancel() {
-		if (selectedCountry.contains("배송하기: 대한민국")) {
-			return explicitWait(krcancel);
+	 if (selectedCountry.contains("US")||
+				selectedCountry.contains("Canada")) {
+		 return cancel;
 			} else {
-			
-		return cancel;
+				return explicitWait(krcancel);
+		
 	}
 	}
 

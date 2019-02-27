@@ -50,11 +50,8 @@ public class GenericMethods extends GlobalConstants {
 	public static Actions action;
 
 	public static void captureOrderConfScreen(String name) {
-		try {
-			BufferedImage image = new Robot().createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
-			ImageIO.write(image, "png", new File("./ExtentReports/ScreenShots/" + name + ".png"));
-		} catch (Exception e1) {}
-		//getScreen("./ExtentReports/ScreenShots/" + name + ".png");
+		
+		getScreen("./ExtentReports/ScreenShots/" + name + ".png");
 		String location = "./ScreenShots/" + name + ".png";
 		try {
 			logger.info("Reference", MediaEntityBuilder.createScreenCaptureFromPath(location).build());

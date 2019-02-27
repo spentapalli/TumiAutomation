@@ -27,10 +27,12 @@ public class MyAccountPage extends GenericMethods {
 	private WebElement viewProfile;
 
 	public WebElement getViewProfile() {
-		if (selectedCountry.contains("배송하기: 대한민국")) {
-			return explicitWait(krviewProfile);
-		} else {
+		if (selectedCountry.contains("US")||
+				selectedCountry.contains("Canada")) {
 			return viewProfile;
+			
+		} else {
+			return explicitWait(krviewProfile);
 		}
 	}
 
@@ -41,10 +43,12 @@ public class MyAccountPage extends GenericMethods {
 	private WebElement purchasedItems;
 
 	public WebElement getPurchasedItems() {
-		if (selectedCountry.contains("배송하기: 대한민국")) {
-			return explicitWait(krpurchasedItems);
-		} else {
+		if (selectedCountry.contains("US")||
+				selectedCountry.contains("Canada")) {
+			
 			return purchasedItems;
+		} else {
+			return explicitWait(krpurchasedItems);
 		}
 	}
 
@@ -55,10 +59,13 @@ public class MyAccountPage extends GenericMethods {
 	private WebElement viewYourOrderStatus;
 
 	public WebElement getViewYourOrderStatus() {
-		if (selectedCountry.contains("배송하기: 대한민국")) {
-			return explicitWait(krviewYourOrderStatus);
-		} else {
+		if (selectedCountry.contains("US")||
+				selectedCountry.contains("Canada")) {
+			
 			return viewYourOrderStatus;
+		} else {
+			return explicitWait(krviewYourOrderStatus);
+			
 		}
 	}
 
@@ -69,11 +76,13 @@ public class MyAccountPage extends GenericMethods {
 	private WebElement registerYourTumi;
 
 	public WebElement getRegisterYourTumi() {
-		if (selectedCountry.contains("배송하기: 대한민국")) {
-			return explicitWait(krregisterYourTumi);
+		if (selectedCountry.contains("US")||
+				selectedCountry.contains("Canada")) {
+			return registerYourTumi;
 		} else {
 
-			return registerYourTumi;
+			
+			return explicitWait(krregisterYourTumi);
 		}
 	}
 

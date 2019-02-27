@@ -53,7 +53,6 @@ import com.tumi.webPages.MyAccountPage;
 import com.tumi.webPages.MyProfile;
 import com.tumi.webPages.OrderConfirmationPage;
 import com.tumi.webPages.OrderReviewPage;
-import com.tumi.webPages.PGP;
 import com.tumi.webPages.PayPalPage;
 import com.tumi.webPages.Personalization;
 import com.tumi.webPages.ProductDetailPage;
@@ -104,7 +103,7 @@ public class Reports {
 	public static String selectedCountry = "US";
 	public static String orderNumber = null;
 	public static String browserName = null;
-	public static PGP pgp = null;
+	public static String applicationUrl =null;
 
 	@BeforeSuite(alwaysRun = true)
 	public void extentReportConfiguration() {
@@ -165,11 +164,10 @@ public class Reports {
 		}
 
 		UIFunctions.selectCountry();
-		//GenericMethods.removeExistingCart();
 		// driver.navigate().to("https://ca.stg-hybris-akamai.tumi.com");
 	}
 
-//	@AfterMethod(alwaysRun = true)
+	@AfterMethod(alwaysRun = true)
 	public static void closeBrowser() {
 		driver.close();
 	}
@@ -204,7 +202,6 @@ public class Reports {
 		signinBill = new SignInBillingPage(driver);
 		signinShip = new SignInShippingPage(driver);
 		confirmation = new OrderConfirmationPage(driver);
-		pgp = new PGP(driver);
 	}
 
 	@AfterMethod(alwaysRun = true)
@@ -291,7 +288,7 @@ public class Reports {
 			capabilities.setCapability("ignoreZoomSetting", true);
 			capabilities.setCapability("nativeEvents", false);
 			capabilities.setCapability(CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION, true);
-			capabilities.setCapability(InternetExplorerDriver.INITIAL_BROWSER_URL, GlobalConstants.url);
+			capabilities.setCapability(InternetExplorerDriver.INITIAL_BROWSER_URL, GlobalConstants.S2);
 			System.setProperty(GlobalConstants.ie, GlobalConstants.iePath);
 			driver = new InternetExplorerDriver(capabilities);
 			// logger.log(Status.INFO, "InternetExplorer Browser is initiated Execution");
@@ -318,19 +315,19 @@ public class Reports {
 	 */
 	public static void getURL() {
 
-		String url = System.getProperty("applicationUrl");
+		applicationUrl = System.getProperty("applicationUrl");
 
-		System.out.println("Application Name " + url);
+		System.out.println("Application Name " + applicationUrl);
 
-		if (null == url || url.isEmpty() || url.toLowerCase().equalsIgnoreCase("stage2")) {
+		if (null == applicationUrl || applicationUrl.isEmpty() || applicationUrl.toLowerCase().equalsIgnoreCase("stage2")) {
 
 			if (!browserName.equals("ie")) {
-				driver.get(GlobalConstants.url);
+				driver.get(GlobalConstants.S2);
 			}
-		} else if (url.toLowerCase().equalsIgnoreCase("akamai")) {
+		} else if (applicationUrl.toLowerCase().equalsIgnoreCase("stage3")) {
 
 			if (!browserName.equals("ie")) {
-				driver.get(GlobalConstants.akamaiUrl);
+				driver.get(GlobalConstants.S3);
 			}
 		}
 		UIFunctions.verifyVPN();

@@ -34,7 +34,7 @@ public class CanadaOrder extends GenericMethods {
 		 */
 
 		// TumiLibs.closeSignUpForUS();
-		final String pdpURL = GlobalConstants.url + "/p/" + testData.get("SKUID");
+		final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("SKUID");
 		driver.get(pdpURL);
 		click(pdp.getAddToCart(), "Add To Cart");
 		delay(2000);
