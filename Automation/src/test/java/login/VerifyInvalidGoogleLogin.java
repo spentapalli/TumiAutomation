@@ -7,6 +7,7 @@ import java.util.Set;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import com.aventstack.extentreports.Status;
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
 import com.tumi.utilities.UIFunctions;
@@ -56,6 +57,8 @@ public class VerifyInvalidGoogleLogin extends GenericMethods {
 		try {
 			if(myacc.getSignout().isDisplayed()) {
 				Assert.fail("signout is displayed with invalid user");
+			}else {
+				logger.log(Status.INFO, "Google login failed due to wrong credentials");
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

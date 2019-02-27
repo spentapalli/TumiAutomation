@@ -138,6 +138,14 @@ public class HomePage extends GenericMethods {
 		return explicitWait(selectCountryUS);
 	}
 
+	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Canada')]")
+	private WebElement selectCountryCAforTop;
+
+	public WebElement getSelectCountryCAforTop() {
+
+		return explicitWait(selectCountryCAforTop);
+	}
+
 	@FindBy(how = How.XPATH, using = "(//a[contains(text(),'Canada')])[2]")
 	private WebElement selectCountryCA;
 
@@ -152,6 +160,14 @@ public class HomePage extends GenericMethods {
 	public WebElement getSelectCountryKR() {
 
 		return explicitWait(selectCountryKR);
+	}
+
+	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Korea')]")
+	private WebElement selectCountryKRforTop;
+
+	public WebElement getSelectCountryKRforTop() {
+
+		return explicitWait(selectCountryKRforTop);
 	}
 
 	@FindBy(how = How.XPATH, using = "//i[@id='lang-selectorSelectBoxItArrow']")
@@ -234,10 +250,9 @@ public class HomePage extends GenericMethods {
 	private WebElement headerSignIn;
 
 	public WebElement getHeaderSignIn() {
-		
-		if (selectedCountry.contains("US")||
-				selectedCountry.contains("Canada")) {
-			
+
+		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
+
 			return explicitWait(headerSignIn);
 		} else {
 
@@ -276,8 +291,7 @@ public class HomePage extends GenericMethods {
 	private WebElement submit;
 
 	public WebElement getLogOn() {
-		if (selectedCountry.contains("US")||
-				selectedCountry.contains("Canada")) {
+		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
 			return explicitWait(submit);
 		} else {
 			return krSubmit;
@@ -353,15 +367,13 @@ public class HomePage extends GenericMethods {
 	public WebElement getSignupPopup() {
 		return signUpPop;
 	}
-	
+
 	@FindBy(how = How.XPATH, using = "//button[contains(text(),'No Thanks')]")
 	private WebElement noThanks;
 
 	public WebElement getNoThanks() {
 		return noThanks;
 	}
-	
-	
 
 	@FindBy(how = How.XPATH, using = "//div[@id='main-content']/div[2]/h1/span")
 	private WebElement vpnIssue;
@@ -371,7 +383,7 @@ public class HomePage extends GenericMethods {
 	}
 
 	// same for korea
-	@FindBy(how = How.XPATH, using = "//div[@id='minicart_data']/span[2]")
+	@FindBy(how = How.XPATH, using = "//span[@class='item-count']")
 	private WebElement minicartcount;
 
 	public WebElement getMinicartCount() {
@@ -379,11 +391,11 @@ public class HomePage extends GenericMethods {
 	}
 
 //same for korea
-	@FindBy(how = How.XPATH, using = "//div[@id='minicart_data']")
+	@FindBy(how = How.XPATH, using = "//div[@id='minicart_data']/span")
 	private WebElement minicart;
 
 	public WebElement getMinicart() {
-		return explicitWait(minicartcount);
+		return explicitWait(minicart);
 	}
 
 	@FindBy(how = How.XPATH, using = "//div[contains(@class,'header-country')]/a")
@@ -398,6 +410,21 @@ public class HomePage extends GenericMethods {
 
 	public List<WebElement> getCountriesList() {
 		return countriesList;
+	}
+
+	@FindBy(how = How.XPATH, using = "//label[contains(text(),'CHOOSE YOUR LOCATION')]")
+	private WebElement selectLocation;
+
+	@FindBy(how = How.XPATH, using = "//label[contains(text(),'위치 선택')]")
+	private WebElement krSelectLocation;
+
+	public WebElement getSelectLocation() {
+
+		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
+			return selectLocation;
+		} else {
+			return krSelectLocation;
+		}
 	}
 
 	// Mobile
