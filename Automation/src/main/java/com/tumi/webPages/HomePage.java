@@ -408,5 +408,21 @@ public class HomePage extends GenericMethods {
 
 		return mobileCountry;
 	}
+	//home page TUMI logo
+	@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[2]")
+	private WebElement LuggageOption;
 
+	public WebElement getLuggageOption() {
+
+		return LuggageOption;
+	}
+
+		@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[2]/ul/li[1]/ul/li[1]/ul/li[1]/ul/li[1]/a")
+		private WebElement LuggageCarryon;
+
+		public WebElement getLuggageOptionCarryon() {
+
+			return LuggageCarryon;
+		}
+	
 }
