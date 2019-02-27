@@ -28,6 +28,7 @@ import com.tumi.utilities.GenericMethods;
 import com.tumi.utilities.UIFunctions;
 
 public class TopNavigation extends GenericMethods {
+	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData","VerifyPGPFilters");
 	public static HttpURLConnection huc = null;
 	public static String respCode;
 	public static String currenturl = "";
@@ -36,56 +37,65 @@ public class TopNavigation extends GenericMethods {
 	 * TA-76 Verify Top Navigation.
 	 */
 
-	@Test(priority = 0, description = " Sprint 3- TA-342/ TA-76 Verify Location")
+	//@Test(priority = 0, description = " Sprint 3- TA-342/ TA-76 Verify Location")
 	public void verifyLocation() {
+		if(selectedCountry.contains("US")) {
+			delay(2000);
+			verifyCA();
+			verifyKR();
+		}else if(selectedCountry.contains("Canada")) {
+			delay(2000);
+			verifyUS();
+			verifyKR();
+		}else {
+			delay(2000);
+			verifyUS();
+			verifyCA();
+		}
 
+	}
+	public void verifyUS() {
 		click(home.getSelectCountry(), "select country");
 
-		click(home.getSelectCountryUS(), " selected US");
+		click(home.getSelectCountryUSforTop(), " selected US");
 
 		String url = driver.getCurrentUrl();
 
-		if (!getText(home.getSelectCountry()).contains("United States")
-				|| !url.equals("https://www.hybris-stage2.tumi.com/")) {
+		if (!url.contains(testData.get("USurl"))) {
 			Assert.fail("Verification of Us country selection failed");
 		} else {
 			logger.log(Status.INFO, "Country Selection of US is successfull");
 		}
-
+		
+	}
+	public void verifyCA() {
 		click(home.getSelectCountry(), "select country");
 		click(home.getSelectCountryCAforTop(), "selected Canada");
 
 		String caUrl = driver.getCurrentUrl();
-
-		if (!getText(home.getSelectCountry()).contains("Canada")
-				|| !caUrl.equals("https://ca.hybris-stage2.tumi.com/")) {
+		UIFunctions.closeSignUp();
+		if (!caUrl.contains(testData.get("CAurl"))) {
 			Assert.fail("Verification of Canada country selection failed");
 		} else {
 			logger.log(Status.INFO, "Country Selection of Canada is successfull");
 		}
-		try {
-			home.getCASignupPopup().click();
-		} catch (Exception e) {
-		}
-
+		
+	}
+	public void verifyKR() {
 		click(home.getSelectCountry(), "select country");
-
 		click(home.getSelectCountryKRforTop(), "selected Korea");
-		String krUrl = driver.getCurrentUrl();
-		try {
-			home.getKoreaSignupPopup().click();
-		} catch (Exception e) {
-		}
 
-		if (!krUrl.equals("https://kr.hybris-stage2.tumi.com/")) {
+		String krUrl = driver.getCurrentUrl();
+		UIFunctions.closeSignUp();
+		if (!krUrl.contains(testData.get("KRurl"))) {
 			Assert.fail("Verification of Korea country selection failed");
 		} else {
 			logger.log(Status.INFO, "Country Selection of Korea is successfull");
 		}
-
+		
 	}
 
-	@Test(priority = 1, description = " Sprint 3- TA-343/ TA-76 Verify Language Selector")
+//	@Test(priority = 1, description = " Sprint 3- TA-343/ TA-76 Verify Language Selector")
 	public void verifyLanguageSelector() {
 
 		click(home.getSelectLanguage(), "Language");
@@ -105,7 +115,7 @@ public class TopNavigation extends GenericMethods {
 
 	}
 
-	@Test(priority = 2, description = " Sprint 3- TA-344/ TA-76 Verify Find A Store")
+	//@Test(priority = 2, description = " Sprint 3- TA-344/ TA-76 Verify Find A Store")
 	public void verifyFindAStore() {
 
 		click(home.getHeaderFindStore(), "Store Finder");
@@ -122,7 +132,7 @@ public class TopNavigation extends GenericMethods {
 
 	}
 
-	@Test(priority = 3, description = " Sprint 3- TA-345/ TA-76 Verify Customer Service")
+	//@Test(priority = 3, description = " Sprint 3- TA-345/ TA-76 Verify Customer Service")
 	public void verifyCustomerService() {
 
 		click(home.getHeaderCustomerService(), "Customer Service");
@@ -184,8 +194,8 @@ public class TopNavigation extends GenericMethods {
 
 	}
 
-	@Test(priority = 4, description = " Sprint 3- TA-346/ TA-76 Verify SignIn")
-	public void verifySignIn() {
+	//@Test(priority = 4, description = " Sprint 3- TA-346/ TA-76 Verify SignIn")
+	  public void verifySignIn() {
 		click(home.getHeaderSignIn(), "SignIn");
 		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
 			if (!getText(myacc.getMyAccMsg()).contains("My Account")) {
@@ -200,13 +210,12 @@ public class TopNavigation extends GenericMethods {
 		if (home.getUserName().isDisplayed()) {
 			logger.log(Status.INFO, "Login window opened successfully");
 		}
-		click(home.getCloseMyAccount(), "Close My Account");
+		click(home.getCloseMyAccountBefore(), "Close My Account");
 
 	}
 
-	// @Test(priority = 5, description = " Sprint 3- TA-347/ TA-76 Verify Search")--
-	// pending
-	public void verifySearch() {
+	// @Test(priority = 5, description = " Sprint 3- TA-347/ TA-76 Verify Search")	// pending
+	 public void verifySearch() {
 		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestOrders");
 
 		UIFunctions.searchProducts(1, testData.get("ProductName"));

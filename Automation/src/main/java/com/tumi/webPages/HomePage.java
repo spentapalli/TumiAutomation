@@ -124,10 +124,17 @@ public class HomePage extends GenericMethods {
 
 	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Location')]")
 	private WebElement selectCountry;
+	
+	@FindBy(how = How.XPATH, using = "//div[contains(@class,'header-country')]")
+	private WebElement krselectCountry;
+	
 
 	public WebElement getSelectCountry() {
-
+		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
 		return selectCountry;
+		}else {
+			return krselectCountry;
+		}
 	}
 
 	@FindBy(how = How.XPATH, using = "(//a[contains(text(),'United States')])[2]")
@@ -136,6 +143,20 @@ public class HomePage extends GenericMethods {
 	public WebElement getSelectCountryUS() {
 
 		return explicitWait(selectCountryUS);
+	}
+	
+	@FindBy(how = How.XPATH, using = "(//a[contains(text(),'United States')])[1]")
+	private WebElement selectCountryUSforTop;
+	
+	@FindBy(how = How.XPATH, using = "(//div[contains(@class,'north-america')]/ul/li[2]/a)[1]")
+	private WebElement krselectCountryUSforTop;
+
+	public WebElement getSelectCountryUSforTop() {
+		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
+		return explicitWait(selectCountryUSforTop);
+		}else {
+			return explicitWait(krselectCountryUSforTop);
+		}
 	}
 
 	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Canada')]")
@@ -216,8 +237,6 @@ public class HomePage extends GenericMethods {
 		if (selectedCountry.contains("US")||
 				selectedCountry.contains("Canada")) {
 			return headerFindStore;
-			
-
 		} else {
 
 			return explicitWait(krheaderFindStore);
@@ -359,6 +378,14 @@ public class HomePage extends GenericMethods {
 
 	public WebElement getCloseMyAccount() {
 		return closeMyAccount;
+	}//div[@id='tm-panel-login']/header/a
+	
+
+	@FindBy(how = How.XPATH, using = "//div[@id='tm-panel-login']/header/a")
+	private WebElement closeMyAccountBefore;
+
+	public WebElement getCloseMyAccountBefore() {
+		return closeMyAccountBefore;
 	}
 
 	@FindBy(how = How.XPATH, using = "//div[@id='firstTimeEmailSignupPopup']/a")

@@ -257,5 +257,11 @@
 	
 	"TumiStudio":{
 	"SKUID":"0117474T999"
+	},
+	
+	"VerifyPGPFilters":{
+	"USurl":"https://www.hybris-stage2.tumi.com",
+	"CAurl":"https://ca.hybris-stage2.tumi.com",
+	"KRurl":"https://kr.hybris-stage2.tumi.com"
 	}
 }
