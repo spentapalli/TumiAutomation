@@ -405,7 +405,7 @@ public class UIFunctions extends GenericMethods {
 			driver.findElement(By.xpath("//h2[contains(text(),'Order Summary')]")).click();
 		} else {
 
-			if (!selectedCountry.contains("US") || !selectedCountry.contains("Canada")) {
+			if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
 				Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "OrderWithTwoProducts");
 				input(shipping.getFirstName(), testData.get("FirstName"), "First Name");
 				input(shipping.getLastName(), testData.get("LastName"), "Last Name");
@@ -446,12 +446,12 @@ public class UIFunctions extends GenericMethods {
 
 				Map<String, String> korea = ReadTestData.getJsonData("TumiTestData", "GuestDeatilsForKorea");
 
-				input(shipping.getFirstName(), korea.get("FirstName"), "First Name");
-				input(shipping.getLastName(), korea.get("LastName"), "Last Name");
-				input(shipping.getAddressLine1(), korea.get("AddressLine1"), "Address Line1");
-				input(shipping.getTown(), korea.get("TownCity"), "Town");
-				input(shipping.getPostcode(), korea.get("PostCode"), "PostCode");
-				input(shipping.getPhoneNumber(), korea.get("Phone"), "Phone Number");
+				input(shipping.getFirstName(),korea.get("FirstName"), "First Name");
+				input(shipping.getLastName(),korea.get("LastName"), "Last Name");
+				input(shipping.getAddressLine1(),korea.get("AddressLine1"), "Address Line1");
+				input(shipping.getTown(),korea.get("TownCity"), "Town");
+				input(shipping.getPostcode(),korea.get("PostCode"), "PostCode");
+				input(shipping.getPhoneNumber(),korea.get("Phone"), "Phone Number");
 			}
 		}
 	}
@@ -553,7 +553,7 @@ public class UIFunctions extends GenericMethods {
 		input(gift.getRecipientName(), testData.get("RecipientName"), "Recipients name");
 		input(gift.getSenderName(), testData.get("SenderName"), "Sender name");
 		input(gift.getAddMessage(), testData.get("Message"), "Message");
-
+		
 	}
 
 	public static void addGiftBox() {
