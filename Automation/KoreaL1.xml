@@ -17,11 +17,7 @@
 			</class>
 		</classes>
 	</test>
-	<test name="OrderWithMonogram">
-			<classes>
-			<class name="orders.guest.OrderWithMonogram" />
-		</classes>
-	</test>
+	
 	<test name="RegisteredOrder">
 		<classes>
 			<class name="orders.registered.RegisteredOrder" />
@@ -67,16 +63,6 @@
 			<class name="login.VerifyInvalidInstaLogin" />
 		</classes>
 	</test>
-	<test name="ThreeOrderForGuestUser">
-		<classes>
-			<class name="orders.guest.ThreeOrderForGuestUser" >
-			<methods>
-			<include name="verifyGuestOrderWithThreeReadyToShipProducts">
-			</include>
-    </methods>
-    </class>
-		</classes>
-	</test>
 	<test name="MultipleOrdersForGuestUser">
 		<classes>
 			<class name="orders.guest.MultipleOrdersForGuestUser" >
@@ -87,12 +73,7 @@
     </class>
 		</classes>
 	</test>
-	<test name="RegisterOrderWithMonogram">
-		<classes>
-			<class name="orders.registered.RegisterOrderWithMonogram" />
-		</classes>
-	</test>
-<test name="GuestOrderFail">
+	<test name="GuestOrderFail">
 		<classes>
 			<class name="orders.guest.GuestOrderFail" />
 		</classes>
