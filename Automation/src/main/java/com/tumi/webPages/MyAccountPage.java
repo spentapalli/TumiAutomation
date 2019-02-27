@@ -83,8 +83,9 @@ public class MyAccountPage extends GenericMethods {
 	public WebElement getRepairServices() {
 		return repairServices;
 	}
-
-	@FindBy(how = How.XPATH, using = "(//h3[contains(text(),'My Account')])[1]")
+	
+	//@FindBy(how = How.XPATH, using = "(//h3[contains(text(),'My Account')])[1]")
+	@FindBy(how = How.XPATH, using = "//div[@id='tm-panel-login']/header/h3")
 	private WebElement myAccMsg;
 
 	public WebElement getMyAccMsg() {

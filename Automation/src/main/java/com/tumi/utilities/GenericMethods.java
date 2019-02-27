@@ -74,10 +74,6 @@ public class GenericMethods extends GlobalConstants {
 
 			if (myacc.getSignout().isDisplayed()) {
 				logger.log(Status.INFO, "Successfully logged with Regular user valid credentials");
-				/*
-				 * }else { logger.log(Status.INFO,
-				 * "Successfully logged with Regular user valid credentials"); }
-				 */
 
 			} else {
 				Assert.fail("user signin is failed");
@@ -652,6 +648,9 @@ public class GenericMethods extends GlobalConstants {
 	}
 
 	public static void removeExistingCart() {
+		
+		if(!getText(home.getMinicartCount()).contains("0")) {
+		webclick(home.getMinicart(),"Minicart");
 		try {
 			int cart = parseInt(getText(home.getMinicartCount()));
 			if (cart != 0) {
@@ -668,5 +667,6 @@ public class GenericMethods extends GlobalConstants {
 
 			e.printStackTrace();
 		}
+	}
 	}
 }

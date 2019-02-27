@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite">
+<suite name="Sprint2 Suite">
 
-	<test name="GuestOrderWithMultiShipment">
+	<test name="MultiOrders">
 		<classes>
-			<class name="orders.guest.GuestOrderWithMultiShipment">
+			<class name="orders.guest.MultiOrders">
+				<methods>
+					<include name="verifyGuestOrderWithBackOrderAndDonation">
+					</include>
+				</methods>
 			</class>
 		</classes>
 	</test>
-	
-	<test name="TumiRegisteredOrder">
+	<test name="RegisterOrderWithMonogram">
 		<classes>
-			<class name="orders.registered.RegisteredOrder">
+			<class name="orders.registered.RegisterOrderWithMonogram">
 			</class>
 		</classes>
 	</test>
-	
 
-	
+
+
 </suite> <!-- Suite -->

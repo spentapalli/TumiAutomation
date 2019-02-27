@@ -5,6 +5,7 @@ import java.util.Map;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import com.aventstack.extentreports.Status;
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
 import com.tumi.utilities.UIFunctions;
@@ -37,7 +38,9 @@ public class GuestOrderFail extends GenericMethods {
 				delay(2000);
 				if (!getText(review.getCheckoutMessages()).contains(getProperty("checkout.Messages"))) {
 					Assert.fail("Order is completed with invalid card details");
-				}
+				}else {
+					logger.log(Status.INFO, "Order failed due to wrong card deatils");
+					}
 			}
 		} catch (Exception e) {
 			Assert.fail("Order is completed with invalid card details");

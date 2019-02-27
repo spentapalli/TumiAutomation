@@ -53,6 +53,7 @@ import com.tumi.webPages.MyAccountPage;
 import com.tumi.webPages.MyProfile;
 import com.tumi.webPages.OrderConfirmationPage;
 import com.tumi.webPages.OrderReviewPage;
+import com.tumi.webPages.PGP;
 import com.tumi.webPages.PayPalPage;
 import com.tumi.webPages.Personalization;
 import com.tumi.webPages.ProductDetailPage;
@@ -103,6 +104,7 @@ public class Reports {
 	public static String selectedCountry = "US";
 	public static String orderNumber = null;
 	public static String browserName = null;
+	public static PGP pgp = null;
 
 	@BeforeSuite(alwaysRun = true)
 	public void extentReportConfiguration() {
@@ -163,10 +165,11 @@ public class Reports {
 		}
 
 		UIFunctions.selectCountry();
+		//GenericMethods.removeExistingCart();
 		// driver.navigate().to("https://ca.stg-hybris-akamai.tumi.com");
 	}
 
-	@AfterMethod(alwaysRun = true)
+//	@AfterMethod(alwaysRun = true)
 	public static void closeBrowser() {
 		driver.close();
 	}
@@ -201,6 +204,7 @@ public class Reports {
 		signinBill = new SignInBillingPage(driver);
 		signinShip = new SignInShippingPage(driver);
 		confirmation = new OrderConfirmationPage(driver);
+		pgp = new PGP(driver);
 	}
 
 	@AfterMethod(alwaysRun = true)

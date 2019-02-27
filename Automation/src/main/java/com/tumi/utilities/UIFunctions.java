@@ -192,10 +192,12 @@ public class UIFunctions extends GenericMethods {
 		int cartCount = (int) cartItems.charAt(cartItems.length() - 1);
 		return cartCount;
 	}
+	
+	
 
 	public static void addProductToCart(String sheet, String testCase) {
 		
-		removeExistingCart();
+		
 
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
 
@@ -397,8 +399,8 @@ public class UIFunctions extends GenericMethods {
 			driver.findElement(By.xpath("//h2[contains(text(),'Order Summary')]")).click();
 		} else {
 
-			if (!selectedCountry.contains("US")||
-					!selectedCountry.contains("Canada")) {
+			if (selectedCountry.contains("US")||
+					selectedCountry.contains("Canada")) {
 				Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "OrderWithTwoProducts");
 				input(shipping.getFirstName(), testData.get("FirstName"), "First Name");
 				input(shipping.getLastName(), testData.get("LastName"), "Last Name");
@@ -609,7 +611,7 @@ public class UIFunctions extends GenericMethods {
 	public static void addMultipleProducts(String sheet, String testCase) {
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
 		for (int i = 0; i < 2; i++) {
-			UIFunctions.searchProducts(i, testData.get("PrdouctName"));
+			UIFunctions.searchProducts(i, testData.get("ProductName"));
 			delay(3000);
 			// verifyAssertContains(driver.getCurrentUrl(), testData.get("SKUID"), "Wrong
 			// Product is displayed");

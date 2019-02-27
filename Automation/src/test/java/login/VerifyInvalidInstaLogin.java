@@ -4,9 +4,11 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
+import org.bson.diagnostics.Loggers;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import com.aventstack.extentreports.Status;
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
 import com.tumi.utilities.UIFunctions;
@@ -44,6 +46,7 @@ public Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "
 					input(insta.getInstaPassword(), testData.get("Password"), "Password");
 					click(insta.getInstaLogin(), "Login");
 					delay(2000);
+					driver.close();
 					/*softAssertEquals(getText(insta.getInstaErr()), getProperty("insta.error"));
 					softAssertEquals(getText(insta.getPasswordErr()), getProperty("insta.passwordError"));
 					softAssertEquals(getText(insta.getUsernameErr()), getProperty("insta.usernameError"));*/
@@ -55,6 +58,8 @@ public Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "
 			try {
 				if(myacc.getSignout().isDisplayed()) {
 					Assert.fail("signout is displayed with invalid user");
+				}else {
+					logger.log(Status.INFO, "login failed due to wrong credentials");
 				}
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
