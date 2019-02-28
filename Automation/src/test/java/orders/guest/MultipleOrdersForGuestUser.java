@@ -24,7 +24,7 @@ public class MultipleOrdersForGuestUser extends GenericMethods {
 		UIFunctions.addProductToCart("TumiTestData", "GuestOrders");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getContinueShopping(), "Continue Shopping");
-		UIFunctions.addProductToCart("TumiTestData", "PreOrderProduct");
+		UIFunctions.addToCart("TumiTestData", "PreOrderProduct");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
@@ -45,7 +45,7 @@ public class MultipleOrdersForGuestUser extends GenericMethods {
 		UIFunctions.addProductToCart("TumiTestData", "GuestOrders");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getContinueShopping(), "Continue Shopping");
-		UIFunctions.addProductToCart("TumiTestData", "BackOrderProduct");
+		UIFunctions.addToCart("TumiTestData", "BackOrderProduct");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
@@ -65,7 +65,7 @@ public class MultipleOrdersForGuestUser extends GenericMethods {
 		UIFunctions.addProductToCart("TumiTestData", "PreOrderProduct");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getContinueShopping(), "Continue Shopping");
-		UIFunctions.addProductToCart("TumiTestData", "BackOrderProduct");
+		UIFunctions.addToCart("TumiTestData", "BackOrderProduct");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
@@ -85,7 +85,7 @@ public class MultipleOrdersForGuestUser extends GenericMethods {
 		UIFunctions.addProductToCart("TumiTestData", "GuestOrders");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getContinueShopping(), "Continue Shopping");
-		UIFunctions.addProductToCart("TumiTestData", "DonationPurchase");
+		UIFunctions.addToCart("TumiTestData", "DonationPurchase");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
@@ -105,7 +105,7 @@ public class MultipleOrdersForGuestUser extends GenericMethods {
 		UIFunctions.addProductToCart("TumiTestData", "GuestOrders");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getContinueShopping(), "Continue Shopping");
-		UIFunctions.addProductToCart("TumiTestData", "GlobalLocatorProduct");
+		UIFunctions.addToCart("TumiTestData", "GlobalLocatorProduct");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
@@ -126,7 +126,7 @@ public class MultipleOrdersForGuestUser extends GenericMethods {
 
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getContinueShopping(), "Continue Shopping");
-		UIFunctions.addProductToCart("TumiTestData", "GuestOrders");
+		UIFunctions.addToCart("TumiTestData", "GuestOrders");
 		UIFunctions.addMonogram("TumiTestData", "BackOrderProduct");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
@@ -148,7 +148,7 @@ public class MultipleOrdersForGuestUser extends GenericMethods {
 		UIFunctions.removeMonogram();
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getContinueShopping(), "Continue Shopping");
-		UIFunctions.addProductToCart("TumiTestData", "DonationPurchase");
+		UIFunctions.addToCart("TumiTestData", "DonationPurchase");
 		UIFunctions.removeMonogram();
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
@@ -170,7 +170,7 @@ public class MultipleOrdersForGuestUser extends GenericMethods {
 		UIFunctions.removeMonogram();
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getContinueShopping(), "Continue Shopping");
-		UIFunctions.addProductToCart("TumiTestData", "GlobalLocatorProduct");
+		UIFunctions.addToCart("TumiTestData", "GlobalLocatorProduct");
 		UIFunctions.removeMonogram();
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
@@ -193,7 +193,7 @@ public class MultipleOrdersForGuestUser extends GenericMethods {
 		UIFunctions.removeMonogram();
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getContinueShopping(), "Continue Shopping");
-		UIFunctions.addProductToCart("TumiTestData", "PreOrderProduct");
+		UIFunctions.addToCart("TumiTestData", "PreOrderProduct");
 		UIFunctions.removeMonogram();
 		UIFunctions.addMonogram("TumiTestData", "PreOrderProduct");
 		click(pdp.getAddToCart(), "Add To Cart");

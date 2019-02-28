@@ -21,7 +21,7 @@ public class TwoOrderForGuestUser extends GenericMethods {
 		UIFunctions.addProductToCart("TumiTestData", "GuestOrders");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getContinueShopping(), "Continue Shopping");
-		UIFunctions.addProductToCart("TumiTestData", "GuestOrders");
+		UIFunctions.addToCart("TumiTestData", "GuestOrders");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(gift.getMakeThisGift(), "Make this Gift");
@@ -43,7 +43,7 @@ public class TwoOrderForGuestUser extends GenericMethods {
 		UIFunctions.addProductToCart("TumiTestData", "PreOrderProduct");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getContinueShopping(), "Continue Shopping");
-		UIFunctions.addProductToCart("TumiTestData", "PreOrderProduct");
+		UIFunctions.addToCart("TumiTestData", "PreOrderProduct");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(gift.getMakeThisGift(), "Make this Gift");
@@ -64,7 +64,7 @@ public class TwoOrderForGuestUser extends GenericMethods {
 		UIFunctions.addProductToCart("TumiTestData", "BackOrderProduct");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getContinueShopping(), "Continue Shopping");
-		UIFunctions.addProductToCart("TumiTestData", "BackOrderProduct");
+		UIFunctions.addToCart("TumiTestData", "BackOrderProduct");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(gift.getMakeThisGift(), "Make this Gift");
@@ -107,7 +107,7 @@ public class TwoOrderForGuestUser extends GenericMethods {
 		UIFunctions.addProductToCart("TumiTestData", "PreOrderProduct");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getContinueShopping(), "Continue Shopping");
-		UIFunctions.addProductToCart("TumiTestData", "PreOrderProduct");
+		UIFunctions.addToCart("TumiTestData", "PreOrderProduct");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(gift.getMakeThisGift(), "Make this Gift");

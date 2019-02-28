@@ -27,9 +27,8 @@ public class SinglePageCheckout extends GenericMethods {
 	private WebElement signInExpressCheckout;
 
 	public WebElement getSignInExpressCheckout() {
-		if (selectedCountry.contains("US")||
-				selectedCountry.contains("Canada")) {
-			
+		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
+
 			return signInExpressCheckout;
 		} else {
 			return krSignInExpressCheckout;
@@ -59,9 +58,8 @@ public class SinglePageCheckout extends GenericMethods {
 	private WebElement continueAsGuest;
 
 	public WebElement getContinueAsGuest() {
-		if (selectedCountry.contains("US")||
-				selectedCountry.contains("Canada")) {
-			
+		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
+
 			return explicitWait(continueAsGuest);
 		} else {
 			return explicitWait(krContinueAsGuest);
@@ -69,33 +67,33 @@ public class SinglePageCheckout extends GenericMethods {
 	}
 
 	@FindBy(how = How.XPATH, using = "(//label[@class='cvform-lbl-checkbox'])[1]") // or
-																					// (//input[@id='subscribeInfo']/following::label)[1]
+	// (//input[@id='subscribeInfo']/following::label)[1]
 	private WebElement krPromotionsAndNews;
 
 	@FindBy(how = How.XPATH, using = "//label[contains(text(),'Send me emails with promotions and news.')]")
 	private WebElement promotionsAndNews;
 
 	public WebElement getPromotionsAndNews() {
-		if (selectedCountry.contains("US")||
-				selectedCountry.contains("Canada")) {
+		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
 			return promotionsAndNews;
 		} else {
 			return explicitWait(krPromotionsAndNews);
-			
+
 		}
 	}
-	
-	@FindBy(how=How.XPATH,using="//input[@name='voucherCode']")
+
+	@FindBy(how = How.XPATH, using = "//input[@name='voucherCode']")
 	private WebElement addPromocode;
-	
+
 	public WebElement getPromocode() {
-		return  explicitWait(addPromocode);
+		return explicitWait(addPromocode);
 	}
-	@FindBy(how=How.XPATH,using="(//button[@type='submit'])[2]")
+
+	@FindBy(how = How.XPATH, using = "(//button[@type='submit'])[2]")
 	private WebElement ApplyClick;
-	
+
 	public WebElement getApply() {
-		
+
 		return explicitWait(ApplyClick);
 	}
 

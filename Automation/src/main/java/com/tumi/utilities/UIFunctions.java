@@ -195,8 +195,9 @@ public class UIFunctions extends GenericMethods {
 	}
 
 	public static void addProductToCart(String sheet, String testCase) {
+		
 		UIFunctions.closeSignUp();
-		// removeExistingCart();
+		removeExistingCart();
 
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
 
@@ -207,7 +208,7 @@ public class UIFunctions extends GenericMethods {
 				final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("SKUID");
 				driver.get(pdpURL);
 			} else {
-				
+
 				final String pdpURL = GlobalConstants.S3 + "/p/" + testData.get("SKUID");
 				driver.get(pdpURL);
 			}
@@ -246,6 +247,34 @@ public class UIFunctions extends GenericMethods {
 		 * (Exception e) { Assert.fail(testData.get("SKUID")
 		 * +" Product is not available"); }
 		 */
+
+	}
+	
+	public static void addToCart(String sheet, String testCase) {
+		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
+
+		if (selectedCountry.equals("US")) {
+
+			if (applicationUrl.equals("stage2")) {
+
+				final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("SKUID");
+				driver.get(pdpURL);
+			} else {
+
+				final String pdpURL = GlobalConstants.S3 + "/p/" + testData.get("SKUID");
+				driver.get(pdpURL);
+			}
+
+		} else if (selectedCountry.contains("Canada")) {
+
+			final String pdpURL = GlobalConstants.urlca + "/p/" + testData.get("SKUID");
+			driver.get(pdpURL);
+
+		} else {
+
+			final String pdpURL = GlobalConstants.urlkr + "/p/" + testData.get("KrSKUID");
+			driver.get(pdpURL);
+		}
 
 	}
 
@@ -374,39 +403,43 @@ public class UIFunctions extends GenericMethods {
 	 * captureOrderConfScreen("OrderConfirmation"); }
 	 */
 
+	public static void addGuestDetailsForIE() {
+		
+		Map<String, String> testData1 = ReadTestData.getJsonData("TumiTestData", "GuestDetails");
+		input(shipping.getFirstName(), testData1.get("FirstName"), "First Name");
+		input(shipping.getLastName(), testData1.get("LastName"), "Last Name");
+		input(shipping.getAddressLine1(), "100 Alabama", "Address Line1");
+		delay(2000);
+		driver.findElement(By.xpath("//input[@placeholder='Address Line2']")).click();
+		domClick(driver.findElement(By.xpath("//select[@name='regionIso']/following::span[1]/span/span[2]")), "");
+		delay(3000);
+		List<WebElement> ele = driver.findElements(By.xpath("//select[@name='regionIso']/following::span[1]/ul/li"));
+
+		for (int i = 1; i < ele.size(); i++) {
+
+			WebElement region = driver
+					.findElement(By.xpath("//select[@name='regionIso']/following::span[1]/ul/li[" + i + "]"));
+			if (getText(region).equals("Alabama")) {
+
+				region.click();
+				delay(5000);
+				break;
+			}
+		}
+		driver.findElement(By.xpath("//input[@name='townCity']")).sendKeys("Muscle Shoals");
+		driver.findElement(By.xpath("//input[@name='postcode']")).sendKeys("35661-6507");
+		driver.findElement(By.xpath("//input[@name='phone']")).sendKeys("9877939354");
+		driver.findElement(By.xpath("//h2[contains(text(),'Order Summary')]")).click();
+	}
+
 	public static void addGuestDetails() {
 
 		if (browserName.equals("ie")) {
-			Map<String, String> testData1 = ReadTestData.getJsonData("TumiTestData", "BackOrderProduct");
-			input(shipping.getFirstName(), testData1.get("FirstName"), "First Name");
-			input(shipping.getLastName(), testData1.get("LastName"), "Last Name");
-			input(shipping.getAddressLine1(), "100 Alabama", "Address Line1");
-			delay(2000);
-			driver.findElement(By.xpath("//input[@placeholder='Address Line2']")).click();
-			domClick(driver.findElement(By.xpath("//select[@name='regionIso']/following::span[1]/span/span[2]")), "");
-			delay(3000);
-			List<WebElement> ele = driver
-					.findElements(By.xpath("//select[@name='regionIso']/following::span[1]/ul/li"));
-
-			for (int i = 1; i < ele.size(); i++) {
-
-				WebElement region = driver
-						.findElement(By.xpath("//select[@name='regionIso']/following::span[1]/ul/li[" + i + "]"));
-				if (getText(region).equals("Alabama")) {
-
-					region.click();
-					delay(5000);
-					break;
-				}
-			}
-			driver.findElement(By.xpath("//input[@name='townCity']")).sendKeys("Muscle Shoals");
-			driver.findElement(By.xpath("//input[@name='postcode']")).sendKeys("35661-6507");
-			driver.findElement(By.xpath("//input[@name='phone']")).sendKeys("9877939354");
-			driver.findElement(By.xpath("//h2[contains(text(),'Order Summary')]")).click();
+			addGuestDetailsForIE();
 		} else {
 
 			if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
-				Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "OrderWithTwoProducts");
+				Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestDetails");
 				input(shipping.getFirstName(), testData.get("FirstName"), "First Name");
 				input(shipping.getLastName(), testData.get("LastName"), "Last Name");
 				input(shipping.getAddressLine1(), testData.get("AddressLine1"), "Address Line1");
@@ -444,14 +477,14 @@ public class UIFunctions extends GenericMethods {
 
 			else {
 
-				Map<String, String> korea = ReadTestData.getJsonData("TumiTestData", "GuestDeatilsForKorea");
+				Map<String, String> korea = ReadTestData.getJsonData("TumiTestData", "GuestDetails");
 
-				input(shipping.getFirstName(),korea.get("FirstName"), "First Name");
-				input(shipping.getLastName(),korea.get("LastName"), "Last Name");
-				input(shipping.getAddressLine1(),korea.get("AddressLine1"), "Address Line1");
-				input(shipping.getTown(),korea.get("TownCity"), "Town");
-				input(shipping.getPostcode(),korea.get("PostCode"), "PostCode");
-				input(shipping.getPhoneNumber(),korea.get("Phone"), "Phone Number");
+				input(shipping.getFirstName(), korea.get("FirstName"), "First Name");
+				input(shipping.getLastName(), korea.get("LastName"), "Last Name");
+				input(shipping.getAddressLine1(), korea.get("AddressLine1"), "Address Line1");
+				input(shipping.getTown(), korea.get("TownCity"), "Town");
+				input(shipping.getPostcode(), korea.get("PostCode"), "PostCode");
+				input(shipping.getPhoneNumber(), korea.get("Phone"), "Phone Number");
 			}
 		}
 	}
@@ -553,7 +586,7 @@ public class UIFunctions extends GenericMethods {
 		input(gift.getRecipientName(), testData.get("RecipientName"), "Recipients name");
 		input(gift.getSenderName(), testData.get("SenderName"), "Sender name");
 		input(gift.getAddMessage(), testData.get("Message"), "Message");
-		
+
 	}
 
 	public static void addGiftBox() {

@@ -43,7 +43,7 @@ public class MultiOrders extends GenericMethods {
 		UIFunctions.removeMonogram();
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getContinueShopping(), "Continue Shopping");
-		UIFunctions.addProductToCart("TumiTestData", "BackOrderProduct");
+		UIFunctions.addToCart("TumiTestData", "BackOrderProduct");
 		UIFunctions.removeMonogram();
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
@@ -65,7 +65,7 @@ public class MultiOrders extends GenericMethods {
 		UIFunctions.removeMonogram();
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getContinueShopping(), "Continue Shopping");
-		UIFunctions.addProductToCart("TumiTestData", "BackOrderProduct");
+		UIFunctions.addToCart("TumiTestData", "BackOrderProduct");
 		UIFunctions.removeMonogram();
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
@@ -89,7 +89,7 @@ public class MultiOrders extends GenericMethods {
 		UIFunctions.removeMonogram();
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getContinueShopping(), "Continue Shopping");
-		UIFunctions.addProductToCart("TumiTestData", "BackOrderProduct");
+		UIFunctions.addToCart("TumiTestData", "BackOrderProduct");
 		UIFunctions.removeMonogram();
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
