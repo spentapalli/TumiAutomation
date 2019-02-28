@@ -26,6 +26,9 @@ public class HomePageVerification extends GenericMethods {
 	public static String respCode;
 	public static String currenturl = "";
 
+	/**
+	 * skurry
+	 */
 	@Test
 	public static void verifyHomePageResponse() {
 
