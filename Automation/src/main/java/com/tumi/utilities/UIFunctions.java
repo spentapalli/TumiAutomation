@@ -26,7 +26,7 @@ public class UIFunctions extends GenericMethods {
 		HomePage home = PageFactory.initElements(driver, HomePage.class);
 		delay(5000);
 		try {
-			home.getNoThanks().click();
+			jsClick(home.getNoThanks());
 			delay(5000);
 		} catch (Exception e) {
 		}
