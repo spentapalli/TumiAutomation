@@ -463,20 +463,75 @@ public class HomePage extends GenericMethods {
 		return mobileCountry;
 	}
 	//home page TUMI logo
-	@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[2]")
-	private WebElement LuggageOption;
+		@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[2]")
+		private WebElement LuggageOption;
 
-	public WebElement getLuggageOption() {
+		public WebElement getLuggageOption() {
 
-		return LuggageOption;
+			return LuggageOption;
+		}
+
+		
+			@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[3]")
+			private WebElement BackPackOption;
+
+			public WebElement getBackPackOption() {
+
+				return BackPackOption;
+			}
+			@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[3]/ul/li[1]/ul/li[1]/ul/li/ul/li[3]/a")
+			private WebElement BackPackTestBridgewater;
+
+			public WebElement getBackPackTestBridgewater() {
+
+				return BackPackTestBridgewater;
+			}
+			@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[4]/a")
+			private WebElement BagOptions;
+
+			public WebElement getBagOptions() {
+
+				return BagOptions;
+			}
+			@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[4]/ul/li[1]/ul/li[1]/ul/li/ul/li[2]/a")
+			private WebElement BagwheeledBriefCase;
+
+			public WebElement getBagwheeledBriefCase() {
+
+				return BagwheeledBriefCase;
+			}
+			
+			@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[5]")
+			private WebElement AccessoriesOptions;
+
+			public WebElement getAccessoriesOptions() {
+
+				return AccessoriesOptions;
+			}
+			@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[5]/ul/li[1]/ul/li[1]/ul/li[1]/ul/li[6]/a")
+			private WebElement AccessoriesKeyFobs;
+
+			public WebElement getAccessoriesKeyFobs() {
+
+				return AccessoriesKeyFobs;
+			}
+			
+			@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[6]")
+			private WebElement CollectionsOptions;
+
+			public WebElement getCollectionsOptions() {
+
+				return CollectionsOptions;
+			}
+			@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[7]")
+			private WebElement GiftIdeasOptions;
+
+			public WebElement getGiftIdeasOptions() {
+
+				return GiftIdeasOptions;
+			}
+			
+			
 	}
 
-		@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[2]/ul/li[1]/ul/li[1]/ul/li[1]/ul/li[1]/a")
-		private WebElement LuggageCarryon;
-
-		public WebElement getLuggageOptionCarryon() {
-
-			return LuggageCarryon;
-		}
 	
-}
