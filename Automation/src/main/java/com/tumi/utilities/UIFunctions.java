@@ -74,6 +74,7 @@ public class UIFunctions extends GenericMethods {
 	public static void addCardDetails(String sheet, String testCaseName) {
 
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCaseName);
+		Map<String, String> testData1 = ReadTestData.getJsonData("TumiTestData", "GuestDetails");
 
 		// billing page
 		input(guestBillPage.getNameOnCard(), testData.get("NameOnCard"), "Name on Card");
@@ -84,18 +85,13 @@ public class UIFunctions extends GenericMethods {
 			selectMonthInFF();
 			selectYearInFF();
 		} else {
-			selectByVisibleText(guestBillPage.getExpiryMonth(), "05", "Expiry Month");
-			selectByVisibleText(guestBillPage.getExpiryYear(), "2020", "Expiry Year");
+			selectByVisibleText(guestBillPage.getExpiryMonth(), testData.get("ExipryMonth"), "Expiry Month");
+			selectByVisibleText(guestBillPage.getExpiryYear(), testData.get("ExpiryYear"), "Expiry Year");
 		}
 		input(guestBillPage.getCvvNumber(), testData.get("CVV"), "Cvv Number");
-		input(guestBillPage.getemail(), testData.get("EmailID"), "Email ID");
-		input(guestBillPage.getPhoneNumber(), testData.get("Phone"), "Phone number");
-		// webclick(review.getOrderSummary(), "Order Summary");
+		input(guestBillPage.getemail(), testData1.get("EmailID"), "Email ID");
+		input(guestBillPage.getPhoneNumber(), testData1.get("Phone"), "Phone number");
 		domClick(guestBillPage.getReviewOrder(), "Review your order");
-
-		// elect sel = new Select(new
-		// WebDriverWait(driver,30).until(ExpectedConditions.visibilityOfElementLocated(By.name("country"))));
-		// sel.selectByVisibleText("Albania");
 	}
 
 	public static void selectMonthInFF() {
@@ -195,8 +191,9 @@ public class UIFunctions extends GenericMethods {
 	}
 
 	public static void addProductToCart(String sheet, String testCase) {
+
 		UIFunctions.closeSignUp();
-		// removeExistingCart();
+		removeExistingCart();
 
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
 
@@ -207,7 +204,7 @@ public class UIFunctions extends GenericMethods {
 				final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("SKUID");
 				driver.get(pdpURL);
 			} else {
-				
+
 				final String pdpURL = GlobalConstants.S3 + "/p/" + testData.get("SKUID");
 				driver.get(pdpURL);
 			}
@@ -219,7 +216,7 @@ public class UIFunctions extends GenericMethods {
 
 		} else {
 
-			final String pdpURL = GlobalConstants.urlkr + "/p/" + testData.get("KrSKUID");
+			final String pdpURL = GlobalConstants.urlkr + "/p/" + testData.get("KoreaSKUID");
 			driver.get(pdpURL);
 		}
 		// WaitForJStoLoad();
@@ -246,6 +243,34 @@ public class UIFunctions extends GenericMethods {
 		 * (Exception e) { Assert.fail(testData.get("SKUID")
 		 * +" Product is not available"); }
 		 */
+
+	}
+
+	public static void addToCart(String sheet, String testCase) {
+		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
+
+		if (selectedCountry.equals("US")) {
+
+			if (applicationUrl.equals("stage2")) {
+
+				final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("SKUID");
+				driver.get(pdpURL);
+			} else {
+
+				final String pdpURL = GlobalConstants.S3 + "/p/" + testData.get("SKUID");
+				driver.get(pdpURL);
+			}
+
+		} else if (selectedCountry.contains("Canada")) {
+
+			final String pdpURL = GlobalConstants.urlca + "/p/" + testData.get("SKUID");
+			driver.get(pdpURL);
+
+		} else {
+
+			final String pdpURL = GlobalConstants.urlkr + "/p/" + testData.get("KrSKUID");
+			driver.get(pdpURL);
+		}
 
 	}
 
@@ -374,39 +399,44 @@ public class UIFunctions extends GenericMethods {
 	 * captureOrderConfScreen("OrderConfirmation"); }
 	 */
 
+	public static void addGuestDetailsForIE() {
+
+		Map<String, String> testData1 = ReadTestData.getJsonData("TumiTestData", "GuestDetails");
+		input(shipping.getFirstName(), testData1.get("FirstName"), "First Name");
+		input(shipping.getLastName(), testData1.get("LastName"), "Last Name");
+		input(shipping.getAddressLine1(), "100 Alabama", "Address Line1");
+		delay(2000);
+		driver.findElement(By.xpath("//input[@placeholder='Address Line2']")).click();
+		domClick(driver.findElement(By.xpath("//select[@name='regionIso']/following::span[1]/span/span[2]")), "");
+		delay(3000);
+		List<WebElement> ele = driver.findElements(By.xpath("//select[@name='regionIso']/following::span[1]/ul/li"));
+
+		for (int i = 1; i < ele.size(); i++) {
+
+			WebElement region = driver
+					.findElement(By.xpath("//select[@name='regionIso']/following::span[1]/ul/li[" + i + "]"));
+			if (getText(region).equals("Alabama")) {
+
+				region.click();
+				delay(5000);
+				break;
+			}
+		}
+		driver.findElement(By.xpath("//input[@name='townCity']")).sendKeys("Muscle Shoals");
+		driver.findElement(By.xpath("//input[@name='postcode']")).sendKeys("35661-6507");
+		driver.findElement(By.xpath("//input[@name='phone']")).sendKeys("9877939354");
+		driver.findElement(By.xpath("//h2[contains(text(),'Order Summary')]")).click();
+	}
+
 	public static void addGuestDetails() {
 
 		if (browserName.equals("ie")) {
-			Map<String, String> testData1 = ReadTestData.getJsonData("TumiTestData", "BackOrderProduct");
-			input(shipping.getFirstName(), testData1.get("FirstName"), "First Name");
-			input(shipping.getLastName(), testData1.get("LastName"), "Last Name");
-			input(shipping.getAddressLine1(), "100 Alabama", "Address Line1");
-			delay(2000);
-			driver.findElement(By.xpath("//input[@placeholder='Address Line2']")).click();
-			domClick(driver.findElement(By.xpath("//select[@name='regionIso']/following::span[1]/span/span[2]")), "");
-			delay(3000);
-			List<WebElement> ele = driver
-					.findElements(By.xpath("//select[@name='regionIso']/following::span[1]/ul/li"));
-
-			for (int i = 1; i < ele.size(); i++) {
-
-				WebElement region = driver
-						.findElement(By.xpath("//select[@name='regionIso']/following::span[1]/ul/li[" + i + "]"));
-				if (getText(region).equals("Alabama")) {
-
-					region.click();
-					delay(5000);
-					break;
-				}
-			}
-			driver.findElement(By.xpath("//input[@name='townCity']")).sendKeys("Muscle Shoals");
-			driver.findElement(By.xpath("//input[@name='postcode']")).sendKeys("35661-6507");
-			driver.findElement(By.xpath("//input[@name='phone']")).sendKeys("9877939354");
-			driver.findElement(By.xpath("//h2[contains(text(),'Order Summary')]")).click();
+			addGuestDetailsForIE();
 		} else {
 
-			if (!selectedCountry.contains("US") || !selectedCountry.contains("Canada")) {
-				Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "OrderWithTwoProducts");
+			if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
+
+				Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestDetails");
 				input(shipping.getFirstName(), testData.get("FirstName"), "First Name");
 				input(shipping.getLastName(), testData.get("LastName"), "Last Name");
 				input(shipping.getAddressLine1(), testData.get("AddressLine1"), "Address Line1");
@@ -426,7 +456,6 @@ public class UIFunctions extends GenericMethods {
 					 * (add.getText().contains("ABBOTSFORD")) { //, BC, V2S 8B7 click(add,
 					 * "Address Line1"); break; } }
 					 */
-
 				} else {
 					for (int i = 1; i < shipping.getAddList().size(); i++) {
 						WebElement add = driver
@@ -436,15 +465,11 @@ public class UIFunctions extends GenericMethods {
 							break;
 						}
 					}
-
 				}
-
 				input(shipping.getPhoneNumber(), testData.get("Phone"), "Phone Number");
-			}
+			} else {
 
-			else {
-
-				Map<String, String> korea = ReadTestData.getJsonData("TumiTestData", "GuestDeatilsForKorea");
+				Map<String, String> korea = ReadTestData.getJsonData("TumiTestData", "GuestDetails");
 
 				input(shipping.getFirstName(), korea.get("FirstName"), "First Name");
 				input(shipping.getLastName(), korea.get("LastName"), "Last Name");
@@ -617,7 +642,7 @@ public class UIFunctions extends GenericMethods {
 	public static void addMultipleProducts(String sheet, String testCase) {
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
 		for (int i = 0; i < 2; i++) {
-			UIFunctions.searchProducts(i, testData.get("PrdouctName"));
+			UIFunctions.searchProducts(i, testData.get("ProductName"));
 			delay(3000);
 			// verifyAssertContains(driver.getCurrentUrl(), testData.get("SKUID"), "Wrong
 			// Product is displayed");

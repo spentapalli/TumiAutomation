@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="TumiReport" parallel="none">
-<test name="TwoOrderForGuestUser">
+	<test name="TwoOrderForGuestUser">
 		<classes>
 			<class name="orders.guest.TwoOrderForGuestUser" >
 			<methods>
-			<include name="verifyTwoInstockWithGiftBox()">
+			<include name="verifyTwoInstockWithGiftbox()">
 			</include>
     </methods>
     </class>
@@ -21,32 +21,7 @@
 			<class name="login.VerifyInvalidInstaLogin" />
 		</classes>
 	</test>
-	<test name="ThreeOrderForGuestUser">
-		<classes>
-			<class name="orders.guest.ThreeOrderForGuestUser" >
-			<methods>
-			<include name="verifyGuestOrderWithThreeReadyToShipProducts">
-			</include>
-    </methods>
-    </class>
-		</classes>
-	</test>
-	<test name="MultipleOrdersForGuestUser">
-		<classes>
-			<class name="orders.guest.MultipleOrdersForGuestUser" >
-			<methods>
-			<include name="verifyTwoReadyToShipProductsWithMonogram">
-			</include>
-   </methods>
-    </class>
-		</classes>
-	</test>
-	<test name="RegisterOrderWithMonogram">
-		<classes>
-			<class name="orders.registered.RegisterOrderWithMonogram" />
-		</classes>
-	</test>
-<test name="GuestOrderFail">
+	<test name="GuestOrderFail">
 		<classes>
 			<class name="orders.guest.GuestOrderFail" />
 		</classes>

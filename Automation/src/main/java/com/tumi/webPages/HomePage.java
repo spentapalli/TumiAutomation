@@ -11,7 +11,7 @@ import com.tumi.reports.Reports;
 import com.tumi.utilities.GenericMethods;
 
 /**
- * @author Shwetha Capo
+ * @author Suresh,Shwetha, Bindu
  *
  */
 public class HomePage extends GenericMethods {
@@ -124,10 +124,17 @@ public class HomePage extends GenericMethods {
 
 	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Location')]")
 	private WebElement selectCountry;
+	
+	@FindBy(how = How.XPATH, using = "//div[contains(@class,'header-country')]")
+	private WebElement krselectCountry;
+	
 
 	public WebElement getSelectCountry() {
-
+		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
 		return selectCountry;
+		}else {
+			return krselectCountry;
+		}
 	}
 
 	@FindBy(how = How.XPATH, using = "(//a[contains(text(),'United States')])[2]")
@@ -136,6 +143,28 @@ public class HomePage extends GenericMethods {
 	public WebElement getSelectCountryUS() {
 
 		return explicitWait(selectCountryUS);
+	}
+	
+	@FindBy(how = How.XPATH, using = "(//a[contains(text(),'United States')])[1]")
+	private WebElement selectCountryUSforTop;
+	
+	@FindBy(how = How.XPATH, using = "(//div[contains(@class,'north-america')]/ul/li[2]/a)[1]")
+	private WebElement krselectCountryUSforTop;
+
+	public WebElement getSelectCountryUSforTop() {
+		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
+		return explicitWait(selectCountryUSforTop);
+		}else {
+			return explicitWait(krselectCountryUSforTop);
+		}
+	}
+
+	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Canada')]")
+	private WebElement selectCountryCAforTop;
+
+	public WebElement getSelectCountryCAforTop() {
+
+		return explicitWait(selectCountryCAforTop);
 	}
 
 	@FindBy(how = How.XPATH, using = "(//a[contains(text(),'Canada')])[2]")
@@ -146,12 +175,20 @@ public class HomePage extends GenericMethods {
 		return explicitWait(selectCountryCA);
 	}
 
-	@FindBy(how = How.XPATH, using = "(//a[contains(text(),'대한민국')])[2]")
+	@FindBy(how = How.XPATH, using = "(//a[contains(text(),'ëŒ€í•œë¯¼êµ­')])[2]")
 	private WebElement selectCountryKR;
 
 	public WebElement getSelectCountryKR() {
 
 		return explicitWait(selectCountryKR);
+	}
+
+	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Korea')]")
+	private WebElement selectCountryKRforTop;
+
+	public WebElement getSelectCountryKRforTop() {
+
+		return explicitWait(selectCountryKRforTop);
 	}
 
 	@FindBy(how = How.XPATH, using = "//i[@id='lang-selectorSelectBoxItArrow']")
@@ -172,7 +209,7 @@ public class HomePage extends GenericMethods {
 
 	}
 
-	@FindBy(how = How.XPATH, using = "(//a[contains(text(),'Español')])[1]")
+	@FindBy(how = How.XPATH, using = "(//a[contains(text(),'EspaÃ±ol')])[1]")
 	private WebElement selectSpanishLanguage;
 
 	public WebElement getSelectSpanishLanguage() {
@@ -181,7 +218,7 @@ public class HomePage extends GenericMethods {
 
 	}
 
-	@FindBy(how = How.XPATH, using = "(//a[contains(text(),'Français')])[1]")
+	@FindBy(how = How.XPATH, using = "(//a[contains(text(),'FranÃ§ais')])[1]")
 	private WebElement selectFrenchLanguage;
 
 	public WebElement getSelectFrenchLanguage() {
@@ -200,8 +237,6 @@ public class HomePage extends GenericMethods {
 		if (selectedCountry.contains("US")||
 				selectedCountry.contains("Canada")) {
 			return headerFindStore;
-			
-
 		} else {
 
 			return explicitWait(krheaderFindStore);
@@ -234,10 +269,9 @@ public class HomePage extends GenericMethods {
 	private WebElement headerSignIn;
 
 	public WebElement getHeaderSignIn() {
-		
-		if (selectedCountry.contains("US")||
-				selectedCountry.contains("Canada")) {
-			
+
+		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
+
 			return explicitWait(headerSignIn);
 		} else {
 
@@ -276,8 +310,7 @@ public class HomePage extends GenericMethods {
 	private WebElement submit;
 
 	public WebElement getLogOn() {
-		if (selectedCountry.contains("US")||
-				selectedCountry.contains("Canada")) {
+		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
 			return explicitWait(submit);
 		} else {
 			return krSubmit;
@@ -345,6 +378,14 @@ public class HomePage extends GenericMethods {
 
 	public WebElement getCloseMyAccount() {
 		return closeMyAccount;
+	}//div[@id='tm-panel-login']/header/a
+	
+
+	@FindBy(how = How.XPATH, using = "//div[@id='tm-panel-login']/header/a")
+	private WebElement closeMyAccountBefore;
+
+	public WebElement getCloseMyAccountBefore() {
+		return closeMyAccountBefore;
 	}
 
 	@FindBy(how = How.XPATH, using = "//div[@id='firstTimeEmailSignupPopup']/a")
@@ -353,15 +394,13 @@ public class HomePage extends GenericMethods {
 	public WebElement getSignupPopup() {
 		return signUpPop;
 	}
-	
+
 	@FindBy(how = How.XPATH, using = "//button[contains(text(),'No Thanks')]")
 	private WebElement noThanks;
 
 	public WebElement getNoThanks() {
 		return noThanks;
 	}
-	
-	
 
 	@FindBy(how = How.XPATH, using = "//div[@id='main-content']/div[2]/h1/span")
 	private WebElement vpnIssue;
@@ -371,7 +410,7 @@ public class HomePage extends GenericMethods {
 	}
 
 	// same for korea
-	@FindBy(how = How.XPATH, using = "//div[@id='minicart_data']/span[2]")
+	@FindBy(how = How.XPATH, using = "//span[@class='item-count']")
 	private WebElement minicartcount;
 
 	public WebElement getMinicartCount() {
@@ -379,11 +418,11 @@ public class HomePage extends GenericMethods {
 	}
 
 //same for korea
-	@FindBy(how = How.XPATH, using = "//div[@id='minicart_data']")
+	@FindBy(how = How.XPATH, using = "//div[@id='minicart_data']/span")
 	private WebElement minicart;
 
 	public WebElement getMinicart() {
-		return explicitWait(minicartcount);
+		return explicitWait(minicart);
 	}
 
 	@FindBy(how = How.XPATH, using = "//div[contains(@class,'header-country')]/a")
@@ -400,6 +439,21 @@ public class HomePage extends GenericMethods {
 		return countriesList;
 	}
 
+	@FindBy(how = How.XPATH, using = "//label[contains(text(),'CHOOSE YOUR LOCATION')]")
+	private WebElement selectLocation;
+
+	@FindBy(how = How.XPATH, using = "//label[contains(text(),'ìœ„ì¹˜ ì„ íƒ�')]")
+	private WebElement krSelectLocation;
+
+	public WebElement getSelectLocation() {
+
+		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
+			return selectLocation;
+		} else {
+			return krSelectLocation;
+		}
+	}
+
 	// Mobile
 	@FindBy(how = How.XPATH, using = "//select[@name='country']")
 	private WebElement mobileCountry;
@@ -408,5 +462,76 @@ public class HomePage extends GenericMethods {
 
 		return mobileCountry;
 	}
+	//home page TUMI logo
+		@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[2]")
+		private WebElement LuggageOption;
 
-}
+	public WebElement getLuggageOption() {
+
+			return LuggageOption;
+		}
+
+		
+			@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[3]")
+			private WebElement BackPackOption;
+
+			public WebElement getBackPackOption() {
+
+				return BackPackOption;
+			}
+			@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[3]/ul/li[1]/ul/li[1]/ul/li/ul/li[3]/a")
+			private WebElement BackPackTestBridgewater;
+
+			public WebElement getBackPackTestBridgewater() {
+
+				return BackPackTestBridgewater;
+			}
+			@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[4]/a")
+			private WebElement BagOptions;
+
+			public WebElement getBagOptions() {
+
+				return BagOptions;
+			}
+			@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[4]/ul/li[1]/ul/li[1]/ul/li/ul/li[2]/a")
+			private WebElement BagwheeledBriefCase;
+
+			public WebElement getBagwheeledBriefCase() {
+
+				return BagwheeledBriefCase;
+			}
+			
+			@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[5]")
+			private WebElement AccessoriesOptions;
+
+			public WebElement getAccessoriesOptions() {
+
+				return AccessoriesOptions;
+			}
+			@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[5]/ul/li[1]/ul/li[1]/ul/li[1]/ul/li[6]/a")
+			private WebElement AccessoriesKeyFobs;
+
+			public WebElement getAccessoriesKeyFobs() {
+
+				return AccessoriesKeyFobs;
+			}
+			
+			@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[6]")
+			private WebElement CollectionsOptions;
+
+			public WebElement getCollectionsOptions() {
+
+				return CollectionsOptions;
+			}
+			@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[7]")
+			private WebElement GiftIdeasOptions;
+
+			public WebElement getGiftIdeasOptions() {
+
+				return GiftIdeasOptions;
+			}
+			
+			
+	}
+
+	

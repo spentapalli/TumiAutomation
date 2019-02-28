@@ -12,10 +12,11 @@ import com.tumi.utilities.UIFunctions;
 	
 
 	public class GlobalLocatororder extends GenericMethods {
-		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData","GuestOrders");
+		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData","GuestDetails");
 		@Test
 		public void orderWithAsGuest() throws InterruptedException{
-			UIFunctions.addProductToCart("TumiTestData","GlobalLocatorProduct");
+			
+			UIFunctions.addProductToCart("TumiTestData","Products");
 			click(pdp.getAddToCart(),"Add to cart");
 			click(minicart.getProceedCheckOut(), "Proceed to Cart");
 			click(mainCart.getProceedCart(), "Proceed to Checkout");
@@ -25,7 +26,7 @@ import com.tumi.utilities.UIFunctions;
 			UIFunctions.addGuestDetails();
 			click(shipping.getContinueShippingMethod(), "Contiue Shipping");
 			click(shipMethod.getProceedToPayment(), "Proceed to Payment");
-			UIFunctions.addCardDetails("TumiTestData","GlobalLocatorProduct");
+			UIFunctions.addCardDetails("TumiTestData","CreditCardDetails");
 			UIFunctions.completeOrder();
 			 
 		}

@@ -281,7 +281,7 @@ public class Personalization extends GenericMethods {
 		return previous;
 	}
 	
-	@FindBy(how=How.XPATH, using="(//a[contains(text(),'Apply')])[1]")
+	@FindBy(how=How.XPATH, using="//div[@id='monogram-step3']/div[3]/a[2]")
 	private WebElement apply;
 	@FindBy(how=How.XPATH, using="(//div[@class='monogram-btn-cntr']/a[2])[2]")
 	private WebElement krApply;
@@ -290,8 +290,6 @@ public class Personalization extends GenericMethods {
 		 if (selectedCountry.contains("US")||
 					selectedCountry.contains("Canada")) {
 			 return explicitWait(apply);
-		
-			
 		}else {
 			return explicitWait(krApply);
 			
