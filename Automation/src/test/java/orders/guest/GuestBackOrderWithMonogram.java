@@ -14,7 +14,7 @@ import com.tumi.utilities.UIFunctions;
  */
 public class GuestBackOrderWithMonogram extends GenericMethods {
 
-	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "BackOrderProduct");
+	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestDetails");
 	
 	/*
 	 * TA-108 Verify Order with merchandise Back Order + Personalization for Guest
@@ -23,10 +23,11 @@ public class GuestBackOrderWithMonogram extends GenericMethods {
 
 	@Test(description = "TA-108 Verify Order with BackOrder +Personalization")
 	public void backOrderWithMonogramAsGuest() {
-		UIFunctions.addProductToCart("TumiTestData", "BackOrderProduct");
-		UIFunctions.addMonogram("TumiTestData", "BackOrderProduct");
+		
+		UIFunctions.addProductToCart("TumiTestData", "Products");
+		UIFunctions.addMonogram("TumiTestData", "MonoGramDetails");
 		click(pdp.getAddToCart(), "Add to cart");
-		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
+		click(minicart.getProceedCheckOut(), "Proceed to Cart");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		UIFunctions.waitForContinueToEnable();
@@ -34,7 +35,7 @@ public class GuestBackOrderWithMonogram extends GenericMethods {
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
-		UIFunctions.addCardDetails("TumiTestData", "BackOrderProduct");
+		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		UIFunctions.completeOrder();
 	}
 

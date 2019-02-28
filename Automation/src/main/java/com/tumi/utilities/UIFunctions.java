@@ -74,6 +74,7 @@ public class UIFunctions extends GenericMethods {
 	public static void addCardDetails(String sheet, String testCaseName) {
 
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCaseName);
+		Map<String, String> testData1 = ReadTestData.getJsonData("TumiTestData", "GuestDetails");
 
 		// billing page
 		input(guestBillPage.getNameOnCard(), testData.get("NameOnCard"), "Name on Card");
@@ -84,18 +85,13 @@ public class UIFunctions extends GenericMethods {
 			selectMonthInFF();
 			selectYearInFF();
 		} else {
-			selectByVisibleText(guestBillPage.getExpiryMonth(), "05", "Expiry Month");
-			selectByVisibleText(guestBillPage.getExpiryYear(), "2020", "Expiry Year");
+			selectByVisibleText(guestBillPage.getExpiryMonth(), testData.get("ExipryMonth"), "Expiry Month");
+			selectByVisibleText(guestBillPage.getExpiryYear(), testData.get("ExpiryYear"), "Expiry Year");
 		}
 		input(guestBillPage.getCvvNumber(), testData.get("CVV"), "Cvv Number");
-		input(guestBillPage.getemail(), testData.get("EmailID"), "Email ID");
-		input(guestBillPage.getPhoneNumber(), testData.get("Phone"), "Phone number");
-		// webclick(review.getOrderSummary(), "Order Summary");
+		input(guestBillPage.getemail(), testData1.get("EmailID"), "Email ID");
+		input(guestBillPage.getPhoneNumber(), testData1.get("Phone"), "Phone number");
 		domClick(guestBillPage.getReviewOrder(), "Review your order");
-
-		// elect sel = new Select(new
-		// WebDriverWait(driver,30).until(ExpectedConditions.visibilityOfElementLocated(By.name("country"))));
-		// sel.selectByVisibleText("Albania");
 	}
 
 	public static void selectMonthInFF() {
@@ -195,7 +191,7 @@ public class UIFunctions extends GenericMethods {
 	}
 
 	public static void addProductToCart(String sheet, String testCase) {
-		
+
 		UIFunctions.closeSignUp();
 		removeExistingCart();
 
@@ -220,7 +216,7 @@ public class UIFunctions extends GenericMethods {
 
 		} else {
 
-			final String pdpURL = GlobalConstants.urlkr + "/p/" + testData.get("KrSKUID");
+			final String pdpURL = GlobalConstants.urlkr + "/p/" + testData.get("KoreaSKUID");
 			driver.get(pdpURL);
 		}
 		// WaitForJStoLoad();
@@ -249,7 +245,7 @@ public class UIFunctions extends GenericMethods {
 		 */
 
 	}
-	
+
 	public static void addToCart(String sheet, String testCase) {
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
 
@@ -404,7 +400,7 @@ public class UIFunctions extends GenericMethods {
 	 */
 
 	public static void addGuestDetailsForIE() {
-		
+
 		Map<String, String> testData1 = ReadTestData.getJsonData("TumiTestData", "GuestDetails");
 		input(shipping.getFirstName(), testData1.get("FirstName"), "First Name");
 		input(shipping.getLastName(), testData1.get("LastName"), "Last Name");
@@ -439,6 +435,7 @@ public class UIFunctions extends GenericMethods {
 		} else {
 
 			if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
+
 				Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestDetails");
 				input(shipping.getFirstName(), testData.get("FirstName"), "First Name");
 				input(shipping.getLastName(), testData.get("LastName"), "Last Name");
@@ -459,7 +456,6 @@ public class UIFunctions extends GenericMethods {
 					 * (add.getText().contains("ABBOTSFORD")) { //, BC, V2S 8B7 click(add,
 					 * "Address Line1"); break; } }
 					 */
-
 				} else {
 					for (int i = 1; i < shipping.getAddList().size(); i++) {
 						WebElement add = driver
@@ -469,13 +465,9 @@ public class UIFunctions extends GenericMethods {
 							break;
 						}
 					}
-
 				}
-
 				input(shipping.getPhoneNumber(), testData.get("Phone"), "Phone Number");
-			}
-
-			else {
+			} else {
 
 				Map<String, String> korea = ReadTestData.getJsonData("TumiTestData", "GuestDetails");
 
