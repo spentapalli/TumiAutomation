@@ -34,6 +34,47 @@ public class PGP extends GenericMethods {
 		return carryOnLuggage;
 	}
 
+	/*
+	 * //@FindBy(how = How.XPATH, using =
+	 * "//div[@id='grid-container']/div[1]/div[2]/div[2]/div[2]/a/span/div[1]")
+	 * private WebElement SelectProduct;
+	 * 
+	 * public WebElement getSelectProduct() {
+	 * 
+	 * return SelectProduct; }
+	 */
+	@FindBy(how = How.XPATH, using = "//div[@id='grid-container']/div[1]/div[2]/div[3]/div[2]/a/span/div[1]")
+	private WebElement SelectProduct;
+
+	public  WebElement getSelectProduct() {
+		
+			return SelectProduct;
+	}
+	/*
+	 * @FindBy(how = How.XPATH, using =
+	 * "//div[@id='grid-container']/div[1]/div[2]/div[4]/div[2]/a/span/div[1]")
+	 * private WebElement SelectProductBag;
+	 * 
+	 * public WebElement getSelectProductBag() {
+	 * 
+	 * return SelectProductBag; }
+	 */
+
+	@FindBy(how = How.XPATH, using = "//div[@id='grid-container']/div[1]/div[2]/div[1]/div[3]/a")
+	private WebElement QuickShop;
+
+	public  WebElement getQuickShop() {
+		
+			return QuickShop;
+	}
+	@FindBy(how = How.XPATH, using = "(//button[@type='submit'])[2]")
+	private WebElement QuickShopAddtoCart;
+
+	public  WebElement getQuickShopAddtoCart() {
+		
+			return QuickShopAddtoCart;
+	}
+	
 	@FindBy(how = How.XPATH, using = "//div[@id='Color_group-ctrl']/ul/li/form/label")
 	private List<WebElement> colorsList;
 
