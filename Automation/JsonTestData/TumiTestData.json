@@ -258,6 +258,9 @@
 	"TumiStudio":{
 	"SKUID":"0117474T999"
 	},
+	"OutOfStock":{
+	"SKUID":"0494796PST"
+	},
 	
 	"VerifyPGPFilters":{
 	"USurl":"https://www.hybris-stage2.tumi.com",
