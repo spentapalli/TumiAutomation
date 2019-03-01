@@ -11,7 +11,7 @@ import com.tumi.reports.Reports;
 import com.tumi.utilities.GenericMethods;
 
 /**
- * @author Shwetha Capo
+ * @author Suresh,Shwetha, Bindu
  *
  */
 public class HomePage extends GenericMethods {
@@ -175,7 +175,7 @@ public class HomePage extends GenericMethods {
 		return explicitWait(selectCountryCA);
 	}
 
-	@FindBy(how = How.XPATH, using = "(//a[contains(text(),'대한민국')])[2]")
+	@FindBy(how = How.XPATH, using = "(//a[contains(text(),'ëŒ€í•œë¯¼êµ­')])[2]")
 	private WebElement selectCountryKR;
 
 	public WebElement getSelectCountryKR() {
@@ -209,7 +209,7 @@ public class HomePage extends GenericMethods {
 
 	}
 
-	@FindBy(how = How.XPATH, using = "(//a[contains(text(),'Español')])[1]")
+	@FindBy(how = How.XPATH, using = "(//a[contains(text(),'EspaÃ±ol')])[1]")
 	private WebElement selectSpanishLanguage;
 
 	public WebElement getSelectSpanishLanguage() {
@@ -218,7 +218,7 @@ public class HomePage extends GenericMethods {
 
 	}
 
-	@FindBy(how = How.XPATH, using = "(//a[contains(text(),'Français')])[1]")
+	@FindBy(how = How.XPATH, using = "(//a[contains(text(),'FranÃ§ais')])[1]")
 	private WebElement selectFrenchLanguage;
 
 	public WebElement getSelectFrenchLanguage() {
@@ -442,7 +442,7 @@ public class HomePage extends GenericMethods {
 	@FindBy(how = How.XPATH, using = "//label[contains(text(),'CHOOSE YOUR LOCATION')]")
 	private WebElement selectLocation;
 
-	@FindBy(how = How.XPATH, using = "//label[contains(text(),'위치 선택')]")
+	@FindBy(how = How.XPATH, using = "//label[contains(text(),'ìœ„ì¹˜ ì„ íƒ�')]")
 	private WebElement krSelectLocation;
 
 	public WebElement getSelectLocation() {
@@ -466,7 +466,7 @@ public class HomePage extends GenericMethods {
 		@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[2]")
 		private WebElement LuggageOption;
 
-		public WebElement getLuggageOption() {
+	public WebElement getLuggageOption() {
 
 			return LuggageOption;
 		}
@@ -531,7 +531,22 @@ public class HomePage extends GenericMethods {
 				return GiftIdeasOptions;
 			}
 			
-			
+			@FindBy(how = How.XPATH, using = "(//a[contains(text(),'Sale')])[1]")
+			private WebElement SalesOptions;
+
+			public WebElement getSalesOptions() {
+
+				return SalesOptions;
+			}
+			@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[9]/ul/li[1]/ul/li[1]/ul/li/ul/li[1]/a")
+			private WebElement SalesVoyageurCollection;
+
+			public WebElement getSalesVoyageurCollection() {
+
+				return SalesVoyageurCollection; 
 	}
+			}
+
+
 
 	

@@ -30,6 +30,12 @@ public class TumiStudio extends GenericMethods {
 		return tumiIdDesign;
 	}
 	
+	@FindBy(how=How.XPATH, using="//button[contains(text(),'Edit Design')]")
+	private WebElement tumiIdEditDesign;
+	
+	public WebElement getTumiIdEditDesign() {
+		return explicitWait(tumiIdEditDesign);
+	}
 	@FindBy(how=How.XPATH, using="//div[@id='option_mb']/div/div/label")
 	private List<WebElement> mainBodyList;
 	
@@ -99,7 +105,7 @@ public class TumiStudio extends GenericMethods {
 	public WebElement getLeatherAccents() {
 		return leatherAccents;
 	}
-	//div[@class='swatch-block-wrapper active']/div/div/label
+	
 	@FindBy(how=How.XPATH, using="//div[@id='option_la']/div/div/label")
 	private List<WebElement> leatherAccentsList;
 	
@@ -261,49 +267,12 @@ public class TumiStudio extends GenericMethods {
 		return secondPrevious;
 	}
 	
-	//for addTumiID() method.................
-	
-	@FindBy(how=How.XPATH, using="//div[@class='swatch-block-wrapper active']/div/div/label[2]")
-	private WebElement shadowGrayColor;
-	
-	public WebElement getShadowGrayColor() {
-		return shadowGrayColor;
-	}
-	
-	@FindBy(how=How.XPATH, using="//div[@id='option_sp']/div/div/label[3]")
-	private WebElement redColor;
-	
-	public WebElement getRedColor() {
-		return redColor;
-	}
-	
-	
-	@FindBy(how=How.XPATH, using="/div[@id='option_fp']/div/div/label[4]")
-	private WebElement atlanticBlueColor;
-	
-	public WebElement getAtlanticBlueColor() {
-		return atlanticBlueColor;
-	}
-	
-	@FindBy(how=How.XPATH, using="//div[@class='swatch-block-wrapper active']/div/div/label[2]")
-	private WebElement goldColor;
-	
-	public WebElement getGoldColor() {
-		return goldColor;
-	}
-	
-	@FindBy(how=How.XPATH, using="//div[@class='swatch-block-wrapper active']/div/div/label")
-	private WebElement blackColor;
-	
-	public WebElement getBlackColor() {
-		return blackColor;
-	}
-	
-	@FindBy(how=How.XPATH, using="//div[@id='option_ln']/div/div/label[3]")
-	private WebElement fossilColor;
-	
-	public WebElement getFossilColor() {
-		return fossilColor;
+		
+	@FindBy(how=How.XPATH, using="//div[@class='swatches-block']/div")
+	private List<WebElement> editMainbodyList;
+
+	public List<WebElement> getEditMainbodyList() {
+		return editMainbodyList;
 	}
 	
 	

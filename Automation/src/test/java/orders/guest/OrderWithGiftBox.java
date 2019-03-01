@@ -22,6 +22,7 @@ public class OrderWithGiftBox extends GenericMethods {
 
 		UIFunctions.addProductToCart("TumiTestData", "BackOrderProduct");
 		click(pdp.getAddToCart(), "Add to cart");
+		
 		if (browserName.equals("mobile")) {
 			driver.findElement(By.xpath("//span[@id='cart_content']")).click();
 			scrollDown(500);

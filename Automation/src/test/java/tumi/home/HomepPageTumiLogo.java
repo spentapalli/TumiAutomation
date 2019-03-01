@@ -15,7 +15,7 @@ public class HomepPageTumiLogo extends GenericMethods  {
 	/* TA-348
 	 * Verify Categories on Home page at Tumi Logo.
 	 */
-	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestOrders");
+	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestDetails");
 	@Test(priority = 0, description = " Sprint 3- TA-348 Verify Categories on Home page at Tumi Logo")
 	public void VerifyTumiLogoLuaggage(){
 		

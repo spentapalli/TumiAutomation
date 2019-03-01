@@ -4,6 +4,8 @@ import java.net.HttpURLConnection;
 import java.util.Map;
 
 import org.testng.Assert;
+import org.testng.annotations.Test;
+
 import com.aventstack.extentreports.Status;
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
@@ -20,7 +22,7 @@ public class TopNavigation extends GenericMethods {
 	 * TA-76 Verify Top Navigation.
 	 */
 
-	// @Test(priority = 0, description = " Sprint 3- TA-342/ TA-76 Verify Location")
+	@Test(priority = 0, description = " Sprint 3- TA-342/ TA-76 Verify Location")
 	public void verifyLocation() {
 		if (selectedCountry.contains("US")) {
 			delay(2000);
@@ -37,7 +39,6 @@ public class TopNavigation extends GenericMethods {
 		}
 
 	}
-
 	public void verifyUS() {
 
 		click(home.getSelectCountry(), "Country");
@@ -78,7 +79,7 @@ public class TopNavigation extends GenericMethods {
 
 	}
 
-//	@Test(priority = 1, description = " Sprint 3- TA-343/ TA-76 Verify Language Selector")
+	@Test(priority = 1, description = " Sprint 3- TA-343/ TA-76 Verify Language Selector")
 	public void verifyLanguageSelector() {
 
 		click(home.getSelectLanguage(), "Language");
@@ -98,8 +99,7 @@ public class TopNavigation extends GenericMethods {
 
 	}
 
-	// @Test(priority = 2, description = " Sprint 3- TA-344/ TA-76 Verify Find A
-	// Store")
+    @Test(priority = 2, description = " Sprint 3- TA-344/ TA-76 Verify Find A Store")
 	public void verifyFindAStore() {
 
 		click(home.getHeaderFindStore(), "Store Finder");
@@ -116,15 +116,14 @@ public class TopNavigation extends GenericMethods {
 
 	}
 
-	// @Test(priority = 3, description = " Sprint 3- TA-345/ TA-76 Verify Customer
-	// Service")
+	 @Test(priority = 3, description = " Sprint 3- TA-345/ TA-76 Verify CustomerService")
 	public void verifyCustomerService() {
 
 		click(home.getHeaderCustomerService(), "Customer Service");
 		HomePageVerification.verifyHomePageResponse();
 	}
 
-	// @Test(priority = 4, description = " Sprint 3- TA-346/ TA-76 Verify SignIn")
+	@Test(priority = 4, description = " Sprint 3- TA-346/ TA-76 Verify SignIn")
 	public void verifySignIn() {
 		click(home.getHeaderSignIn(), "SignIn");
 		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
@@ -136,7 +135,6 @@ public class TopNavigation extends GenericMethods {
 				Assert.fail("My Account window not opened");
 			}
 		}
-		// here add verification with Email text box display
 		if (home.getUserName().isDisplayed()) {
 			logger.log(Status.INFO, "Login window opened successfully");
 		}

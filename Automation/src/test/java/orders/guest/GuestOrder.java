@@ -28,6 +28,7 @@ public class GuestOrder extends GenericMethods {
 
 		UIFunctions.addProductToCart("TumiTestData","GuestOrders");
 		click(pdp.getAddToCart(), "Add to cart");
+		
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
