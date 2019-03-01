@@ -531,7 +531,22 @@ public class HomePage extends GenericMethods {
 				return GiftIdeasOptions;
 			}
 			
-			
+			@FindBy(how = How.XPATH, using = "(//a[contains(text(),'Sale')])[1]")
+			private WebElement SalesOptions;
+
+			public WebElement getSalesOptions() {
+
+				return SalesOptions;
+			}
+			@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[9]/ul/li[1]/ul/li[1]/ul/li/ul/li[1]/a")
+			private WebElement SalesVoyageurCollection;
+
+			public WebElement getSalesVoyageurCollection() {
+
+				return SalesVoyageurCollection; 
 	}
+			}
+
+
 
 	

@@ -186,5 +186,12 @@ public class ProductDetailPage extends GenericMethods {
 	public WebElement getUpdateQuantity() {
 		return updateCartButton;
 	}
+	@FindBy(how = How.XPATH, using = "//div[@id='pdp']/div[2]/div/div[3]/div") 
+	private WebElement StockMessage;
 
+	public WebElement getStockmessage() {
+		return StockMessage;
+	}
+	
+	
 }

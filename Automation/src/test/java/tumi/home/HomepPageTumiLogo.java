@@ -57,7 +57,7 @@ public class HomepPageTumiLogo extends GenericMethods  {
 	public void VerifyTumiLogoBag(){
 		
 			mouseHover(home.getBagOptions());
-			click(home.getBagwheeledBriefCase(),"TestBridgeWater");
+			click(home.getBagwheeledBriefCase(),"BagWheeledBriefCase");
 			click(pgp.getSelectProduct(),"Select Product");
 			mouseHover(pdp.getAddToCart());
 			click(pdp.getAddToCart(), "Add to cart");
@@ -77,6 +77,25 @@ public class HomepPageTumiLogo extends GenericMethods  {
 		
 			mouseHover(home.getAccessoriesOptions());
 			click(home.getAccessoriesKeyFobs(),"key Fobs");
+			click(pgp.getSelectProduct(),"Select Product");
+			mouseHover(pdp.getAddToCart());
+			click(pdp.getAddToCart(), "Add to cart");
+			click(minicart.getProceedCheckOut(), "Proceed to Checkout");
+			click(mainCart.getProceedCart(), "Proceed to Checkout");
+			input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
+			UIFunctions.waitForContinueToEnable();
+			click(singlePage.getContinueAsGuest(), "Contiue as Guest");
+			UIFunctions.addGuestDetails();
+			click(shipping.getContinueShippingMethod(), "Contiue Shipping");
+			click(shipMethod.getProceedToPayment(), "Proceed to Payment");
+			UIFunctions.addCardDetails("TumiTestData", "GuestOrders");
+			UIFunctions.completeOrder();
+	}
+	@Test(priority = 4, description = " Sprint 3- TA-348 Verify Categories on Home page at Tumi Logo")
+	public void VerifyTumiLogoSale(){
+		
+			mouseHover(home.getSalesOptions());
+			click(home.getSalesVoyageurCollection(),"Voyageur collection");
 			click(pgp.getSelectProduct(),"Select Product");
 			mouseHover(pdp.getAddToCart());
 			click(pdp.getAddToCart(), "Add to cart");

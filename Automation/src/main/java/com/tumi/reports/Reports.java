@@ -35,6 +35,7 @@ import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
 import com.tumi.utilities.GlobalConstants;
 import com.tumi.utilities.UIFunctions;
@@ -107,6 +108,7 @@ public class Reports {
 	public static String applicationUrl =null;
 	public static PGP pgp = null;
 
+
 	@BeforeSuite(alwaysRun = true)
 	public void extentReportConfiguration() {
 		timeStamp = new SimpleDateFormat("dd-MMM-yy  hh.mm.ss aa").format(Calendar.getInstance().getTime());
@@ -154,7 +156,7 @@ public class Reports {
 	public static void initiateApplication() throws Exception {
 		getBrowser();
 		maximizeBrowser();
-		
+
 		if (browserName.equals("ie")) {
 			GenericMethods.delay(2000);
 			driver.navigate().to("javascript:document.getElementById('overridelink').click()");
@@ -217,8 +219,8 @@ public class Reports {
 				logger.fail(MarkupHelper.createLabel(result.getName() + " Test Case Failed", ExtentColor.RED));
 				logger.fail(result.getThrowable());
 				getScreen("./ExtentReports/Screenshots/" + result.getName() + ".png");
-				String screenlocation = System.getProperty("user.dir")+"/Screenshots/" + result.getName() + ".png";
-				
+				String screenlocation = System.getProperty("user.dir") + "/Screenshots/" + result.getName() + ".png";
+
 				logger.fail("Screen Shot Reference:  ",
 						MediaEntityBuilder.createScreenCaptureFromPath(screenlocation).build());
 			}
@@ -317,20 +319,23 @@ public class Reports {
 	 * @param URL
 	 */
 	public static void getURL() {
+		
+		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "Environments");
 
 		applicationUrl = System.getProperty("applicationUrl");
 
 		System.out.println("Application Name " + applicationUrl);
 
-		if (null == applicationUrl || applicationUrl.isEmpty() || applicationUrl.toLowerCase().equalsIgnoreCase("stage2")) {
+		if (null == applicationUrl || applicationUrl.isEmpty()
+				|| applicationUrl.toLowerCase().equalsIgnoreCase("stage2")) {
 
 			if (!browserName.equals("ie")) {
-				driver.get(GlobalConstants.S2);
+				driver.get(testData.get("stage2"));
 			}
 		} else if (applicationUrl.toLowerCase().equalsIgnoreCase("stage3")) {
 
 			if (!browserName.equals("ie")) {
-				driver.get(GlobalConstants.S3);
+				driver.get(testData.get("stage3"));
 			}
 		}
 		UIFunctions.verifyVPN();
