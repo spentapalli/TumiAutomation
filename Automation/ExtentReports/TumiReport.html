@@ -38,7 +38,8 @@
 		<!-- slideout menu -->
 		<ul id='slide-out' class='side-nav fixed hide-on-med-and-down'>
 			<li class='waves-effect active'><a href='#!' view='test-view' onclick="configureView(0);chartsView('test');"><i class='material-icons'>dashboard</i></a></li>
-						<li class='waves-effect'><a href='#!' onclick="configureView(-1);chartsView('dashboard');" view='dashboard-view'><i class='material-icons'>track_changes</i></i></a></li>
+						<li class='waves-effect'><a href='#!' view='exception-view' onclick="configureView(2)"><i class='material-icons'>bug_report</i></a></li>
+			<li class='waves-effect'><a href='#!' onclick="configureView(-1);chartsView('dashboard');" view='dashboard-view'><i class='material-icons'>track_changes</i></i></a></li>
 		</ul>
 
 		<!-- report name -->
@@ -51,7 +52,7 @@
 		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
 			<li>
                 <a href='#!'>
-                    <span class='label suite-start-time blue darken-3'>Feb 25, 2019 07:48:47 PM</span>
+                    <span class='label suite-start-time blue darken-3'>Mar 1, 2019 09:22:24 PM</span>
 				</a>
 			</li>
 			<li>
@@ -77,6 +78,7 @@
 				</a>
 				<ul id='tests-toggle' class='dropdown-content'>
 											<li status='pass'><a href='#!'>Pass <i class='material-icons green-text'>check_circle</i></a></li>
+						<li status='fail'><a href='#!'>Fail <i class='material-icons red-text'>cancel</i></a></li>
 					<li class='divider'></li>
 					<li status='clear' clear='true'><a href='#!'>Clear Filters <i class='material-icons'>clear</i></a></li>
 				</ul>
@@ -127,10 +129,10 @@
 					<canvas id='parent-analysis' width='100' height='80'></canvas>
 				</div>
 				<div class='block text-small'>
-					<span class='tooltipped' data-position='top' data-tooltip='100%'><span class='strong'>1</span> test(s) passed</span>
+					<span class='tooltipped' data-position='top' data-tooltip='88.889%'><span class='strong'>8</span> test(s) passed</span>
 				</div>
 				<div class='block text-small'>
-					<span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> test(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+					<span class='strong tooltipped' data-position='top' data-tooltip='11.111%'>1</span> test(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
 				</div>
 			</div>
 		</div>
@@ -145,7 +147,7 @@
 					<span class='tooltipped' data-position='top' data-tooltip='0%'><span class='strong'>0</span> step(s) passed</span>
 				</div>
 				<div class='block text-small'>
-					<span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='100%'>33</span> others
+					<span class='strong tooltipped' data-position='top' data-tooltip='6%'>3</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='94%'>47</span> others
 				</div>
 			</div>
 		</div>
@@ -162,17 +164,17 @@
 				
 				<li class='test displayed active  pass' status='pass' bdd='false' test-id='1'>
 					<div class='test-heading'>
-						<span class='test-name'>orderWithGiftboxAsRegistered</span>
-						<span class='test-time'>Feb 25, 2019 07:49:15 PM</span>
+						<span class='test-name'>verifyColors</span>
+						<span class='test-time'>Mar 1, 2019 09:23:17 PM</span>
 						<span class='test-status right pass'>pass</span>
 					</div>
 					<div class='test-content hide'>
 <div class='test-time-info'>
-	<span class='label start-time'>Feb 25, 2019 07:49:15 PM</span>
-	<span class='label end-time'>Feb 25, 2019 07:50:46 PM</span>
-	<span class='label time-taken grey lighten-1 white-text'>0h 1m 31s+28ms</span>
+	<span class='label start-time'>Mar 1, 2019 09:23:17 PM</span>
+	<span class='label end-time'>Mar 1, 2019 09:24:10 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 52s+842ms</span>
 </div>
-	<div class='test-desc'>orders.registered.RegisterOrderWithGiftServices </div>
+	<div class='test-desc'>tumi.home.VerifyPGPFilters </div>
 	<div class='test-steps'>
 		<table class='bordered table-results'>
 			<thead>
@@ -185,168 +187,520 @@
 			<tbody>
 				<tr class='log' status='info'>
 					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:49:15 PM</td>
-					<td class='step-details'>Clicked on Sign In</td>
+					<td class='timestamp'>9:23:17 PM</td>
+					<td class='step-details'>Clicked on Carry on Luggage</td>
 				</tr>
 				<tr class='log' status='info'>
 					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:49:16 PM</td>
-					<td class='step-details'>Entered the value in Email Address as: skomma@coredatalabs.com</td>
+					<td class='timestamp'>9:24:10 PM</td>
+					<td class='step-details'>Verification of Color Filter is successfull</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='2'>
+					<div class='test-heading'>
+						<span class='test-name'>verifyProductTypeWithCount</span>
+						<span class='test-time'>Mar 1, 2019 09:24:52 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Mar 1, 2019 09:24:52 PM</span>
+	<span class='label end-time'>Mar 1, 2019 09:25:24 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 32s+512ms</span>
+</div>
+	<div class='test-desc'>tumi.home.VerifyPGPFilters </div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>9:24:52 PM</td>
+					<td class='step-details'>Clicked on Carry on Luggage</td>
 				</tr>
 				<tr class='log' status='info'>
 					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:49:16 PM</td>
-					<td class='step-details'>Entered the value in Password as: tumi1234</td>
+					<td class='timestamp'>9:25:17 PM</td>
+					<td class='step-details'>Clicked on product_type</td>
 				</tr>
 				<tr class='log' status='info'>
 					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:49:17 PM</td>
-					<td class='step-details'>Clicked on Login</td>
+					<td class='timestamp'>9:25:20 PM</td>
+					<td class='step-details'>Clicked on Carry On Bags</td>
 				</tr>
 				<tr class='log' status='info'>
 					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:49:19 PM</td>
-					<td class='step-details'>Successfully logged with Regular user valid credentials</td>
+					<td class='timestamp'>9:25:22 PM</td>
+					<td class='step-details'>Carry on luggage product count matched with results count</td>
 				</tr>
 				<tr class='log' status='info'>
 					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:49:19 PM</td>
-					<td class='step-details'>Clicked on My Account Close</td>
+					<td class='timestamp'>9:25:24 PM</td>
+					<td class='step-details'>Clicked on product_type</td>
 				</tr>
 				<tr class='log' status='info'>
 					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:49:37 PM</td>
-					<td class='step-details'>Clicked on Add to cart</td>
+					<td class='timestamp'>9:25:24 PM</td>
+					<td class='step-details'>product_type filter cleared successfully</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='3'>
+					<div class='test-heading'>
+						<span class='test-name'>verifyPriceWithCount</span>
+						<span class='test-time'>Mar 1, 2019 09:25:59 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Mar 1, 2019 09:25:59 PM</span>
+	<span class='label end-time'>Mar 1, 2019 09:26:30 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 31s+394ms</span>
+</div>
+	<div class='test-desc'>tumi.home.VerifyPGPFilters </div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>9:25:59 PM</td>
+					<td class='step-details'>Clicked on Carry on Luggage</td>
 				</tr>
 				<tr class='log' status='info'>
 					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:49:46 PM</td>
-					<td class='step-details'>Clicked on Proceed to Checkout</td>
+					<td class='timestamp'>9:26:23 PM</td>
+					<td class='step-details'>Clicked on prices</td>
 				</tr>
 				<tr class='log' status='info'>
 					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:49:48 PM</td>
-					<td class='step-details'>Clicked on Make this Gift</td>
+					<td class='timestamp'>9:26:25 PM</td>
+					<td class='step-details'>Clicked on $200 to $350 option</td>
 				</tr>
 				<tr class='log' status='info'>
 					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:49:49 PM</td>
-					<td class='step-details'>Clicked on Premium GiftBox</td>
+					<td class='timestamp'>9:26:28 PM</td>
+					<td class='step-details'>Price Filter product count matched with results count</td>
 				</tr>
 				<tr class='log' status='info'>
 					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:49:58 PM</td>
-					<td class='step-details'>Clicked on Continue</td>
+					<td class='timestamp'>9:26:30 PM</td>
+					<td class='step-details'>Clicked on prices</td>
 				</tr>
 				<tr class='log' status='info'>
 					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:50:09 PM</td>
-					<td class='step-details'>Clicked on Proceed to Checkout</td>
+					<td class='timestamp'>9:26:30 PM</td>
+					<td class='step-details'>prices filter cleared successfully</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='4'>
+					<div class='test-heading'>
+						<span class='test-name'>verifyGendereWithCount</span>
+						<span class='test-time'>Mar 1, 2019 09:27:05 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Mar 1, 2019 09:27:05 PM</span>
+	<span class='label end-time'>Mar 1, 2019 09:27:40 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 34s+631ms</span>
+</div>
+	<div class='test-desc'>tumi.home.VerifyPGPFilters </div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>9:27:06 PM</td>
+					<td class='step-details'>Clicked on Carry on Luggage</td>
 				</tr>
 				<tr class='log' status='info'>
 					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:50:11 PM</td>
-					<td class='step-details'>Successfully Clicked on Add new Address</td>
+					<td class='timestamp'>9:27:28 PM</td>
+					<td class='step-details'>Clicked on gender</td>
 				</tr>
 				<tr class='log' status='info'>
 					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:50:13 PM</td>
-					<td class='step-details'>Entered the value in First Name as: Test</td>
+					<td class='timestamp'>9:27:30 PM</td>
+					<td class='step-details'>Clicked on Female option</td>
 				</tr>
 				<tr class='log' status='info'>
 					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:50:13 PM</td>
-					<td class='step-details'>Entered the value in Last Name as: TumiLast</td>
+					<td class='timestamp'>9:27:33 PM</td>
+					<td class='step-details'>Gender Filter product count matched with results count</td>
 				</tr>
 				<tr class='log' status='info'>
 					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:50:13 PM</td>
-					<td class='step-details'>Entered the value in Address Line1 as: 10 Sumac Way</td>
+					<td class='timestamp'>9:27:40 PM</td>
+					<td class='step-details'>Clicked on gender</td>
 				</tr>
 				<tr class='log' status='info'>
 					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:50:15 PM</td>
-					<td class='step-details'>Clicked on Address Line1</td>
+					<td class='timestamp'>9:27:40 PM</td>
+					<td class='step-details'>gender filter cleared successfully</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='5'>
+					<div class='test-heading'>
+						<span class='test-name'>verifyCollectionWithCount</span>
+						<span class='test-time'>Mar 1, 2019 09:28:15 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Mar 1, 2019 09:28:15 PM</span>
+	<span class='label end-time'>Mar 1, 2019 09:29:00 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 45s+685ms</span>
+</div>
+	<div class='test-desc'>tumi.home.VerifyPGPFilters </div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>9:28:15 PM</td>
+					<td class='step-details'>Clicked on Carry on Luggage</td>
 				</tr>
 				<tr class='log' status='info'>
 					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:50:16 PM</td>
-					<td class='step-details'>Entered the value in Phone Number as: 12345678901</td>
+					<td class='timestamp'>9:28:53 PM</td>
+					<td class='step-details'>Clicked on Collection</td>
 				</tr>
 				<tr class='log' status='info'>
 					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:50:16 PM</td>
-					<td class='step-details'>Successfully Clicked on Contiue Shipping</td>
+					<td class='timestamp'>9:28:56 PM</td>
+					<td class='step-details'>Clicked on Alpha 2 option</td>
 				</tr>
 				<tr class='log' status='info'>
 					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:50:19 PM</td>
-					<td class='step-details'>Clicked on Proceed to Payment</td>
+					<td class='timestamp'>9:28:58 PM</td>
+					<td class='step-details'>Collection Filter product count matched with results count</td>
 				</tr>
 				<tr class='log' status='info'>
 					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:50:24 PM</td>
-					<td class='step-details'>Successfully Clicked on Add new Payment</td>
+					<td class='timestamp'>9:29:00 PM</td>
+					<td class='step-details'>Clicked on Collection</td>
 				</tr>
 				<tr class='log' status='info'>
 					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:50:25 PM</td>
-					<td class='step-details'>Entered the value in Name on Card as: test</td>
+					<td class='timestamp'>9:29:00 PM</td>
+					<td class='step-details'>Collection filter cleared successfully</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='6'>
+					<div class='test-heading'>
+						<span class='test-name'>verifyExclusiveFilterWithCount</span>
+						<span class='test-time'>Mar 1, 2019 09:29:34 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Mar 1, 2019 09:29:34 PM</span>
+	<span class='label end-time'>Mar 1, 2019 09:29:59 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 24s+832ms</span>
+</div>
+	<div class='test-desc'>tumi.home.VerifyPGPFilters </div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>9:29:35 PM</td>
+					<td class='step-details'>Clicked on Carry on Luggage</td>
 				</tr>
 				<tr class='log' status='info'>
 					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:50:26 PM</td>
-					<td class='step-details'>Entered the value in Card Number as: 4111111111111111</td>
+					<td class='timestamp'>9:29:52 PM</td>
+					<td class='step-details'>Clicked on FSM_ExclusiveFeatures</td>
 				</tr>
 				<tr class='log' status='info'>
 					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:50:26 PM</td>
-					<td class='step-details'>Selected 05 from Expiry Month</td>
+					<td class='timestamp'>9:29:54 PM</td>
+					<td class='step-details'>Clicked on Monogrammable</td>
 				</tr>
 				<tr class='log' status='info'>
 					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:50:26 PM</td>
-					<td class='step-details'>Selected 2020 from Expiry Year</td>
+					<td class='timestamp'>9:29:57 PM</td>
+					<td class='step-details'>Exclusive Feature Filter product count matched with results count</td>
 				</tr>
 				<tr class='log' status='info'>
 					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:50:26 PM</td>
-					<td class='step-details'>Entered the value in Cvv Number as: 123</td>
+					<td class='timestamp'>9:29:59 PM</td>
+					<td class='step-details'>Clicked on FSM_ExclusiveFeatures</td>
 				</tr>
 				<tr class='log' status='info'>
 					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:50:26 PM</td>
-					<td class='step-details'>Entered the value in Email ID as: skomma@coredatalabs.com</td>
+					<td class='timestamp'>9:29:59 PM</td>
+					<td class='step-details'>FSM_ExclusiveFeatures filter cleared successfully</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  fail' status='fail' bdd='false' test-id='7'>
+					<div class='test-heading'>
+						<span class='test-name'>verifyLaptopSizeFilterWithCount</span>
+						<span class='test-time'>Mar 1, 2019 09:30:33 PM</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Mar 1, 2019 09:30:33 PM</span>
+	<span class='label end-time'>Mar 1, 2019 09:30:59 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 25s+907ms</span>
+</div>
+	<div class='test-desc'>tumi.home.VerifyPGPFilters </div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>9:30:33 PM</td>
+					<td class='step-details'>Clicked on Carry on Luggage</td>
 				</tr>
 				<tr class='log' status='info'>
 					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:50:27 PM</td>
-					<td class='step-details'>Entered the value in Phone number as: 12345678901</td>
+					<td class='timestamp'>9:30:53 PM</td>
+					<td class='step-details'>Clicked on laptop_size</td>
 				</tr>
 				<tr class='log' status='info'>
 					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:50:27 PM</td>
-					<td class='step-details'>Successfully Clicked on Review your order</td>
+					<td class='timestamp'>9:30:56 PM</td>
+					<td class='step-details'>Clicked on Size 14' option</td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>9:30:58 PM</td>
+					<td class='step-details'><span class='label white-text red'>verifyLaptopSizeFilterWithCount Test Case Failed</span></td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>9:30:58 PM</td>
+					<td class='step-details'><pre>java.lang.NullPointerException
+	at tumi.home.VerifyPGPFilters.verifyLaptopSizeFilterWithCount(VerifyPGPFilters.java:182)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:580)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:716)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:988)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>9:30:59 PM</td>
+					<td class='step-details'>Screen Shot Reference:<img data-featherlight='C:\Users\Capo\Documents\TumiAutomation\TumiAutomation\TumiAutomation\Automation/Screenshots/verifyLaptopSizeFilterWithCount.png' width='10%' src='C:\Users\Capo\Documents\TumiAutomation\TumiAutomation\TumiAutomation\Automation/Screenshots/verifyLaptopSizeFilterWithCount.png' data-src='C:\Users\Capo\Documents\TumiAutomation\TumiAutomation\TumiAutomation\Automation/Screenshots/verifyLaptopSizeFilterWithCount.png'></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='8'>
+					<div class='test-heading'>
+						<span class='test-name'>verifyMaterialWithCount</span>
+						<span class='test-time'>Mar 1, 2019 09:31:32 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Mar 1, 2019 09:31:32 PM</span>
+	<span class='label end-time'>Mar 1, 2019 09:32:00 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 27s+715ms</span>
+</div>
+	<div class='test-desc'>tumi.home.VerifyPGPFilters </div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>9:31:33 PM</td>
+					<td class='step-details'>Clicked on Carry on Luggage</td>
 				</tr>
 				<tr class='log' status='info'>
 					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:50:29 PM</td>
-					<td class='step-details'>Successfully Clicked on Place Order</td>
+					<td class='timestamp'>9:31:53 PM</td>
+					<td class='step-details'>Clicked on Material</td>
 				</tr>
 				<tr class='log' status='info'>
 					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:50:35 PM</td>
-					<td class='step-details'>Thank you for Your Order, here is your Order Number 01385159.</td>
+					<td class='timestamp'>9:31:55 PM</td>
+					<td class='step-details'>Clicked on Leather option</td>
 				</tr>
 				<tr class='log' status='info'>
 					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:50:38 PM</td>
-					<td class='step-details'>Reference<img data-featherlight='./ScreenShots/OrderConfirmation.png' width='10%' src='./ScreenShots/OrderConfirmation.png' data-src='./ScreenShots/OrderConfirmation.png'></td>
+					<td class='timestamp'>9:31:58 PM</td>
+					<td class='step-details'>Material Filter product count matched with results count</td>
 				</tr>
 				<tr class='log' status='info'>
 					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>7:50:46 PM</td>
-					<td class='step-details'>Clicked on Signout</td>
+					<td class='timestamp'>9:32:00 PM</td>
+					<td class='step-details'>Clicked on Material</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>9:32:00 PM</td>
+					<td class='step-details'>Material filter cleared successfully</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='9'>
+					<div class='test-heading'>
+						<span class='test-name'>verifyWheelsFilterWithCount</span>
+						<span class='test-time'>Mar 1, 2019 09:32:40 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Mar 1, 2019 09:32:40 PM</span>
+	<span class='label end-time'>Mar 1, 2019 09:33:29 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 48s+865ms</span>
+</div>
+	<div class='test-desc'>tumi.home.VerifyPGPFilters </div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>9:32:41 PM</td>
+					<td class='step-details'>Clicked on Carry on Luggage</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>9:33:22 PM</td>
+					<td class='step-details'>Clicked on Wheels</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>9:33:24 PM</td>
+					<td class='step-details'>Clicked on 4 wheels</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>9:33:26 PM</td>
+					<td class='step-details'>Wheels Filter product count matched with results count</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>9:33:29 PM</td>
+					<td class='step-details'>Clicked on Wheels</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>9:33:29 PM</td>
+					<td class='step-details'>Wheels filter cleared successfully</td>
 				</tr>
 			</tbody>
 		</table>
@@ -379,6 +733,94 @@
 </div>
 <!-- test view -->
 <!-- category view -->
+<div id='exception-view' class='view hide'>
+
+    <section id='controls'>
+        <div class='controls grey lighten-4'>
+            <!-- search -->
+            <div class='chip transparent' alt='Search Tests' title='Search Tests'>
+                <a href="#" class='search-div'>
+                    <i class='material-icons'>search</i> Search
+                </a>
+
+                <div class='input-field left hide'>
+                    <input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
+                </div>
+
+            </div>
+            <!-- search -->
+        </div>
+    </section>
+
+    <div class='subview-left left'>
+
+        <div class='view-summary'>
+            <h5>Exceptions</h3>
+                <ul id='exception-collection' class='exception-collection'>
+
+                        <li class='exception displayed active'>
+                            <div class='exception-heading'>
+                                <span class='exception-name'>java.lang.NullPointerException</span>
+                                <span class='exception-count right'><span class='label red lighten-1 white-text'>1</span></span>
+                            </div>
+                            <div class='exception-content hide'>
+                                <div class='exception-tests'>
+                                    <table class='bordered table-results'>
+                                        <thead>
+                                        <tr>
+                                            <th>Timestamp</th>
+                                            <th>TestName</th>
+                                            <th>Status</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                                    <tr>
+                                                        <td>Mar 1, 2019 09:30:33 PM</td>
+                                                        <td class='linked' test-id='7'>verifyLaptopSizeFilterWithCount</td>
+                                                        <td><pre><pre>java.lang.NullPointerException
+	at tumi.home.VerifyPGPFilters.verifyLaptopSizeFilterWithCount(VerifyPGPFilters.java:182)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:580)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:716)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:988)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></pre></td>
+                                                    </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </li>
+                </ul>
+        </div>
+    </div>
+
+    <div class='subview-right left'>
+        <div class='view-summary'>
+            <h5 class='exception-name'></h5>
+        </div>
+    </div>
+</div>
 <!-- exception view -->
 <div id='dashboard-view' class='view hide'>
 	<div class='card-panel transparent np-v'>
@@ -388,31 +830,31 @@
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Tests
-					<div class='panel-lead'>1</div>
+					<div class='panel-lead'>9</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Steps
-					<div class='panel-lead'>33</div>
+					<div class='panel-lead'>50</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Start
-					<div class='panel-lead'>Feb 25, 2019 07:48:47 PM</div>
+					<div class='panel-lead'>Mar 1, 2019 09:22:24 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 			 		End
-			 		<div class='panel-lead'>Feb 25, 2019 07:50:50 PM</div>
+			 		<div class='panel-lead'>Mar 1, 2019 09:33:29 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Time Taken
-					<div class='panel-lead'>0h 2m 2s+826ms</div>
+					<div class='panel-lead'>0h 11m 5s+360ms</div>
 				</div>
 			</div>
 		</div>
@@ -425,22 +867,22 @@
 
 		<script>
 			var statusGroup = {
-				passParent: 1,
-				failParent: 0,
+				passParent: 8,
+				failParent: 1,
 				fatalParent: 0,
 				errorParent: 0,
 				warningParent: 0,
 				skipParent: 0,
-				exceptionsParent: 0,
+				exceptionsParent: 1,
 				
 				passChild: 0,
-				failChild: 0,
+				failChild: 3,
 				fatalChild: 0,
 				errorChild: 0,
 				warningChild: 0,
 				skipChild: 0,
-				infoChild: 33,
-				exceptionsChild: 0,
+				infoChild: 47,
+				exceptionsChild: 3,
 				
 				passGrandChild: 0,
 				failGrandChild: 0,
