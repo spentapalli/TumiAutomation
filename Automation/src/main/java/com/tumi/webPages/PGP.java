@@ -59,8 +59,8 @@ public class PGP extends GenericMethods {
 	 * 
 	 * return SelectProductBag; }
 	 */
-
-	@FindBy(how = How.XPATH, using = "//div[@id='grid-container']/div[1]/div[2]/div[1]/div[3]/a")
+	
+	@FindBy(how = How.XPATH, using = "//div[@id='grid-container']/div[1]/div[2]/div[3]/div[3]/a")
 	private WebElement QuickShop;
 
 	public  WebElement getQuickShop() {

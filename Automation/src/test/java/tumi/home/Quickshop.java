@@ -14,9 +14,9 @@ public class Quickshop extends GenericMethods {
 	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestOrders");
 		@Test
 		public void VerifyQuickShop(){
-		mouseHover(home.getLuggageOption());
-	  click(pgp.getCarryOnLuggage(),"Carry on Luaggage");
-		click(pgp.getQuickShop(),"QuickShop");
+			mouseHover(home.getBagOptions());
+			click(home.getBagwheeledBriefCase(),"BagWheeledBriefCase");
+		        click(pgp.getQuickShop(),"QuickShop");
 			   	click(pgp.getQuickShopAddtoCart(),"QuickShop Add to Cart");
 				click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 				click(mainCart.getProceedCart(), "Proceed to Checkout");
