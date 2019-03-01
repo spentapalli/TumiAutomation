@@ -27,11 +27,11 @@
 		"DonationProduct": "TUMISTJUDE250",
 		"GlobalLocatorProduct": "1111301041",
 		"PromoCode20": "FixedDollar20",
-		"PromoCode30": "T30-D5L6-E4LR-WEDL".
+		"PromoCode30": "T30-D5L6-E4LR-WEDL",
 		"KoreaSKUID":"0222389AT2",
 		"SKUID":"00171B",
 		"TumiStudioSKUID":"0117474T999",
-		"NoramlSKUID": "014757D",
+		"NoramlSKUID": "014757D"
 	},
 	
 	"SocialNetworkDetails":{
@@ -55,15 +55,15 @@
 		"SenderName": "User",
 		"Message": "Hello Tumi",
 		"GiftCardnumber": "7018525193950000020",
-		"Pinnumber": "98779393",
-	}
+		"Pinnumber": "98779393"
+	},
 	
 	"MonoGramDetails":{
 	
 		"FirstMonoInput": "1",
 		"SecondMonoInput": "2",
 		"ThirdMonoInput": "3"
-	}
+	},
 	
 	
 	"GuestOrders": {
@@ -79,7 +79,7 @@
 	
 		"EmailID": "Vendor.tumi@gmail.com",
 		"Password": "Tumi_8864",
-		"SKUID":"022061D2",
+		"SKUID":"022061D2"
 	},
 	
 	"FailedOrder": {
@@ -87,19 +87,19 @@
 	},
 	
 	"BackOrderProduct": {
-		"SKUID": "13234CPT",
+		"SKUID": "13234CPT"
 		
 	},
 	
 	"PreOrderProduct": {
-		"SKUID": "028TRK",
+		"SKUID": "028TRK"
 		
 	},
 	
 	"GlobalLocatorProduct": {
 		
 		"AddressLine1": "1 LEFEUVRE RD",
-		"SKUID": "1111301041",
+		"SKUID": "1111301041"
 
 	},
 	
