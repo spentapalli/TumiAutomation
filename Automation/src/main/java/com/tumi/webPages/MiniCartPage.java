@@ -77,5 +77,7 @@ public class MiniCartPage extends GenericMethods {
 			return explicitWait(krContinueShopping);
 		}
 	}
-
+	
+	
+	
 }

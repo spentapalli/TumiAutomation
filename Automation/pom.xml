@@ -88,7 +88,7 @@
 					<version>2.21.0</version>
 					<configuration>
 						<systemPropertyVariables>
-							<browsername>mobile</browsername>
+							<browsername>Chrome</browsername>
 							<countryName>US</countryName>
 							<applicationUrl>stage2</applicationUrl>
 						</systemPropertyVariables>

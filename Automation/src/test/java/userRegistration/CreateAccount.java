@@ -15,7 +15,6 @@ public class CreateAccount extends GenericMethods {
 	public void newUserRegistration() {
 		userAccount(testData.get("EmailID") + randomNumber() + "@gmai.com");
 		verifyAssertEquals(getText(register.getRegisterConfirm()), getProperty("registration.success"));
-		// Sign Out is Not working after user Registration
 		click(login.getLogOut(), "Sign Out");
 	}
 
