@@ -193,5 +193,87 @@ public class ProductDetailPage extends GenericMethods {
 		return StockMessage;
 	}
 	
+	@FindBy(how=How.XPATH,using="//div[@id='compareBoxLabel']/following::span/span/img")
+	private List<WebElement> compareList;
+	
+	public List<WebElement> getCompareLabelSize(){
+		
+		return compareList;
+	}
+	
+	@FindBy(how=How.XPATH,using="//div[@id='globalMessages']")
+	private WebElement globalMsg;
+	
+	public WebElement getGlobalMessage(){
+		
+		return globalMsg;
+	}
+	
+	@FindBy(how=How.XPATH,using="//a[text()='Compare Now']")
+	private WebElement compareNow;
+	
+	public WebElement getCompareNow(){
+		
+		return compareNow;
+	}
+	
+	
+	
+	@FindBy(how=How.XPATH,using="//div[@lmzone='subCategoryPage']/div[2]/div/div[4]/a")
+	private List<WebElement> compareProductsList;
+	
+	public List<WebElement> getCompareProductsList(){
+		
+		return compareProductsList;
+	}
+	
+	@FindBy(how=How.XPATH,using="//div[@lmzone='subCategoryPage']/div[2]/div/div[2]/div/a/div")
+	private List<WebElement> listOfProductNames;
+	
+	public List<WebElement> getListOfProductNames(){
+		delay(2000);
+		return listOfProductNames;
+	}
+	
+	@FindBy(how=How.XPATH,using="//a[text()='Bags']")
+	private WebElement shopByBags;
+	
+	public WebElement getShopByBags(){
+		return shopByBags;
+	}
+
+	@FindBy(how=How.XPATH,using="//a[text()='Briefcases']")
+	private WebElement shopByBriefcases;
+	
+	public WebElement getShopByBriefcases(){
+		return shopByBriefcases;
+	}
+	
+	@FindBy(how=How.XPATH,using="//span[@id='sortOptions1SelectBoxItText']")
+	private WebElement sortOptions;
+	
+	public WebElement getSortOptions(){
+		return sortOptions;
+	}
+	
+	@FindBy(how=How.LINK_TEXT,using="Name: A to Z")
+	private WebElement sortAToZ;
+	
+	public WebElement getSortAToZ(){
+		return sortAToZ;
+	}
+	
+	@FindBy(how=How.LINK_TEXT,using="Name: Z to A")
+	private WebElement sortZToA;
+	
+	public WebElement getSortZToA(){
+		return sortZToA;
+	}
+	
+	
+	
+	
+	
+	
 	
 }

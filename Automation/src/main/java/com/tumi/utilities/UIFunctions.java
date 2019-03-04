@@ -253,17 +253,17 @@ public class UIFunctions extends GenericMethods {
 
 			if (applicationUrl.equals("stage2")) {
 
-				final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("SKUID");
+				final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("NoramlSKUID");
 				driver.get(pdpURL);
 			} else {
 
-				final String pdpURL = GlobalConstants.S3 + "/p/" + testData.get("SKUID");
+				final String pdpURL = GlobalConstants.S3 + "/p/" + testData.get("NoramlSKUID");
 				driver.get(pdpURL);
 			}
 
 		} else if (selectedCountry.contains("Canada")) {
 
-			final String pdpURL = GlobalConstants.urlca + "/p/" + testData.get("SKUID");
+			final String pdpURL = GlobalConstants.urlca + "/p/" + testData.get("NoramlSKUID");
 			driver.get(pdpURL);
 
 		} else {

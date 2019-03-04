@@ -155,7 +155,8 @@
 	"Environments":{
 	
 		"stage2" : "https://www.hybris-stage2.tumi.com/",
-		"stage3" : "https://www.hybris-stage3.tumi.com/"
+		"stage3" : "https://www.hybris-stage3.tumi.com/",
+		"production":"https://intl.tumi.com/"
 	
 	}
 }
