@@ -233,6 +233,9 @@ public class Reports {
 			File files = new File(System.getProperty("user.dir") + "/ExtentReports/Screenshots/");
 			for (File file : files.listFiles()) {
 				if (!file.isDirectory()) {
+					if (file.getName().equals("DoNotDelete.txt")) {
+						continue;
+					}
 					file.delete();
 				}
 			}
