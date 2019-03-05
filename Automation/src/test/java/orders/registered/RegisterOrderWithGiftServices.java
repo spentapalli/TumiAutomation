@@ -14,13 +14,13 @@ import com.tumi.utilities.UIFunctions;
  *
  */
 public class RegisterOrderWithGiftServices extends GenericMethods {
-	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestOrders");
+	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestDetails");
 	
 	@Test(priority = 0, description = " Sprint 2- TA- 186 Verify Order with merchandise Ready to ship + Gift Boxing - Registered User")
 	public void orderWithGiftboxAsRegistered() {
 
 		login("TumiTestData", "TumiLogin");
-		UIFunctions.addProductToCart("TumiTestData", "GuestOrders");
+		UIFunctions.addProductToCart("TumiTestData", "Products");
 		click(pdp.getAddToCart(), "Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(gift.getMakeThisGift(), "Make this Gift");
@@ -32,7 +32,7 @@ public class RegisterOrderWithGiftServices extends GenericMethods {
 		domClick(shipping.getContinueShippingMethod(), "Contiue Shipping");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
 		domClick(signinBill.getAddNewPay(), "Add new Payment");
-		UIFunctions.addCardDetails("TumiTestData", "GuestOrders");
+		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		UIFunctions.completeOrder();
 		click(confirmation.getSignoutAtConfirm(), "Signout");
 	}
@@ -41,11 +41,11 @@ public class RegisterOrderWithGiftServices extends GenericMethods {
 
 	public void orderWithGiftMsgAsRegistered() {
 		login("TumiTestData", "RegisteredOrders");
-		UIFunctions.addProductToCart("TumiTestData", "GuestOrders");
+		UIFunctions.addProductToCart("TumiTestData", "Products");
 		click(pdp.getAddToCart(), "Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(gift.getMakeThisGift(), "Make this Gift");
-		UIFunctions.addGiftMessage("TumiTestData", "BackOrderProduct");
+		UIFunctions.addGiftMessage("TumiTestData", "VoucherCodeDetails");
 		click(gift.getContinueGiftService(), "Continue");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
 		domClick(signinShip.getAddNewAddress(), "Add new Address");
@@ -53,7 +53,7 @@ public class RegisterOrderWithGiftServices extends GenericMethods {
 		domClick(shipping.getContinueShippingMethod(), "Contiue Shipping");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
 		domClick(signinBill.getAddNewPay(), "Add new Payment");
-		UIFunctions.addCardDetails("TumiTestData", "GuestOrders");
+		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		UIFunctions.completeOrder();
 		click(confirmation.getSignoutAtConfirm(), "Signout");
 	}
@@ -62,11 +62,11 @@ public class RegisterOrderWithGiftServices extends GenericMethods {
 	public void orderWithGiftMsgNBoxAsRegistered() {
 
 		login("TumiTestData", "RegisteredOrders");
-		UIFunctions.addProductToCart("TumiTestData", "GuestOrders");
+		UIFunctions.addProductToCart("TumiTestData", "Products");
 		click(pdp.getAddToCart(), "Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(gift.getMakeThisGift(), "Make this Gift");
-		UIFunctions.addGiftMessage("TumiTestData", "BackOrderProduct");
+		UIFunctions.addGiftMessage("TumiTestData", "VoucherCodeDetails");
 		UIFunctions.addGiftBox();
 		click(gift.getContinueGiftService(), "Continue");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
@@ -75,7 +75,7 @@ public class RegisterOrderWithGiftServices extends GenericMethods {
 		domClick(shipping.getContinueShippingMethod(), "Contiue Shipping");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
 		domClick(signinBill.getAddNewPay(), "Add new Payment");
-		UIFunctions.addCardDetails("TumiTestData", "GuestOrders");
+		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		UIFunctions.completeOrder();
 		click(confirmation.getSignoutAtConfirm(), "Signout");
 	}
@@ -84,21 +84,21 @@ public class RegisterOrderWithGiftServices extends GenericMethods {
 	public void orderWithGiftMsgNBoxVoucherAsRegistered() {
 
 		login("TumiTestData", "RegisteredOrders");
-		UIFunctions.addProductToCart("TumiTestData", "RegisteredOrders");
+		UIFunctions.addProductToCart("TumiTestData","Products");
 		click(pdp.getAddToCart(), "Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(gift.getMakeThisGift(), "Make this Gift");
-		UIFunctions.addGiftMessage("TumiTestData", "BackOrderProduct");
+		UIFunctions.addGiftMessage("TumiTestData", "VoucherCodeDetails");
 		UIFunctions.addGiftBox();
 		click(gift.getContinueGiftService(), "Continue");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
 		domClick(signinShip.getAddNewAddress(), "Add new Address");
 		UIFunctions.addGuestDetails();
-		UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "GuestOrders");
+		UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "VoucherCodeDetails");
 		domClick(shipping.getContinueShippingMethod(), "Contiue Shipping");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
 		domClick(signinBill.getAddNewPay(), "Add new Payment");
-		UIFunctions.addCardDetails("TumiTestData", "GuestOrders");
+		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		UIFunctions.completeOrder();
 		click(confirmation.getSignoutAtConfirm(), "Signout");
 	}

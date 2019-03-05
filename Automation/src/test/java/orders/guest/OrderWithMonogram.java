@@ -14,12 +14,12 @@ import com.tumi.utilities.UIFunctions;
  */
 public class OrderWithMonogram extends GenericMethods {
 	
-	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestOrders");
+	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestDetails");
 	
 	@Test(priority=0,description = " TA - 48 Verify Order with merchandise Ready to ship + Personalization for  Guest User.")
 	public void orderWithMonogramAsGuest() {
-		UIFunctions.addProductToCart("TumiTestData","GuestOrders");
-		UIFunctions.addMonogram("TumiTestData", "GuestOrders");
+		UIFunctions.addProductToCart("TumiTestData","Products");
+		UIFunctions.addMonogram("TumiTestData", "MonoGramDetails");
 		click(pdp.getAddToCart(),"Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Cart");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
@@ -29,7 +29,7 @@ public class OrderWithMonogram extends GenericMethods {
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
-		UIFunctions.addCardDetails("TumiTestData", "GuestOrders");
+		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		UIFunctions.completeOrder();
 	}
 

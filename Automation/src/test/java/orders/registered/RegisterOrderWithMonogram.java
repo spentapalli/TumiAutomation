@@ -16,8 +16,8 @@ public class RegisterOrderWithMonogram extends GenericMethods {
 	public void orderWithMonogramAsRegistered() {
 
 		login("TumiTestData", "TumiLogin");
-		UIFunctions.addProductToCart("TumiTestData", "GuestOrders");
-		UIFunctions.addMonogram("TumiTestData", "GuestOrders");
+		UIFunctions.addProductToCart("TumiTestData", "Products");
+		UIFunctions.addMonogram("TumiTestData", "MonoGramDetails");
 		click(pdp.getAddToCart(), "Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
@@ -26,7 +26,7 @@ public class RegisterOrderWithMonogram extends GenericMethods {
 		domClick(shipping.getContinueShippingMethod(), "Contiue Shipping");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
 		domClick(signinBill.getAddNewPay(), "Add new Payment");
-		UIFunctions.addCardDetails("TumiTestData", "GuestOrders");
+		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		UIFunctions.completeOrder();
 		click(confirmation.getSignoutAtConfirm(), "Signout");
 	}

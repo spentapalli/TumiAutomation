@@ -21,7 +21,7 @@ import com.tumi.utilities.UIFunctions;
 public class MyAccPage extends GenericMethods {
 	/* The Constant LOG. */
 	//private static final Logger LOG = Logger.getLogger(MyAccPage.class);
-	Map<String, String> testData = ReadTestData.retrieveData("Login", "MyAccPage");
+	Map<String, String> testData = ReadTestData.retrieveData("Login", "RegisteredOrders");
 	
 	@Test
 	public void verifyMyAccPage() throws InterruptedException{

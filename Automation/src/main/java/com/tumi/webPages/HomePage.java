@@ -542,11 +542,22 @@ public class HomePage extends GenericMethods {
 			private WebElement SalesVoyageurCollection;
 
 			public WebElement getSalesVoyageurCollection() {
-
-				return SalesVoyageurCollection; 
-	}
+			
+				return SalesVoyageurCollection;
 			}
+				@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']")
+				private List<WebElement> CategoriesSelection;
 
+				public List<WebElement> getCategoriesSelection() {
 
+					return CategoriesSelection; 
+	}
+				@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[2]/ul/li[1]/ul/li[1]/ul/li[1]/ul")
+				private List<WebElement> SubCategoriesSelection;
 
-	
+				public List<WebElement> SubgetCategoriesSelection() {
+
+					return SubCategoriesSelection; 
+				
+			}
+}

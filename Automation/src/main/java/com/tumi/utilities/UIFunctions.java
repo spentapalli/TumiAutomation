@@ -74,7 +74,7 @@ public class UIFunctions extends GenericMethods {
 	public static void addCardDetails(String sheet, String testCaseName) {
 
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCaseName);
-		Map<String, String> testData1 = ReadTestData.getJsonData("TumiTestData", "GuestDetails");
+		Map<String, String> testData1 = ReadTestData.getJsonData("TumiTestData", "CreditCardDetails");
 
 		// billing page
 		input(guestBillPage.getNameOnCard(), testData.get("NameOnCard"), "Name on Card");
@@ -89,8 +89,8 @@ public class UIFunctions extends GenericMethods {
 			selectByVisibleText(guestBillPage.getExpiryYear(), testData.get("ExpiryYear"), "Expiry Year");
 		}
 		input(guestBillPage.getCvvNumber(), testData.get("CVV"), "Cvv Number");
-		input(guestBillPage.getemail(), testData1.get("EmailID"), "Email ID");
-		input(guestBillPage.getPhoneNumber(), testData1.get("Phone"), "Phone number");
+		input(guestBillPage.getemail(), testData.get("EmailID"), "Email ID");
+		input(guestBillPage.getPhoneNumber(), testData.get("Phone"), "Phone number");
 		domClick(guestBillPage.getReviewOrder(), "Review your order");
 	}
 
@@ -739,7 +739,7 @@ public class UIFunctions extends GenericMethods {
 
 	public static void addMultiship() {
 
-		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "OrderWithTwoProducts");
+		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestDetails");
 		click(multiShip.getMultiShipClick(), "MultiShipment");
 		// delay(2000);
 		domClick(multiShip.getAddShippment0(), "add shipment 1");
@@ -765,7 +765,7 @@ public class UIFunctions extends GenericMethods {
 
 	public static void addMultishipForRegistered() {
 
-		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "OrderWithTwoProducts");
+		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestDetails");
 		click(multiShip.getMultiShipClick(), "MultiShipment");
 		delay(2000);
 		domClick(multiShip.getAddShippment0(), "add shipment 1");
@@ -792,7 +792,7 @@ public class UIFunctions extends GenericMethods {
 	}
 
 	public static void addMultishipGuestDeatils(String data, String data1) {
-		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "OrderWithTwoProducts");
+		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestDetails");
 		input(shipping.getFirstName(), testData.get("FirstName"), "First Name");
 		input(shipping.getLastName(), testData.get("LastName"), "Last Name");
 		input(shipping.getAddressLine1(), data1, "Address Line1");

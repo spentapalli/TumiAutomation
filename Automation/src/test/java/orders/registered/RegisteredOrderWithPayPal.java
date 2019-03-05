@@ -16,7 +16,7 @@ import login.RegularLogin;
 	 */
 
 	public class RegisteredOrderWithPayPal extends GenericMethods {
-		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestOrders");
+		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestDetails");
 		
 		/* TA-285
 		 * Verify Order with merchandise Ready to ship with PayPal checkout-Registered user
@@ -25,7 +25,7 @@ import login.RegularLogin;
 		@Test(description = " TA-285 Verify Order with merchandise Ready to ship with PayPal checkout-Registered user")
 		public void orderWithPayPalAsRegistered() throws Exception {
 			login("TumiTestData","TumiLogin");
-			UIFunctions.addProductToCart("TumiTestData","GuestOrders");
+			UIFunctions.addProductToCart("TumiTestData","Products");
 			click(pdp.getAddToCart(),"Add to cart");
 			click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 			UIFunctions.payPalCheckout("TumiTestData","PayPalDeatils", mainCart.getEstimatedTotalRegistered());

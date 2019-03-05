@@ -26,7 +26,7 @@ public class Quickshop extends GenericMethods {
 				UIFunctions.addGuestDetails();
 				click(shipping.getContinueShippingMethod(), "Contiue Shipping");
 				click(shipMethod.getProceedToPayment(), "Proceed to Payment");
-				UIFunctions.addCardDetails("TumiTestData", "GuestOrders");
+				UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 				UIFunctions.completeOrder();
 			}
 }

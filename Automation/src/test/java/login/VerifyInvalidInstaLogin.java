@@ -20,7 +20,7 @@ import com.tumi.utilities.UIFunctions;
  */
 public class VerifyInvalidInstaLogin extends GenericMethods{
 	
-public Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "InValidInstagramCredentials");
+public Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "SocialNetworkDetails");
 	
 	
 		/* TA-177 :
@@ -29,7 +29,7 @@ public Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "
 		 */
 		@Test(priority=1,description=" TA-177 :Verify Login fail, with wrong Instagram Account credentials " )
 		public void inValidInstaLogin(){
-			Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "InValidGoogleCredentials");
+			Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "SocialNetworkDetails");
 			
 			click(home.getHeaderSignIn(), "SignIn");
 			click(insta.getInsta(), "Instagram");
@@ -42,8 +42,8 @@ public Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "
 				if (!parentHandle.equals(child)) {
 
 					driver.switchTo().window(child);
-					input(insta.getInstaUsername(), testData.get("EmailID"), "Username");
-					input(insta.getInstaPassword(), testData.get("Password"), "Password");
+					input(insta.getInstaUsername(), testData.get("InvalidInstaEmailID"), "Username");
+					input(insta.getInstaPassword(), testData.get("InvalidInstaPassword"), "Password");
 					click(insta.getInstaLogin(), "Login");
 					delay(2000);
 					driver.close();

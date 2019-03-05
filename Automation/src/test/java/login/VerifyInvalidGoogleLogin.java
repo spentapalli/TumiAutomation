@@ -17,7 +17,7 @@ import com.tumi.utilities.UIFunctions;
  *
  */
 public class VerifyInvalidGoogleLogin extends GenericMethods {
-	public Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "InValidGoogleCredentials");
+	public Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "SocialNetworkDetails");
 	
 	/* TA-162
 	 * Verify in-valid Login with Google Account by giving wrong credentials.
@@ -37,10 +37,10 @@ public class VerifyInvalidGoogleLogin extends GenericMethods {
 			if (!parentHandle.equals(child)) {
 
 				driver.switchTo().window(child);
-				input(google.getEmail(), testData.get("EmailID"), "gmail id");
+				input(google.getEmail(), testData.get("InValidGoogleEmail"), "gmail id");
 				click(google.getFirstNext(), "Next");
 				delay(2000);
-				input(google.getPassword(), testData.get("Password"), "Password");
+				input(google.getPassword(), testData.get("InValidGooglePassword"), "Password");
 				click(google.getPasswordNext(), "password next");
 				
 				/*

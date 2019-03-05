@@ -192,6 +192,13 @@ public class ProductDetailPage extends GenericMethods {
 	public WebElement getStockmessage() {
 		return StockMessage;
 	}
+		@FindBy(how = How.XPATH, using = "//div[@id='prod-details']/h1") 
+		private WebElement ProductName;
+
+		public WebElement getProductName() {
+			return ProductName;
+		
+	}
 	
 	
 }

@@ -9,12 +9,12 @@ import com.tumi.utilities.GenericMethods;
 import com.tumi.utilities.UIFunctions;
 
 public class TenderChange extends GenericMethods{
-	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData","GuestOrders");
+	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData","GuestDetails");
 	
 	@Test(priority = 4, description = "TA_15 Verify Place Order with Tender Change(GiftCard+Credit/Debit Card)-Guest user")
 	public void TenderChangeOrderAsGuest() {
 
-		UIFunctions.addProductToCart("TumiTestData", "BackOrderProduct");
+		UIFunctions.addProductToCart("TumiTestData", "Products");
 		click(pdp.getAddToCart(), "Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Cart");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
@@ -24,7 +24,7 @@ public class TenderChange extends GenericMethods{
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
-		UIFunctions.GiftCard("TumiTestData", "BackOrderProduct");
+		UIFunctions.GiftCard("TumiTestData", "VoucherCodeDetails");
 		UIFunctions.completeOrder();
 	}	
 

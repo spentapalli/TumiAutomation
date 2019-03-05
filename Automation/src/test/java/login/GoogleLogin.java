@@ -12,7 +12,7 @@ import com.tumi.utilities.GenericMethods;
  *
  */
 public class GoogleLogin extends GenericMethods {
-	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GoogleLogin");
+	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "SocialNetworkDetails");
 
 	/*
 	 * TA-19 Verify valid Login with Google Account by giving valid credentials.
@@ -32,9 +32,9 @@ public class GoogleLogin extends GenericMethods {
 
 				driver.switchTo().window(child);
 				delay(2000);
-				input(google.getEmail(),testData.get("EmailID"), "gmail id");
+				input(google.getEmail(),testData.get("GoogleEmailID"), "gmail id");
 				webclick(google.getFirstNext(), "Next");
-				input(google.getPassword(), testData.get("Password"), "Password");
+				input(google.getPassword(), testData.get("GooglePassword"), "Password");
 				webclick(google.getPasswordNext(), "password next");
 			}
 		}

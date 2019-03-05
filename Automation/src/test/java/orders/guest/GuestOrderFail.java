@@ -18,11 +18,11 @@ import com.tumi.utilities.UIFunctions;
  */
 public class GuestOrderFail extends GenericMethods {
 	
-	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestOrders");
+	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "FailedOrder");
 	
 	@Test(priority = 8, description = "TA- 8 Verify order fail with wrong card details for Guest user")
 	public void orderWithWrongCardDetails() throws InterruptedException {
-		UIFunctions.addProductToCart("TumiTestData", "GuestOrders");
+		UIFunctions.addProductToCart("TumiTestData", "FailedOrder");
 		click(pdp.getAddToCart(), "Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");

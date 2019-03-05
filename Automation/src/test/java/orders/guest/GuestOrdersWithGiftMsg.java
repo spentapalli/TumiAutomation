@@ -15,7 +15,7 @@ import com.tumi.utilities.UIFunctions;
  */
 public class GuestOrdersWithGiftMsg extends GenericMethods {
 	
-	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestOrders");
+	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestDetails");
 
 	/*
 	 * TA- 178 Verify Order with merchandise Ready to ship with Gift message for
@@ -25,11 +25,11 @@ public class GuestOrdersWithGiftMsg extends GenericMethods {
 	@Test(priority = 0, description = "Sprint 2- TA- 178 Verify Order with merchandise Ready to ship with Gift message for Guest User")
 	public void orderWithGiftMsgAsGuest() {
 
-		UIFunctions.addProductToCart("TumiTestData", "GuestOrders");
+		UIFunctions.addProductToCart("TumiTestData", "Products");
 		click(pdp.getAddToCart(), "Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(gift.getMakeThisGift(), "Make this Gift");
-		UIFunctions.addGiftMessage("TumiTestData", "GuestOrders");
+		UIFunctions.addGiftMessage("TumiTestData", "VoucherCodeDetails");
 		click(gift.getContinueGiftService(), "Continue");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
@@ -38,7 +38,7 @@ public class GuestOrdersWithGiftMsg extends GenericMethods {
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
-		UIFunctions.addCardDetails("TumiTestData", "GuestOrders");
+		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		UIFunctions.completeOrder();
 	}
 
@@ -49,7 +49,7 @@ public class GuestOrdersWithGiftMsg extends GenericMethods {
 		click(pdp.getAddToCart(), "Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(gift.getMakeThisGift(), "Make this Gift");
-		UIFunctions.addGiftMessage("TumiTestData", "GuestOrders");
+		UIFunctions.addGiftMessage("TumiTestData", "VoucherCodeDetails");
 		click(gift.getContinueGiftService(), "Continue");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
@@ -58,7 +58,7 @@ public class GuestOrdersWithGiftMsg extends GenericMethods {
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
-		UIFunctions.addCardDetails("TumiTestData", "GuestOrders");
+		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		UIFunctions.completeOrder();
 	}
 
@@ -69,7 +69,7 @@ public class GuestOrdersWithGiftMsg extends GenericMethods {
 		click(pdp.getAddToCart(), "Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(gift.getMakeThisGift(), "Make this Gift");
-		UIFunctions.addGiftMessage("TumiTestData", "GuestOrders");
+		UIFunctions.addGiftMessage("TumiTestData", "VoucherCodeDetails");
 		click(gift.getContinueGiftService(), "Continue");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
@@ -78,7 +78,7 @@ public class GuestOrdersWithGiftMsg extends GenericMethods {
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
-		UIFunctions.addCardDetails("TumiTestData", "GuestOrders");
+		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		UIFunctions.completeOrder();
 	}
 

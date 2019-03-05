@@ -16,7 +16,7 @@ import com.tumi.utilities.UIFunctions;
  *
  */
 public class GuestOrderWithTwoDiffProducts extends GenericMethods {
-	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestOrders");
+	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestDetails");
 	
 	/* TA-1
 	 * Verify Order with 2 'Ready to Ship' Items with different SKU/sPurchase-Guest user
@@ -27,7 +27,7 @@ public class GuestOrderWithTwoDiffProducts extends GenericMethods {
 	public void verifyGuestOrderWithTwoDiffProducts()throws InterruptedException{
 		
 		
-	UIFunctions.addMultipleProducts("TumiTestData", "GuestOrders");
+	UIFunctions.addMultipleProducts("TumiTestData", "GuestDetails");
 	click(minicart.getMiniCartSymbol(), "Cart Image");
 	click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 	click(mainCart.getProceedCart(), "Proceed to Checkout");
@@ -37,7 +37,7 @@ public class GuestOrderWithTwoDiffProducts extends GenericMethods {
 	UIFunctions.addGuestDetails();
 	click(shipping.getContinueShippingMethod(), "Contiue Shipping");
 	click(shipMethod.getProceedToPayment(), "Proceed to Payment");
-	UIFunctions.addCardDetails("TumiTestData", "GuestOrders");
+	UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 	UIFunctions.completeOrder();
 
 }

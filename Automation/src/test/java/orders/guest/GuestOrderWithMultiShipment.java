@@ -13,7 +13,7 @@ import com.tumi.utilities.UIFunctions;
  *
  */
 public class GuestOrderWithMultiShipment extends GenericMethods {
-	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData","GuestOrders");
+	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData","GuestDetails");
 	
 	/* TA-290
 	 * Verify Order with 2 'Ready to Ship' Items with different SKU/sPurchase with Multishipment for Guest user
@@ -21,7 +21,7 @@ public class GuestOrderWithMultiShipment extends GenericMethods {
 	 */
 	@Test(description = "TA - 290 Verify Order with 2 'Ready to Ship' Items with different SKU/sPurchase with Multishipment for Guest user")
 	public void verifyGuestOrderWithMutlishipment()throws InterruptedException{
-		UIFunctions.addMultipleProducts("TumiTestData","GuestOrders");
+		UIFunctions.addMultipleProducts("TumiTestData","GuestDetails");
 		click(minicart.getMiniCartSymbol(), "Cart Image");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
@@ -29,7 +29,7 @@ public class GuestOrderWithMultiShipment extends GenericMethods {
 		//UIFunctions.waitForContinueToEnable();
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		UIFunctions.addMultiship();
-		UIFunctions.addMultishipAddressWithCardDeatils("TumiTestData","GuestOrders");
+		UIFunctions.addMultishipAddressWithCardDeatils("TumiTestData","CreditCardDetails");
 		UIFunctions.completeOrder();
 
 		

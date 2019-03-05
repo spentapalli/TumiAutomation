@@ -17,7 +17,7 @@ import com.tumi.utilities.UIFunctions;
  */
 public class GuestOrder extends GenericMethods {
 	
-	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestOrders");
+	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestDetails");
 	Map<String, String> testData1 = ReadTestData.getJsonData("TumiTestData", "FailedOrder");
 	/*
 	 * TA-57 Verify Order with merchandise Ready to ship for Guest User
@@ -26,7 +26,7 @@ public class GuestOrder extends GenericMethods {
 	@Test(priority = 0, description = " TA- 57 Verify Order with merchandise Ready to ship for Guest User")
 	public void tumiOrderAsGuest() throws InterruptedException {
 
-		UIFunctions.addProductToCart("TumiTestData","GuestOrders");
+		UIFunctions.addProductToCart("TumiTestData","Products");
 		click(pdp.getAddToCart(), "Add to cart");
 		
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
@@ -37,7 +37,7 @@ public class GuestOrder extends GenericMethods {
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
-		UIFunctions.addCardDetails("TumiTestData", "GuestOrders");
+		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		UIFunctions.completeOrder();
 	}
 
@@ -49,14 +49,14 @@ public class GuestOrder extends GenericMethods {
 		click(pdp.getAddToCart(), "Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Cart");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
-		UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "BackOrderProduct");
+		UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData","VoucherCodeDetails");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		UIFunctions.waitForContinueToEnable();
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
-		UIFunctions.addCardDetails("TumiTestData", "BackOrderProduct");
+		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		UIFunctions.completeOrder();
 	}
 
@@ -73,7 +73,7 @@ public class GuestOrder extends GenericMethods {
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
-		UIFunctions.addCardDetails("TumiTestData", "PreOrderProduct");
+		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		UIFunctions.completeOrder();
 	}
 
@@ -90,7 +90,7 @@ public class GuestOrder extends GenericMethods {
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
-		UIFunctions.addCardDetails("TumiTestData", "GuestOrders");
+		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		UIFunctions.completeOrder();
 	}
 

@@ -13,7 +13,7 @@ import com.tumi.utilities.UIFunctions;
  *
  */
 public class ProductSearch extends GenericMethods {
-	public Map<String, String> testData = ReadTestData.retrieveData("PlaceOrder", "PrdouctSearch");
+	public Map<String, String> testData = ReadTestData.retrieveData("PlaceOrder", "GuestDetails");
 
 	@Test
 	public void search() throws InterruptedException {
