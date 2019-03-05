@@ -70,7 +70,7 @@ public class PGP extends GenericMethods {
 	private WebElement productType;
 
 	public WebElement getProductType() {
-		return productType;
+		return explicitWait(productType);
 	}
 
 	@FindBy(how = How.XPATH, using = "//input[@id='facet-Carry-On Luggage']")
@@ -94,6 +94,7 @@ public class PGP extends GenericMethods {
 		return resultCount;
 	}
 
+
 	@FindBy(how = How.XPATH, using = "//h1[contains(text(),'Testing Category Title')]")
 	private WebElement CategoryTitle;
 
@@ -101,4 +102,133 @@ public class PGP extends GenericMethods {
 		return CategoryTitle;
 	}
 	
+
+	@FindBy(how = How.XPATH, using = "//div[@id='product-filters']/div/a")
+	private WebElement clear;
+
+	public WebElement getClear() {
+		return clear;
+	}
+	
+	@FindBy(how = How.XPATH, using = "//div[@id='product-filters']/div/a")
+	private List<WebElement> clearList;
+
+	public List<WebElement> getClearList() {
+		return clearList;
+	}
+
+
+	@FindBy(how = How.XPATH, using = "//div[@id='product-filters']/div/h4")
+	private List<WebElement> filtersList;
+
+	public List<WebElement> getFiltersList() {
+		return filtersList;
+	}
+	
+	@FindBy(how = How.XPATH, using = "//div[@id='product_type-ctrl']/ul/li/form/input[3]")
+	private List<WebElement> productTypeList;
+
+	public List<WebElement> getProductTypeList() {
+		return productTypeList;
+	}
+
+	@FindBy(how = How.XPATH, using = "//div[@id='prices-ctrl']/ul/li/form/input[3]")
+	private List<WebElement> pricesList;
+
+	public List<WebElement> getPricesList() {
+		return pricesList;
+	}
+
+	@FindBy(how = How.XPATH, using = "//input[@id='facet-200:350']/following::span[2]")
+	private WebElement firstRangeCount;
+
+	public WebElement getFirstRangeCount() {
+		return firstRangeCount;
+	}
+	
+	@FindBy(how = How.XPATH, using = "//div[@id='gender-ctrl']/ul/li/form/input[3]")
+	private List<WebElement> genderList;
+
+	public List<WebElement> getGenderList() {
+		return genderList;
+	}
+	
+	@FindBy(how = How.XPATH, using = "//input[@id='facet-Female']/following::span[2]")
+	private WebElement femaleCount;
+
+	public WebElement getFemaleCount() {
+		return femaleCount;
+	}
+	
+	@FindBy(how = How.XPATH, using = "//div[@id='Collection-ctrl']/ul/li/form/input[3]")
+	private List<WebElement> collectionList;
+
+	public List<WebElement> getCollectionList() {
+		return collectionList;
+	}
+	
+	@FindBy(how = How.XPATH, using = "//input[@id='facet-Alpha 2']/following::span[2]")
+	private WebElement alpha2Count;
+
+	public WebElement getAlphaCount() {
+		return alpha2Count;
+	}
+	
+	@FindBy(how = How.XPATH, using = "//div[@id='Material-ctrl']/ul/li/form/input[3]")
+	private List<WebElement> materialList;
+
+	public List<WebElement> getMaterialList() {
+		return materialList;
+	}
+	
+	@FindBy(how = How.XPATH, using = "//input[@id='facet-Leather']/following::span[2]")
+	private WebElement leatherCount;
+
+	public WebElement getLeatherCount() {
+		return leatherCount;
+	}
+	
+	@FindBy(how = How.XPATH, using = "//div[@id='laptop_size-ctrl']/ul/li/form/input[3]")
+	private List<WebElement> laptopSizeList;
+
+	public List<WebElement> getLaptopSizeList() {
+		return laptopSizeList;
+	}
+	
+	@FindBy(how = How.XPATH, using = "//input[@id='facet-Fits up to 14\"']/following::span[2]")
+	private WebElement fitsUpto14laptopCount;
+
+	public WebElement getFitsUpto14laptopCount() {
+		return fitsUpto14laptopCount;
+	}
+	
+	@FindBy(how = How.XPATH, using = "//div[@id='Wheels-ctrl']/ul/li/form/input[3]")
+	private List<WebElement> wheelsList;
+
+	public List<WebElement> getWheelsList() {
+		return wheelsList;	
+	}
+	
+	@FindBy(how = How.XPATH, using = "//input[@id='facet-4.0']/following::span[2]")
+	private WebElement fourWheelsCount;
+
+	public WebElement getFourWheelsCount() {
+		return fourWheelsCount;
+	}
+	
+	@FindBy(how = How.XPATH, using = "//div[@id='FSM_ExclusiveFeatures-ctrl']/ul/li/form/input[3]")
+	private List<WebElement> exclusiceFeatureList;
+
+	public List<WebElement> getExclusiceFeatureList() {
+		return exclusiceFeatureList;	
+	}
+	
+	@FindBy(how = How.XPATH, using = "//input[@id='facet-Monogramable']/following::span[2]")
+	private WebElement monoCount;
+
+	public WebElement getMonoCount() {
+		return monoCount;
+	}
+
+
 }
