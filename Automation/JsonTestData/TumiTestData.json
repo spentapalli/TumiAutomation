@@ -8,19 +8,22 @@
 		"TownCity": "ABBOTSFORD",
 		"Region": "California",
 		"PostCode": "V4X 1A5",
-		"Phone": "12345678901"	
+		"Phone": "12345678901"
+		"ProductName":"Tag"	
+		
 	},
 	
 	"CreditCardDetails":{
 		"NameOnCard": "test",
 		"CardNumber": "4111111111111111",
 		"CVV": "123",
-		"ExipryMonth": "4",
-		"ExpiryYear": "2020"
+		"ExipryMonth": "04",
+		"ExpiryYear": "2020",
+		"EmailID": "skomma@coredatalabs.com",
+		"Phone": "12345678901"
 	},
 	
 	"Products": {
-		
 		"BackOrderProduct": "0484706D",
 		"BackOrderSKUID": "013234CPT",
 		"PreOrderPRoduct": "0484660D",
@@ -45,7 +48,8 @@
 	"InstaPassword":"tumi123",
 	"InvalidInstaEmailID":"TumiUS",
 	"InvalidInstaPassword":"tumi12"
-	
+	"EmailID":"Employee.tumi@gmail.com",
+	"Password":"t1"
 	},
 	
 	"VoucherCodeDetails":{
@@ -84,6 +88,15 @@
 	
 	"FailedOrder": {
 		"SKUID": "014757D"
+		"EmailID": "skara@coredatalabs.com",
+		"NameOnCard": "test",
+		"CardNumber": "41111111111111",
+		"CVV": "123",
+		"ExipryMonth": "04",
+		"ExpiryYear": "2020",
+		"EmailID": "skomma@coredatalabs.com",
+		"Phone": "12345678901"
+
 	},
 	
 	"BackOrderProduct": {

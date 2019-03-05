@@ -111,6 +111,15 @@ public class PGP extends GenericMethods {
 		return resultCount;
 	}
 
+
+	@FindBy(how = How.XPATH, using = "//h1[contains(text(),'Testing Category Title')]")
+	private WebElement CategoryTitle;
+
+	public WebElement getCategoryTitle() {
+		return CategoryTitle;
+	}
+	
+
 	@FindBy(how = How.XPATH, using = "//div[@id='product-filters']/div/a")
 	private WebElement clear;
 
@@ -244,5 +253,6 @@ public class PGP extends GenericMethods {
 	public WebElement getMonoCount() {
 		return monoCount;
 	}
+
 
 }
