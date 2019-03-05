@@ -24,7 +24,16 @@ public class PGP extends GenericMethods {
 	public WebElement getluggage() {
 
 		return explicitWait(luggage);
-	}// div[@id='product-filters']/div[2]
+	}
+	
+	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Women')]")
+	private WebElement womenCategory;
+
+	public WebElement getWomenCategory() {
+
+		return explicitWait(womenCategory);
+	}//a[contains(text(),'Women')]/following::a[2]
+
 
 	@FindBy(how = How.XPATH, using = "(//ul[contains(@class,'nav-sub-list')]/li/ul/li/ul/li/ul/li/a)[1]")
 	private WebElement carryOnLuggage;
@@ -32,6 +41,14 @@ public class PGP extends GenericMethods {
 	public WebElement getCarryOnLuggage() {
 
 		return carryOnLuggage;
+	}
+	
+	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Women')]/following::a[2]")
+	private WebElement carryOnLuggageInWomen;
+
+	public WebElement getCarryOnLuggageInWomen() {
+
+		return carryOnLuggageInWomen;
 	}
 
 	@FindBy(how = How.XPATH, using = "//div[@id='grid-container']/div[1]/div[2]/div[3]/div[2]/a/span/div[1]")
@@ -135,6 +152,13 @@ public class PGP extends GenericMethods {
 
 	public WebElement getFirstRangeCount() {
 		return firstRangeCount;
+	}
+	
+	@FindBy(how = How.XPATH, using = "//input[@id='facet-350:500']/following::span[2]")
+	private WebElement priceRangeCount;
+
+	public WebElement getPriceRangeCount() {
+		return priceRangeCount;
 	}
 	
 	@FindBy(how = How.XPATH, using = "//div[@id='gender-ctrl']/ul/li/form/input[3]")
