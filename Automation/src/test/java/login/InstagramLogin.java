@@ -25,7 +25,7 @@ public class InstagramLogin extends GenericMethods {
 
 	@Test(priority=0, description="TA-18 :Verify Login with Instagram Account")
 	public void verifyInstaValidLogin(){
-		instaLogin("TumiTestData", "InstagramLogin");
+		instaLogin("TumiTestData", "SocialNetworkDetails");
 		/*String parentHandle = driver.getWindowHandle(); 
 		driver.switchTo().window(parentHandle);*/
 		delay(2000);
@@ -44,8 +44,8 @@ public class InstagramLogin extends GenericMethods {
 		for (String winHandle : driver.getWindowHandles()) {
 			driver.switchTo().window(winHandle); 
 		}
-		input(insta.getInstaUsername(), testData.get("EmailID"), "Username");
-		input(insta.getInstaPassword(), testData.get("Password"), "Password");
+		input(insta.getInstaUsername(), testData.get("InstaEmailID"), "Username");
+		input(insta.getInstaPassword(), testData.get("InstaPassword"), "Password");
 		click(insta.getInstaLogin(), "Login");
 		driver.switchTo().window(parentHandle);
 	}

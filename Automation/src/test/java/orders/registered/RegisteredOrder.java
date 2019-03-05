@@ -14,7 +14,7 @@ import com.tumi.utilities.UIFunctions;
  */
 
 public class RegisteredOrder extends GenericMethods {
-	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestOrders");
+	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestDetails");
 	
 	/* TA-184
 	 * Verify Order with merchandise Ready to ship-Registered User
@@ -23,7 +23,7 @@ public class RegisteredOrder extends GenericMethods {
 	@Test(description = " TA - 184 Verify Order with merchandise Ready to ship-Registered User")
 	public void tumiOrderAsRegistered() throws Exception {
 		login("TumiTestData", "TumiLogin");
-		UIFunctions.addProductToCart("TumiTestData","GuestOrders");
+		UIFunctions.addProductToCart("TumiTestData","Products");
 		click(pdp.getAddToCart(),"Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
@@ -32,7 +32,7 @@ public class RegisteredOrder extends GenericMethods {
 		domClick(shipping.getContinueShippingMethod(), "Contiue Shipping");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
 		domClick(signinBill.getAddNewPay(),"Add new Payment");
-		UIFunctions.addCardDetails("TumiTestData", "GuestOrders");
+		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		UIFunctions.completeOrder();
 	}
 

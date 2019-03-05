@@ -18,7 +18,7 @@ import com.tumi.utilities.UIFunctions;
  */
 public class VerifyInvalidRegularLogin extends GenericMethods {
 	
-	public Map<String, String> testData = ReadTestData.retrieveData("Login", "InValidCredentials");
+	public Map<String, String> testData = ReadTestData.retrieveData("Login", "SocialNetworkDetails");
 	
 	/*TA-58 : 
 	Verify Tumi Login Fail, with wrong credentials
@@ -28,7 +28,7 @@ public class VerifyInvalidRegularLogin extends GenericMethods {
 	public void verifyInvalidUserMessage() {
 
 		UIFunctions.closeSignUp();
-		login("Login", "InValidCredentials");
+		login("TumiTestData","SocialNetworkDetails");
 		
 		Assert.fail(getProperty("home.invalidCredentials"));
 		

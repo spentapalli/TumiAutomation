@@ -18,14 +18,14 @@ import com.tumi.utilities.UIFunctions;
  */
 public class RegularUserLogin extends GenericMethods {
 
-	public Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "TumiLogin");
+	public Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "RegisteredOrders");
 
 	@Test
 	public void verifyLogin() throws InterruptedException {
 
 		UIFunctions.closeSignUp();
 
-		login("Login", "RegularUserLogin");
+		login("Login","RegisteredOrders");
 		click(home.getCloseMyAccount(), "Close my account window");
 		input(home.getSearchProduct(), testData.get("PrdouctName"), "Product search");
 		WebElement dropdown = driver.findElement(By.id("matching_products"));

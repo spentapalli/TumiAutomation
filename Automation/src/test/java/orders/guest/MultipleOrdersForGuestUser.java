@@ -15,13 +15,13 @@ import com.tumi.utilities.UIFunctions;
  */
 public class MultipleOrdersForGuestUser extends GenericMethods {
 
-	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestOrders");
+	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestDetails");
 
 	// TA-14
 	@Test(priority = 0, description = "Verify Order with 2 'Ready to Ship' Items, One regular in stock SKU + One  Pre order SKU for Guest User")
 	public void verifyGuestOrderWithTwoReadyToShipProductsandPreOrder() {
 
-		UIFunctions.addProductToCart("TumiTestData", "GuestOrders");
+		UIFunctions.addProductToCart("TumiTestData", "Products");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getContinueShopping(), "Continue Shopping");
 		UIFunctions.addToCart("TumiTestData", "PreOrderProduct");
@@ -33,7 +33,7 @@ public class MultipleOrdersForGuestUser extends GenericMethods {
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
-		UIFunctions.addCardDetails("TumiTestData", "PreOrderProduct");
+		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		UIFunctions.completeOrder();
 
 	}
@@ -42,7 +42,7 @@ public class MultipleOrdersForGuestUser extends GenericMethods {
 	@Test(priority = 1, description = "Verify Order with 2 'Ready to Ship' Items, One regular in stock SKU + One  Backorder SKU for Guest User")
 	public void verifyGuestOrderWithTwoReadyToShipProductsandBackOrder() {
 
-		UIFunctions.addProductToCart("TumiTestData", "GuestOrders");
+		UIFunctions.addProductToCart("TumiTestData", "Products");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getContinueShopping(), "Continue Shopping");
 		UIFunctions.addToCart("TumiTestData", "BackOrderProduct");
@@ -54,7 +54,7 @@ public class MultipleOrdersForGuestUser extends GenericMethods {
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
-		UIFunctions.addCardDetails("TumiTestData", "PreOrderProduct");
+		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		UIFunctions.completeOrder();
 	}
 
@@ -74,7 +74,7 @@ public class MultipleOrdersForGuestUser extends GenericMethods {
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
-		UIFunctions.addCardDetails("TumiTestData", "PreOrderProduct");
+		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		UIFunctions.completeOrder();
 	}
 
@@ -82,7 +82,7 @@ public class MultipleOrdersForGuestUser extends GenericMethods {
 	@Test(priority = 3, description = "Verify Order with 2 'Ready to Ship' Items, One In-stock in stock SKU + One DonationPurchase SKU for Guest User")
 	public void verifyGuestOrderWithTwoReadyToShipandDonationProductOrder() {
 
-		UIFunctions.addProductToCart("TumiTestData", "GuestOrders");
+		UIFunctions.addProductToCart("TumiTestData", "Products");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getContinueShopping(), "Continue Shopping");
 		UIFunctions.addToCart("TumiTestData", "DonationPurchase");
@@ -94,7 +94,7 @@ public class MultipleOrdersForGuestUser extends GenericMethods {
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
-		UIFunctions.addCardDetails("TumiTestData", "PreOrderProduct");
+		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		UIFunctions.completeOrder();
 	}
 
@@ -102,7 +102,7 @@ public class MultipleOrdersForGuestUser extends GenericMethods {
 	@Test(priority = 4, description = "Verify Order with 2 'Ready to Ship' Items, One In-stock in stock SKU + One GlobalLocator SKU for Guest User")
 	public void verifyGuestOrderWithTwoReadyToShipandGlobalLocatorOrder() {
 
-		UIFunctions.addProductToCart("TumiTestData", "GuestOrders");
+		UIFunctions.addProductToCart("TumiTestData", "Products");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getContinueShopping(), "Continue Shopping");
 		UIFunctions.addToCart("TumiTestData", "GlobalLocatorProduct");
@@ -114,7 +114,7 @@ public class MultipleOrdersForGuestUser extends GenericMethods {
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
-		UIFunctions.addCardDetails("TumiTestData", "PreOrderProduct");
+		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		UIFunctions.completeOrder();
 	}
 
@@ -122,12 +122,12 @@ public class MultipleOrdersForGuestUser extends GenericMethods {
 	@Test(priority = 5, description = "Verify Order with 2 'Ready to Ship' Items, One regular in stock SKU + One in stock SKU with Personalization-Guest user")
 	public void verifyTwoReadyToShipProductsWithMonogram() {
 
-		UIFunctions.addProductToCart("TumiTestData", "GuestOrders");
+		UIFunctions.addProductToCart("TumiTestData", "Products");
 
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getContinueShopping(), "Continue Shopping");
-		UIFunctions.addToCart("TumiTestData", "GuestOrders");
-		UIFunctions.addMonogram("TumiTestData", "BackOrderProduct");
+		UIFunctions.addToCart("TumiTestData", "Products");
+		UIFunctions.addMonogram("TumiTestData", "MonoGramDetails");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
@@ -136,7 +136,7 @@ public class MultipleOrdersForGuestUser extends GenericMethods {
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
-		UIFunctions.addCardDetails("TumiTestData", "PreOrderProduct");
+		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		UIFunctions.completeOrder();
 	}
 
@@ -158,7 +158,7 @@ public class MultipleOrdersForGuestUser extends GenericMethods {
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
-		UIFunctions.addCardDetails("TumiTestData", "PreOrderProduct");
+		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		UIFunctions.completeOrder();
 	}
 
@@ -180,7 +180,7 @@ public class MultipleOrdersForGuestUser extends GenericMethods {
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
-		UIFunctions.addCardDetails("TumiTestData", "PreOrderProduct");
+		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		UIFunctions.completeOrder();
 
 	}
@@ -204,7 +204,7 @@ public class MultipleOrdersForGuestUser extends GenericMethods {
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
-		UIFunctions.addCardDetails("TumiTestData", "PreOrderProduct");
+		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		UIFunctions.completeOrder();
 	}
 

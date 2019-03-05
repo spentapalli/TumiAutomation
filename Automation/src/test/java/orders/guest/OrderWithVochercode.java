@@ -12,7 +12,7 @@ import com.tumi.utilities.UIFunctions;
  */
 public class OrderWithVochercode extends GenericMethods {
 
-	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestOrders");
+	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestDetails");
 
 	/*
 	 * TA-15 Verify Order with merchandise Ready to ship + Voucher Code for Guest
@@ -23,12 +23,12 @@ public class OrderWithVochercode extends GenericMethods {
 	@Test(priority = 0, description = " TA -51 Verify Order with merchandise Ready to ship + Voucher Code for Guest User")
 	public void verifyOrderWithVocherCode() throws InterruptedException {
 		String msg = null;
-		UIFunctions.addProductToCart("TumiTestData", "GuestOrders");
+		UIFunctions.addProductToCart("TumiTestData", "Products");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		// UIFunctions.addPromotionalCodeAtCart("TumiTestData", "GuestOrders");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
-		UIFunctions.addPromotionalCodeAtCart("TumiTestData", "GuestOrders");
+		UIFunctions.addPromotionalCodeAtCart("TumiTestData", "VoucherCodeDetails");
 		if (mainCart.getVocherMsg().isDisplayed()) {
 			msg = getText(mainCart.getVocherMsg());
 		}
@@ -40,7 +40,7 @@ public class OrderWithVochercode extends GenericMethods {
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
 		if (msg.equals("Voucher could not be applied.")) {
 
-			UIFunctions.addCardDetails("TumiTestData", "GuestOrders");
+			UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		}
 
 		UIFunctions.completeOrder();
@@ -53,14 +53,14 @@ public class OrderWithVochercode extends GenericMethods {
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		// UIFunctions.addPromotionalCodeAtCart("TumiTestData", "BackOrderProduct");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
-		UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "BackOrderProduct");
+		UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "VoucherCodeDetails");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		UIFunctions.waitForContinueToEnable();
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
-		UIFunctions.addCardDetails("TumiTestData", "BackOrderProduct");
+		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		UIFunctions.completeOrder();
 	}
 
@@ -71,15 +71,15 @@ public class OrderWithVochercode extends GenericMethods {
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		// UIFunctions.addPromotionalCodeAtCart("TumiTestData", "PreOrderProduct");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
-		UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "BackOrderProduct");
+		//UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "VoucherCodeDetails");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
-		UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "PreOrderProduct");
+		UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "VoucherCodeDetails");
 		UIFunctions.waitForContinueToEnable();
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
-		UIFunctions.addCardDetails("TumiTestData", "PreOrderProduct");
+		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		UIFunctions.completeOrder();
 	}
 	
@@ -87,24 +87,24 @@ public class OrderWithVochercode extends GenericMethods {
 			+ "Message + Voucher/Promos for Guest User")
 	public void verifyOrderwithGiftandVocherCode() throws Exception {
 
-		UIFunctions.addProductToCart("TumiTestData", "GuestOrders");
+		UIFunctions.addProductToCart("TumiTestData", "Products");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(gift.getMakeThisGift(), "Make this Gift");
-		UIFunctions.addGiftMessage("TumiTestData", "GuestOrders");
+		UIFunctions.addGiftMessage("TumiTestData", "VoucherCodeDetails");
 		UIFunctions.addGiftBox();
 		click(gift.getContinueGiftService(), "Continue");
 		//UIFunctions.addPromotionalCodeAtCart("TumiTestData", "GuestOrders");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
-		UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "BackOrderProduct");
+		//UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "VoucherCodeDetails");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
-		UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "GuestOrders");
+		UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "VoucherCodeDetails");
 		//UIFunctions.waitForContinueToEnable();
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
-		UIFunctions.addCardDetails("TumiTestData", "GuestOrders");
+		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		UIFunctions.completeOrder();
 	}
 

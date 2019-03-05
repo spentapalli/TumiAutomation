@@ -17,7 +17,7 @@ public class TumiStudioOrder extends GenericMethods{
 	 * TA-10 verify order with Tumi studio - Guest user
 	 * */
 	
-	Map<String, String> testData= ReadTestData.getJsonData("TumiTestData","GuestOrders");
+	Map<String, String> testData= ReadTestData.getJsonData("TumiTestData","GuestDetails");
 	
 	@Test(description ="TA-10 verify order with Tumi studio - Guest user")
 	public void testTumiIdOrder() throws InterruptedException{
@@ -35,7 +35,7 @@ public class TumiStudioOrder extends GenericMethods{
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
-		UIFunctions.addCardDetails("TumiTestData", "GuestOrders");
+		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		UIFunctions.completeOrder();
 	}
 

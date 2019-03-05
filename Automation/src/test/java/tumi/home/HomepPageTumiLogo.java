@@ -6,6 +6,7 @@ import java.util.Map;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import com.aventstack.extentreports.Status;
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
 import com.tumi.utilities.UIFunctions;
@@ -17,99 +18,47 @@ public class HomepPageTumiLogo extends GenericMethods  {
 	 */
 	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestDetails");
 	@Test(priority = 0, description = " Sprint 3- TA-348 Verify Categories on Home page at Tumi Logo")
-	public void VerifyTumiLogoLuaggage(){
-		
-			mouseHover(home.getLuggageOption());
-			click(pgp.getCarryOnLuggage(),"Carry on Luaggage");
-			click(pgp.getSelectProduct(),"Select Product");
-			click(pdp.getAddToCart(),"Add to cart");
-			click(minicart.getProceedCheckOut(), "Proceed to Checkout");
-			click(mainCart.getProceedCart(), "Proceed to Checkout");
-			input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
-			UIFunctions.waitForContinueToEnable();
-			click(singlePage.getContinueAsGuest(), "Contiue as Guest");
-			UIFunctions.addGuestDetails();
-			click(shipping.getContinueShippingMethod(), "Contiue Shipping");
-			click(shipMethod.getProceedToPayment(), "Proceed to Payment");
-			UIFunctions.addCardDetails("TumiTestData", "GuestOrders");
-			UIFunctions.completeOrder();
-		}
-	@Test(priority = 1, description = " Sprint 3- TA-348 Verify Categories on Home page at Tumi Logo")
-	public void VerifyTumiLogoBackPack(){
-		
-			mouseHover(home.getBackPackOption());
-			click(home.getBackPackTestBridgewater(),"TestBridgeWater");
-			click(pgp.getSelectProduct(),"Select Product");
-			mouseHover(pdp.getAddToCart());
-			click(pdp.getAddToCart(), "Add to cart");
-			click(minicart.getProceedCheckOut(), "Proceed to Checkout");
-			click(mainCart.getProceedCart(), "Proceed to Checkout");
-			input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
-			UIFunctions.waitForContinueToEnable();
-			click(singlePage.getContinueAsGuest(), "Contiue as Guest");
-			UIFunctions.addGuestDetails();
-			click(shipping.getContinueShippingMethod(), "Contiue Shipping");
-			click(shipMethod.getProceedToPayment(), "Proceed to Payment");
-			UIFunctions.addCardDetails("TumiTestData", "GuestOrders");
-			UIFunctions.completeOrder();
-		}	
-	@Test(priority = 2, description = " Sprint 3- TA-348 Verify Categories on Home page at Tumi Logo")
-	public void VerifyTumiLogoBag(){
-		
-			mouseHover(home.getBagOptions());
-			click(home.getBagwheeledBriefCase(),"BagWheeledBriefCase");
-			click(pgp.getSelectProduct(),"Select Product");
-			mouseHover(pdp.getAddToCart());
-			click(pdp.getAddToCart(), "Add to cart");
-			click(minicart.getProceedCheckOut(), "Proceed to Checkout");
-			click(mainCart.getProceedCart(), "Proceed to Checkout");
-			input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
-			UIFunctions.waitForContinueToEnable();
-			click(singlePage.getContinueAsGuest(), "Contiue as Guest");
-			UIFunctions.addGuestDetails();
-			click(shipping.getContinueShippingMethod(), "Contiue Shipping");
-			click(shipMethod.getProceedToPayment(), "Proceed to Payment");
-			UIFunctions.addCardDetails("TumiTestData", "GuestOrders");
-			UIFunctions.completeOrder();
+	public void VerifyTumicategories(){
+		if (selectedCountry.equals("US")) {
+					mouseHover(home.getLuggageOption());
+					click(pgp.getCarryOnLuggage(),"Carry on Luaggage");
+					if (getText(pgp.getCategoryTitle()).contains("Title Category")) {
+						logger.log(Status.INFO, "Selection of product successfull");
+					
+					}
+					
+			/*
+			 * mouseHover(home.getBackPackOption());
+			 * click(home.getBackPackTestBridgewater(),"TestBridgeWater"); if
+			 * (getText(pgp.getCategoryTitle()).contains("Title Category")) {
+			 * logger.log(Status.INFO, "Selection of product successfull"); }
+			 * mouseHover(home.getBagOptions());
+			 * click(home.getBagwheeledBriefCase(),"BagWheeledBriefCase"); if
+			 * (getText(pgp.getCategoryTitle()).contains("Title Category")) {
+			 * logger.log(Status.INFO, "Selection of product successfull"); }
+			 * mouseHover(home.getAccessoriesOptions());
+			 * click(home.getAccessoriesKeyFobs(),"key Fobs"); if
+			 * (getText(pgp.getCategoryTitle()).contains("Title Category")) {
+			 * logger.log(Status.INFO, "Selection of product successfull"); }
+			 * mouseHover(home.getSalesOptions());
+			 * click(home.getSalesVoyageurCollection(),"Voyageur collection"); if
+			 * (getText(pgp.getCategoryTitle()).contains("Title Category")) {
+			 * logger.log(Status.INFO, "Selection of product successfull");
+			 * 
+			 * }
+			 */
+			}
 	}
-	@Test(priority = 3, description = " Sprint 3- TA-348 Verify Categories on Home page at Tumi Logo")
-	public void VerifyTumiLogoAccessories(){
-		
-			mouseHover(home.getAccessoriesOptions());
-			click(home.getAccessoriesKeyFobs(),"key Fobs");
-			click(pgp.getSelectProduct(),"Select Product");
-			mouseHover(pdp.getAddToCart());
-			click(pdp.getAddToCart(), "Add to cart");
-			click(minicart.getProceedCheckOut(), "Proceed to Checkout");
-			click(mainCart.getProceedCart(), "Proceed to Checkout");
-			input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
-			UIFunctions.waitForContinueToEnable();
-			click(singlePage.getContinueAsGuest(), "Contiue as Guest");
-			UIFunctions.addGuestDetails();
-			click(shipping.getContinueShippingMethod(), "Contiue Shipping");
-			click(shipMethod.getProceedToPayment(), "Proceed to Payment");
-			UIFunctions.addCardDetails("TumiTestData", "GuestOrders");
-			UIFunctions.completeOrder();
-	}
-	@Test(priority = 4, description = " Sprint 3- TA-348 Verify Categories on Home page at Tumi Logo")
-	public void VerifyTumiLogoSale(){
-		
-			mouseHover(home.getSalesOptions());
-			click(home.getSalesVoyageurCollection(),"Voyageur collection");
-			click(pgp.getSelectProduct(),"Select Product");
-			mouseHover(pdp.getAddToCart());
-			click(pdp.getAddToCart(), "Add to cart");
-			click(minicart.getProceedCheckOut(), "Proceed to Checkout");
-			click(mainCart.getProceedCart(), "Proceed to Checkout");
-			input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
-			UIFunctions.waitForContinueToEnable();
-			click(singlePage.getContinueAsGuest(), "Contiue as Guest");
-			UIFunctions.addGuestDetails();
-			click(shipping.getContinueShippingMethod(), "Contiue Shipping");
-			click(shipMethod.getProceedToPayment(), "Proceed to Payment");
-			UIFunctions.addCardDetails("TumiTestData", "GuestOrders");
-			UIFunctions.completeOrder();
+	
+@Test(priority = 1, description = " Sprint 3- TA-348 Verify Categories on Home page at Tumi Logo")
+public void VerifyTumiLogo(){
+	if (selectedCountry.contains("Canada")) {
+	
 	}
 }
-	
+}
+			
+
+
+
 
