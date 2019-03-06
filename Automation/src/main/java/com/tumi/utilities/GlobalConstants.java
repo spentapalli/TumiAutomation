@@ -43,6 +43,8 @@ public class GlobalConstants extends Reports {
 
 	// dev US
 	// public static String url = "https://eom-tumi.com:9002/";
+	
+	public static final String BROWSER = retrieveBrowser();
 
 	// Drivers Path
 	public static String chromeWinPath = System.getProperty("user.dir") + "/BrowserDrivers/ChromeDriverWin/chromedriver.exe";
@@ -59,5 +61,16 @@ public class GlobalConstants extends Reports {
 
 	public static String excelPath = System.getProperty("user.dir")+"/TestData/Tumi.xlsx";
 	public static String propertiesPath = System.getProperty("user.dir")+"/Validations/FlagMessages.properties";
+	
+	
+	private static String retrieveBrowser() {
+		
+		String browser = System.getProperty("browsername");
+		
+		if (null == browser || browser.isEmpty()) {
+			browser = "chrome";
+		}
+		return browser;
+	}
 	
 }

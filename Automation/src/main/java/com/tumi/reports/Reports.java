@@ -154,7 +154,8 @@ public class Reports {
 
 	@BeforeMethod(alwaysRun = true)
 	public static void initiateApplication() throws Exception {
-		getBrowser();
+		
+		getBrowser(GlobalConstants.BROWSER);
 		maximizeBrowser();
 
 		if (browserName.equals("ie")) {
@@ -256,11 +257,11 @@ public class Reports {
 	}
 
 	@SuppressWarnings("deprecation")
-	public static void getBrowser() throws Exception {
+	public static void getBrowser(String browserName) throws Exception {
 
 		// logger = report.createTest("Browser Name");
 
-		browserName = System.getProperty("browsername");
+		//browserName = System.getProperty("browsername");
 
 		System.out.println("Parameter " + browserName);
 
