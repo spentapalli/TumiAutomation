@@ -45,8 +45,11 @@ public class GlobalConstants extends Reports {
 	// public static String url = "https://eom-tumi.com:9002/";
 
 	// Drivers Path
-	public static String chromePath = System.getProperty("user.dir") + "/BrowserDrivers/chromedriver.exe";
-	public static String firefoxPath = System.getProperty("user.dir") + "/BrowserDrivers/geckodriver.exe";
+	public static String chromeWinPath = System.getProperty("user.dir") + "/BrowserDrivers/ChromeDriverWin/chromedriver.exe";
+	public static String chromeLinuxPath = System.getProperty("user.dir") + "/BrowserDrivers//ChromeLinux/chromedriver";
+	public static String firefoxWinPath = System.getProperty("user.dir") + "/BrowserDrivers/FirefoxWin/geckodriver.exe";
+	public static String firefoxLinuxPath = System.getProperty("user.dir") + "/BrowserDrivers/FirefoxLinux/geckodriver";
+	
 	public static String iePath = System.getProperty("user.dir") + "/BrowserDrivers/IEDriverServer64/IEDriverServer.exe";
 
 	// Driver System Set Property Syntax

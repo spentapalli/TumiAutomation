@@ -19,6 +19,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
@@ -73,6 +74,8 @@ public class Reports {
 	public static WebDriver driver = null;
 	String timeStamp;
 	String extentReportPath;
+
+	public static String OS = null;
 
 	public static String browser = null;
 	public static Properties prop = null;
@@ -134,7 +137,7 @@ public class Reports {
 		/*
 		 * Device Name: iPhone X,Galaxy S5 Pixel 2
 		 */
-		System.setProperty(GlobalConstants.chrome, GlobalConstants.chromePath);
+		System.setProperty(GlobalConstants.chrome, getChromeDriverPath());
 
 		Map<String, String> emu = new HashMap<String, String>();
 		emu.put("deviceName", name);
@@ -266,7 +269,7 @@ public class Reports {
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("disable-infobars");
 			options.addArguments("--disable-notifications");
-			System.setProperty(GlobalConstants.chrome, GlobalConstants.chromePath);
+			System.setProperty(GlobalConstants.chrome, getChromeDriverPath());
 			driver = new ChromeDriver(options);
 
 			// logger.log(Status.INFO, "Chrome Browser is initiated Execution");
@@ -280,7 +283,7 @@ public class Reports {
 			geoDisabled.setPreference("geo.prompt.testing.allow", false);
 			DesiredCapabilities capabilities = DesiredCapabilities.firefox();
 			capabilities.setCapability(FirefoxDriver.PROFILE, geoDisabled);
-			System.setProperty(GlobalConstants.firefox, GlobalConstants.firefoxPath);
+			System.setProperty(GlobalConstants.firefox, getFirefoxDriverPath());
 			driver = new FirefoxDriver(capabilities);
 			// logger.log(Status.INFO, "Firefox Browser is initiated Execution");
 
@@ -343,6 +346,51 @@ public class Reports {
 		}
 		UIFunctions.verifyVPN();
 		UIFunctions.closeSignUp();
+	}
+
+	public static String getChromeDriverPath() {
+
+		try {
+			OS = System.getProperty("os.name");
+			
+			System.out.println("Current Operating System "+OS);
+			
+			if (OS.contains("Window")) {
+
+				return GlobalConstants.chromeWinPath;
+
+			} else if (OS.contains("linux")) {
+
+				return GlobalConstants.chromeLinuxPath;
+			} else {
+
+				return GlobalConstants.chromeLinuxPath;
+			}
+		} catch (Exception e) {
+			Assert.fail("Unable to get the Chrome File Path");
+		}
+		return OS;
+	}
+
+	public static String getFirefoxDriverPath() {
+
+		try {
+			OS = System.getProperty("os.name");
+			if (OS.contains("Window")) {
+
+				return GlobalConstants.firefoxWinPath;
+
+			} else if (OS.contains("linux")) {
+
+				return GlobalConstants.firefoxLinuxPath;
+			} else {
+
+				return GlobalConstants.firefoxLinuxPath;
+			}
+		} catch (Exception e) {
+			Assert.fail("Unable to get the Firefox File Path");
+		}
+		return OS;
 	}
 
 	public static void getScreen(String path) {
