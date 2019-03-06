@@ -20,10 +20,8 @@ import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
@@ -337,6 +335,9 @@ public class Reports {
 			if (!browserName.equals("ie")) {
 				driver.get(testData.get("stage3"));
 			}
+		}else if (applicationUrl.toLowerCase().equalsIgnoreCase("prod")) {
+			
+			driver.get(testData.get("prod"));
 		}
 		UIFunctions.verifyVPN();
 		UIFunctions.closeSignUp();

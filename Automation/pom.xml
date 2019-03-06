@@ -90,7 +90,7 @@
 						<systemPropertyVariables>
 							<browsername>Chrome</browsername>
 							<countryName>US</countryName>
-							<applicationUrl>stage2</applicationUrl>
+							<applicationUrl>prod</applicationUrl>
 						</systemPropertyVariables>
 						<forkCount>0</forkCount>
 						<executable>C:\Program Files\Java\jdk1.8.0_161\bin\javac.exe</executable>
