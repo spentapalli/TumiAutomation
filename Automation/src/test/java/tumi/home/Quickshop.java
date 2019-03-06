@@ -11,11 +11,11 @@ import com.tumi.utilities.GenericMethods;
 import com.tumi.utilities.UIFunctions;
 
 public class Quickshop extends GenericMethods {
-	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestOrders");
+	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestDetails");
 		@Test
 		public void VerifyQuickShop(){
-			mouseHover(home.getBagOptions());
-			click(home.getBagwheeledBriefCase(),"BagWheeledBriefCase");
+			mouseHover(home.getOptions());
+			click(home.getSubCateogry(),"BagWheeledBriefCase");
 		        click(pgp.getQuickShop(),"QuickShop");
 			   	click(pgp.getQuickShopAddtoCart(),"QuickShop Add to Cart");
 				click(minicart.getProceedCheckOut(), "Proceed to Checkout");

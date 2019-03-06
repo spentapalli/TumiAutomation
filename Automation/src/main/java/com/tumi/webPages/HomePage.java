@@ -489,14 +489,14 @@ public class HomePage extends GenericMethods {
 			@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[4]/a")
 			private WebElement BagOptions;
 
-			public WebElement getBagOptions() {
+			public WebElement getOptions() {
 
 				return BagOptions;
 			}
 			@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[4]/ul/li[1]/ul/li[1]/ul/li/ul/li[2]/a")
 			private WebElement BagwheeledBriefCase;
 
-			public WebElement getBagwheeledBriefCase() {
+			public WebElement getSubCateogry() {
 
 				return BagwheeledBriefCase;
 			}

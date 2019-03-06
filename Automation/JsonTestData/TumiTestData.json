@@ -142,13 +142,33 @@
 	
 	
 	"GuestDeatilsForKorea": {
-		
+		"EmailID": "skomma@coredatalabs.com",
+		"FirstName": "Test",
+		"LastName": "TumiLast",
 		"AddressLine1": "siolute"
+		"AddressLine2": "Add",
+		"TownCity": "ABC",
+		"Region": "ABCD",
+		"PostCode": "16729",
+		"Phone": "021234567"
+		
 	},
 	
 	"TumiLogin":{
 	"EmailID":"skomma@coredatalabs.com",
 	"Password":"tumi1234"
+	},
+	"CreateAccount":{	
+	"EmailID":"Tumi",	
+	"Password":"TumiEcom@123",	
+	"ConfirmPassword":"TumiEcom@123",
+	"FirstName":"Tumi",	
+	"LastName":"Ecom"
+		
+	},
+	"ExistingAccount":{
+	"EmailID":"Tumi1301193945@gmail.com"
+	"Password":"TumiEcom@123"
 	},
 	
 	
@@ -157,6 +177,7 @@
 	},
 	"OutOfStock":{
 	"SKUID":"0494796PST"
+	"KoreaSKUID":"0494796PST"
 	},
 	
 	"VerifyPGPFilters":{
@@ -168,8 +189,10 @@
 	"Environments":{
 	
 		"stage2" : "https://www.hybris-stage2.tumi.com/",
-		"stage3" : "https://www.hybris-stage3.tumi.com/"
+		"stage3" : "https://www.hybris-stage3.tumi.com/",
+		"production":"https://intl.tumi.com/"
 	
 	}
+	
 }
 

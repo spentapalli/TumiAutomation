@@ -148,6 +148,12 @@ private WebElement krAcccreateButton;
 		return krAcccreateButton;
 	}
 	//selecting country
+	
+	@FindBy(how=How.XPATH,using="//i[@id='register.countrySelectBoxItArrow']")
+	private WebElement krSelectcountryArrow;
+	public WebElement getkrAddSelectcountryArrow() {
+		return krSelectcountryArrow;
+	}
 	@FindBy(how=How.XPATH,using="//span[@id='register.countrySelectBoxIt']")
 	private WebElement krSelectcountry;
 	public WebElement getkrAddSelectcountry() {

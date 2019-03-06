@@ -90,7 +90,7 @@ public class OrderWithGiftBox extends GenericMethods {
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(gift.getMakeThisGift(), "Make this Gift");
-		UIFunctions.addGiftMessage("TumiTestData", "GuestOrders");
+		UIFunctions.addGiftMessage("TumiTestData", "VoucherCodeDetails");
 		UIFunctions.addGiftBox();
 		click(gift.getContinueGiftService(), "Continue");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
