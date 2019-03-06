@@ -196,6 +196,7 @@ public class UIFunctions extends GenericMethods {
 		removeExistingCart();
 
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
+		Map<String, String> testData1 = ReadTestData.getJsonData("TumiTestData", "Environments");
 
 		if (selectedCountry.equals("US")) {
 
@@ -203,9 +204,15 @@ public class UIFunctions extends GenericMethods {
 
 				final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("SKUID");
 				driver.get(pdpURL);
-			} else {
+
+			} else if (applicationUrl.equals("stage3")) {
 
 				final String pdpURL = GlobalConstants.S3 + "/p/" + testData.get("SKUID");
+				driver.get(pdpURL);
+
+			} else if (applicationUrl.equals("prod")) {
+				UIFunctions.countrySelection("US");
+				final String pdpURL = testData1.get("prod") + "/p/" + testData.get("SKUID");
 				driver.get(pdpURL);
 			}
 
@@ -483,21 +490,22 @@ public class UIFunctions extends GenericMethods {
 
 	public static void completeOrder() {
 
-		domClick(review.getPlaceOrder(), "Place Order");
+		if (applicationUrl.equals("prod")) {
+			Assert.fail("Scripts are executing in Production");
+		} else {
+			domClick(review.getPlaceOrder(), "Place Order");
+			do {
+				delay(2000);
+			} while (confirmation.getWithForConfirmation().isDisplayed());
+			if (!confirmation.getConfirmOrder().isDisplayed()) {
 
-		do {
-			delay(2000);
-		} while (confirmation.getWithForConfirmation().isDisplayed());
-
-		if (!confirmation.getConfirmOrder().isDisplayed()) {
-
-			Assert.fail("Faile to Place An Order");
+				Assert.fail("Faile to Place An Order");
+			}
+			orderNumber = getText(confirmation.getOrderNumber());
+			logger.log(Status.INFO, "Thank you for Your Order, here is your Order Number " + orderNumber);
+			delay(3000);
+			captureOrderConfScreen("OrderConfirmation");
 		}
-		orderNumber = getText(confirmation.getOrderNumber());
-		logger.log(Status.INFO, "Thank you for Your Order, here is your Order Number " + orderNumber);
-		delay(3000);
-		captureOrderConfScreen("OrderConfirmation");
-
 	}
 
 	public static void addPromotionalCodeAtCart(String sheet, String testCase) {

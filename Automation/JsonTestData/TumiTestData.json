@@ -8,7 +8,7 @@
 		"TownCity": "ABBOTSFORD",
 		"Region": "California",
 		"PostCode": "V4X 1A5",
-		"Phone": "12345678901"
+		"Phone": "12345678901",
 		"ProductName":"Tag"	
 		
 	},
@@ -47,7 +47,7 @@
 	"InstaEmailID":"TumiUS",
 	"InstaPassword":"tumi123",
 	"InvalidInstaEmailID":"TumiUS",
-	"InvalidInstaPassword":"tumi12"
+	"InvalidInstaPassword":"tumi12",
 	"EmailID":"Employee.tumi@gmail.com",
 	"Password":"t1"
 	},
@@ -87,14 +87,13 @@
 	},
 	
 	"FailedOrder": {
-		"SKUID": "014757D"
+		"SKUID": "014757D",
 		"EmailID": "skara@coredatalabs.com",
 		"NameOnCard": "test",
 		"CardNumber": "41111111111111",
 		"CVV": "123",
 		"ExipryMonth": "04",
 		"ExpiryYear": "2020",
-		"EmailID": "skomma@coredatalabs.com",
 		"Phone": "12345678901"
 
 	},
@@ -142,33 +141,13 @@
 	
 	
 	"GuestDeatilsForKorea": {
-		"EmailID": "skomma@coredatalabs.com",
-		"FirstName": "Test",
-		"LastName": "TumiLast",
-		"AddressLine1": "siolute"
-		"AddressLine2": "Add",
-		"TownCity": "ABC",
-		"Region": "ABCD",
-		"PostCode": "16729",
-		"Phone": "021234567"
 		
+		"AddressLine1": "siolute"
 	},
 	
 	"TumiLogin":{
 	"EmailID":"skomma@coredatalabs.com",
 	"Password":"tumi1234"
-	},
-	"CreateAccount":{	
-	"EmailID":"Tumi",	
-	"Password":"TumiEcom@123",	
-	"ConfirmPassword":"TumiEcom@123",
-	"FirstName":"Tumi",	
-	"LastName":"Ecom"
-		
-	},
-	"ExistingAccount":{
-	"EmailID":"Tumi1301193945@gmail.com"
-	"Password":"TumiEcom@123"
 	},
 	
 	
@@ -177,22 +156,21 @@
 	},
 	"OutOfStock":{
 	"SKUID":"0494796PST"
-	"KoreaSKUID":"0494796PST"
 	},
 	
 	"VerifyPGPFilters":{
 	"USurl":"https://www.hybris-stage2.tumi.com",
 	"CAurl":"https://ca.hybris-stage2.tumi.com",
 	"KRurl":"https://kr.hybris-stage2.tumi.com"
+	
 	},
 	
 	"Environments":{
 	
 		"stage2" : "https://www.hybris-stage2.tumi.com/",
 		"stage3" : "https://www.hybris-stage3.tumi.com/",
-		"production":"https://intl.tumi.com/"
+		"prod": "https://www.tumi.com/"
 	
 	}
-	
 }
 

@@ -636,24 +636,29 @@ public class GenericMethods extends GlobalConstants {
 
 	public static void removeExistingCart() {
 		
-		if(!getText(home.getMinicartCount()).contains("0")) {
-		webclick(home.getMinicart(),"Minicart");
 		try {
-			int cart = parseInt(getText(home.getMinicartCount()));
-			if (cart != 0) {
-				delay(2000);
-				click(home.getMinicart(), "Mini Cart");
-				// click(minicart.getProceedCheckOut(), "Proceed to Checkout");
-				for (WebElement ele : checkout.getRemoveMinicartProducts()) {
-					click(checkout.getRemoveProduct(), "Remove Existing Product");
-					delay(5000);
-					// explicitWait(checkout.getremoveMinicart());
+			if(!getText(home.getMinicartCount()).contains("0")) {
+			webclick(home.getMinicart(),"Minicart");
+			try {
+				int cart = parseInt(getText(home.getMinicartCount()));
+				if (cart != 0) {
+					delay(2000);
+					click(home.getMinicart(), "Mini Cart");
+					// click(minicart.getProceedCheckOut(), "Proceed to Checkout");
+					for (WebElement ele : checkout.getRemoveMinicartProducts()) {
+						click(checkout.getRemoveProduct(), "Remove Existing Product");
+						delay(5000);
+						// explicitWait(checkout.getremoveMinicart());
+					}
 				}
-			}
-		} catch (Exception e) {
+			} catch (Exception e) {
 
+				e.printStackTrace();
+			}
+}
+		} catch (Exception e) {
+			
 			e.printStackTrace();
 		}
-	}
 	}
 }
