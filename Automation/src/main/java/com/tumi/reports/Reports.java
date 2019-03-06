@@ -114,7 +114,7 @@ public class Reports {
 		timeStamp = new SimpleDateFormat("dd-MMM-yy  hh.mm.ss aa").format(Calendar.getInstance().getTime());
 		extentReportPath = System.getProperty("user.dir") + "/ExtentReports/TumiReport.html";
 		htmlreport = new ExtentHtmlReporter(extentReportPath);
-		htmlreport.loadXMLConfig(new File(System.getProperty("user.dir") + "\\extent-config.xml"));
+		htmlreport.loadXMLConfig(new File(System.getProperty("user.dir") + "/extent-config.xml"));
 		report = new ExtentReports();
 		report.attachReporter(htmlreport);
 	}
@@ -172,7 +172,7 @@ public class Reports {
 		// driver.navigate().to("https://ca.stg-hybris-akamai.tumi.com");
 	}
 
-//	@AfterMethod(alwaysRun = true)
+	@AfterMethod(alwaysRun = true)
 	public static void closeBrowser() {
 		driver.close();
 	}
