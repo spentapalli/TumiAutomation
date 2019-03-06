@@ -8,7 +8,6 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.tumi.reports.Reports;
 import com.tumi.utilities.GenericMethods;
-import com.tumi.utilities.UIFunctions;
 
 /**
  * @author Shwetha Capo

@@ -103,9 +103,8 @@ public class Reports {
 	public static String selectedCountry = "US";
 	public static String orderNumber = null;
 	public static String browserName = null;
-	public static String applicationUrl =null;
+	public static String applicationUrl = null;
 	public static PGP pgp = null;
-
 
 	@BeforeSuite(alwaysRun = true)
 	public void extentReportConfiguration() {
@@ -317,7 +316,7 @@ public class Reports {
 	 * @param URL
 	 */
 	public static void getURL() {
-		
+
 		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "Environments");
 
 		applicationUrl = System.getProperty("applicationUrl");
@@ -335,9 +334,12 @@ public class Reports {
 			if (!browserName.equals("ie")) {
 				driver.get(testData.get("stage3"));
 			}
-		}else if (applicationUrl.toLowerCase().equalsIgnoreCase("prod")) {
-			
+		} else if (applicationUrl.toLowerCase().equalsIgnoreCase("prod")) {
+
 			driver.get(testData.get("prod"));
+			UIFunctions.verifyVPN();
+			UIFunctions.closeSignUp();
+			UIFunctions.countrySelection("United States");
 		}
 		UIFunctions.verifyVPN();
 		UIFunctions.closeSignUp();
