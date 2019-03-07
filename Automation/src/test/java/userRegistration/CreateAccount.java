@@ -5,6 +5,8 @@ import java.util.Map;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
+
+import com.aventstack.extentreports.Status;
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
 import com.tumi.webPages.CreateAccountPage;
@@ -67,15 +69,26 @@ public class CreateAccount extends GenericMethods {
 		input(register.getRegisterCheckPassword(), testData.get("ConfirmPassword"), "Confirm Password");
 		input(register.getRegisterFName(), testData.get("FirstName"), "First Name");
 		input(register.getRegisterLName(), testData.get("LastName"), "Last Name");
-		if (selectedCountry.equals("Korea")) {
-			click(register.getkrAddSelectcountryArrow(), "Country Selection");
-			selectByVisibleText(register.getkrAddSelectcountry(), testData.get("SelectCountry"), "SelectCountry");
-			
+		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
+			domClick(register.getRegisterSubscribe(), "Activate Promotions");
+			click(register.getSubmitAccount(), "Submit Account Details");
 		}else {
+		
+		click(register.getkrAddSelectcountryArrow(),"Select country");
+		click(register.getKrSelectcountry(),"Option Selected");
+		click(register.getkrSelectyearArrow(),"Select Year");
+		click(register.getKrSelectYear(),"Option Selected");
 		domClick(register.getRegisterSubscribe(), "Activate Promotions");
+		domClick(register.getKrCheckboxprivacy(),"Legal checkbox");
 		click(register.getSubmitAccount(), "Submit Account Details");
+		
+		 if(register.getkrErrorMessage().isDisplayed())
+			logger.log(Status.INFO,"Successfully CreatedAccount ");
+		 driver.close();
+		
 	}
 	}
+	
 	public void SignIn(String data) {
 	click(home.getHeaderSignIn(), "Sign In");
 	input(home.getUserName(), testData1.get("EmailID"), "Email Address");

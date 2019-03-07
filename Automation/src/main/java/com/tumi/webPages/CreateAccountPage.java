@@ -198,6 +198,24 @@ private WebElement krAcccreateButton;
 	public WebElement getKrCheckboxprivacy() {
 		return krCheckboxprivacy;
 	}
+	@FindBy(how=How.XPATH,using="//ul[@id='register.countrySelectBoxItOptions']/li/a")
+	private WebElement krSelectcountryoption;
+	public WebElement getKrSelectcountry() {
+		return krSelectcountryoption;
+	}
+	
+	@FindBy(how=How.XPATH,using="//ul[@id='register.accountDurationySelectBoxItOptions']/li[2]/a")
+	private WebElement krSelectYearoption;
+	public WebElement getKrSelectYear() {
+		return krSelectYearoption;
+		
+	}
+	@FindBy(how=How.XPATH,using="//form[@id='tm-register-form']/div[9]/div")
+	private WebElement krErrorMessage;
+	public WebElement getkrErrorMessage() {
+		return krErrorMessage;
+	
+}
 }
 
 
