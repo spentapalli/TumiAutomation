@@ -198,7 +198,7 @@ public class UIFunctions extends GenericMethods {
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
 		Map<String, String> testData1 = ReadTestData.getJsonData("TumiTestData", "Environments");
 
-		if (selectedCountry.equals("US")||selectedCountry.contains("United States")) {
+		if (selectedCountry.equals("US")||selectedCountry.contains("United States") || selectedCountry.isEmpty()) {
 
 			if (applicationUrl.equals("stage2")) {
 
