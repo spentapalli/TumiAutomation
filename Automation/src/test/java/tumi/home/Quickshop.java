@@ -15,7 +15,7 @@ public class Quickshop extends GenericMethods {
 		@Test
 		public void VerifyQuickShop(){
 			mouseHover(home.getOptions());
-			click(home.getSubCateogry(),"BagWheeledBriefCase");
+			click(home.getSubCateogry(),"Select option");
 		        click(pgp.getQuickShop(),"QuickShop");
 			   	click(pgp.getQuickShopAddtoCart(),"QuickShop Add to Cart");
 				click(minicart.getProceedCheckOut(), "Proceed to Checkout");

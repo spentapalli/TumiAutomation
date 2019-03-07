@@ -115,13 +115,24 @@ public class CreateAccountPage extends GenericMethods {
 
 		return registerCreate;
 	}
+	@FindBy(how = How.XPATH, using = "(//input[@type='submit'])[2]")
+	private WebElement KrsubmitAccount;
 
+	
 	@FindBy(how = How.XPATH, using = "//input[@value='Create Account']")
 	private WebElement submitAccount;
 
 	public WebElement getSubmitAccount() {
+		if (selectedCountry.contains("US")||
+				selectedCountry.contains("Canada")) {
+	
+			
+				return submitAccount;
+				
+			} else {
 
-		return submitAccount;
+				return KrsubmitAccount;
+			}
 	}
 	
 	@FindBy(how = How.XPATH, using = "//div[@id='tm-panel-register-confirmation']/header/p")
@@ -163,6 +174,12 @@ private WebElement krAcccreateButton;
 	private WebElement krselectyear;
 	public WebElement getkrSelectyear() {
 		return  krselectyear;
+	}
+		@FindBy(how=How.XPATH,using="//i[@id='register.accountDurationySelectBoxItArrow']")
+		private WebElement krselectyearArrow;
+		public WebElement getkrSelectyearArrow() {
+			return  krselectyearArrow;
+		
 	}
 	@FindBy(how=How.XPATH,using="//div[@id='tm-panel-register']/div[2]/a")
 	private WebElement krLogin;

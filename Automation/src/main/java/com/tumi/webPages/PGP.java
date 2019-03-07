@@ -51,7 +51,7 @@ public class PGP extends GenericMethods {
 		return carryOnLuggageInWomen;
 	}
 
-	@FindBy(how = How.XPATH, using = "//div[@id='grid-container']/div[1]/div[2]/div[3]/div[2]/a/span/div[1]")
+	@FindBy(how = How.XPATH, using = "//div[@id='grid-container']/div[1]/div[2]/div[2]/div[2]/a/span/div[2]")
 	private WebElement SelectProduct;
 
 	public WebElement getSelectProduct() {
@@ -251,6 +251,12 @@ public class PGP extends GenericMethods {
 
 	public WebElement getMonoCount() {
 		return monoCount;
+	}
+	@FindBy(how = How.XPATH, using = "//div[@id='breadcrumb']/ul")
+	private WebElement BreadCrumb;
+
+	public WebElement getBreadCrumb() {
+		return BreadCrumb;
 	}
 
 

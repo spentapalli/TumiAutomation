@@ -124,15 +124,14 @@ public class HomePage extends GenericMethods {
 
 	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Location')]")
 	private WebElement selectCountry;
-	
+
 	@FindBy(how = How.XPATH, using = "//div[contains(@class,'header-country')]")
 	private WebElement krselectCountry;
-	
 
 	public WebElement getSelectCountry() {
 		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
-		return selectCountry;
-		}else {
+			return selectCountry;
+		} else {
 			return krselectCountry;
 		}
 	}
@@ -144,17 +143,17 @@ public class HomePage extends GenericMethods {
 
 		return explicitWait(selectCountryUS);
 	}
-	
+
 	@FindBy(how = How.XPATH, using = "(//a[contains(text(),'United States')])[1]")
 	private WebElement selectCountryUSforTop;
-	
+
 	@FindBy(how = How.XPATH, using = "(//div[contains(@class,'north-america')]/ul/li[2]/a)[1]")
 	private WebElement krselectCountryUSforTop;
 
 	public WebElement getSelectCountryUSforTop() {
 		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
-		return explicitWait(selectCountryUSforTop);
-		}else {
+			return explicitWait(selectCountryUSforTop);
+		} else {
 			return explicitWait(krselectCountryUSforTop);
 		}
 	}
@@ -234,8 +233,7 @@ public class HomePage extends GenericMethods {
 	private WebElement headerFindStore;
 
 	public WebElement getHeaderFindStore() {
-		if (selectedCountry.contains("US")||
-				selectedCountry.contains("Canada")) {
+		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
 			return headerFindStore;
 		} else {
 
@@ -252,10 +250,9 @@ public class HomePage extends GenericMethods {
 
 	public WebElement getHeaderCustomerService() {
 
-		if (selectedCountry.contains("US")||
-				selectedCountry.contains("Canada")) {
+		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
 			return headerCustomerService;
-			
+
 		} else {
 
 			return explicitWait(krheaderCustomerService);
@@ -364,8 +361,7 @@ public class HomePage extends GenericMethods {
 	private WebElement invalidCredentials;
 
 	public WebElement getInvalidCredentialsError() {
-		if (selectedCountry.contains("US")||
-				selectedCountry.contains("Canada")) {
+		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
 			return explicitWait(invalidCredentials);
 		} else {
 
@@ -378,8 +374,7 @@ public class HomePage extends GenericMethods {
 
 	public WebElement getCloseMyAccount() {
 		return closeMyAccount;
-	}//div[@id='tm-panel-login']/header/a
-	
+	}// div[@id='tm-panel-login']/header/a
 
 	@FindBy(how = How.XPATH, using = "//div[@id='tm-panel-login']/header/a")
 	private WebElement closeMyAccountBefore;
@@ -462,102 +457,110 @@ public class HomePage extends GenericMethods {
 
 		return mobileCountry;
 	}
-	//home page TUMI logo
-		@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[2]")
-		private WebElement LuggageOption;
+
+	// home page TUMI logo
+	@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[2]")
+	private WebElement LuggageOption;
 
 	public WebElement getLuggageOption() {
 
-			return LuggageOption;
-		}
-
-		
-			@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[3]")
-			private WebElement BackPackOption;
-
-			public WebElement getBackPackOption() {
-
-				return BackPackOption;
-			}
-			@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[3]/ul/li[1]/ul/li[1]/ul/li/ul/li[3]/a")
-			private WebElement BackPackTestBridgewater;
-
-			public WebElement getBackPackTestBridgewater() {
-
-				return BackPackTestBridgewater;
-			}
-			@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[4]/a")
-			private WebElement BagOptions;
-
-			public WebElement getOptions() {
-
-				return BagOptions;
-			}
-			@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[4]/ul/li[1]/ul/li[1]/ul/li/ul/li[2]/a")
-			private WebElement BagwheeledBriefCase;
-
-			public WebElement getSubCateogry() {
-
-				return BagwheeledBriefCase;
-			}
-			
-			@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[5]")
-			private WebElement AccessoriesOptions;
-
-			public WebElement getAccessoriesOptions() {
-
-				return AccessoriesOptions;
-			}
-			@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[5]/ul/li[1]/ul/li[1]/ul/li[1]/ul/li[6]/a")
-			private WebElement AccessoriesKeyFobs;
-
-			public WebElement getAccessoriesKeyFobs() {
-
-				return AccessoriesKeyFobs;
-			}
-			
-			@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[6]")
-			private WebElement CollectionsOptions;
-
-			public WebElement getCollectionsOptions() {
-
-				return CollectionsOptions;
-			}
-			@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[7]")
-			private WebElement GiftIdeasOptions;
-
-			public WebElement getGiftIdeasOptions() {
-
-				return GiftIdeasOptions;
-			}
-			
-			@FindBy(how = How.XPATH, using = "(//a[contains(text(),'Sale')])[1]")
-			private WebElement SalesOptions;
-
-			public WebElement getSalesOptions() {
-
-				return SalesOptions;
-			}
-			@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[9]/ul/li[1]/ul/li[1]/ul/li/ul/li[1]/a")
-			private WebElement SalesVoyageurCollection;
-
-			public WebElement getSalesVoyageurCollection() {
-			
-				return SalesVoyageurCollection;
-			}
-				@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']")
-				private List<WebElement> CategoriesSelection;
-
-				public List<WebElement> getCategoriesSelection() {
-
-					return CategoriesSelection; 
+		return LuggageOption;
 	}
-				@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[2]/ul/li[1]/ul/li[1]/ul/li[1]/ul")
-				private List<WebElement> SubCategoriesSelection;
 
-				public List<WebElement> SubgetCategoriesSelection() {
+	@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[3]")
+	private WebElement BackPackOption;
 
-					return SubCategoriesSelection; 
-				
-			}
+	public WebElement getBackPackOption() {
+
+		return BackPackOption;
+	}
+
+	@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[3]/ul/li[1]/ul/li[1]/ul/li/ul/li[3]/a")
+	private WebElement BackPackTestBridgewater;
+
+	public WebElement getBackPackTestBridgewater() {
+
+		return BackPackTestBridgewater;
+	}
+
+	@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[4]/a")
+	private WebElement BagOptions;
+
+	public WebElement getOptions() {
+
+		return BagOptions;
+	}
+
+	@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[4]/ul/li[1]/ul/li[1]/ul/li/ul/li[2]/a")
+	private WebElement BagwheeledBriefCase;
+
+	public WebElement getSubCateogry() {
+
+		return BagwheeledBriefCase;
+	}
+
+	@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[5]")
+	private WebElement AccessoriesOptions;
+
+	public WebElement getAccessoriesOptions() {
+
+		return AccessoriesOptions;
+	}
+
+	@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[5]/ul/li[1]/ul/li[1]/ul/li[1]/ul/li[6]/a")
+	private WebElement AccessoriesKeyFobs;
+
+	public WebElement getAccessoriesKeyFobs() {
+
+		return AccessoriesKeyFobs;
+	}
+
+	@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[6]")
+	private WebElement CollectionsOptions;
+
+	public WebElement getCollectionsOptions() {
+
+		return CollectionsOptions;
+	}
+
+	@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[7]")
+	private WebElement GiftIdeasOptions;
+
+	public WebElement getGiftIdeasOptions() {
+
+		return GiftIdeasOptions;
+	}
+
+	@FindBy(how = How.XPATH, using = "(//a[contains(text(),'Sale')])[1]")
+	private WebElement SalesOptions;
+
+	public WebElement getSalesOptions() {
+
+		return SalesOptions;
+	}
+
+	@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[9]/ul/li[1]/ul/li[1]/ul/li/ul/li[1]/a")
+	private WebElement SalesVoyageurCollection;
+
+	public WebElement getSalesVoyageurCollection() {
+
+		return SalesVoyageurCollection;
+	}
+
+	@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']")
+	private List<WebElement> CategoriesSelection;
+
+	public List<WebElement> getCategoriesSelection() {
+
+		return CategoriesSelection;
+	}
+
+	@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li[2]/ul/li[1]/ul/li[1]/ul/li[1]/ul")
+	private List<WebElement> SubCategoriesSelection;
+
+	public List<WebElement> SubgetCategoriesSelection() {
+
+		return SubCategoriesSelection;
+
+	}
 }
