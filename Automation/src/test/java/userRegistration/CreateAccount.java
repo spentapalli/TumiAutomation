@@ -2,22 +2,27 @@ package userRegistration;
 
 import java.util.Map;
 
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
+import com.tumi.webPages.CreateAccountPage;
 
 public class CreateAccount extends GenericMethods {
 
-	public Map<String, String> testData = ReadTestData.retrieveData("Registration", "NewRegistration");
-	public Map<String, String> testData1 = ReadTestData.retrieveData("Registration", "ExistingAccount");
+	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "CreateAccount");
+	Map<String, String> testData1 = ReadTestData.getJsonData("TumiTestData", "ExistingAccount");
+	
 
-	@Test(priority = 0)
+@Test(priority = 0)
 	public void newUserRegistration() {
-		userAccount(testData.get("EmailID") + randomNumber() + "@gmai.com");
+		userAccount(testData.get("EmailID") + randomNumber() + "@gmail.com");
 		verifyAssertEquals(getText(register.getRegisterConfirm()), getProperty("registration.success"));
 		click(login.getLogOut(), "Sign Out");
 	}
-
+ 
+	
 	@Test(priority = 1, dependsOnMethods = "newUserRegistration")
 	public void existingAccount() {
 
@@ -25,8 +30,15 @@ public class CreateAccount extends GenericMethods {
 		verifyAssertContains(getText(register.getRegisterError()), getProperty("registration.duplicate"), "D");
 		click(login.getCloseWindow(), "Close Window");
 	}
+	 @Test(priority = 2)
+	  public void userLogin() {
+		  SignIn(testData1.get("EmailID"));
+		  //input(home.getUserName(), testData1.get("EmailID"), "Email Address");
+		 // input(home.getPassWord(), testData1.get("Password"), "Password");
+			//click(home.getLogOn(), "Login");
+	}
 
-	@Test(priority = 2)
+	@Test(priority = 3)
 	public void registrationValidations() {
 
 		click(home.getHeaderSignIn(), "Sign In");
@@ -55,8 +67,25 @@ public class CreateAccount extends GenericMethods {
 		input(register.getRegisterCheckPassword(), testData.get("ConfirmPassword"), "Confirm Password");
 		input(register.getRegisterFName(), testData.get("FirstName"), "First Name");
 		input(register.getRegisterLName(), testData.get("LastName"), "Last Name");
+		if (selectedCountry.equals("Korea")) {
+			click(register.getkrAddSelectcountryArrow(), "Country Selection");
+			selectByVisibleText(register.getkrAddSelectcountry(), testData.get("SelectCountry"), "SelectCountry");
+			
+		}else {
 		domClick(register.getRegisterSubscribe(), "Activate Promotions");
 		click(register.getSubmitAccount(), "Submit Account Details");
 	}
+	}
+	public void SignIn(String data) {
+	click(home.getHeaderSignIn(), "Sign In");
+	input(home.getUserName(), testData1.get("EmailID"), "Email Address");
+	input(home.getPassWord(), testData1.get("Password"), "Password");
+	click(home.getLogOn(), "Login");
+	click(home.getCloseMyAccount(),"close Account");
+		
+	}
 
-}
+	}
+
+
+

@@ -150,6 +150,17 @@
 	"Password":"tumi1234"
 	},
 	
+	"CreateAccount":{	
+	"EmailID":"Tumi",	
+	"Password":"TumiEcom@123456789",	
+	"ConfirmPassword":"TumiEcom@123456789",
+	"FirstName":"Tumi",	
+	"LastName":"Ecom"
+	},
+	"ExistingAccount":{
+	"EmailID":"Tumi1301193945@gmail.com"
+	"Password":"TumiEcom@123"
+	},
 	
 	"TumiStudio":{
 	"SKUID":"0117474T999"

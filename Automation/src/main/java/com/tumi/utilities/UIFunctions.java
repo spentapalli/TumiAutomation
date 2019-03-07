@@ -260,17 +260,17 @@ public class UIFunctions extends GenericMethods {
 
 			if (applicationUrl.equals("stage2")) {
 
-				final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("SKUID");
+				final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("NoramlSKUID");
 				driver.get(pdpURL);
 			} else {
 
-				final String pdpURL = GlobalConstants.S3 + "/p/" + testData.get("SKUID");
+				final String pdpURL = GlobalConstants.S3 + "/p/" + testData.get("NoramlSKUID");
 				driver.get(pdpURL);
 			}
 
 		} else if (selectedCountry.contains("Canada")) {
 
-			final String pdpURL = GlobalConstants.urlca + "/p/" + testData.get("SKUID");
+			final String pdpURL = GlobalConstants.urlca + "/p/" + testData.get("NoramlSKUID");
 			driver.get(pdpURL);
 
 		} else {
@@ -476,7 +476,7 @@ public class UIFunctions extends GenericMethods {
 				input(shipping.getPhoneNumber(), testData.get("Phone"), "Phone Number");
 			} else {
 
-				Map<String, String> korea = ReadTestData.getJsonData("TumiTestData", "GuestDetails");
+				Map<String, String> korea = ReadTestData.getJsonData("TumiTestData", "GuestDeatilsForKorea");
 
 				input(shipping.getFirstName(), korea.get("FirstName"), "First Name");
 				input(shipping.getLastName(), korea.get("LastName"), "Last Name");
