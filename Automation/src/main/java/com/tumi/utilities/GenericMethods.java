@@ -1,9 +1,5 @@
 package com.tumi.utilities;
 
-import java.awt.Rectangle;
-import java.awt.Robot;
-import java.awt.Toolkit;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -17,8 +13,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Properties;
-
-import javax.imageio.ImageIO;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -36,10 +30,6 @@ import org.testng.asserts.SoftAssert;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.tumi.dataProvider.ReadTestData;
-
-import ru.yandex.qatools.ashot.AShot;
-import ru.yandex.qatools.ashot.Screenshot;
-import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
 
 /**
  * @author Suuresh
@@ -646,24 +636,29 @@ public class GenericMethods extends GlobalConstants {
 
 	public static void removeExistingCart() {
 		
-		if(!getText(home.getMinicartCount()).contains("0")) {
-		webclick(home.getMinicart(),"Minicart");
 		try {
-			int cart = parseInt(getText(home.getMinicartCount()));
-			if (cart != 0) {
-				delay(2000);
-				click(home.getMinicart(), "Mini Cart");
-				// click(minicart.getProceedCheckOut(), "Proceed to Checkout");
-				for (WebElement ele : checkout.getRemoveMinicartProducts()) {
-					click(checkout.getRemoveProduct(), "Remove Existing Product");
-					delay(5000);
-					// explicitWait(checkout.getremoveMinicart());
+			if(!getText(home.getMinicartCount()).contains("0")) {
+			webclick(home.getMinicart(),"Minicart");
+			try {
+				int cart = parseInt(getText(home.getMinicartCount()));
+				if (cart != 0) {
+					delay(2000);
+					click(home.getMinicart(), "Mini Cart");
+					// click(minicart.getProceedCheckOut(), "Proceed to Checkout");
+					for (WebElement ele : checkout.getRemoveMinicartProducts()) {
+						click(checkout.getRemoveProduct(), "Remove Existing Product");
+						delay(5000);
+						// explicitWait(checkout.getremoveMinicart());
+					}
 				}
-			}
-		} catch (Exception e) {
+			} catch (Exception e) {
 
+				e.printStackTrace();
+			}
+}
+		} catch (Exception e) {
+			
 			e.printStackTrace();
 		}
-	}
 	}
 }

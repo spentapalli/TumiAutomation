@@ -90,7 +90,7 @@ public class OrderWithGiftBox extends GenericMethods {
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(gift.getMakeThisGift(), "Make this Gift");
-		UIFunctions.addGiftMessage("TumiTestData", "GuestOrders");
+		UIFunctions.addGiftMessage("TumiTestData", "VoucherCodeDetails");
 		UIFunctions.addGiftBox();
 		click(gift.getContinueGiftService(), "Continue");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
@@ -130,7 +130,7 @@ public class OrderWithGiftBox extends GenericMethods {
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Cart");
 		click(gift.getMakeThisGift(), "Make this Gift");
-		UIFunctions.addGiftMessage("TumiTestData", "PreOrderProduct");
+		UIFunctions.addGiftMessage("TumiTestData", "VoucherCodeDetails");
 		UIFunctions.addGiftBox();
 		click(gift.getContinueGiftService(), "Continue");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
@@ -151,7 +151,7 @@ public class OrderWithGiftBox extends GenericMethods {
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(gift.getMakeThisGift(), "Make this Gift");
-		UIFunctions.addGiftMessage("TumiTestData", "PreOrderProduct");
+		UIFunctions.addGiftMessage("TumiTestData", "VoucherCodeDetails");
 		UIFunctions.addGiftBox();
 		click(gift.getContinueGiftService(), "Continue");
 		// UIFunctions.addPromotionalCodeAtCart("TumiTestData", "PreOrderProduct");
@@ -174,7 +174,7 @@ public class OrderWithGiftBox extends GenericMethods {
 		click(pdp.getAddToCart(), "Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(gift.getMakeThisGift(), "Make this Gift");
-		UIFunctions.addGiftMessage("TumiTestData", "BackOrderProduct");
+		UIFunctions.addGiftMessage("TumiTestData", "VoucherCodeDetails");
 		UIFunctions.addGiftBox();
 		click(gift.getContinueGiftService(), "Continue");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");

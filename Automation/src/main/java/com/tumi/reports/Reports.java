@@ -19,11 +19,10 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.Assert;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
@@ -76,6 +75,8 @@ public class Reports {
 	String timeStamp;
 	String extentReportPath;
 
+	public static String OS = null;
+
 	public static String browser = null;
 	public static Properties prop = null;
 	public static HomePage home = null;
@@ -105,16 +106,15 @@ public class Reports {
 	public static String selectedCountry = "US";
 	public static String orderNumber = null;
 	public static String browserName = null;
-	public static String applicationUrl =null;
+	public static String applicationUrl = null;
 	public static PGP pgp = null;
-
 
 	@BeforeSuite(alwaysRun = true)
 	public void extentReportConfiguration() {
 		timeStamp = new SimpleDateFormat("dd-MMM-yy  hh.mm.ss aa").format(Calendar.getInstance().getTime());
 		extentReportPath = System.getProperty("user.dir") + "/ExtentReports/TumiReport.html";
 		htmlreport = new ExtentHtmlReporter(extentReportPath);
-		htmlreport.loadXMLConfig(new File(System.getProperty("user.dir") + "\\extent-config.xml"));
+		htmlreport.loadXMLConfig(new File(System.getProperty("user.dir") + "/extent-config.xml"));
 		report = new ExtentReports();
 		report.attachReporter(htmlreport);
 	}
@@ -137,7 +137,7 @@ public class Reports {
 		/*
 		 * Device Name: iPhone X,Galaxy S5 Pixel 2
 		 */
-		System.setProperty(GlobalConstants.chrome, GlobalConstants.chromePath);
+		System.setProperty(GlobalConstants.chrome, getChromeDriverPath());
 
 		Map<String, String> emu = new HashMap<String, String>();
 		emu.put("deviceName", name);
@@ -154,7 +154,8 @@ public class Reports {
 
 	@BeforeMethod(alwaysRun = true)
 	public static void initiateApplication() throws Exception {
-		getBrowser();
+		
+		getBrowser(GlobalConstants.BROWSER);
 		maximizeBrowser();
 
 		if (browserName.equals("ie")) {
@@ -171,7 +172,7 @@ public class Reports {
 		// driver.navigate().to("https://ca.stg-hybris-akamai.tumi.com");
 	}
 
-//	@AfterMethod(alwaysRun = true)
+	@AfterMethod(alwaysRun = true)
 	public static void closeBrowser() {
 		driver.close();
 	}
@@ -256,11 +257,9 @@ public class Reports {
 	}
 
 	@SuppressWarnings("deprecation")
-	public static void getBrowser() throws Exception {
+	public static void getBrowser(String browser) throws Exception {
 
-		// logger = report.createTest("Browser Name");
-
-		browserName = System.getProperty("browsername");
+		browserName = browser;
 
 		System.out.println("Parameter " + browserName);
 
@@ -269,7 +268,7 @@ public class Reports {
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("disable-infobars");
 			options.addArguments("--disable-notifications");
-			System.setProperty(GlobalConstants.chrome, GlobalConstants.chromePath);
+			System.setProperty(GlobalConstants.chrome, getChromeDriverPath());
 			driver = new ChromeDriver(options);
 
 			// logger.log(Status.INFO, "Chrome Browser is initiated Execution");
@@ -283,7 +282,7 @@ public class Reports {
 			geoDisabled.setPreference("geo.prompt.testing.allow", false);
 			DesiredCapabilities capabilities = DesiredCapabilities.firefox();
 			capabilities.setCapability(FirefoxDriver.PROFILE, geoDisabled);
-			System.setProperty(GlobalConstants.firefox, GlobalConstants.firefoxPath);
+			System.setProperty(GlobalConstants.firefox, getFirefoxDriverPath());
 			driver = new FirefoxDriver(capabilities);
 			// logger.log(Status.INFO, "Firefox Browser is initiated Execution");
 
@@ -319,7 +318,7 @@ public class Reports {
 	 * @param URL
 	 */
 	public static void getURL() {
-		
+
 		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "Environments");
 
 		applicationUrl = System.getProperty("applicationUrl");
@@ -337,9 +336,60 @@ public class Reports {
 			if (!browserName.equals("ie")) {
 				driver.get(testData.get("stage3"));
 			}
+		} else if (applicationUrl.toLowerCase().equalsIgnoreCase("prod")) {
+
+			driver.get(testData.get("prod"));
+			UIFunctions.verifyVPN();
+			UIFunctions.closeSignUp();
+			UIFunctions.countrySelection("United States");
 		}
 		UIFunctions.verifyVPN();
 		UIFunctions.closeSignUp();
+	}
+
+	public static String getChromeDriverPath() {
+
+		try {
+			OS = System.getProperty("os.name");
+			
+			System.out.println("Current Operating System "+OS);
+			
+			if (OS.contains("Window")) {
+
+				return GlobalConstants.chromeWinPath;
+
+			} else if (OS.contains("linux")) {
+
+				return GlobalConstants.chromeLinuxPath;
+			} else {
+
+				return GlobalConstants.chromeLinuxPath;
+			}
+		} catch (Exception e) {
+			Assert.fail("Unable to get the Chrome File Path");
+		}
+		return OS;
+	}
+
+	public static String getFirefoxDriverPath() {
+
+		try {
+			OS = System.getProperty("os.name");
+			if (OS.contains("Window")) {
+
+				return GlobalConstants.firefoxWinPath;
+
+			} else if (OS.contains("linux")) {
+
+				return GlobalConstants.firefoxLinuxPath;
+			} else {
+
+				return GlobalConstants.firefoxLinuxPath;
+			}
+		} catch (Exception e) {
+			Assert.fail("Unable to get the Firefox File Path");
+		}
+		return OS;
 	}
 
 	public static void getScreen(String path) {

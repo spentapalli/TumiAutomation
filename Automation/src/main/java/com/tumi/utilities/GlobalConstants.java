@@ -43,10 +43,15 @@ public class GlobalConstants extends Reports {
 
 	// dev US
 	// public static String url = "https://eom-tumi.com:9002/";
+	
+	public static final String BROWSER = retrieveBrowser();
 
 	// Drivers Path
-	public static String chromePath = System.getProperty("user.dir") + "/BrowserDrivers/chromedriver.exe";
-	public static String firefoxPath = System.getProperty("user.dir") + "/BrowserDrivers/geckodriver.exe";
+	public static String chromeWinPath = System.getProperty("user.dir") + "/BrowserDrivers/ChromeDriverWin/chromedriver.exe";
+	public static String chromeLinuxPath = System.getProperty("user.dir") + "/BrowserDrivers//ChromeLinux/chromedriver";
+	public static String firefoxWinPath = System.getProperty("user.dir") + "/BrowserDrivers/FirefoxWin/geckodriver.exe";
+	public static String firefoxLinuxPath = System.getProperty("user.dir") + "/BrowserDrivers/FirefoxLinux/geckodriver";
+	
 	public static String iePath = System.getProperty("user.dir") + "/BrowserDrivers/IEDriverServer64/IEDriverServer.exe";
 
 	// Driver System Set Property Syntax
@@ -56,5 +61,16 @@ public class GlobalConstants extends Reports {
 
 	public static String excelPath = System.getProperty("user.dir")+"/TestData/Tumi.xlsx";
 	public static String propertiesPath = System.getProperty("user.dir")+"/Validations/FlagMessages.properties";
+	
+	
+	private static String retrieveBrowser() {
+		
+		String browser = System.getProperty("browsername");
+		
+		if (null == browser || browser.isEmpty()) {
+			browser = "chrome";
+		}
+		return browser;
+	}
 	
 }
