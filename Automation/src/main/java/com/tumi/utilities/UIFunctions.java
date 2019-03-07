@@ -214,6 +214,7 @@ public class UIFunctions extends GenericMethods {
 				
 				final String pdpURL = testData1.get("prod") + "/p/" + testData.get("SKUID");
 				driver.get(pdpURL);
+				UIFunctions.closeSignUp();
 			}
 
 		} else if (selectedCountry.contains("Canada")) {
@@ -747,7 +748,7 @@ public class UIFunctions extends GenericMethods {
 
 	public static void addMultiship() {
 
-		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestDetails");
+		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "OrderWithTwoProducts");
 		click(multiShip.getMultiShipClick(), "MultiShipment");
 		// delay(2000);
 		domClick(multiShip.getAddShippment0(), "add shipment 1");
@@ -773,7 +774,7 @@ public class UIFunctions extends GenericMethods {
 
 	public static void addMultishipForRegistered() {
 
-		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestDetails");
+		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "OrderWithTwoProducts");
 		click(multiShip.getMultiShipClick(), "MultiShipment");
 		delay(2000);
 		domClick(multiShip.getAddShippment0(), "add shipment 1");
