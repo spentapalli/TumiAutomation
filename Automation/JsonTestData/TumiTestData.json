@@ -155,10 +155,12 @@
 	"Password":"TumiEcom@123456789",	
 	"ConfirmPassword":"TumiEcom@123456789",
 	"FirstName":"Tumi",	
-	"LastName":"Ecom"
+	"LastName":"Ecom",
+	"SelectCountry":"Republic of Korea",
+	"Selectyear":"3Years"
 	},
 	"ExistingAccount":{
-	"EmailID":"Tumi1301193945@gmail.com"
+	"EmailID":"Tumi1301193945@gmail.com",
 	"Password":"TumiEcom@123"
 	},
 	
@@ -166,7 +168,8 @@
 	"SKUID":"0117474T999"
 	},
 	"OutOfStock":{
-	"SKUID":"0494796PST"
+	"SKUID":"0494796PST",
+	"KoreaSKUID":"0494796PST"
 	},
 	
 	"VerifyPGPFilters":{
