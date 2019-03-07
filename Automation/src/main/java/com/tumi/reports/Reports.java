@@ -112,7 +112,7 @@ public class Reports {
 	@BeforeSuite(alwaysRun = true)
 	public void extentReportConfiguration() {
 		timeStamp = new SimpleDateFormat("dd-MMM-yy  hh.mm.ss aa").format(Calendar.getInstance().getTime());
-		extentReportPath = System.getProperty("user.dir") + "/ExtentReports/TumiReport.html";
+		extentReportPath = System.getProperty("user.dir") + "/ExtentReports/Screenshots/TumiReport.html";
 		htmlreport = new ExtentHtmlReporter(extentReportPath);
 		htmlreport.loadXMLConfig(new File(System.getProperty("user.dir") + "/extent-config.xml"));
 		report = new ExtentReports();
@@ -236,6 +236,9 @@ public class Reports {
 			File files = new File(System.getProperty("user.dir") + "/ExtentReports/Screenshots/");
 			for (File file : files.listFiles()) {
 				if (!file.isDirectory()) {
+					if (file.getName().contains("TumiReport.html")) {
+						continue;
+					}
 					file.delete();
 				}
 			}
