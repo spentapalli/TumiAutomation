@@ -257,11 +257,9 @@ public class Reports {
 	}
 
 	@SuppressWarnings("deprecation")
-	public static void getBrowser(String browserName) throws Exception {
+	public static void getBrowser(String browser) throws Exception {
 
-		// logger = report.createTest("Browser Name");
-
-		//browserName = System.getProperty("browsername");
+		browserName = browser;
 
 		System.out.println("Parameter " + browserName);
 
