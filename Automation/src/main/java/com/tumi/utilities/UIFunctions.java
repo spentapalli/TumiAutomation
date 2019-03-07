@@ -198,7 +198,7 @@ public class UIFunctions extends GenericMethods {
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
 		Map<String, String> testData1 = ReadTestData.getJsonData("TumiTestData", "Environments");
 
-		if (selectedCountry.equals("US")) {
+		if (selectedCountry.equals("US")||selectedCountry.contains("United States")) {
 
 			if (applicationUrl.equals("stage2")) {
 
@@ -211,7 +211,7 @@ public class UIFunctions extends GenericMethods {
 				driver.get(pdpURL);
 
 			} else if (applicationUrl.equals("prod")) {
-				UIFunctions.countrySelection("US");
+				
 				final String pdpURL = testData1.get("prod") + "/p/" + testData.get("SKUID");
 				driver.get(pdpURL);
 			}
