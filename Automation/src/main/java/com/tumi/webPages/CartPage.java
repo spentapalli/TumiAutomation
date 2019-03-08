@@ -10,6 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.tumi.reports.Reports;
 import com.tumi.utilities.GenericMethods;
+import com.tumi.utilities.UIFunctions;
 
 public class CartPage extends GenericMethods {
 
@@ -61,8 +62,10 @@ public class CartPage extends GenericMethods {
 	public WebElement getProceedCart() {
 		if (selectedCountry.contains("US")||
 				selectedCountry.contains("Canada")) {
+			UIFunctions.delay(2000);
 			return explicitWait(proceedToCheckout);
 		} else {
+			UIFunctions.delay(2000);
 			return explicitWait(krProceedtoCart);
 		}
 

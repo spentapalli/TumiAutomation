@@ -25,7 +25,7 @@ public class CompareProducts extends GenericMethods {
 
 			WebElement ele = driver
 					.findElement(By.xpath("//div[@lmzone='subCategoryPage']/div[2]/div[" + i + "]/div[4]/a"));
-			ele.click();
+				ele.click();
 			if (i == 4) {
 				if (getText(pdp.getGlobalMessage()).equals(getProperty("compareproducts.error"))) {
 					logger.log(Status.PASS, "You Cannot Compare Morethan 3 Products");
@@ -46,7 +46,7 @@ public class CompareProducts extends GenericMethods {
 		}
 		driver.switchTo().window(parent);
 		System.out.println("");
-
+/////////////////
 	}
 
 }

@@ -85,19 +85,19 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-surefire-plugin</artifactId>
-					<version>2.19.1</version>
+					<version>2.22.1</version>
 					<configuration>
 						<systemPropertyVariables>
 							<browsername>Chrome</browsername>
 							<countryName>US</countryName>
-							<applicationUrl>prod</applicationUrl>
+							<applicationUrl>stage2</applicationUrl>
 						</systemPropertyVariables>
 						<forkCount>0</forkCount>
 						<executable>C:\Program Files\Java\jdk1.8.0_161\bin\javac.exe</executable>
 						<suiteXmlFiles>
-							<suiteXmlFile>sprint1.xml</suiteXmlFile>
-							<suiteXmlFile>sprint2.xml</suiteXmlFile>
-							<suiteXmlFile>RegGiftServices.xml</suiteXmlFile>	
+							<!-- <suiteXmlFile>./SuiteFiles/sprint1.xml</suiteXmlFile>
+							<suiteXmlFile>./SuiteFiles/sprint2.xml</suiteXmlFile> -->
+							<suiteXmlFile>./SuiteFiles/RegGiftServices.xml</suiteXmlFile>	
 						</suiteXmlFiles>
 					</configuration>
 				</plugin>

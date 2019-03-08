@@ -28,6 +28,7 @@ public class PGPFilters extends GenericMethods {
 		goToPGP();
 
 		List<WebElement> colorsList = pgp.getColorsList();
+		
 		List<String> attList = new ArrayList<String>();
 		String attr = null;
 		for (WebElement webElement : colorsList) {
