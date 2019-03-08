@@ -255,27 +255,34 @@ public class UIFunctions extends GenericMethods {
 
 	public static void addToCart(String sheet, String testCase) {
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
+		Map<String, String> testData1 = ReadTestData.getJsonData("TumiTestData", "Environments");
 
-		if (selectedCountry.equals("US")) {
+		if (selectedCountry.equals("US")||selectedCountry.contains("United States") || selectedCountry.isEmpty()) {
 
 			if (applicationUrl.equals("stage2")) {
 
-				final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("NoramlSKUID");
+				final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("SKUID");
 				driver.get(pdpURL);
-			} else {
 
-				final String pdpURL = GlobalConstants.S3 + "/p/" + testData.get("NoramlSKUID");
+			} else if (applicationUrl.equals("stage3")) {
+
+				final String pdpURL = GlobalConstants.S3 + "/p/" + testData.get("SKUID");
+				driver.get(pdpURL);
+
+			} else if (applicationUrl.equals("prod")) {
+				
+				final String pdpURL = testData1.get("prod") + "/p/" + testData.get("SKUID");
 				driver.get(pdpURL);
 			}
 
 		} else if (selectedCountry.contains("Canada")) {
 
-			final String pdpURL = GlobalConstants.urlca + "/p/" + testData.get("NoramlSKUID");
+			final String pdpURL = GlobalConstants.urlca + "/p/" + testData.get("SKUID");
 			driver.get(pdpURL);
 
 		} else {
 
-			final String pdpURL = GlobalConstants.urlkr + "/p/" + testData.get("KrSKUID");
+			final String pdpURL = GlobalConstants.urlkr + "/p/" + testData.get("KoreaSKUID");
 			driver.get(pdpURL);
 		}
 
@@ -441,7 +448,8 @@ public class UIFunctions extends GenericMethods {
 			addGuestDetailsForIE();
 		} else {
 
-			if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
+			if (selectedCountry.contains("US") || selectedCountry.contains("Canada")
+					||selectedCountry.contains("United States")) {
 
 				Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestDetails");
 				input(shipping.getFirstName(), testData.get("FirstName"), "First Name");

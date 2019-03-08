@@ -30,8 +30,12 @@ public class GuestOrder extends GenericMethods {
 		click(pdp.getAddToCart(), "Add to cart");
 		
 		click(minicart.getProceedCheckOut(), "Proceed to Cart");
-		driver.findElement(By.xpath("//button[contains(text(),'Proceed to Checkout')]")).click();
-		//click(mainCart.getProceedCart(), "Proceed to Checkout");
+		if (applicationUrl.equals("prod")) {
+			driver.findElement(By.xpath("//button[contains(text(),'Proceed to Checkout')]")).click();
+		}else {
+			webclick(mainCart.getProceedCart(), "Proceed to Checkout");
+		}
+		
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		UIFunctions.waitForContinueToEnable();
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
