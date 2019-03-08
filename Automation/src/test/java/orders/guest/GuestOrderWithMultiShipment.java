@@ -29,7 +29,7 @@ public class GuestOrderWithMultiShipment extends GenericMethods {
 		//UIFunctions.waitForContinueToEnable();
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		UIFunctions.addMultiship();
-		UIFunctions.addMultishipAddressWithCardDeatils("TumiTestData","CreditCardDetails");
+		UIFunctions.addMultishipAddressWithCardDeatils("TumiTestData","CreditCardDetailsMultishipmnet");
 		UIFunctions.completeOrder();
 
 		

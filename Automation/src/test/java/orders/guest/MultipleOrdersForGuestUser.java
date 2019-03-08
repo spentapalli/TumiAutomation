@@ -195,7 +195,7 @@ public class MultipleOrdersForGuestUser extends GenericMethods {
 		click(minicart.getContinueShopping(), "Continue Shopping");
 		UIFunctions.addToCart("TumiTestData", "PreOrderProduct");
 		UIFunctions.removeMonogram();
-		UIFunctions.addMonogram("TumiTestData", "PreOrderProduct");
+		UIFunctions.addMonogram("TumiTestData", "MonoGramDetails");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");

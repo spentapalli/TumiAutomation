@@ -738,7 +738,7 @@ public class UIFunctions extends GenericMethods {
 		click(paypal.getNext(), "Next");
 		input(paypal.getPayPalPassword(), testData.get("Password"), "Password");
 		click(paypal.getLogin(), "Login");
-		domClick(paypal.getVisax111(), "Select Visa");
+		domClick(paypal.getCreditCard(), "Select Visa");
 		click(paypal.getPaypalContinue(), "Continue");
 		delay(3000);
 		click(paypal.getPaypalCheckout(), "Checkout");

@@ -15,7 +15,7 @@ public class RegisterOrderWithMonogram extends GenericMethods {
 	@Test(description = " Sprint 2- TA- 185 Verify Order with merchandise Ready to ship + Personalization - Registered User")
 	public void orderWithMonogramAsRegistered() {
 
-		login("TumiTestData", "TumiLogin");
+		login("TumiTestData", "RegisteredOrders");
 		UIFunctions.addProductToCart("TumiTestData", "Products");
 		UIFunctions.addMonogram("TumiTestData", "MonoGramDetails");
 		click(pdp.getAddToCart(), "Add to cart");

@@ -19,7 +19,7 @@ public class RegisterOrderWithGiftServices extends GenericMethods {
 	@Test(priority = 0, description = " Sprint 2- TA- 186 Verify Order with merchandise Ready to ship + Gift Boxing - Registered User")
 	public void orderWithGiftboxAsRegistered() {
 
-		login("TumiTestData", "TumiLogin");
+		login("TumiTestData", "RegisteredOrders");
 		UIFunctions.addProductToCart("TumiTestData", "Products");
 		click(pdp.getAddToCart(), "Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");

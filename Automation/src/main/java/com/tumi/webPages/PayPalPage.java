@@ -81,11 +81,11 @@ public class PayPalPage extends GenericMethods {
 	//(//div[@id='paymentMethod']//label)[2]
 	////ul[@data-test-id='fundingInstruments']/li[2]
 	//input[@id='d546777e383511d791ddc41b1942ce1b']/following::label
-	@FindBy(how=How.XPATH, using="(//span[@class='fsIcon CARD VISA'])[1]")
-	private WebElement visax111;
+	@FindBy(how=How.XPATH, using="//span[@class='fsIcon 1 BANK CREDIT UNION']")
+	private WebElement PaypalCreditCard;
 	
-	public WebElement getVisax111() {
-		return explicitWait(visax111);
+	public WebElement getCreditCard() {
+		return explicitWait(PaypalCreditCard);
 	}
 	
 	@FindBy(how=How.XPATH, using="//ul[@data-test-id='fundingInstruments']/li[3]")

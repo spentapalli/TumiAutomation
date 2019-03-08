@@ -129,6 +129,7 @@
 		"FirstName": "Test",
 		"LastName": "TumiLast",
 		"AddressLine1": "10 Sumac Way",
+		"nextAddressLine1": "1001 6Th Ave",
 		"AddressLine2": "Add",
 		"TownCity": "ABBOTSFORD",
 		"Region": "California",
@@ -140,6 +141,24 @@
 		"shipmentCA2":"HOPE, BC, V0X 1L4",
 		"RecipientName": "Test",
 		"SenderName": "User"
+	},
+	"CreditCardDetailsMultishipmnet":{
+		"NameOnCard": "test",
+		"CardNumber": "4111111111111111",
+		"CVV": "123",
+		"ExipryMonth": "04",
+		"ExpiryYear": "2020",
+		"EmailID": "skomma@coredatalabs.com",
+		"Phone": "12345678901",
+		"FirstName": "Test",
+		"LastName": "TumiLast",
+		"AddressLine1": "10 Sumac Way",
+		"nextAddressLine1": "1001 6Th Ave",
+		"AddressLine2": "Add",
+		"TownCity": "ABBOTSFORD",
+		"Region": "California",
+		"PostCode": "V4X 1A5",
+		"Phone": "12345678901"
 	},
 	
 	"PayPalDeatils": {
