@@ -28,6 +28,6 @@ public void  verifyOutOfStockProduct() {
 	String productName= getText(pdp.getProductName());
 	logger.log(Status.INFO,productName+" is out of stock");
 	}
-  }
-
+  }   
+  
 }
