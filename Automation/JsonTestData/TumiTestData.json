@@ -126,6 +126,14 @@
 	"OrderWithTwoProducts": {
 		
 		"SKUID":"051DH",
+		"FirstName": "Test",
+		"LastName": "TumiLast",
+		"AddressLine1": "10 Sumac Way",
+		"AddressLine2": "Add",
+		"TownCity": "ABBOTSFORD",
+		"Region": "California",
+		"PostCode": "V4X 1A5",
+		"Phone": "12345678901"
 		"shipment1": "Fairport NY 14450",
 		"shipment2": "Albany GA 31701",
 		"shipmentCA1":"ABBOTSFORD",
@@ -152,16 +160,15 @@
 	
 	"CreateAccount":{	
 	"EmailID":"Tumi",	
-	"Password":"TumiEcom@123456789",	
-	"ConfirmPassword":"TumiEcom@123456789",
+	"Password":"TumiiEcom@123456789",	
+	"ConfirmPassword":"TumiiEcom@123456789",
 	"FirstName":"Tumi",	
-	"LastName":"Ecom",
-	"SelectCountry":"Republic of Korea",
-	"Selectyear":"3Years"
+	"LastName":"Ecom"
 	},
 	"ExistingAccount":{
 	"EmailID":"Tumi1301193945@gmail.com",
-	"Password":"TumiEcom@123"
+	"Password":"TumiiEcom@123456789"
+	
 	},
 	
 	"TumiStudio":{

@@ -20,7 +20,7 @@ public class RegisteredOrderWithMultishipment extends GenericMethods {
 		
 		login("TumiTestData", "RegisteredOrders");
 		//click(myacc.getMyAccountClose(), "My Account Close");
-		UIFunctions.addMultipleProducts("TumiTestData", "Products");
+		UIFunctions.addMultipleProducts("TumiTestData", "GuestDetails");
 		click(minicart.getMiniCartSymbol(), "Cart Image");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
