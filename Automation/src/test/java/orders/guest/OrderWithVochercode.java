@@ -69,17 +69,15 @@ public class OrderWithVochercode extends GenericMethods {
 		UIFunctions.addProductToCart("TumiTestData", "PreOrderProduct");
 		click(pdp.getAddToCart(), "Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
-		// UIFunctions.addPromotionalCodeAtCart("TumiTestData", "PreOrderProduct");
-		click(mainCart.getProceedCart(), "Proceed to Checkout");
-		//UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "VoucherCodeDetails");
-		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
+        click(mainCart.getProceedCart(), "Proceed to Checkout");
+	input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "VoucherCodeDetails");
 		UIFunctions.waitForContinueToEnable();
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
-		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
+		//UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		UIFunctions.completeOrder();
 	}
 	
