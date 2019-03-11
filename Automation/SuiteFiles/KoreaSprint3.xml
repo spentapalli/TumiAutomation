@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="TumiReportSprint3" parallel="none">
+
+	<test name="PGPFiltersForKorea"> 
+		<classes> 
+			<class name="tumi.home.PGPFiltersForKorea"/> 
+		</classes>
+   </test>
+   
+   <test name="TopNavigation1">
+		<classes>
+			<class name="tumi.home.TopNavigation" >
+			<methods><include name="verifyLocation"></include>
+			</methods>
+			</class>
+		</classes>
+	</test>
+	
+	<test name="TopNavigation2">
+		<classes>
+			<class name="tumi.home.TopNavigation" >
+			<methods><include name="verifyFindAStore"></include>
+			</methods>
+			</class>
+		</classes>
+	</test>
+	
+	<test name="TopNavigation3">
+		<classes>
+			<class name="tumi.home.TopNavigation" >
+			<methods><include name="verifyCustomerService"></include>
+			</methods>
+			</class>
+		</classes>
+	</test>
+   
+   <test name="TopNavigation4">
+		<classes>
+			<class name="tumi.home.TopNavigation" >
+			<methods><include name="verifySignIn"></include>
+			</methods>
+			</class>
+		</classes>
+	</test>
+	
+	<test name="HomePageVerification.java">
+		<classes>
+			<class name="tumi.home.HomePageVerification" />
+		</classes>
+	</test>
+	
+	
+	<test name="Quickshop.java">
+		<classes>
+			<class name="tumi.home.Quickshop" />
+		</classes>
+	</test>
+	
+	<test name="CreateAccount.java">
+		<classes>
+			<class name="userRegistration.CreateAccount" />
+		</classes>
+	</test>
+	
+	<test name="CompareProducts.java">
+		<classes>
+			<class name="orders.registered.CompareProducts" />
+		</classes>
+	</test>
+	
+	<test name="ProductsSortingFunctionality.java">
+		<classes>
+			<class name="orders.registered.ProductsSortingFunctionality" />
+		</classes>
+	</test>
+	
+   </suite>

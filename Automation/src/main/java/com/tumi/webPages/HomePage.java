@@ -198,6 +198,14 @@ public class HomePage extends GenericMethods {
 		return selectLanguage;
 
 	}
+	
+	@FindBy(how = How.XPATH, using = "//ul[contains(@id,'lang-selectorSelect')]/li/a")
+	private List<WebElement> langList;
+
+	public List<WebElement> getLangList() {
+
+		return langList;
+	}
 
 	@FindBy(how = How.XPATH, using = "//span[@id='lang-selectorSelectBoxItContainer']")
 	private WebElement selectLanguageContainer;
@@ -207,8 +215,8 @@ public class HomePage extends GenericMethods {
 		return selectLanguageContainer;
 
 	}
-
-	@FindBy(how = How.XPATH, using = "(//a[contains(text(),'EspaÃ±ol')])[1]")
+	//ul[contains(@id,'lang-selectorSelect')]/li/a/span
+	@FindBy(how = How.XPATH, using = "//ul[contains(@id,'lang-selectorSelect')]/li[2]/a")
 	private WebElement selectSpanishLanguage;
 
 	public WebElement getSelectSpanishLanguage() {
@@ -217,7 +225,7 @@ public class HomePage extends GenericMethods {
 
 	}
 
-	@FindBy(how = How.XPATH, using = "(//a[contains(text(),'FranÃ§ais')])[1]")
+	@FindBy(how = How.XPATH, using = "//ul[contains(@id,'lang-selectorSelect')]/li[3]/a")
 	private WebElement selectFrenchLanguage;
 
 	public WebElement getSelectFrenchLanguage() {

@@ -212,7 +212,7 @@ public class PGPFiltersForKorea extends GenericMethods {
 		for (WebElement clear : pgp.getClearList()) {
 			String filterName = clear.getAttribute("data-field");
 			if (filterName.contains(filter)) {
-				delay(2000);
+				delay(3000);
 				webclick(clear, filterName);
 				logger.log(Status.INFO, filterName + " filter cleared successfully");
 				break;
