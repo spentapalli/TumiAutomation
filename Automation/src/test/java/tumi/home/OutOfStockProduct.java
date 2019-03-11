@@ -1,5 +1,5 @@
 //sprint-3 
-//TA-367
+//TA-367  Verify Add to Cart button, if the product out of stock or not available
 package tumi.home;
 
 import org.testng.Assert;

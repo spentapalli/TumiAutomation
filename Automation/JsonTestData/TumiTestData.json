@@ -168,8 +168,14 @@
 	
 	
 	"GuestDeatilsForKorea": {
-		
-		"AddressLine1": "siolute"
+		"FirstName": "Test",
+		"LastName": "TumiLast",
+		"AddressLine1": "siolute",
+		"AddressLine2": "Add",
+		"TownCity": "ABCD",
+		"PostCode": "12345",
+		"Phone": "021234567",
+	
 	},
 	
 	"TumiLogin":{
