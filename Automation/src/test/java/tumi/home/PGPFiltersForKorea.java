@@ -1,5 +1,6 @@
 package tumi.home;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -14,8 +15,7 @@ public class PGPFiltersForKorea extends GenericMethods {
 
 		goToPGP();
 
-		// Verify Product Type
-		// clickFilter("product_type");
+		// TA- 369 : Verify Product Type
 
 		for (WebElement filter : pgp.getProductTypeList()) {
 			String firstOpt = filter.getAttribute("value");
@@ -33,7 +33,7 @@ public class PGPFiltersForKorea extends GenericMethods {
 		logger.log(Status.INFO, "TA-369 : verification of Product type is successfull");
 		clearFilter("product_type");
 
-		// Verify Gender Filter
+		// TA- 371 : Verify Gender Filter
 
 		clickFilter("FSM_Gender");
 		for (WebElement gender : pgp.getGenderList()) {
@@ -52,7 +52,7 @@ public class PGPFiltersForKorea extends GenericMethods {
 		logger.log(Status.INFO, "TA-371 : verification of Gender filter is successfull");
 		clearFilter("FSM_Gender");
 
-		// Verify Price Range
+		// TA- 370 : Verify Price Range
 
 		clickFilter("prices");
 
@@ -72,7 +72,7 @@ public class PGPFiltersForKorea extends GenericMethods {
 		logger.log(Status.INFO, "TA-370 : Verification of Price filter is successfull");
 		clearFilter("prices");
 
-		// Verify Collection
+		// TA-372 : Verify Collection
 
 		clickFilter("Collection");
 		for (WebElement collection : pgp.getCollectionList()) {
@@ -89,6 +89,8 @@ public class PGPFiltersForKorea extends GenericMethods {
 
 		verifyWithResultcount(productCount3, "Collection");
 		logger.log(Status.INFO, "TA-372 : Verification of Collection filter is successfull");
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		 js.executeScript("window.scrollBy(0,-250)", "");
 		clearFilter("Collection");
 
 		// TA- 373: Verify Material Filter
@@ -129,7 +131,6 @@ public class PGPFiltersForKorea extends GenericMethods {
 		logger.log(Status.INFO, "TA-373 : Verification of Size filter is successfull");
 		clearFilter("size_KR"); 
 
-		// Verify color
 
 		// TA- 374: Verify Laptop Size Filter
 
