@@ -39,6 +39,7 @@ public class TopNavigation extends GenericMethods {
 		}
 
 	}
+
 	public void verifyUS() {
 
 		click(home.getSelectCountry(), "Country");
@@ -53,7 +54,7 @@ public class TopNavigation extends GenericMethods {
 	}
 
 	public void verifyCA() {
-		
+
 		click(home.getSelectCountry(), "Country");
 		click(home.getSelectCountryCAforTop(), "Canada");
 		String caUrl = driver.getCurrentUrl();
@@ -66,7 +67,7 @@ public class TopNavigation extends GenericMethods {
 	}
 
 	public void verifyKR() {
-		
+
 		click(home.getSelectCountry(), "Country");
 		click(home.getSelectCountryKRforTop(), "Korea");
 		String krUrl = driver.getCurrentUrl();
@@ -92,14 +93,14 @@ public class TopNavigation extends GenericMethods {
 		click(home.getSelectLanguageContainer(), "Language");
 		click(home.getSelectFrenchLanguage(), "French");
 		if (!getText(home.getSelectLanguageContainer()).contains("Français")) {
-			Assert.fail("Selecting french language is failed");
+			Assert.fail("Selecting French language is failed");
 		} else {
 			logger.log(Status.INFO, "Selection of French language is successfull");
 		}
 
 	}
 
-    @Test(priority = 2, description = " Sprint 3- TA-344/ TA-76 Verify Find A Store")
+	@Test(priority = 2, description = " Sprint 3- TA-344/ TA-76 Verify Find A Store")
 	public void verifyFindAStore() {
 
 		click(home.getHeaderFindStore(), "Store Finder");
@@ -116,7 +117,7 @@ public class TopNavigation extends GenericMethods {
 
 	}
 
-	 @Test(priority = 3, description = " Sprint 3- TA-345/ TA-76 Verify CustomerService")
+	@Test(priority = 5, description = " Sprint 3- TA-345/ TA-76 Verify CustomerService")
 	public void verifyCustomerService() {
 
 		click(home.getHeaderCustomerService(), "Customer Service");

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="TumiReportSprint3" parallel="none">
+
+	<test name="PGPFilters"> 
+		<classes> 
+			<class name="tumi.home.PGPFilters"/> 
+		</classes>
+   </test>
+
+	<test name="TopNavigation">
+		<classes>
+			<class name="tumi.home.TopNavigation" />
+		</classes>
+	</test>
+	
+	<test name="TumiStudioEdit">
+		<classes>
+			<class name="tumi.home.TumiStudioEdit" />
+		</classes>
+	</test>
+	
+	<test name="HomePageVerification">
+		<classes>
+			<class name="tumi.home.HomePageVerification" />
+		</classes>
+	</test>
+	
+	<test name="OutOfStockProduct">
+		<classes>
+			<class name="tumi.home.OutOfStockProduct" />
+		</classes>
+	</test>
+	
+	
+	<test name="Quickshop">
+		<classes>
+			<class name="tumi.home.Quickshop" />
+		</classes>
+	</test>
+	
+	<test name="CreateAccount">
+		<classes>
+			<class name="userRegistration.CreateAccount" />
+		</classes>
+	</test>
+	
+	<test name="CompareProducts">
+		<classes>
+			<class name="orders.registered.CompareProducts" />
+		</classes>
+	</test>
+	
+	<test name="ProductsSortingFunctionality">
+		<classes>
+			<class name="orders.registered.ProductsSortingFunctionality" />
+		</classes>
+	</test>
+	
+	</suite>

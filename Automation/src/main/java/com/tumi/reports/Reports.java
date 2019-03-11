@@ -1,13 +1,16 @@
 package com.tumi.reports;
 
 import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Method;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
+import org.json.simple.JSONObject;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -19,6 +22,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -154,27 +158,41 @@ public class Reports {
 
 	@BeforeMethod(alwaysRun = true)
 	public static void initiateApplication() throws Exception {
-		
+
 		getBrowser(GlobalConstants.BROWSER);
-		maximizeBrowser();
-
-		if (browserName.equals("ie")) {
-			GenericMethods.delay(2000);
-			driver.navigate().to("javascript:document.getElementById('overridelink').click()");
-			UIFunctions.WaitForJStoLoad();
-			UIFunctions.verifyVPN();
-			UIFunctions.closeSignUp();
-		} else {
-			getURL();
+		if (!browserName.equalsIgnoreCase("Remote")) {
+			maximizeBrowser();
+			if (browserName.equals("ie")) {
+				GenericMethods.delay(2000);
+				driver.navigate().to("javascript:document.getElementById('overridelink').click()");
+				UIFunctions.WaitForJStoLoad();
+				UIFunctions.verifyVPN();
+				UIFunctions.closeSignUp();
+			} else {
+				getURL();
+			}
 		}
-
 		UIFunctions.selectCountry();
 		// driver.navigate().to("https://ca.stg-hybris-akamai.tumi.com");
 	}
 
 	@AfterMethod(alwaysRun = true)
 	public static void closeBrowser() {
-		driver.close();
+		
+		if (browserName.equalsIgnoreCase("Remote")) {
+			try {
+				driver.quit();
+			} catch (Exception e) {
+				
+			}
+		}else {
+			try {
+				driver.close();
+			} catch (Exception e) {
+				
+			}
+		}
+		
 	}
 
 	@BeforeMethod(alwaysRun = true)
@@ -220,7 +238,7 @@ public class Reports {
 				logger.fail(MarkupHelper.createLabel(result.getName() + " Test Case Failed", ExtentColor.RED));
 				logger.fail(result.getThrowable());
 				getScreen("./ExtentReports/Screenshots/" + result.getName() + ".png");
-				String screenlocation = System.getProperty("user.dir") + "/Screenshots/" + result.getName() + ".png";
+				String screenlocation = "./Screenshots/" + result.getName() + ".png";
 
 				logger.fail("Screen Shot Reference:  ",
 						MediaEntityBuilder.createScreenCaptureFromPath(screenlocation).build());
@@ -258,6 +276,18 @@ public class Reports {
 		return new Object[][] { { "United States" }, { "Canada" }, { "Korea" } };
 
 	}
+	
+	public static void enableLocalTesting() {
+		
+		try {
+			File file = new File("C:\\suresh\\BrowserStack");
+			
+			Runtime.getRuntime().exec("c:\\windows\\system32\\cmd.exe /c BrowserStackLocal.bat",null,file);
+			Thread.sleep(5000);
+		} catch (Exception e) {
+			
+		}
+	}
 
 	@SuppressWarnings("deprecation")
 	public static void getBrowser(String browser) throws Exception {
@@ -266,49 +296,98 @@ public class Reports {
 
 		System.out.println("Parameter " + browserName);
 
-		if (null == browserName || browserName.isEmpty() || browserName.equalsIgnoreCase("chrome")) {
+		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "BrowserStack");
 
-			ChromeOptions options = new ChromeOptions();
-			options.addArguments("disable-infobars");
-			options.addArguments("--disable-notifications");
-			System.setProperty(GlobalConstants.chrome, getChromeDriverPath());
-			driver = new ChromeDriver(options);
+		if (browserName.equalsIgnoreCase("Remote")) {
 
-			// logger.log(Status.INFO, "Chrome Browser is initiated Execution");
+			enableLocalTesting();
+			remoteAccess(testData.get("remoteBrowser"), testData.get("remoteBrowserVersion"), testData.get("remoteOS"),
+					testData.get("remoteOsVersion"));
+			getURL();
 
-		} else if (browserName.equalsIgnoreCase("firefox")) {
+		} else {
 
-			FirefoxProfile geoDisabled = new FirefoxProfile();
-			geoDisabled.setPreference("geo.enabled", false);
-			geoDisabled.setPreference("geo.provider.use_corelocation", false);
-			geoDisabled.setPreference("geo.prompt.testing", false);
-			geoDisabled.setPreference("geo.prompt.testing.allow", false);
-			DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-			capabilities.setCapability(FirefoxDriver.PROFILE, geoDisabled);
-			System.setProperty(GlobalConstants.firefox, getFirefoxDriverPath());
-			driver = new FirefoxDriver(capabilities);
-			// logger.log(Status.INFO, "Firefox Browser is initiated Execution");
+			if (null == browserName || browserName.isEmpty() || browserName.equalsIgnoreCase("chrome")) {
 
-		} else if (browserName.equalsIgnoreCase("ie")) {
+				ChromeOptions options = new ChromeOptions();
+				options.addArguments("disable-infobars");
+				options.addArguments("--disable-notifications");
+				System.setProperty(GlobalConstants.chrome, getChromeDriverPath());
+				driver = new ChromeDriver(options);
 
-			DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
-			capabilities.setCapability("ignoreZoomSetting", true);
-			capabilities.setCapability("nativeEvents", false);
-			capabilities.setCapability(CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION, true);
-			capabilities.setCapability(InternetExplorerDriver.INITIAL_BROWSER_URL, GlobalConstants.S2);
-			System.setProperty(GlobalConstants.ie, GlobalConstants.iePath);
-			driver = new InternetExplorerDriver(capabilities);
-			// logger.log(Status.INFO, "InternetExplorer Browser is initiated Execution");
+				// logger.log(Status.INFO, "Chrome Browser is initiated Execution");
 
-		} else if (browserName.equalsIgnoreCase("mobile")) {
+			} else if (browserName.equalsIgnoreCase("firefox")) {
 
-			launchMobile("iPhone X");
+				FirefoxProfile geoDisabled = new FirefoxProfile();
+				geoDisabled.setPreference("geo.enabled", false);
+				geoDisabled.setPreference("geo.provider.use_corelocation", false);
+				geoDisabled.setPreference("geo.prompt.testing", false);
+				geoDisabled.setPreference("geo.prompt.testing.allow", false);
+				DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+				capabilities.setCapability(FirefoxDriver.PROFILE, geoDisabled);
+				System.setProperty(GlobalConstants.firefox, getFirefoxDriverPath());
+				driver = new FirefoxDriver(capabilities);
+				// logger.log(Status.INFO, "Firefox Browser is initiated Execution");
+
+			} else if (browserName.equalsIgnoreCase("ie")) {
+
+				DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
+				capabilities.setCapability("ignoreZoomSetting", true);
+				capabilities.setCapability("nativeEvents", false);
+				capabilities.setCapability(CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION, true);
+				capabilities.setCapability(InternetExplorerDriver.INITIAL_BROWSER_URL, GlobalConstants.S2);
+				System.setProperty(GlobalConstants.ie, GlobalConstants.iePath);
+				driver = new InternetExplorerDriver(capabilities);
+				// logger.log(Status.INFO, "InternetExplorer Browser is initiated Execution");
+
+			} else if (browserName.equalsIgnoreCase("mobile")) {
+
+				launchMobile("iPhone X");
+			}
 		}
 	}
 
+	@SuppressWarnings("unchecked")
+	public static void remoteAccess(String remoteBrowser, String remoteBrowserVersion, String remoteOS,
+			String remoteOsVersion) throws Exception {
+
+		Map<String, Object> prefs = new HashMap<String, Object>();
+
+		final String USERNAME = "kurrysuresh1";
+		final String AUTOMATE_KEY = "zKp1VrRqTkUXqi4efALq";
+		String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
+		DesiredCapabilities caps = new DesiredCapabilities();
+
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("disable-infobars");
+		options.addArguments("--disable-notifications");
+		JSONObject jsonObject = new JSONObject();
+		prefs.put("profile.default_content_setting_values.notifications", 2);
+		jsonObject.put("profile.default_content_setting_values.notifications", 1);
+
+		options.setExperimentalOption("prefs", jsonObject);
+		options.setExperimentalOption("prefs", prefs);
+
+		caps.setCapability("browser", remoteBrowser);
+		caps.setCapability("browser_version", remoteBrowserVersion);
+		caps.setCapability("os", remoteOS);
+		caps.setCapability("os_version", remoteOsVersion);
+		caps.setCapability("browserstack.local", "true");
+		caps.setCapability("browserstack.debug", "true");
+		caps.setCapability("browserstack.networkLogs", "true");
+		caps.setCapability("resolution", "1024x768");
+		caps.setCapability("browserstack.selenium_version", "3.13.0");
+		caps.setCapability(ChromeOptions.CAPABILITY, options);
+		driver = new RemoteWebDriver(new URL(URL), caps);
+	}
+
 	public static void maximizeBrowser() {
-		driver.manage().window().maximize();
-		GenericMethods.deleteAllCookies();
+		if (!browserName.equalsIgnoreCase("Remote")) {
+			driver.manage().window().maximize();
+			GenericMethods.deleteAllCookies();
+		}
+
 		/*
 		 * try { if (OSFinder.isWindows()) { driver.manage().window().maximize(); } else
 		 * { driver.manage().window().setSize(new Dimension(1600, 900)); } } catch
@@ -354,9 +433,9 @@ public class Reports {
 
 		try {
 			OS = System.getProperty("os.name");
-			
-			System.out.println("Current Operating System "+OS);
-			
+
+			System.out.println("Current Operating System " + OS);
+
 			if (OS.contains("Window")) {
 
 				return GlobalConstants.chromeWinPath;

@@ -125,10 +125,10 @@ public class PGP extends GenericMethods {
 	private WebElement krResultCount;
 
 	public WebElement getResultCount() {
-		if(!selectedCountry.contains("US")||selectedCountry.contains("Canada")) {
-			return krResultCount;
+		if(selectedCountry.contains("US")||selectedCountry.contains("Canada")) {
+			return resultCount;
 			}else {
-				return resultCount;
+				return krResultCount;
 			}
 	}
 
@@ -168,10 +168,10 @@ public class PGP extends GenericMethods {
 	private List<WebElement> krProductTypeList;
 
 	public List<WebElement> getProductTypeList() {
-		if(!selectedCountry.contains("US")||selectedCountry.contains("Canada")) {
-			return krProductTypeList;
+		if(selectedCountry.contains("US")||selectedCountry.contains("Canada")) {
+			return productTypeList;
 			}else {
-				return productTypeList;
+				return krProductTypeList;
 			}
 	}
 
@@ -182,10 +182,10 @@ public class PGP extends GenericMethods {
 	private List<WebElement> krPricesList;
 
 	public List<WebElement> getPricesList() {
-		if(!selectedCountry.contains("US")||selectedCountry.contains("Canada")) {
-			return krPricesList;
+		if(selectedCountry.contains("US")||selectedCountry.contains("Canada")) {
+			return pricesList;
 			}else {
-				return pricesList;
+				return krPricesList;
 			}
 	}
 	
@@ -203,10 +203,10 @@ public class PGP extends GenericMethods {
 	private WebElement krPriceRangeCount;
 
 	public WebElement getPriceRangeCount() {
-		if(!selectedCountry.contains("US")||selectedCountry.contains("Canada")) {
-			return krPriceRangeCount;
+		if(selectedCountry.contains("US")||selectedCountry.contains("Canada")) {
+			return priceRangeCount;
 			}else {
-				return priceRangeCount;
+				return krPriceRangeCount;
 			}
 	}
 	
@@ -218,10 +218,10 @@ public class PGP extends GenericMethods {
 	private List<WebElement> krGenderList;
 
 	public List<WebElement> getGenderList() {
-		if(!selectedCountry.contains("US")||selectedCountry.contains("Canada")) {
-			return krGenderList;
+		if(selectedCountry.contains("US")||selectedCountry.contains("Canada")) {
+			return genderList;
 			}else {
-				return genderList;
+				return krGenderList;
 			}
 
 	}
@@ -235,10 +235,10 @@ public class PGP extends GenericMethods {
 	private WebElement krFemaleCount;
 
 	public WebElement getFemaleCount() {
-		if(!selectedCountry.contains("US")||selectedCountry.contains("Canada")) {
-			return krFemaleCount;
+		if(selectedCountry.contains("US")||selectedCountry.contains("Canada")) {
+			return femaleCount;
 			}else {
-				return femaleCount;
+				return krFemaleCount;
 			}
 	}
 	
@@ -250,10 +250,10 @@ public class PGP extends GenericMethods {
 	private List<WebElement> krCollectionList;
 
 	public List<WebElement> getCollectionList() {
-		if(!selectedCountry.contains("US")||selectedCountry.contains("Canada")) {
-			return krCollectionList;
+		if(selectedCountry.contains("US")||selectedCountry.contains("Canada")) {
+			return collectionList;
 			}else {
-				return collectionList;
+				return krCollectionList;
 			}
 	}
 	
@@ -277,10 +277,10 @@ public class PGP extends GenericMethods {
 	private List<WebElement> krMaterialList;
 
 	public List<WebElement> getMaterialList() {
-		if(!selectedCountry.contains("US")||selectedCountry.contains("Canada")) {
-			return krMaterialList;
+		if(selectedCountry.contains("US")||selectedCountry.contains("Canada")) {
+			return materialList;
 			}else {
-				return materialList;
+				return krMaterialList;
 			}
 	}
 	
@@ -292,10 +292,10 @@ public class PGP extends GenericMethods {
 	private WebElement krLeatherCount;
 
 	public WebElement getLeatherCount() {
-		if(!selectedCountry.contains("US")||selectedCountry.contains("Canada")) {
-			return krLeatherCount;
+		if(selectedCountry.contains("US")||selectedCountry.contains("Canada")) {
+			return leatherCount;
 			}else {
-				return leatherCount;
+				return krLeatherCount;
 			}
 	}
 	
@@ -323,10 +323,10 @@ public class PGP extends GenericMethods {
 	private List<WebElement> krLaptopSizeList;
 
 	public List<WebElement> getLaptopSizeList() {
-		if(!selectedCountry.contains("US")||selectedCountry.contains("Canada")) {
-			return krLaptopSizeList;
+		if(selectedCountry.contains("US")||selectedCountry.contains("Canada")) {
+			return laptopSizeList;
 			}else {
-				return laptopSizeList;
+				return krLaptopSizeList;
 			}
 	}
 	
@@ -352,10 +352,10 @@ public class PGP extends GenericMethods {
 	private List<WebElement> krWheelsList;
 
 	public List<WebElement> getWheelsList() {
-		if(!selectedCountry.contains("US")||selectedCountry.contains("Canada")) {
-			return krWheelsList;
+		if(selectedCountry.contains("US")||selectedCountry.contains("Canada")) {
+			return wheelsList;
 			}else {
-				return wheelsList;
+				return krWheelsList;
 			}
 	}
 	
@@ -374,10 +374,10 @@ public class PGP extends GenericMethods {
 	private List<WebElement> krExclusiceFeatureList;
 
 	public List<WebElement> getExclusiceFeatureList() {
-		if(!selectedCountry.contains("US")||selectedCountry.contains("Canada")) {
-		return krExclusiceFeatureList;
+		if(selectedCountry.contains("US")||selectedCountry.contains("Canada")) {
+		return exclusiceFeatureList;
 		}else {
-			return exclusiceFeatureList;
+			return krExclusiceFeatureList;
 		}
 	}
 
@@ -388,10 +388,10 @@ public class PGP extends GenericMethods {
 	private WebElement krMonoCount;
 
 	public WebElement getMonoCount() {
-		if(!selectedCountry.contains("US")||selectedCountry.contains("Canada")) {
-			return krMonoCount;
+		if(selectedCountry.contains("US")||selectedCountry.contains("Canada")) {
+			return monoCount;
 			}else {
-				return monoCount;
+				return krMonoCount;
 			}
 	}
 

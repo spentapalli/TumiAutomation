@@ -40,7 +40,7 @@ public class GenericMethods extends GlobalConstants {
 	public static Actions action;
 
 	public static void captureOrderConfScreen(String name) {
-		
+
 		getScreen("./ExtentReports/ScreenShots/" + name + ".png");
 		String location = "./ScreenShots/" + name + ".png";
 		try {
@@ -250,6 +250,7 @@ public class GenericMethods extends GlobalConstants {
 			e.printStackTrace();
 		}
 		return jsLoad;
+
 	}
 
 	public static boolean switchToFrame(String frameType, int index, String nameOrId, WebElement frameElement) {
@@ -635,29 +636,29 @@ public class GenericMethods extends GlobalConstants {
 	}
 
 	public static void removeExistingCart() {
-		
-		try {
-			if(!getText(home.getMinicartCount()).contains("0")) {
-			webclick(home.getMinicart(),"Minicart");
-			try {
-				int cart = parseInt(getText(home.getMinicartCount()));
-				if (cart != 0) {
-					delay(2000);
-					//click(home.getMinicart(), "Mini Cart");
-					// click(minicart.getProceedCheckOut(), "Proceed to Checkout");
-					for (WebElement ele : checkout.getRemoveMinicartProducts()) {
-						click(checkout.getRemoveProduct(), "Remove Existing Product");
-						delay(5000);
-						// explicitWait(checkout.getremoveMinicart());
-					}
-				}
-			} catch (Exception e) {
 
-				e.printStackTrace();
+		try {
+			if (!getText(home.getMinicartCount()).contains("0")) {
+				webclick(home.getMinicart(), "Minicart");
+				try {
+					int cart = parseInt(getText(home.getMinicartCount()));
+					if (cart != 0) {
+						delay(2000);
+						// click(home.getMinicart(), "Mini Cart");
+						// click(minicart.getProceedCheckOut(), "Proceed to Checkout");
+						for (WebElement ele : checkout.getRemoveMinicartProducts()) {
+							click(checkout.getRemoveProduct(), "Remove Existing Product");
+							delay(5000);
+							// explicitWait(checkout.getremoveMinicart());
+						}
+					}
+				} catch (Exception e) {
+
+					e.printStackTrace();
+				}
 			}
-}
 		} catch (Exception e) {
-			
+
 			e.printStackTrace();
 		}
 	}

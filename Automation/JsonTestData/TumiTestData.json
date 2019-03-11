@@ -134,7 +134,7 @@
 		"TownCity": "ABBOTSFORD",
 		"Region": "California",
 		"PostCode": "V4X 1A5",
-		"Phone": "12345678901"
+		"Phone": "12345678901",
 		"shipment1": "Fairport NY 14450",
 		"shipment2": "Albany GA 31701",
 		"shipmentCA1":"ABBOTSFORD",
@@ -212,11 +212,18 @@
 	},
 	
 	"Environments":{
-	
 		"stage2" : "https://www.hybris-stage2.tumi.com/",
 		"stage3" : "https://www.hybris-stage3.tumi.com/",
 		"prod": "https://www.tumi.com/"
 	
+	},
+	
+	"BrowserStack":{
+		"remoteBrowser" : "Chrome",
+		"remoteBrowserVersion" : "72.0",
+		"remoteOS" : "Windows",
+		"remoteOsVersion" : "10"
 	}
+	
 }
 
