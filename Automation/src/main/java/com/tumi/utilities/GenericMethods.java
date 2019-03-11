@@ -82,7 +82,7 @@ public class GenericMethods extends GlobalConstants {
 				Assert.fail("user signin is failed");
 			}
 			removeCards();
-			myacc.getMyAccountClose().click();
+			//myacc.getMyAccountClose().click();
 		} catch (Exception e) {
 			Assert.fail("Fail to Login due to " + e.getMessage());
 		}
