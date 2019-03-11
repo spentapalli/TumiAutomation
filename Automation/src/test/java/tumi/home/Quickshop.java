@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.testng.annotations.Test;
 
+import com.aventstack.extentreports.Status;
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
 import com.tumi.utilities.UIFunctions;
@@ -17,7 +18,11 @@ public class Quickshop extends GenericMethods {
 			mouseHover(home.getOptions());
 			click(home.getSubCateogry(),"Select option");
 		        click(pgp.getQuickShop(),"QuickShop");
-			   	click(pgp.getQuickShopAddtoCart(),"QuickShop Add to Cart");
+			   
+			   	if(!pgp.getQuickShopAddtoCart().isDisplayed()){
+			   			logger.log(Status.INFO,"product is out of stock");
+			   	}else {
+			   		click(pgp.getQuickShopAddtoCart(),"QuickShop Add to Cart");
 				click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 				click(mainCart.getProceedCart(), "Proceed to Checkout");
 				input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
@@ -30,4 +35,6 @@ public class Quickshop extends GenericMethods {
 				UIFunctions.completeOrder();
 			}
 }
-
+		
+		
+}
