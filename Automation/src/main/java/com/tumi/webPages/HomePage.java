@@ -445,7 +445,7 @@ public class HomePage extends GenericMethods {
 	@FindBy(how = How.XPATH, using = "//label[contains(text(),'CHOOSE YOUR LOCATION')]")
 	private WebElement selectLocation;
 
-	@FindBy(how = How.XPATH, using = "//label[contains(text(),'ìœ„ì¹˜ ì„ íƒ�')]")
+	@FindBy(how = How.XPATH, using = "//form[@id='storeFinderForm']//div/label")
 	private WebElement krSelectLocation;
 
 	public WebElement getSelectLocation() {

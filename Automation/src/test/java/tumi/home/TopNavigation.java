@@ -132,7 +132,7 @@ public class TopNavigation extends GenericMethods {
 				Assert.fail("My Account window not opened");
 			}
 		} else {
-			if (!getText(myacc.getMyAccMsg()).contains("내 계정")) {
+			if (!myacc.getKrEnterEmail().isDisplayed()) {
 				Assert.fail("My Account window not opened");
 			}
 		}

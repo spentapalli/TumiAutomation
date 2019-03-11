@@ -27,10 +27,9 @@ public class MyAccountPage extends GenericMethods {
 	private WebElement viewProfile;
 
 	public WebElement getViewProfile() {
-		if (selectedCountry.contains("US")||
-				selectedCountry.contains("Canada")) {
+		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
 			return viewProfile;
-			
+
 		} else {
 			return explicitWait(krviewProfile);
 		}
@@ -43,9 +42,8 @@ public class MyAccountPage extends GenericMethods {
 	private WebElement purchasedItems;
 
 	public WebElement getPurchasedItems() {
-		if (selectedCountry.contains("US")||
-				selectedCountry.contains("Canada")) {
-			
+		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
+
 			return purchasedItems;
 		} else {
 			return explicitWait(krpurchasedItems);
@@ -59,13 +57,12 @@ public class MyAccountPage extends GenericMethods {
 	private WebElement viewYourOrderStatus;
 
 	public WebElement getViewYourOrderStatus() {
-		if (selectedCountry.contains("US")||
-				selectedCountry.contains("Canada")) {
-			
+		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
+
 			return viewYourOrderStatus;
 		} else {
 			return explicitWait(krviewYourOrderStatus);
-			
+
 		}
 	}
 
@@ -76,12 +73,10 @@ public class MyAccountPage extends GenericMethods {
 	private WebElement registerYourTumi;
 
 	public WebElement getRegisterYourTumi() {
-		if (selectedCountry.contains("US")||
-				selectedCountry.contains("Canada")) {
+		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
 			return registerYourTumi;
 		} else {
 
-			
 			return explicitWait(krregisterYourTumi);
 		}
 	}
@@ -92,13 +87,20 @@ public class MyAccountPage extends GenericMethods {
 	public WebElement getRepairServices() {
 		return repairServices;
 	}
-	
-	//@FindBy(how = How.XPATH, using = "(//h3[contains(text(),'My Account')])[1]")
+
+	// @FindBy(how = How.XPATH, using = "(//h3[contains(text(),'My Account')])[1]")
 	@FindBy(how = How.XPATH, using = "//div[@id='tm-panel-login']/header/h3")
 	private WebElement myAccMsg;
 
 	public WebElement getMyAccMsg() {
 		return myAccMsg;
+	}
+
+	@FindBy(how = How.XPATH, using = "(// form[@id='tm-login-form']/div/div/label)[1]")
+	private WebElement krEnterEmail;
+
+	public WebElement getKrEnterEmail() {
+		return krEnterEmail;
 	}
 
 	// same for korea
@@ -129,8 +131,8 @@ public class MyAccountPage extends GenericMethods {
 		 * if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
 		 * return explicitWait(myAccountClose); } else {
 		 */
-			return explicitWait(krmyAccountClose);
-		//}
+		return explicitWait(krmyAccountClose);
+		// }
 	}
 
 	@FindBy(how = How.XPATH, using = "//a[@href='#create-account']")
