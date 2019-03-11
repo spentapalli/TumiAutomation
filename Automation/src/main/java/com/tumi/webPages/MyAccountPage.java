@@ -1,5 +1,7 @@
 package com.tumi.webPages;
 
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -7,6 +9,7 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
 import com.tumi.reports.Reports;
+//import com.tumi.utilities.GenericMethods;
 import com.tumi.utilities.GenericMethods;
 
 /**
@@ -178,4 +181,38 @@ public class MyAccountPage extends GenericMethods {
 			return signUpMyAccMsg;
 		}
 	}
+	
+	@FindBy(how = How.XPATH, using = "(//a[@title='View Your Profile'])[2]")
+	private WebElement myProfile;
+
+	public WebElement getMyProfile() {
+		return explicitWait(myProfile);
+
+	}
+	
+	@FindBy(how = How.XPATH, using = "//a[text()='Payment/Gift Card']")
+	private WebElement payment;
+
+	public WebElement getMyPayments() {
+		return payment;
+
+	}
+	
+	@FindBy(how = How.XPATH, using = "//div[contains(text(),'Payment Card')]/following::section/div[3]/form/button")
+	private List<WebElement> cards;
+
+	public List<WebElement> getAvailableCards() {
+		return cards;
+
+	}
+	
+	@FindBy(how = How.XPATH, using = "//div[contains(text(),'Payment Card')]/following::section[1]/div[3]/form[1]/button")
+	private WebElement removeCards;
+
+	public WebElement getRemoveCards() {
+		return removeCards;
+
+	}
+	
+	//div[contains(text(),'Payment Card')]/following::section[1]/div[3]/form[1]/button
 }
