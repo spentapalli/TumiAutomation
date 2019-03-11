@@ -659,7 +659,7 @@ public class GenericMethods extends GlobalConstants {
 				try {
 					int cart = parseInt(getText(home.getMinicartCount()));
 					if (cart != 0) {
-						delay(2000);
+						delay(5000);
 						// click(home.getMinicart(), "Mini Cart");
 						// click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 						for (WebElement ele : checkout.getRemoveMinicartProducts()) {
