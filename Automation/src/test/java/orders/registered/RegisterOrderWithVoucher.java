@@ -28,7 +28,7 @@ public class RegisterOrderWithVoucher extends GenericMethods{
 		UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "VoucherCodeDetails");
 		domClick(shipping.getContinueShippingMethod(), "Contiue Shipping");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
-		domClick(signinBill.getAddNewPay(), "Add new Payment");
+		//domClick(signinBill.getAddNewPay(), "Add new Payment");
 		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		UIFunctions.completeOrder();
 	}

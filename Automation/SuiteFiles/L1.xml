@@ -51,6 +51,11 @@
 <class name="orders.registered.RegisteredOrderWithPayPal" />
 		</classes>
 	</test>
+		<test name="GoogleLogin">
+	<classes>
+			<class name="login.GoogleLogin" />
+		</classes>
+	</test>
 	<test name="RegisteredOrder">
 <classes>
 			<class name="orders.registered.RegisteredOrder" />
@@ -62,12 +67,7 @@
 				name="orders.registered.RegisteredOrderWithMultishipment" />
 		</classes>
 </test>
-	<test name="GoogleLogin">
-	<classes>
-			<class name="login.GoogleLogin" />
-		</classes>
-	</test>
-	<test name="InstgramLogin">
+<test name="InstagramLogin">
 	<classes>
 			<class name="login.InstagramLogin" />
 		</classes>
@@ -102,11 +102,6 @@
 			<class name="orders.registered.RegisterOrderWithMonogram" />
 		</classes>
 	</test>
-	<test name="RegisterOrderWithGiftServices">
-		<classes>
-			<class name="orders.registered.RegisterOrderWithGiftServices" />
-		</classes>
-	</test>
 	<test name="GuestOrdersWithGiftMsg">
 		<classes>
 			<class name="orders.guest.GuestOrdersWithGiftMsg" />
@@ -127,6 +122,11 @@
 			<class name="orders.guest.ThreeOrderForGuestUser" />
 		</classes>
 	</test>
+	<test name="RegisterOrderWithGiftServices">
+		<classes>
+			<class name="orders.registered.RegisterOrderWithGiftServices" />
+		</classes>
+	</test>  
 	<test name="VerifyInvalidGoogleLogin">
 		<classes>
 			<class name="login.VerifyInvalidGoogleLogin" />

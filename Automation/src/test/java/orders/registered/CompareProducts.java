@@ -46,7 +46,7 @@ public class CompareProducts extends GenericMethods {
 		}
 		driver.switchTo().window(parent);
 		System.out.println("");
-/////////////////
+
 	}
 
 }
