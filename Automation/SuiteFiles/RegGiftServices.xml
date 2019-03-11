@@ -3,11 +3,11 @@
 <suite name="Suite">
 	<test thread-count="5" name="Test">
 		<classes>
-			<class name="orders.guest.GuestOrder">
-				<methods>
+			<class name="orders.registered.RegisteredOrder">
+				<!-- <methods>
 					<include name="tumiOrderAsGuest"></include>
 				</methods>
-
+ -->
 			</class>
 		</classes>
 	</test> <!-- Test -->

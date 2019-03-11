@@ -32,8 +32,8 @@ public class RegisteredOrder extends GenericMethods {
 		UIFunctions.addGuestDetails();
 		domClick(shipping.getContinueShippingMethod(), "Contiue Shipping");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
-		domClick(signinBill.getAddNewPay(),"Add new Payment");
-		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
+		//domClick(signinBill.getAddNewPay(),"Add new Payment");
+		//UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		UIFunctions.completeOrder();
 	}
 
