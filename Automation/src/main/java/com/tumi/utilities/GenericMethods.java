@@ -325,8 +325,9 @@ public class GenericMethods extends GlobalConstants {
 	}
 
 	public static void scrollUp() {
+		delay(2000);
 		JavascriptExecutor jse = (JavascriptExecutor) driver;
-		jse.executeScript("window.scrollBy(250,0)", "");
+		jse.executeScript("window.scrollTo(0,0)", "");
 		WaitForJStoLoad();
 	}
 
