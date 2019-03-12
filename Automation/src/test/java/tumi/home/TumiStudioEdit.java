@@ -26,8 +26,8 @@ Map<String, String> testData= ReadTestData.getJsonData("TumiTestData","GuestOrde
 		UIFunctions.addProductToCart("TumiTestData","TumiStudio");
 		UIFunctions.addTumiStudio();
 		delay(2000);
-		webclick(tumiId.getTumiIdEditDesign(),"Edit Design");
-		delay(4000);
+		domClick(tumiId.getTumiIdEditDesign(),"Edit Design");
+		delay(2000);
 		
 		domClick(tumiId.getFrontPocket(), "Front Pocket");
 		delay(2000);

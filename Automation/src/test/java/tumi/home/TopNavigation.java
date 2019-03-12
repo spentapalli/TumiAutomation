@@ -22,7 +22,7 @@ public class TopNavigation extends GenericMethods {
 	 * TA-76 Verify Top Navigation.
 	 */
 
-	// @Test(priority = 0, description = " Sprint 3- TA-342/ TA-76 Verify Location")
+	@Test(priority = 0, description = " Sprint 3- TA-342/ TA-76 Verify Location")
 	public void verifyLocation() {
 		if (selectedCountry.contains("US")) {
 			delay(2000);
@@ -80,8 +80,7 @@ public class TopNavigation extends GenericMethods {
 
 	}
 
-	// @Test(priority = 1, description = " Sprint 3- TA-343/ TA-76 Verify Language
-	// Selector")
+	@Test(priority = 1, description = " Sprint 3- TA-343/ TA-76 Verify Language Selector")
 	public void verifyLanguageSelector() {
 
 		click(home.getSelectLanguage(), "Language");
@@ -101,8 +100,7 @@ public class TopNavigation extends GenericMethods {
 
 	}
 
-	// @Test(priority = 2, description = " Sprint 3- TA-344/ TA-76 Verify Find A
-	// Store")
+	@Test(priority = 2, description = " Sprint 3- TA-344/ TA-76 Verify Find A	 Store")
 	public void verifyFindAStore() {
 
 		click(home.getHeaderFindStore(), "Store Finder");
@@ -119,15 +117,14 @@ public class TopNavigation extends GenericMethods {
 
 	}
 
-	// @Test(priority = 5, description = " Sprint 3- TA-345/ TA-76 Verify
-	// CustomerService")
+	@Test(priority = 5, description = " Sprint 3- TA-345/ TA-76 Verify	 CustomerService")
 	public void verifyCustomerService() {
 
 		click(home.getHeaderCustomerService(), "Customer Service");
 		HomePageVerification.verifyHomePageResponse();
 	}
 
-	// @Test(priority = 4, description = " Sprint 3- TA-346/ TA-76 Verify SignIn")
+	@Test(priority = 4, description = " Sprint 3- TA-346/ TA-76 Verify SignIn")
 	public void verifySignIn() {
 		click(home.getHeaderSignIn(), "SignIn");
 		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
@@ -151,17 +148,17 @@ public class TopNavigation extends GenericMethods {
 	public void verifySearch() {
 		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestOrders");
 
-		//by using product/ collection name
+		// by using product/ collection name
 		UIFunctions.searchProducts(1, testData.get("ProductName"));
-		
+
 		// using SKUID
 		input(home.getSearchProduct(), testData.get("SKUID"), "Search Product");
 		keyEnter(home.getSearchProduct());
 		verifyAssertContains(driver.getCurrentUrl(), testData.get("SKUID"), "Wrong Product is displayed");
 		String result = getText(pgp.getResultCount());
 		int resultCount = Integer.parseInt(result.replaceAll("\\D", ""));
-		if(resultCount==1) {
-			click(pgp.getResultImageWithSku(),"Result SKUID");
+		if (resultCount == 1) {
+			click(pgp.getResultImageWithSku(), "Result SKUID");
 			logger.log(Status.INFO, "Exact Result Match with Searching SKUID is successfull");
 		}
 		try {
