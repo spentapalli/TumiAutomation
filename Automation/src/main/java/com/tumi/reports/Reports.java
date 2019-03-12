@@ -359,16 +359,6 @@ public class Reports {
 		String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
 		DesiredCapabilities caps = new DesiredCapabilities();
 
-		ChromeOptions options = new ChromeOptions();
-		options.addArguments("disable-infobars");
-		options.addArguments("--disable-notifications");
-		JSONObject jsonObject = new JSONObject();
-		prefs.put("profile.default_content_setting_values.notifications", 2);
-		jsonObject.put("profile.default_content_setting_values.notifications", 1);
-
-		options.setExperimentalOption("prefs", jsonObject);
-		options.setExperimentalOption("prefs", prefs);
-
 		caps.setCapability("browser", remoteBrowser);
 		caps.setCapability("browser_version", remoteBrowserVersion);
 		caps.setCapability("os", remoteOS);
@@ -378,6 +368,15 @@ public class Reports {
 		caps.setCapability("browserstack.networkLogs", "true");
 		caps.setCapability("resolution", "1024x768");
 		caps.setCapability("browserstack.selenium_version", "3.13.0");
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("disable-infobars");
+		options.addArguments("--disable-notifications");
+		JSONObject jsonObject = new JSONObject();
+		prefs.put("profile.default_content_setting_values.notifications", 2);
+		jsonObject.put("profile.default_content_setting_values.notifications", 1);
+
+		options.setExperimentalOption("prefs", jsonObject);
+		options.setExperimentalOption("prefs", prefs);
 		caps.setCapability(ChromeOptions.CAPABILITY, options);
 		driver = new RemoteWebDriver(new URL(URL), caps);
 	}

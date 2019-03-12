@@ -216,6 +216,16 @@
 		"stage2" : "https://www.hybris-stage2.tumi.com/",
 		"stage3" : "https://www.hybris-stage3.tumi.com/",
 		"prod": "https://www.tumi.com/"
+	},
+	
+	"BrowserStack":{
+		
+		"remoteBrowser" : "Chrome",
+		"remoteBrowserVersion" : "62.0",
+		"remoteOS" : "Windows",
+		"remoteOsVersion" : "10"
+		
+		
 	
 	}
 }

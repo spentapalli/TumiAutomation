@@ -498,13 +498,17 @@ public class UIFunctions extends GenericMethods {
 	}
 
 	public static void completeOrder() {
-
+		
+		
+		
 		if (applicationUrl.equals("prod")) {
 			Assert.fail("Scripts are executing in Production");
 		} else {
 			domClick(review.getPlaceOrder(), "Place Order");
+			scrollUp();
 			do {
 				delay(2000);
+				
 			} while (confirmation.getWithForConfirmation().isDisplayed());
 			if (!confirmation.getConfirmOrder().isDisplayed()) {
 
