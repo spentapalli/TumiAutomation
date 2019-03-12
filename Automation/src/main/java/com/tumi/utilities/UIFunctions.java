@@ -724,9 +724,7 @@ public class UIFunctions extends GenericMethods {
 
 	public static void payPalCheckout(String sheet, String testCase, WebElement ele) {
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
-		String value = getText(ele); // use this for registered user
-		// String value = getText(mainCart.getEstimatedTotal()); //use this for Guest
-		// users
+		String value = getText(ele); 
 		System.out.println(value);
 		Double dValue = Double.valueOf(value.replace("$", ""));
 		if (dValue.intValue() >= 100) {

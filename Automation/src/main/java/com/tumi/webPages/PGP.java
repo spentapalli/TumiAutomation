@@ -73,6 +73,14 @@ public class PGP extends GenericMethods {
 
 		return QuickShop;
 	}
+	
+	@FindBy(how = How.XPATH, using = "//div[contains(@class,'quick-view-link')]")
+	private WebElement quickShop;
+
+	public WebElement getquickShop() {
+
+		return quickShop;
+	}
 
 	@FindBy(how = How.XPATH, using = "(//button[@type='submit'])[2]")
 	private WebElement QuickShopAddtoCart;
@@ -131,6 +139,14 @@ public class PGP extends GenericMethods {
 				return krResultCount;
 			}
 	}
+	
+	@FindBy(how = How.XPATH, using = "//div[contains(@class,'productMainLink')]")
+	private WebElement resultImageWithSku;
+
+	public WebElement getResultImageWithSku() {
+		return resultImageWithSku;
+	}
+
 
 	
 	@FindBy(how = How.XPATH, using = "//h1[contains(text(),'Testing Category Title')]")
