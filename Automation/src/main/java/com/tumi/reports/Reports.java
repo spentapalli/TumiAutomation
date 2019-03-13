@@ -285,7 +285,7 @@ public class Reports {
 			Runtime.getRuntime().exec("c:\\windows\\system32\\cmd.exe /c BrowserStackLocal.bat",null,file);
 			Thread.sleep(5000);
 		} catch (Exception e) {
-			
+			e.printStackTrace();
 		}
 	}
 
@@ -312,6 +312,10 @@ public class Reports {
 				ChromeOptions options = new ChromeOptions();
 				options.addArguments("disable-infobars");
 				options.addArguments("--disable-notifications");
+				options.addArguments("--disable-extensions");
+				options.addArguments("--headless");
+				options.addArguments("--disable-gpu");
+				options.addArguments("--no-sandbox");
 				System.setProperty(GlobalConstants.chrome, getChromeDriverPath());
 				driver = new ChromeDriver(options);
 
@@ -371,6 +375,7 @@ public class Reports {
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("disable-infobars");
 		options.addArguments("--disable-notifications");
+		options.addArguments("--disable-extensions");
 		JSONObject jsonObject = new JSONObject();
 		prefs.put("profile.default_content_setting_values.notifications", 2);
 		jsonObject.put("profile.default_content_setting_values.notifications", 1);
