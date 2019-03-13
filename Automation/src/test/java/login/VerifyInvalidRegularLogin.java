@@ -28,7 +28,7 @@ public class VerifyInvalidRegularLogin extends GenericMethods {
 	public void verifyInvalidUserMessage() {
 
 		UIFunctions.closeSignUp();
-		login("TumiTestData","SocialNetworkDetails");
+		Login("TumiTestData","SocialNetworkDetails");
 		
 		Assert.fail(getProperty("home.invalidCredentials"));
 		

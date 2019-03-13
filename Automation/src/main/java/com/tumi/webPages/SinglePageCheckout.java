@@ -96,5 +96,25 @@ public class SinglePageCheckout extends GenericMethods {
 
 		return explicitWait(ApplyClick);
 	}
+	@FindBy(how = How.XPATH, using = "//div[contains(text(),'Voucher successfully applied to cart.')]")
+	private WebElement PromocodeMessage;
 
+	public WebElement getPromocodeMessage() {
+
+		return explicitWait(PromocodeMessage);
+	}
+	@FindBy(how = How.XPATH, using = "(//button[@type='submit'])[3]")
+	private WebElement PromocodeRemove;
+
+	public WebElement getPromocodeRemove() {
+
+		return explicitWait(PromocodeRemove);
+	}
+	@FindBy(how = How.XPATH, using = "//div[contains(text(),'Subtotal')]/../following-sibling::div[1]")
+	private WebElement subtotalCode;
+
+	public WebElement getSubtotalCode() {
+
+		return subtotalCode;
+	}
 }

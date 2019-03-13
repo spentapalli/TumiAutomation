@@ -679,4 +679,26 @@ public class GenericMethods extends GlobalConstants {
 			e.printStackTrace();
 		}
 	}
+	public void Login(String sheetName, String testCaseName) {
+		try {
+			Map<String, String> testData = ReadTestData.getJsonData(sheetName, testCaseName);
+
+			click(home.getHeaderSignIn(), "Sign In");
+			input(home.getUserName(), testData.get("EmailID"), "Email Address");
+			input(home.getPassWord(), testData.get("Password"), "Password");
+			click(home.getLogOn(), "Login");
+
+			if (myacc.getSignout().isDisplayed()) {
+				logger.log(Status.INFO, "Successfully logged with Regular user valid credentials");
+
+			} else {
+				Assert.fail("user signin is failed");
+			}
+			
+			myacc.getMyAccountClose().click();
+		} catch (Exception e) {
+			Assert.fail("Fail to Login due to " + e.getMessage());
+		}
+		// removeExistingCart();
+	}
 }

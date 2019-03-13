@@ -276,7 +276,14 @@ public class ProductDetailPage extends GenericMethods {
 	public WebElement getSortZToA(){
 		return sortZToA;
 	}
+	@FindBy(how=How.XPATH,using="//div[@id='prod-details']/h1")
+	private WebElement ProductLink;
 	
+	public WebElement getProductLink(){
+		return ProductLink;
+	}
+	
+
 	
 	
 	

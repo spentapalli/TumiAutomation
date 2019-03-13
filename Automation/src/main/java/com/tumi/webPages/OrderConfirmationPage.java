@@ -1,5 +1,7 @@
 package com.tumi.webPages;
 
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -48,7 +50,29 @@ public class OrderConfirmationPage extends GenericMethods {
 		
 		return signoutAtConfirm;
 	}
+	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Create an account')]")
+	private WebElement CreateAccount;
 	
+	public WebElement getCreateAccount() {
+		
+		return CreateAccount;
+	}
+	//dygfysgfhsdfdsufsdu
+	@FindBy(how = How.XPATH, using = "(//a[contains(text(),'Alpha Bravo Luggage Tag - Small')])[1]")
+	private WebElement ProductLink;
+	
+	public WebElement getProductLink() {
+		
+		return ProductLink;
+	}
+	@FindBy(how = How.XPATH, using = "	//section[@id='payment-section-ctnr']")
+	private List<WebElement> ProductPayment;
+	
+	public List<WebElement> getProductPaymentDetails() {
+		
+		return ProductPayment;
+	}
+
 	
 
 }
