@@ -149,7 +149,12 @@ public class Reports {
 		options.put("mobileEmulation", emu);
 		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
 		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+		 // Create object of HashMap Class
+		Map<String, Object> prefs = new HashMap<String, Object>();             
+               // Set the notification setting it will override the default setting
+		prefs.put("profile.default_content_setting_values.notifications", 2);
 		ChromeOptions chromeOpt = new ChromeOptions();
+		options.setExperimentalOption("prefs", prefs);
 		chromeOpt.addArguments("disable-infobars");
 		chromeOpt.addArguments("--disable-notifications");
 		chromeOpt.merge(capabilities);
@@ -309,7 +314,12 @@ public class Reports {
 
 			if (null == browserName || browserName.isEmpty() || browserName.equalsIgnoreCase("chrome")) {
 
+				 // Create object of HashMap Class
+		Map<String, Object> prefs = new HashMap<String, Object>();             
+               // Set the notification setting it will override the default setting
+		prefs.put("profile.default_content_setting_values.notifications", 2);
 				ChromeOptions options = new ChromeOptions();
+				options.setExperimentalOption("prefs", prefs);
 				options.addArguments("disable-infobars");
 				options.addArguments("--disable-notifications");
 				options.addArguments("--disable-extensions");
@@ -373,11 +383,19 @@ public class Reports {
 		caps.setCapability("browserstack.networkLogs", "true");
 		caps.setCapability("resolution", "1024x768");
 		caps.setCapability("browserstack.selenium_version", "3.13.0");
+		 // Create object of HashMap Class
+		Map<String, Object> prefs = new HashMap<String, Object>();             
+               // Set the notification setting it will override the default setting
+		prefs.put("profile.default_content_setting_values.notifications", 2);
+		JSONObject jsonObject = new JSONObject();
 		ChromeOptions options = new ChromeOptions();
+		
+		options.setExperimentalOption("prefs", prefs);
 		options.addArguments("disable-infobars");
 		options.addArguments("--disable-notifications");
 		options.addArguments("--disable-extensions");
-		JSONObject jsonObject = new JSONObject();
+		
+		
 		prefs.put("profile.default_content_setting_values.notifications", 2);
 		jsonObject.put("profile.default_content_setting_values.notifications", 1);
 
