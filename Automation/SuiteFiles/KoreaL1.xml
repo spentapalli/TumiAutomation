@@ -88,4 +88,70 @@
     </class>
 		</classes>
 	</test>
+	
+	<test name="PGPFiltersForKorea"> 
+		<classes> 
+			<class name="tumi.home.PGPFiltersForKorea"/> 
+		</classes>
+   </test>
+   
+   <test name="TopNavigation1">
+		<classes>
+			<class name="tumi.home.TopNavigation" >
+			<methods><include name="verifyLocation"></include>
+			</methods>
+			</class>
+		</classes>
+	</test>
+	
+	<test name="TopNavigation2">
+		<classes>
+			<class name="tumi.home.TopNavigation" >
+			<methods><include name="verifyFindAStore"></include>
+			</methods>
+			</class>
+		</classes>
+	</test>
+	
+	<test name="TopNavigation3">
+		<classes>
+			<class name="tumi.home.TopNavigation" >
+			<methods><include name="verifyCustomerService"></include>
+			</methods>
+			</class>
+		</classes>
+	</test>
+   
+   <test name="TopNavigation4">
+		<classes>
+			<class name="tumi.home.TopNavigation" >
+			<methods><include name="verifySignIn"></include>
+			</methods>
+			</class>
+		</classes>
+	</test>
+	
+	<test name="HomePageVerification.java">
+		<classes>
+			<class name="tumi.home.HomePageVerification" />
+		</classes>
+	</test>
+	
+	
+	<test name="Quickshop.java">
+		<classes>
+			<class name="tumi.home.Quickshop" />
+		</classes>
+	</test>
+	
+	<test name="CreateAccount.java">
+		<classes>
+			<class name="userRegistration.CreateAccount" />
+		</classes>
+	</test>
+	<test name="OutOfStockProduct">
+		<classes>
+			<class name="tumi.home.OutOfStockProduct" />
+		</classes>
+	</test>
 	</suite>

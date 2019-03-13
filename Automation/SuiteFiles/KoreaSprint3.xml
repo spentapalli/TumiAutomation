@@ -62,17 +62,9 @@
 			<class name="userRegistration.CreateAccount" />
 		</classes>
 	</test>
-	
-	<test name="CompareProducts.java">
+	<test name="OutOfStockProduct">
 		<classes>
-			<class name="orders.registered.CompareProducts" />
+			<class name="tumi.home.OutOfStockProduct" />
 		</classes>
 	</test>
-	
-	<test name="ProductsSortingFunctionality.java">
-		<classes>
-			<class name="orders.registered.ProductsSortingFunctionality" />
-		</classes>
-	</test>
-	
    </suite>

@@ -137,4 +137,46 @@
 			<class name="login.VerifyInvalidInstaLogin" />
 		</classes>
 	</test>
+	<test name="PGPFilters"> 
+		<classes> 
+			<class name="tumi.home.PGPFilters"/> 
+		</classes>
+   </test>
+
+	<test name="TopNavigation">
+		<classes>
+			<class name="tumi.home.TopNavigation" />
+		</classes>
+	</test>
+	
+	 <test name="TumiStudioEdit">
+		<classes>
+			<class name="tumi.home.TumiStudioEdit" />
+		</classes>
+	</test> 
+	
+	<test name="HomePageVerification">
+		<classes>
+			<class name="tumi.home.HomePageVerification" />
+		</classes>
+	</test>
+	
+	<test name="OutOfStockProduct">
+		<classes>
+			<class name="tumi.home.OutOfStockProduct" />
+		</classes>
+	</test>
+	
+	
+	<test name="Quickshop">
+		<classes>
+			<class name="tumi.home.Quickshop" />
+		</classes>
+	</test>
+	
+	<test name="CreateAccount">
+		<classes>
+			<class name="userRegistration.CreateAccount" />
+		</classes>
+	</test>
 </suite>

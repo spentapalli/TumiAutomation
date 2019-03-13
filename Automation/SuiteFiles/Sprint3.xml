@@ -14,11 +14,11 @@
 		</classes>
 	</test>
 	
-	<test name="TumiStudioEdit">
+	 <test name="TumiStudioEdit">
 		<classes>
 			<class name="tumi.home.TumiStudioEdit" />
 		</classes>
-	</test>
+	</test> 
 	
 	<test name="HomePageVerification">
 		<classes>
@@ -44,17 +44,4 @@
 			<class name="userRegistration.CreateAccount" />
 		</classes>
 	</test>
-	
-	<test name="CompareProducts">
-		<classes>
-			<class name="orders.registered.CompareProducts" />
-		</classes>
-	</test>
-	
-	<test name="ProductsSortingFunctionality">
-		<classes>
-			<class name="orders.registered.ProductsSortingFunctionality" />
-		</classes>
-	</test>
-	
 	</suite>
