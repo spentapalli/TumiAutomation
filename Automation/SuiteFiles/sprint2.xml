@@ -8,7 +8,7 @@
 		</classes>
    </test>
 
-	<test name="MultiOrders.java">
+	<test name="MultiOrders">
 		<classes>
 			<class name="orders.guest.MultiOrders" />
 		</classes>

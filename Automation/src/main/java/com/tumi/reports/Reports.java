@@ -149,7 +149,13 @@ public class Reports {
 		options.put("mobileEmulation", emu);
 		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
 		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+		// Create object of HashMap Class
+		Map<String, Object> prefs = new HashMap<String, Object>();
+		// Set the notification setting it will override the default setting
+		prefs.put("profile.default_content_setting_values.notifications", 2);
+
 		ChromeOptions chromeOpt = new ChromeOptions();
+		chromeOpt.setExperimentalOption("prefs", prefs);
 		chromeOpt.addArguments("disable-infobars");
 		chromeOpt.addArguments("--disable-notifications");
 		chromeOpt.merge(capabilities);
@@ -178,21 +184,21 @@ public class Reports {
 
 	@AfterMethod(alwaysRun = true)
 	public static void closeBrowser() {
-		
+
 		if (browserName.equalsIgnoreCase("Remote")) {
 			try {
 				driver.quit();
 			} catch (Exception e) {
-				
+
 			}
-		}else {
+		} else {
 			try {
 				driver.close();
 			} catch (Exception e) {
-				
+
 			}
 		}
-		
+
 	}
 
 	@BeforeMethod(alwaysRun = true)
@@ -276,16 +282,16 @@ public class Reports {
 		return new Object[][] { { "United States" }, { "Canada" }, { "Korea" } };
 
 	}
-	
+
 	public static void enableLocalTesting() {
-		
+
 		try {
 			File file = new File("C:\\suresh\\BrowserStack");
-			
-			Runtime.getRuntime().exec("c:\\windows\\system32\\cmd.exe /c BrowserStackLocal.bat",null,file);
+
+			Runtime.getRuntime().exec("c:\\windows\\system32\\cmd.exe /c BrowserStackLocal.bat", null, file);
 			Thread.sleep(5000);
 		} catch (Exception e) {
-			
+			e.printStackTrace();
 		}
 	}
 
@@ -309,9 +315,19 @@ public class Reports {
 
 			if (null == browserName || browserName.isEmpty() || browserName.equalsIgnoreCase("chrome")) {
 
+				// Create object of HashMap Class
+				Map<String, Object> prefs = new HashMap<String, Object>();
+				// Set the notification setting it will override the default setting
+				prefs.put("profile.default_content_setting_values.notifications", 2);
 				ChromeOptions options = new ChromeOptions();
+				options.setExperimentalOption("prefs", prefs);
 				options.addArguments("disable-infobars");
 				options.addArguments("--disable-notifications");
+				options.addArguments("--disable-extensions");
+				/*
+				 * options.addArguments("--headless"); options.addArguments("--disable-gpu");
+				 * options.addArguments("--no-sandbox");
+				 */
 				System.setProperty(GlobalConstants.chrome, getChromeDriverPath());
 				driver = new ChromeDriver(options);
 
@@ -352,8 +368,6 @@ public class Reports {
 	public static void remoteAccess(String remoteBrowser, String remoteBrowserVersion, String remoteOS,
 			String remoteOsVersion) throws Exception {
 
-		Map<String, Object> prefs = new HashMap<String, Object>();
-
 		final String USERNAME = "kurrysuresh1";
 		final String AUTOMATE_KEY = "zKp1VrRqTkUXqi4efALq";
 		String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
@@ -368,15 +382,19 @@ public class Reports {
 		caps.setCapability("browserstack.networkLogs", "true");
 		caps.setCapability("resolution", "1024x768");
 		caps.setCapability("browserstack.selenium_version", "3.13.0");
+
+		Map<String, Object> prefs1 = new HashMap<String, Object>();
+
+		prefs1.put("profile.default_content_setting_values.notifications", 2);
+
 		ChromeOptions options = new ChromeOptions();
+
+		options.setExperimentalOption("prefs", prefs1);
+
 		options.addArguments("disable-infobars");
 		options.addArguments("--disable-notifications");
-		JSONObject jsonObject = new JSONObject();
-		prefs.put("profile.default_content_setting_values.notifications", 2);
-		jsonObject.put("profile.default_content_setting_values.notifications", 1);
-
-		options.setExperimentalOption("prefs", jsonObject);
-		options.setExperimentalOption("prefs", prefs);
+		options.addArguments("--disable-extensions");
+		options.merge(caps);
 		caps.setCapability(ChromeOptions.CAPABILITY, options);
 		driver = new RemoteWebDriver(new URL(URL), caps);
 	}

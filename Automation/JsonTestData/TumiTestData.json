@@ -73,6 +73,7 @@
 	"GuestOrders": {
 
 		"ProductName": "tag",
+		"SKUID":"022060D2",
 		"FirstMonoInput": "1",
 		"SecondMonoInput": "2",
 		"ThirdMonoInput": "3",
