@@ -306,7 +306,7 @@ public class Reports {
 
 		if (browserName.equalsIgnoreCase("Remote")) {
 
-			enableLocalTesting();
+			//enableLocalTesting();
 			remoteAccess(testData.get("remoteBrowser"), testData.get("remoteBrowserVersion"), testData.get("remoteOS"),
 					testData.get("remoteOsVersion"));
 			getURL();
