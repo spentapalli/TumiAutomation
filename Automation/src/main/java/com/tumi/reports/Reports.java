@@ -306,7 +306,7 @@ public class Reports {
 
 		if (browserName.equalsIgnoreCase("Remote")) {
 
-			//enableLocalTesting();
+			// enableLocalTesting();
 			remoteAccess(testData.get("remoteBrowser"), testData.get("remoteBrowserVersion"), testData.get("remoteOS"),
 					testData.get("remoteOsVersion"));
 			getURL();
@@ -324,10 +324,11 @@ public class Reports {
 				options.addArguments("disable-infobars");
 				options.addArguments("--disable-notifications");
 				options.addArguments("--disable-extensions");
-				/*
-				 * options.addArguments("--headless"); options.addArguments("--disable-gpu");
-				 * options.addArguments("--no-sandbox");
-				 */
+
+				options.addArguments("--headless");
+				options.addArguments("--disable-gpu");
+				options.addArguments("--no-sandbox");
+
 				System.setProperty(GlobalConstants.chrome, getChromeDriverPath());
 				driver = new ChromeDriver(options);
 
