@@ -49,19 +49,19 @@ public class GenericMethods extends GlobalConstants {
 			Assert.fail("Fail to Capture Screen " + e.getMessage());
 		}
 	}
-	
+
 	public void removeCards() {
 		try {
 			click(myacc.getMyProfile(), "View Your Profile");
 			click(myacc.getMyPayments(), "Payment/Gift Card");
-			if (myacc.getAvailableCards().size()>1) {
+			if (myacc.getAvailableCards().size() > 1) {
 				for (WebElement ele : myacc.getAvailableCards()) {
 					click(myacc.getRemoveCards(), "Remove Card");
 					delay(5000);
 				}
 			}
 		} catch (Exception e) {
-			
+
 			e.printStackTrace();
 		}
 	}
@@ -82,7 +82,7 @@ public class GenericMethods extends GlobalConstants {
 				Assert.fail("user signin is failed");
 			}
 			removeCards();
-			//myacc.getMyAccountClose().click();
+			// myacc.getMyAccountClose().click();
 		} catch (Exception e) {
 			Assert.fail("Fail to Login due to " + e.getMessage());
 		}
@@ -655,35 +655,33 @@ public class GenericMethods extends GlobalConstants {
 	public static void removeExistingCart() {
 
 		try {
-			WebElement ele1 = home.getMinicartCount(); 
-			if (!ele1.equals(null)) {
-				
-				if (!getText(home.getMinicartCount()).contains("0")) {
-					webclick(home.getMinicart(), "Minicart");
-					try {
-						int cart = parseInt(getText(home.getMinicartCount()));
-						if (cart != 0) {
-							delay(5000);
-							// click(home.getMinicart(), "Mini Cart");
-							// click(minicart.getProceedCheckOut(), "Proceed to Checkout");
-							for (WebElement ele : checkout.getRemoveMinicartProducts()) {
-								click(checkout.getRemoveProduct(), "Remove Existing Product");
-								delay(5000);
-								// explicitWait(checkout.getremoveMinicart());
-							}
-						}
-					} catch (Exception e) {
 
-						e.printStackTrace();
+			if (!getText(home.getMinicartCount()).contains("0")) {
+				webclick(home.getMinicart(), "Minicart");
+				try {
+					int cart = parseInt(getText(home.getMinicartCount()));
+					if (cart != 0) {
+						delay(5000);
+						// click(home.getMinicart(), "Mini Cart");
+						// click(minicart.getProceedCheckOut(), "Proceed to Checkout");
+						for (WebElement ele : checkout.getRemoveMinicartProducts()) {
+							click(checkout.getRemoveProduct(), "Remove Existing Product");
+							delay(5000);
+							// explicitWait(checkout.getremoveMinicart());
+						}
 					}
+				} catch (Exception e) {
+
+					e.printStackTrace();
 				}
 			}
-			
+
 		} catch (Exception e) {
 
 			e.printStackTrace();
 		}
 	}
+
 	public void Login(String sheetName, String testCaseName) {
 		try {
 			Map<String, String> testData = ReadTestData.getJsonData(sheetName, testCaseName);
@@ -699,7 +697,7 @@ public class GenericMethods extends GlobalConstants {
 			} else {
 				Assert.fail("user signin is failed");
 			}
-			
+
 			myacc.getMyAccountClose().click();
 		} catch (Exception e) {
 			Assert.fail("Fail to Login due to " + e.getMessage());
