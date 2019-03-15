@@ -49,19 +49,19 @@ public class GenericMethods extends GlobalConstants {
 			Assert.fail("Fail to Capture Screen " + e.getMessage());
 		}
 	}
-	
+
 	public void removeCards() {
 		try {
 			click(myacc.getMyProfile(), "View Your Profile");
 			click(myacc.getMyPayments(), "Payment/Gift Card");
-			if (myacc.getAvailableCards().size()>1) {
+			if (myacc.getAvailableCards().size() > 1) {
 				for (WebElement ele : myacc.getAvailableCards()) {
 					click(myacc.getRemoveCards(), "Remove Card");
 					delay(5000);
 				}
 			}
 		} catch (Exception e) {
-			
+
 			e.printStackTrace();
 		}
 	}
@@ -82,7 +82,7 @@ public class GenericMethods extends GlobalConstants {
 				Assert.fail("user signin is failed");
 			}
 			removeCards();
-			//myacc.getMyAccountClose().click();
+			// myacc.getMyAccountClose().click();
 		} catch (Exception e) {
 			Assert.fail("Fail to Login due to " + e.getMessage());
 		}
@@ -655,6 +655,7 @@ public class GenericMethods extends GlobalConstants {
 	public static void removeExistingCart() {
 
 		try {
+
 			if (!getText(home.getMinicartCount()).contains("0")) {
 				webclick(home.getMinicart(), "Minicart");
 				try {
@@ -674,11 +675,13 @@ public class GenericMethods extends GlobalConstants {
 					e.printStackTrace();
 				}
 			}
+
 		} catch (Exception e) {
 
 			e.printStackTrace();
 		}
 	}
+
 	public void Login(String sheetName, String testCaseName) {
 		try {
 			Map<String, String> testData = ReadTestData.getJsonData(sheetName, testCaseName);
@@ -694,7 +697,7 @@ public class GenericMethods extends GlobalConstants {
 			} else {
 				Assert.fail("user signin is failed");
 			}
-			
+
 			myacc.getMyAccountClose().click();
 		} catch (Exception e) {
 			Assert.fail("Fail to Login due to " + e.getMessage());

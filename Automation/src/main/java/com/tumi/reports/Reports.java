@@ -206,6 +206,8 @@ public class Reports {
 		// Create Extent Report
 		logger = report.createTest(name.getName(), name.getDeclaringClass().getName());
 
+		System.out.println("Test Case Name " +name.getName()+  " And Declaration Name " + name.getDeclaringClass().getName());
+		
 		// Create Object of Each Page Class
 		home = new HomePage(driver);
 		minicart = new MiniCartPage(driver);
@@ -250,7 +252,8 @@ public class Reports {
 						MediaEntityBuilder.createScreenCaptureFromPath(screenlocation).build());
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.log(Status.FAIL, "Faile to due to below error");
+			Assert.fail(e.getMessage());
 		}
 	}
 
@@ -306,7 +309,7 @@ public class Reports {
 
 		if (browserName.equalsIgnoreCase("Remote")) {
 
-			enableLocalTesting();
+			//enableLocalTesting();
 			remoteAccess(testData.get("remoteBrowser"), testData.get("remoteBrowserVersion"), testData.get("remoteOS"),
 					testData.get("remoteOsVersion"));
 			getURL();
