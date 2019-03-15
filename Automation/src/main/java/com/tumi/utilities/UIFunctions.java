@@ -64,8 +64,9 @@ public class UIFunctions extends GenericMethods {
 
 	public static void verifyVPN() {
 		try {
-			if (home.getVPNDis().isDisplayed()) {
-				Assert.fail("VPN is Disconnected, Kindly User VPN to Access Application");
+			delay(5000);
+			if (driver.getTitle().equals("www.hybris-stage2.tumi.com")) {
+				Assert.fail("VPN is Disconnected, Kindly Use VPN to Access Application");
 			}
 		} catch (Exception e) {
 		}
@@ -227,6 +228,8 @@ public class UIFunctions extends GenericMethods {
 			final String pdpURL = GlobalConstants.urlkr + "/p/" + testData.get("KoreaSKUID");
 			driver.get(pdpURL);
 		}
+		
+		UIFunctions.verifyVPN();
 		// WaitForJStoLoad();
 
 		// commented below for Korea order, because getting error here
@@ -286,7 +289,7 @@ public class UIFunctions extends GenericMethods {
 			final String pdpURL = GlobalConstants.urlkr + "/p/" + testData.get("KoreaSKUID");
 			driver.get(pdpURL);
 		}
-
+		UIFunctions.verifyVPN();
 	}
 
 	public static void addBackOrderProduct(String sheet, String testCase) {
