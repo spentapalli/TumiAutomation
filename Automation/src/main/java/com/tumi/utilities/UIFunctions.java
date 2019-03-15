@@ -66,6 +66,7 @@ public class UIFunctions extends GenericMethods {
 		try {
 			delay(5000);
 			if (driver.getTitle().equals("www.hybris-stage2.tumi.com")) {
+				logger.log(Status.FAIL, "Failed due to VPN");
 				Assert.fail("VPN is Disconnected, Kindly Use VPN to Access Application");
 			}
 		} catch (Exception e) {
