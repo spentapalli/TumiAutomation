@@ -100,6 +100,8 @@
 							<suiteXmlFile>./SuiteFiles/sprint3.xml</suiteXmlFile>
 							<suiteXmlFile>RegGiftServices.xml</suiteXmlFile>
 							<suiteXmlFile>./SuiteFiles/L1.xml</suiteXmlFile>
+							<suiteXmlFile>./SuiteFiles/GOrders.xml</suiteXmlFile>
+							
 						</suiteXmlFiles>
 					</configuration>
 				</plugin>
