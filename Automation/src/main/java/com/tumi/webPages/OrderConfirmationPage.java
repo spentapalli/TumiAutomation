@@ -65,14 +65,21 @@ public class OrderConfirmationPage extends GenericMethods {
 		
 		return ProductLink;
 	}
-	@FindBy(how = How.XPATH, using = "	//section[@id='payment-section-ctnr']")
+	@FindBy(how = How.XPATH, using = "	//section[@id='payment-section-ctnr']/section[2]/div[1]/div/header")
 	private List<WebElement> ProductPayment;
 	
 	public List<WebElement> getProductPaymentDetails() {
 		
 		return ProductPayment;
 	}
-
+	@FindBy(how = How.XPATH, using = "(//div[contains(@class,'address-info small removeFocusIndicator')]/div[2])[1]")
+	private List<WebElement> ShipppingAddress;
+	
+	public List<WebElement> getShipppingAddress() {
+		
+		return ShipppingAddress;
+	}
+	
 	
 
 }
