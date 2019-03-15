@@ -44,4 +44,4 @@
 			<class name="userRegistration.CreateAccount" />
 		</classes>
 	</test>
-	</suite>
+	</suite>       
