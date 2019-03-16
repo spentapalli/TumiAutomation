@@ -52,7 +52,7 @@
 		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
 			<li>
                 <a href='#!'>
-                    <span class='label suite-start-time blue darken-3'>Mar 16, 2019 01:40:11 PM</span>
+                    <span class='label suite-start-time blue darken-3'>Mar 17, 2019 12:02:29 AM</span>
 				</a>
 			</li>
 			<li>
@@ -164,17 +164,17 @@
 				
 				<li class='test displayed active  fail' status='fail' bdd='false' test-id='1'>
 					<div class='test-heading'>
-						<span class='test-name'>tumiOrderAsRegistered</span>
-						<span class='test-time'>Mar 16, 2019 01:41:18 PM</span>
+						<span class='test-name'>orderWithVoucherAsRegistered</span>
+						<span class='test-time'>Mar 17, 2019 12:03:36 AM</span>
 						<span class='test-status right fail'>fail</span>
 					</div>
 					<div class='test-content hide'>
 <div class='test-time-info'>
-	<span class='label start-time'>Mar 16, 2019 01:41:18 PM</span>
-	<span class='label end-time'>Mar 16, 2019 01:43:04 PM</span>
-	<span class='label time-taken grey lighten-1 white-text'>0h 1m 45s+507ms</span>
+	<span class='label start-time'>Mar 17, 2019 12:03:36 AM</span>
+	<span class='label end-time'>Mar 17, 2019 12:07:59 AM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 4m 22s+969ms</span>
 </div>
-	<div class='test-desc'>orders.registered.RegisteredOrder </div>
+	<div class='test-desc'>orders.registered.RegisterOrderWithVoucher </div>
 	<div class='test-steps'>
 		<table class='bordered table-results'>
 			<thead>
@@ -187,46 +187,48 @@
 			<tbody>
 				<tr class='log' status='info'>
 					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>1:41:18 PM</td>
+					<td class='timestamp'>12:03:36 AM</td>
 					<td class='step-details'>Clicked on Sign In</td>
 				</tr>
 				<tr class='log' status='info'>
 					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>1:41:20 PM</td>
+					<td class='timestamp'>12:03:37 AM</td>
 					<td class='step-details'>Entered the value in Email Address as: skomma@coredatalabs.com</td>
 				</tr>
 				<tr class='log' status='info'>
 					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>1:41:20 PM</td>
+					<td class='timestamp'>12:03:38 AM</td>
 					<td class='step-details'>Entered the value in Password as: tumi1234</td>
 				</tr>
 				<tr class='log' status='info'>
 					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>1:41:21 PM</td>
+					<td class='timestamp'>12:03:38 AM</td>
 					<td class='step-details'>Clicked on Login</td>
 				</tr>
 				<tr class='log' status='info'>
 					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>1:41:34 PM</td>
+					<td class='timestamp'>12:03:57 AM</td>
 					<td class='step-details'>Successfully logged with Regular user valid credentials</td>
 				</tr>
 				<tr class='log' status='info'>
 					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>1:42:29 PM</td>
-					<td class='step-details'>Clicked on Add to cart</td>
+					<td class='timestamp'>12:07:58 AM</td>
+					<td class='step-details'>Clicked on View Your Profile</td>
 				</tr>
 				<tr class='log' status='fail'>
 					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
-					<td class='timestamp'>1:43:03 PM</td>
-					<td class='step-details'><span class='label white-text red'>tumiOrderAsRegistered Test Case Failed</span></td>
+					<td class='timestamp'>12:07:58 AM</td>
+					<td class='step-details'><span class='label white-text red'>orderWithVoucherAsRegistered Test Case Failed</span></td>
 				</tr>
 				<tr class='log' status='fail'>
 					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
-					<td class='timestamp'>1:43:03 PM</td>
-					<td class='step-details'><pre>java.lang.AssertionError: Proceed to Checkout is not Enabled or Unable to interact at this point
+					<td class='timestamp'>12:07:58 AM</td>
+					<td class='step-details'><pre>java.lang.AssertionError: Payment/Gift Card is not Enabled or Unable to interact at this point
 	at org.testng.Assert.fail(Assert.java:96)
 	at com.tumi.utilities.GenericMethods.click(GenericMethods.java:107)
-	at orders.registered.RegisteredOrder.tumiOrderAsRegistered(RegisteredOrder.java:30)
+	at com.tumi.utilities.GenericMethods.removeCards(GenericMethods.java:58)
+	at com.tumi.utilities.GenericMethods.login(GenericMethods.java:86)
+	at orders.registered.RegisterOrderWithVoucher.orderWithVoucherAsRegistered(RegisterOrderWithVoucher.java:21)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -256,8 +258,8 @@
 				</tr>
 				<tr class='log' status='fail'>
 					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
-					<td class='timestamp'>1:43:04 PM</td>
-					<td class='step-details'>Screen Shot Reference:<img data-featherlight='./Screenshots/tumiOrderAsRegistered.png' width='10%' src='./Screenshots/tumiOrderAsRegistered.png' data-src='./Screenshots/tumiOrderAsRegistered.png'></td>
+					<td class='timestamp'>12:07:59 AM</td>
+					<td class='step-details'>Screen Shot Reference:<img data-featherlight='./Screenshots/orderWithVoucherAsRegistered.png' width='10%' src='./Screenshots/orderWithVoucherAsRegistered.png' data-src='./Screenshots/orderWithVoucherAsRegistered.png'></td>
 				</tr>
 			</tbody>
 		</table>
@@ -332,12 +334,14 @@
                                         </thead>
                                         <tbody>
                                                     <tr>
-                                                        <td>Mar 16, 2019 01:41:18 PM</td>
-                                                        <td class='linked' test-id='1'>tumiOrderAsRegistered</td>
-                                                        <td><pre><pre>java.lang.AssertionError: Proceed to Checkout is not Enabled or Unable to interact at this point
+                                                        <td>Mar 17, 2019 12:03:36 AM</td>
+                                                        <td class='linked' test-id='1'>orderWithVoucherAsRegistered</td>
+                                                        <td><pre><pre>java.lang.AssertionError: Payment/Gift Card is not Enabled or Unable to interact at this point
 	at org.testng.Assert.fail(Assert.java:96)
 	at com.tumi.utilities.GenericMethods.click(GenericMethods.java:107)
-	at orders.registered.RegisteredOrder.tumiOrderAsRegistered(RegisteredOrder.java:30)
+	at com.tumi.utilities.GenericMethods.removeCards(GenericMethods.java:58)
+	at com.tumi.utilities.GenericMethods.login(GenericMethods.java:86)
+	at orders.registered.RegisterOrderWithVoucher.orderWithVoucherAsRegistered(RegisterOrderWithVoucher.java:21)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -401,19 +405,19 @@
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Start
-					<div class='panel-lead'>Mar 16, 2019 01:40:11 PM</div>
+					<div class='panel-lead'>Mar 17, 2019 12:02:29 AM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 			 		End
-			 		<div class='panel-lead'>Mar 16, 2019 01:43:04 PM</div>
+			 		<div class='panel-lead'>Mar 17, 2019 12:07:59 AM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Time Taken
-					<div class='panel-lead'>0h 2m 52s+650ms</div>
+					<div class='panel-lead'>0h 5m 29s+283ms</div>
 				</div>
 			</div>
 		</div>

@@ -128,11 +128,6 @@ public class Reports {
 		// writing everything to document
 		// flush() - to write or update test information to your report.
 		report.flush();
-		try {
-			GenericMethods.killSession();
-		} catch (Exception e) {
-			logger.log(Status.INFO, "Unable to Kill Browser Instance");
-		}
 	}
 
 	@SuppressWarnings("deprecation")
@@ -189,6 +184,11 @@ public class Reports {
 			driver.quit();
 		}else {
 			driver.close();
+		}
+		try {
+			GenericMethods.killSession();
+		} catch (Exception e) {
+			logger.log(Status.INFO, "Unable to Kill Browser Instance");
 		}
 		
 	}
@@ -468,6 +468,7 @@ public class Reports {
 			} else if (OS.contains("linux")) {
 
 				return GlobalConstants.chromeLinuxPath;
+				
 			} else {
 
 				return GlobalConstants.chromeLinuxPath;
