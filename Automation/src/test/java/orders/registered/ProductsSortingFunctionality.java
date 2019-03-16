@@ -56,6 +56,5 @@ public class ProductsSortingFunctionality extends GenericMethods {
 				Assert.fail(product1 + " And " + product2 + " are not in Z to A order");
 			}
 		}
-////////
 	}
 }

@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -41,7 +42,8 @@ public class GenericMethods extends GlobalConstants {
 
 	public static void captureOrderConfScreen(String name) {
 
-		getScreen("./ExtentReports/ScreenShots/" + name + ".png");
+		long time = ZonedDateTime.now().toInstant().toEpochMilli();
+		getScreen("./ExtentReports/ScreenShots/" + name + time + ".png");
 		String location = "./ScreenShots/" + name + ".png";
 		try {
 			logger.info("Reference", MediaEntityBuilder.createScreenCaptureFromPath(location).build());
