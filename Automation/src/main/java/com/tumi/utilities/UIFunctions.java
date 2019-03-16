@@ -197,7 +197,6 @@ public class UIFunctions extends GenericMethods {
 
 		UIFunctions.closeSignUp();
 		removeExistingCart();
-
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
 		Map<String, String> testData1 = ReadTestData.getJsonData("TumiTestData", "Environments");
 
@@ -503,9 +502,6 @@ public class UIFunctions extends GenericMethods {
 	}
 
 	public static void completeOrder() {
-		
-		
-		
 		if (applicationUrl.equals("prod")) {
 			Assert.fail("Scripts are executing in Production");
 		} else {
@@ -522,7 +518,7 @@ public class UIFunctions extends GenericMethods {
 			orderNumber = getText(confirmation.getOrderNumber());
 			logger.log(Status.INFO, "Thank you for Your Order, here is your Order Number " + orderNumber);
 			delay(3000);
-			captureOrderConfScreen("OrderConfirmation");
+			//captureOrderConfScreen("OrderConfirmation");
 		}
 	}
 

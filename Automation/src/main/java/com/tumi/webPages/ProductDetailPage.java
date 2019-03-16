@@ -30,7 +30,7 @@ public class ProductDetailPage extends GenericMethods {
 
 	public WebElement getAddToCart() {
 		
-		if (browserName.equals("mobile")) {
+		if (browserName.equals("mobile")|| browserName.equals("prod")) {
 			scrollDown(300);
 		}
 		

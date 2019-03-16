@@ -42,8 +42,8 @@ public class GenericMethods extends GlobalConstants {
 
 	public static void captureOrderConfScreen(String name) {
 
-		long time = ZonedDateTime.now().toInstant().toEpochMilli();
-		getScreen("./ExtentReports/ScreenShots/" + name + time + ".png");
+		//long time = ZonedDateTime.now().toInstant().toEpochMilli();
+		getScreen("./ExtentReports/ScreenShots/" + name + ".png");
 		String location = "./ScreenShots/" + name + ".png";
 		try {
 			logger.info("Reference", MediaEntityBuilder.createScreenCaptureFromPath(location).build());
@@ -657,7 +657,8 @@ public class GenericMethods extends GlobalConstants {
 	public static void removeExistingCart() {
 
 		try {
-
+			WaitForJStoLoad();
+			UIFunctions.delay(3000);
 			if (!getText(home.getMinicartCount()).contains("0")) {
 				webclick(home.getMinicart(), "Minicart");
 				try {

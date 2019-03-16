@@ -417,7 +417,7 @@ public class HomePage extends GenericMethods {
 	private WebElement minicartcount;
 
 	public WebElement getMinicartCount() {
-		return minicartcount;
+		return explicitWait(minicartcount);
 	}
 
 //same for korea
