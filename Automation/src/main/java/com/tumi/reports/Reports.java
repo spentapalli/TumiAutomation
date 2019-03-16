@@ -184,7 +184,13 @@ public class Reports {
 
 	@AfterMethod(alwaysRun = true)
 	public static void closeBrowser() {
-		driver.quit();
+		
+		if (browserName.equalsIgnoreCase("Remote")) {
+			driver.quit();
+		}else {
+			driver.close();
+		}
+		
 	}
 
 	@BeforeMethod(alwaysRun = true)
