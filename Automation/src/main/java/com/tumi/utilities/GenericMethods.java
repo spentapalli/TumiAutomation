@@ -679,7 +679,7 @@ public class GenericMethods extends GlobalConstants {
 			e.printStackTrace();
 		}
 	}
-	public void Login(String sheetName, String testCaseName) {
+	public void userLogin(String sheetName, String testCaseName) {
 		try {
 			Map<String, String> testData = ReadTestData.getJsonData(sheetName, testCaseName);
 
@@ -696,6 +696,7 @@ public class GenericMethods extends GlobalConstants {
 			}
 			
 			myacc.getMyAccountClose().click();
+			delay(2000);
 		} catch (Exception e) {
 			Assert.fail("Fail to Login due to " + e.getMessage());
 		}

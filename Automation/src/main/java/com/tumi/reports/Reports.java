@@ -44,6 +44,7 @@ import com.tumi.utilities.GlobalConstants;
 import com.tumi.utilities.UIFunctions;
 import com.tumi.webPages.CartPage;
 import com.tumi.webPages.CheckOutPage;
+import com.tumi.webPages.ComparePage;
 import com.tumi.webPages.CreateAccountPage;
 import com.tumi.webPages.GiftServices;
 import com.tumi.webPages.GooglePage;
@@ -112,6 +113,7 @@ public class Reports {
 	public static String browserName = null;
 	public static String applicationUrl = null;
 	public static PGP pgp = null;
+	public static ComparePage compare = null;
 
 	@BeforeSuite(alwaysRun = true)
 	public void extentReportConfiguration() {
@@ -182,7 +184,7 @@ public class Reports {
 		// driver.navigate().to("https://ca.stg-hybris-akamai.tumi.com");
 	}
 
-	@AfterMethod(alwaysRun = true)
+	//@AfterMethod(alwaysRun = true)
 	public static void closeBrowser() {
 
 		if (browserName.equalsIgnoreCase("Remote")) {
@@ -232,6 +234,7 @@ public class Reports {
 		signinShip = new SignInShippingPage(driver);
 		confirmation = new OrderConfirmationPage(driver);
 		pgp = new PGP(driver);
+		compare = new ComparePage(driver);
 	}
 
 	@AfterMethod(alwaysRun = true)

@@ -288,6 +288,22 @@ public class CartPage extends GenericMethods {
 
 		return codeApplied;
 	}
+	
+	@FindBy(how = How.XPATH, using = "(//button[@type='submit'])[2]/following::div")
+	private WebElement promoSuccessMsg;
+
+	public WebElement getPromoSuccessMsg() {
+
+		return promoSuccessMsg;
+	}
+	
+	@FindBy(how = How.XPATH, using = "//div[contains(@class,'pad20 onlyTopPad')]/div/div[3]")
+	private WebElement discountSummery;
+
+	public WebElement getDiscountSummery() {
+
+		return discountSummery;
+	}
 
 	@FindBy(how = How.XPATH, using = "//div[contains(text(),'Subtotal')]/../following-sibling::div[1]")
 	private WebElement subtotalCode;

@@ -561,32 +561,31 @@ public class UIFunctions extends GenericMethods {
 
 		input(singlePage.getPromocode(), testData.get("VoucherID"), "Vocher Id");
 		click(singlePage.getApply(), "Check Promocode");
-		// delay(2000);
+		delay(2000);
 
-		/*
-		 * try { if (mainCart.getVocherCardFailed().isDisplayed()) {
-		 * 
-		 * Assert.fail(getText(mainCart.getVocherCardFailed()));
-		 * 
-		 * } else if (!mainCart.getCodeApplied().isDisplayed()) {
-		 * 
-		 * Assert.fail("Promo Code Remove link is not displayed");
-		 * 
-		 * } else if (!mainCart.getCodeRemove().isDisplayed()) {
-		 * 
-		 * Assert.fail("Promo Code Applied Message is not displayed");
-		 * 
-		 * } else if (!mainCart.getSubtotalCode().isDisplayed()) {
-		 * 
-		 * Assert.fail("Promo Code Subtotal is not displayed");
-		 * 
-		 * } else if (mainCart.getVocherCardFailed().isDisplayed()) {
-		 * 
-		 * Assert.fail(getText(mainCart.getVocherCardFailed())); } } catch (Exception e)
-		 * {
-		 * 
-		 * Assert.fail("Vocher Card related Fields are not displayed " +
-		 * e.getMessage()); }
+		
+		 /* try { if (mainCart.getVocherCardFailed().isDisplayed()) {
+		  
+		  Assert.fail(getText(mainCart.getVocherCardFailed()));
+		  
+		  } else if (!mainCart.getCodeApplied().isDisplayed()) {
+		  
+		  Assert.fail("Promo Code Remove link is not displayed");
+		  
+		  } else if (!mainCart.getCodeRemove().isDisplayed()) {
+		  
+		  Assert.fail("Promo Code Applied Message is not displayed");
+		  
+		  } else if (!mainCart.getSubtotalCode().isDisplayed()) {
+		  
+		  Assert.fail("Promo Code Subtotal is not displayed");
+		  
+		  } else if (mainCart.getVocherCardFailed().isDisplayed()) {
+		  
+		  Assert.fail(getText(mainCart.getVocherCardFailed())); } }
+		  catch (Exception e) {
+		  
+		  Assert.fail("Vocher Card related Fields are not displayed " + e.getMessage()); }
 		 */
 
 	}

@@ -73,7 +73,7 @@ public class MultiShipOrder extends GenericMethods {
 		}
 		input(shipping.getPhoneNumber(), testData.get("Phone"), "Phone Number");
 		click(multiShip.getNext(), "Continue next shipping");
-		webclick(shipMethod.getpriorityShippingMethod(), "Priority Shipping Method");
+		webclick(shipMethod.getPriorityShippingMethod(), "Priority Shipping Method");
 		click(shipMethod.getProceedToPayment(),"Proceed to Payment");
 
 		// billing page
