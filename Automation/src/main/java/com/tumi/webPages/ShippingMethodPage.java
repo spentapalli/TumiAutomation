@@ -1,7 +1,5 @@
 package com.tumi.webPages;
 
-import java.util.List;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -23,12 +21,12 @@ public class ShippingMethodPage extends GenericMethods {
 	}
 
 	@FindBy(how = How.XPATH, using = "//input[@id='standard-international-shipping-net']")
-	private WebElement caStandardShippingMethod; //use this for canada
-	
-	@FindBy(how = How.XPATH, using = "//input[@id='standard-ground-net']") //this is for US
+	private WebElement caStandardShippingMethod; // use this for canada
+
+	@FindBy(how = How.XPATH, using = "//input[@id='standard-ground-net']") // this is for US
 	private WebElement usStandardShippingMethod;
-	
-	@FindBy(how=How.XPATH,using="//input[@name='deliveryMethodSelected']") //this is for Korea
+
+	@FindBy(how = How.XPATH, using = "//input[@name='deliveryMethodSelected']") // this is for Korea
 	private WebElement krStandardShippingMethod;
 
 	public WebElement getStandardShippingMethod() {
@@ -36,12 +34,12 @@ public class ShippingMethodPage extends GenericMethods {
 		if (selectedCountry.contains("Canada")) {
 
 			return explicitWait(caStandardShippingMethod);
-			
-		} else if (selectedCountry.contains("배송하기: 대한민국")) {
-			
-			return explicitWait(krStandardShippingMethod);
-		}else {
+
+		} else if (selectedCountry.contains("US")) {
+
 			return explicitWait(usStandardShippingMethod);
+		} else {
+			return explicitWait(krStandardShippingMethod);
 		}
 
 	}
@@ -73,12 +71,13 @@ public class ShippingMethodPage extends GenericMethods {
 	@FindBy(how = How.XPATH, using = "//input[@id='overnight-net']")
 	private WebElement priorityShippingMethod;
 
-	public WebElement getpriorityShippingMethod() {
+	public WebElement getPriorityShippingMethod() {
 
 		return explicitWait(priorityShippingMethod);
 	}
-	
-	@FindBy(how = How.XPATH, using = "(//script[@id='checkoutMessages']/following::button)[3]") // for Korea proceed to payment
+
+	@FindBy(how = How.XPATH, using = "(//script[@id='checkoutMessages']/following::button)[3]") // for Korea proceed to
+																								// payment
 	private WebElement krProceedToPayment;
 
 	@FindBy(how = How.XPATH, using = "//button[contains(text(), 'Proceed to Payment')]")
@@ -86,20 +85,70 @@ public class ShippingMethodPage extends GenericMethods {
 
 	public WebElement getProceedToPayment() {
 		delay(2000);
-		if (selectedCountry.contains("US")||
-				selectedCountry.contains("Canada")) {
+		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
 			return explicitWait(proceedToPayment);
-		}else {
-			
-		return explicitWait(krProceedToPayment);
+		} else {
+
+			return explicitWait(krProceedToPayment);
+		}
 	}
 
-}	@FindBy(how = How.XPATH, using = "(//div[@class='line1'])[1]")
-private WebElement StandardGround;
+	@FindBy(how = How.XPATH, using = "(//button[@type='button'])[1]")
+	private WebElement krEditAddress;
 
-public  WebElement  getStandardGround() {
+	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Edit')]")
+	private WebElement editAddress;
 
-	return StandardGround;
-}
+	public WebElement getEditAddress() {
+		delay(2000);
+		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
+			return explicitWait(editAddress);
+		} else {
+
+			return explicitWait(krEditAddress);
+		}
+
+	}
+
+	@FindBy(how = How.XPATH, using = "//div[contains(@class,'address-info')]")
+	private WebElement krAddInfo;
+
+	@FindBy(how = How.XPATH, using = "//div[contains(@class,'address-info')]")
+	private WebElement addInfo;
+
+	public WebElement getAddInfo() {
+		delay(2000);
+		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
+			return addInfo;
+		} else {
+
+			return krAddInfo;
+		}
+
+	}
+
+	@FindBy(how = How.XPATH, using = "(//script[@id='checkoutMessages']/following::button)[3]") /////////////////
+	private WebElement krEstimatedShipping;
+
+	@FindBy(how = How.XPATH, using = "(//div[contains(@class,'pad3 onlyBottomPad')])[2]/div[2]")
+	private WebElement estimatedShipping;
+
+	public WebElement getEstimatedShipping() {
+		delay(2000);
+		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
+			return estimatedShipping;
+		} else {
+
+			return krEstimatedShipping;
+		}
+
+	}
 	
+
+	@FindBy(how = How.XPATH, using = "(//div[contains(@class,'pad3 onlyBottomPad')])[2]/div[2]")
+	private WebElement shippingFree;
+
+	public WebElement getEstimatedShipFree() {
+		return shippingFree;
+	}
 }

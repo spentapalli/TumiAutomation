@@ -685,7 +685,7 @@ public class GenericMethods extends GlobalConstants {
 		}
 	}
 
-	public void Login(String sheetName, String testCaseName) {
+	public void userLogin(String sheetName, String testCaseName) {
 		try {
 			Map<String, String> testData = ReadTestData.getJsonData(sheetName, testCaseName);
 

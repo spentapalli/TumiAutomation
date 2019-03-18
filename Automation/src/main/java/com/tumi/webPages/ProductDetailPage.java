@@ -216,12 +216,21 @@ public class ProductDetailPage extends GenericMethods {
 		return globalMsg;
 	}
 	
-	@FindBy(how=How.XPATH,using="//a[text()='Compare Now']")
+	@FindBy(how=How.XPATH,using="(//a[text()='Compare Now'])[1]")
 	private WebElement compareNow;
+	
+	@FindBy(how=How.XPATH,using="//div[contains(@class,'prod-comparison')]/div/span/following::a")
+	private WebElement krCompareNow;
 	
 	public WebElement getCompareNow(){
 		
-		return compareNow;
+		 if (selectedCountry.contains("US")||
+					selectedCountry.contains("Canada")) {
+			 return compareNow;
+		}else {
+		
+		return krCompareNow;
+	}
 	}
 	
 	
@@ -283,6 +292,13 @@ public class ProductDetailPage extends GenericMethods {
 		return ProductLink;
 	}
 	
+	
+	@FindBy(how=How.XPATH,using="//div[@id='breadcrumb']/ul/li/a/span")
+	private List<WebElement> breadCrumbsList;
+	
+	public List<WebElement> getBreadCrumbsList(){
+		return breadCrumbsList;
+	}
 
 	
 	
