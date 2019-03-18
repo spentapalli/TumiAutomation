@@ -1,5 +1,7 @@
 package com.tumi.webPages;
 
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -85,5 +87,24 @@ public class OrderReviewPage extends GenericMethods {
 
 	public WebElement getProductSelect() {
 		return explicitWait(ProductSelect);
+	}
+	@FindBy(how=How.XPATH,using="//section[@id='delivery-info-ctnr']/div[2]/header")
+	private WebElement ShippingMethod;
+
+	public WebElement getShippingMethod() {
+		return explicitWait(ShippingMethod);
+	}
+	@FindBy(how=How.XPATH,using="//section[@id='address-info-ctnr']/div[2]/div/header")
+	private List<WebElement> ShippingAddress;
+
+	public  List<WebElement> getShippingAddress() {
+		return ShippingAddress;
+	}
+	
+	@FindBy(how=How.XPATH,using="//section[@id='payment-section-ctnr']/section[2]/div[1]/div/header")
+	private WebElement PaymentDetails;
+
+	public WebElement getPaymentDetails() {
+		return explicitWait(PaymentDetails);
 	}
 }

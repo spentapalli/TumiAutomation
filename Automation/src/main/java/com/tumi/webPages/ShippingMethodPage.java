@@ -151,4 +151,11 @@ public class ShippingMethodPage extends GenericMethods {
 	public WebElement getEstimatedShipFree() {
 		return shippingFree;
 	}
+	@FindBy(how = How.XPATH, using = "(//div[@class='line1'])[1]")
+	private WebElement StandardGround;
+
+	public  WebElement  getStandardGround() {
+
+		return StandardGround;
+}
 }
