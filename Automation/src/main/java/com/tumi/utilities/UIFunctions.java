@@ -1,5 +1,6 @@
 package com.tumi.utilities;
 
+import java.time.ZonedDateTime;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -64,8 +65,10 @@ public class UIFunctions extends GenericMethods {
 
 	public static void verifyVPN() {
 		try {
-			if (home.getVPNDis().isDisplayed()) {
-				Assert.fail("VPN is Disconnected, Kindly User VPN to Access Application");
+			delay(5000);
+			if (driver.getTitle().equals("www.hybris-stage2.tumi.com")) {
+				logger.log(Status.FAIL, "Failed due to VPN");
+				Assert.fail("VPN is Disconnected, Kindly Use VPN to Access Application");
 			}
 		} catch (Exception e) {
 		}
@@ -194,7 +197,6 @@ public class UIFunctions extends GenericMethods {
 
 		UIFunctions.closeSignUp();
 		removeExistingCart();
-
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
 		Map<String, String> testData1 = ReadTestData.getJsonData("TumiTestData", "Environments");
 
@@ -227,6 +229,8 @@ public class UIFunctions extends GenericMethods {
 			final String pdpURL = GlobalConstants.urlkr + "/p/" + testData.get("KoreaSKUID");
 			driver.get(pdpURL);
 		}
+		
+		UIFunctions.verifyVPN();
 		// WaitForJStoLoad();
 
 		// commented below for Korea order, because getting error here
@@ -286,7 +290,7 @@ public class UIFunctions extends GenericMethods {
 			final String pdpURL = GlobalConstants.urlkr + "/p/" + testData.get("KoreaSKUID");
 			driver.get(pdpURL);
 		}
-
+		UIFunctions.verifyVPN();
 	}
 
 	public static void addBackOrderProduct(String sheet, String testCase) {
@@ -498,9 +502,6 @@ public class UIFunctions extends GenericMethods {
 	}
 
 	public static void completeOrder() {
-		
-		
-		
 		if (applicationUrl.equals("prod")) {
 			Assert.fail("Scripts are executing in Production");
 		} else {
@@ -517,7 +518,7 @@ public class UIFunctions extends GenericMethods {
 			orderNumber = getText(confirmation.getOrderNumber());
 			logger.log(Status.INFO, "Thank you for Your Order, here is your Order Number " + orderNumber);
 			delay(3000);
-			captureOrderConfScreen("OrderConfirmation");
+			//captureOrderConfScreen("OrderConfirmation");
 		}
 	}
 
@@ -561,31 +562,32 @@ public class UIFunctions extends GenericMethods {
 
 		input(singlePage.getPromocode(), testData.get("VoucherID"), "Vocher Id");
 		click(singlePage.getApply(), "Check Promocode");
-		delay(2000);
+		// delay(2000);
 
-		
-		 /* try { if (mainCart.getVocherCardFailed().isDisplayed()) {
-		  
-		  Assert.fail(getText(mainCart.getVocherCardFailed()));
-		  
-		  } else if (!mainCart.getCodeApplied().isDisplayed()) {
-		  
-		  Assert.fail("Promo Code Remove link is not displayed");
-		  
-		  } else if (!mainCart.getCodeRemove().isDisplayed()) {
-		  
-		  Assert.fail("Promo Code Applied Message is not displayed");
-		  
-		  } else if (!mainCart.getSubtotalCode().isDisplayed()) {
-		  
-		  Assert.fail("Promo Code Subtotal is not displayed");
-		  
-		  } else if (mainCart.getVocherCardFailed().isDisplayed()) {
-		  
-		  Assert.fail(getText(mainCart.getVocherCardFailed())); } }
-		  catch (Exception e) {
-		  
-		  Assert.fail("Vocher Card related Fields are not displayed " + e.getMessage()); }
+		/*
+		 * try { if (mainCart.getVocherCardFailed().isDisplayed()) {
+		 * 
+		 * Assert.fail(getText(mainCart.getVocherCardFailed()));
+		 * 
+		 * } else if (!mainCart.getCodeApplied().isDisplayed()) {
+		 * 
+		 * Assert.fail("Promo Code Remove link is not displayed");
+		 * 
+		 * } else if (!mainCart.getCodeRemove().isDisplayed()) {
+		 * 
+		 * Assert.fail("Promo Code Applied Message is not displayed");
+		 * 
+		 * } else if (!mainCart.getSubtotalCode().isDisplayed()) {
+		 * 
+		 * Assert.fail("Promo Code Subtotal is not displayed");
+		 * 
+		 * } else if (mainCart.getVocherCardFailed().isDisplayed()) {
+		 * 
+		 * Assert.fail(getText(mainCart.getVocherCardFailed())); } } catch (Exception e)
+		 * {
+		 * 
+		 * Assert.fail("Vocher Card related Fields are not displayed " +
+		 * e.getMessage()); }
 		 */
 
 	}

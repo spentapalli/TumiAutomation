@@ -20,7 +20,7 @@ public class OrderReviewPage extends GenericMethods {
 	@FindBy(how=How.XPATH,using="(//button[@type='button'])[1]")
 	private WebElement editShippingAddress;
 	
-	public WebElement getEditShippingAddressut() {
+	public WebElement getEditShippingAddress() {
 		
 		return editShippingAddress;
 	}
@@ -80,5 +80,10 @@ public class OrderReviewPage extends GenericMethods {
 	public WebElement getCheckoutMessages() {
 		return explicitWait(checkoutMessages);
 	}
-	
+	@FindBy(how=How.XPATH,using="//section[@id='shipping-section-ctnr']/div[1]/section/section/div/header/a")
+	private WebElement ProductSelect;
+
+	public WebElement getProductSelect() {
+		return explicitWait(ProductSelect);
+	}
 }

@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -41,6 +42,7 @@ public class GenericMethods extends GlobalConstants {
 
 	public static void captureOrderConfScreen(String name) {
 
+		//long time = ZonedDateTime.now().toInstant().toEpochMilli();
 		getScreen("./ExtentReports/ScreenShots/" + name + ".png");
 		String location = "./ScreenShots/" + name + ".png";
 		try {
@@ -49,19 +51,19 @@ public class GenericMethods extends GlobalConstants {
 			Assert.fail("Fail to Capture Screen " + e.getMessage());
 		}
 	}
-	
+
 	public void removeCards() {
 		try {
 			click(myacc.getMyProfile(), "View Your Profile");
 			click(myacc.getMyPayments(), "Payment/Gift Card");
-			if (myacc.getAvailableCards().size()>1) {
+			if (myacc.getAvailableCards().size() > 1) {
 				for (WebElement ele : myacc.getAvailableCards()) {
 					click(myacc.getRemoveCards(), "Remove Card");
 					delay(5000);
 				}
 			}
 		} catch (Exception e) {
-			
+
 			e.printStackTrace();
 		}
 	}
@@ -82,7 +84,7 @@ public class GenericMethods extends GlobalConstants {
 				Assert.fail("user signin is failed");
 			}
 			removeCards();
-			//myacc.getMyAccountClose().click();
+			// myacc.getMyAccountClose().click();
 		} catch (Exception e) {
 			Assert.fail("Fail to Login due to " + e.getMessage());
 		}
@@ -655,6 +657,8 @@ public class GenericMethods extends GlobalConstants {
 	public static void removeExistingCart() {
 
 		try {
+			WaitForJStoLoad();
+			UIFunctions.delay(3000);
 			if (!getText(home.getMinicartCount()).contains("0")) {
 				webclick(home.getMinicart(), "Minicart");
 				try {
@@ -674,12 +678,14 @@ public class GenericMethods extends GlobalConstants {
 					e.printStackTrace();
 				}
 			}
+
 		} catch (Exception e) {
 
 			e.printStackTrace();
 		}
 	}
-	public void userLogin(String sheetName, String testCaseName) {
+
+	public void Login(String sheetName, String testCaseName) {
 		try {
 			Map<String, String> testData = ReadTestData.getJsonData(sheetName, testCaseName);
 
@@ -694,9 +700,8 @@ public class GenericMethods extends GlobalConstants {
 			} else {
 				Assert.fail("user signin is failed");
 			}
-			
+
 			myacc.getMyAccountClose().click();
-			delay(2000);
 		} catch (Exception e) {
 			Assert.fail("Fail to Login due to " + e.getMessage());
 		}

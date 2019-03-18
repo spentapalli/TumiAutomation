@@ -130,11 +130,6 @@ public class Reports {
 		// writing everything to document
 		// flush() - to write or update test information to your report.
 		report.flush();
-		try {
-			GenericMethods.killSession();
-		} catch (Exception e) {
-			logger.log(Status.INFO, "Unable to Kill Browser Instance");
-		}
 	}
 
 	@SuppressWarnings("deprecation")
@@ -186,21 +181,18 @@ public class Reports {
 
 	//@AfterMethod(alwaysRun = true)
 	public static void closeBrowser() {
-
+		
 		if (browserName.equalsIgnoreCase("Remote")) {
-			try {
-				driver.quit();
-			} catch (Exception e) {
-
-			}
-		} else {
-			try {
-				driver.close();
-			} catch (Exception e) {
-
-			}
+			driver.quit();
+		}else {
+			driver.close();
 		}
-
+		try {
+			GenericMethods.killSession();
+		} catch (Exception e) {
+			logger.log(Status.INFO, "Unable to Kill Browser Instance");
+		}
+		
 	}
 
 	@BeforeMethod(alwaysRun = true)
@@ -208,6 +200,8 @@ public class Reports {
 		// Create Extent Report
 		logger = report.createTest(name.getName(), name.getDeclaringClass().getName());
 
+		System.out.println("Test Case Name " +name.getName()+  " And Declaration Name " + name.getDeclaringClass().getName());
+		
 		// Create Object of Each Page Class
 		home = new HomePage(driver);
 		minicart = new MiniCartPage(driver);
@@ -253,7 +247,8 @@ public class Reports {
 						MediaEntityBuilder.createScreenCaptureFromPath(screenlocation).build());
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.log(Status.FAIL, "Faile to due to below error");
+			Assert.fail(e.getMessage());
 		}
 	}
 
@@ -366,11 +361,24 @@ public class Reports {
 			}
 		}
 	}
+	
+	public static String localTesting() {
+		
+		String local = System.getProperty("localTesting");
+		if (local ==null || local.isEmpty()) {
+			
+			return "false";
+		}else {
+			
+			return local;
+		}
+		
+	}
 
 	@SuppressWarnings("unchecked")
 	public static void remoteAccess(String remoteBrowser, String remoteBrowserVersion, String remoteOS,
 			String remoteOsVersion) throws Exception {
-
+		
 		final String USERNAME = "kurrysuresh1";
 		final String AUTOMATE_KEY = "zKp1VrRqTkUXqi4efALq";
 		String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
@@ -380,7 +388,7 @@ public class Reports {
 		caps.setCapability("browser_version", remoteBrowserVersion);
 		caps.setCapability("os", remoteOS);
 		caps.setCapability("os_version", remoteOsVersion);
-		caps.setCapability("browserstack.local", "true");
+		caps.setCapability("browserstack.local", localTesting());
 		caps.setCapability("browserstack.debug", "true");
 		caps.setCapability("browserstack.networkLogs", "true");
 		caps.setCapability("resolution", "1024x768");
@@ -463,6 +471,7 @@ public class Reports {
 			} else if (OS.contains("linux")) {
 
 				return GlobalConstants.chromeLinuxPath;
+				
 			} else {
 
 				return GlobalConstants.chromeLinuxPath;
