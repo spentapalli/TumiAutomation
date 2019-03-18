@@ -1,5 +1,7 @@
 package com.tumi.webPages;
 
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -92,5 +94,12 @@ public class ShippingMethodPage extends GenericMethods {
 		return explicitWait(krProceedToPayment);
 	}
 
+}	@FindBy(how = How.XPATH, using = "(//div[@class='line1'])[1]")
+private WebElement StandardGround;
+
+public  WebElement  getStandardGround() {
+
+	return StandardGround;
 }
+	
 }
