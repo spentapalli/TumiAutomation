@@ -58,7 +58,10 @@
 		"SenderName": "User",
 		"Message": "Hello Tumi",
 		"GiftCardnumber": "7018525193950000020",
-		"Pinnumber": "98779393"
+		"Pinnumber": "98779393",
+		"CAVoucherID":"T05-H29B-C7AL-XK31",
+		"KRVoucherID":"K10-DRP6-ZTPS-MXSP"
+		
 	},
 	
 	"MonoGramDetails":{

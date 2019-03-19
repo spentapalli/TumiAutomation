@@ -107,4 +107,42 @@ public class OrderReviewPage extends GenericMethods {
 	public WebElement getPaymentDetails() {
 		return explicitWait(PaymentDetails);
 	}
+	@FindBy(how=How.XPATH,using="//div[@id='accordion__title-13']/div")
+	private WebElement Label1;
+
+	public WebElement getLabel1() {
+		return explicitWait(Label1);
+	}
+	@FindBy(how=How.XPATH,using="//div[@id='accordion__title-14']/div")
+	private WebElement Label2;
+
+	public WebElement getLabel2() {
+		return explicitWait(Label2);
+	}
+	@FindBy(how=How.XPATH,using="//div[@id='accordion__title-15']/div")
+	private WebElement Label3;
+
+	public WebElement getLabel3() {
+		return explicitWait(Label3);
+	}
+	@FindBy(how=How.XPATH,using="//div[@id='accordion__body-13']/div/p")
+	private WebElement Labeldata1;
+
+	public WebElement getLabeldata1() {
+		return explicitWait(Labeldata1);
+	}
+	@FindBy(how=How.XPATH,using="//div[@id='accordion__body-14']/div/div/p")
+	private WebElement Labeldata2;
+
+	public WebElement getLabeldata2() {
+		return explicitWait(Labeldata2);
+	}
+	@FindBy(how=How.XPATH,using="//div[@id='accordion__body-15']/div//div/div[2]")
+	private WebElement Labeldata3;
+
+	public WebElement getLabeldata3() {
+		return explicitWait(Labeldata3);
+	}
+	
+	
 }
