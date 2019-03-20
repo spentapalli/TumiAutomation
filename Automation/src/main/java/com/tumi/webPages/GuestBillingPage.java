@@ -1,5 +1,7 @@
 package com.tumi.webPages;
 
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -184,14 +186,61 @@ public class GuestBillingPage extends GenericMethods {
 		return addGiftpin;
 
 	}
+	
+	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Check Balance')]")
+	private WebElement checkBal;
+
+	public WebElement getCheckBal() {
+		return explicitWait(checkBal);
+
+	}
+	
+	@FindBy(how = How.XPATH, using = "//div[@id='accordion__body-9']/div/div")
+	private WebElement availBalMsg;
+
+	public WebElement getAvailBalMsg() {
+		return availBalMsg;
+
+	}
 
 	@FindBy(how = How.XPATH, using = "(//button[@type='submit'])[1]")
 	private WebElement addGiftcardApply;
 
 	public WebElement getaddGiftcardApply() {
-		return addGiftcardApply;
-
+		return explicitWait(addGiftcardApply);
 
 	}
+	
+	@FindBy(how=How.XPATH,using="//div[contains(@class,'checkoutAccordion')]/div")
+	private List<WebElement> accordionBillList;
+	
+	public List<WebElement> getAccordionBillList(){
+		
+		return accordionBillList;
+	}
+	
+	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Remove')]")
+	private WebElement removeGift;
+
+	public WebElement getRemoveGift() {
+		return removeGift;
+
+	}
+	@FindBy(how = How.XPATH, using = "//div[@id='accordion__body-9']/div/div")
+	private WebElement lowBalMsg;
+
+	public WebElement getLowBalMsg() {
+		return lowBalMsg;
+
+	}
+	
+	@FindBy(how = How.XPATH, using = "//div[@id='accordion__body-9']/div/div")
+	private WebElement invalidGift;
+
+	public WebElement getInvalidGift() {
+		return invalidGift;
+
+	}
+
 
 }

@@ -33,7 +33,13 @@
 		"KoreaSKUID":"0222389AT2",
 		"SKUID":"00171B",
 		"TumiStudioSKUID":"0117474T999",
-		"NoramlSKUID": "014757D"
+		"NoramlSKUID": "014757D",
+		"BreadCrumbsTest":"022020D2",
+		"ColorSwatches":"01084371193",
+		"ColorSwatchesKr":"0228069HNT",
+		"AirlineProduct":"022061D2",
+		"OutOfStock":"0494796PST",
+		"PageNotFound":"017DH"
 	},
 	
 	"SocialNetworkDetails":{
@@ -58,6 +64,8 @@
 		"SenderName": "User",
 		"Message": "Hello Tumi",
 		"GiftCardnumber": "7018525193950000020",
+		"AltGiftCardnumber":"7018525193950000038",
+		"AltPinNumber":"56579075",
 		"Pinnumber": "98779393"
 	},
 	

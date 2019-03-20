@@ -299,6 +299,160 @@ public class ProductDetailPage extends GenericMethods {
 	public List<WebElement> getBreadCrumbsList(){
 		return breadCrumbsList;
 	}
+	
+	@FindBy(how=How.XPATH,using="//div[@id='prod-details']/span")
+	private WebElement collectionLink;
+	
+	public WebElement getCollectionLink(){
+		return explicitWait(collectionLink);
+	}
+	
+	@FindBy(how=How.XPATH,using="//div[@class='product-details']/div[2]")
+	private List<WebElement> collectionNameList;
+	
+	public List<WebElement> getCollectionNameList(){
+		return collectionNameList;
+	}
+	
+	@FindBy(how=How.XPATH,using="//div[@id='prod-details']/a")
+	private WebElement collectionName;
+	
+	public WebElement getCollectionName(){
+		return explicitWait(collectionName);
+	}
+	
+	@FindBy(how=How.XPATH,using="//div[@class='prod-style-accordion']/span[2]")
+	private WebElement styleSKUID;
+	
+	public WebElement getStyleSKUID(){
+		return styleSKUID;
+	}
+	
+	@FindBy(how=How.XPATH,using="//ul[@class='no-list choose-colors']/li/a")
+	private List<WebElement> colorSwatchesList;
+	
+	public List<WebElement> getSwatchesList(){
+		return colorSwatchesList;
+	}
+	
+	@FindBy(how=How.XPATH,using="//div[contains(@class,'product-alternate-items')]/div/img")
+	private List<WebElement> altItemsList;
+	
+	public List<WebElement> getAltItemsList(){
+		return altItemsList;
+	}
+	
+	@FindBy(how=How.XPATH,using="//div[contains(@class,'airline-guide')]")
+	private WebElement airLine;
+	
+	public WebElement getAirLine(){
+		return airLine;
+	}
+	@FindBy(how=How.XPATH,using="(//div[@title='Close (Esc)'])[1]")
+	private WebElement airLineClose;
+	
+	public WebElement getAirLineClose(){
+		return airLineClose;
+	}
+	@FindBy(how=How.XPATH,using="//div[contains(@id,'button-outofstock')]")
+	private WebElement outOfStock;
+	
+	public WebElement getOutOfStock(){
+		return outOfStock;
+	}
+	
+	@FindBy(how=How.XPATH,using="//main[@id='navEnd']/div[2]/div/div/div")
+	private WebElement pageNotFound;
+	
+	public WebElement getPageNotFound(){
+		return pageNotFound;
+	}
+	
+	@FindBy(how=How.XPATH,using="//a[contains(@id,'bx-close-inside')]")
+	private WebElement pageNotFoundPopup;
+	
+	public WebElement getPageNotFoundPopup(){
+		return pageNotFoundPopup;
+	}
+	
+	@FindBy(how=How.XPATH,using="//div[contains(@class,'accordion')]/div/h2/a")
+	private List<WebElement> accordionsList;
+	
+	public List<WebElement> getAccordionsList(){
+		return accordionsList;
+	}
+	
+	@FindBy(how=How.XPATH,using="//a[@id='productInfoAndWarrantyLink']")
+	private WebElement productWarranty;
+	
+	public WebElement getProductWarranty(){
+		return productWarranty;
+	}
+	@FindBy(how=How.XPATH,using="(//div[contains(@class,'model-content')])[1]")
+	private WebElement productWarrantyContent;
+	
+	public WebElement getProductWarrantyContent(){
+		return productWarrantyContent;
+	}
+	
+	@FindBy(how=How.XPATH,using="//div[@id='product-info-and-warranty-popup']/a[@aria-label='Close']")
+	private WebElement productWarrantyPopupClose;
+	
+	public WebElement getProductWarrantyPopupClose(){
+		return productWarrantyPopupClose;
+	}
+	
+	@FindBy(how=How.XPATH,using="//a[@title='Setting Your TUMI Lock']")
+	private WebElement tumiLock;
+	
+	public WebElement getTumiLock(){
+		return tumiLock;
+	}
+	
+	@FindBy(how=How.XPATH,using="//a[@id='freeReturnsLink']")
+	private WebElement freeReturns;
+	
+	public WebElement getFreeReturns(){
+		return freeReturns;
+	}
+	
+	@FindBy(how=How.XPATH,using="//div[contains(@class,'lock-container')]")
+	private List<WebElement> tumiLockList;
+	
+	public List<WebElement> getTumiLockList(){
+		return tumiLockList;
+	}
+	
+	@FindBy(how=How.XPATH,using="(//div[@class='jspContainer'])[1]")
+	private WebElement freeReturnsContent;
+	
+	public WebElement getFreeReturnsContent(){
+		return freeReturnsContent;
+	}
+			
+			
+	//for Korea
+	
+	@FindBy(how=How.XPATH,using="//div[@id='breadcrumb']/ul/li[1]/a/span")
+	private WebElement breadCrumbHome;
+	
+	public WebElement getBreadCrumbHome(){
+		return breadCrumbHome;
+	}
+	
+	@FindBy(how=How.XPATH,using="//div[@id='breadcrumb']/ul/li[2]/a/span")
+	private WebElement breadCrumbCategory;
+	
+	public WebElement getBreadCrumbCategory(){
+		return breadCrumbCategory;
+	}
+	
+	@FindBy(how=How.XPATH,using="//div[@id='breadcrumb']/ul/li[3]/a/span")
+	private WebElement breadCrumbSubCategory;
+	
+	public WebElement getBreadCrumbSubCategory(){
+		return breadCrumbSubCategory;
+	}
 
 	
 	
