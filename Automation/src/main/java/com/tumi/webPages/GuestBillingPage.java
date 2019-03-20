@@ -241,6 +241,14 @@ public class GuestBillingPage extends GenericMethods {
 		return invalidGift;
 
 	}
+	
+	@FindBy(how = How.XPATH, using = "//input[@id='payPal']/../label")
+	private WebElement payPal;
+
+	public WebElement getPayPal() {
+		return payPal;
+
+	}
 
 
 }
