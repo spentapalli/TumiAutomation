@@ -60,8 +60,8 @@ public class CartPage extends GenericMethods {
 	private WebElement proceedToCheckout;
 
 	public WebElement getProceedCart() {
-		if (selectedCountry.contains("US")||
-				selectedCountry.contains("Canada")) {
+		if (selectedCountry.contains("US")|| selectedCountry.contains("United States")
+				|| selectedCountry.contains("Canada")) {
 			UIFunctions.delay(2000);
 			return explicitWait(proceedToCheckout);
 		} else {
