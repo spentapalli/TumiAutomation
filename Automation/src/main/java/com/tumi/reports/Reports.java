@@ -322,6 +322,8 @@ public class Reports {
 				options.addArguments("disable-infobars");
 				options.addArguments("--disable-notifications");
 				options.addArguments("--disable-extensions");
+				options.addArguments("--disable-browser-side-navigation");
+				options.addArguments("--disable-gpu");
 				/*
 				 * options.addArguments("--headless"); options.addArguments("--disable-gpu");
 				 * options.addArguments("--no-sandbox");

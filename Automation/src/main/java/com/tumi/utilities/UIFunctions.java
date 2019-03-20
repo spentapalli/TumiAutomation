@@ -559,10 +559,19 @@ public class UIFunctions extends GenericMethods {
 	public static void addPromotionalCodeAtSinglePage(String sheet, String testCase) {
 
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
-
+		if (selectedCountry.contains("US")) {
 		input(singlePage.getPromocode(), testData.get("VoucherID"), "Vocher Id");
 		click(singlePage.getApply(), "Check Promocode");
+		
+		} else if (selectedCountry.contains("Canada")) {
+		input(singlePage.getPromocode(), testData.get("CAVoucherID"), "Vocher Id");
+		click(singlePage.getApply(), "Check Promocode");
+	}else {
+		input(singlePage.getPromocode(), testData.get("KRVoucherID"), "Vocher Id");
+		click(singlePage.getApply(), "Check Promocode");
+	}
 		// delay(2000);
+		
 
 		/*
 		 * try { if (mainCart.getVocherCardFailed().isDisplayed()) {

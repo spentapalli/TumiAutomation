@@ -151,4 +151,34 @@ public class ShippingMethodPage extends GenericMethods {
 	public WebElement getEstimatedShipFree() {
 		return shippingFree;
 	}
+	@FindBy(how = How.XPATH, using = "(//div[@class='line1'])[1]")
+	private WebElement StandardGround;
+
+	public  WebElement  getStandardGround() {
+
+		return StandardGround;
+}
+	
+	@FindBy(how = How.XPATH, using = "//input[@id='standard-ground-net']/../label/div[3]")
+	private WebElement StandardShippingCharge;
+
+	public  WebElement  getFirstShippingmethod() {
+
+		return StandardShippingCharge;
+}
+	@FindBy(how = How.XPATH, using = "//input[@id='second-day-net']/../label/div[3]")
+	private WebElement SecondShippingCharge;
+
+	public  WebElement  getSecondShippingCharge() {
+
+		return SecondShippingCharge;
+}
+	@FindBy(how = How.XPATH, using = "//input[@id='overnight-net']/../label/div[3]")
+	private WebElement Prioritycharge;
+
+	public  WebElement  getPrioritycharge() {
+
+		return Prioritycharge;
+}
+	
 }

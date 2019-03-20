@@ -58,7 +58,10 @@
 		"SenderName": "User",
 		"Message": "Hello Tumi",
 		"GiftCardnumber": "7018525193950000020",
-		"Pinnumber": "98779393"
+		"Pinnumber": "98779393",
+		"CAVoucherID":"T05-H29B-C7AL-XK31",
+		"KRVoucherID":"K10-DRP6-ZTPS-MXSP"
+		
 	},
 	
 	"MonoGramDetails":{
@@ -236,7 +239,8 @@
 	
 	"AlternateOptions":{
 	"AlternatePh":"9012345612",
-	"AlternatePhKr":"021234888"
+	"AlternatePhKr":"021234888",
+	"AlternativeCard":"5555555555554444"
 	}
 }
 

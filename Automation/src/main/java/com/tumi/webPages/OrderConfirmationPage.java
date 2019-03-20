@@ -58,7 +58,7 @@ public class OrderConfirmationPage extends GenericMethods {
 		return CreateAccount;
 	}
 	//dygfysgfhsdfdsufsdu
-	@FindBy(how = How.XPATH, using = "(//a[contains(text(),'Alpha Bravo Luggage Tag - Small')])[1]")
+	@FindBy(how = How.XPATH, using = "//header[contains(@class,'black-text')]/a")
 	private WebElement ProductLink;
 	
 	public WebElement getProductLink() {
@@ -66,18 +66,25 @@ public class OrderConfirmationPage extends GenericMethods {
 		return ProductLink;
 	}
 	@FindBy(how = How.XPATH, using = "	//section[@id='payment-section-ctnr']/section[2]/div[1]/div/header")
-	private List<WebElement> ProductPayment;
+	private WebElement ProductPayment;
 	
-	public List<WebElement> getProductPaymentDetails() {
+	public WebElement getProductPaymentDetails() {
 		
 		return ProductPayment;
 	}
-	@FindBy(how = How.XPATH, using = "(//div[contains(@class,'address-info small removeFocusIndicator')]/div[2])[1]")
-	private List<WebElement> ShipppingAddress;
+	@FindBy(how = How.XPATH, using = "//header[@class='black-text removeFocusIndicator']")
+	private WebElement ShipppingAddress;
 	
-	public List<WebElement> getShipppingAddress() {
+	public  WebElement getShipppingAddress() {
 		
 		return ShipppingAddress;
+	}
+	@FindBy(how = How.XPATH, using = "//header[@class='black-text inline-text']")
+	private WebElement ShippingMethods;
+	
+	public WebElement getShippingMethods() {
+		
+		return ShippingMethods;
 	}
 	
 	
