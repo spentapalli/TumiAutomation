@@ -47,7 +47,7 @@ public class PGP extends GenericMethods {
 
 	public WebElement getCarryOnLuggage() {
 
-		return carryOnLuggage;
+		return explicitWait(carryOnLuggage);
 	}
 
 	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Women')]/following::a[2]")
@@ -119,13 +119,6 @@ public class PGP extends GenericMethods {
 		return carryOnCountBagPT;
 	}
 
-	@FindBy(how = How.XPATH, using = "//input[@id='facet-카드 케이스']/following::span[2]")
-	private WebElement cardCasesCountForKR;
-
-	public WebElement getCardCasesCountForKR() {
-		return cardCasesCountForKR;
-	}
-
 	@FindBy(how = How.XPATH, using = "(//span[contains(@class,'totalCount')])[2]")
 	private WebElement resultCount;
 	
@@ -190,7 +183,78 @@ public class PGP extends GenericMethods {
 				return krProductTypeList;
 			}
 	}
+	
+	////////////////Korea//////////////////////////////////////////
+	
+	@FindBy(how = How.XPATH, using = "//div[@id='product-filters']/div[1]/div/ul/li[1]/form/input[3]")
+	private WebElement krcardCases;
 
+	public WebElement getKrCardCases() {
+		return krcardCases;
+	}
+	@FindBy(how = How.XPATH, using = "(//div[contains(@class,'filter-body-cntr')])[1]/ul/li[1]/form/label/span[2]")
+	private WebElement cardCasesCountForKR;
+
+	public WebElement getCardCasesCountForKR() {
+		return cardCasesCountForKR;
+	}
+	
+
+	@FindBy(how = How.XPATH, using = "//div[@id='product-filters']/div[3]/div/ul/li[2]/form/input[3]")
+	private WebElement krFemale;
+
+	public WebElement getKrFemale() {
+		return krFemale;
+	}
+	
+	@FindBy(how = How.XPATH, using = "(//div[contains(@class,'filter-body-cntr')])[3]/ul/li[2]/form/label/span[2]")
+	private WebElement femaleCountForKR;
+
+	public WebElement getFemaleCountForKR() {
+		return femaleCountForKR;
+	
+	}
+	
+	@FindBy(how = How.XPATH, using = "//div[@id='product-filters']/div[6]/div/ul/li[1]/form/input[3]")
+	private WebElement krLeather;
+
+	public WebElement getKrLeather() {
+		return krLeather;
+	}
+	
+	@FindBy(how = How.XPATH, using = "(//div[contains(@class,'filter-body-cntr')])[6]/ul/li[1]/form/label/span[2]")
+	private WebElement leatherCountForKR;
+
+	public WebElement getLeatherCountForKR() {
+		return leatherCountForKR;
+	
+	}
+	
+	@FindBy(how = How.XPATH, using = "(//div[contains(@class,'filter-body-cntr')])[8]/ul/li[1]/form/label/span[2]")
+	private WebElement fifteenlapiCountForKR;
+
+	public WebElement getFifteenlapiCountForKR() {
+		return fifteenlapiCountForKR;
+	
+	}
+	
+	@FindBy(how = How.XPATH, using = "//div[@id='product-filters']/div[10]/div/ul/li[1]/form/input[3]")
+	private WebElement krMonogram;
+
+	public WebElement getKrMonogram() {
+		return krMonogram;
+	}
+	
+	@FindBy(how = How.XPATH, using = "(//div[contains(@class,'filter-body-cntr')])[10]/ul/li[1]/form/label/span[2]")
+	private WebElement monoCountForKR;
+
+	public WebElement getMonoCountForKR() {
+		return monoCountForKR;
+	
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////
+	
 	@FindBy(how = How.XPATH, using = "//div[@id='prices-ctrl']/ul/li/form/input[3]")
 	private List<WebElement> pricesList;
 	
@@ -247,15 +311,9 @@ public class PGP extends GenericMethods {
 	@FindBy(how = How.XPATH, using = "//input[@id='facet-Female']/following::span[2]")
 	private WebElement femaleCount;
 	
-	@FindBy(how = How.XPATH, using = "//input[@id='facet-남성']/following::span[2]")
-	private WebElement krFemaleCount;
 
 	public WebElement getFemaleCount() {
-		if(selectedCountry.contains("US")||selectedCountry.contains("Canada")) {
 			return femaleCount;
-			}else {
-				return krFemaleCount;
-			}
 	}
 	
 	
@@ -354,13 +412,7 @@ public class PGP extends GenericMethods {
 		return fitsUpto14laptopCount;
 	}
 	
-	@FindBy(how = How.XPATH, using = "//input[@id='facet-최대 15\" 수납 가능']/following::span[2]")
-	private WebElement krFitsUpto15laptopCount;
-
-	public WebElement getKrFitsUpto15laptopCount() {
-		return krFitsUpto15laptopCount;
-	}
-
+	
 	@FindBy(how = How.XPATH, using = "//div[@id='Wheels-ctrl']/ul/li/form/input[3]")
 	private List<WebElement> wheelsList;
 	
@@ -400,15 +452,9 @@ public class PGP extends GenericMethods {
 	@FindBy(how = How.XPATH, using = "//input[@id='facet-Monogramable']/following::span[2]")
 	private WebElement monoCount;
 	
-	@FindBy(how = How.XPATH, using = "//input[@id='facet-모노그램']/following::span[2]")
-	private WebElement krMonoCount;
 
 	public WebElement getMonoCount() {
-		if(selectedCountry.contains("US")||selectedCountry.contains("Canada")) {
 			return monoCount;
-			}else {
-				return krMonoCount;
-			}
 	}
 
 	@FindBy(how = How.XPATH, using = "//div[@id='breadcrumb']/ul")

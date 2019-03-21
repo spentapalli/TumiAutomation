@@ -17,14 +17,14 @@ import com.tumi.utilities.UIFunctions;
 public class PDPpage extends GenericMethods {
 	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "Products");
 	Map<String, String> personalization = ReadTestData.getJsonData("TumiTestData", "MonoGramDetails");
-	
 
-	//@Test(priority = 0, description = "TA-5, Verify bread crumbs above Product image")
+	// @Test(priority = 0, description = "TA-5, Verify bread crumbs above Product
+	// image")
 	public void verifyBreadScrumbs() {
 		SoftAssert breadcrumbs = new SoftAssert();
 		addProductForPDPtest(testData.get("BreadCrumbsTest"));
-		
-		click(pdp.getBreadCrumbHome(),"Home");
+
+		click(pdp.getBreadCrumbHome(), "Home");
 		delay(2000);
 		if (home.getHeaderFindStore().isDisplayed()) {
 			logger.log(Status.INFO, "Naviagting to Home page is successfull");
@@ -33,16 +33,16 @@ public class PDPpage extends GenericMethods {
 		}
 
 		addProductForPDPtest(testData.get("BreadCrumbsTest"));
-		click(pdp.getBreadCrumbCategory(),"Category");
+		click(pdp.getBreadCrumbCategory(), "Category");
 		String url = driver.getCurrentUrl();
 		if (url.contains("luggage")) {
 			logger.log(Status.INFO, "Naviagting to Luggage category is successfull");
 		} else {
 			breadcrumbs.fail("Naviagting to Luggage category is successfull");
 		}
-		
+
 		addProductForPDPtest(testData.get("BreadCrumbsTest"));
-		click(pdp.getBreadCrumbSubCategory(),"Sub Category");
+		click(pdp.getBreadCrumbSubCategory(), "Sub Category");
 		delay(2000);
 		String url1 = driver.getCurrentUrl();
 		if (url1.contains("carryon-luggage")) {
@@ -50,12 +50,12 @@ public class PDPpage extends GenericMethods {
 		} else {
 			breadcrumbs.fail("Naviagting to Carryon Luggage category is successfull");
 		}
-		
+
 		logger.log(Status.INFO, "Verification of BreadCrumbs are Successfull");
 		breadcrumbs.assertAll();
 	}
 
-	//@Test(priority = 1, description = "TA-5, Verify Enire Collection link")
+	// @Test(priority = 1, description = "TA-5, Verify Enire Collection link")
 	public void verifyCollectionLink() {
 
 		addProductForPDPtest(testData.get("BreadCrumbsTest"));
@@ -79,7 +79,7 @@ public class PDPpage extends GenericMethods {
 
 	}
 
-	//@Test(priority = 2, description = "TA-5, Verify Color Swatches")
+	// @Test(priority = 2, description = "TA-5, Verify Color Swatches")
 	public void verifyColorSwatches() {
 		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
 			addProductForPDPtest(testData.get("ColorSwatches"));
@@ -102,7 +102,7 @@ public class PDPpage extends GenericMethods {
 
 	}
 
-	//@Test(priority = 3, description = "TA-5, Verify Add a Classic Monogram")
+	// @Test(priority = 3, description = "TA-5, Verify Add a Classic Monogram")
 	public void verifyMonogram() {
 		addProductForPDPtest(testData.get("BreadCrumbsTest"));
 		click(mono.getAddClassic(), "Classic Monogram");
@@ -110,8 +110,13 @@ public class PDPpage extends GenericMethods {
 		if (mono.getStep1().isEnabled()) {
 			// domClick(mono.getAddPatch(),"Patch");
 			if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
-				domClick(mono.getAddTag(), "Tag");
+				if (mono.getAddPatch().isDisplayed()) {
+					domClick(mono.getAddTag(), "Tag");
+				} else {
+					click(mono.getOptionsNext(), "Next");
+				}
 			}
+		} else {
 			click(mono.getOptionsNext(), "Next");
 		}
 
@@ -153,117 +158,118 @@ public class PDPpage extends GenericMethods {
 		}
 
 	}
-	
-	//@Test(priority = 4, description = "TA-5, Verify Add a Classic Monogram")
+
+	// @Test(priority = 4, description = "TA-5, Verify Add a Classic Monogram")
 	public void verifyImages() {
 		addProductForPDPtest(testData.get("BreadCrumbsTest"));
 		int imagesCount = pdp.getAltItemsList().size();
-         if(imagesCount>0) {
-        	 logger.log(Status.INFO, "Verification of Alternates Images Count is successfull and The Count is "+imagesCount);
-		}else {
+		if (imagesCount > 0) {
+			logger.log(Status.INFO,
+					"Verification of Alternates Images Count is successfull and The Count is " + imagesCount);
+		} else {
 			Assert.fail("Verification of Alternate images count is Failed");
 		}
-		
-		 
-	 }
+
+	}
+
 	@Test(priority = 5, description = "TA-5, Verify Add to Cart, Verify Airline Carry on guide and Accordians/labels")
 	public void verifyPDP() {
 		SoftAssert verifypdp = new SoftAssert();
-		
+
 		// Verify Airline Carry-On-Guide
 		addProductForPDPtest(testData.get("AirlineProduct"));
-		click(pdp.getAirLine(),"AirLine Carry-On-Guide");
-		WebElement ele= driver.findElement(By.xpath("//table[@class='airline-carry-on-guide-table']"));
-		if(ele.isEnabled()) {
+		click(pdp.getAirLine(), "AirLine Carry-On-Guide");
+		WebElement ele = driver.findElement(By.xpath("//table[@class='airline-carry-on-guide-table']"));
+		if (ele.isEnabled()) {
 			logger.log(Status.INFO, "Airline Carry on Guide Content is Displyed");
 			logger.log(Status.INFO, "Verification of Airline Carry on Guide is Successfull");
-		}else {
+		} else {
 			verifypdp.fail("Airline Carry on Guide Content is not Displyed");
 		}
-		click(pdp.getAirLineClose(),"Close Airline Window");
-		
-		//Verify Add to Cart
+		click(pdp.getAirLineClose(), "Close Airline Window");
+
+		// Verify Add to Cart
 		addProductForPDPtest(testData.get("OutOfStock"));
 		try {
-			if(pdp.getAddToCart().isDisplayed()) {
+			if (pdp.getAddToCart().isDisplayed()) {
 				click(pdp.getAddToCart(), "Add to cart");
 				try {
-				if(minicart.getProceedCheckOut().isDisplayed()) {
-					logger.log(Status.INFO, "Verification of Add to Cart is Successfull");
-				}
-				}
-				catch (Exception e){
+					if (minicart.getProceedCheckOut().isDisplayed()) {
+						logger.log(Status.INFO, "Verification of Add to Cart is Successfull");
+					}
+				} catch (Exception e) {
 					verifypdp.fail("Mini Cart is not opened when click on Add to Cart");
 				}
-			}else if(pdp.getOutOfStock().isDisplayed()) {
+			} else if (pdp.getOutOfStock().isDisplayed()) {
 				verifypdp.fail("Product is Out of Stock, Unable to verify Add to Cart");
 			}
 		} catch (Exception e) {
-			click(pdp.getPageNotFoundPopup(),"Popup Close");
-			 if(pdp.getPageNotFound().isDisplayed()) {
-				 verifypdp.fail("Sorry,Page Not Found is Displayed , Unable to verify Add to Cart");
+			click(pdp.getPageNotFoundPopup(), "Popup Close");
+			if (pdp.getPageNotFound().isDisplayed()) {
+				verifypdp.fail("Sorry,Page Not Found is Displayed , Unable to verify Add to Cart");
 			}
 		}
-		
+
 		// Verify Accordians
 		addProductForPDPtest(testData.get("BreadCrumbsTest"));
-		if(!pdp.getAccordionsList().isEmpty()) {
+		if (!pdp.getAccordionsList().isEmpty()) {
 			logger.log(Status.INFO, "Accordions are enabled");
-			for(int i=1; i<=pdp.getAccordionsList().size();i++) {
-				WebElement accordian = driver.findElement(By.xpath("//div[contains(@class,'accordion')]/div["+ i +"]/h2/a"));
-				if(i!=1) {
-				click(accordian,i+"-accordian");
+			for (int i = 1; i <= pdp.getAccordionsList().size(); i++) {
+				WebElement accordian = driver
+						.findElement(By.xpath("//div[contains(@class,'accordion')]/div[" + i + "]/h2/a"));
+				if (i != 1) {
+					click(accordian, i + "-accordian");
 				}
-				WebElement content = driver.findElement(By.xpath("//div[@id='accordion-"+i+"']"));
+				WebElement content = driver.findElement(By.xpath("//div[@id='accordion-" + i + "']"));
 				try {
-					if(content.isDisplayed()) {
-						logger.log(Status.INFO,i+" Accordions content is visible");
+					if (content.isDisplayed()) {
+						logger.log(Status.INFO, i + " Accordions content is visible");
 					}
 				} catch (Exception e) {
-					verifypdp.fail("Either Content is not Visible or accordian-"+i+"is not clickable");
+					verifypdp.fail("Either Content is not Visible or accordian-" + i + "is not clickable");
 				}
 			}
 			logger.log(Status.INFO, "All Accordions are clickable, Verification of Accordions is successfull");
-		}else {
+		} else {
 			verifypdp.fail("Accordions are disabled");
 		}
 		verifypdp.assertAll();
 
-		
 	}
-	
-	//@Test(priority = 6, description = "TA-5,  Verify Product Warranty test, Setting your Tumi Lock and Free returns.")
+
+	// @Test(priority = 6, description = "TA-5, Verify Product Warranty test,
+	// Setting your Tumi Lock and Free returns.")
 	public void verifyAccordionFeatures() {
 		SoftAssert accordion = new SoftAssert();
 		addProductForPDPtest(testData.get("BreadCrumbsTest"));
-		
-		//VErify Product Warranty
-		click(pdp.getProductWarranty(),"Product Warranty");
-		
-			if(pdp.getProductWarrantyContent().isDisplayed()) {
-				logger.log(Status.INFO, "Product Warranty content is enabled");
-				logger.log(Status.INFO, "Verification of Product Warranty is Successfull");
-			}else {
-				accordion.fail("Product Warranty content is not enabled or not there");
+
+		// VErify Product Warranty
+		click(pdp.getProductWarranty(), "Product Warranty");
+
+		if (pdp.getProductWarrantyContent().isDisplayed()) {
+			logger.log(Status.INFO, "Product Warranty content is enabled");
+			logger.log(Status.INFO, "Verification of Product Warranty is Successfull");
+		} else {
+			accordion.fail("Product Warranty content is not enabled or not there");
 		}
-		click(pdp.getProductWarrantyPopupClose(),"Popup Close");
-		
-		//Verify Setting Your Tumi Lock
-		click(pdp.getTumiLock(),"Setting Your TumiLock");
-		if(!pdp.getTumiLockList().isEmpty()) {
+		click(pdp.getProductWarrantyPopupClose(), "Popup Close");
+
+		// Verify Setting Your Tumi Lock
+		click(pdp.getTumiLock(), "Setting Your TumiLock");
+		if (!pdp.getTumiLockList().isEmpty()) {
 			logger.log(Status.INFO, "Verification of Tumi Lock page is successfull");
-		}else {
+		} else {
 			accordion.fail("No Tumi Lock settings displayed, Verification of Tumi Lock page is Failed");
 		}
-		click(pdp.getFreeReturns(),"Free Returns");
-		if(pdp.getFreeReturnsContent().isDisplayed()) {
+		click(pdp.getFreeReturns(), "Free Returns");
+		if (pdp.getFreeReturnsContent().isDisplayed()) {
 			logger.log(Status.INFO, "Verification of Free Returns is successfull");
-		}else {
+		} else {
 			accordion.fail("No Free Returns content displayed, Verification of Free Returns is Failed");
 		}
 		accordion.assertAll();
-		
-			}
+
+	}
 
 	public static void addProductForPDPtest(String data) {
 
