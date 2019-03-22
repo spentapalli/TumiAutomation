@@ -249,6 +249,13 @@ public class GuestBillingPage extends GenericMethods {
 		return payPal;
 
 	}
+	@FindBy(how = How.XPATH, using = "//h2[contains(text(),'Items Saved in Cart')]")
+	private WebElement itemsInCart;
+
+	public WebElement getItemsInCart() {
+		return itemsInCart;
+
+	}
 
 
 }

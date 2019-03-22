@@ -22,7 +22,7 @@ public class TopNavigation extends GenericMethods {
 	 * TA-76 Verify Top Navigation.
 	 */
 
-	//@Test(priority = 0, description = " Sprint 3- TA-342/ TA-76 Verify Location")
+	@Test(priority = 0, description = " Sprint 3- TA-342/ TA-76 Verify Location")
 	public void verifyLocation() {
 		if (selectedCountry.contains("US")) {
 			delay(2000);
@@ -104,7 +104,7 @@ public class TopNavigation extends GenericMethods {
 		
 	}
 
-	//@Test(priority = 2, description = " Sprint 3- TA-344/ TA-76 Verify Find A	 Store")
+	@Test(priority = 2, description = " Sprint 3- TA-344/ TA-76 Verify Find A	 Store")
 	public void verifyFindAStore() {
 
 		click(home.getHeaderFindStore(), "Store Finder");
@@ -121,14 +121,14 @@ public class TopNavigation extends GenericMethods {
 
 	}
 
-	//@Test(priority = 5, description = " Sprint 3- TA-345/ TA-76 Verify	 CustomerService")
+	@Test(priority = 5, description = " Sprint 3- TA-345/ TA-76 Verify	 CustomerService")
 	public void verifyCustomerService() {
 
 		click(home.getHeaderCustomerService(), "Customer Service");
 		HomePageVerification.verifyHomePageResponse();
 	}
 
-	//@Test(priority = 4, description = " Sprint 3- TA-346/ TA-76 Verify SignIn")
+	@Test(priority = 4, description = " Sprint 3- TA-346/ TA-76 Verify SignIn")
 	public void verifySignIn() {
 		click(home.getHeaderSignIn(), "SignIn");
 		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {

@@ -351,5 +351,17 @@ public class Personalization extends GenericMethods {
 		return explicitWait(apply);
 
 	}
+	@FindBy(how = How.XPATH, using = "//div[@id='globalMessages']/div")
+	private WebElement monoErrorMsgatCart;
+
+	public WebElement getMonoErrorMsgAtCart() {
+		return monoErrorMsgatCart;
+	}
+	@FindBy(how = How.XPATH, using = "//div[@id='popup_monogramming_form_3']/div[2]/div")
+	private WebElement monoErrorMsg;
+
+	public WebElement getMonoErrorMsg() {
+		return monoErrorMsg;
+	}
 
 }

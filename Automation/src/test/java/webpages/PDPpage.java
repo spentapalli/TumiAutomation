@@ -18,8 +18,7 @@ public class PDPpage extends GenericMethods {
 	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "Products");
 	Map<String, String> personalization = ReadTestData.getJsonData("TumiTestData", "MonoGramDetails");
 
-	// @Test(priority = 0, description = "TA-5, Verify bread crumbs above Product
-	// image")
+	 @Test(priority = 0, description = "TA-5, Verify bread crumbs above Product image")
 	public void verifyBreadScrumbs() {
 		SoftAssert breadcrumbs = new SoftAssert();
 		addProductForPDPtest(testData.get("BreadCrumbsTest"));
@@ -55,7 +54,7 @@ public class PDPpage extends GenericMethods {
 		breadcrumbs.assertAll();
 	}
 
-	// @Test(priority = 1, description = "TA-5, Verify Enire Collection link")
+	@Test(priority = 1, description = "TA-5, Verify Enire Collection link")
 	public void verifyCollectionLink() {
 
 		addProductForPDPtest(testData.get("BreadCrumbsTest"));
@@ -79,7 +78,7 @@ public class PDPpage extends GenericMethods {
 
 	}
 
-	// @Test(priority = 2, description = "TA-5, Verify Color Swatches")
+	@Test(priority = 2, description = "TA-5, Verify Color Swatches")
 	public void verifyColorSwatches() {
 		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
 			addProductForPDPtest(testData.get("ColorSwatches"));
@@ -102,23 +101,22 @@ public class PDPpage extends GenericMethods {
 
 	}
 
-	// @Test(priority = 3, description = "TA-5, Verify Add a Classic Monogram")
+	@Test(priority = 3, description = "TA-5, Verify Add a Classic Monogram")
 	public void verifyMonogram() {
 		addProductForPDPtest(testData.get("BreadCrumbsTest"));
 		click(mono.getAddClassic(), "Classic Monogram");
 
-		if (mono.getStep1().isEnabled()) {
-			// domClick(mono.getAddPatch(),"Patch");
+		if (mono.getStep1().isDisplayed()) {
 			if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
 				if (mono.getAddPatch().isDisplayed()) {
 					domClick(mono.getAddTag(), "Tag");
 				} else {
 					click(mono.getOptionsNext(), "Next");
 				}
+			}else {
+				click(mono.getOptionsNext(), "Next");
 			}
-		} else {
-			click(mono.getOptionsNext(), "Next");
-		}
+		} 
 
 		input(mono.getFirstMonoInput(), personalization.get("FirstMonoInput"), "First Mono Input");
 		input(mono.getSecondMonoInput(), personalization.get("SecondMonoInput"), "Second Mono Input");
@@ -129,10 +127,16 @@ public class PDPpage extends GenericMethods {
 		click(mono.getCafeColor(), "Color");
 		click(mono.getApply(), "Apply");
 		delay(3000);
-		if (mono.getSuccessMsg().isDisplayed()) {
-			logger.log(Status.INFO, "Monogram applied Successfully");
-		} else {
-			Assert.fail("Monogram couldn't not applied");
+		try {
+			if(mainCart.getAddedMonoMsg().isDisplayed()) {
+				logger.log(Status.INFO, "Monogram added Successfully");
+			} 
+		} catch (Exception e) {
+			if(getText(mono.getMonoErrorMsg()).equals(getProperty("mono.error"))||getText(mono.getMonoErrorMsgAtCart()).equals(getProperty("mono.carterror")))  {
+				Assert.fail("Please enter atleast one character to add Monogram");
+			}else {
+				Assert.fail("Monogram couldn't added, Please Check");
+			}
 		}
 
 		click(mono.getEditMono(), "Edit Monogram");

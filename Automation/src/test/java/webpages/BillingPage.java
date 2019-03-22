@@ -16,16 +16,35 @@ import com.tumi.webPages.PayPalPage;
 
 public class BillingPage extends GenericMethods {
 
-	@Test(priority = 0, description = "TA-52, Verify Sign-in functionality")
+	//@Test(priority = 0, description = "TA-52, Verify Sign-in functionality")
 	public void verifySignIn() {
 		goToBillingPage();
+		delay(3000);
 
-		userLogin("TumiTestData", "RegisteredOrders");
+		try {
+			Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "RegisteredOrders");
+
+			click(home.getHeaderSignIn(), "Sign In");
+			input(home.getUserName(), testData.get("EmailID"), "Email Address");
+			input(home.getPassWord(), testData.get("Password"), "Password");
+			click(home.getLogOn(), "Login");
+
+			if (guestBillPage.getItemsInCart().isDisplayed()||myacc.getSignout().isDisplayed()) {
+				logger.log(Status.INFO, "Successfully logged with Regular user valid credentials");
+
+			} else {
+				Assert.fail("user signin is failed");
+			}
+
+		} catch (Exception e) {
+			Assert.fail("Fail to Login due to " + e.getMessage());
+		}
 
 	}
 
-	@Test(priority = 1, description = "TA-52, Verify that Redeem Tumi gift card can apply\r\n"
-			+ "Verify Check balance in Tumi Gift cad, " + " Verify labels below Review your Order")
+	//@Test(priority = 1, description = "TA-52, Verify that Redeem Tumi gift card can apply\r\n"
+		//	+ "Verify Check balance in Tumi Gift cad, " + " Verify labels below Review your Order" + "Verify PayPal link")
+	
 	public void verifyGiftCard() {
 		Map<String, String> giftCard = ReadTestData.getJsonData("TumiTestData", "VoucherCodeDetails");
 		SoftAssert giftcardAsser = new SoftAssert();
@@ -58,18 +77,35 @@ public class BillingPage extends GenericMethods {
 		}
 		click(guestBillPage.getRemoveGift(),"Remove Gift Card");
 		
-		//Verify Paypal Link
-		
-		webclick(guestBillPage.getPayPal(),"PayPal ");
-		if(paypal.getLogin().isDisplayed()) {
-			logger.log(Status.INFO, "Clicking on PayPal, page is navigated to PayPal Window");
-		}else {
-			giftcardAsser.fail("Clicking on PayPal, page couldn't navigated to PayPal Window");
-		}
-		
-		
-		
 		giftcardAsser.assertAll();
+		
+	}
+	
+	@Test(priority = 2, description = "TA-52, verify Use shipping address as billing address link")
+	public void verifyBilingAddressLink() {
+		try {
+			goToBillingPage();
+			delay(2000);
+			domClick(guestBillPage.getShippingAddressAsBilling(),"Shipping address as Billing address");
+			if(guestBillPage.getCountrySelector().isDisplayed()){
+				logger.log(Status.INFO, "When click on Use ship address as bill addres, displaying all fields to enter details");
+			}
+		} catch (Exception e) {
+				Assert.fail("When click on Use ship address as bill addres, not displaying all fields to enter details");
+		}
+	}
+	
+	//@Test(priority = 3, description = "TA-52, verify PayPal link")
+	public void verifyPayPalLik() {
+		goToBillingPage();
+		webclick(guestBillPage.getPayPal(),"PayPal ");
+		try {
+			if(paypal.getLogin().isDisplayed()) {
+				logger.log(Status.INFO, "Clicking on PayPal, page is navigated to PayPal Window");
+			}
+		} catch (Exception e) {
+				Assert.fail("Clicking on PayPal, page couldn't navigated to PayPal Window,Fail to Login due to " + e.getMessage());
+		}
 		
 	}
 

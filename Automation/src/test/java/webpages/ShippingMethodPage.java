@@ -37,8 +37,8 @@ public class ShippingMethodPage extends GenericMethods {
 		shipPageAssertions.assertAll();
 	}
 
-	@Test(priority = 1, description = "TA-62 Verify Promo CodeShipping Method Page")
-	public void verifyPromoCode() {
+	@Test(priority = 1, description = "TA-62 Verify Promo Code in Shipping Method Page")
+	public  void verifyPromoCode() {
 
 		goToShipMethodPage();
 		UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "VoucherCodeDetails");
