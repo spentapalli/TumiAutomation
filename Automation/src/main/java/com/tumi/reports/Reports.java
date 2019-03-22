@@ -179,7 +179,7 @@ public class Reports {
 		// driver.navigate().to("https://ca.stg-hybris-akamai.tumi.com");
 	}
 
-//	@AfterMethod(alwaysRun = true)
+	@AfterMethod(alwaysRun = true)
 	public static void closeBrowser() {
 		
 		if (browserName.equalsIgnoreCase("Remote")) {
@@ -453,7 +453,7 @@ public class Reports {
 			driver.get(testData.get("prod"));
 			UIFunctions.verifyVPN();
 			UIFunctions.closeSignUp();
-			UIFunctions.countrySelection("United States");
+			//UIFunctions.countrySelection("United States");
 		}
 		UIFunctions.verifyVPN();
 		UIFunctions.closeSignUp();

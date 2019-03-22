@@ -83,8 +83,8 @@ public class GenericMethods extends GlobalConstants {
 			} else {
 				Assert.fail("user signin is failed");
 			}
-			removeCards();
-			// myacc.getMyAccountClose().click();
+			//removeCards();
+			myacc.getMyAccountClose().click();
 		} catch (Exception e) {
 			Assert.fail("Fail to Login due to " + e.getMessage());
 		}
@@ -661,6 +661,16 @@ public class GenericMethods extends GlobalConstants {
 			UIFunctions.delay(3000);
 			if (!getText(home.getMinicartCount()).contains("0")) {
 				webclick(home.getMinicart(), "Minicart");
+				WaitForJStoLoad();
+
+				try {
+					do {
+						delay(2000);
+					}while(driver.findElement(By.xpath("//div[@class='loader-image removeFocusIndicator']")).isDisplayed());
+				} catch (Exception e1) {
+					
+					e1.printStackTrace();
+				}
 				try {
 					int cart = parseInt(getText(home.getMinicartCount()));
 					if (cart != 0) {
