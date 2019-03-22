@@ -200,7 +200,7 @@ public class UIFunctions extends GenericMethods {
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
 		Map<String, String> testData1 = ReadTestData.getJsonData("TumiTestData", "Environments");
 
-		if (selectedCountry.equals("US")||selectedCountry.contains("United States") || selectedCountry.isEmpty()) {
+		if (selectedCountry.equals("US") || selectedCountry.contains("United States") || selectedCountry.isEmpty()) {
 
 			if (applicationUrl.equals("stage2")) {
 
@@ -213,7 +213,7 @@ public class UIFunctions extends GenericMethods {
 				driver.get(pdpURL);
 
 			} else if (applicationUrl.equals("prod")) {
-				
+
 				final String pdpURL = testData1.get("prod") + "/p/" + testData.get("SKUID");
 				driver.get(pdpURL);
 				UIFunctions.closeSignUp();
@@ -229,7 +229,7 @@ public class UIFunctions extends GenericMethods {
 			final String pdpURL = GlobalConstants.urlkr + "/p/" + testData.get("KoreaSKUID");
 			driver.get(pdpURL);
 		}
-		
+
 		UIFunctions.verifyVPN();
 		// WaitForJStoLoad();
 
@@ -262,7 +262,7 @@ public class UIFunctions extends GenericMethods {
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
 		Map<String, String> testData1 = ReadTestData.getJsonData("TumiTestData", "Environments");
 
-		if (selectedCountry.equals("US")||selectedCountry.contains("United States") || selectedCountry.isEmpty()) {
+		if (selectedCountry.equals("US") || selectedCountry.contains("United States") || selectedCountry.isEmpty()) {
 
 			if (applicationUrl.equals("stage2")) {
 
@@ -275,7 +275,7 @@ public class UIFunctions extends GenericMethods {
 				driver.get(pdpURL);
 
 			} else if (applicationUrl.equals("prod")) {
-				
+
 				final String pdpURL = testData1.get("prod") + "/p/" + testData.get("SKUID");
 				driver.get(pdpURL);
 			}
@@ -343,6 +343,26 @@ public class UIFunctions extends GenericMethods {
 
 		final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("GlobalLocatorProductSKUID");
 		driver.get(pdpURL);
+	}
+
+	public static void addProductForBreadCrumbs(String sheet, String testCase) {
+
+		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
+		if (selectedCountry.contains("US")) {
+
+			final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("BreadCrumbsTest");
+			driver.get(pdpURL);
+		} else if (selectedCountry.contains("Canada")) {
+
+			final String pdpURL = GlobalConstants.urlca + "/p/" + testData.get("BreadCrumbsTest");
+			driver.get(pdpURL);
+
+		} else {
+
+			final String pdpURL = GlobalConstants.urlkr + "/p/" + testData.get("BreadCrumbsTest");
+			driver.get(pdpURL);
+		}
+		UIFunctions.verifyVPN();
 	}
 
 	public static void addMonogram(String sheet, String testCase) {
@@ -454,7 +474,7 @@ public class UIFunctions extends GenericMethods {
 		} else {
 
 			if (selectedCountry.contains("US") || selectedCountry.contains("Canada")
-					||selectedCountry.contains("United States")) {
+					|| selectedCountry.contains("United States")) {
 
 				Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestDetails");
 				input(shipping.getFirstName(), testData.get("FirstName"), "First Name");
@@ -509,7 +529,7 @@ public class UIFunctions extends GenericMethods {
 			scrollUp();
 			do {
 				delay(2000);
-				
+
 			} while (confirmation.getWithForConfirmation().isDisplayed());
 			if (!confirmation.getConfirmOrder().isDisplayed()) {
 
@@ -518,7 +538,7 @@ public class UIFunctions extends GenericMethods {
 			orderNumber = getText(confirmation.getOrderNumber());
 			logger.log(Status.INFO, "Thank you for Your Order, here is your Order Number " + orderNumber);
 			delay(3000);
-			//captureOrderConfScreen("OrderConfirmation");
+			// captureOrderConfScreen("OrderConfirmation");
 		}
 	}
 
@@ -557,21 +577,28 @@ public class UIFunctions extends GenericMethods {
 	}
 
 	public static void addPromotionalCodeAtSinglePage(String sheet, String testCase) {
+		String beforeTotal = getText(shipMethod.getBeforeTotal());
+		Double beforeCost = Double.valueOf(beforeTotal.replace("$", ""));
+		System.out.println("Before select Price = " + beforeCost);
 
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
 		if (selectedCountry.contains("US")) {
-		input(singlePage.getPromocode(), testData.get("VoucherID"), "Vocher Id");
-		click(singlePage.getApply(), "Check Promocode");
-		
+			input(singlePage.getPromocode(), testData.get("VoucherID"), "Vocher Id");
+			click(singlePage.getApply(), "Check Promocode");
+			delay(2000);
+			verifyPromoCharge(beforeCost);
+
 		} else if (selectedCountry.contains("Canada")) {
-		input(singlePage.getPromocode(), testData.get("CAVoucherID"), "Vocher Id");
-		click(singlePage.getApply(), "Check Promocode");
-	}else {
-		input(singlePage.getPromocode(), testData.get("KRVoucherID"), "Vocher Id");
-		click(singlePage.getApply(), "Check Promocode");
-	}
+
+			input(singlePage.getPromocode(), testData.get("CAVoucherID"), "Vocher Id");
+			click(singlePage.getApply(), "Check Promocode");
+
+			verifyPromoCharge(beforeCost);
+		} else {
+			input(singlePage.getPromocode(), testData.get("KRVoucherID"), "Vocher Id");
+			click(singlePage.getApply(), "Check Promocode");
+		}
 		// delay(2000);
-		
 
 		/*
 		 * try { if (mainCart.getVocherCardFailed().isDisplayed()) {
@@ -599,6 +626,24 @@ public class UIFunctions extends GenericMethods {
 		 * e.getMessage()); }
 		 */
 
+	}
+
+	public static void verifyPromoCharge(double data) {
+		delay(2000);
+
+		String afterTotal = getText(shipMethod.getBeforeTotal());
+		Double afterCost = Double.valueOf(afterTotal.replace("$", ""));
+		System.out.println("After applying Promocode, Total Price = " + afterCost);
+
+		double verifyPromo = afterCost - data;
+
+		String promo = getText(shipMethod.getPromoCharge());
+		Double promoDiscount = Double.valueOf(promo.replace("$", "").replace("-", ""));
+		System.out.println(promoDiscount);
+
+		if (promoDiscount.equals(verifyPromo)) {
+			logger.log(Status.INFO, "Promocode added successfully to Order summery");
+		}
 	}
 
 	public static void addGiftMessage(String sheet, String testCase) {
@@ -738,7 +783,7 @@ public class UIFunctions extends GenericMethods {
 
 	public static void payPalCheckout(String sheet, String testCase, WebElement ele) {
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
-		String value = getText(ele); 
+		String value = getText(ele);
 		System.out.println(value);
 		Double dValue = Double.valueOf(value.replace("$", ""));
 		if (dValue.intValue() >= 100) {

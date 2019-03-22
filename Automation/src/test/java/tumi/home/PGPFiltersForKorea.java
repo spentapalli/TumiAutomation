@@ -17,14 +17,16 @@ public class PGPFiltersForKorea extends GenericMethods {
 
 		// TA- 369 : Verify Product Type
 
-		for (WebElement filter : pgp.getProductTypeList()) {
+		/*for (WebElement filter : pgp.getProductTypeList()) {
 			String firstOpt = filter.getAttribute("value");
 			if (firstOpt.contains("카드 케이스")) {
 				delay(2000);
 				webclick(filter, "Card Cases");
 				break;
 			}
-		}
+		}*/
+		
+		webclick(pgp.getKrCardCases(),"Card Cases");
 		delay(2000);
 		String count = getText(pgp.getCardCasesCountForKR());
 		int productCount = Integer.parseInt(count.replaceAll("\\D", ""));
@@ -36,16 +38,18 @@ public class PGPFiltersForKorea extends GenericMethods {
 		// TA- 371 : Verify Gender Filter
 
 		clickFilter("FSM_Gender");
-		for (WebElement gender : pgp.getGenderList()) {
+		/*for (WebElement gender : pgp.getGenderList()) {
 			String range = gender.getAttribute("value");
 			if (range.contains("남성")) {
 				delay(2000);
 				webclick(gender, "Female option");
 				break;
 			}
-		}
+		}*/
+		
+		webclick(pgp.getKrFemale(),"Female Option");
 		delay(2000);
-		String count2 = getText(pgp.getFemaleCount());
+		String count2 = getText(pgp.getFemaleCountForKR());
 		int productCount2 = Integer.parseInt(count2.replaceAll("\\D", ""));
 
 		verifyWithResultcount(productCount2, "Gender");
@@ -96,16 +100,17 @@ public class PGPFiltersForKorea extends GenericMethods {
 		// TA- 373: Verify Material Filter
 
 		clickFilter("Material");
-		for (WebElement material : pgp.getMaterialList()) {
+		/*for (WebElement material : pgp.getMaterialList()) {
 			String type = material.getAttribute("value");
 			if (type.contains("가죽")) {
 				delay(2000);
 				webclick(material, "Leather option");
 				break;
 			}
-		}
+		}*/
+		webclick(pgp.getKrLeather(),"Leather Option");
 		delay(2000);
-		String count4 = getText(pgp.getLeatherCount());
+		String count4 = getText(pgp.getLeatherCountForKR());
 		int productCount4 = Integer.parseInt(count4.replaceAll("\\D", ""));
 
 		verifyWithResultcount(productCount4, "Material");
@@ -137,14 +142,14 @@ public class PGPFiltersForKorea extends GenericMethods {
 		clickFilter("laptop_size");
 		for (WebElement lapiSize : pgp.getLaptopSizeList()) {
 			String fifteenSize = lapiSize.getAttribute("value");
-			if (fifteenSize.contains("최대 15")) {
+			if (fifteenSize.contains("15")) {
 				delay(2000);
 				webclick(lapiSize, "Size 15' option");
 				break;
 			}
 		}
 		delay(2000);
-		String count5 = getText(pgp.getKrFitsUpto15laptopCount());
+		String count5 = getText(pgp.getFifteenlapiCountForKR());
 		int productCount5 = Integer.parseInt(count5.replaceAll("\\D", ""));
 		verifyWithResultcount(productCount5, "Loptop Size");
 		logger.log(Status.INFO, "TA-374 : Verification of Laptop Size filter is successfull");
@@ -171,17 +176,19 @@ public class PGPFiltersForKorea extends GenericMethods {
 		// TA-376: Verify Exclusive Features
 
 		clickFilter("FSM_ExclusiveFeatures");
-		for (WebElement exclusive : pgp.getExclusiceFeatureList()) {
+		/*for (WebElement exclusive : pgp.getExclusiceFeatureList()) {
 			String featureType = exclusive.getAttribute("value");
 			if (featureType.contains("모노그램")) {
 				delay(2000);
 				webclick(exclusive, "Monogrammable");
 				break;
 			}
-		}
+		}*/
+		
+		webclick(pgp.getKrMonogram(),"Monogram");
 		delay(2000);
 
-		String count7 = getText(pgp.getMonoCount());
+		String count7 = getText(pgp.getMonoCountForKR());
 		int productCount7 = Integer.parseInt(count7.replaceAll("\\D", ""));
 
 		verifyWithResultcount(productCount7, "Exclusive Feature");
@@ -191,6 +198,7 @@ public class PGPFiltersForKorea extends GenericMethods {
 	}
 
 	public void goToPGP() {
+		delay(2000);
 		if (!selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
 			mouseHover(pgp.getCarrierNtravel());
 			click(pgp.getCarryOnLuggage(), "Carry on Luggage");

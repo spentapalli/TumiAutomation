@@ -39,7 +39,7 @@ public class CartPage extends GenericMethods {
 	@FindBy(how = How.XPATH, using = ("//div[@id='cart-items-container']/div[2]/div[1]/div[1]/div[2]/div[6]/span[3]/a"))
 	private WebElement krremoveProductsQuantity;
 
-	@FindBy(how = How.XPATH, using = "//a[@class='cta removeFocusIndicator']")
+	@FindBy(how = How.XPATH, using = "(//span[(@class='link delete-link')])[1]")
 	private WebElement removeProduct;
 
 	public WebElement getRemoveProduct() {
@@ -140,6 +140,15 @@ public class CartPage extends GenericMethods {
 	public WebElement getMonogramMessege() {
 
 		return monogramMessege;
+
+	}
+	
+	@FindBy(how = How.XPATH, using = "(//a[@id='monogramming-popup-link'])[1]")
+	private WebElement addclassicMono;
+
+	public WebElement getAddclassicMono() {
+
+		return addclassicMono;
 
 	}
 
@@ -313,14 +322,13 @@ public class CartPage extends GenericMethods {
 		return subtotalCode;
 	}
 
-	// Korea-Cart
-	// updatecart
+	
 
-	@FindBy(how = How.XPATH, using = ("//button[@id='updateCartButton']"))
-	private WebElement UpdateCart;
+	@FindBy(how = How.XPATH, using = ("(//span[contains(@class,'link edit-link')])[1]"))
+	private WebElement editQuantity;
 
-	public WebElement getUpdatecart() {
-		return UpdateCart;
+	public WebElement getEditQuantity() {
+		return editQuantity;
 	}
 
 	@FindBy(how = How.XPATH, using = ("//input[@name='quantity']"))
@@ -360,5 +368,59 @@ public class CartPage extends GenericMethods {
 	public WebElement getEstimatedTotal() {
 		return estimatedTotal;
 	}
+	
+	@FindBy(how = How.XPATH, using = ("(//div[contains(@class,'cart-items')])[2]/div/div/div[2]/a"))
+	private List<WebElement> productsList;
+	
+	public List<WebElement> getProductsList() {
+		return productsList;
+	}
+	@FindBy(how = How.XPATH, using = ("(//div[contains(@class,'cart-items')])[2]/div[1]/div/div[2]/a"))
+	private WebElement productLink;
+	
+	public WebElement getProductLink() {
+		return productLink;
+	}
+	@FindBy(how = How.XPATH, using = ("(//div[contains(@class,'ledger-prod-attr attr-style')]/span)[1]"))
+	private WebElement skuID;
+	
+	public WebElement getSkuID() {
+		return skuID;
+	}
+	@FindBy(how = How.XPATH, using = ("//div[@id='cart-items-container']/h2"))
+	private WebElement cartCount;
+	
+	public WebElement getCartCount() {
+		return cartCount;
+	}
+	
+	//monogram
+	@FindBy(how = How.XPATH, using = ("//input[@id='monogram_symbol-2']"))
+	private WebElement addHeart;
+	
+	public WebElement getAddHeart() {
+		return addHeart;
+	}
+	
+	@FindBy(how = How.XPATH, using = ("//input[@id='monogram_symbol-4']"))
+	private WebElement smiley;
+	
+	public WebElement getSmiley() {
+		return smiley;
+	}
+	@FindBy(how = How.XPATH, using = ("//input[@id='monogram_symbol-5']"))
+	private WebElement star;
+	
+	public WebElement getStar() {
+		return star;
+	}
+	@FindBy(how = How.XPATH, using = ("//div[@class='added-monogram']/div/div[2]/span"))
+	private WebElement addedMonoMsg;
+	
+	public WebElement getAddedMonoMsg() {
+		return addedMonoMsg;
+	}
+	
+	
 	
 }

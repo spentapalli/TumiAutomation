@@ -143,7 +143,6 @@ public class ShippingMethodPage extends GenericMethods {
 		}
 
 	}
-	
 
 	@FindBy(how = How.XPATH, using = "(//div[contains(@class,'pad3 onlyBottomPad')])[2]/div[2]")
 	private WebElement shippingFree;
@@ -151,34 +150,77 @@ public class ShippingMethodPage extends GenericMethods {
 	public WebElement getEstimatedShipFree() {
 		return shippingFree;
 	}
+
 	@FindBy(how = How.XPATH, using = "(//div[@class='line1'])[1]")
 	private WebElement StandardGround;
 
-	public  WebElement  getStandardGround() {
+	public WebElement getStandardGround() {
 
 		return StandardGround;
-}
-	
+	}
+
 	@FindBy(how = How.XPATH, using = "//input[@id='standard-ground-net']/../label/div[3]")
 	private WebElement StandardShippingCharge;
 
-	public  WebElement  getFirstShippingmethod() {
+	public WebElement getFirstShippingmethod() {
 
 		return StandardShippingCharge;
-}
+	}
+
 	@FindBy(how = How.XPATH, using = "//input[@id='second-day-net']/../label/div[3]")
 	private WebElement SecondShippingCharge;
 
-	public  WebElement  getSecondShippingCharge() {
+	public WebElement getSecondShippingCharge() {
 
 		return SecondShippingCharge;
-}
+	}
+	
+	@FindBy(how = How.XPATH, using = "//input[@id='standard-international-shipping-net']/../label/div[3]")
+	private WebElement caStandardShippingCharge;
+
+	public WebElement getCAStandardShippingCharge() {
+
+		return caStandardShippingCharge;
+	}
+	@FindBy(how = How.XPATH, using = "//input[@id='standard-shipping']/../label/div[3]")
+	private WebElement krStandardShippingCharge;
+
+	public WebElement getKrStandardShippingCharge() {
+
+		return krStandardShippingCharge;
+	}
+
 	@FindBy(how = How.XPATH, using = "//input[@id='overnight-net']/../label/div[3]")
 	private WebElement Prioritycharge;
 
-	public  WebElement  getPrioritycharge() {
+	public WebElement getPrioritycharge() {
 
 		return Prioritycharge;
-}
+	}
 	
+	@FindBy(how = How.XPATH, using = "//div[contains(@class,'small total-price')]")
+	private WebElement beforeTotal;
+
+	public WebElement getBeforeTotal() {
+
+		return beforeTotal;
+	}
+	
+	@FindBy(how = How.XPATH, using = "//div[contains(@class,'small value tm_RED')]")
+	private WebElement promoCharge;
+
+	public WebElement getPromoCharge() {
+
+		return promoCharge;
+	}
+	@FindBy(how = How.XPATH, using = "//div[contains(@class,'pad3 onlyBottomPad')]/div[2]")
+	private WebElement caSubTotal;
+
+	public WebElement getCaSubTotal() {
+
+		return caSubTotal;
+	}
+	
+	
+
 }
