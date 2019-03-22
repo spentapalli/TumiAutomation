@@ -661,6 +661,7 @@ public class GenericMethods extends GlobalConstants {
 			UIFunctions.delay(3000);
 			if (!getText(home.getMinicartCount()).contains("0")) {
 				webclick(home.getMinicart(), "Minicart");
+				WaitForJStoLoad();
 				try {
 					int cart = parseInt(getText(home.getMinicartCount()));
 					if (cart != 0) {
