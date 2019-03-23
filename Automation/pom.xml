@@ -96,13 +96,7 @@
 						<forkCount>0</forkCount>
 						<executable>C:\Program Files\Java\jdk1.8.0_161\bin\javac.exe</executable>
 						<suiteXmlFiles>
-							<suiteXmlFile>sprint1.xml</suiteXmlFile>
-							<suiteXmlFile>sprint2.xml</suiteXmlFile>
-							<suiteXmlFile>sprint3.xml</suiteXmlFile>
-							<suiteXmlFile>RegGiftServices.xml</suiteXmlFile>
-							<suiteXmlFile>L1.xml</suiteXmlFile>
-							<suiteXmlFile>./SuiteFiles/GOrders.xml</suiteXmlFile>
-							
+							<suiteXmlFile>smoketests.xml</suiteXmlFile>
 						</suiteXmlFiles>
 					</configuration>
 				</plugin>

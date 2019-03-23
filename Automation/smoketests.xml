@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Smoke Tests Suite">
+
+	<test name="CreateAccount">
+		<classes>
+			<class name="com.tumi.userRegistration.CreateAccount">
+			</class>
+		</classes>
+	</test>
+	
+	<test name="GuestOrders">
+		<classes>
+			<class name="com.tumi.guestOrders.GuestOrders">
+			</class>
+		</classes>
+	</test>
+	
+	<test name="GlobalLocatororder">
+		<classes>
+			<class name="com.tumi.guestOrders.GlobalLocatororder">
+			</class>
+		</classes>
+	</test>
+	
+	<test name="OrderWithGiftBox">
+		<classes>
+			<class name="com.tumi.guestOrders.OrderWithGiftBox">
+			</class>
+		</classes>
+	</test>
+	
+	<test name="RegisteredOrder">
+		<classes>
+			<class name="com.tumi.registerOrders.RegisteredOrder">
+			</class>
+		</classes>
+	</test>
+	
+	<test name="GuestOrderWithPaypal">
+		<classes>
+			<class name="com.tumi.guestOrders.GuestOrderWithPaypal">
+			</class>
+		</classes>
+	</test>
+	
+	<test name="RegisteredOrderWithPayPal">
+		<classes>
+			<class name="com.tumi.registerOrders.RegisteredOrderWithPayPal">
+			</class>
+		</classes>
+	</test>
+	
+	<test name="GuestOrderWithMultiShipment">
+		<classes>
+			<class name="com.tumi.guestOrders.GuestOrderWithMultiShipment">
+			</class>
+		</classes>
+	</test>
+	
+	<test name="RegisteredOrderWithMultishipment">
+		<classes>
+			<class name="com.tumi.registerOrders.RegisteredOrderWithMultishipment">
+			</class>
+		</classes>
+	</test>
+	
+</suite> <!-- Suite -->
