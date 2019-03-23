@@ -1,4 +1,4 @@
-package browserStack;
+package com.tumi.browserStack;
 
 import java.util.HashMap;
 import java.util.Map;
