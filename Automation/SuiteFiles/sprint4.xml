@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="TumiReportSprint3" parallel="none">
+
+	<test name="BillingPage"> 
+		<classes> 
+			<class name="webpages.BillingPage"/> 
+		</classes>
+   </test>
+   <test name="OrderConfirmation"> 
+		<classes> 
+			<class name="webpages.OrderConfirmation"/> 
+		</classes>
+   </test>
+   <test name="OrderReviewPageVerification"> 
+		<classes> 
+			<class name="webpages.OrderReviewPageVerification"/> 
+		</classes>
+   </test>
+    <test name="PDPpage"> 
+		<classes> 
+			<class name="webpages.PDPpage"/> 
+		</classes>
+   </test>
+    <test name=" ShippingMethodPage"> 
+		<classes> 
+			<class name="webpages. ShippingMethodPage"/> 
+		</classes>
+   </test>
+   </suite>
