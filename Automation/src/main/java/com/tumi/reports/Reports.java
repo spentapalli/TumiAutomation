@@ -187,11 +187,10 @@ public class Reports {
 		}else {
 			driver.close();
 		}
-		try {
-			GenericMethods.killSession();
-		} catch (Exception e) {
-			logger.log(Status.INFO, "Unable to Kill Browser Instance");
-		}
+		/*
+		 * try { GenericMethods.killSession(); } catch (Exception e) {
+		 * logger.log(Status.INFO, "Unable to Kill Browser Instance"); }
+		 */
 		
 	}
 
@@ -329,7 +328,11 @@ public class Reports {
 				 * options.addArguments("--no-sandbox");
 				 */
 				System.setProperty(GlobalConstants.chrome, getChromeDriverPath());
-				driver = new ChromeDriver(options);
+				try {
+					driver = new ChromeDriver(options);
+				} catch (Exception e) {
+					driver = new ChromeDriver(options);
+				}
 
 				// logger.log(Status.INFO, "Chrome Browser is initiated Execution");
 
