@@ -19,7 +19,7 @@ import com.tumi.utilities.GenericMethods;
 public class RegularLogin extends GenericMethods {
 	/* 
 	 * TA-26: Confirm Regular login is successful on clicking Sign In and Entering Valid Email address & Password
-	 * TA-58 : Verify Tumi Login Fail, with wrong credentials
+	 * 
 	 */
 
 	
