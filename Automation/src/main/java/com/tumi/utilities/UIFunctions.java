@@ -543,7 +543,9 @@ public class UIFunctions extends GenericMethods {
 	}
 
 	public static void addPromotionalCodeAtCart(String sheet, String testCase) {
-
+		String beforeTotal = getText(shipMethod.getBeforeTotal());
+		Double beforeCost = Double.valueOf(beforeTotal.replace("$", ""));
+		System.out.println("Before select Price = " + beforeCost);
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
 
 		input(mainCart.getPromocode(), testData.get("VoucherID"), "Vocher Id");
