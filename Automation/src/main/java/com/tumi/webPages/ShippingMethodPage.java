@@ -221,6 +221,17 @@ public class ShippingMethodPage extends GenericMethods {
 		return caSubTotal;
 	}
 	
-	
-
+	@FindBy(how = How.XPATH, using = "//input[@id='standard-international-shipping-net']/../label/div[1]")
+	private WebElement CaStandardGround;
+	public WebElement getCaShippingmethod() {
+	return CaStandardGround;
+	}
+	@FindBy(how = How.XPATH, using = "//input[@id='standard-international-shipping-net']/../label/div[3]")
+	private WebElement CastandardShippingFree;
+	public WebElement getCaShippingFree() {
+	return CastandardShippingFree;
 }
+	
+	
+	}
+

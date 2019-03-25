@@ -1106,4 +1106,27 @@ public class UIFunctions extends GenericMethods {
 		domClick(guestBillPage.getReviewOrder(), "Review your order");
 
 	}
+	public static void AlternativeaddCardDetails(String sheet, String testCaseName) {
+
+		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCaseName);
+		Map<String, String> testData1 = ReadTestData.getJsonData("TumiTestData", "CreditCardDetails");
+		Map<String, String> testData2 = ReadTestData.getJsonData("TumiTestData","AlternateOptions");
+		// billing page
+		input(guestBillPage.getNameOnCard(), testData.get("NameOnCard"), "Name on Card");
+
+		// invalid card number
+		input(guestBillPage.getCardNumber(), testData.get("CardNumber"), "Card Number");
+		if (browserName.equals("firefox")) {
+			selectMonthInFF();
+			selectYearInFF();
+		} else {
+			selectByVisibleText(guestBillPage.getExpiryMonth(), testData.get("ExipryMonth"), "Expiry Month");
+			selectByVisibleText(guestBillPage.getExpiryYear(), testData.get("ExpiryYear"), "Expiry Year");
+		}
+		input(guestBillPage.getCvvNumber(), testData.get("CVV"), "Cvv Number");
+		input(guestBillPage.getemail(), testData.get("EmailID"), "Email ID");
+		input(shipping.getPhoneNumber(), testData2.get("AlternatePh"), "Phone Number");
+		domClick(guestBillPage.getReviewOrder(), "Review your order");
+	}
+
 }

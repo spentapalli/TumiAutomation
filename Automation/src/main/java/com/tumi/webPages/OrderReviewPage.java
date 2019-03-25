@@ -95,9 +95,9 @@ public class OrderReviewPage extends GenericMethods {
 		return explicitWait(ShippingMethod);
 	}
 	@FindBy(how=How.XPATH,using="//section[@id='address-info-ctnr']/div[2]/div/header")
-	private List<WebElement> ShippingAddress;
+	private WebElement ShippingAddress;
 
-	public  List<WebElement> getShippingAddress() {
+	public  WebElement getShippingAddress() {
 		return ShippingAddress;
 	}
 	
@@ -142,6 +142,43 @@ public class OrderReviewPage extends GenericMethods {
 
 	public WebElement getLabeldata3() {
 		return explicitWait(Labeldata3);
+	}
+
+	@FindBy(how=How.XPATH,using="//div[@id='accordion__title-12']/div")
+	private WebElement CaLabel1;
+	public WebElement getCalabel1() {
+		return CaLabel1;
+	}
+	@FindBy(how=How.XPATH,using="//div[@id='accordion__title-13']/div")
+	private WebElement CaLabel2;
+	public WebElement getCalabel2() {
+		return CaLabel2;
+	}
+	@FindBy(how=How.XPATH,using="//div[@id='accordion__title-14']/div")
+	private WebElement CaLabel3;
+	public WebElement getCalabel3() {
+		return CaLabel3;
+	}
+	@FindBy(how=How.XPATH,using="//div[@id='accordion__body-12']/div/p")
+	private WebElement CaLabeldata1;
+	public WebElement getCaLabeldata1() {
+		return CaLabeldata1;
+	}
+	@FindBy(how=How.XPATH,using="//div[@id='accordion__body-13']/div/div/p")
+	private WebElement CaLabeldata2;
+	public WebElement getCaLabeldata2() {
+		return CaLabeldata2;
+	}
+	@FindBy(how=How.XPATH,using="//div[@id='accordion__body-14']/div")
+	private WebElement CaLabeldata3;
+	public WebElement getCaLabeldata3() {
+		return CaLabeldata3;
+	}
+	@FindBy(how=How.XPATH,using="(//div[@class='small title'])[3]/../div[2]")
+	private WebElement ShippingCharges;
+
+	public WebElement getShippingCharges() {
+		return explicitWait(ShippingCharges);
 	}
 	
 	
