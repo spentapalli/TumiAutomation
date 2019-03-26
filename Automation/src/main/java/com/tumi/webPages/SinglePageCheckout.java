@@ -89,7 +89,7 @@ public class SinglePageCheckout extends GenericMethods {
 		return explicitWait(addPromocode);
 	}
 
-	@FindBy(how = How.XPATH, using = "(//button[@type='submit'])[1]")
+	@FindBy(how = How.XPATH, using = "//button[text()='Apply']")
 	private WebElement ApplyClick;
 
 	public WebElement getApply() {

@@ -579,6 +579,7 @@ public class UIFunctions extends GenericMethods {
 	}
 
 	public static void addPromotionalCodeAtSinglePage(String sheet, String testCase) {
+		
 		String beforeTotal = getText(shipMethod.getBeforeTotal());
 		Double beforeCost = Double.valueOf(beforeTotal.replace("$", ""));
 		System.out.println("Before select Price = " + beforeCost);
