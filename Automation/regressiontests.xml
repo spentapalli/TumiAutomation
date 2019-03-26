@@ -11,7 +11,7 @@
 
 	<test name="VerifyCart">
 		<classes>
-			<class name="cart.VerifyCart">
+			<class name="com.tumi.cart.VerifyCart">
 			</class>
 		</classes>
 	</test>
@@ -76,12 +76,7 @@
 			</class>
 		</classes>
 	</test>
-	<test name="OrderWithVochercode">
-		<classes>
-			<class name="com.tumi.guestOrders.OrderWithVochercode">
-			</class>
-		</classes>
-	</test>
+
 	<test name="TenderChange">
 		<classes>
 			<class name="com.tumi.guestOrders.TenderChange">
@@ -260,8 +255,7 @@
 			</class>
 		</classes>
 	</test>
-	<!-- <test name="Emulator"> <classes> <class name="com.tumi.browserStack.Emulator"> 
-		</class> </classes> </test> -->
+	
 
 
 </suite>

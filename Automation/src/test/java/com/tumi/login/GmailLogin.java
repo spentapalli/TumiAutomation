@@ -14,7 +14,7 @@ import com.tumi.utilities.GenericMethods;
 import com.tumi.utilities.UIFunctions;
 
 public class GmailLogin extends GenericMethods {
-	public Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GmailLogin");
+	public Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "ExistingAccount");
 
 	@Test
 	public void verifyLogin() throws InterruptedException {
