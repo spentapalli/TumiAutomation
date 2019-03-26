@@ -2,13 +2,13 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Regression Tests Suite">
 
-<test name="MiniCart">
+	<test name="MiniCart">
 		<classes>
 			<class name="cart.MiniCart">
 			</class>
 		</classes>
 	</test>
-	
+
 	<test name="VerifyCart">
 		<classes>
 			<class name="cart.VerifyCart">
@@ -35,7 +35,8 @@
 	</test>
 	<test name="GuestOrderWithTwoDiffProducts">
 		<classes>
-			<class name="com.tumi.guestOrders.GuestOrderWithTwoDiffProducts">
+			<class
+				name="com.tumi.guestOrders.GuestOrderWithTwoDiffProducts">
 			</class>
 		</classes>
 	</test>
@@ -141,7 +142,7 @@
 			</class>
 		</classes>
 	</test>
-	
+
 	<test name="TopNavigation">
 		<classes>
 			<class name="com.tumi.home.TopNavigation">
@@ -166,7 +167,7 @@
 			</class>
 		</classes>
 	</test>
-	
+
 	<test name="InstagramLogin">
 		<classes>
 			<class name="com.tumi.login.InstagramLogin">
@@ -205,13 +206,15 @@
 	</test>
 	<test name="ProductsSortingFunctionality">
 		<classes>
-			<class name="com.tumi.registerOrders.ProductsSortingFunctionality">
+			<class
+				name="com.tumi.registerOrders.ProductsSortingFunctionality">
 			</class>
 		</classes>
 	</test>
 	<test name="RegisterOrderWithGiftServices">
 		<classes>
-			<class name="com.tumi.registerOrders.RegisterOrderWithGiftServices">
+			<class
+				name="com.tumi.registerOrders.RegisterOrderWithGiftServices">
 			</class>
 		</classes>
 	</test>
@@ -257,12 +260,8 @@
 			</class>
 		</classes>
 	</test>
-	<!-- <test name="Emulator">
-		<classes>
-			<class name="com.tumi.browserStack.Emulator">
-			</class>
-		</classes>
-	</test> -->
-	
-	
+	<!-- <test name="Emulator"> <classes> <class name="com.tumi.browserStack.Emulator"> 
+		</class> </classes> </test> -->
+
+
 </suite>
