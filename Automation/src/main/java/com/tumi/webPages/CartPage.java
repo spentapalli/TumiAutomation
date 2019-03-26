@@ -420,7 +420,12 @@ public class CartPage extends GenericMethods {
 	public WebElement getAddedMonoMsg() {
 		return addedMonoMsg;
 	}
+	@FindBy(how = How.XPATH, using =( "(//div[@class='pad10 onlyTopPad']/following::div)[1]"))
+	private WebElement AppliedPromoMsg;
 	
+	public WebElement getAppliedPromoMsg() {
+		return AppliedPromoMsg;
+	}
 	
 	
 }
