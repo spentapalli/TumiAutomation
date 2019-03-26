@@ -49,6 +49,7 @@ public class VerifyCartPage extends GenericMethods {
 	}
 	@Test(priority = 2, description = "TA-393, Verify Monogram")
 	public void verifyMonogram() {
+		PDPpage.verifyMonogram();
 		SoftAssert cartAssertions = new SoftAssert();
 	
 		click(mainCart.getAddclassicMono(),"Add Classic Monogram");
