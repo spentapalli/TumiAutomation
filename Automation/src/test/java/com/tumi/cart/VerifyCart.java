@@ -1,4 +1,4 @@
-package cart;
+package com.tumi.cart;
 
 import java.util.Map;
 
