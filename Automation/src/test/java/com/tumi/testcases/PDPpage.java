@@ -15,11 +15,11 @@ import com.tumi.utilities.GlobalConstants;
 import com.tumi.utilities.UIFunctions;
 
 public class PDPpage extends GenericMethods {
-	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "Products");
-	Map<String, String> personalization = ReadTestData.getJsonData("TumiTestData", "MonoGramDetails");
+	static Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "Products");
+	static Map<String, String> personalization = ReadTestData.getJsonData("TumiTestData", "MonoGramDetails");
 
 	 @Test(priority = 0, description = "TA-5, Verify bread crumbs above Product image")
-	public void verifyBreadScrumbs() {
+	public  void verifyBreadScrumbs() {
 		SoftAssert breadcrumbs = new SoftAssert();
 		addProductForPDPtest(testData.get("BreadCrumbsTest"));
 
@@ -102,7 +102,7 @@ public class PDPpage extends GenericMethods {
 	}
 
 	@Test(priority = 3, description = "TA-5, Verify Add a Classic Monogram")
-	public void verifyMonogram() {
+	public static void verifyMonogram() {
 		addProductForPDPtest(testData.get("BreadCrumbsTest"));
 		click(mono.getAddClassic(), "Classic Monogram");
 
@@ -163,7 +163,7 @@ public class PDPpage extends GenericMethods {
 
 	}
 
-	// @Test(priority = 4, description = "TA-5, Verify Add a Classic Monogram")
+	 @Test(priority = 4, description = "TA-5, Verify Images")
 	public void verifyImages() {
 		addProductForPDPtest(testData.get("BreadCrumbsTest"));
 		int imagesCount = pdp.getAltItemsList().size();
@@ -241,8 +241,7 @@ public class PDPpage extends GenericMethods {
 
 	}
 
-	// @Test(priority = 6, description = "TA-5, Verify Product Warranty test,
-	// Setting your Tumi Lock and Free returns.")
+	 @Test(priority = 6, description = "TA-5, Verify Product Warranty test, Setting your Tumi Lock and Free returns.")
 	public void verifyAccordionFeatures() {
 		SoftAssert accordion = new SoftAssert();
 		addProductForPDPtest(testData.get("BreadCrumbsTest"));
