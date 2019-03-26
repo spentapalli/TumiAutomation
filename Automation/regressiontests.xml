@@ -4,7 +4,7 @@
 
 	<test name="MiniCart">
 		<classes>
-			<class name="cart.tumi.cart.MiniCart">
+			<class name="com.tumi.cart.MiniCart">
 			</class>
 		</classes>
 	</test>
