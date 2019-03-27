@@ -249,12 +249,12 @@
 			</class>
 		</classes>
 	</test>
-	<test name="VerifyCartPage">
+	<!-- <test name="VerifyCartPage">
 		<classes>
 			<class name="com.tumi.testcases.VerifyCartPage">
 			</class>
 		</classes>
-	</test>
+	</test> -->
 	
 
 
