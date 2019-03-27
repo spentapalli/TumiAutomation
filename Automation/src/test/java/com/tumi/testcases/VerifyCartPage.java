@@ -49,7 +49,7 @@ public class VerifyCartPage extends GenericMethods {
 	}
 	@Test(priority = 2, description = "TA-393, Verify Monogram")
 	public void verifyMonogram() {
-		PDPpage.verifyMonogram();
+		//PDPpage.verifyMonogram();
 		SoftAssert cartAssertions = new SoftAssert();
 	
 		click(mainCart.getAddclassicMono(),"Add Classic Monogram");
@@ -124,7 +124,7 @@ public class VerifyCartPage extends GenericMethods {
 	@Test(priority = 4, description = "TA-395, Verify Edit link to update cart and TA-396, Verify Remove Link")
 	public void verifyContinueShopping() {
 		goToCartPage();
-		PDPpage.addProductForPDPtest(testdata.get("BreadCrumbsTest"));
+		//PDPpage.addProductForPDPtest(testdata.get("BreadCrumbsTest"));
 		click(pdp.getAddToCart(), "Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Cart");
 		String skuid = getText(driver.findElement(By.xpath("(//div[contains(@class,'ledger-prod-attr attr-style')]/span)[2]")));
