@@ -42,7 +42,7 @@ public class GenericMethods extends GlobalConstants {
 
 	public static void captureOrderConfScreen(String name) {
 
-		//long time = ZonedDateTime.now().toInstant().toEpochMilli();
+		// long time = ZonedDateTime.now().toInstant().toEpochMilli();
 		getScreen("./ExtentReports/ScreenShots/" + name + ".png");
 		String location = "./ScreenShots/" + name + ".png";
 		try {
@@ -83,8 +83,7 @@ public class GenericMethods extends GlobalConstants {
 			} else {
 				Assert.fail("user signin is failed");
 			}
-			//removeCards();
-			myacc.getMyAccountClose().click();
+			click(myacc.getMyAccountClose(),"Close My Account");
 		} catch (Exception e) {
 			Assert.fail("Fail to Login due to " + e.getMessage());
 		}
@@ -262,7 +261,7 @@ public class GenericMethods extends GlobalConstants {
 					break;
 			}
 			if (!jsLoad) {
-				logger.log(Status.FAIL, "Page load Incomplete");
+				logger.log(Status.INFO, "Page load Incomplete");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -657,30 +656,17 @@ public class GenericMethods extends GlobalConstants {
 	public static void removeExistingCart() {
 
 		try {
-			WaitForJStoLoad();
 			UIFunctions.delay(3000);
 			if (!getText(home.getMinicartCount()).contains("0")) {
 				webclick(home.getMinicart(), "Minicart");
-				WaitForJStoLoad();
-
-				try {
-					do {
-						delay(2000);
-					}while(driver.findElement(By.xpath("//div[@class='loader-image removeFocusIndicator']")).isDisplayed());
-				} catch (Exception e1) {
-					
-					e1.printStackTrace();
-				}
+				UIFunctions.delay(5000);
 				try {
 					int cart = parseInt(getText(home.getMinicartCount()));
 					if (cart != 0) {
 						delay(5000);
-						// click(home.getMinicart(), "Mini Cart");
-						// click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 						for (WebElement ele : checkout.getRemoveMinicartProducts()) {
 							click(checkout.getRemoveProduct(), "Remove Existing Product");
 							delay(5000);
-							// explicitWait(checkout.getremoveMinicart());
 						}
 					}
 				} catch (Exception e) {

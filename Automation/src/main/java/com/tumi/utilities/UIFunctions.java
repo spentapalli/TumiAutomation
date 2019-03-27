@@ -579,40 +579,60 @@ public class UIFunctions extends GenericMethods {
 	}
 
 	public static void addPromotionalCodeAtSinglePage(String sheet, String testCase) {
+		
+		String beforeTotal = getText(shipMethod.getBeforeTotal());
+		Double beforeCost = Double.valueOf(beforeTotal.replace("$", ""));
+		System.out.println("Before select Price = " + beforeCost);
 
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
-		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
-			String beforeTotal = getText(shipMethod.getBeforeTotal());
-			Double beforeCost = Double.valueOf(beforeTotal.replace("$", ""));
-			System.out.println("Before select Price = " + beforeCost);
-			if (selectedCountry.contains("US")) {
-				input(singlePage.getPromocode(), testData.get("VoucherID"), "Vocher Id");
-				click(singlePage.getApply(), "Check Promocode");
-				delay(2000);
-				verifyPromoCharge(beforeCost);
+		if (selectedCountry.contains("US")) {
+			input(singlePage.getPromocode(), testData.get("VoucherID"), "Vocher Id");
+			click(singlePage.getApply(), "Check Promocode");
+			delay(2000);
+			verifyPromoCharge(beforeCost);
 
-			} else {
+		} else if (selectedCountry.contains("Canada")) {
 
-				input(singlePage.getPromocode(), testData.get("CAVoucherID"), "Vocher Id");
-				click(singlePage.getApply(), "Check Promocode");
+			input(singlePage.getPromocode(), testData.get("CAVoucherID"), "Vocher Id");
+			click(singlePage.getApply(), "Check Promocode");
 
-				verifyPromoCharge(beforeCost);
-			}
+			verifyPromoCharge(beforeCost);
 		} else {
-			String beforeTotal = getText(shipMethod.getBeforeTotal());
-			Double beforeCost = Double.valueOf(beforeTotal.replace("₩", "").replace(",", ""));
-			System.out.println("Before select Price = " + beforeCost);
 			input(singlePage.getPromocode(), testData.get("KRVoucherID"), "Vocher Id");
 			click(singlePage.getApply(), "Check Promocode");
-			verifyPromoCharge(beforeCost);
 		}
-		
+		// delay(2000);
+
+		/*
+		 * try { if (mainCart.getVocherCardFailed().isDisplayed()) {
+		 * 
+		 * Assert.fail(getText(mainCart.getVocherCardFailed()));
+		 * 
+		 * } else if (!mainCart.getCodeApplied().isDisplayed()) {
+		 * 
+		 * Assert.fail("Promo Code Remove link is not displayed");
+		 * 
+		 * } else if (!mainCart.getCodeRemove().isDisplayed()) {
+		 * 
+		 * Assert.fail("Promo Code Applied Message is not displayed");
+		 * 
+		 * } else if (!mainCart.getSubtotalCode().isDisplayed()) {
+		 * 
+		 * Assert.fail("Promo Code Subtotal is not displayed");
+		 * 
+		 * } else if (mainCart.getVocherCardFailed().isDisplayed()) {
+		 * 
+		 * Assert.fail(getText(mainCart.getVocherCardFailed())); } } catch (Exception e)
+		 * {
+		 * 
+		 * Assert.fail("Vocher Card related Fields are not displayed " +
+		 * e.getMessage()); }
+		 */
+
 	}
 
 	public static void verifyPromoCharge(double data) {
 		delay(2000);
-		
-		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
 
 		String afterTotal = getText(shipMethod.getBeforeTotal());
 		Double afterCost = Double.valueOf(afterTotal.replace("$", ""));
@@ -626,22 +646,6 @@ public class UIFunctions extends GenericMethods {
 
 		if (promoDiscount.equals(verifyPromo)) {
 			logger.log(Status.INFO, "Promocode added successfully to Order summery");
-		}
-		}else {
-			String afterTotal = getText(shipMethod.getBeforeTotal());
-			Double afterCost = Double.valueOf(afterTotal.replace("₩", "").replace("-", "").replace(",", ""));
-			System.out.println("After applying Promocode, Total Price = " + afterCost);
-
-			double verifyPromo = afterCost - data;
-
-			String promo = getText(shipMethod.getPromoCharge());
-			Double promoDiscount = Double.valueOf(promo.replace("₩", "").replace("-", ""));
-			System.out.println(promoDiscount);
-
-			if (promoDiscount.equals(verifyPromo)) {
-				logger.log(Status.INFO, "Promocode added successfully to Order summery");
-			}
-			
 		}
 	}
 
