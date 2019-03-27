@@ -437,14 +437,14 @@ public class ProductDetailPage extends GenericMethods {
 	private WebElement breadCrumbHome;
 	
 	public WebElement getBreadCrumbHome(){
-		return breadCrumbHome;
+		return explicitWait(breadCrumbHome);
 	}
 	
 	@FindBy(how=How.XPATH,using="//div[@id='breadcrumb']/ul/li[2]/a/span")
 	private WebElement breadCrumbCategory;
 	
 	public WebElement getBreadCrumbCategory(){
-		return breadCrumbCategory;
+		return explicitWait(breadCrumbCategory);
 	}
 	
 	@FindBy(how=How.XPATH,using="//div[@id='breadcrumb']/ul/li[3]/a/span")

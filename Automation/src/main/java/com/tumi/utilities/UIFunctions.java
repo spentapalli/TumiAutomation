@@ -1127,5 +1127,62 @@ public class UIFunctions extends GenericMethods {
 		input(shipping.getPhoneNumber(), testData2.get("AlternatePh"), "Phone Number");
 		domClick(guestBillPage.getReviewOrder(), "Review your order");
 	}
+	
+	public static void addMonogram(WebElement ele) {
+		if (mono.getStep1().isDisplayed()) {
+			if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
+				if (mono.getAddPatch().isEnabled()) {
+					domClick(mono.getAddTag(), "Tag");
+					click(mono.getOptionsNext(), "Next..");
+				} else {
+					click(mono.getOptionsNext(), "Next..");
+				}
+			} else {
+				click(mono.getOptionsNext(), "Next");
+			}
+		}
+
+		click(mono.getFirstMonoInput(), "First option..");
+		webclick(mainCart.getAddHeart(), "Heart Symbol");
+		webclick(mainCart.getSmiley(), "Smiley Symbol");
+		webclick(mainCart.getStar(), "Star Symbol");
+
+		click(mono.getNext(), "Next");
+		click(mono.getTextStyleBold(), "Serif as Bold");
+		click(mono.getCafeColor(), "Color");
+		click(mono.getApply(), "Apply");
+		delay(3000);
+		try {
+			if (ele.isDisplayed()) {
+				logger.log(Status.INFO, "Monogram added Successfully");
+			}
+		} catch (Exception e) {
+			Assert.fail("Monogram couldn't added, Please Check...");
+		}
+		delay(3000);
+
+		click(ele, "Edit Monogram");
+		if (mono.getStep1().isDisplayed()) {
+			click(mono.getOptionsNext(), "Next");
+		}
+		click(mono.getSecondNext(), "Next");
+		click(mono.getBlueColor(), "Color");
+		click(mono.getApply(), "Apply");
+		delay(3000);
+
+		if (mono.getSuccessMsg().isDisplayed()) {
+			logger.log(Status.INFO, "Verification of Edit Monogram is Successfull");
+		} else {
+			Assert.fail("Verification of Edit Monogram is Failed");
+		}
+		click(mono.getRemove(), "Remove");
+		delay(2000);
+		if (mono.getAddMonoMsg().isEnabled()) {
+			logger.log(Status.INFO, "Verification of Remove Monogram is successfull");
+		} else {
+			Assert.fail("Verification of Remove Monogram is faield");
+		}
+
+	}
 
 }

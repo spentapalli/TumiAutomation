@@ -97,6 +97,30 @@ public class GiftServices extends GenericMethods {
 	public WebElement getContinueGiftService() {
 		return explicitWait(continueGiftService);
 	}
+	@FindBy(how=How.XPATH, using="//div[contains(@class,'giftBoxAdded removeFocusIndicator')]/div/a")
+	private WebElement giftEdit;
+	
+	public WebElement getGiftEdit() {
+		return explicitWait(giftEdit);
+	}
+	@FindBy(how=How.XPATH, using="//div[contains(@class,'giftBoxAdded removeFocusIndicator')]/div/form/input[3]")
+	private WebElement giftRemove;
+	
+	public WebElement getGiftRemove() {
+		return explicitWait(giftRemove);
+	}
+	@FindBy(how=How.XPATH, using="//div[contains(@class,'giftBoxAdded')]/strong[2]")
+	private WebElement giftMsgAdded;
+	
+	public WebElement getGiftMsgAdded() {
+		return giftMsgAdded;
+	}
+	@FindBy(how=How.XPATH, using="//div[contains(@class,'giftBoxAdded')]/strong[1]")
+	private WebElement giftBoxAdded;
+	
+	public WebElement getGiftBoxAdded() {
+		return giftBoxAdded;
+	}
 
 }
 

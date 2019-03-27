@@ -233,8 +233,8 @@ public class HomePage extends GenericMethods {
 		return explicitWait(selectFrenchLanguage);
 
 	}
-
-	@FindBy(how = How.XPATH, using = "//section[@id='top-nav']/header/div[1]/div[1]/div[3]/a")
+	
+	@FindBy(how = How.XPATH, using = "//header[@id='top-nav']/section/div[1]/div[1]/div[3]/a")
 	private WebElement krheaderFindStore;
 
 	@FindBy(how = How.XPATH, using = "(//a[text()='Find a Store'])[1]")

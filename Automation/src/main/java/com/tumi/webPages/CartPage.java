@@ -368,6 +368,12 @@ public class CartPage extends GenericMethods {
 	public WebElement getEstimatedTotal() {
 		return estimatedTotal;
 	}
+	@FindBy(how = How.XPATH, using = ("//div[contains(@class,'span2 cart-item-status')]/div/span"))
+	private WebElement premiumCharge;
+	
+	public WebElement getPremiumCharge() {
+		return premiumCharge;
+	}
 	
 	@FindBy(how = How.XPATH, using = ("(//div[contains(@class,'cart-items')])[2]/div/div/div[2]/a"))
 	private List<WebElement> productsList;
@@ -414,7 +420,7 @@ public class CartPage extends GenericMethods {
 	public WebElement getStar() {
 		return star;
 	}
-	@FindBy(how = How.XPATH, using = ("//div[@class='added-monogram']/div/div[2]/span"))
+	@FindBy(how = How.XPATH, using = ("(//div[contains(@class,'items-link monogram-added')]/div/span)[1]"))
 	private WebElement addedMonoMsg;
 	
 	public WebElement getAddedMonoMsg() {
@@ -425,6 +431,13 @@ public class CartPage extends GenericMethods {
 	
 	public WebElement getAppliedPromoMsg() {
 		return AppliedPromoMsg;
+	}
+	
+	@FindBy(how = How.XPATH, using =( "(//a[@id='monogramming-popup-link'])[2]"))
+	private WebElement editMono;
+	
+	public WebElement getEditMono() {
+		return editMono;
 	}
 	
 	

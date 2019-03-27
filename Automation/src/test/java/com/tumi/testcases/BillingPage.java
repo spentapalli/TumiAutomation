@@ -15,7 +15,7 @@ import com.tumi.utilities.UIFunctions;
 
 public class BillingPage extends GenericMethods {
 
-	//@Test(priority = 0, description = "TA-52, Verify Sign-in functionality")
+	@Test(priority = 0, description = "TA-52, Verify Sign-in functionality")
 	public void verifySignIn() {
 		goToBillingPage();
 		delay(3000);
@@ -41,8 +41,8 @@ public class BillingPage extends GenericMethods {
 
 	}
 
-	//@Test(priority = 1, description = "TA-52, Verify that Redeem Tumi gift card can apply\r\n"
-		//	+ "Verify Check balance in Tumi Gift cad, " + " Verify labels below Review your Order" + "Verify PayPal link")
+	@Test(priority = 1, description = "TA-52, Verify that Redeem Tumi gift card can apply\r\n"
+			+ "Verify Check balance in Tumi Gift cad, " + " Verify labels below Review your Order")
 	
 	public void verifyGiftCard() {
 		Map<String, String> giftCard = ReadTestData.getJsonData("TumiTestData", "VoucherCodeDetails");
@@ -50,7 +50,7 @@ public class BillingPage extends GenericMethods {
 
 		goToBillingPage();
 		verifyAccordions();
-
+		if(selectedCountry.contains("US")) {
 		click(guestBillPage.getGiftcardButton(), "Gift Card Button");
 
 		input(guestBillPage.getGiftcard(), giftCard.get("AltGiftCardnumber"), "Gift Card number");
@@ -75,7 +75,7 @@ public class BillingPage extends GenericMethods {
 			giftcardAsser.fail("Verification of Gift card Failed or Gift card functionality not working");
 		}
 		click(guestBillPage.getRemoveGift(),"Remove Gift Card");
-		
+		}
 		giftcardAsser.assertAll();
 		
 	}
@@ -94,13 +94,16 @@ public class BillingPage extends GenericMethods {
 		}
 	}
 	
-	//@Test(priority = 3, description = "TA-52, verify PayPal link")
+	@Test(priority = 3, description = "TA-52, verify PayPal link")
 	public void verifyPayPalLik() {
 		goToBillingPage();
-		webclick(guestBillPage.getPayPal(),"PayPal ");
+		webclick(guestBillPage.getPayPal(),"PayPal button");
 		try {
-			if(paypal.getLogin().isDisplayed()) {
-				logger.log(Status.INFO, "Clicking on PayPal, page is navigated to PayPal Window");
+			if(guestBillPage.getBuyWithPayPal().isDisplayed()) {
+				click(guestBillPage.getBuyWithPayPal(),"PayPal");
+			if(paypal.getPayPalEmail().isDisplayed()) {
+				logger.log(Status.INFO, "Clicking on PayPal, page is navigated to PayPal Window..");
+			}
 			}
 		} catch (Exception e) {
 				Assert.fail("Clicking on PayPal, page couldn't navigated to PayPal Window,Fail to Login due to " + e.getMessage());
