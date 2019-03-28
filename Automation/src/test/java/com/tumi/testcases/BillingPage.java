@@ -4,6 +4,8 @@ import java.util.Map;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -28,19 +30,22 @@ public class BillingPage extends GenericMethods {
 	public void verifySignIn() {
 		goToBillingPage();
 		delay(3000);
-
 		try {
 			Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "RegisteredOrders");
 
 			click(home.getHeaderSignIn(), "Sign In");
+			delay(2000);
 			input(home.getUserName(), testData.get("EmailID"), "Email Address");
 			input(home.getPassWord(), testData.get("Password"), "Password");
 			click(home.getLogOn(), "Login");
+			//delay(10000);
+			elementToBeClickable(myacc.getSignout());
+			try {
+				if (guestBillPage.getItemsInCart().isDisplayed()||myacc.getSignout().isDisplayed()) {
+					logger.log(Status.INFO, "Successfully logged with Regular user valid credentials");
+				}
 
-			if (guestBillPage.getItemsInCart().isDisplayed()||myacc.getSignout().isDisplayed()) {
-				logger.log(Status.INFO, "Successfully logged with Regular user valid credentials");
-
-			} else {
+			} catch (Exception e) {
 				Assert.fail("user signin is failed");
 			}
 
@@ -93,7 +98,7 @@ public class BillingPage extends GenericMethods {
 	public void verifyBilingAddressLink() {
 		try {
 			goToBillingPage();
-			delay(2000);
+			delay(3000);
 			domClick(guestBillPage.getShippingAddressAsBilling(),"Shipping address as Billing address");
 			if(guestBillPage.getCountrySelector().isDisplayed()){
 				logger.log(Status.INFO, "When click on Use ship address as bill addres, displaying all fields to enter details");
@@ -106,6 +111,7 @@ public class BillingPage extends GenericMethods {
 	@Test(priority = 3, description = "TA-419, verify PayPal link")
 	public void verifyPayPalLik() {
 		goToBillingPage();
+		delay(2000);
 		webclick(guestBillPage.getPayPal(),"PayPal button");
 		try {
 			if(guestBillPage.getBuyWithPayPal().isDisplayed()) {
