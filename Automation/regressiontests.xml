@@ -237,9 +237,9 @@
 			</class>
 		</classes>
 	</test>
-	<test name="PDPpage">
+	<test name="ProductDetails">
 		<classes>
-			<class name="com.tumi.testcases.PDPpage">
+			<class name="com.tumi.testcases.ProductDetails">
 			</class>
 		</classes>
 	</test>
@@ -249,12 +249,12 @@
 			</class>
 		</classes>
 	</test>
-	<!-- <test name="VerifyCartPage">
+	<test name="VerifyCartPage">
 		<classes>
-			<class name="com.tumi.testcases.VerifyCartPage">
+			<class name="com.tumi.cart.VerifyCartPage">
 			</class>
 		</classes>
-	</test> -->
+	</test>
 	
 
 
