@@ -4,27 +4,34 @@
 
 	<test name="BillingPage"> 
 		<classes> 
-			<class name="webpages.BillingPage"/> 
+			<class name="com.tumi.testcases.BillingPage"/> 
 		</classes>
    </test>
-   <test name="OrderConfirmation"> 
+   <test name="OrderConfirmationPage"> 
 		<classes> 
-			<class name="webpages.OrderConfirmation"/> 
+			<class name="com.tumi.testcases.OrderConfirmationPage"/> 
 		</classes>
    </test>
    <test name="OrderReviewPageVerification"> 
 		<classes> 
-			<class name="webpages.OrderReviewPageVerification"/> 
+			<class name="com.tumi.testcases.OrderReviewPageVerification"/> 
 		</classes>
    </test>
-    <test name="PDPpage"> 
+    <test name="VerifyProductDetailPage"> 
 		<classes> 
-			<class name="webpages.PDPpage"/> 
+			<class name="com.tumi.testcases.VerifyProductDetailPage"/> 
 		</classes>
    </test>
-    <test name=" ShippingMethodPage"> 
+    <test name="ShippingMethodPage"> 
 		<classes> 
-			<class name="webpages. ShippingMethodPage"/> 
+			<class name="com.tumi.testcases.ShippingMethodPage"/> 
 		</classes>
    </test>
+   <test name="compareProducts"> 
+		<classes> 
+			<class name="com.tumi.registerOrders.CompareProducts"/> 
+		</classes>
+   </test>
+   
+  
    </suite>

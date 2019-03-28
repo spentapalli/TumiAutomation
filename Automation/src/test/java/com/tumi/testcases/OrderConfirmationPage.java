@@ -41,7 +41,7 @@
 		//@Test(priority = 0,description ="Verify the product Link")
 		public void VerifyProductLink() {
 			Placeorder();
-			delay(2000);
+			delay(4000);
 			domClick(confirmation.getProductLink(),"Select link");
 			
 			if(pdp.getProductLink().isDisplayed()){
@@ -67,7 +67,7 @@
 			UIFunctions.addGuestDetails();
 			click(shipping.getContinueShippingMethod(), "Contiue Shipping");
 			click(shipMethod.getPriorityShippingMethod(),"Shipping  method");
-			String StandardGround= getText(shipMethod.getStandardGround());
+			String Shipmethod= getText(shipMethod.getStandardGround());
 			 delay(4000);
 			click(shipMethod.getProceedToPayment(), "Proceed to Payment");
 			UIFunctions.addCardDetails("TumiTestData","CreditCardDetails");
@@ -75,7 +75,7 @@
 			delay(5000);
 			  String ShippingMethod= getText(confirmation.getShippingMethods());
 			
-	           if(StandardGround.equals(ShippingMethod)) {
+	           if(Shipmethod.equals(ShippingMethod)) {
 				 logger.log(Status.INFO,"Verified Shipping methods");
 			 }else {
 				 Assert.fail("Shipping method  is not verified");
