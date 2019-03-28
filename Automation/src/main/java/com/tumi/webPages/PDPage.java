@@ -18,9 +18,9 @@ import com.tumi.utilities.GenericMethods;
  *
  */
 
-public class ProductDetailPage extends GenericMethods {
+public class PDPage extends GenericMethods {
 
-	public ProductDetailPage(WebDriver driver) {
+	public PDPage(WebDriver driver) {
 		Reports.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
@@ -295,6 +295,23 @@ public class ProductDetailPage extends GenericMethods {
 	public WebElement getSortZToA(){
 		return sortZToA;
 	}
+	
+	@FindBy(how=How.LINK_TEXT,using="Price: Lowest to Highest")
+	private WebElement sortLowToHigh;
+	
+	public WebElement getSortLowToHigh(){
+		return sortLowToHigh;
+	}
+	
+	@FindBy(how=How.LINK_TEXT,using="Price Highest to Lowest")
+	private WebElement sortHighToLow;
+	
+	public WebElement getSortHighToLow(){
+		return sortHighToLow;
+	}
+	
+	
+	
 	@FindBy(how=How.XPATH,using="//div[@id='prod-details']/h1")
 	private WebElement ProductLink;
 	

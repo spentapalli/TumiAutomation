@@ -61,7 +61,7 @@ import com.tumi.webPages.OrderReviewPage;
 import com.tumi.webPages.PGP;
 import com.tumi.webPages.PayPalPage;
 import com.tumi.webPages.Personalization;
-import com.tumi.webPages.ProductDetailPage;
+import com.tumi.webPages.PDPage;
 import com.tumi.webPages.ShippingMethodPage;
 import com.tumi.webPages.ShippingPage;
 import com.tumi.webPages.SignInBillingPage;
@@ -87,7 +87,7 @@ public class Reports {
 	public static HomePage home = null;
 	public static MiniCartPage minicart = null;
 	public static ShippingPage shipping = null;
-	public static ProductDetailPage pdp = null;
+	public static PDPage pdp = null;
 	public static SinglePageCheckout singlePage = null;
 	public static GuestBillingPage guestBillPage = null;
 	public static CartPage mainCart = null;
@@ -179,7 +179,7 @@ public class Reports {
 		// driver.navigate().to("https://ca.stg-hybris-akamai.tumi.com");
 	}
 
-	//@AfterMethod(alwaysRun = true)
+	@AfterMethod(alwaysRun = true)
 	public static void closeBrowser() {
 		
 		if (browserName.equalsIgnoreCase("Remote")) {
@@ -205,7 +205,7 @@ public class Reports {
 		home = new HomePage(driver);
 		minicart = new MiniCartPage(driver);
 		shipping = new ShippingPage(driver);
-		pdp = new ProductDetailPage(driver);
+		pdp = new PDPage(driver);
 		singlePage = new SinglePageCheckout(driver);
 		guestBillPage = new GuestBillingPage(driver);
 		mainCart = new CartPage(driver);

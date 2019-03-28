@@ -1,11 +1,9 @@
 package com.tumi.registerOrders;
 
-import java.sql.Array;
 import java.util.ArrayList;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.aventstack.extentreports.Status;
@@ -18,7 +16,7 @@ import com.tumi.utilities.GenericMethods;
 public class ProductsSortingFunctionality extends GenericMethods {
 
 	@Test(priority = 0)
-	public void verifyPDPSorting() {
+	public void verifyProductAToZSorting() {
 		navigateToPDP();
 		webclick(pdp.getSortOptions(), "Sorting");
 		webclick(pdp.getSortAToZ(), "A to Z");
@@ -57,32 +55,31 @@ public class ProductsSortingFunctionality extends GenericMethods {
 	
 	@Test(priority = 2)
 	public void verifyProductPriceLowToHigh() {
-		ArrayList<Float> list = new ArrayList<Float>();
-		navigateToPDP();
-		webclick(pdp.getSortOptions(), "Sorting");
-		webclick(pdp.getSortZToA(), "Price: Lowest to Highest");
-		for (WebElement ele: pdp.getProductPrices()) {
-			float price = Float.parseFloat(getText(ele).replace("$", "").trim());
-			list.add(price);
-		}
-		if(!decendingCheck(list)){
-	        Assert.fail("Not is ascending order");
+		
+		if(!decendingCheck(productsPrice(pdp.getSortLowToHigh(), "Price: Lowest to Highest"))){
+			logger.log(Status.ERROR,"Product Prices are Not is ascending order");
 	    }
 	}
 	
 	@Test(priority = 3)
 	public void verifyProductPriceHighToLow() {
+		
+		if(!ascendingCheck(productsPrice(pdp.getSortHighToLow(), "Price Highest to Lowest"))){
+			logger.log(Status.ERROR,"Product Prices are Not is ascending order");
+	    }
+	}
+	
+	public ArrayList<Float> productsPrice(WebElement element,String msg) {
+		
 		ArrayList<Float> list = new ArrayList<Float>();
 		navigateToPDP();
 		webclick(pdp.getSortOptions(), "Sorting");
-		webclick(pdp.getSortZToA(), "Price Highest to Lowest");
+		webclick(element,msg);
 		for (WebElement ele: pdp.getProductPrices()) {
 			float price = Float.parseFloat(getText(ele).replace("$", "").trim());
 			list.add(price);
 		}
-		if(!ascendingCheck(list)){
-	        Assert.fail("Not is ascending order");
-	    }
+		return list;
 	}
 	
 	Boolean ascendingCheck(ArrayList<Float> data){         
