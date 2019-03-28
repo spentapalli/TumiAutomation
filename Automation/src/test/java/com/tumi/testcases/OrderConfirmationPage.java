@@ -26,7 +26,7 @@
 			
 			
 		
-		@Test(priority = 1,description = " Verify Order Confirmation page")
+		//@Test(priority = 1,description = " Verify Order Confirmation page")
 			public void VerifyCreateAccount() {
 				
 				Placeorder();
@@ -38,7 +38,7 @@
 					userAccount(email);
 					}
 
-		@Test(priority = 0,description ="Verify the product Link")
+		//@Test(priority = 0,description ="Verify the product Link")
 		public void VerifyProductLink() {
 			Placeorder();
 			delay(4000);
@@ -67,15 +67,15 @@
 			UIFunctions.addGuestDetails();
 			click(shipping.getContinueShippingMethod(), "Contiue Shipping");
 			click(shipMethod.getPriorityShippingMethod(),"Shipping  method");
+			 delay(3000);
 			String Shipmethod= getText(shipMethod.getStandardGround());
-			 delay(4000);
 			click(shipMethod.getProceedToPayment(), "Proceed to Payment");
 			UIFunctions.addCardDetails("TumiTestData","CreditCardDetails");
 			domClick(review.getPlaceOrder(), "Place Order");
-			delay(5000);
+			delay(40000);
 			  String ShippingMethod= getText(confirmation.getShippingMethods());
-			
-	           if(Shipmethod.equals(ShippingMethod)) {
+			  delay(20000);
+			  if(Shipmethod.equals(ShippingMethod)) {
 				 logger.log(Status.INFO,"Verified Shipping methods");
 			 }else {
 				 Assert.fail("Shipping method  is not verified");
@@ -96,11 +96,11 @@
 	    		
 	    		 String CaShipMethod= getText(shipMethod.getCaShippingmethod());
 	    		
-	    		 delay(4000);
+	    		 delay(40000);
 	    		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
 	    		UIFunctions.addCardDetails("TumiTestData","CreditCardDetails");
 	    		domClick(review.getPlaceOrder(), "Place Order");
-	    		delay(4000);
+	    		delay(40000);
 	    		 String CaShippingMethod= getText(confirmation.getShippingMethods());
 	    		
 	               if(CaShipMethod.equals(CaShippingMethod)) {
@@ -114,7 +114,7 @@
 			
 		
 			
-		@Test(priority = 3,description = "Verify the Shipping Address and Payment details")
+		//@Test(priority = 3,description = "Verify the Shipping Address and Payment details")
 		public void VerifyShippingDetails() {
 			Placeorder() ;	
 			 delay(6000);

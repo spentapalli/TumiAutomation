@@ -4,6 +4,7 @@ package com.tumi.home;
 
 import java.util.Map;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.aventstack.extentreports.Status;
@@ -20,7 +21,7 @@ public class Quickshop extends GenericMethods {
 		        click(pgp.getQuickShop(),"QuickShop");
 			   
 			   	if(!pgp.getQuickShopAddtoCart().isDisplayed()){
-			   			logger.log(Status.INFO,"product is out of stock");
+			   			Assert.fail("product is out of stock");
 			   	}else {
 			   		click(pgp.getQuickShopAddtoCart(),"QuickShop Add to Cart");
 				click(minicart.getProceedCheckOut(), "Proceed to Checkout");
