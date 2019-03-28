@@ -53,13 +53,15 @@ public class ShippingMethodPage extends GenericMethods {
 
 		goToShipMethodPage();
 		UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "VoucherCodeDetails");
-		if (singlePage.getPromocodeRemove().isDisplayed()) {
-			logger.log(Status.INFO, "Promocode applied successfully");
-		} else if (getText(mainCart.getPromoSuccessMsg()).equals(getProperty("voucher.successmsg"))) {
-			logger.log(Status.INFO, "Promocode applied successfully");
-		} else if ((mainCart.getPromoSuccessMsg()).equals(getProperty("voucher.alreadyapplied"))) {
-			logger.log(Status.INFO, "Voucher already been applied successfully");
-		} else {
+		try {
+			if (singlePage.getPromocodeRemove().isDisplayed()) {
+				logger.log(Status.INFO, "Promocode applied successfully");
+			} else if (getText(mainCart.getPromoSuccessMsg()).equals(getProperty("voucher.successmsg"))) {
+				logger.log(Status.INFO, "Promocode applied successfully");
+			} else if ((mainCart.getPromoSuccessMsg()).equals(getProperty("voucher.alreadyapplied"))) {
+				logger.log(Status.INFO, "Voucher already been applied successfully");
+			}
+		} catch (Exception e) {
 			Assert.fail("Promocode couldn't be applied");
 		}
 
@@ -88,14 +90,14 @@ public class ShippingMethodPage extends GenericMethods {
 		SoftAssert shipPageAssertions = new SoftAssert();
 
 		String beforeTotal = getText(shipMethod.getBeforeTotal());
-		Double beforeCost = Double.valueOf(beforeTotal.replace("$", ""));
+		Double beforeCost = Double.valueOf(beforeTotal.replace("$", "").replace(",",""));
 		System.out.println("Before select Price = " + beforeCost);
 
 		if (getText(shipMethod.getEstimatedShipFree()).contains("FREE")
 				|| (getText(shipMethod.getEstimatedShipping()).equals(shipCharge.get("UsStandardShippingCharge")))) {
 
 			String afterTotal = getText(shipMethod.getBeforeTotal());
-			Double afterCost = Double.valueOf(afterTotal.replace("$", ""));
+			Double afterCost = Double.valueOf(afterTotal.replace("$", "").replace(",",""));
 			System.out.println("After selecting Standard, Price = " + afterCost);
 
 			if (beforeCost.equals(afterCost)) {
@@ -115,11 +117,11 @@ public class ShippingMethodPage extends GenericMethods {
 		if (getText(shipMethod.getEstimatedShipping()).equals(shipCharge.get("PriorityShippingCharge"))) {
 
 			String afterTotal = getText(shipMethod.getBeforeTotal());
-			Double afterCost = Double.valueOf(afterTotal.replace("$", ""));
+			Double afterCost = Double.valueOf(afterTotal.replace("$", "").replace(",",""));
 			System.out.println("After selecting Priority, Price = " + afterCost);
 
 			String priority = getText(shipMethod.getPrioritycharge());
-			Double priCharge = Double.valueOf(priority.replace("$", ""));
+			Double priCharge = Double.valueOf(priority.replace("$", "").replace(",",""));
 			System.out.println("Priority charge = " + priCharge);
 
 			Double verifiyCharge = afterCost - beforeCost;
@@ -141,11 +143,11 @@ public class ShippingMethodPage extends GenericMethods {
 		if (getText(shipMethod.getEstimatedShipping()).equals(shipCharge.get("SecondDayShippingCahrge"))) {
 
 			String afterTotal = getText(shipMethod.getBeforeTotal());
-			Double afterCost = Double.valueOf(afterTotal.replace("$", ""));
+			Double afterCost = Double.valueOf(afterTotal.replace("$", "").replace(",",""));
 			System.out.println("After selecting Second day, Price = " + afterCost);
 
 			String second = getText(shipMethod.getSecondShippingCharge());
-			Double secondCharge = Double.valueOf(second.replace("$", ""));
+			Double secondCharge = Double.valueOf(second.replace("$", "").replace(",",""));
 			System.out.println("Seconda day charge = " + secondCharge);
 
 			Double verifiyCharge = afterCost - beforeCost;
@@ -165,17 +167,17 @@ public class ShippingMethodPage extends GenericMethods {
 	public void caShippingVerification() {
 		SoftAssert shipPageAssertions = new SoftAssert();
 		String subTotal = getText(shipMethod.getCaSubTotal());
-		Double subCost = Double.valueOf(subTotal.replace("$", ""));
+		Double subCost = Double.valueOf(subTotal.replace("$", "").replace(",",""));
 		System.out.println("Before select Price = " + subCost);
 
 		if (getText(shipMethod.getEstimatedShipFree()).contains(getText(shipMethod.getCAStandardShippingCharge()))) {
 			
 			String estimatedTotal = getText(shipMethod.getBeforeTotal());
-			Double total = Double.valueOf(estimatedTotal.replace("$", ""));
+			Double total = Double.valueOf(estimatedTotal.replace("$", "").replace(",",""));
 			System.out.println("After selecting Standard, Price = " + total);
 
 			String standard = getText(shipMethod.getCAStandardShippingCharge());
-			Double standardCharge = Double.valueOf(standard.replace("$", ""));
+			Double standardCharge = Double.valueOf(standard.replace("$", "").replace(",",""));
 			System.out.println("Standard charge = " + standardCharge);
 
 			Double verifiyCharge = Math.round((total - subCost) * 100D) / 100D;
@@ -195,23 +197,23 @@ public class ShippingMethodPage extends GenericMethods {
 		SoftAssert shipPageAssertions = new SoftAssert();
 		String subTotal = getText(shipMethod.getCaSubTotal());
 		if(subTotal.contains(",")) {
-			subTotal=subTotal.replace(",", "");
+			subTotal=subTotal.replace(",", "").replace(",","");
 		}
-		Double subCost = Double.valueOf(subTotal.replace("₩", ""));
+		Double subCost = Double.valueOf(subTotal.substring(1).replace(",",""));
 		System.out.println("Before select Price = " + subCost);
 		
 			String estimatedTotal = getText(shipMethod.getBeforeTotal());
 			if(estimatedTotal.contains(",")) {
-				estimatedTotal=estimatedTotal.replace(",", "");
+				estimatedTotal=estimatedTotal.replace(",", "").replace(",","");
 			}
-			Double total = Double.valueOf(estimatedTotal.replace("₩", ""));
+			Double total = Double.valueOf(estimatedTotal.substring(1).replace(",",""));
 			System.out.println("After selecting Standard, Price = " + total);
 
 			String standard = getText(shipMethod.getKrStandardShippingCharge());
 			if(standard.contains(",")) {
 				standard=standard.replace(",", "");
 			}
-			Double standardCharge = Double.valueOf(standard.replace("₩", ""));
+			Double standardCharge = Double.valueOf(standard.substring(1).replace(",",""));
 			System.out.println("Standard charge = " + standardCharge);
 			
 			Double verifiyCharge =  total - subCost;
