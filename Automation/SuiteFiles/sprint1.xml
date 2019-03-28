@@ -5,101 +5,101 @@
 
 	<test name="GlobalLocatororder">
 		<classes>
-			<class name="orders.guest.GlobalLocatororder" />
+			<class name="com.tumi.guestOrders.GlobalLocatororder" />
 		</classes>
 	</test>
 	<test name="GuestOrderWithMultiShipment">
 
 		<classes>
-			<class name="orders.guest.GuestOrderWithMultiShipment" />
+			<class name="com.tumi.guestOrders.GuestOrderWithMultiShipment" />
 		</classes>
 	</test>
 	<test name="GuestOrder">
 
 		<classes>
-			<class name="orders.guest.GuestOrder" />
+			<class name="com.tumi.guestOrders.GuestOrder" />
 		</classes>
 	</test>
 	<test name="GuestOrderWithTwoDiffProducts">
 
 		<classes>
-			<class name="orders.guest.GuestOrderWithTwoDiffProducts" />
+			<class name="com.tumi.guestOrders.GuestOrderWithTwoDiffProducts" />
 		</classes>
 	</test>
 	<test name="OrderWithGiftBox">
 
 		<classes>
-			<class name="orders.guest.OrderWithGiftBox" />
+			<class name="com.tumi.guestOrders.OrderWithGiftBox" />
 		</classes>
 	</test>
 	<test name="GuestBackOrderWithMonogram">
 
 		<classes>
-			<class name="orders.guest.GuestBackOrderWithMonogram" />
+			<class name="com.tumi.guestOrders.GuestBackOrderWithMonogram" />
 		</classes>
 	</test>
 	<test name="GuestPreOrderWithMonogram">
 
 		<classes>
-			<class name="orders.guest.GuestPreOrderWithMonogram" />
+			<class name="com.tumi.guestOrders.GuestPreOrderWithMonogram" />
 		</classes>
 	</test>
 	<test name="OrderWithMonogram">
 
 		<classes>
-			<class name="orders.guest.OrderWithMonogram" />
+			<class name="com.tumi.guestOrders.OrderWithMonogram" />
 		</classes>
 	</test>
 	<test name="OrderWithVochercode">
 
 		<classes>
-			<class name="orders.guest.OrderWithVochercode" />
+			<class name="com.tumi.guestOrders.OrderWithVochercode" />
 		</classes>
 	</test>
 
 	<test name="RegisteredOrderWithPayPal">
 
 		<classes>
-			<class name="orders.registered.RegisteredOrderWithPayPal" />
+			<class name="com.tumi.registerOrders.RegisteredOrderWithPayPal" />
 		</classes>
 	</test>
 	<test name="RegisteredOrder">
 
 		<classes>
-			<class name="orders.registered.RegisteredOrder" />
+			<class name="com.tumi.registerOrders.RegisteredOrder" />
 		</classes>
 	</test>
 	<test name="RegisteredOrderWithMultishipment">
 
 		<classes>
 			<class
-				name="orders.registered.RegisteredOrderWithMultishipment" />
+				name="com.tumi.registerOrders.RegisteredOrderWithMultishipment" />
 		</classes>
 
 	</test>
 	<test name="GoogleLogin">
 
 		<classes>
-			<class name="login.GoogleLogin" />
+			<class name="com.tumi.login.GoogleLogin" />
 		</classes>
 	</test>
 	<test name="InstgramLogin">
 
 		<classes>
-			<class name="login.InstagramLogin" />
+			<class name="com.tumi.login.InstagramLogin" />
 		</classes>
 	</test>
 
 	<test name="RegularLogin">
 
 		<classes>
-			<class name="login.RegularLogin" />
+			<class name="com.tumi.login.RegularLogin" />
 		</classes>
 	</test>
 	<test name="GuestOrderWithPaypal">
 
 		<classes>
-			<class name="orders.guest.GuestOrderWithPaypal" />
+			<class name="com.tumi.guestOrders.GuestOrderWithPaypal" />
 		</classes>
 	</test>
 </suite>

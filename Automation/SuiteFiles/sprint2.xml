@@ -4,41 +4,41 @@
 
 	<test name="TumiStudioOrder"> 
 		<classes> 
-			<class name="orders.guest.TumiStudioOrder"/> 
+			<class name="com.tumi.guestOrders.TumiStudioOrder"/> 
 		</classes>
    </test>
 
 	<test name="MultiOrders">
 		<classes>
-			<class name="orders.guest.MultiOrders" />
+			<class name="com.tumi.guestOrders.MultiOrders" />
 		</classes>
 	</test>
 
 
 	<test name="GuestOrderFail">
 		<classes>
-			<class name="orders.guest.GuestOrderFail" />
+			<class name="com.tumi.guestOrders.GuestOrderFail" />
 		</classes>
 	</test>
 
 	<test name="RegisterOrderWithMonogram">
 		<classes>
-			<class name="orders.registered.RegisterOrderWithMonogram" />
+			<class name="com.tumi.registerOrders.RegisterOrderWithMonogram" />
 		</classes>
 	</test>
 	<test name="RegisterOrderWithGiftServices">
 		<classes>
-			<class name="orders.registered.RegisterOrderWithGiftServices" />
+			<class name="com.tumi.registerOrders.RegisterOrderWithGiftServices" />
 		</classes>
 	</test>
 	<test name="GuestOrdersWithGiftMsg">
 		<classes>
-			<class name="orders.guest.GuestOrdersWithGiftMsg" />
+			<class name="com.tumi.guestOrders.GuestOrdersWithGiftMsg" />
 		</classes>
 	</test>
 	<test name="TwoOrderForGuestUser">
 		<classes>
-			<class name="orders.guest.TwoOrderForGuestUser" />
+			<class name="com.tumi.guestOrders.TwoOrderForGuestUser" />
 		</classes>
 	</test>
 	<test name="MultipleOrdersForGuestUser">
@@ -48,17 +48,17 @@
 	</test>
 	<test name="ThreeOrderForGuestUser">
 		<classes>
-			<class name="orders.guest.ThreeOrderForGuestUser" />
+			<class name="com.tumi.guestOrders.ThreeOrderForGuestUser" />
 		</classes>
 	</test>
 	<test name="VerifyInvalidGoogleLogin">
 		<classes>
-			<class name="login.VerifyInvalidGoogleLogin" />
+			<class name="com.tumi.login.VerifyInvalidGoogleLogin" />
 		</classes>
 	</test>
 	<test name="VerifyInvalidInstaLogin">
 		<classes>
-			<class name="login.VerifyInvalidInstaLogin" />
+			<class name="com.tumi.login.VerifyInvalidInstaLogin" />
 		</classes>
 	</test>
 

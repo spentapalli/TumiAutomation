@@ -24,7 +24,7 @@
 		Map<String, String> testData1 = ReadTestData.getJsonData("TumiTestData","AlternateOptions");
 		Map<String, String> shipCharge = ReadTestData.getJsonData("TumiTestData", "ShippingCharges");
 
-		//@Test(priority = 0,description = " Verify Product Link ")
+		@Test(priority = 0,description = " Verify Product Link ")
 			public void VerifySelectProduct() {
 				OrderReviewPage();
 				domClick(review.getProductSelect(),"Product Link");
@@ -33,7 +33,7 @@
 				}
 		
 	}
-		//@Test(priority=1,description ="Verfiy the labels")
+		@Test(priority=1,description ="Verfiy the labels")
 		public void VerifyLabels() {
 			
 			
@@ -72,7 +72,7 @@
 		logger.log(Status.INFO,"Verified third label");
 		
 		}
-	//@Test(priority = 2,description="Verify Shipping Method data")
+	@Test(priority = 2,description="Verify Shipping Method data")
 	public void VerifyShippingMethod() {
 		OrderReviewPage();
 		if (selectedCountry.contains("US")) {
@@ -116,7 +116,7 @@
 							 Assert.fail("Shipping method  is not verified");
 				}
 				}
-		//@Test(priority = 4,description ="Verify Shipping address")
+		@Test(priority = 4,description ="Verify Shipping address")
 		public void VerifyShippingAddress() {
 			OrderReviewPage();
 			domClick(review.getEditShippingAddress(), "Edit shipping Address");
@@ -141,7 +141,7 @@
 			
 
 
-		//@Test(priority = 3)
+		@Test(priority = 3)
 		public void VerifyPaymentDetails() {
 			OrderReviewPage();
 			domClick(review.getEditPayment(), "Edit shipping Address");

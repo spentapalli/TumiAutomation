@@ -4,44 +4,44 @@
 
 	<test name="PGPFilters"> 
 		<classes> 
-			<class name="tumi.home.PGPFilters"/> 
+			<class name="com.tumi.home.PGPFilters"/> 
 		</classes>
    </test>
 
 	<test name="TopNavigation">
 		<classes>
-			<class name="tumi.home.TopNavigation" />
+			<class name="com.tumi.home.TopNavigation" />
 		</classes>
 	</test>
 	
 	 <test name="TumiStudioEdit">
 		<classes>
-			<class name="tumi.home.TumiStudioEdit" />
+			<class name="com.tumi.home.TumiStudioEdit" />
 		</classes>
 	</test> 
 	
 	<test name="HomePageVerification">
 		<classes>
-			<class name="tumi.home.HomePageVerification" />
+			<class name="com.tumi.home.HomePageVerification" />
 		</classes>
 	</test>
 	
 	<test name="OutOfStockProduct">
 		<classes>
-			<class name="tumi.home.OutOfStockProduct" />
+			<class name="com.tumi.home.OutOfStockProduct" />
 		</classes>
 	</test>
 	
 	
 	<test name="Quickshop">
 		<classes>
-			<class name="tumi.home.Quickshop" />
+			<class name="com.tumi.home.Quickshop" />
 		</classes>
 	</test>
 	
 	<test name="CreateAccount">
 		<classes>
-			<class name="userRegistration.CreateAccount" />
+			<class name="com.tumi.userRegistration.CreateAccount" />
 		</classes>
 	</test>
 	</suite>
