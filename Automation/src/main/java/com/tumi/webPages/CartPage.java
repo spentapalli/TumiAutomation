@@ -361,13 +361,20 @@ public class CartPage extends GenericMethods {
 		return estimatedTotalRegistered;
 	}
 	
-
-	@FindBy(how = How.XPATH, using = ("//div[@id='cart-summary-container']//div[2]/div/div[2]/div[2]/div[2]"))
+	
+	@FindBy(how = How.XPATH, using = ("//div[@id='cart-summary-container']//div[2]/div/div[3]/div[2]/div[2]"))
 	private WebElement estimatedTotal;
 	
 	public WebElement getEstimatedTotal() {
 		return estimatedTotal;
 	}
+	@FindBy(how = How.XPATH, using = ("(//div[contains(@class,'value item-price')])[3]"))
+	private WebElement total;
+	
+	public WebElement getTotal() {
+		return total;
+	}
+	
 	@FindBy(how = How.XPATH, using = ("//div[contains(@class,'span2 cart-item-status')]/div/span"))
 	private WebElement premiumCharge;
 	

@@ -663,7 +663,7 @@ public class UIFunctions extends GenericMethods {
 	public static void addGiftBox() {
 
 		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
-			click(gift.getCheckPremiumGift(), "Premium GiftBox");
+			domClick(gift.getCheckPremiumGift(), "Premium GiftBox");
 
 		} else {
 
@@ -1187,6 +1187,41 @@ public class UIFunctions extends GenericMethods {
 			Assert.fail("Verification of Remove Monogram is faield");
 		}
 
+	}
+	
+	public static void addAnotherBillAddress(String sheet, String testCaseName) {
+		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCaseName);
+		input(guestBillPage.getNameOnCard(), testData.get("NameOnCard"), "Name on Card");
+		input(guestBillPage.getCardNumber(), testData.get("CardNumber"), "Card Number");
+
+		if (browserName.equals("firefox")) {
+			selectMonthInFF();
+			selectYearInFF();
+		} else {
+			selectByVisibleText(guestBillPage.getExpiryMonth(), "05", "Expiry Month");
+			selectByVisibleText(guestBillPage.getExpiryYear(), "2020", "Expiry Year");
+		}
+
+		input(guestBillPage.getCvvNumber(), testData.get("CVV"), "Cvv Number");
+		domClick(guestBillPage.getShippingAddressAsBilling(),"Use Ship address as Bill address");
+		input(shipping.getFirstName(), testData.get("FirstName"), "First Name");
+		input(shipping.getLastName(), testData.get("LastName"), "Last Name");
+		input(shipping.getAddressLine1(), testData.get("AddressLine1"), "Address line1");
+		input(shipping.getTown(), testData.get("TownCity"), "Town");
+		if (browserName.equals("firefox")) {
+			selectStateInFF();
+		} else if (selectedCountry.contains("Canada")) {
+			Select dropdown = new Select(driver.findElement(By.name("regionIso")));
+			dropdown.selectByVisibleText("British Columbia");
+			click(shipping.getRegionIso(), "Region");
+			input(shipping.getPostcode(), testData.get("CAPostCode"), "postal code");
+		} else {
+
+			Select dropdown = new Select(driver.findElement(By.name("regionIso")));
+			dropdown.selectByVisibleText("New Jersey");
+			click(shipping.getRegionIso(), "Region");
+			input(shipping.getPostcode(), testData.get("PostCode"), "postal code");
+		}
 	}
 
 }

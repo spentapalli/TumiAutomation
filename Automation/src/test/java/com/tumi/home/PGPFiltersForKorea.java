@@ -8,7 +8,16 @@ import org.testng.annotations.Test;
 import com.aventstack.extentreports.Status;
 import com.tumi.utilities.GenericMethods;
 
+
+/**
+ * @author Shwetha Capo
+ *
+ */
 public class PGPFiltersForKorea extends GenericMethods {
+	
+	/*
+	 * TA- 68 Verify PGP Filters for Korea.
+	 */
 
 	@Test(description = "TA-68 and TA -378 : Verify PGP Filters for Korea and subtasks TA-368 to TA-376 ")
 	public void verifyPGPFiltersForKorea() {
