@@ -13,7 +13,18 @@ import com.tumi.utilities.GenericMethods;
 import com.tumi.utilities.GlobalConstants;
 import com.tumi.utilities.UIFunctions;
 
+
+
+/**
+ * @author Shwetha  Capo
+ *
+ */
 public class VerifyCartPage extends GenericMethods {
+	
+	/*
+	 * TA-73 : Verify Cart Page.
+	 */
+	
 	Map<String, String> personalization = ReadTestData.getJsonData("TumiTestData", "MonoGramDetails");
 	Map<String, String> testdata = ReadTestData.getJsonData("TumiTestData", "Products");
 	
@@ -34,7 +45,7 @@ public class VerifyCartPage extends GenericMethods {
 	}
 		
 
-	@Test(priority = 1, description = "TA-393, Verify Product link", dependsOnMethods = "verifyProductCount")
+	@Test(priority = 1, description = "TA-393, Verify Product link")
 	public void verifyProductLink() {
 		goToCartPage();
 		String skuid = getText(mainCart.getSkuID());
@@ -49,54 +60,14 @@ public class VerifyCartPage extends GenericMethods {
 	}
 	@Test(priority = 2, description = "TA-393, Verify Monogram")
 	public void verifyMonogram() {
-		PDPpage.verifyMonogram();
+		goToCartPage();
 		SoftAssert cartAssertions = new SoftAssert();
 	
 		click(mainCart.getAddclassicMono(),"Add Classic Monogram");
-		if (mono.getStep1().isDisplayed()) {
-			// domClick(mono.getAddPatch(),"Patch");
-			if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
-				if (mono.getAddPatch().isDisplayed()) {
-					domClick(mono.getAddTag(), "Tag");
-				} else {
-					click(mono.getOptionsNext(), "Next");
-				}
-			}else {
-				click(mono.getOptionsNext(), "Next");
-			}
-		} 
-		webclick(mainCart.getAddHeart(),"Heart Symbol");
-		webclick(mainCart.getSmiley(),"Smiley Symbol");
-		webclick(mainCart.getStar(),"Star Symbol");
+		UIFunctions.addMonogram(mainCart.getEditMono());
 		
-		input(mono.getFirstMonoInput(), personalization.get("FirstMonoInput"), "First Mono Input");
-		input(mono.getSecondMonoInput(), personalization.get("SecondMonoInput"), "Second Mono Input");
-		input(mono.getThirdMonoInput(), personalization.get("ThirdMonoInput"), "Third Mono Input");
-
-		click(mono.getNext(), "Next");
-		click(mono.getTextStyleBold(), "Serif as Bold");
-		click(mono.getCafeColor(), "Color");
-		click(mono.getApply(), "Apply");
-		delay(2000);
-		try {
-			if(mainCart.getAddedMonoMsg().isDisplayed()) {
-				logger.log(Status.INFO, "Monogram added Successfully");
-				click(mono.getRemove(), "Remove");
-				delay(2000);
-				if (mainCart.getAddclassicMono().isEnabled()) {
-					logger.log(Status.INFO, "Verification of Remove Monogram is successfull");
-				} else {
-					cartAssertions.fail("Verification of Remove Monogram is faield");
-				}
-			} 
-		} catch (Exception e) {
-			if(getText(mono.getMonoErrorMsg()).equals(getProperty("mono.error"))||getText(mono.getMonoErrorMsgAtCart()).equals(getProperty("mono.carterror")))  {
-				cartAssertions.fail("Please enter atleast one character to add Monogram");
-			}else {
-				cartAssertions.fail("Monogram couldn't added, Please Check");
-			}
-		}
 		cartAssertions.assertAll();
+		
 	}
 
 	
@@ -124,7 +95,7 @@ public class VerifyCartPage extends GenericMethods {
 	@Test(priority = 4, description = "TA-395, Verify Edit link to update cart and TA-396, Verify Remove Link")
 	public void verifyContinueShopping() {
 		goToCartPage();
-		PDPpage.addProductForPDPtest(testdata.get("BreadCrumbsTest"));
+		VerifyProductDetailPage.addProductForPDPtest(testdata.get("BreadCrumbsTest"));
 		click(pdp.getAddToCart(), "Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Cart");
 		String skuid = getText(driver.findElement(By.xpath("(//div[contains(@class,'ledger-prod-attr attr-style')]/span)[2]")));
