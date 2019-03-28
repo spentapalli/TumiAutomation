@@ -13,9 +13,18 @@ import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
 import com.tumi.utilities.UIFunctions;
 
+ 
+/**
+ * @author Shwetha  Capo
+ *
+ */
 public class BillingPage extends GenericMethods {
+	
+	/*
+	 * TA -52, Verify Billing Page.
+	 */
 
-	@Test(priority = 0, description = "TA-52, Verify Sign-in functionality")
+	@Test(priority = 0, description = "TA-52,TA- 415: Verify Sign-in functionality")
 	public void verifySignIn() {
 		goToBillingPage();
 		delay(3000);
@@ -41,8 +50,8 @@ public class BillingPage extends GenericMethods {
 
 	}
 
-	@Test(priority = 1, description = "TA-52, Verify that Redeem Tumi gift card can apply\r\n"
-			+ "Verify Check balance in Tumi Gift cad, " + " Verify labels below Review your Order")
+	@Test(priority = 1, description = "TA-416, Verify that Redeem Tumi gift card can apply\r\n"
+			+ "Verify Check balance in Tumi Gift cad, " + "TA- 418: Verify labels below Review your Order")
 	
 	public void verifyGiftCard() {
 		Map<String, String> giftCard = ReadTestData.getJsonData("TumiTestData", "VoucherCodeDetails");
@@ -80,7 +89,7 @@ public class BillingPage extends GenericMethods {
 		
 	}
 	
-	@Test(priority = 2, description = "TA-52, verify Use shipping address as billing address link")
+	@Test(priority = 2, description = "TA-417, verify Use shipping address as billing address link")
 	public void verifyBilingAddressLink() {
 		try {
 			goToBillingPage();
@@ -94,7 +103,7 @@ public class BillingPage extends GenericMethods {
 		}
 	}
 	
-	@Test(priority = 3, description = "TA-52, verify PayPal link")
+	@Test(priority = 3, description = "TA-419, verify PayPal link")
 	public void verifyPayPalLik() {
 		goToBillingPage();
 		webclick(guestBillPage.getPayPal(),"PayPal button");
@@ -111,7 +120,7 @@ public class BillingPage extends GenericMethods {
 		
 	}
 
-	public void goToBillingPage() {
+	public static void goToBillingPage() {
 		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestDetails");
 		UIFunctions.addProductToCart("TumiTestData", "Products");
 		click(pdp.getAddToCart(), "Add to cart");

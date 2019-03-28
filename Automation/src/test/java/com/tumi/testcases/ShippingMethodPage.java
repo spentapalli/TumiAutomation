@@ -11,13 +11,24 @@ import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
 import com.tumi.utilities.UIFunctions;
 
+
+/**
+ * @author Shwetha Capo
+ *
+ */
 public class ShippingMethodPage extends GenericMethods {
+	
+	/*
+	 *  TA-62, Verify Shipping Method Page
+	 */
+	
 	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestDetails");
 	Map<String, String> voucher = ReadTestData.getJsonData("TumiTestData", "VoucherCodeDetails");
 	Map<String, String> shipCharge = ReadTestData.getJsonData("TumiTestData", "ShippingCharges");
 	Map<String, String> alternate = ReadTestData.getJsonData("TumiTestData", "AlternateOptions");
 
-	//@Test(priority = 0, description = "TA-62 Verify Shipping Method Page, "+" Update address deatils and verify Shipping charges")
+	@Test(priority = 0, description = "TA-62 Verify Shipping Method Page, "+"TA-432 verify shipping charges on selecting different shipping methods"+
+	"TA-431 verify 'Edit' to change Shipping address")
 	public void verifyShippingMethodPage() {
 		SoftAssert shipPageAssertions = new SoftAssert();
 		goToShipMethodPage();
@@ -37,7 +48,7 @@ public class ShippingMethodPage extends GenericMethods {
 		shipPageAssertions.assertAll();
 	}
 
-	@Test(priority = 1, description = "TA-62 Verify Promo Code in Shipping Method Page")
+	@Test(priority = 1, description = "TA-433 Verify Promo Code in Shipping Method Page")
 	public  void verifyPromoCode() {
 
 		goToShipMethodPage();

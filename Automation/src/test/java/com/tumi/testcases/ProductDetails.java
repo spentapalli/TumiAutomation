@@ -14,14 +14,22 @@ import com.tumi.utilities.GenericMethods;
 import com.tumi.utilities.GlobalConstants;
 import com.tumi.utilities.UIFunctions;
 
-public class ProductDetails extends GenericMethods {
 
+
+/**
+ * @author Shwetha Capo
+ *
+ */
+public class VerifyProductDetailPage extends GenericMethods {
+	/*
+	 * TA-5, Verify PDP page.
+	 */
+	
 	static Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "Products");
 	static Map<String, String> personalization = ReadTestData.getJsonData("TumiTestData", "MonoGramDetails");
 
-	@Test(priority = 0, description = "TA-5, Verify bread crumbs above Product")
+	@Test(priority = 0, description = "TA-420, Verify bread crumbs above Product" )
 	public void verifyBreadScrumbs() {
-
 		SoftAssert breadcrumbs = new SoftAssert();
 		addProductForPDPtest(testData.get("BreadCrumbsTest"));
 		click(pdp.getBreadCrumbHome(), "Home");
@@ -56,7 +64,7 @@ public class ProductDetails extends GenericMethods {
 		breadcrumbs.assertAll();
 	}
 
-	@Test(priority = 1, description = "TA-5, Verify Enire Collection link")
+	@Test(priority = 1, description = "TA-422, Verify Enire Collection link")
 	public void verifyCollectionLink() {
 
 		addProductForPDPtest(testData.get("BreadCrumbsTest"));
@@ -83,7 +91,7 @@ public class ProductDetails extends GenericMethods {
 
 	}
 
-	@Test(priority = 2, description = "TA-5, Verify Color Swatches")
+	@Test(priority = 2, description = "TA-424, Verify Color Swatches")
 	public void verifyColorSwatches() {
 		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
 			addProductForPDPtest(testData.get("ColorSwatches"));
@@ -106,7 +114,7 @@ public class ProductDetails extends GenericMethods {
 
 	}
 
-	@Test(priority = 3, description = "TA-5, Verify Add a Classic Monogram")
+	@Test(priority = 3, description = "TA-425, Verify Add a Classic Monogram")
 	public static void verifyMonogram() {
 		addProductForPDPtest(testData.get("BreadCrumbsTest"));
 		click(mono.getAddClassic(), "Classic Monogram");
@@ -114,7 +122,7 @@ public class ProductDetails extends GenericMethods {
 
 	}
 
-	@Test(priority = 4, description = "TA-5, Verify Images")
+	@Test(priority = 4, description = "TA-421, Verify Images")
 	public void verifyImages() {
 		addProductForPDPtest(testData.get("BreadCrumbsTest"));
 		int imagesCount = pdp.getAltItemsList().size();
@@ -127,8 +135,8 @@ public class ProductDetails extends GenericMethods {
 
 	}
 
-	@Test(priority = 5, description = "TA-5, Verify Add to Cart," + " Verify Airline Carry on guide and "
-			+ " Accordians/labels")
+	@Test(priority = 5, description = "TA-426: Verify Add to Cart," + "TA-435: Verify Airline Carry on guide and "
+			+ "TA-428 : Accordians/labels")
 	public void verifyPDP() {
 		SoftAssert verifypdpAsser = new SoftAssert();
 
@@ -202,7 +210,7 @@ public class ProductDetails extends GenericMethods {
 
 	}
 
-	@Test(priority = 6, description = "TA-5, Verify Product Warranty test,"
+	@Test(priority = 6, description = "TA-429: Verify Product Warranty test,"
 			+ "Setting your Tumi Lock and Free returns.")
 	public void verifyAccordionFeatures() {
 		SoftAssert accordion = new SoftAssert();
@@ -227,19 +235,20 @@ public class ProductDetails extends GenericMethods {
 		 * will open tumi lock page with specific buttons or not
 		 * 
 		 */
-		if (selectedCountry.contains("US")) {
-			click(pdp.getTumiLock(), "Setting Your TumiLock");
-			if (!pdp.getTumiLockList().isEmpty()) {
-				logger.log(Status.INFO, "Verification of Tumi Lock page is successfull");
-			} else {
-				accordion.fail("No Tumi Lock settings displayed, Verification of Tumi Lock page is Failed");
-			}
+		if(selectedCountry.contains("US")) {
+		click(pdp.getTumiLock(), "Setting Your TumiLock");
+		if (!pdp.getTumiLockList().isEmpty()) {
+			logger.log(Status.INFO, "Verification of Tumi Lock page is successfull");
+		} else {
+			accordion.fail("No Tumi Lock settings displayed, Verification of Tumi Lock page is Failed");
 		}
-
+		}
+		
 		/*
-		 * Verify Free Returns : verifying if click on Free Returns, displaying content
-		 * or not
+		 * Verify Free Returns : verifying if click on Free Returns, displaying
+		 * content or not
 		 */
+		
 
 		addProductForPDPtest(testData.get("BreadCrumbsTest"));
 		click(pdp.getFreeReturns(), "Free Returns");
@@ -270,4 +279,7 @@ public class ProductDetails extends GenericMethods {
 		}
 		UIFunctions.verifyVPN();
 	}
+
+	
+
 }

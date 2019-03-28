@@ -23,7 +23,9 @@ public class PGPFilters extends GenericMethods {
 	@Test(description = " Sprint 3- TA-68 Verify PGP Filters and subtasks TA-368 to TA-376 " )
 	public void verifyPGPFilters() {
 		
-		//TA-368: Verify Colors
+		/*
+		 * TA-368: Verify Colors
+		 */
 
 		goToPGP();
 
@@ -47,7 +49,9 @@ public class PGPFilters extends GenericMethods {
 			Assert.fail("Verification of Color Filter is failed");
 		}
 
-		//TA- 369: Verify Product type
+		/*
+		 * TA- 369: Verify Product type
+		 */
 
 		clickFilter("product_type");
 
@@ -67,7 +71,9 @@ public class PGPFilters extends GenericMethods {
 		logger.log(Status.INFO, "TA-369 : verification of Product type is successfull");
 		clearFilter("product_type");
 
-		// TA- 370:  Verify Price Filter
+		/*
+		 *  TA- 370:  Verify Price Filter
+		 */
 
 		clickFilter("prices");
 
@@ -88,7 +94,9 @@ public class PGPFilters extends GenericMethods {
 		clearFilter("prices");
 		
 
-		// TA- 371:  Verify Genders Filter
+		/*
+		 *  TA- 371:  Verify Genders Filter
+		 */
 
 		clickFilter("gender");
 		for (WebElement gender : pgp.getGenderList()) {
@@ -107,7 +115,9 @@ public class PGPFilters extends GenericMethods {
 		logger.log(Status.INFO, "TA-371 : verification of Gender filter is successfull");
 		clearFilter("gender");
 
-		// TA- 372 : Verify Collection
+		/*
+		 *  TA- 372 : Verify Collection
+		 */
 
 		clickFilter("Collection");
 		for (WebElement collection : pgp.getCollectionList()) {
@@ -126,7 +136,9 @@ public class PGPFilters extends GenericMethods {
 		logger.log(Status.INFO, "TA-372 : Verification of Collection filter is successfull");
 		clearFilter("Collection");
 
-		// TA- 373: Verify Material Filter
+		/*
+		 *  TA- 373: Verify Material Filter
+		 */
 
 		clickFilter("Material");
 		for (WebElement material : pgp.getMaterialList()) {
@@ -145,7 +157,9 @@ public class PGPFilters extends GenericMethods {
 		logger.log(Status.INFO, "TA-373 : Verification of Material filter is successfull");
 		clearFilter("Material");
 
-		// TA- 374: Verify Laptop Size Filter
+		/*
+		 *  TA- 374: Verify Laptop Size Filter
+		 */
 
 		clickFilter("laptop_size");
 		for (WebElement lapiSize : pgp.getLaptopSizeList()) {
@@ -163,7 +177,9 @@ public class PGPFilters extends GenericMethods {
 		logger.log(Status.INFO, "TA-374 : Verification of Laptop Size filter is successfull");
 		clearFilter("laptop_size");
 
-		//TA- 375:  Verify Wheels Filter
+		/* 
+		 * TA- 375:  Verify Wheels Filter
+		 */
 
 		clickFilter("Wheels");
 		for (WebElement wheelCount : pgp.getWheelsList()) {
@@ -181,7 +197,9 @@ public class PGPFilters extends GenericMethods {
 		logger.log(Status.INFO, "TA-375 : Verification of Wheels filter is successfull");
 		clearFilter("Wheels");
 
-		//TA-376: Verify Exclusive Features
+		/*
+		 * TA-376: Verify Exclusive Features
+		 */
 
 		clickFilter("FSM_ExclusiveFeatures");
 		for (WebElement exclusive : pgp.getExclusiceFeatureList()) {

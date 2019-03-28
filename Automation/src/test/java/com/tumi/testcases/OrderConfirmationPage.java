@@ -26,7 +26,7 @@
 			
 			
 		
-		//@Test(priority = 1,description = " Verify Order Confirmation page")
+		@Test(priority = 1,description = " Verify Order Confirmation page")
 			public void VerifyCreateAccount() {
 				
 				Placeorder();
@@ -38,7 +38,7 @@
 					userAccount(email);
 					}
 
-		//@Test(priority = 0,description ="Verify the product Link")
+		@Test(priority = 0,description ="Verify the product Link")
 		public void VerifyProductLink() {
 			Placeorder();
 			delay(4000);
@@ -114,7 +114,7 @@
 			
 		
 			
-		//@Test(priority = 3,description = "Verify the Shipping Address and Payment details")
+		@Test(priority = 3,description = "Verify the Shipping Address and Payment details")
 		public void VerifyShippingDetails() {
 			Placeorder() ;	
 			 delay(6000);
