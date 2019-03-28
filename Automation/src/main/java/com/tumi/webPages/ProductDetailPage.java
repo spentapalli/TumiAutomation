@@ -251,6 +251,16 @@ public class ProductDetailPage extends GenericMethods {
 		return listOfProductNames;
 	}
 	
+	@FindBy(how=How.XPATH,using="//div[@class='price-container']/span")
+	private List<WebElement> productsPrice;
+	
+	public List<WebElement> getProductPrices(){
+		delay(2000);
+		return productsPrice;
+	}
+	
+	
+	
 	@FindBy(how=How.XPATH,using="//a[text()='Bags']")
 	private WebElement shopByBags;
 	
