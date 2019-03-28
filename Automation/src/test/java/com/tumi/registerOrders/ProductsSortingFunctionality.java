@@ -76,7 +76,7 @@ public class ProductsSortingFunctionality extends GenericMethods {
 		webclick(pdp.getSortOptions(), "Sorting");
 		webclick(element,msg);
 		for (WebElement ele: pdp.getProductPrices()) {
-			float price = Float.parseFloat(getText(ele).replace("$", "").trim());
+			float price = Float.parseFloat(getText(ele).replace("$", "").replace(",", "").trim());
 			list.add(price);
 		}
 		return list;
