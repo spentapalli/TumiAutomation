@@ -23,7 +23,7 @@
 		</classes>
 	</test>
 	
-	<test name="OrderWithGiftBox">
+	<!-- <test name="OrderWithGiftBox">
 		<classes>
 			<class name="com.tumi.guestOrders.OrderWithGiftBox">
 			</class>
@@ -63,6 +63,6 @@
 			<class name="com.tumi.registerOrders.RegisteredOrderWithMultishipment">
 			</class>
 		</classes>
-	</test>
+	</test> -->
 	
 </suite> <!-- Suite -->
