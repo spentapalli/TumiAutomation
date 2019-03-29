@@ -46,8 +46,8 @@ public class GuestOrders extends GenericMethods {
 		UIFunctions.completeOrder();
 	}
 
-	@Test(priority = 1, description = " TA-16 Verify Order with merchandise Back Order + "
-			+ "Gift Boxing + Gift Message + Voucher/Promos for Guest User")
+	//@Test(priority = 1, description = " TA-16 Verify Order with merchandise Back Order + "
+		//	+ "Gift Boxing + Gift Message + Voucher/Promos for Guest User")
 	public void backOrderAsGuest() throws Exception {
 
 		UIFunctions.addProductToCart("TumiTestData", "BackOrderProduct");
@@ -65,7 +65,7 @@ public class GuestOrders extends GenericMethods {
 		UIFunctions.completeOrder();
 	}
 
-	@Test(priority = 2, description = "TA- 112,Verify Order with merchandise Pre Order for Guest User")
+	//@Test(priority = 2, description = "TA- 112,Verify Order with merchandise Pre Order for Guest User")
 	public void preOrderAsGuest() throws InterruptedException {
 
 		UIFunctions.addProductToCart("TumiTestData", "PreOrderProduct");
