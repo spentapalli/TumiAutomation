@@ -16,12 +16,12 @@
 		</classes>
 	</test>
 	
-	<test name="GlobalLocatororder">
+	<!-- <test name="GlobalLocatororder">
 		<classes>
 			<class name="com.tumi.guestOrders.GlobalLocatororder">
 			</class>
 		</classes>
-	</test>
+	</test> -->
 	
 	<!-- <test name="OrderWithGiftBox">
 		<classes>
