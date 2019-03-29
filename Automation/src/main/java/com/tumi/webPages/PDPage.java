@@ -275,6 +275,15 @@ public class PDPage extends GenericMethods {
 		return shopByBriefcases;
 	}
 	
+	@FindBy(how=How.XPATH,using="(//span[contains(@class,'totalCount')])[2]")
+	private WebElement totalCount;
+	
+	public WebElement getTotalProductsCount(){
+		return totalCount;
+	}
+	
+	
+	
 	@FindBy(how=How.XPATH,using="//span[@id='sortOptions1SelectBoxItText']")
 	private WebElement sortOptions;
 	

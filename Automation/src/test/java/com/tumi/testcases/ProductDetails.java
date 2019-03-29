@@ -20,7 +20,7 @@ import com.tumi.utilities.UIFunctions;
  * @author Shwetha Capo
  *
  */
-public class VerifyProductDetailPage extends GenericMethods {
+public class ProductDetails extends GenericMethods {
 	/*
 	 * TA-5, Verify PDP page.
 	 */

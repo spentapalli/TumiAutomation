@@ -102,7 +102,10 @@ public class ProductsSortingFunctionality extends GenericMethods {
 
 	public void navigateToPDP() {
 		login("TumiTestData", "RegisteredOrders");
-		mouseHover(pdp.getShopByBags());
-		click(pdp.getShopByBriefcases(), "Wheeled Briefcases");
+		//mouseHover(pdp.getShopByBags());
+		domClick(pdp.getShopByBriefcases(), "Briefcases");
+		String count[]= getText(pdp.getTotalProductsCount()).split(" ");
+		
+		
 	}
 }
