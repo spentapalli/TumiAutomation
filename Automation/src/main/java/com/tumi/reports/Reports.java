@@ -12,6 +12,7 @@ import java.util.Properties;
 
 import org.json.simple.JSONObject;
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -317,6 +318,15 @@ public class Reports {
 				// Set the notification setting it will override the default setting
 				prefs.put("profile.default_content_setting_values.notifications", 2);
 				ChromeOptions options = new ChromeOptions();
+				
+				//Jenkins
+				options.addArguments("enable-automation");
+				options.addArguments("--headless");
+				options.addArguments("--window-size=1920,1080");
+				options.addArguments("--no-sandbox");
+				options.addArguments("--dns-prefetch-disable");
+				options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
+				
 				options.setExperimentalOption("prefs", prefs);
 				options.addArguments("disable-infobars");
 				options.addArguments("--disable-notifications");
