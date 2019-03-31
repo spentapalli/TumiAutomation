@@ -66,10 +66,6 @@ public class GlobalConstants extends Reports {
 	private static String retrieveBrowser() {
 		
 		String browser = System.getProperty("browsername");
-		
-		if (null == browser || browser.isEmpty()) {
-			browser = "chrome";
-		}
 		return browser;
 	}
 	
