@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
-import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -110,9 +109,10 @@ public class GenericMethods extends GlobalConstants {
 
 	public static void webclick(WebElement element, String buttonName) {
 		try {
-			// Clicking on WebElement
-			element.click();
-			logger.log(Status.INFO, "Clicked on " + buttonName);
+			if (element.isDisplayed()) {
+				element.click();
+				logger.log(Status.INFO, "Clicked on " + buttonName);
+			}
 		} catch (Exception e) {
 			Assert.fail(buttonName + " " + "is not Enabled or Unable to interact at this point");
 		}
@@ -665,7 +665,7 @@ public class GenericMethods extends GlobalConstants {
 					if (cart != 0) {
 						delay(5000);
 						for (WebElement ele : checkout.getRemoveMinicartProducts()) {
-							click(checkout.getRemoveProduct(), "Remove Existing Product");
+							webclick(checkout.getRemoveProduct(), "Remove Existing Product");
 							delay(5000);
 						}
 					}
@@ -679,6 +679,9 @@ public class GenericMethods extends GlobalConstants {
 
 			e.printStackTrace();
 		}
+		try {
+			myacc.getMyAccountClose().click();
+		} catch (Exception e) {}
 	}
 
 	public void userLogin(String sheetName, String testCaseName) {

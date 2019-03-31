@@ -32,5 +32,12 @@ public class MiniCart extends GenericMethods {
 		click(mainCart.getRemoveItemInCart(), "Remove item in cart");
 		verifyAssertEquals(getText(mainCart.getShopingCartMessege()), getProperty("cart.emptyCart"));
 	}
+	
+	@Test(priority=2)
+	public void editCartProducts() {
+		
+		login("TumiTestData", "TumiLogin");
+		UIFunctions.addProductToCart("TumiTestData","Products");
+	}
 
 }
