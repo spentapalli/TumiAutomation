@@ -451,7 +451,12 @@ public class Reports {
 			if (!browserName.equals("ie")) {
 				driver.get(testData.get("stage3"));
 			}
-		} else if (applicationUrl.toLowerCase().equalsIgnoreCase("prod")) {
+		}else if (applicationUrl.toLowerCase().equalsIgnoreCase("akamaiS2")) {
+
+			if (!browserName.equals("ie")) {
+				driver.get(testData.get("akamaiStage"));
+			}
+		}else if (applicationUrl.toLowerCase().equalsIgnoreCase("prod")) {
 
 			driver.get(testData.get("prod"));
 			UIFunctions.verifyVPN();

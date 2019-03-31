@@ -205,17 +205,22 @@ public class UIFunctions extends GenericMethods {
 			if (applicationUrl.equals("stage2")) {
 
 				final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("SKUID");
-				driver.get(pdpURL);
+				driver.navigate().to(pdpURL);
 
 			} else if (applicationUrl.equals("stage3")) {
 
 				final String pdpURL = GlobalConstants.S3 + "/p/" + testData.get("SKUID");
-				driver.get(pdpURL);
+				driver.navigate().to(pdpURL);
+
+			}else if (applicationUrl.equals("akamaiS2")) {
+
+				final String pdpURL = GlobalConstants.akamaiUrl + "/p/" + testData.get("SKUID");
+				driver.navigate().to(pdpURL);
 
 			} else if (applicationUrl.equals("prod")) {
 
 				final String pdpURL = testData1.get("prod") + "/p/" + testData.get("SKUID");
-				driver.get(pdpURL);
+				driver.navigate().to(pdpURL);
 				UIFunctions.closeSignUp();
 			}
 
