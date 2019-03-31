@@ -319,6 +319,30 @@ public class Reports {
 				prefs.put("profile.default_content_setting_values.notifications", 2);
 				ChromeOptions options = new ChromeOptions();
 				
+				options.setExperimentalOption("prefs", prefs);
+				options.addArguments("disable-infobars");
+				options.addArguments("--disable-notifications");
+				options.addArguments("--disable-extensions");
+				options.addArguments("--disable-browser-side-navigation");
+				options.addArguments("--disable-gpu");
+				
+				System.setProperty(GlobalConstants.chrome, getChromeDriverPath());
+				try {
+					driver = new ChromeDriver(options);
+				} catch (Exception e) {
+					driver = new ChromeDriver(options);
+				}
+
+				// logger.log(Status.INFO, "Chrome Browser is initiated Execution");
+
+			}if (browserName.equalsIgnoreCase("headless")) {
+
+				// Create object of HashMap Class
+				Map<String, Object> prefs = new HashMap<String, Object>();
+				// Set the notification setting it will override the default setting
+				prefs.put("profile.default_content_setting_values.notifications", 2);
+				ChromeOptions options = new ChromeOptions();
+				
 				//Jenkins
 				options.addArguments("enable-automation");
 				options.addArguments("--headless");
@@ -333,10 +357,7 @@ public class Reports {
 				options.addArguments("--disable-extensions");
 				options.addArguments("--disable-browser-side-navigation");
 				options.addArguments("--disable-gpu");
-				/*
-				 * options.addArguments("--headless"); options.addArguments("--disable-gpu");
-				 * options.addArguments("--no-sandbox");
-				 */
+				
 				System.setProperty(GlobalConstants.chrome, getChromeDriverPath());
 				try {
 					driver = new ChromeDriver(options);
