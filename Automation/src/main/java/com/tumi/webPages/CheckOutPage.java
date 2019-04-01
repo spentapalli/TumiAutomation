@@ -22,7 +22,7 @@ public class CheckOutPage extends GenericMethods {
 		return removeProducts;
 	}
 
-	@FindBy(how = How.XPATH, using = "//div[@aria-label='mini-cart dialog']/div/div/div[2]/div/ul/li") 
+	@FindBy(how = How.XPATH, using = "//div[@class='cart-items']/div/div/div[2]/div[6]/span[3]") 
 	private List<WebElement> removeMinicartProducts;
 
 	public List<WebElement> getRemoveMinicartProducts() {
@@ -36,11 +36,11 @@ public class CheckOutPage extends GenericMethods {
 		return removeMinicart;
 	}
 	
-	@FindBy(how = How.XPATH, using = "//div[@aria-label='mini-cart dialog']/div/div/div[2]/div/ul/li/div/div[2]/div[5]/a")
+	@FindBy(how = How.XPATH, using = "//div[@class='cart-items']/div[1]/div/div[2]/div[6]/span[3]")
 	private WebElement removeProduct;
 
 	public WebElement getRemoveProduct() {
-		return removeProduct;
+		return explicitWait(removeProduct);
 	}
 	
 	//div[@aria-label='mini-cart dialog']/div/div/div[2]/div/ul/li/div/div[2]/div[5]/a

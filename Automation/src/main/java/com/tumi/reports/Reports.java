@@ -182,17 +182,17 @@ public class Reports {
 
 	@AfterMethod(alwaysRun = true)
 	public static void closeBrowser() {
-		
+
 		if (browserName.equalsIgnoreCase("Remote")) {
 			driver.quit();
-		}else {
+		} else {
 			driver.close();
 		}
 		/*
 		 * try { GenericMethods.killSession(); } catch (Exception e) {
 		 * logger.log(Status.INFO, "Unable to Kill Browser Instance"); }
 		 */
-		
+
 	}
 
 	@BeforeMethod(alwaysRun = true)
@@ -200,8 +200,9 @@ public class Reports {
 		// Create Extent Report
 		logger = report.createTest(name.getName(), name.getDeclaringClass().getName());
 
-		System.out.println("Test Case Name " +name.getName()+  " And Declaration Name " + name.getDeclaringClass().getName());
-		
+		System.out.println(
+				"Test Case Name " + name.getName() + " And Declaration Name " + name.getDeclaringClass().getName());
+
 		// Create Object of Each Page Class
 		home = new HomePage(driver);
 		minicart = new MiniCartPage(driver);
@@ -304,7 +305,7 @@ public class Reports {
 
 		if (browserName.equalsIgnoreCase("Remote")) {
 
-			//enableLocalTesting();
+			// enableLocalTesting();
 			remoteAccess(testData.get("remoteBrowser"), testData.get("remoteBrowserVersion"), testData.get("remoteOS"),
 					testData.get("remoteOsVersion"));
 			getURL();
@@ -318,55 +319,16 @@ public class Reports {
 				// Set the notification setting it will override the default setting
 				prefs.put("profile.default_content_setting_values.notifications", 2);
 				ChromeOptions options = new ChromeOptions();
-				
+
 				options.setExperimentalOption("prefs", prefs);
 				options.addArguments("disable-infobars");
 				options.addArguments("--disable-notifications");
 				options.addArguments("--disable-extensions");
 				options.addArguments("--disable-browser-side-navigation");
-				options.addArguments("--disable-gpu");
-				
+				// options.addArguments("--disable-gpu");
+
 				System.setProperty(GlobalConstants.chrome, getChromeDriverPath());
-				try {
-					driver = new ChromeDriver(options);
-				} catch (Exception e) {
-					driver = new ChromeDriver(options);
-				}
-
-				// logger.log(Status.INFO, "Chrome Browser is initiated Execution");
-
-			}if (browserName.equalsIgnoreCase("headless")) {
-
-				// Create object of HashMap Class
-				Map<String, Object> prefs = new HashMap<String, Object>();
-				// Set the notification setting it will override the default setting
-				prefs.put("profile.default_content_setting_values.notifications", 2);
-				ChromeOptions options = new ChromeOptions();
-				
-				//Jenkins
-				options.addArguments("enable-automation");
-				options.addArguments("--headless");
-				options.addArguments("--window-size=1920,1080");
-				options.addArguments("--no-sandbox");
-				options.addArguments("--dns-prefetch-disable");
-				options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
-				
-				options.setExperimentalOption("prefs", prefs);
-				options.addArguments("disable-infobars");
-				options.addArguments("--disable-notifications");
-				options.addArguments("--disable-extensions");
-				options.addArguments("--disable-browser-side-navigation");
-				options.addArguments("--disable-gpu");
-				
-				System.setProperty(GlobalConstants.chrome, getChromeDriverPath());
-				try {
-					driver = new ChromeDriver(options);
-				} catch (Exception e) {
-					driver = new ChromeDriver(options);
-				}
-
-				// logger.log(Status.INFO, "Chrome Browser is initiated Execution");
-
+				driver = new ChromeDriver(options);
 			} else if (browserName.equalsIgnoreCase("firefox")) {
 
 				FirefoxProfile geoDisabled = new FirefoxProfile();
@@ -397,24 +359,24 @@ public class Reports {
 			}
 		}
 	}
-	
+
 	public static String localTesting() {
-		
+
 		String local = System.getProperty("localTesting");
-		if (local ==null || local.isEmpty()) {
-			
+		if (local == null || local.isEmpty()) {
+
 			return "false";
-		}else {
-			
+		} else {
+
 			return local;
 		}
-		
+
 	}
 
 	@SuppressWarnings("unchecked")
 	public static void remoteAccess(String remoteBrowser, String remoteBrowserVersion, String remoteOS,
 			String remoteOsVersion) throws Exception {
-		
+
 		final String USERNAME = "kurrysuresh1";
 		final String AUTOMATE_KEY = "zKp1VrRqTkUXqi4efALq";
 		String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
@@ -482,17 +444,17 @@ public class Reports {
 			if (!browserName.equals("ie")) {
 				driver.get(testData.get("stage3"));
 			}
-		}else if (applicationUrl.toLowerCase().equalsIgnoreCase("akamaiS2")) {
+		} else if (applicationUrl.toLowerCase().equalsIgnoreCase("akamaiS2")) {
 
 			if (!browserName.equals("ie")) {
 				driver.get(testData.get("akamaiStage"));
 			}
-		}else if (applicationUrl.toLowerCase().equalsIgnoreCase("prod")) {
+		} else if (applicationUrl.toLowerCase().equalsIgnoreCase("prod")) {
 
 			driver.get(testData.get("prod"));
 			UIFunctions.verifyVPN();
 			UIFunctions.closeSignUp();
-			//UIFunctions.countrySelection("United States");
+			// UIFunctions.countrySelection("United States");
 		}
 		UIFunctions.verifyVPN();
 		UIFunctions.closeSignUp();
@@ -512,7 +474,7 @@ public class Reports {
 			} else if (OS.contains("linux")) {
 
 				return GlobalConstants.chromeLinuxPath;
-				
+
 			} else {
 
 				return GlobalConstants.chromeLinuxPath;

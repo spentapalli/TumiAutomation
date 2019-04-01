@@ -82,7 +82,8 @@ public class GenericMethods extends GlobalConstants {
 			} else {
 				Assert.fail("user signin is failed");
 			}
-			click(myacc.getMyAccountClose(),"Close My Account");
+			click(myacc.getMyAccountClose(), "Close My Account");
+			WaitForJStoLoad();
 		} catch (Exception e) {
 			Assert.fail("Fail to Login due to " + e.getMessage());
 		}
@@ -358,6 +359,15 @@ public class GenericMethods extends GlobalConstants {
 			action.moveToElement(ele).build().perform();
 		} catch (Exception e) {
 			Assert.fail("Fail to MouseHover " + e.getMessage());
+		}
+	}
+
+	public static void doubleClick(WebElement ele) {
+		try {
+			action = new Actions(driver);
+			action.doubleClick(ele).perform();
+		} catch (Exception e) {
+			Assert.fail("Fail to Double Click " + e.getMessage());
 		}
 	}
 
@@ -657,16 +667,20 @@ public class GenericMethods extends GlobalConstants {
 
 		try {
 			UIFunctions.delay(3000);
+			System.out.println("Mini Cart Remove");
 			if (!getText(home.getMinicartCount()).contains("0")) {
-				webclick(home.getMinicart(), "Minicart");
+				doubleClick(home.getMinicart());
 				UIFunctions.delay(5000);
+				click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 				try {
-					int cart = parseInt(getText(home.getMinicartCount()));
+					String cartCount = getText(driver.findElement(By.xpath("//h2[contains(text(),'Shopping Cart')]")));
+					String count = cartCount.substring(cartCount.length() - 3).replace(")", "").replace("(", "").trim();
+					int cart = parseInt(count);
 					if (cart != 0) {
+						System.out.println("Removing Existing Products");
 						delay(5000);
 						for (WebElement ele : checkout.getRemoveMinicartProducts()) {
-							webclick(checkout.getRemoveProduct(), "Remove Existing Product");
-							delay(5000);
+							click(checkout.getRemoveProduct(), "Remove Existing Product");
 						}
 					}
 				} catch (Exception e) {
@@ -681,7 +695,8 @@ public class GenericMethods extends GlobalConstants {
 		}
 		try {
 			myacc.getMyAccountClose().click();
-		} catch (Exception e) {}
+		} catch (Exception e) {
+		}
 	}
 
 	public void userLogin(String sheetName, String testCaseName) {
