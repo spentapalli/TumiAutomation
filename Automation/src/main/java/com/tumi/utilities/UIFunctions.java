@@ -1,6 +1,5 @@
 package com.tumi.utilities;
 
-import java.time.ZonedDateTime;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -205,17 +204,22 @@ public class UIFunctions extends GenericMethods {
 			if (applicationUrl.equals("stage2")) {
 
 				final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("SKUID");
-				driver.get(pdpURL);
+				driver.navigate().to(pdpURL);
 
 			} else if (applicationUrl.equals("stage3")) {
 
 				final String pdpURL = GlobalConstants.S3 + "/p/" + testData.get("SKUID");
-				driver.get(pdpURL);
+				driver.navigate().to(pdpURL);
+
+			}else if (applicationUrl.equals("akamaiS2")) {
+
+				final String pdpURL = GlobalConstants.akamaiUrl + "/p/" + testData.get("SKUID");
+				driver.navigate().to(pdpURL);
 
 			} else if (applicationUrl.equals("prod")) {
 
 				final String pdpURL = testData1.get("prod") + "/p/" + testData.get("SKUID");
-				driver.get(pdpURL);
+				driver.navigate().to(pdpURL);
 				UIFunctions.closeSignUp();
 			}
 
@@ -523,7 +527,7 @@ public class UIFunctions extends GenericMethods {
 
 	public static void completeOrder() {
 		if (applicationUrl.equals("prod")) {
-			Assert.fail("Scripts are executing in Production");
+			logger.log(Status.PASS,"Scripts are executing in Production");
 		} else {
 			domClick(review.getPlaceOrder(), "Place Order");
 			scrollUp();

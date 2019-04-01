@@ -47,7 +47,7 @@ public class GuestOrders extends GenericMethods {
 	}
 
 	@Test(priority = 1, description = " TA-16 Verify Order with merchandise Back Order + "
-			+ "Gift Boxing + Gift Message + Voucher/Promos for Guest User")
+	+ "Gift Boxing + Gift Message + Voucher/Promos for Guest User")
 	public void backOrderAsGuest() throws Exception {
 
 		UIFunctions.addProductToCart("TumiTestData", "BackOrderProduct");
@@ -98,8 +98,4 @@ public class GuestOrders extends GenericMethods {
 		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		UIFunctions.completeOrder();
 	}
-
-
-	
-	
 }

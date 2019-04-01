@@ -16,7 +16,7 @@ public class GlobalConstants extends Reports {
 	//public static String url = "https://ca.stg-hybris-akamai.tumi.com";
 
 	// Stage Akamai US
-	public static String akamaiUrl = "https://www.stg-hybris-akamai.tumi.com";
+	public static String akamaiUrl = "https://stg-hybris-akamai.tumi.com/";
 	// https://www.stg-hybris-akamai.tumi.com/p/continental-expandable-2-wheeled-carry-on-022021CHYA/
 
 	// Stage2 US
@@ -66,10 +66,6 @@ public class GlobalConstants extends Reports {
 	private static String retrieveBrowser() {
 		
 		String browser = System.getProperty("browsername");
-		
-		if (null == browser || browser.isEmpty()) {
-			browser = "chrome";
-		}
 		return browser;
 	}
 	
