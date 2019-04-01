@@ -19,7 +19,7 @@
    </test>
     <test name="VerifyProductDetailPage"> 
 		<classes> 
-			<class name="com.tumi.testcases.VerifyProductDetailPage"/> 
+			<class name="com.tumi.testcases.ProductDetails"/> 
 		</classes>
    </test>
     <test name="ShippingMethodPage"> 

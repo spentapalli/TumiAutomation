@@ -170,10 +170,10 @@ public class Personalization extends GenericMethods {
 		return editMono;
 	}
 
-	@FindBy(how = How.XPATH, using = "(//div[@class='desc-wrapper']/span)[1]")
+	@FindBy(how = How.XPATH, using = "//span[@class='addMono']")
 	private WebElement addMonoMsg;
 
-	@FindBy(how = How.XPATH, using = "(//div[contains(@class,'desc-wrapper')]/span)[1]")
+	@FindBy(how = How.XPATH, using = "//span[contains(@class,'addMono')]")
 	private WebElement kraddMonoMsg;
 
 	public WebElement getAddMonoMsg() {
@@ -186,20 +186,20 @@ public class Personalization extends GenericMethods {
 		}
 	}
 
-	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Remove')]")
+	@FindBy(how = How.XPATH, using = "//a[contains(@class,'monogram remove')]")
 	private WebElement remove;
 
-	@FindBy(how = How.XPATH, using = "(//span[contains(@class,'edit-remove-monogram')]/a[2])[1]")
-	private WebElement kRremove;
+	/*@FindBy(how = How.XPATH, using = "")
+	private WebElement kRremove;*/
 
 	public WebElement getRemove() {
-		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
+		//if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
 
 			return remove;
 
-		} else {
+		/*} else {
 			return kRremove;
-		}
+		}*/
 	}
 
 	@FindBy(how = How.XPATH, using = "//span[contains(text(),'Classic Monogram Added')]")

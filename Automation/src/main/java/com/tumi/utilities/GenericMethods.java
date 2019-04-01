@@ -91,7 +91,7 @@ public class GenericMethods extends GlobalConstants {
 	}
 
 	public static void click(WebElement element, String buttonName) {
-
+		
 		try {
 			if (element.isDisplayed()) {
 				// Clicking on WebElement
