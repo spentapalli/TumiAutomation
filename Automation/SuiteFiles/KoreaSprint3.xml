@@ -4,13 +4,13 @@
 
 	<test name="PGPFiltersForKorea"> 
 		<classes> 
-			<class name="tumi.home.PGPFiltersForKorea"/> 
+			<class name="com.tumi.home.PGPFiltersForKorea"/> 
 		</classes>
    </test>
    
    <test name="TopNavigation1">
 		<classes>
-			<class name="tumi.home.TopNavigation" >
+			<class name="com.tumi.home.TopNavigation" >
 			<methods><include name="verifyLocation"></include>
 			</methods>
 			</class>
@@ -19,7 +19,7 @@
 	
 	<test name="TopNavigation2">
 		<classes>
-			<class name="tumi.home.TopNavigation" >
+			<class name="com.tumi.home.TopNavigation" >
 			<methods><include name="verifyFindAStore"></include>
 			</methods>
 			</class>
@@ -28,7 +28,7 @@
 	
 	<test name="TopNavigation3">
 		<classes>
-			<class name="tumi.home.TopNavigation" >
+			<class name="com.tumi.home.TopNavigation" >
 			<methods><include name="verifyCustomerService"></include>
 			</methods>
 			</class>
@@ -37,7 +37,7 @@
    
    <test name="TopNavigation4">
 		<classes>
-			<class name="tumi.home.TopNavigation" >
+			<class name="com.tumi.home.TopNavigation" >
 			<methods><include name="verifySignIn"></include>
 			</methods>
 			</class>
@@ -46,25 +46,25 @@
 	
 	<test name="HomePageVerification.java">
 		<classes>
-			<class name="tumi.home.HomePageVerification" />
+			<class name="com.tumi.home.HomePageVerification" />
 		</classes>
 	</test>
 	
 	
 	<test name="Quickshop.java">
 		<classes>
-			<class name="tumi.home.Quickshop" />
+			<class name="com.tumi.home.Quickshop" />
 		</classes>
 	</test>
 	
-	<test name="CreateAccount.java">
+	<test name="CreateAccount">
 		<classes>
-			<class name="userRegistration.CreateAccount" />
+			<class name="com.tumi.userRegistration.CreateAccount" />
 		</classes>
 	</test>
 	<test name="OutOfStockProduct">
 		<classes>
-			<class name="tumi.home.OutOfStockProduct" />
+			<class name="com.tumi.home.OutOfStockProduct" />
 		</classes>
 	</test>
    </suite>
