@@ -362,7 +362,7 @@ public class CartPage extends GenericMethods {
 	}
 	
 	
-	@FindBy(how = How.XPATH, using = ("//div[@id='cart-summary-container']//div[2]/div/div[3]/div[2]/div[2]"))
+	@FindBy(how = How.XPATH, using = ("//div[contains(@class,'cart-total-row cart-grand-total')]/div[2]"))
 	private WebElement estimatedTotal;
 	
 	public WebElement getEstimatedTotal() {
@@ -440,18 +440,33 @@ public class CartPage extends GenericMethods {
 		return AppliedPromoMsg;
 	}
 	
-	@FindBy(how = How.XPATH, using =( "(//a[@id='monogramming-popup-link'])[2]"))
+	@FindBy(how = How.XPATH, using =( "//a[contains(text(),'Edit')]"))
 	private WebElement editMono;
 	
+	@FindBy(how = How.XPATH, using =( "//div[contains(@class,'added-monogram')]/div[2]/a"))
+	private WebElement kreditMono;
+	
 	public WebElement getEditMono() {
+		if(selectedCountry.contains("US")||selectedCountry.contains("Canada")) {
 		return editMono;
+	}else {
+		return kreditMono;
 	}
-	@FindBy(how = How.XPATH, using =( "(//div[contains(@class,'cart-label')])[3]/../div[2]"))
-	private WebElement Beforecost;
-	
-	public WebElement getBeforecost() {
-		return Beforecost;
 	}
-	
+	@FindBy(how = How.XPATH, using = "//form[@id='0']")
+	private WebElement monRemove;
+
+	@FindBy(how = How.XPATH, using = "//form[@id='0']/div/a")
+	private WebElement kRMonoremove;
+
+	public WebElement getRemove() {
+		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
+
+			return monRemove;
+
+		} else {
+			return kRMonoremove;
+		}
+	}
 	
 }

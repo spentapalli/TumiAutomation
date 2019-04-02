@@ -1,6 +1,5 @@
 package com.tumi.utilities;
 
-import java.time.ZonedDateTime;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -205,17 +204,22 @@ public class UIFunctions extends GenericMethods {
 			if (applicationUrl.equals("stage2")) {
 
 				final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("SKUID");
-				driver.get(pdpURL);
+				driver.navigate().to(pdpURL);
 
 			} else if (applicationUrl.equals("stage3")) {
 
 				final String pdpURL = GlobalConstants.S3 + "/p/" + testData.get("SKUID");
-				driver.get(pdpURL);
+				driver.navigate().to(pdpURL);
+
+			}else if (applicationUrl.equals("akamaiS2")) {
+
+				final String pdpURL = GlobalConstants.akamaiUrl + "/p/" + testData.get("SKUID");
+				driver.navigate().to(pdpURL);
 
 			} else if (applicationUrl.equals("prod")) {
 
 				final String pdpURL = testData1.get("prod") + "/p/" + testData.get("SKUID");
-				driver.get(pdpURL);
+				driver.navigate().to(pdpURL);
 				UIFunctions.closeSignUp();
 			}
 
@@ -523,7 +527,7 @@ public class UIFunctions extends GenericMethods {
 
 	public static void completeOrder() {
 		if (applicationUrl.equals("prod")) {
-			Assert.fail("Scripts are executing in Production");
+			logger.log(Status.PASS,"Scripts are executing in Production");
 		} else {
 			domClick(review.getPlaceOrder(), "Place Order");
 			scrollUp();
@@ -581,7 +585,7 @@ public class UIFunctions extends GenericMethods {
 	public static void addPromotionalCodeAtSinglePage(String sheet, String testCase) {
 		
 		String beforeTotal = getText(shipMethod.getBeforeTotal());
-		Double beforeCost = Double.valueOf(beforeTotal.replace("$", ""));
+		Double beforeCost = Double.valueOf(beforeTotal.replace("$", "").replace(",",""));
 		System.out.println("Before select Price = " + beforeCost);
 
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
@@ -635,13 +639,13 @@ public class UIFunctions extends GenericMethods {
 		delay(2000);
 
 		String afterTotal = getText(shipMethod.getBeforeTotal());
-		Double afterCost = Double.valueOf(afterTotal.replace("$", ""));
+		Double afterCost = Double.valueOf(afterTotal.replace("$", "").replace(",",""));
 		System.out.println("After applying Promocode, Total Price = " + afterCost);
 
 		double verifyPromo = afterCost - data;
 
 		String promo = getText(shipMethod.getPromoCharge());
-		Double promoDiscount = Double.valueOf(promo.replace("$", "").replace("-", ""));
+		Double promoDiscount = Double.valueOf(promo.replace("$", "").replace("-", "").replace(",",""));
 		System.out.println(promoDiscount);
 
 		if (promoDiscount.equals(verifyPromo)) {
@@ -905,42 +909,10 @@ public class UIFunctions extends GenericMethods {
 	}
 
 	public static void addMultishipAddressWithCardDeatils(String sheet, String testCaseName) {
-		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCaseName);
 
-		// billing page
-		input(guestBillPage.getNameOnCard(), testData.get("NameOnCard"), "Name on Card");
-		input(guestBillPage.getCardNumber(), testData.get("CardNumber"), "Card Number");
-
-		if (browserName.equals("firefox")) {
-			selectMonthInFF();
-			selectYearInFF();
-		} else {
-			selectByVisibleText(guestBillPage.getExpiryMonth(), "05", "Expiry Month");
-			selectByVisibleText(guestBillPage.getExpiryYear(), "2020", "Expiry Year");
-		}
-
-		input(guestBillPage.getCvvNumber(), testData.get("CVV"), "Cvv Number");
-		input(guestBillPage.getemail(), testData.get("EmailID"), "Email ID");
-		input(guestBillPage.getPhoneNumber(), testData.get("Phone"), "Phone number");
-		input(shipping.getFirstName(), testData.get("FirstName"), "First Name");
-		input(shipping.getLastName(), testData.get("LastName"), "Last Name");
-		input(shipping.getAddressLine1(), testData.get("AddressLine1"), "Address line1");
-		input(shipping.getTown(), testData.get("TownCity"), "Town");
-		if (browserName.equals("firefox")) {
-			selectStateInFF();
-		} else if (selectedCountry.contains("Canada")) {
-			Select dropdown = new Select(driver.findElement(By.name("regionIso")));
-			dropdown.selectByVisibleText("British Columbia");
-			click(shipping.getRegionIso(), "Region");
-			input(shipping.getPostcode(), testData.get("CAPostCode"), "postal code");
-		} else {
-
-			Select dropdown = new Select(driver.findElement(By.name("regionIso")));
-			dropdown.selectByVisibleText("New Jersey");
-			click(shipping.getRegionIso(), "Region");
-			input(shipping.getPostcode(), testData.get("PostCode"), "postal code");
-		}
-
+		addPaymentDetails(sheet, testCaseName);
+		
+		addAnotherBillAddress(sheet, testCaseName);
 		domClick(guestBillPage.getReviewOrder(), "Review your order");
 
 	}
@@ -1132,7 +1104,7 @@ public class UIFunctions extends GenericMethods {
 		domClick(guestBillPage.getReviewOrder(), "Review your order");
 	}
 	
-	public static void addMonogram(WebElement ele) {
+	public static void addMonogram(WebElement edit, WebElement remove) {
 		if (mono.getStep1().isDisplayed()) {
 			if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
 				if (mono.getAddPatch().isEnabled()) {
@@ -1157,7 +1129,7 @@ public class UIFunctions extends GenericMethods {
 		click(mono.getApply(), "Apply");
 		delay(3000);
 		try {
-			if (ele.isDisplayed()) {
+			if (edit.isDisplayed()) {
 				logger.log(Status.INFO, "Monogram added Successfully");
 			}
 		} catch (Exception e) {
@@ -1165,45 +1137,43 @@ public class UIFunctions extends GenericMethods {
 		}
 		delay(3000);
 
-		click(ele, "Edit Monogram");
-		if (mono.getStep1().isDisplayed()) {
-			click(mono.getOptionsNext(), "Next");
+		click(edit, "Edit Monogram");
+		try {
+			if (mono.getStep1().isDisplayed()) {
+				click(mono.getOptionsNext(), "Next");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		click(mono.getSecondNext(), "Next");
 		click(mono.getBlueColor(), "Color");
 		click(mono.getApply(), "Apply");
 		delay(3000);
 
-		if (mono.getSuccessMsg().isDisplayed()) {
-			logger.log(Status.INFO, "Verification of Edit Monogram is Successfull");
-		} else {
+		try {
+			if (edit.isDisplayed()) {
+				logger.log(Status.INFO, "Verification of Edit Monogram is Successfull");
+		} 
+		}catch (Exception e) {
 			Assert.fail("Verification of Edit Monogram is Failed");
 		}
-		click(mono.getRemove(), "Remove");
 		delay(2000);
-		if (mono.getAddMonoMsg().isEnabled()) {
-			logger.log(Status.INFO, "Verification of Remove Monogram is successfull");
-		} else {
-			Assert.fail("Verification of Remove Monogram is faield");
+		click(remove, "Remove");
+		delay(2000);
+		try {
+			if (mainCart.getAddclassicMono().isDisplayed()) {
+				logger.log(Status.INFO, "Verification of Remove Monogram is successfull");
+			} 
+		} catch (Exception e) {
+			Assert.fail("Verification of Remove Monogram is failed");
 		}
 
 	}
 	
 	public static void addAnotherBillAddress(String sheet, String testCaseName) {
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCaseName);
-		input(guestBillPage.getNameOnCard(), testData.get("NameOnCard"), "Name on Card");
-		input(guestBillPage.getCardNumber(), testData.get("CardNumber"), "Card Number");
-
-		if (browserName.equals("firefox")) {
-			selectMonthInFF();
-			selectYearInFF();
-		} else {
-			selectByVisibleText(guestBillPage.getExpiryMonth(), "05", "Expiry Month");
-			selectByVisibleText(guestBillPage.getExpiryYear(), "2020", "Expiry Year");
-		}
-
-		input(guestBillPage.getCvvNumber(), testData.get("CVV"), "Cvv Number");
-		domClick(guestBillPage.getShippingAddressAsBilling(),"Use Ship address as Bill address");
+		
+		
 		input(shipping.getFirstName(), testData.get("FirstName"), "First Name");
 		input(shipping.getLastName(), testData.get("LastName"), "Last Name");
 		input(shipping.getAddressLine1(), testData.get("AddressLine1"), "Address line1");
@@ -1223,5 +1193,24 @@ public class UIFunctions extends GenericMethods {
 			input(shipping.getPostcode(), testData.get("PostCode"), "postal code");
 		}
 	}
+  public static void addPaymentDetails(String sheet, String testCaseName) {
+	  Map<String, String> testData = ReadTestData.getJsonData(sheet, testCaseName);
+
+		// billing page
+		input(guestBillPage.getNameOnCard(), testData.get("NameOnCard"), "Name on Card");
+		input(guestBillPage.getCardNumber(), testData.get("CardNumber"), "Card Number");
+
+		if (browserName.equals("firefox")) {
+			selectMonthInFF();
+			selectYearInFF();
+		} else {
+			selectByVisibleText(guestBillPage.getExpiryMonth(), "05", "Expiry Month");
+			selectByVisibleText(guestBillPage.getExpiryYear(), "2020", "Expiry Year");
+		}
+
+		input(guestBillPage.getCvvNumber(), testData.get("CVV"), "Cvv Number");
+		input(guestBillPage.getemail(), testData.get("EmailID"), "Email ID");
+		input(guestBillPage.getPhoneNumber(), testData.get("Phone"), "Phone number");
+  }
 
 }

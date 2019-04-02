@@ -9,6 +9,7 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import com.tumi.reports.Reports;
 import com.tumi.utilities.GenericMethods;
+import com.tumi.utilities.UIFunctions;
 
 /**
  * @author Suresh,Shwetha, Bindu
@@ -317,9 +318,11 @@ public class HomePage extends GenericMethods {
 	public WebElement getLogOn() {
 		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
 			return explicitWait(submit);
+			
 		} else {
-			return krSubmit;
+			return explicitWait(krSubmit);
 		}
+		
 	}
 
 	@FindBy(how = How.XPATH, using = "(//div[@class='dEOOab RxsGPe'])[1]")

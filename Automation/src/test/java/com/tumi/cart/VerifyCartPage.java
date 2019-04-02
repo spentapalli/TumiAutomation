@@ -30,7 +30,7 @@ public class VerifyCartPage extends GenericMethods {
 	Map<String, String> testdata = ReadTestData.getJsonData("TumiTestData", "Products");
 	
 	
-	@Test(priority = 0, description = "TA-394, Verify Count of Products, TA-397, Verify Monogram")
+	@Test(priority = 0, description = "TA-394, Verify Count of Products")
 	public void verifyProductCount() {
 		SoftAssert cartAssertions = new SoftAssert();
 		goToCartPageWithMoreQuantity();
@@ -59,13 +59,13 @@ public class VerifyCartPage extends GenericMethods {
 		}
 
 	}
-	@Test(priority = 2, description = "TA-393, Verify Monogram")
+	@Test(priority = 2, description = "TA-397, Verify Monogram")
 	public void verifyMonogram() {
 		goToCartPage();
 		SoftAssert cartAssertions = new SoftAssert();
 	
 		click(mainCart.getAddclassicMono(),"Add Classic Monogram");
-		UIFunctions.addMonogram(mainCart.getEditMono());
+		UIFunctions.addMonogram(mainCart.getEditMono(), mainCart.getRemove());
 		
 		cartAssertions.assertAll();
 		
@@ -73,15 +73,19 @@ public class VerifyCartPage extends GenericMethods {
 
 	
 
-	@Test(priority = 3, description = "TA-395, Verify Edit link to update cart and TA-396, Verify Remove Link")
+	@Test(priority = 3, description = "TA-395, Verify Edit link to update cart" + " TA-396, Verify Remove Link")
 	public void cartVerifications() {
 		
 		goToCartPageWithMoreQuantity();
 
-		// verify Edit link
+		/*
+		 * TA- 395, verify Edit link
+		 */
 		click(mainCart.getEditQuantity(), "Edit");
 
-		// remove Product
+		/*
+		 * TA- 396, remove Product
+		 */
 		Integer beforeCartSize = mainCart.getProductsList().size();
 		click(mainCart.getRemoveProduct(), "Remove");
 		Integer afterCartSize = mainCart.getProductsList().size();
@@ -93,35 +97,38 @@ public class VerifyCartPage extends GenericMethods {
 
 	}
 	
-	@Test(priority = 4, description = "TA-395, Verify Edit link to update cart and TA-396, Verify Remove Link")
+	@Test(priority = 4, description = "TA- 399, Verify Continue shopping.")
 	public void verifyContinueShopping() {
-		goToCartPage();
 		ProductDetails.addProductForPDPtest(testdata.get("BreadCrumbsTest"));
 		click(pdp.getAddToCart(), "Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Cart");
-		String skuid = getText(driver.findElement(By.xpath("(//div[contains(@class,'ledger-prod-attr attr-style')]/span)[2]")));
+		String skuid = getText(driver.findElement(By.xpath("//div[contains(@class,'ledger-prod-attr attr-style')]/span")));
 		
 		click(mainCart.getContinueshopping(),"Continue Shopping");
 		String url = driver.getCurrentUrl();
-		if(url.contains(skuid)&& pdp.getAddToCart().isDisplayed()) {
-			logger.log(Status.INFO, "Clicking on continue shopping is navigating to PDP page");
-			click(pdp.getAddToCart(),"Add to cart");
-			if(minicart.getProceedCheckOut().isDisplayed()) {
-				logger.log(Status.INFO, "Able to add products by clicking on continue shopping button");
-			}else if(pdp.getOutOfStock().isDisplayed()) {
-				logger.log(Status.PASS, "Product is out of stock to add product to cart" );
-			}else {
-				Assert.fail("Not able to add products by clicking on continue shopping button via pdp page");
+		try {
+			if(url.contains(skuid)&& pdp.getAddToCart().isDisplayed()) {
+				logger.log(Status.INFO, "Clicking on continue shopping is navigating to PDP page");
+				click(pdp.getAddToCart(),"Add to cart");
+				try {
+					if(minicart.getProceedCheckOut().isDisplayed()) {
+						logger.log(Status.INFO, "Able to add products by clicking on continue shopping button");
+					}else if(pdp.getOutOfStock().isDisplayed()) {
+						logger.log(Status.PASS, "Product is out of stock to add product to cart" );
+					}
+				} catch (Exception e) {
+						Assert.fail("Not able to add products by clicking on continue shopping button via pdp page");
+				}
 			}
-		}else {
-			Assert.fail("Verification of Continue shopping failed");
+		} catch (Exception e) {
+				Assert.fail("Verification of Continue shopping failed");
 		}
 		
 		
 	}
 	
 	@SuppressWarnings("unlikely-arg-type")
-	@Test(priority = 5, description = "TA-395, Verify Edit link to update cart and TA-396, Verify Remove Link")
+	//@Test(priority = 5, description = "TA-395, Verify Edit link to update cart and TA-396, Verify Remove Link")
 	public void verifyPromocode() {
 		goToCartPage();
 		UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "VoucherCodeDetails");
@@ -142,10 +149,19 @@ public class VerifyCartPage extends GenericMethods {
 		}
 	}
 	
-	@Test(priority = 6, description = "TA-395, Verify Edit link to update cart and TA-396, Verify Remove Link")
+//	@Test(priority = 6, description = "TA-395, Verify Edit link to update cart and TA-396, Verify Remove Link")
 	public void verifySignInCartPage() {
 		goToCartPage();
 		userLogin("TumiTestData", "RegisteredOrders");
+	}
+//	@Test(priority = 7, description = "TA- 402, Verify PayPal link")
+	public void verifyPayPalLink() {
+		
+	}
+	
+//	@Test(priority = 8, description = "TA-403, Verify accordions/labels")
+	public void verifyAccordions() {
+		
 	}
 
 	public void goToCartPage() {
