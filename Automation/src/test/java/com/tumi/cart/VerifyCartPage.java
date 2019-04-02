@@ -1,4 +1,4 @@
-package com.tumi.testcases;
+package com.tumi.cart;
 
 import java.util.Map;
 
@@ -9,6 +9,7 @@ import org.testng.asserts.SoftAssert;
 
 import com.aventstack.extentreports.Status;
 import com.tumi.dataProvider.ReadTestData;
+import com.tumi.testcases.ProductDetails;
 import com.tumi.utilities.GenericMethods;
 import com.tumi.utilities.GlobalConstants;
 import com.tumi.utilities.UIFunctions;
@@ -95,7 +96,7 @@ public class VerifyCartPage extends GenericMethods {
 	@Test(priority = 4, description = "TA-395, Verify Edit link to update cart and TA-396, Verify Remove Link")
 	public void verifyContinueShopping() {
 		goToCartPage();
-		VerifyProductDetailPage.addProductForPDPtest(testdata.get("BreadCrumbsTest"));
+		ProductDetails.addProductForPDPtest(testdata.get("BreadCrumbsTest"));
 		click(pdp.getAddToCart(), "Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Cart");
 		String skuid = getText(driver.findElement(By.xpath("(//div[contains(@class,'ledger-prod-attr attr-style')]/span)[2]")));

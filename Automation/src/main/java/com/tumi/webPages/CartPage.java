@@ -446,6 +446,12 @@ public class CartPage extends GenericMethods {
 	public WebElement getEditMono() {
 		return editMono;
 	}
+	@FindBy(how = How.XPATH, using =( "(//div[contains(@class,'cart-label')])[3]/../div[2]"))
+	private WebElement Beforecost;
+	
+	public WebElement getBeforecost() {
+		return Beforecost;
+	}
 	
 	
 }

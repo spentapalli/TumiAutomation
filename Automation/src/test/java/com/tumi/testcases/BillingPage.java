@@ -50,8 +50,7 @@ public class BillingPage extends GenericMethods {
 
 	}
 
-	@Test(priority = 1, description = "TA-416, Verify that Redeem Tumi gift card can apply\r\n"
-			+ "Verify Check balance in Tumi Gift cad, " + "TA- 418: Verify labels below Review your Order")
+	@Test(priority = 1, description = "TA-416, Verify that Redeem Tumi gift card can apply\r\n"+ "Verify Check balance in Tumi Gift cad, " + "TA- 418: Verify labels below Review your Order")
 	
 	public void verifyGiftCard() {
 		Map<String, String> giftCard = ReadTestData.getJsonData("TumiTestData", "VoucherCodeDetails");
@@ -106,6 +105,7 @@ public class BillingPage extends GenericMethods {
 	@Test(priority = 3, description = "TA-419, verify PayPal link")
 	public void verifyPayPalLik() {
 		goToBillingPage();
+		delay(2000);
 		webclick(guestBillPage.getPayPal(),"PayPal button");
 		try {
 			if(guestBillPage.getBuyWithPayPal().isDisplayed()) {

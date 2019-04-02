@@ -27,6 +27,7 @@ public class GuestOrders extends GenericMethods {
 	public void tumiOrderAsGuest() throws InterruptedException {
 
 		UIFunctions.addProductToCart("TumiTestData","Products");
+		UIFunctions.closeSignUp();
 		click(pdp.getAddToCart(), "Add to cart");
 		
 		click(minicart.getProceedCheckOut(), "Proceed to Cart");
