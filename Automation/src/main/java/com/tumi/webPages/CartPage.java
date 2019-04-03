@@ -328,7 +328,21 @@ public class CartPage extends GenericMethods {
 	private WebElement editQuantity;
 
 	public WebElement getEditQuantity() {
-		return editQuantity;
+		return explicitWait(editQuantity);
+	}
+	
+	@FindBy(how = How.XPATH, using = ("//input[@id='quantity']"))
+	private WebElement inputQuantity;
+
+	public WebElement getInputQuantity() {
+		return inputQuantity;
+	}
+	
+	@FindBy(how = How.XPATH, using = ("//button[@id='updateCartButton']"))
+	private WebElement updateCart;
+
+	public WebElement getUpdateCart() {
+		return explicitWait(updateCart);
 	}
 
 	@FindBy(how = How.XPATH, using = ("//input[@name='quantity']"))

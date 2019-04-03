@@ -180,7 +180,7 @@ public class Reports {
 		// driver.navigate().to("https://ca.stg-hybris-akamai.tumi.com");
 	}
 
-	@AfterMethod(alwaysRun = true)
+	//@AfterMethod(alwaysRun = true)
 	public static void closeBrowser() {
 
 		if (browserName.equalsIgnoreCase("Remote")) {

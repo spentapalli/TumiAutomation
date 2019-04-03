@@ -27,31 +27,11 @@ public class BillingPage extends GenericMethods {
 	 */
 
 	@Test(priority = 0, description = "TA-52,TA- 415: Verify Sign-in functionality")
-	public void verifySignIn() {
+	public static void verifySignIn() {
 		goToBillingPage();
 		delay(3000);
-		try {
-			Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "RegisteredOrders");
-
-			click(home.getHeaderSignIn(), "Sign In");
-			delay(2000);
-			input(home.getUserName(), testData.get("EmailID"), "Email Address");
-			input(home.getPassWord(), testData.get("Password"), "Password");
-			click(home.getLogOn(), "Login");
-			//delay(10000);
-			elementToBeClickable(myacc.getSignout());
-			try {
-				if (guestBillPage.getItemsInCart().isDisplayed()||myacc.getSignout().isDisplayed()) {
-					logger.log(Status.INFO, "Successfully logged with Regular user valid credentials");
-				}
-
-			} catch (Exception e) {
-				Assert.fail("user signin is failed");
-			}
-
-		} catch (Exception e) {
-			Assert.fail("Fail to Login due to " + e.getMessage());
-		}
+		loginAfterCart("TumiTestData", "RegisteredOrders");
+		
 
 	}
 
@@ -140,8 +120,32 @@ public class BillingPage extends GenericMethods {
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
 
 	}
+	public static void loginAfterCart(String sheetname, String testcase) {
+		try {
+			Map<String, String> testData = ReadTestData.getJsonData(sheetname, testcase);
 
-	public void verifyAccordions() {
+			click(home.getHeaderSignIn(), "Sign In");
+			delay(2000);
+			input(home.getUserName(), testData.get("EmailID"), "Email Address");
+			input(home.getPassWord(), testData.get("Password"), "Password");
+			click(home.getLogOn(), "Login");
+			//delay(10000);
+			elementToBeClickable(myacc.getSignout());
+			try {
+				if (guestBillPage.getItemsInCart().isDisplayed()||myacc.getSignout().isDisplayed()) {
+					logger.log(Status.INFO, "Successfully logged with Regular user valid credentials");
+				}
+
+			} catch (Exception e) {
+				Assert.fail("user signin is failed");
+			}
+
+		} catch (Exception e) {
+			Assert.fail("Fail to Login due to " + e.getMessage());
+		}
+	}
+
+	public static void verifyAccordions() {
 		SoftAssert giftcardAsser = new SoftAssert();
 		delay(3000);
 		int accordionSize = guestBillPage.getAccordionBillList().size();

@@ -266,6 +266,12 @@
 	"AlternativeCard":"5555555555554444"
 	},
 	
+	"ExpressCheckout":{
+	"EmailID": "pkomma@coredatalabs.com",
+	"Password": "abcd1234",
+	"SKUID":"022061D2"
+	},
+	
 	"TumiTracer":{
 	"TracerID":"11111111111111111111"
 	}

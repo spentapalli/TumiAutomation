@@ -9,6 +9,7 @@ import org.testng.asserts.SoftAssert;
 
 import com.aventstack.extentreports.Status;
 import com.tumi.dataProvider.ReadTestData;
+import com.tumi.testcases.BillingPage;
 import com.tumi.testcases.ProductDetails;
 import com.tumi.utilities.GenericMethods;
 import com.tumi.utilities.GlobalConstants;
@@ -30,7 +31,7 @@ public class VerifyCartPage extends GenericMethods {
 	Map<String, String> testdata = ReadTestData.getJsonData("TumiTestData", "Products");
 	
 	
-	@Test(priority = 0, description = "TA-394, Verify Count of Products")
+//	@Test(priority = 0, description = "TA-394, Verify Count of Products")
 	public void verifyProductCount() {
 		SoftAssert cartAssertions = new SoftAssert();
 		goToCartPageWithMoreQuantity();
@@ -46,7 +47,7 @@ public class VerifyCartPage extends GenericMethods {
 	}
 		
 
-	@Test(priority = 1, description = "TA-393, Verify Product link")
+	//@Test(priority = 1, description = "TA-393, Verify Product link")
 	public void verifyProductLink() {
 		goToCartPage();
 		String skuid = getText(mainCart.getSkuID());
@@ -59,7 +60,7 @@ public class VerifyCartPage extends GenericMethods {
 		}
 
 	}
-	@Test(priority = 2, description = "TA-397, Verify Monogram")
+	//@Test(priority = 2, description = "TA-397, Verify Monogram")
 	public void verifyMonogram() {
 		goToCartPage();
 		SoftAssert cartAssertions = new SoftAssert();
@@ -73,19 +74,11 @@ public class VerifyCartPage extends GenericMethods {
 
 	
 
-	@Test(priority = 3, description = "TA-395, Verify Edit link to update cart" + " TA-396, Verify Remove Link")
-	public void cartVerifications() {
+	//@Test(priority = 3, description =  " TA-396, Verify Remove Link")
+	public void verifyRemoveLink() {
 		
 		goToCartPageWithMoreQuantity();
 
-		/*
-		 * TA- 395, verify Edit link
-		 */
-		click(mainCart.getEditQuantity(), "Edit");
-
-		/*
-		 * TA- 396, remove Product
-		 */
 		Integer beforeCartSize = mainCart.getProductsList().size();
 		click(mainCart.getRemoveProduct(), "Remove");
 		Integer afterCartSize = mainCart.getProductsList().size();
@@ -96,8 +89,26 @@ public class VerifyCartPage extends GenericMethods {
 		}
 
 	}
+	@Test(priority = 4, description = "TA-395, Verify Edit link to update cart" )
+	public void verifyEditLink() {
+		goToCartPage();
+		delay(2000);
+		click(mainCart.getEditQuantity(), "Edit");
+		
+		input(mainCart.getInputQuantity(),"2","Quantity");
+		click(mainCart.getUpdateCart(),"Update Cart");
+		delay(2000);
+		Integer cartSize = mainCart.getProductsList().size();
+		if(cartSize==2) {
+			logger.log(Status.PASS, "Product quantity updated successfully");
+		}else {
+			Assert.fail("Product quantity couldn't updated correctly");
+		}
+		
+	}
 	
-	@Test(priority = 4, description = "TA- 399, Verify Continue shopping.")
+	
+	//@Test(priority = 5, description = "TA- 399, Verify Continue shopping.")
 	public void verifyContinueShopping() {
 		ProductDetails.addProductForPDPtest(testdata.get("BreadCrumbsTest"));
 		click(pdp.getAddToCart(), "Add to cart");
@@ -127,40 +138,35 @@ public class VerifyCartPage extends GenericMethods {
 		
 	}
 	
-	@SuppressWarnings("unlikely-arg-type")
-	//@Test(priority = 5, description = "TA-395, Verify Edit link to update cart and TA-396, Verify Remove Link")
-	public void verifyPromocode() {
-		goToCartPage();
-		UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "VoucherCodeDetails");
-		if (singlePage.getPromocodeRemove().isDisplayed()) {
-			logger.log(Status.INFO, "Promocode applied successfully");
-		} else if (getText(mainCart.getPromoSuccessMsg()).equals(getProperty("voucher.successmsg"))) {
-			logger.log(Status.INFO, "Promocode applied successfully");
-		} else if ((mainCart.getPromoSuccessMsg()).equals(getProperty("voucher.alreadyapplied"))) {
-			logger.log(Status.INFO, "Voucher already been applied successfully");
-		} else {
-			Assert.fail("Promocode couldn't be applied");
-		}
-
-		if (mainCart.getDiscountSummery().isDisplayed()) {
-			logger.log(Status.INFO, "Promocode Discount has been added to Order Summery");
-		} else {
-			Assert.fail("Promocode has not added to Order Summery");
-		}
-	}
-	
-//	@Test(priority = 6, description = "TA-395, Verify Edit link to update cart and TA-396, Verify Remove Link")
+//	@Test(priority = 6, description = "TA-401, Verify Sign In")
 	public void verifySignInCartPage() {
 		goToCartPage();
 		userLogin("TumiTestData", "RegisteredOrders");
 	}
-//	@Test(priority = 7, description = "TA- 402, Verify PayPal link")
+	//@Test(priority = 7, description = "TA- 402, Verify PayPal link")
 	public void verifyPayPalLink() {
+		goToCartPage();
+		String value = getText(mainCart.getEstimatedTotal());
+		System.out.println(value);
+		Double dValue = Double.valueOf(value.replace("$", ""));
+		if (dValue.intValue() >= 100) {
+			click(paypal.getPayPalAnother(), "PayPal");
+		} else {
+			click(paypal.getPayPal(), "PayPal");
+		}
+		try {
+			if(paypal.getPayPalEmail().isDisplayed()) {
+				logger.log(Status.PASS, "Click on PayPal, Successfully navigated to PayPal login page");
+			}
+		} catch (Exception e) {
+			Assert.fail("Click on PayPal, Page couldn't navigated to PayPal login page");
+		}
 		
 	}
 	
-//	@Test(priority = 8, description = "TA-403, Verify accordions/labels")
+	//@Test(priority = 8, description = "TA-403, Verify accordions/labels")
 	public void verifyAccordions() {
+		BillingPage.verifyAccordions();
 		
 	}
 

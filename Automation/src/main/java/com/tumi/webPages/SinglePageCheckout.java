@@ -124,6 +124,13 @@ public class SinglePageCheckout extends GenericMethods {
 
 		return RemovePromoMsg;
 	}
+	@FindBy(how = How.XPATH, using = "//button[contains(@class,'singlePageCheckout-login')]")
+	private WebElement expressCheckout;
+
+	public WebElement getExpressCheckout() {
+
+		return expressCheckout;
+	}
 }
 
 
