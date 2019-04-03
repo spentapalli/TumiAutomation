@@ -96,7 +96,7 @@ public class SinglePageCheckout extends GenericMethods {
 
 		return explicitWait(ApplyClick);
 	}
-	@FindBy(how = How.XPATH, using = "//div[contains(text(),'Voucher successfully applied to cart.')]")
+	@FindBy(how = How.XPATH, using = "//input[@name='voucherCode']/../../following-sibling::div[2]")
 	private WebElement PromocodeMessage;
 
 	public WebElement getPromocodeMessage() {

@@ -17,6 +17,7 @@ import com.tumi.utilities.UIFunctions;
 		public void orderWithAsGuest() throws InterruptedException{
 			
 			UIFunctions.addProductToCart("TumiTestData","GlobalLocatorProduct");
+			UIFunctions.closeSignUp();
 			click(pdp.getAddToCart(),"Add to cart");
 			click(minicart.getProceedCheckOut(), "Proceed to Cart");
 			click(mainCart.getProceedCart(), "Proceed to Checkout");

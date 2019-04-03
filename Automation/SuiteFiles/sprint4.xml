@@ -17,7 +17,7 @@
 			<class name="com.tumi.testcases.OrderReviewPageVerification"/> 
 		</classes>
    </test>
-    <test name="VerifyProductDetailPage"> 
+    <test name="ProductDetails"> 
 		<classes> 
 			<class name="com.tumi.testcases.ProductDetails"/> 
 		</classes>

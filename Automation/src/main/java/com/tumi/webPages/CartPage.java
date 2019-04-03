@@ -236,7 +236,7 @@ public class CartPage extends GenericMethods {
 	@FindBy(how = How.XPATH, using = ("(//input[@name='voucherCode'])[2]"))
 	private WebElement krVoucherID;
 
-	@FindBy(how = How.XPATH, using = "//input[@name='voucherCode']")
+	@FindBy(how = How.XPATH, using = "(//input[@name='voucherCode'])[2]")
 	private WebElement addPromocode;
 
 	public WebElement getPromocode() {
@@ -253,7 +253,7 @@ public class CartPage extends GenericMethods {
 	@FindBy(how = How.XPATH, using = ("(//button[@id='signupnewsletter'])[2]"))
 	private WebElement krApplyVoucher;
 
-	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Apply')]")
+	@FindBy(how = How.XPATH, using = "(//button[contains(text(),'Apply')])[2]")
 	private WebElement ApplyClick;
 
 	public WebElement getApply() {
@@ -447,7 +447,7 @@ public class CartPage extends GenericMethods {
 	public WebElement getAddedMonoMsg() {
 		return addedMonoMsg;
 	}
-	@FindBy(how = How.XPATH, using =( "(//div[@class='pad10 onlyTopPad']/following::div)[1]"))
+	@FindBy(how = How.XPATH, using =( "(//div[@class='pad10 onlyTopPad']/following::div)[1])"))
 	private WebElement AppliedPromoMsg;
 	
 	public WebElement getAppliedPromoMsg() {
@@ -482,5 +482,36 @@ public class CartPage extends GenericMethods {
 			return kRMonoremove;
 		}
 	}
+	@FindBy(how = How.XPATH, using =("//div[@id='globalMessages']/div[1]"))
+	private WebElement ErrorPromoMsg;
+	
+	public WebElement getErrorPromoMsg() {
+		return ErrorPromoMsg;
+	}
+	@FindBy(how = How.XPATH, using =("//div[contains(text(),'Estimated Total')]/../div[2]"))
+	private WebElement BeforeCost;
+	
+	public WebElement getBeforeCost() {
+		return BeforeCost;
+	}
+	@FindBy(how = How.XPATH, using ="//div[@id='accordion-1']/div/div")
+	private WebElement PromoMsg;
+	
+	public WebElement getPromoMsg() {
+		return PromoMsg;
+	}
+	@FindBy(how = How.XPATH, using ="(//input[@id='removeVoucherCode'])[3]/../button")
+	private WebElement RemovePromo;
+	
+	public WebElement getRemovePromo() {
+		return RemovePromo;
+	}
+	@FindBy(how = How.XPATH, using ="(//form[@id='removeVoucherForm'])[2]/div[2]/span")
+	private WebElement PromoCharge;
+	
+	public WebElement getPromoCharge() {
+		return PromoCharge;
+	}
+	
 	
 }

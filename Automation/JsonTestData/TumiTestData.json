@@ -9,19 +9,6 @@
 		"Region": "California",
 		"PostCode": "V4X 1A5",
 		"Phone": "12345678901",
-		"ProductName":"Tag"
-			
-	},
-	
-	"AlternateGuestDetails":{
-		"FirstName": "Test",
-		"LastName": "TumiLast",
-		"AddressLine1": "10 Sumac Way",
-		"AddressLine2": "Add",
-		"TownCity": "ABBOTSFORD",
-		"Region": "California",
-		"PostCode": "V4X 1A5",
-		"Phone": "12345678901",
 		"ProductName":"Tag"	
 	},
 	
@@ -34,7 +21,7 @@
 		"EmailID": "skomma@coredatalabs.com",
 		"Phone": "12345678901"
 	},
-	
+	  
 	"Products": {
 		"BackOrderProduct": "0484706D",
 		"BackOrderSKUID": "013234CPT",
@@ -44,7 +31,6 @@
 		"PromoCode20": "FixedDollar20",
 		"PromoCode30": "T30-D5L6-E4LR-WEDL",
 		"KoreaSKUID":"0222389AT2",
-		"GiftBoxSKU":"028TRK",
 		"SKUID":"00171B",
 		"TumiStudioSKUID":"0117474T999",
 		"NoramlSKUID": "014757D",
@@ -109,6 +95,7 @@
 		"EmailID": "skomma@coredatalabs.com",
 		"Password": "tumi1234",
 		"SKUID":"022061D2"
+		
 	},
 	
 	"FailedOrder": {
@@ -182,8 +169,7 @@
 		"AddressLine2": "Add",
 		"TownCity": "ABBOTSFORD",
 		"Region": "California",
-		"PostCode": "V4X 1A5",
-		"CAPostCode":"V2S 8B6"
+		"PostCode": "V4X 1A5"
 	},
 	
 	"PayPalDeatils": {
@@ -240,7 +226,8 @@
 	
 		"stage2" : "https://www.hybris-stage2.tumi.com/",
 		"stage3" : "https://www.hybris-stage3.tumi.com/",
-		"prod": "https://www.tumi.com/"
+		"prod": "https://www.tumi.com/",
+		"akamaiStage":"https://stg-hybris-akamai.tumi.com/"
 	},
 	
 	"BrowserStack":{
@@ -264,16 +251,6 @@
 	"AlternatePh":"9012345612",
 	"AlternatePhKr":"021234888",
 	"AlternativeCard":"5555555555554444"
-	},
-	
-	"ExpressCheckout":{
-	"EmailID": "pkomma@coredatalabs.com",
-	"Password": "abcd1234",
-	"SKUID":"022061D2"
-	},
-	
-	"TumiTracer":{
-	"TracerID":"11111111111111111111"
 	}
 }
 
