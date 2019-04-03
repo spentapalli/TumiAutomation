@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="TumiReportSprint3" parallel="none">
+  <test name="ShippingMethodPage"> 
+		<classes> 
+			<class name="com.tumi.testcases.ShippingMethodPage"/> 
+		</classes>
+   </test>
+    <test name="compareProducts"> 
+		<classes> 
+			<class name=" com.tumi.registerOrders.CompareProducts"/> 
+		</classes>
+   </test>
+    <test name="PDPpage"> 
+		<classes> 
+			<class name="com.tumi.testcases.PDPpage"/> 
+		</classes>
+   </test>
+   </suite>
