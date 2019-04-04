@@ -420,6 +420,9 @@ public class Reports {
 	      final String URL = "https://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.saucelabs.com:443/wd/hub";
 	      
 	      DesiredCapabilities capabilities = new DesiredCapabilities();
+	      capabilities.setCapability("platform", "Windows 10");
+	      capabilities.setCapability("version", "latest");
+	      capabilities.setCapability("browserName", "chrome");
 	      
 	      try {
 			driver = new RemoteWebDriver(new URL(URL), capabilities);
