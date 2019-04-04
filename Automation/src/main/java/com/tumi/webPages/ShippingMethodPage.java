@@ -231,7 +231,11 @@ public class ShippingMethodPage extends GenericMethods {
 	public WebElement getCaShippingFree() {
 	return CastandardShippingFree;
 }
-	
+	@FindBy(how = How.XPATH, using = "//div[contains(@class,'cart-price removeFocusIndicator')]")
+	private WebElement Beforecost;
+	public WebElement getBeforecost() {
+	return Beforecost;
+}
 	
 	}
 

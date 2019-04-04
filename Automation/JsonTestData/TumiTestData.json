@@ -9,19 +9,6 @@
 		"Region": "California",
 		"PostCode": "V4X 1A5",
 		"Phone": "12345678901",
-		"ProductName":"Tag"
-			
-	},
-	
-	"AlternateGuestDetails":{
-		"FirstName": "Test",
-		"LastName": "TumiLast",
-		"AddressLine1": "10 Sumac Way",
-		"AddressLine2": "Add",
-		"TownCity": "ABBOTSFORD",
-		"Region": "California",
-		"PostCode": "V4X 1A5",
-		"Phone": "12345678901",
 		"ProductName":"Tag"	
 	},
 	
@@ -34,7 +21,7 @@
 		"EmailID": "skomma@coredatalabs.com",
 		"Phone": "12345678901"
 	},
-	
+	  
 	"Products": {
 		"BackOrderProduct": "0484706D",
 		"BackOrderSKUID": "013234CPT",
@@ -109,6 +96,7 @@
 		"EmailID": "skomma@coredatalabs.com",
 		"Password": "tumi1234",
 		"SKUID":"022061D2"
+		
 	},
 	
 	"FailedOrder": {
@@ -182,8 +170,8 @@
 		"AddressLine2": "Add",
 		"TownCity": "ABBOTSFORD",
 		"Region": "California",
-		"PostCode": "V4X 1A5",
-		"CAPostCode":"V2S 8B6"
+		"CAPostCode":"V2S 8B6",
+		"PostCode": "V4X 1A5"
 	},
 	
 	"PayPalDeatils": {
@@ -251,14 +239,6 @@
 		"remoteOS" : "Windows",
 		"remoteOsVersion" : "10"
 		
-	},
-	
-	"ShippingCharges":{
-	"CaStandardShippingCharge":"$19.99",
-	"KrStandardShippingCharge":"₩3,000",
-	"UsStandardShippingCharge":"$0.00",
-	"PriorityShippingCharge":"$25.00",
-	"SecondDayShippingCahrge":"$15.00"
 	},
 	
 	"AlternateOptions":{

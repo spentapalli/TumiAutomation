@@ -89,6 +89,30 @@ public class GenericMethods extends GlobalConstants {
 		}
 		// removeExistingCart();
 	}
+	public static void expressLogin(String sheetname, String testcase) {
+		try {
+			Map<String, String> testData = ReadTestData.getJsonData(sheetname, testcase);
+
+			click(singlePage.getExpressCheckout(),"Sign in for Express checkout");
+			delay(2000);
+			input(home.getUserName(), testData.get("EmailID"), "Email Address");
+			input(home.getPassWord(), testData.get("Password"), "Password");
+			click(home.getLogOn(), "Login");
+			//delay(10000);
+			elementToBeClickable(myacc.getSignout());
+			try {
+				if (guestBillPage.getItemsInCart().isDisplayed()||myacc.getSignout().isDisplayed()) {
+					logger.log(Status.INFO, "Successfully logged with Regular user valid credentials");
+				}
+
+			} catch (Exception e) {
+				Assert.fail("user signin is failed");
+			}
+
+		} catch (Exception e) {
+			Assert.fail("Fail to Login due to " + e.getMessage());
+		}
+	}
 
 	public static void click(WebElement element, String buttonName) {
 		

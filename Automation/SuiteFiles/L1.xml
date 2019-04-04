@@ -3,113 +3,140 @@
 <suite name="TumiReport" parallel="none">
  <test name="GlobalLocatororder">
 		<classes>
-			<class name="orders.guest.GlobalLocatororder" />
+			<class name="com.tumi.guestOrders.GlobalLocatororder" />
 		</classes>
 	</test>
 	<test name="GuestOrderWithMultiShipment">
-<classes>
-			<class name="orders.guest.GuestOrderWithMultiShipment" />
+
+		<classes>
+			<class name="com.tumi.guestOrders.GuestOrderWithMultiShipment" />
 		</classes>
 	</test>
 	<test name="GuestOrder">
-	<classes>
-			<class name="orders.guest.GuestOrder"/>
+
+		<classes>
+			<class name="com.tumi.guestOrders.GuestOrder" />
 		</classes>
 	</test>
 	<test name="GuestOrderWithTwoDiffProducts">
-<classes>
-			<class name="orders.guest.GuestOrderWithTwoDiffProducts" />
+
+		<classes>
+			<class name="com.tumi.guestOrders.GuestOrderWithTwoDiffProducts" />
 		</classes>
 	</test>
 	<test name="OrderWithGiftBox">
-<classes>
-			<class name="orders.guest.OrderWithGiftBox" />
+
+		<classes>
+			<class name="com.tumi.guestOrders.OrderWithGiftBox" />
 		</classes>
 	</test>
 	<test name="GuestBackOrderWithMonogram">
-<classes>
-			<class name="orders.guest.GuestBackOrderWithMonogram" />
+
+		<classes>
+			<class name="com.tumi.guestOrders.GuestBackOrderWithMonogram" />
 		</classes>
 	</test>
 	<test name="GuestPreOrderWithMonogram">
-	<classes>
-			<class name="orders.guest.GuestPreOrderWithMonogram" />
+
+		<classes>
+			<class name="com.tumi.guestOrders.GuestPreOrderWithMonogram" />
 		</classes>
 	</test>
 	<test name="OrderWithMonogram">
-<classes>
-			<class name="orders.guest.OrderWithMonogram" />
+
+		<classes>
+			<class name="com.tumi.guestOrders.OrderWithMonogram" />
 		</classes>
 	</test>
 	<test name="OrderWithVochercode">
-	<classes>
-			<class name="orders.guest.OrderWithVochercode" />
+
+		<classes>
+			<class name="com.tumi.guestOrders.OrderWithVochercode" />
 		</classes>
 	</test>
-<test name="RegisteredOrderWithPayPal">
-<classes>
-<class name="orders.registered.RegisteredOrderWithPayPal" />
-		</classes>
-	</test>
-		<test name="GoogleLogin">
-	<classes>
-			<class name="login.GoogleLogin" />
+
+	<test name="RegisteredOrderWithPayPal">
+
+		<classes>
+			<class name="com.tumi.registerOrders.RegisteredOrderWithPayPal" />
 		</classes>
 	</test>
 	<test name="RegisteredOrder">
-<classes>
-			<class name="orders.registered.RegisteredOrder" />
+
+		<classes>
+			<class name="com.tumi.registerOrders.RegisteredOrder" />
 		</classes>
 	</test>
 	<test name="RegisteredOrderWithMultishipment">
-     <classes>
+
+		<classes>
 			<class
-				name="orders.registered.RegisteredOrderWithMultishipment" />
+				name="com.tumi.registerOrders.RegisteredOrderWithMultishipment" />
 		</classes>
-</test>
-<test name="InstagramLogin">
-	<classes>
-			<class name="login.InstagramLogin" />
+
+	</test>
+	<test name="GoogleLogin">
+
+		<classes>
+			<class name="com.tumi.login.GoogleLogin" />
 		</classes>
 	</test>
-<test name="RegularLogin">
-<classes>
-			<class name="login.RegularLogin" />
+	<test name="InstgramLogin">
+
+		<classes>
+			<class name="com.tumi.login.InstagramLogin" />
+		</classes>
+	</test>
+
+	<test name="RegularLogin">
+
+		<classes>
+			<class name="com.tumi.login.RegularLogin" />
 		</classes>
 	</test>
 	<test name="GuestOrderWithPaypal">
-<classes>
-			<class name="orders.guest.GuestOrderWithPaypal" />
+
+		<classes>
+			<class name="com.tumi.guestOrders.GuestOrderWithPaypal" />
 		</classes>
 	</test>
 	<test name="TumiStudioOrder"> 
 		<classes> 
-			<class name="orders.guest.TumiStudioOrder"/> 
+			<class name="com.tumi.guestOrders.TumiStudioOrder"/> 
 		</classes>
    </test>
-<test name="MultiOrders.java">
+
+	<test name="MultiOrders">
 		<classes>
-			<class name="orders.guest.MultiOrders" />
+			<class name="com.tumi.guestOrders.MultiOrders" />
 		</classes>
 	</test>
-<test name="GuestOrderFail">
+
+
+	<test name="GuestOrderFail">
 		<classes>
-			<class name="orders.guest.GuestOrderFail" />
+			<class name="com.tumi.guestOrders.GuestOrderFail" />
 		</classes>
 	</test>
-<test name="RegisterOrderWithMonogram">
+
+	<test name="RegisterOrderWithMonogram">
 		<classes>
-			<class name="orders.registered.RegisterOrderWithMonogram" />
+			<class name="com.tumi.registerOrders.RegisterOrderWithMonogram" />
+		</classes>
+	</test>
+	<test name="RegisterOrderWithGiftServices">
+		<classes>
+			<class name="com.tumi.registerOrders.RegisterOrderWithGiftServices" />
 		</classes>
 	</test>
 	<test name="GuestOrdersWithGiftMsg">
 		<classes>
-			<class name="orders.guest.GuestOrdersWithGiftMsg" />
+			<class name="com.tumi.guestOrders.GuestOrdersWithGiftMsg" />
 		</classes>
 	</test>
 	<test name="TwoOrderForGuestUser">
 		<classes>
-			<class name="orders.guest.TwoOrderForGuestUser" />
+			<class name="com.tumi.guestOrders.TwoOrderForGuestUser" />
 		</classes>
 	</test>
 	<test name="MultipleOrdersForGuestUser">
@@ -119,64 +146,89 @@
 	</test>
 	<test name="ThreeOrderForGuestUser">
 		<classes>
-			<class name="orders.guest.ThreeOrderForGuestUser" />
+			<class name="com.tumi.guestOrders.ThreeOrderForGuestUser" />
 		</classes>
 	</test>
-	<test name="RegisterOrderWithGiftServices">
-		<classes>
-			<class name="orders.registered.RegisterOrderWithGiftServices" />
-		</classes>
-	</test>  
 	<test name="VerifyInvalidGoogleLogin">
 		<classes>
-			<class name="login.VerifyInvalidGoogleLogin" />
+			<class name="com.tumi.login.VerifyInvalidGoogleLogin" />
 		</classes>
 	</test>
 	<test name="VerifyInvalidInstaLogin">
 		<classes>
-			<class name="login.VerifyInvalidInstaLogin" />
+			<class name="com.tumi.login.VerifyInvalidInstaLogin" />
 		</classes>
 	</test>
 	<test name="PGPFilters"> 
 		<classes> 
-			<class name="tumi.home.PGPFilters"/> 
+			<class name="com.tumi.home.PGPFilters"/> 
 		</classes>
    </test>
 
 	<test name="TopNavigation">
 		<classes>
-			<class name="tumi.home.TopNavigation" />
+			<class name="com.tumi.home.TopNavigation" />
 		</classes>
 	</test>
 	
 	 <test name="TumiStudioEdit">
 		<classes>
-			<class name="tumi.home.TumiStudioEdit" />
+			<class name="com.tumi.home.TumiStudioEdit" />
 		</classes>
 	</test> 
 	
 	<test name="HomePageVerification">
 		<classes>
-			<class name="tumi.home.HomePageVerification" />
+			<class name="com.tumi.home.HomePageVerification" />
 		</classes>
 	</test>
 	
 	<test name="OutOfStockProduct">
 		<classes>
-			<class name="tumi.home.OutOfStockProduct" />
+			<class name="com.tumi.home.OutOfStockProduct" />
 		</classes>
 	</test>
 	
 	
 	<test name="Quickshop">
 		<classes>
-			<class name="tumi.home.Quickshop" />
+			<class name="com.tumi.home.Quickshop" />
 		</classes>
 	</test>
 	
 	<test name="CreateAccount">
 		<classes>
-			<class name="userRegistration.CreateAccount" />
+			<class name="com.tumi.userRegistration.CreateAccount" />
 		</classes>
 	</test>
+	<test name="BillingPage"> 
+		<classes> 
+			<class name="com.tumi.testcases.BillingPage"/> 
+		</classes>
+   </test>
+   <test name="OrderConfirmationPage"> 
+		<classes> 
+			<class name="com.tumi.testcases.OrderConfirmationPage"/> 
+		</classes>
+   </test>
+   <test name="OrderReviewPageVerification"> 
+		<classes> 
+			<class name="com.tumi.testcases.OrderReviewPageVerification"/> 
+		</classes>
+   </test>
+    <test name="ProductDetails"> 
+		<classes> 
+			<class name="com.tumi.testcases.ProductDetails"/> 
+		</classes>
+   </test>
+    <test name="ShippingMethodPage"> 
+		<classes> 
+			<class name="com.tumi.testcases.ShippingMethodPage"/> 
+		</classes>
+   </test>
+   <test name="compareProducts"> 
+		<classes> 
+			<class name="com.tumi.registerOrders.CompareProducts"/> 
+		</classes>
+   </test>
 </suite>

@@ -14,10 +14,9 @@
 			<class name="com.tumi.guestOrders.GuestOrderWithMultiShipment" />
 		</classes>
 	</test>
-	<test name="GuestOrder">
-
-		<classes>
-			<class name="com.tumi.guestOrders.GuestOrder" />
+	<test name="GuestOrders">
+<classes>
+			<class name="com.tumi.guestOrders.GuestOrders" />
 		</classes>
 	</test>
 	<test name="GuestOrderWithTwoDiffProducts">

@@ -547,13 +547,24 @@ public class UIFunctions extends GenericMethods {
 	}
 
 	public static void addPromotionalCodeAtCart(String sheet, String testCase) {
-		String beforeTotal = getText(shipMethod.getBeforeTotal());
+	
+		String beforeTotal = getText(mainCart.getBeforeCost());
 		Double beforeCost = Double.valueOf(beforeTotal.replace("$", ""));
 		System.out.println("Before select Price = " + beforeCost);
+	
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
-
+		if (selectedCountry.contains("US")) {
 		input(mainCart.getPromocode(), testData.get("VoucherID"), "Vocher Id");
 		click(mainCart.getApply(), "Check Promocode");
+		delay(2000);
+		verifyPromoChargeCart(beforeCost);
+		} else if (selectedCountry.contains("Canada")) {
+			input(mainCart.getPromocode(), testData.get("CAVoucherID"), "Vocher Id");
+			click(mainCart.getApply(), "Check Promocode");
+			verifyPromoChargeCart(beforeCost);
+		} else {
+			input(mainCart.getPromocode(), testData.get("KRVoucherID"), "Vocher Id");
+			click(mainCart.getApply(), "Check Promocode");
 		/*
 		 * try { if (mainCart.getVocherCardFailed().isDisplayed()) {
 		 * 
@@ -579,7 +590,24 @@ public class UIFunctions extends GenericMethods {
 		 * Assert.fail("Vocher Card related Fields are not displayed " +
 		 * e.getMessage()); }
 		 */
+		}
+	}
+	public static void verifyPromoChargeCart(double data) {
+		delay(2000);
 
+		String afterTotal = getText((mainCart.getBeforeCost()));
+		Double afterCost = Double.valueOf(afterTotal.replace("$", "").replace(",",""));
+		System.out.println("After applying Promocode, Total Price = " + afterCost);
+
+		double verifyPromo = afterCost - data;
+
+		String promo = getText(mainCart.getPromoCharge());
+		Double promoDiscount = Double.valueOf(promo.replace("$", "").replace("-", "").replace(",",""));
+		System.out.println("Promo Discount = "+promoDiscount);
+
+		if (promoDiscount.equals(verifyPromo)) {
+			logger.log(Status.INFO, "Promocode added successfully to Order summery");
+		}
 	}
 
 	public static void addPromotionalCodeAtSinglePage(String sheet, String testCase) {
@@ -642,14 +670,16 @@ public class UIFunctions extends GenericMethods {
 		Double afterCost = Double.valueOf(afterTotal.replace("$", "").replace(",",""));
 		System.out.println("After applying Promocode, Total Price = " + afterCost);
 
-		double verifyPromo = afterCost - data;
+		double verifyPromo = data -afterCost ;
 
 		String promo = getText(shipMethod.getPromoCharge());
 		Double promoDiscount = Double.valueOf(promo.replace("$", "").replace("-", "").replace(",",""));
-		System.out.println(promoDiscount);
+		System.out.println("Promo Discount ="+promoDiscount);
 
 		if (promoDiscount.equals(verifyPromo)) {
 			logger.log(Status.INFO, "Promocode added successfully to Order summery");
+		}else {
+			Assert.fail("Promo code validation is failed");
 		}
 	}
 

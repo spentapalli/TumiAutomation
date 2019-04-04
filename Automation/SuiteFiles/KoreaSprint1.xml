@@ -5,7 +5,7 @@
 
 	<test name="GuestOrder">
 		<classes>
-			<class name="orders.guest.GuestOrder" >
+			<class name="com.tumi.guestOrders.GuestOrder" >
 			<methods><include name="tumiOrderAsGuest"></include>
 			</methods>
 			</class>
@@ -13,7 +13,7 @@
 	</test>
 	<test name="OrderWithGiftBox">
 		<classes>
-			<class name="orders.guest.OrderWithGiftBox" >
+			<class name="com.tumi.guestOrders.OrderWithGiftBox" >
 			<methods><include name="orderWithGiftBoxAsGuest"></include>
 			</methods>
 			</class>
@@ -21,7 +21,7 @@
 	</test>
 	<test name="OrderWithVochercode">
 		<classes>
-			<class name="orders.guest.OrderWithVochercode" >
+			<class name="com.tumi.guestOrders.OrderWithVochercode" >
 			<methods><include name="verifyOrderWithVocherCode"></include>
 			</methods>
 			</class>
@@ -30,33 +30,33 @@
 		<test name="RegisteredOrder">
 		
 		<classes>
-			<class name="orders.registered.RegisteredOrder" />
+			<class name="com.tumi.registerOrders.RegisteredOrder" />
 		</classes>
 	</test>
 	<test name="RegisterOrderWithVoucher">
 		
 		<classes>
-			<class name="orders.registered.RegisterOrderWithVoucher" />
+			<class name="com.tumi.registerOrders.RegisterOrderWithVoucher" />
 		</classes>
 	</test>
 	
 	<test name="GoogleLogin">
 		
 		<classes>
-			<class name="login.GoogleLogin" />
+			<class name="com.tumi.login.GoogleLogin" />
 		</classes>
 	</test>
 	<test name="InstagramLogin">
 		
 		<classes>
-			<class name="login.InstagramLogin" />
+			<class name="com.tumi.login.InstagramLogin" />
 		</classes>
 	</test>
 
 	<test name="RegularLogin">
 		
 		<classes>
-			<class name="login.RegularLogin" />
+			<class name="com.tumi.login.RegularLogin" />
 		</classes>
 	</test>
 	</suite>
