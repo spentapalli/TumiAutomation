@@ -415,8 +415,8 @@ public class Reports {
 	
 	public static void sauceConnect() {
 		
-		  final String USERNAME = "USERNAME ";
-	      final String ACCESS_KEY = "ACCESS_KEY";
+		  final String USERNAME = "skurry189";
+	      final String ACCESS_KEY = "297e9a77-83f5-4acf-afa3-04c19a7d08b8";
 	      final String URL = "https://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.saucelabs.com:443/wd/hub";
 	      
 	      DesiredCapabilities capabilities = new DesiredCapabilities();
