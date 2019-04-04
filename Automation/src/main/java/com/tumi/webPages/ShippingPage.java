@@ -1,4 +1,4 @@
- package com.tumi.webPages;
+package com.tumi.webPages;
 
 import java.util.List;
 import org.openqa.selenium.WebDriver;
@@ -75,12 +75,11 @@ public class ShippingPage extends GenericMethods {
 	private WebElement addressLine2;
 
 	public WebElement getAddressLine2() {
-		if (selectedCountry.contains("US")||
-				selectedCountry.contains("Canada")) {
+		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
 			return addressLine2;
 		} else {
 			return krAddressLine2;
-	
+
 		}
 	}
 
@@ -91,8 +90,7 @@ public class ShippingPage extends GenericMethods {
 	private WebElement town;
 
 	public WebElement getTown() {
-		if (selectedCountry.contains("US")||
-				selectedCountry.contains("Canada")) {
+		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
 			return town;
 		} else {
 			return krTown;
@@ -142,27 +140,72 @@ public class ShippingPage extends GenericMethods {
 
 	public WebElement getContinueShippingMethod() {
 
-		if (selectedCountry.contains("US")||
-				selectedCountry.contains("Canada")) {
+		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
 			return explicitWait(continueShippingMethod);
 		} else {
 			return explicitWait(krContinueShippingMethod);
-			
+
 		}
 
 	}
+
+	@FindBy(how = How.XPATH, using = "//div[contains(@class,'signInCheckout')]/div/div/div/label")
+	private List<WebElement> addListFromSinglePage;
+
+	public List<WebElement> getAddListFromSinglePage() {
+		return addListFromSinglePage;
+	}
+
 	@FindBy(how = How.XPATH, using = "//div[@class='address-picklist']/div")
 	private List<WebElement> addList;
-	
+
 	public List<WebElement> getAddList() {
 		return addList;
 	}
-	
+
 	@FindBy(how = How.XPATH, using = "//input[@name='line1']/following::div[2]/div")
 	private List<WebElement> addListCA;
-	
+
 	public List<WebElement> getAddListCA() {
 		return addListCA;
+	}
+
+	@FindBy(how = How.XPATH, using = "//span[contains(@class,'linkLikebtn')]/a")
+	private WebElement shiptoDiffLoc;
+
+	public WebElement getShiptoDiffLoc() {
+
+		return shiptoDiffLoc;
+	}
+
+	@FindBy(how = How.XPATH, using = "//div[contains(@class,'select-country')]/h2")
+	private WebElement shiptoDiffLocMsg;
+
+	public WebElement getShiptoDiffLocMsg() {
+
+		return shiptoDiffLocMsg;
+	}
+	
+	@FindBy(how = How.XPATH, using = "(//a[contains(text(),'Canada')])[1]")
+	private WebElement selectCanada;
+
+	public WebElement getSelectCanada() {
+
+		return selectCanada;
+	}
+	@FindBy(how = How.XPATH, using = "(//a[contains(text(),'Korea')])[1]")
+	private WebElement selectKorea;
+
+	public WebElement getSelectKorea() {
+
+		return selectKorea;
+	}
+	@FindBy(how = How.XPATH, using = "(//div[contains(@class,'select-country')]/div/ul/li[2]/a)[1]")
+	private WebElement selectUS;
+
+	public WebElement getSelectUS() {
+
+		return selectUS;
 	}
 
 }

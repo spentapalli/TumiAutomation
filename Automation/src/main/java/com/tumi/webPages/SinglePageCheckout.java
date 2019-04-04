@@ -96,7 +96,7 @@ public class SinglePageCheckout extends GenericMethods {
 
 		return explicitWait(ApplyClick);
 	}
-	@FindBy(how = How.XPATH, using = "//input[@name='voucherCode']/../../following-sibling::div")
+	@FindBy(how = How.XPATH, using = "//input[@name='voucherCode']/../../following-sibling::div[2]")
 	private WebElement PromocodeMessage;
 
 	public WebElement getPromocodeMessage() {
@@ -124,14 +124,13 @@ public class SinglePageCheckout extends GenericMethods {
 
 		return RemovePromoMsg;
 	}
-	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Remove')]")
-	private WebElement RemovePromo;
+	@FindBy(how = How.XPATH, using = "//button[contains(@class,'singlePageCheckout-login')]")
+	private WebElement expressCheckout;
 
-	public WebElement getRemovePromo() {
+	public WebElement getExpressCheckout() {
 
-		return RemovePromo;
+		return expressCheckout;
 	}
 }
-
 
 

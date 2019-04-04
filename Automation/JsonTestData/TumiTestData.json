@@ -31,6 +31,7 @@
 		"PromoCode20": "FixedDollar20",
 		"PromoCode30": "T30-D5L6-E4LR-WEDL",
 		"KoreaSKUID":"0222389AT2",
+		"GiftBoxSKU":"028TRK",
 		"SKUID":"00171B",
 		"TumiStudioSKUID":"0117474T999",
 		"NoramlSKUID": "014757D",
@@ -171,6 +172,7 @@
 		"AddressLine2": "Add",
 		"TownCity": "ABBOTSFORD",
 		"Region": "California",
+		"CAPostCode":"V2S 8B6",
 		"PostCode": "V4X 1A5"
 	},
 	
@@ -240,18 +242,14 @@
 		
 	},
 	
-	"ShippingCharges":{
-	"CaStandardShippingCharge":"$19.99",
-	"KrStandardShippingCharge":"₩3,000",
-	"UsStandardShippingCharge":"$0.00",
-	"PriorityShippingCharge":"$25.00",
-	"SecondDayShippingCahrge":"$15.00"
-	},
-	
 	"AlternateOptions":{
 	"AlternatePh":"9012345612",
 	"AlternatePhKr":"021234888",
 	"AlternativeCard":"5555555555554444"
+	},
+	
+	"TumiTracer":{
+	"TracerID":"11111111111111111111"
 	}
 }
 

@@ -12,6 +12,9 @@
 	<test name="GuestOrders">
 		<classes>
 			<class name="com.tumi.guestOrders.GuestOrders">
+			<methods>
+				<include name="tumiOrderAsGuest"></include>
+			</methods>
 			</class>
 		</classes>
 	</test>

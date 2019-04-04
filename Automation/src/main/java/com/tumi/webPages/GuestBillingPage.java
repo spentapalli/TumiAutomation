@@ -262,5 +262,12 @@ public class GuestBillingPage extends GenericMethods {
 		return itemsInCart;
 
 	}
+	@FindBy(how = How.XPATH, using = "(//button[contains(@class,'tm-button tm-red-button')])[1]")
+	private WebElement continueInLogin;
+
+	public WebElement getContinueInLogin() {
+		return continueInLogin;
+
+	}
 
 }
