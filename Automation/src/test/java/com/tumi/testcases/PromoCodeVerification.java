@@ -1,11 +1,12 @@
 //sprint-5 
 	//TA_67 Verify Promo code
-
+//
 	package com.tumi.testcases;
 
 		import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.fail;
 
-		import java.util.Map;
+import java.util.Map;
 
 	import org.testng.Assert;
 	import org.testng.annotations.Test;
@@ -19,58 +20,102 @@
 		public class PromoCodeVerification extends GenericMethods{
 			Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestDetails");
 			Map<String, String> testData1 = ReadTestData.getJsonData("TumiTestData", "VoucherCodeDetails");
-					
-			//@Test(priority = 0, description="TA-67 Verify Promo Code")
-			public void VerifyPromoCodeCart() {
-
-				UIFunctions.addProductToCart("TumiTestData","Products");
+			Map<String, String> testData2 = ReadTestData.getJsonData("TumiTestData", "FailedOrder");
+				
+		@Test(priority = 0, description="TA-67 Verify Promo Code")
+			public void VerifyPromoCodeCartPage() {
+			 UIFunctions.addProductToCart("TumiTestData","Products");
 				click(pdp.getAddToCart(),"Add to cart");
 				click(minicart.getProceedCheckOut(), "Proceed to Cart");
-				click(mainCart.getApply(), "Check Promocode");
-				if(mainCart.getErrorPromoMsg().isDisplayed()){
-				logger.log(Status.INFO,"Promo code is not Entered");
-		     UIFunctions.addPromotionalCodeAtCart("TumiTestData", "VoucherCodeDetails");
-				if(mainCart.getPromoMsg().isDisplayed())
-						logger.log(Status.INFO,"Promo Code is applied Successfully ");
-				}else {
-					Assert.fail("Promo code is not applied");
-					delay(2000);
-					input(mainCart.getPromocode(), testData1.get("VoucherID"), "Vocher Id");
-					click(mainCart.getApply(), "Check Promocode");
-					delay(2000);
-					if(mainCart.getErrorPromoMsg().isDisplayed()) {
-						logger.log(Status.INFO,"A COUPON OF THE SAME CAMPAIGN HAS ALREADY BEEN APPLIED TO THE CART");
-						click(mainCart.getRemovePromo(),"Remove Promo Code");
-						logger.log(Status.INFO,"Promo code is Successfully Removed");
-					}else {
-						Assert.fail("Promo Code is not Removed");
-					}
-				}
+			try {
+			 if(mainCart.getPromoMsg().isDisplayed()) {
+					logger.log(Status.INFO, "Promocode applied successfully");
+			 } else if(mainCart.getVoucherMsg().equals(getProperty("voucher.error"))) {
+				logger.log(Status.INFO, "Promocode is not entered ");	
+			} else if ((mainCart.getVoucherMsg()).equals(getProperty("voucher.wrong"))) {
+				logger.log(Status.INFO, "Voucher could not be Applied");
+				} else if ((mainCart.getVoucherMsg()).equals(getProperty("voucher.alreadyapplied"))) {
+				logger.log(Status.INFO, "Voucher already been applied successfully");
+			} else if (getText(mainCart.getVoucherMsg()).equals(getProperty("voucher.successmsg"))) {
+					logger.log(Status.INFO, "Promocode applied successfully");
 			}
-				@Test(priority=1)	
-				public void VerifyPromoCodeCheckout() {
-					UIFunctions.addProductToCart("TumiTestData","Products");
-					click(pdp.getAddToCart(),"Add to cart");
-					click(minicart.getProceedCheckOut(), "Proceed to Cart");
-					click(mainCart.getProceedCart(), "Proceed to Checkout");
-					  UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "VoucherCodeDetails");
-					  if(singlePage.getPromocodeMessage().isDisplayed()){
-						  logger.log(Status.INFO,"Promo Code is applied Successfully ");
-					  }else {
-						  Assert.fail("Promo Code is not applied");
-						  click(mainCart.getRemovePromo(),"Remove Promo Code");
-						  if(singlePage.getPromocodeMessage().isDisplayed()){
-							logger.log(Status.INFO,"Promo code is Successfully Removed");
-						}else {
-							Assert.fail("Promo Code is not Removed");
-						}
-				}
-
-				}
-		}
+			} catch (Exception e) {
+				Assert.fail("Promocode couldn't be applied");
+			}
+			click(mainCart.getRemovePromo(),"Promo code is Removed");
+			 logger.log(Status.INFO,"Promo code is removed");
+				  }	
+		
 			
+				//@Test(priority=1)	
+				public void VerifyPromoCodeSinglePageCheckout() {
+					 UIFunctions.addProductToCart("TumiTestData","Products");
+						click(pdp.getAddToCart(),"Add to cart");
+						click(minicart.getProceedCheckOut(), "Proceed to Cart");
+						click(mainCart.getProceedCart(), "Proceed to Checkout");
+					input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
+					  UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "VoucherCodeDetails");
+						
+						  try {
+								if (singlePage.getPromocodeRemove().isDisplayed()) {
+									logger.log(Status.INFO, "Promocode applied successfully");
+								} else if (getText(mainCart.getPromoSuccessMsg()).equals(getProperty("voucher.successmsg"))) {
+									logger.log(Status.INFO, "Promocode applied successfully");
+									
+								} else if ((mainCart.getPromoSuccessMsg()).equals(getProperty("voucher.alreadyapplied"))) {
+									logger.log(Status.INFO, "Voucher already been applied successfully");
+								} else if ((mainCart.getPromoSuccessMsg().equals(getProperty("voucher.wrong")))) {
+									logger.log(Status.INFO, "Voucher could not be Applied");
+								}
+							} catch (Exception e) {
+								Assert.fail("Promocode couldn't be applied");
+							}
+								click(singlePage.getRemovePromo(),"Remove Promo Code");
+								  if(singlePage.getPromocodeMessage().isDisplayed()){
+									logger.log(Status.INFO,"Promo code is Successfully Removed");
+							}
+					  }
+				
+				//@Test(priority=2)
+				public void VerifyPromocodeShippingAddress() {
+					
+					 UIFunctions.addProductToCart("TumiTestData","Products");
+						click(pdp.getAddToCart(),"Add to cart");
+						click(minicart.getProceedCheckOut(), "Proceed to Cart");
+						click(mainCart.getProceedCart(), "Proceed to Checkout");
+					input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
+					 
+					  UIFunctions.waitForContinueToEnable();
+						click(singlePage.getContinueAsGuest(), "Contiue as Guest");
+						UIFunctions.addGuestDetails();
+						 UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "VoucherCodeDetails");
+						  try {
+								if (singlePage.getPromocodeRemove().isDisplayed()) {
+									logger.log(Status.INFO, "Promocode applied successfully");
+								} else if (getText(mainCart.getPromoSuccessMsg()).equals(getProperty("voucher.successmsg"))) {
+									logger.log(Status.INFO, "Promocode applied successfully");
+									
+								} else if ((mainCart.getPromoSuccessMsg()).equals(getProperty("voucher.alreadyapplied"))) {
+									logger.log(Status.INFO, "Voucher already been applied successfully");
+								} else if ((mainCart.getPromoSuccessMsg().equals(getProperty("voucher.wrong")))) {
+									logger.log(Status.INFO, "Voucher could not be Applied");
+								}
+							} catch (Exception e) {
+								Assert.fail("Promocode couldn't be applied");
+							}
+								click(singlePage.getRemovePromo(),"Remove Promo Code");
+								  if(singlePage.getPromocodeMessage().isDisplayed()){
+									logger.log(Status.INFO,"Promo code is Successfully Removed");
+							}
+					  }
+				
+					  }
+				
 		
+				
 		
+				
+				
 		
 		
 

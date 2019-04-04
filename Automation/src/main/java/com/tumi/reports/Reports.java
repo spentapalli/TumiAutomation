@@ -3,6 +3,7 @@ package com.tumi.reports;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -182,7 +183,7 @@ public class Reports {
 		// driver.navigate().to("https://ca.stg-hybris-akamai.tumi.com");
 	}
 
-	//@AfterMethod(alwaysRun = true)
+	@AfterMethod(alwaysRun = true)
 	public static void closeBrowser() {
 
 		if (browserName.equalsIgnoreCase("Remote")) {
@@ -309,8 +310,12 @@ public class Reports {
 		if (browserName.equalsIgnoreCase("Remote")) {
 
 			// enableLocalTesting();
-			remoteAccess(testData.get("remoteBrowser"), testData.get("remoteBrowserVersion"), testData.get("remoteOS"),
-					testData.get("remoteOsVersion"));
+			/*
+			 * remoteAccess(testData.get("remoteBrowser"),
+			 * testData.get("remoteBrowserVersion"), testData.get("remoteOS"),
+			 * testData.get("remoteOsVersion"));
+			 */
+			sauceConnect();
 			getURL();
 
 		} else {
@@ -409,6 +414,24 @@ public class Reports {
 		options.merge(caps);
 		caps.setCapability(ChromeOptions.CAPABILITY, options);
 		driver = new RemoteWebDriver(new URL(URL), caps);
+	}
+	
+	public static void sauceConnect() {
+		
+		  final String USERNAME = "skurry189";
+	      final String ACCESS_KEY = "297e9a77-83f5-4acf-afa3-04c19a7d08b8";
+	      final String URL = "https://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.saucelabs.com:443/wd/hub";
+	      
+	      DesiredCapabilities capabilities = new DesiredCapabilities();
+	      capabilities.setCapability("platform", "Windows 10");
+	      capabilities.setCapability("version", "latest");
+	      capabilities.setCapability("browserName", "chrome");
+	      
+	      try {
+			driver = new RemoteWebDriver(new URL(URL), capabilities);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static void maximizeBrowser() {
