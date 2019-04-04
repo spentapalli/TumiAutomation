@@ -3,6 +3,7 @@ package com.tumi.reports;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -306,8 +307,12 @@ public class Reports {
 		if (browserName.equalsIgnoreCase("Remote")) {
 
 			// enableLocalTesting();
-			remoteAccess(testData.get("remoteBrowser"), testData.get("remoteBrowserVersion"), testData.get("remoteOS"),
-					testData.get("remoteOsVersion"));
+			/*
+			 * remoteAccess(testData.get("remoteBrowser"),
+			 * testData.get("remoteBrowserVersion"), testData.get("remoteOS"),
+			 * testData.get("remoteOsVersion"));
+			 */
+			sauceConnect();
 			getURL();
 
 		} else {
@@ -406,6 +411,21 @@ public class Reports {
 		options.merge(caps);
 		caps.setCapability(ChromeOptions.CAPABILITY, options);
 		driver = new RemoteWebDriver(new URL(URL), caps);
+	}
+	
+	public static void sauceConnect() {
+		
+		  final String USERNAME = "USERNAME ";
+	      final String ACCESS_KEY = "ACCESS_KEY";
+	      final String URL = "https://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.saucelabs.com:443/wd/hub";
+	      
+	      DesiredCapabilities capabilities = new DesiredCapabilities();
+	      
+	      try {
+			driver = new RemoteWebDriver(new URL(URL), capabilities);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static void maximizeBrowser() {
