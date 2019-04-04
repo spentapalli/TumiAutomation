@@ -548,23 +548,36 @@ public class UIFunctions extends GenericMethods {
 
 	public static void addPromotionalCodeAtCart(String sheet, String testCase) {
 	
-		String beforeTotal = getText(mainCart.getBeforeCost());
-		Double beforeCost = Double.valueOf(beforeTotal.replace("$", ""));
-		System.out.println("Before select Price = " + beforeCost);
+	
 	
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
 		if (selectedCountry.contains("US")) {
+			String beforeTotal = getText(mainCart.getEstimatedTotal());
+			Double beforeCost = Double.valueOf(beforeTotal.replace("$", "").replace(",",""));
+			System.out.println("Before select Price = " + beforeCost);
 		input(mainCart.getPromocode(), testData.get("VoucherID"), "Vocher Id");
 		click(mainCart.getApply(), "Check Promocode");
 		delay(2000);
 		verifyPromoChargeCart(beforeCost);
 		} else if (selectedCountry.contains("Canada")) {
+			String beforeTotal = getText(mainCart.getEstimatedTotal());
+			Double beforeCost = Double.valueOf(beforeTotal.replace("$", "").replace(",",""));
+			System.out.println("Before select Price = " + beforeCost);
 			input(mainCart.getPromocode(), testData.get("CAVoucherID"), "Vocher Id");
 			click(mainCart.getApply(), "Check Promocode");
 			verifyPromoChargeCart(beforeCost);
 		} else {
+			String beforeTotal = getText(mainCart.getEstimatedTotal());
+			Double beforeCost = Double.valueOf(beforeTotal.substring(1).replace(",",""));
+		
+			System.out.println("Before select Price = " + beforeCost);
+			
 			input(mainCart.getPromocode(), testData.get("KRVoucherID"), "Vocher Id");
 			click(mainCart.getApply(), "Check Promocode");
+			verifyKrPromoChargecart(beforeCost);
+			
+			
+			
 		/*
 		 * try { if (mainCart.getVocherCardFailed().isDisplayed()) {
 		 * 
@@ -595,11 +608,11 @@ public class UIFunctions extends GenericMethods {
 	public static void verifyPromoChargeCart(double data) {
 		delay(2000);
 
-		String afterTotal = getText((mainCart.getBeforeCost()));
+		String afterTotal = getText(mainCart.getEstimatedTotal());
 		Double afterCost = Double.valueOf(afterTotal.replace("$", "").replace(",",""));
 		System.out.println("After applying Promocode, Total Price = " + afterCost);
 
-		double verifyPromo = afterCost - data;
+		double verifyPromo = data - afterCost;
 
 		String promo = getText(mainCart.getPromoCharge());
 		Double promoDiscount = Double.valueOf(promo.replace("$", "").replace("-", "").replace(",",""));
@@ -607,8 +620,28 @@ public class UIFunctions extends GenericMethods {
 
 		if (promoDiscount.equals(verifyPromo)) {
 			logger.log(Status.INFO, "Promocode added successfully to Order summery");
-		}
+		}else {
+			Assert.fail("Promo Validation is failed");	
+			}
 	}
+	public static void verifyKrPromoChargecart(double data) {
+		String afterTotal = getText(mainCart.getEstimatedTotal());
+		Double afterCost = Double.valueOf(afterTotal.substring(1).replace(",",""));
+		System.out.println("After applying Promocode, Total Price = " + afterCost);
+
+		double verifyPromo = data - afterCost;
+
+		String promo = getText(mainCart.getPromoCharge());
+		Double promoDiscount =Double.valueOf(afterTotal.substring(1).replace(",",""));
+		System.out.println("Promo Discount = "+promoDiscount);
+
+		if (promoDiscount.equals(verifyPromo)) {
+			logger.log(Status.INFO, "Promocode added successfully to Order summery");
+		}else {
+			Assert.fail("Promo Validation is failed");	
+			}
+	}
+
 
 	public static void addPromotionalCodeAtSinglePage(String sheet, String testCase) {
 		
@@ -630,6 +663,7 @@ public class UIFunctions extends GenericMethods {
 
 			verifyPromoCharge(beforeCost);
 		} else {
+			
 			input(singlePage.getPromocode(), testData.get("KRVoucherID"), "Vocher Id");
 			click(singlePage.getApply(), "Check Promocode");
 		}
@@ -670,7 +704,7 @@ public class UIFunctions extends GenericMethods {
 		Double afterCost = Double.valueOf(afterTotal.replace("$", "").replace(",",""));
 		System.out.println("After applying Promocode, Total Price = " + afterCost);
 
-		double verifyPromo = data -afterCost ;
+		double verifyPromo =  data - afterCost ;
 
 		String promo = getText(shipMethod.getPromoCharge());
 		Double promoDiscount = Double.valueOf(promo.replace("$", "").replace("-", "").replace(",",""));

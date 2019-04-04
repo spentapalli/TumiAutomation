@@ -471,7 +471,7 @@ public class CartPage extends GenericMethods {
 	@FindBy(how = How.XPATH, using =("//div[@id='globalMessages']/div[1]"))
 	private WebElement ErrorPromoMsg;
 	
-	public WebElement getErrorPromoMsg() {
+	public WebElement getVoucherMsg() {
 		return ErrorPromoMsg;
 	}
 	@FindBy(how = How.XPATH, using =("//div[contains(text(),'Estimated Total')]/../div[2]"))
@@ -486,18 +486,20 @@ public class CartPage extends GenericMethods {
 	public WebElement getPromoMsg() {
 		return PromoMsg;
 	}
-	@FindBy(how = How.XPATH, using ="(//input[@id='removeVoucherCode'])[3]/../button")
+	@FindBy(how = How.XPATH, using =("(//input[@id='removeVoucherCode'])[3]/../button"))
 	private WebElement RemovePromo;
 	
 	public WebElement getRemovePromo() {
 		return RemovePromo;
 	}
-	@FindBy(how = How.XPATH, using ="(//form[@id='removeVoucherForm'])[2]/div[2]/span")
+	@FindBy(how = How.XPATH, using =("(//form[@id='removeVoucherForm'])[2]/div[2]/span"))
 	private WebElement PromoCharge;
 	
 	public WebElement getPromoCharge() {
 		return PromoCharge;
 	}
+	
+	
 	
 	
 }

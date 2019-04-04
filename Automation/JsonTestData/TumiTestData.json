@@ -67,8 +67,9 @@
 		"Pinnumber": "98779393",
 		"AltGiftCardnumber":"7018525193950000038",
 		"AltPinNumber":"56579075",
-		"CAVoucherID":"T05-H29B-C7AL-XK31",
+		"CAVoucherID":"T20-KWL9-Y7B4-YG99",
 		"KRVoucherID":"K10-DRP6-ZTPS-MXSP"
+		
 		
 	},
 	
@@ -106,7 +107,8 @@
 		"CVV": "123",
 		"ExipryMonth": "04",
 		"ExpiryYear": "2020",
-		"Phone": "12345678901"
+		"Phone": "12345678901",
+		"WrongVouchercode":"ABC-20K4-TNGY-DNPD-GN"
 
 	},
 	
@@ -226,8 +228,7 @@
 	
 		"stage2" : "https://www.hybris-stage2.tumi.com/",
 		"stage3" : "https://www.hybris-stage3.tumi.com/",
-		"prod": "https://www.tumi.com/",
-		"akamaiStage":"https://stg-hybris-akamai.tumi.com/"
+		"prod": "https://www.tumi.com/"
 	},
 	
 	"BrowserStack":{
