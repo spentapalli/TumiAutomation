@@ -31,7 +31,7 @@ public class VerifyCartPage extends GenericMethods {
 	Map<String, String> testdata = ReadTestData.getJsonData("TumiTestData", "Products");
 	
 	
-//	@Test(priority = 0, description = "TA-394, Verify Count of Products")
+	@Test(priority = 0, description = "TA-394, Verify Count of Products")
 	public void verifyProductCount() {
 		SoftAssert cartAssertions = new SoftAssert();
 		goToCartPageWithMoreQuantity();
@@ -47,7 +47,7 @@ public class VerifyCartPage extends GenericMethods {
 	}
 		
 
-	//@Test(priority = 1, description = "TA-393, Verify Product link")
+	@Test(priority = 1, description = "TA-393, Verify Product link")
 	public void verifyProductLink() {
 		goToCartPage();
 		String skuid = getText(mainCart.getSkuID());
@@ -60,7 +60,7 @@ public class VerifyCartPage extends GenericMethods {
 		}
 
 	}
-	//@Test(priority = 2, description = "TA-397, Verify Monogram")
+	@Test(priority = 2, description = "TA-397, Verify Monogram")
 	public void verifyMonogram() {
 		goToCartPage();
 		SoftAssert cartAssertions = new SoftAssert();
@@ -74,7 +74,7 @@ public class VerifyCartPage extends GenericMethods {
 
 	
 
-	//@Test(priority = 3, description =  " TA-396, Verify Remove Link")
+	@Test(priority = 3, description =  " TA-396, Verify Remove Link")
 	public void verifyRemoveLink() {
 		
 		goToCartPageWithMoreQuantity();
@@ -108,7 +108,7 @@ public class VerifyCartPage extends GenericMethods {
 	}
 	
 	
-	//@Test(priority = 5, description = "TA- 399, Verify Continue shopping.")
+	@Test(priority = 5, description = "TA- 399, Verify Continue shopping.")
 	public void verifyContinueShopping() {
 		ProductDetails.addProductForPDPtest(testdata.get("BreadCrumbsTest"));
 		click(pdp.getAddToCart(), "Add to cart");
@@ -138,12 +138,13 @@ public class VerifyCartPage extends GenericMethods {
 		
 	}
 	
-//	@Test(priority = 6, description = "TA-401, Verify Sign In")
+	//@Test(priority = 6, description = "TA-401, Verify Sign In") having issue here in stage 2.
 	public void verifySignInCartPage() {
 		goToCartPage();
 		userLogin("TumiTestData", "RegisteredOrders");
 	}
-	//@Test(priority = 7, description = "TA- 402, Verify PayPal link")
+	
+	@Test(priority = 7, description = "TA- 402, Verify PayPal link")
 	public void verifyPayPalLink() {
 		goToCartPage();
 		String value = getText(mainCart.getEstimatedTotal());
@@ -164,7 +165,7 @@ public class VerifyCartPage extends GenericMethods {
 		
 	}
 	
-	//@Test(priority = 8, description = "TA-403, Verify accordions/labels")
+	@Test(priority = 8, description = "TA-403, Verify accordions/labels")
 	public void verifyAccordions() {
 		BillingPage.verifyAccordions();
 		

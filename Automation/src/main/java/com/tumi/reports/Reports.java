@@ -47,6 +47,7 @@ import com.tumi.webPages.CartPage;
 import com.tumi.webPages.CheckOutPage;
 import com.tumi.webPages.ComparePage;
 import com.tumi.webPages.CreateAccountPage;
+import com.tumi.webPages.TumiTracerPage;
 import com.tumi.webPages.GiftServices;
 import com.tumi.webPages.GooglePage;
 import com.tumi.webPages.GuestBillingPage;
@@ -115,6 +116,7 @@ public class Reports {
 	public static String applicationUrl = null;
 	public static PGP pgp = null;
 	public static ComparePage compare = null;
+	public static TumiTracerPage tracer = null;
 
 	@BeforeSuite(alwaysRun = true)
 	public void extentReportConfiguration() {
@@ -230,6 +232,7 @@ public class Reports {
 		confirmation = new OrderConfirmationPage(driver);
 		pgp = new PGP(driver);
 		compare = new ComparePage(driver);
+		tracer = new TumiTracerPage(driver);
 	}
 
 	@AfterMethod(alwaysRun = true)
