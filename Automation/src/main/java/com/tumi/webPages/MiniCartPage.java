@@ -34,25 +34,24 @@ public class MiniCartPage extends GenericMethods {
 	 * 
 	 * @FindBy(how=How.XPATH,using="(//a[@href='/cart'])[2]")
 	 */
-	@FindBy(how = How.XPATH, using = "//div[@id='tm-panel-mini-cart']/div/div[2]/a[1]")
+	/*@FindBy(how = How.XPATH, using = "//div[@id='tm-panel-mini-cart']/div/div[2]/a[1]")
 	private WebElement krProceedtoCheck;
 	public WebElement getKrProceedToCheck() {
 		return explicitWait(krProceedtoCheck);
-	}
+	}*/
 
-	@FindBy(how = How.XPATH, using = "//div[@id='tm-panel-mini-cart']/div/div[2]/a[1]")
+	@FindBy(how = How.XPATH, using = "//div[@id='tm-panel-mini-cart']/div/div[3]/a[1]")
 	private WebElement proceedtoCheck;
 
-	//in suresh system getting "ëŒ€í•œë¯¼êµ­"
 	public WebElement getProceedCheckOut() {
 		
-		if (selectedCountry.contains("US")||
-				selectedCountry.contains("Canada")) {
+		/*if (selectedCountry.contains("US")||
+				selectedCountry.contains("Canada")) {*/
 			return explicitWait(proceedtoCheck);
-		} else {
+		} /*else {
 			return explicitWait(krProceedtoCheck);
 		}
-	}
+	}*/
 
 	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Proceed to Checkout')]")
 	private WebElement singlePageCheckout;
