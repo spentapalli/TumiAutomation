@@ -27,8 +27,8 @@ public class ShippingMethodPage extends GenericMethods {
 	Map<String, String> shipCharge = ReadTestData.getJsonData("TumiTestData", "ShippingCharges");
 	Map<String, String> alternate = ReadTestData.getJsonData("TumiTestData", "AlternateOptions");
 
-	@Test(priority = 0, description = "TA-62 Verify Shipping Method Page, "+"TA-432 verify shipping charges on selecting different shipping methods"+
-	"TA-431 verify 'Edit' to change Shipping address")
+	//@Test(priority = 0, description = "TA-62 Verify Shipping Method Page, "+"TA-432 verify shipping charges on selecting different shipping methods"+
+	//"TA-431 verify 'Edit' to change Shipping address")
 	public void verifyShippingMethodPage() {
 		SoftAssert shipPageAssertions = new SoftAssert();
 		goToShipMethodPage();

@@ -11,6 +11,7 @@ public class CreateAccountPage extends GenericMethods {
 	public CreateAccountPage() {
 		PageFactory.initElements(driver, this);
 	}
+
 //same as US For Korea
 	@FindBy(how = How.XPATH, using = "//input[@id='register.email']")
 	private WebElement registeremail;
@@ -19,7 +20,7 @@ public class CreateAccountPage extends GenericMethods {
 
 		return explicitWait(registeremail);
 	}
-	
+
 	@FindBy(how = How.XPATH, using = "//label[@id='register.email-error']")
 	private WebElement registeremailError;
 
@@ -35,7 +36,7 @@ public class CreateAccountPage extends GenericMethods {
 
 		return registerpassword;
 	}
-	
+
 	@FindBy(how = How.XPATH, using = "//label[@id='register.password-error']")
 	private WebElement registerpassError;
 
@@ -51,7 +52,7 @@ public class CreateAccountPage extends GenericMethods {
 
 		return registercheckPassword;
 	}
-	
+
 	@FindBy(how = How.XPATH, using = "//label[@id='register.checkPassword-error']")
 	private WebElement registercheckPassError;
 
@@ -67,7 +68,7 @@ public class CreateAccountPage extends GenericMethods {
 
 		return registerFname;
 	}
-	
+
 	@FindBy(how = How.XPATH, using = "//label[@id='register.fname-error']")
 	private WebElement registerFnameError;
 
@@ -83,7 +84,8 @@ public class CreateAccountPage extends GenericMethods {
 
 		return registerLname;
 	}
-	//Till last name loctaor are same for korea
+
+	// Till last name loctaor are same for korea
 	@FindBy(how = How.XPATH, using = "//label[@id='register.lname-error']")
 	private WebElement registerLnameError;
 
@@ -115,26 +117,24 @@ public class CreateAccountPage extends GenericMethods {
 
 		return registerCreate;
 	}
+
 	@FindBy(how = How.XPATH, using = "(//input[@type='submit'])[2]")
 	private WebElement KrsubmitAccount;
 
-	
 	@FindBy(how = How.XPATH, using = "//input[@value='Create Account']")
 	private WebElement submitAccount;
 
 	public WebElement getSubmitAccount() {
-		if (selectedCountry.contains("US")||
-				selectedCountry.contains("Canada")) {
-	
-			
-				return submitAccount;
-				
-			} else {
+		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
 
-				return KrsubmitAccount;
-			}
+			return submitAccount;
+
+		} else {
+
+			return KrsubmitAccount;
+		}
 	}
-	
+
 	@FindBy(how = How.XPATH, using = "//div[@id='tm-panel-register-confirmation']/header/p")
 	private WebElement registerConfirm;
 
@@ -142,7 +142,7 @@ public class CreateAccountPage extends GenericMethods {
 
 		return registerConfirm;
 	}
-	
+
 	@FindBy(how = How.XPATH, using = "//input[@id='register.subscribe']/following::div[1]/div")
 	private WebElement registerduplicate;
 
@@ -150,73 +150,87 @@ public class CreateAccountPage extends GenericMethods {
 
 		return registerduplicate;
 	}
-	
-	
-	//Korea
-	@FindBy(how=How.XPATH,using="//div[@id='tm-panel-login']/div[2]/a")
-private WebElement krAcccreateButton;
+
+	// Korea
+	@FindBy(how = How.XPATH, using = "//div[@id='tm-panel-login']/div[2]/a")
+	private WebElement krAcccreateButton;
+
 	public WebElement getkrAcccreateButton() {
 		return krAcccreateButton;
 	}
-	//selecting country
-	
-	@FindBy(how=How.XPATH,using="//i[@id='register.countrySelectBoxItArrow']")
+	// selecting country
+
+	@FindBy(how = How.XPATH, using = "//i[@id='register.countrySelectBoxItArrow']")
 	private WebElement krSelectcountryArrow;
+
 	public WebElement getkrAddSelectcountryArrow() {
 		return krSelectcountryArrow;
 	}
-	@FindBy(how=How.XPATH,using="//span[@id='register.countrySelectBoxIt']")
+
+	@FindBy(how = How.XPATH, using = "//span[@id='register.countrySelectBoxIt']")
 	private WebElement krSelectcountry;
+
 	public WebElement getkrAddSelectcountry() {
 		return krSelectcountry;
 	}
-	@FindBy(how=How.XPATH,using="//span[@id='register.accountDurationySelectBoxIt']")
+
+	@FindBy(how = How.XPATH, using = "//span[@id='register.accountDurationySelectBoxIt']")
 	private WebElement krselectyear;
+
 	public WebElement getkrSelectyear() {
-		return  krselectyear;
+		return krselectyear;
 	}
-		@FindBy(how=How.XPATH,using="//i[@id='register.accountDurationySelectBoxItArrow']")
-		private WebElement krselectyearArrow;
-		public WebElement getkrSelectyearArrow() {
-			return  krselectyearArrow;
-		
+
+	@FindBy(how = How.XPATH, using = "//i[@id='register.accountDurationySelectBoxItArrow']")
+	private WebElement krselectyearArrow;
+
+	public WebElement getkrSelectyearArrow() {
+		return krselectyearArrow;
+
 	}
-	@FindBy(how=How.XPATH,using="//div[@id='tm-panel-register']/div[2]/a")
+
+	@FindBy(how = How.XPATH, using = "//div[@id='tm-panel-register']/div[2]/a")
 	private WebElement krLogin;
+
 	public WebElement getkrLogin() {
 		return krLogin;
 
 	}
-	@FindBy(how=How.XPATH,using="//input[@id='register.subscribe']")
+
+	@FindBy(how = How.XPATH, using = "//input[@id='register.subscribe']")
 	private WebElement krfirstcheckbox;
+
 	public WebElement getkrfisrtCheckbox() {
 		return krfirstcheckbox;
 	}
-	
-	@FindBy(how=How.XPATH,using="//input[@id='registerLegalCheck']")
+
+	@FindBy(how = How.XPATH, using = "//input[@id='registerLegalCheck']")
 	private WebElement krCheckboxprivacy;
+
 	public WebElement getKrCheckboxprivacy() {
 		return krCheckboxprivacy;
 	}
-	@FindBy(how=How.XPATH,using="//ul[@id='register.countrySelectBoxItOptions']/li/a")
+
+	@FindBy(how = How.XPATH, using = "//ul[@id='register.countrySelectBoxItOptions']/li/a")
 	private WebElement krSelectcountryoption;
+
 	public WebElement getKrSelectcountry() {
 		return krSelectcountryoption;
 	}
-	
-	@FindBy(how=How.XPATH,using="//ul[@id='register.accountDurationySelectBoxItOptions']/li[2]/a")
+
+	@FindBy(how = How.XPATH, using = "//ul[@id='register.accountDurationySelectBoxItOptions']/li[2]/a")
 	private WebElement krSelectYearoption;
+
 	public WebElement getKrSelectYear() {
 		return krSelectYearoption;
-		
+
 	}
-	@FindBy(how=How.XPATH,using="//form[@id='tm-register-form']/div[9]/div")
+
+	@FindBy(how = How.XPATH, using = "//form[@id='tm-register-form']/div[9]/div")
 	private WebElement krErrorMessage;
+
 	public WebElement getkrErrorMessage() {
 		return krErrorMessage;
-		
+
+	}
 }
-}
-
-
-
