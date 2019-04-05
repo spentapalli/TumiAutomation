@@ -131,6 +131,15 @@ public class SinglePageCheckout extends GenericMethods {
 
 		return expressCheckout;
 	}
+	@FindBy(how = How.XPATH, using = "//input[@name='voucherCode']/../button")
+	private WebElement RemovePromo;
+
+	public WebElement getRemovePromo() {
+
+		return RemovePromo;
+	}
+	
+	
 }
 
 

@@ -632,7 +632,7 @@ public class UIFunctions extends GenericMethods {
 		double verifyPromo = data - afterCost;
 
 		String promo = getText(mainCart.getPromoCharge());
-		Double promoDiscount =Double.valueOf(afterTotal.substring(1).replace(",",""));
+		Double promoDiscount =Double.valueOf(promo.substring(2));
 		System.out.println("Promo Discount = "+promoDiscount);
 
 		if (promoDiscount.equals(verifyPromo)) {

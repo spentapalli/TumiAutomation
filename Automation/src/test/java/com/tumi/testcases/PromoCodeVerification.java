@@ -27,10 +27,10 @@ import java.util.Map;
 			 UIFunctions.addProductToCart("TumiTestData","Products");
 				click(pdp.getAddToCart(),"Add to cart");
 				click(minicart.getProceedCheckOut(), "Proceed to Cart");
+				  UIFunctions.addPromotionalCodeAtCart("TumiTestData", "VoucherCodeDetails");
 			try {
-			 if(mainCart.getPromoMsg().isDisplayed()) {
-					logger.log(Status.INFO, "Promocode applied successfully");
-			 } else if(mainCart.getVoucherMsg().equals(getProperty("voucher.error"))) {
+			 
+			 if(mainCart.getVoucherMsg().equals(getProperty("voucher.error"))) {
 				logger.log(Status.INFO, "Promocode is not entered ");	
 			} else if ((mainCart.getVoucherMsg()).equals(getProperty("voucher.wrong"))) {
 				logger.log(Status.INFO, "Voucher could not be Applied");
@@ -42,8 +42,8 @@ import java.util.Map;
 			} catch (Exception e) {
 				Assert.fail("Promocode couldn't be applied");
 			}
-			click(mainCart.getRemovePromo(),"Promo code is Removed");
-			 logger.log(Status.INFO,"Promo code is removed");
+			//click(mainCart.getRemovePromo(),"Promo code is Removed");
+			// logger.log(Status.INFO,"Promo code is removed");
 				  }	
 		
 			
