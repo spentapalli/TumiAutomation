@@ -30,14 +30,13 @@ import java.util.Map;
 				  UIFunctions.addPromotionalCodeAtCart("TumiTestData", "VoucherCodeDetails");
 			try {
 			 
-			 if(mainCart.getVoucherMsg().equals(getProperty("voucher.error"))) {
+			 if(getText(mainCart.getVoucherMsg()).equals(getProperty("voucher.error"))) {
 				logger.log(Status.INFO, "Promocode is not entered ");	
-			} else if ((mainCart.getVoucherMsg()).equals(getProperty("voucher.wrong"))) {
+			} else if (getText(mainCart.getVoucherMsg()).equals(getProperty("voucher.wrong"))) {
 				logger.log(Status.INFO, "Voucher could not be Applied");
-				} else if ((mainCart.getVoucherMsg()).equals(getProperty("voucher.alreadyapplied"))) {
+				} else if (getText(mainCart.getVoucherMsg()).equals(getProperty("voucher.alreadyapplied"))) {
 				logger.log(Status.INFO, "Voucher already been applied successfully");
-			} else if (getText(mainCart.getVoucherMsg()).equals(getProperty("voucher.successmsg"))) {
-					logger.log(Status.INFO, "Promocode applied successfully");
+				
 			}
 			} catch (Exception e) {
 				Assert.fail("Promocode couldn't be applied");
@@ -57,14 +56,13 @@ import java.util.Map;
 					  UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "VoucherCodeDetails");
 						
 						  try {
-								if (singlePage.getPromocodeRemove().isDisplayed()) {
-									logger.log(Status.INFO, "Promocode applied successfully");
-								} else if (getText(mainCart.getPromoSuccessMsg()).equals(getProperty("voucher.successmsg"))) {
+								
+								 if (getText(mainCart.getPromoSuccessMsg()).equals(getProperty("voucher.successmsg"))) {
 									logger.log(Status.INFO, "Promocode applied successfully");
 									
-								} else if ((mainCart.getPromoSuccessMsg()).equals(getProperty("voucher.alreadyapplied"))) {
+								} else if (getText(mainCart.getPromoSuccessMsg()).equals(getProperty("voucher.alreadyapplied"))) {
 									logger.log(Status.INFO, "Voucher already been applied successfully");
-								} else if ((mainCart.getPromoSuccessMsg().equals(getProperty("voucher.wrong")))) {
+								} else if (getText(mainCart.getPromoSuccessMsg()).equals(getProperty("voucher.wrong"))) {
 									logger.log(Status.INFO, "Voucher could not be Applied");
 								}
 							} catch (Exception e) {
@@ -95,9 +93,9 @@ import java.util.Map;
 								} else if (getText(mainCart.getPromoSuccessMsg()).equals(getProperty("voucher.successmsg"))) {
 									logger.log(Status.INFO, "Promocode applied successfully");
 									
-								} else if ((mainCart.getPromoSuccessMsg()).equals(getProperty("voucher.alreadyapplied"))) {
+								} else if (getText(mainCart.getPromoSuccessMsg()).equals(getProperty("voucher.alreadyapplied"))) {
 									logger.log(Status.INFO, "Voucher already been applied successfully");
-								} else if ((mainCart.getPromoSuccessMsg().equals(getProperty("voucher.wrong")))) {
+								} else if (getText(mainCart.getPromoSuccessMsg()).equals(getProperty("voucher.wrong"))) {
 									logger.log(Status.INFO, "Voucher could not be Applied");
 								}
 							} catch (Exception e) {
@@ -110,9 +108,6 @@ import java.util.Map;
 					  }
 				
 					  }
-				
-		
-				
 		
 				
 				

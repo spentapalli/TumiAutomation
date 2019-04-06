@@ -482,11 +482,11 @@ public class CartPage extends GenericMethods {
 			return kRMonoremove;
 		}
 	}
-	@FindBy(how = How.XPATH, using =("//div[@id='globalMessages']/div[1]"))
-	private WebElement ErrorPromoMsg;
+	@FindBy(how = How.XPATH, using =("//main[@id='navEnd']/div[2]/div[1]"))
+	private WebElement VoucherMsg;
 	
 	public WebElement getVoucherMsg() {
-		return ErrorPromoMsg;
+		return VoucherMsg;
 	}
 	@FindBy(how = How.XPATH, using =("//div[contains(text(),'Estimated Total')]/../div[2]"))
 	private WebElement BeforeCost;
