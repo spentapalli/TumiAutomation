@@ -40,7 +40,7 @@ public class MiniCartPage extends GenericMethods {
 		return explicitWait(krProceedtoCheck);
 	}
 
-	@FindBy(how = How.XPATH, using = "//div[@id='tm-panel-mini-cart']/div/div[2]/a[1]")
+	@FindBy(how = How.XPATH, using = "//div[@id='tm-panel-mini-cart']/div/div[3]/a[1]")
 	private WebElement proceedtoCheck;
 
 	//in suresh system getting "ëŒ€í•œë¯¼êµ­"
@@ -50,7 +50,7 @@ public class MiniCartPage extends GenericMethods {
 				selectedCountry.contains("Canada")) {
 			return explicitWait(proceedtoCheck);
 		} else {
-			return explicitWait(krProceedtoCheck);
+			return explicitWait(proceedtoCheck);
 		}
 	}
 
