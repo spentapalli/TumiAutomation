@@ -69,7 +69,7 @@ public class GenericMethods extends GlobalConstants {
 
 	public void login(String sheetName, String testCaseName) {
 		try {
-			Map<String, String> testData = ReadTestData.getJsonData(sheetName, testCaseName);
+ 			Map<String, String> testData = ReadTestData.getJsonData(sheetName, testCaseName);
 
 			click(home.getHeaderSignIn(), "Sign In");
 			input(home.getUserName(), testData.get("EmailID"), "Email Address");
@@ -80,7 +80,7 @@ public class GenericMethods extends GlobalConstants {
 				logger.log(Status.INFO, "Successfully logged with Regular user valid credentials");
 
 			} else {
-				Assert.fail("user signin is failed");
+				Assert.fail("User SignIn is Failed due to "+getText(driver.findElement(By.xpath("//span[text()='Forgot password?']/following::div[2]"))));
 			}
 			click(myacc.getMyAccountClose(), "Close My Account");
 			WaitForJStoLoad();

@@ -69,6 +69,8 @@ public class ProductsSortingFunctionality extends GenericMethods {
 	    }
 	}
 	
+	
+	
 	public ArrayList<Float> productsPrice(WebElement element,String msg) {
 		
 		ArrayList<Float> list = new ArrayList<Float>();
