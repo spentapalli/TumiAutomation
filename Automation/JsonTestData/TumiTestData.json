@@ -160,11 +160,13 @@
 	},
 	"TumiLogin": {
 		"EmailID": "skomma@coredatalabs.com",
-		"Password": "tumi1234"
+		"Password": "tumi1234",
+		"EmailID1" : "Tumi0604190837@gmail.com",
+		"Password1": "TumiiEcom@123456789"
 	},
 	"CreateAccount": {
 		"EmailID": "Tumi",
-		"Password": "TumiiEcom@123456789",
+		"Password": "TumiEcom@123456789",
 		"ConfirmPassword": "TumiiEcom@123456789",
 		"FirstName": "Tumi",
 		"LastName": "Ecom"

@@ -72,8 +72,8 @@ public class GenericMethods extends GlobalConstants {
  			Map<String, String> testData = ReadTestData.getJsonData(sheetName, testCaseName);
 
 			click(home.getHeaderSignIn(), "Sign In");
-			input(home.getUserName(), testData.get("EmailID"), "Email Address");
-			input(home.getPassWord(), testData.get("Password"), "Password");
+			input(home.getUserName(), testData.get("EmailID1"), "Email Address");
+			input(home.getPassWord(), testData.get("Password1"), "Password");
 			click(home.getLogOn(), "Login");
 
 			if (myacc.getSignout().isDisplayed()) {

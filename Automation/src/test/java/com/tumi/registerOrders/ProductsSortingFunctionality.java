@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.aventstack.extentreports.Status;
@@ -52,62 +53,68 @@ public class ProductsSortingFunctionality extends GenericMethods {
 			}
 		}
 	}
-	
+
 	@Test(priority = 2)
 	public void verifyProductPriceLowToHigh() {
-		
-		if(!decendingCheck(productsPrice(pdp.getSortLowToHigh(), "Price: Lowest to Highest"))){
-			logger.log(Status.ERROR,"Product Prices are Not is ascending order");
-	    }
+
+		if (!decendingCheck(productsPrice(pdp.getSortLowToHigh(), "Price: Lowest to Highest"))) {
+			logger.log(Status.ERROR, "Product Prices are Not is ascending order");
+		}
 	}
-	
+
 	@Test(priority = 3)
 	public void verifyProductPriceHighToLow() {
-		
-		if(!ascendingCheck(productsPrice(pdp.getSortHighToLow(), "Price Highest to Lowest"))){
-			logger.log(Status.ERROR,"Product Prices are Not is ascending order");
-	    }
+
+		if (!ascendingCheck(productsPrice(pdp.getSortHighToLow(), "Price Highest to Lowest"))) {
+			logger.log(Status.ERROR, "Product Prices are Not is ascending order");
+		}
 	}
-	
-	
-	
-	public ArrayList<Float> productsPrice(WebElement element,String msg) {
-		
+
+	@Test(priority = 4)
+	public void verifyFilterButton() {
+		navigateToPDP();
+		click(pdp.getHideFilters(), "Hide Filters");
+		if (!pdp.getShowFilters().isDisplayed()) {
+			Assert.fail("Hide Filter is not working");
+		}
+	}
+
+	public ArrayList<Float> productsPrice(WebElement element, String msg) {
+
 		ArrayList<Float> list = new ArrayList<Float>();
 		navigateToPDP();
 		webclick(pdp.getSortOptions(), "Sorting");
-		webclick(element,msg);
-		for (WebElement ele: pdp.getProductPrices()) {
+		webclick(element, msg);
+		for (WebElement ele : pdp.getProductPrices()) {
 			float price = Float.parseFloat(getText(ele).replace("$", "").replace(",", "").trim());
 			list.add(price);
 		}
 		return list;
 	}
-	
-	Boolean ascendingCheck(ArrayList<Float> data){         
-        for (int i = 0; i < data.size()-1; i++) {
-            if (data.get(i) > data.get(i+1)) {
-                return false;
-            }       
-         }
-         return true;
-     }
-	
-	Boolean decendingCheck(ArrayList<Float> data){         
-        for (int i = 0; i < data.size()-1; i++) {
-            if (data.get(i) < data.get(i+1)) {
-                return false;
-            }       
-         }
-         return true;
-     }
+
+	Boolean ascendingCheck(ArrayList<Float> data) {
+		for (int i = 0; i < data.size() - 1; i++) {
+			if (data.get(i) > data.get(i + 1)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	Boolean decendingCheck(ArrayList<Float> data) {
+		for (int i = 0; i < data.size() - 1; i++) {
+			if (data.get(i) < data.get(i + 1)) {
+				return false;
+			}
+		}
+		return true;
+	}
 
 	public void navigateToPDP() {
-		login("TumiTestData", "RegisteredOrders");
-		//mouseHover(pdp.getShopByBags());
+		login("TumiTestData", "TumiLogin");
+		// mouseHover(pdp.getShopByBags());
 		domClick(pdp.getShopByBriefcases(), "Briefcases");
-		String count[]= getText(pdp.getTotalProductsCount()).split(" ");
-		
-		
+		String count[] = getText(pdp.getTotalProductsCount()).split(" ");
+
 	}
 }
