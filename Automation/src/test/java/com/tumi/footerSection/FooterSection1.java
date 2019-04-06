@@ -14,9 +14,9 @@ import com.tumi.utilities.GenericMethods;
 import com.tumi.utilities.UIFunctions;
 
 public class FooterSection1 extends GenericMethods {
-	
+
 	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestDetails");
-	
+
 	@Test(priority = 0, description = "TA-320 Verify Follow Us( Facebook,Twitter, Pinterest, Instagaram and Youtube)")
 	public void verifyFollowUs() {
 
@@ -307,7 +307,7 @@ public class FooterSection1 extends GenericMethods {
 
 		driver.switchTo().window(childs.get(1));
 	}
-	
+
 	// This method has been used in TA-294 Verify Payment Methods
 	public void closeNewTab() {
 
@@ -388,7 +388,7 @@ public class FooterSection1 extends GenericMethods {
 		closeNewTab();
 		switchToNewParent();
 	}
-	
+
 	@Test(priority = 8, description = "TA-298 Verify Warranty")
 	public void verifyWarranty() {
 
@@ -599,7 +599,6 @@ public class FooterSection1 extends GenericMethods {
 	@Test(priority = 15, description = "TA-297 Verify Replacement Parts")
 	public void verifyReplacementParts() {
 
-
 		click(home.getReplacementParts(), "Replacement Parts");
 
 		click(home.getReplacementItem(), "Replacement Item");
@@ -660,21 +659,21 @@ public class FooterSection1 extends GenericMethods {
 		click(minicart.getContinueShopping(), "Continue Shopping");
 		driver.switchTo().defaultContent();
 	}
-	
+
 	@Test(priority = 17, description = "TA-321 SIGN UP FOR NEWSLETTER")
 	public void verifySignUpForNewsLetter() {
 
 		input(home.getSignUpForNewsLetterWithEmail(), testData.get("EmailID"), "SIGN UP FOR NEWSLETTER");
-		
+
 		if (home.getMessegeThrownl().isDisplayed()) {
 
-			logger.log(Status.INFO, "SignUP with E-mail verification is success");			
+			logger.log(Status.INFO, "SignUP with E-mail verification is success");
 		}
 	}
-	
+
 	@Test(priority = 18, description = "TA-321 SIGN UP FOR NEWSLETTER")
 	public void verifyTumiLogo() {
-		
+
 		click(home.getTumiLogo(), "Tumi Logo");
 
 		String tabName = driver.getTitle();
@@ -683,6 +682,6 @@ public class FooterSection1 extends GenericMethods {
 
 			logger.log(Status.INFO, "Homepage redirection is success");
 		}
-	}	
+	}
 
 }
