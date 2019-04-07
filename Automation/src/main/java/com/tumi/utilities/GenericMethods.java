@@ -87,7 +87,7 @@ public class GenericMethods extends GlobalConstants {
 		} catch (Exception e) {
 			Assert.fail("Fail to Login due to " + e.getMessage());
 		}
-		// removeExistingCart();
+		removeExistingCart();
 	}
 	public static void expressLogin(String sheetname, String testcase) {
 		try {
@@ -739,10 +739,11 @@ public class GenericMethods extends GlobalConstants {
 				Assert.fail("user signin is failed");
 			}
 
-			myacc.getMyAccountClose().click();
+			click(myacc.getMyAccountClose(), "Close My Account");
+			WaitForJStoLoad();
 		} catch (Exception e) {
 			Assert.fail("Fail to Login due to " + e.getMessage());
 		}
-		// removeExistingCart();
+		removeExistingCart();
 	}
 }

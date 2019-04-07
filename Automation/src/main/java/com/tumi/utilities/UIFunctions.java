@@ -195,7 +195,7 @@ public class UIFunctions extends GenericMethods {
 	public static void addProductToCart(String sheet, String testCase) {
 
 		UIFunctions.closeSignUp();
-		removeExistingCart();
+		//removeExistingCart();
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
 		Map<String, String> testData1 = ReadTestData.getJsonData("TumiTestData", "Environments");
 
