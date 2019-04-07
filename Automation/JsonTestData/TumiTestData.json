@@ -79,8 +79,10 @@
 		"CAPostCode": "V2S 8B7"
 	},
 	"RegisteredOrders": {
-		"EmailID": "skomma@coredatalabs.com",
-		"Password": "tumi1234",
+		"EmailID1": "skomma@coredatalabs.com",
+		"Password1": "tumi1234",
+		"EmailID" : "Tumi0604190837@gmail.com",
+		"Password": "TumiiEcom@123456789",
 		"SKUID": "022061D2"
 	},
 	"FailedOrder": {
