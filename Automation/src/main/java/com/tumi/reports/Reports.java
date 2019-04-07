@@ -117,7 +117,7 @@ public class Reports {
 	public static String applicationUrl = null;
 	public static PGP pgp = null;
 	public static ComparePage compare = null;
-	//public static TumiTracerPage tracer = null;
+	// public static TumiTracerPage tracer = null;
 
 	@BeforeSuite(alwaysRun = true)
 	public void extentReportConfiguration() {
@@ -232,7 +232,7 @@ public class Reports {
 		confirmation = new OrderConfirmationPage(driver);
 		pgp = new PGP(driver);
 		compare = new ComparePage(driver);
-		//tracer = new TumiTracerPage(driver);
+		// tracer = new TumiTracerPage(driver);
 	}
 
 	@AfterMethod(alwaysRun = true)
@@ -311,8 +311,9 @@ public class Reports {
 			// enableLocalTesting();
 
 			remoteAccess();
-			//testData.get("remoteBrowser"), testData.get("remoteBrowserVersion"), testData.get("remoteOS"),
-			//testData.get("remoteOsVersion")
+			// testData.get("remoteBrowser"), testData.get("remoteBrowserVersion"),
+			// testData.get("remoteOS"),
+			// testData.get("remoteOsVersion")
 			// sauceConnect();
 			getURL();
 
@@ -393,19 +394,21 @@ public class Reports {
 		 * caps.setCapability("os", remoteOS); caps.setCapability("os_version",
 		 * remoteOsVersion);
 		 */
-		
-		caps.setCapability("browserName", "iPhone");
-		caps.setCapability("device", "iPhone 8 Plus");
-		caps.setCapability("realMobile", "true");
-		caps.setCapability("os_version", "11");
-		
+
+		/*
+		 * caps.setCapability("browserName", "iPhone"); caps.setCapability("device",
+		 * "iPhone 8 Plus"); caps.setCapability("realMobile", "true");
+		 * caps.setCapability("os_version", "11");
+		 */
+		caps.setCapability("browser", "Safari");
+		caps.setCapability("browser_version", "12.0");
+		caps.setCapability("os", "OS X");
+		caps.setCapability("os_version", "Mojave");
+
 		caps.setCapability("browserstack.local", localTesting());
 		caps.setCapability("browserstack.debug", "true");
 		caps.setCapability("browserstack.networkLogs", "true");
-		// caps.setCapability("resolution", "1024x768");
-		caps.setCapability("browserstack.selenium_version", "3.141.59");
-
-		
+		//caps.setCapability("resolution", "1024x768");
 
 		Map<String, Object> prefs1 = new HashMap<String, Object>();
 
@@ -418,8 +421,8 @@ public class Reports {
 		options.addArguments("disable-infobars");
 		options.addArguments("--disable-notifications");
 		options.addArguments("--disable-extensions");
-		//options.merge(caps);
-		//caps.setCapability(ChromeOptions.CAPABILITY, options);
+		// options.merge(caps);
+		// caps.setCapability(ChromeOptions.CAPABILITY, options);
 		driver = new RemoteWebDriver(new URL(URL), caps);
 	}
 

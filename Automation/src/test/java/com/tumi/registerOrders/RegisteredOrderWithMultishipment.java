@@ -13,7 +13,6 @@ public class RegisteredOrderWithMultishipment extends GenericMethods {
 	
 	/* TA-286
 	 * Verify Order with 2 'Ready to Ship' Items with different SKU/sPurchase with Multishipment-Registered User
-	 * 
 	 */
 	@Test(description = " Verify Order with 2 'Ready to Ship' Items with different SKU/sPurchase with Multishipment-Registered User")
 	public void verifyRegisteredOrderWithMutlishipment()throws InterruptedException{

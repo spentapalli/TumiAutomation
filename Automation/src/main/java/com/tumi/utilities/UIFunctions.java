@@ -44,6 +44,11 @@ public class UIFunctions extends GenericMethods {
 			home.getKoreaSignupPopup().click();
 		} catch (Exception e) {
 		}
+		try {
+			driver.findElement(By.xpath("//a[contains(text(),'Close')]")).click();
+		} catch (Exception e) {
+		
+		}
 	}
 
 	public static void closeSignUpForUsProd() {
@@ -488,7 +493,7 @@ public class UIFunctions extends GenericMethods {
 				if (selectedCountry.contains("Canada")) {
 					for (WebElement ele : shipping.getListAddressLine1()) {
 						if (getText(ele).contains("ABBOTSFORD, BC")) {
-							delay(2000);
+							delay(5000);
 							click(ele, "AddressList");
 							break;
 						}
@@ -863,7 +868,7 @@ public class UIFunctions extends GenericMethods {
 			click(paypal.getPayPal(), "PayPal");
 		}
 		input(paypal.getPayPalEmail(), testData.get("EmailID"), "EmailID");
-		click(paypal.getNext(), "Next");
+		//click(paypal.getNext(), "Next");
 		input(paypal.getPayPalPassword(), testData.get("Password"), "Password");
 		click(paypal.getLogin(), "Login");
 		domClick(paypal.getCreditCard(), "Select Visa");

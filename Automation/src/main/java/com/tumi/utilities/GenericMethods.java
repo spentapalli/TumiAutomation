@@ -66,14 +66,26 @@ public class GenericMethods extends GlobalConstants {
 			e.printStackTrace();
 		}
 	}
+	
+	public void waitForSinglePage() {
+		for (int i = 1; i <=180; i++) {
+			delay(i);
+			if (!driver.getCurrentUrl().contains("express")) {
+				break;
+			}
+			if (i == 180) {
+				Assert.fail("Waited for 3 Minutes but still page is not loaded");
+			}
+		}
+	}
 
 	public void login(String sheetName, String testCaseName) {
 		try {
  			Map<String, String> testData = ReadTestData.getJsonData(sheetName, testCaseName);
 
 			click(home.getHeaderSignIn(), "Sign In");
-			input(home.getUserName(), testData.get("EmailID1"), "Email Address");
-			input(home.getPassWord(), testData.get("Password1"), "Password");
+			input(home.getUserName(), testData.get("EmailID"), "Email Address");
+			input(home.getPassWord(), testData.get("Password"), "Password");
 			click(home.getLogOn(), "Login");
 
 			if (myacc.getSignout().isDisplayed()) {
@@ -648,7 +660,7 @@ public class GenericMethods extends GlobalConstants {
 
 	public static void delay(int mili) {
 		try {
-			Thread.sleep(mili);
+			Thread.sleep(mili+000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -731,14 +743,11 @@ public class GenericMethods extends GlobalConstants {
 			input(home.getUserName(), testData.get("EmailID"), "Email Address");
 			input(home.getPassWord(), testData.get("Password"), "Password");
 			click(home.getLogOn(), "Login");
-
 			if (myacc.getSignout().isDisplayed()) {
 				logger.log(Status.INFO, "Successfully logged with Regular user valid credentials");
-
 			} else {
 				Assert.fail("user signin is failed");
 			}
-
 			click(myacc.getMyAccountClose(), "Close My Account");
 			WaitForJStoLoad();
 		} catch (Exception e) {
