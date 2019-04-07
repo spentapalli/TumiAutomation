@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Regression Tests Suite">
 
-	<!-- <test name="MiniCart">
+	<test name="MiniCart">
 		<classes>
 			<class name="com.tumi.cart.MiniCart">
 			</class>
@@ -14,7 +14,7 @@
 			<class name="com.tumi.cart.VerifyCart">
 			</class>
 		</classes>
-	</test> -->
+	</test>
 	<test name="GuestBackOrderWithMonogram">
 		<classes>
 			<class name="com.tumi.guestOrders.GuestBackOrderWithMonogram">
@@ -249,12 +249,12 @@
 			</class>
 		</classes>
 	</test>
-	<!-- <test name="VerifyCartPage">
+	<test name="VerifyCartPage">
 		<classes>
 			<class name="com.tumi.cart.VerifyCartPage">
 			</class>
 		</classes>
-	</test> -->
+	</test>
 	
 	<test name="FooterSection1">
 		<classes>
