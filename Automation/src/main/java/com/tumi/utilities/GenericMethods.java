@@ -743,14 +743,11 @@ public class GenericMethods extends GlobalConstants {
 			input(home.getUserName(), testData.get("EmailID"), "Email Address");
 			input(home.getPassWord(), testData.get("Password"), "Password");
 			click(home.getLogOn(), "Login");
-
 			if (myacc.getSignout().isDisplayed()) {
 				logger.log(Status.INFO, "Successfully logged with Regular user valid credentials");
-
 			} else {
 				Assert.fail("user signin is failed");
 			}
-
 			click(myacc.getMyAccountClose(), "Close My Account");
 			WaitForJStoLoad();
 		} catch (Exception e) {
