@@ -308,13 +308,8 @@ public class Reports {
 
 		if (browserName.equalsIgnoreCase("Remote")) {
 
-			// enableLocalTesting();
-
-			remoteAccess();
-			// testData.get("remoteBrowser"), testData.get("remoteBrowserVersion"),
-			// testData.get("remoteOS"),
-			// testData.get("remoteOsVersion")
-			// sauceConnect();
+			//remoteAccess();			
+			sauceConnect();
 			getURL();
 
 		} else {
@@ -430,12 +425,23 @@ public class Reports {
 
 		final String USERNAME = "skurry189";
 		final String ACCESS_KEY = "297e9a77-83f5-4acf-afa3-04c19a7d08b8";
-		final String URL = "https://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.saucelabs.com:443/wd/hub";
+		final String URL = "http://ondemand.saucelabs.com:80/wd/hub";
 
 		DesiredCapabilities capabilities = new DesiredCapabilities();
-		capabilities.setCapability("platform", "Windows 10");
-		capabilities.setCapability("version", "latest");
-		capabilities.setCapability("browserName", "chrome");
+		
+		  //set your user name and access key to run tests in Sauce
+        capabilities.setCapability("username", USERNAME);
+ 
+        //set your sauce labs access key
+        capabilities.setCapability("accessKey", ACCESS_KEY);
+		//set browser to Safari
+        capabilities.setCapability("browserName", "Safari");
+ 
+        //set operating system to macOS version 10.13
+        capabilities.setCapability("platform", "macOS 10.13");
+ 
+        //set the browser version to 11.1
+        capabilities.setCapability("version", "11.1");
 
 		try {
 			driver = new RemoteWebDriver(new URL(URL), capabilities);
