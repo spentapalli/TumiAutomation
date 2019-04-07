@@ -488,7 +488,7 @@ public class UIFunctions extends GenericMethods {
 				if (selectedCountry.contains("Canada")) {
 					for (WebElement ele : shipping.getListAddressLine1()) {
 						if (getText(ele).contains("ABBOTSFORD, BC")) {
-							delay(2000);
+							delay(5000);
 							click(ele, "AddressList");
 							break;
 						}
