@@ -21,7 +21,6 @@ public class CreateAccount extends GenericMethods {
 	public void newUserRegistration() {
 		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
 			email = testData.get("EmailID") + randomNumber() + "@gmail.com";
-
 			userAccount(email);
 			verifyAssertEquals(getText(register.getRegisterConfirm()), getProperty("registration.success"));
 			click(login.getLogOut(), "Sign Out");
