@@ -3,13 +3,10 @@ package com.tumi.footerSection;
 import static org.testng.Assert.assertTrue;
 import java.util.Map;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 import com.aventstack.extentreports.Status;
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
-import com.tumi.utilities.UIFunctions;
 
 public class FooterSection2 extends GenericMethods {
 
