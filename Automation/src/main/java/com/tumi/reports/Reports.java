@@ -310,10 +310,10 @@ public class Reports {
 
 			// enableLocalTesting();
 
-			remoteAccess();
+			//remoteAccess();
 			//testData.get("remoteBrowser"), testData.get("remoteBrowserVersion"), testData.get("remoteOS"),
 			//testData.get("remoteOsVersion")
-			// sauceConnect();
+			sauceConnect();
 			getURL();
 
 		} else {
