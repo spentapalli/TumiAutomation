@@ -19,7 +19,7 @@
 		</classes>
 	</test>
 	
-	<!-- <test name="GlobalLocatororder">
+	<test name="GlobalLocatororder">
 		<classes>
 			<class name="com.tumi.guestOrders.GlobalLocatororder">
 			</class>
@@ -66,6 +66,6 @@
 			<class name="com.tumi.registerOrders.RegisteredOrderWithMultishipment">
 			</class>
 		</classes>
-	</test> -->
+	</test>
 	
 </suite> <!-- Suite -->
