@@ -44,6 +44,11 @@ public class UIFunctions extends GenericMethods {
 			home.getKoreaSignupPopup().click();
 		} catch (Exception e) {
 		}
+		try {
+			driver.findElement(By.xpath("//a[contains(text(),'Close')]")).click();
+		} catch (Exception e) {
+		
+		}
 	}
 
 	public static void closeSignUpForUsProd() {
