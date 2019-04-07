@@ -308,8 +308,8 @@ public class Reports {
 
 		if (browserName.equalsIgnoreCase("Remote")) {
 
-			//remoteAccess();			
-			sauceConnect();
+			remoteAccess();			
+			//sauceConnect();
 			getURL();
 
 		} else {
@@ -390,15 +390,18 @@ public class Reports {
 		 * remoteOsVersion);
 		 */
 
+		
+		  caps.setCapability("browserName", "iPhone"); 
+		  caps.setCapability("device","iPhone 8 Plus"); 
+		  caps.setCapability("realMobile", "true");
+		  caps.setCapability("os_version", "11");
+		 
 		/*
-		 * caps.setCapability("browserName", "iPhone"); caps.setCapability("device",
-		 * "iPhone 8 Plus"); caps.setCapability("realMobile", "true");
-		 * caps.setCapability("os_version", "11");
+		 * caps.setCapability("browser", "Safari");
+		 * caps.setCapability("browser_version", "12.0"); caps.setCapability("os",
+		 * "OS X"); caps.setCapability("os_version", "Mojave");
+		 * caps.setCapability(CapabilityType.SUPPORTS_LOCATION_CONTEXT, "false");
 		 */
-		caps.setCapability("browser", "Safari");
-		caps.setCapability("browser_version", "12.0");
-		caps.setCapability("os", "OS X");
-		caps.setCapability("os_version", "Mojave");
 
 		caps.setCapability("browserstack.local", localTesting());
 		caps.setCapability("browserstack.debug", "true");
@@ -442,6 +445,8 @@ public class Reports {
  
         //set the browser version to 11.1
         capabilities.setCapability("version", "11.1");
+        
+        capabilities.setCapability(CapabilityType.SUPPORTS_LOCATION_CONTEXT, "true");
 
 		try {
 			driver = new RemoteWebDriver(new URL(URL), capabilities);
