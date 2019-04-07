@@ -215,4 +215,82 @@ public class MyAccountPage extends GenericMethods {
 	}
 	
 	//div[contains(text(),'Payment Card')]/following::section[1]/div[3]/form[1]/button
+	
+	//VIEW YOUR PROFILE
+	@FindBy(how = How.XPATH, using = "(//a[@title='View Your Profile'])[2]")
+	private WebElement viewYourProfile;
+
+	public WebElement getViewYourProfile() {
+		return viewYourProfile;
+
+	}
+	
+	@FindBy(how = How.XPATH, using = "//input[@id='profile.firstName']")
+	private WebElement	profileFirstName;
+
+	public WebElement getProfileFirstName() {
+		return profileFirstName;
+
+	}
+	
+	@FindBy(how = How.XPATH, using = "//input[@id='profile.lastName']")
+	private WebElement	profileSurName;
+
+	public WebElement getProfileSurName() {
+		return profileSurName;
+
+	}
+	
+	//PURCHASED ITEMS
+	@FindBy(how = How.XPATH, using = "//h1[contains(text(), 'My Purchases')]")
+	private WebElement	myPurchases;
+
+	public WebElement getMyPurchases() {
+		return myPurchases;
+
+	}
+	
+	//VIEW ORDER STATUS
+	@FindBy(how = How.XPATH, using = "(//a[@title='View Your Order Status'])[2]")
+	private WebElement viewOrderStatus;
+
+	public WebElement getViewOrderStatus() {
+		return viewOrderStatus;
+
+	}
+	
+	@FindBy(how = How.XPATH, using = "//div[contains(text(),'Processing')]")
+	private WebElement orderStatusMessege;
+
+	public WebElement getOrderStatusMessege() {
+		return orderStatusMessege;
+
+	}
+	
+	//REGISTER YOUR TUMI
+	@FindBy(how = How.XPATH, using = "//input[@id='tracerNumber']")
+	private WebElement tumiTracerNumber;
+
+	public WebElement getTumiTracerNumber() {
+		return tumiTracerNumber;
+
+	}
+
+	//REGISTER YOUR SERVICES
+	@FindBy(how = How.XPATH, using = "//a[contains(text(), 'Request a Repair ')]")
+	private WebElement requestRepair;
+
+	public WebElement getRequestRepair() {
+		return requestRepair;
+
+	}
+	
+	@FindBy(how = How.XPATH, using = "//a[contains(text(), 'Check Repair Status')]")
+	private WebElement checkRepairStatus;
+
+	public WebElement getCheckRepairStatus() {
+		return checkRepairStatus;
+
+	}
+	
 }

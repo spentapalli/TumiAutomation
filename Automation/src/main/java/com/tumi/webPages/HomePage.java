@@ -1301,4 +1301,13 @@ public class HomePage extends GenericMethods {
 		return messegeThrown;
 	}
 
+	//CURRENT USER
+	@FindBy(how = How.XPATH, using = "(//a[contains(text(), 'Hi,')])[2]")
+	private WebElement currentUser;
+
+	public WebElement getCurrentUser() {
+
+		return currentUser;
+	}
+	
 }
