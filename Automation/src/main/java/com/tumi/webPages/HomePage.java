@@ -1226,6 +1226,22 @@ public class HomePage extends GenericMethods {
 		return orderHistory;
 	}
 
+	@FindBy(how = How.XPATH, using = "//a[contains(text(), 'Full Order Details')]")
+	private WebElement fullOrderDetails;
+
+	public WebElement getFullOrderDetails() {
+
+		return fullOrderDetails;
+	}
+	
+	@FindBy(how = How.XPATH, using = "//h1[contains(text(),'Order Details')]")
+	private WebElement orderDetailsHeader;
+
+	public WebElement getOrderDetailsHeader() {
+
+		return orderDetailsHeader;
+	}
+	
 	// REGISTER YOUR TUMI
 	@FindBy(how = How.XPATH, using = "//a[contains(text(), 'Register Your Tumi')]")
 	private WebElement registerYourTumi;
@@ -1249,6 +1265,14 @@ public class HomePage extends GenericMethods {
 	public WebElement getSignInTumiTracerPage() {
 
 		return signInTumiTracerPage;
+	}
+	
+	@FindBy(how = How.XPATH, using = "//form[@id='tumiTracerForm']/div/h3/following::div[1]/div/div[1]")
+	private WebElement tumiTracerRegistrationHeader;
+
+	public WebElement getTumiTracerRegistrationHeader() {
+
+		return tumiTracerRegistrationHeader;
 	}
 
 	// TUMI LOGO
