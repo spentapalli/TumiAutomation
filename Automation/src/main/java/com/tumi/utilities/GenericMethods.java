@@ -30,6 +30,7 @@ import org.testng.asserts.SoftAssert;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.tumi.dataProvider.ReadTestData;
+import com.tumi.reports.Reports;
 
 /**
  * @author Suuresh
@@ -80,6 +81,7 @@ public class GenericMethods extends GlobalConstants {
 	}
 
 	public void login(String sheetName, String testCaseName) {
+		String url=driver.getCurrentUrl();
 		try {
  			Map<String, String> testData = ReadTestData.getJsonData(sheetName, testCaseName);
 
@@ -99,7 +101,7 @@ public class GenericMethods extends GlobalConstants {
 		} catch (Exception e) {
 			Assert.fail("Fail to Login due to " + e.getMessage());
 		}
-		removeExistingCart();
+		removeExistingCart(url);
 	}
 	public static void expressLogin(String sheetname, String testcase) {
 		try {
@@ -698,15 +700,18 @@ public class GenericMethods extends GlobalConstants {
 		return Integer.parseInt(name);
 	}
 
-	public static void removeExistingCart() {
+	public static void removeExistingCart(String data) {
 
 		try {
 			UIFunctions.delay(3000);
 			System.out.println("Mini Cart Remove");
 			if (!getText(home.getMinicartCount()).contains("0")) {
-				doubleClick(home.getMinicart());
-				UIFunctions.delay(5000);
-				click(minicart.getProceedCheckOut(), "Proceed to Checkout");
+				
+				String url=data.replace("#", "")+"cart";
+				driver.get(url);
+				//doubleClick(home.getMinicart());
+			//	UIFunctions.delay(5000);
+				//click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 				try {
 					String cartCount = getText(driver.findElement(By.xpath("//h2[contains(text(),'Shopping Cart')]")));
 					String count = cartCount.substring(cartCount.length() - 3).replace(")", "").replace("(", "").trim();

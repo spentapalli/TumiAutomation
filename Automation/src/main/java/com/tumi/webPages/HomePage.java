@@ -137,6 +137,22 @@ public class HomePage extends GenericMethods {
 		}
 	}
 
+	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Location: United States')]")
+	private WebElement akamaiSelectCountry;
+
+	public WebElement getAkamaiSelectCountry() {
+			return akamaiSelectCountry;
+		
+	}
+
+	@FindBy(how = How.XPATH, using = "(// a[contains(text(),'United States')])[2]")
+	private WebElement akamaiSelectUS;
+
+	public WebElement getAkamaiSelectUS() {
+		return akamaiSelectUS;
+
+	}
+
 	@FindBy(how = How.XPATH, using = "(//a[contains(text(),'United States')])[2]")
 	private WebElement selectCountryUS;
 
@@ -1233,7 +1249,7 @@ public class HomePage extends GenericMethods {
 
 		return fullOrderDetails;
 	}
-	
+
 	@FindBy(how = How.XPATH, using = "//h1[contains(text(),'Order Details')]")
 	private WebElement orderDetailsHeader;
 
@@ -1241,7 +1257,7 @@ public class HomePage extends GenericMethods {
 
 		return orderDetailsHeader;
 	}
-	
+
 	// REGISTER YOUR TUMI
 	@FindBy(how = How.XPATH, using = "//a[contains(text(), 'Register Your Tumi')]")
 	private WebElement registerYourTumi;
@@ -1266,7 +1282,7 @@ public class HomePage extends GenericMethods {
 
 		return signInTumiTracerPage;
 	}
-	
+
 	@FindBy(how = How.XPATH, using = "//form[@id='tumiTracerForm']/div/h3/following::div[1]/div/div[1]")
 	private WebElement tumiTracerRegistrationHeader;
 
@@ -1292,7 +1308,7 @@ public class HomePage extends GenericMethods {
 
 		return signUpForNewsLetterWithEmail;
 	}
-	
+
 	@FindBy(how = How.XPATH, using = "//span[@id='responseAlreadySignedUpFooter']")
 	private WebElement messegeThrown;
 
@@ -1301,7 +1317,7 @@ public class HomePage extends GenericMethods {
 		return messegeThrown;
 	}
 
-	//CURRENT USER
+	// CURRENT USER
 	@FindBy(how = How.XPATH, using = "(//a[contains(text(), 'Hi,')])[2]")
 	private WebElement currentUser;
 
@@ -1309,5 +1325,5 @@ public class HomePage extends GenericMethods {
 
 		return currentUser;
 	}
-	
+
 }
