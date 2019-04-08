@@ -30,7 +30,6 @@ import org.testng.asserts.SoftAssert;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.tumi.dataProvider.ReadTestData;
-import com.tumi.reports.Reports;
 
 /**
  * @author Suuresh
@@ -67,9 +66,9 @@ public class GenericMethods extends GlobalConstants {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void waitForSinglePage() {
-		for (int i = 1; i <=180; i++) {
+		for (int i = 1; i <= 180; i++) {
 			delay(i);
 			if (!driver.getCurrentUrl().contains("express")) {
 				break;
@@ -81,9 +80,8 @@ public class GenericMethods extends GlobalConstants {
 	}
 
 	public void login(String sheetName, String testCaseName) {
-		String url=driver.getCurrentUrl();
 		try {
- 			Map<String, String> testData = ReadTestData.getJsonData(sheetName, testCaseName);
+			Map<String, String> testData = ReadTestData.getJsonData(sheetName, testCaseName);
 
 			click(home.getHeaderSignIn(), "Sign In");
 			input(home.getUserName(), testData.get("EmailID"), "Email Address");
@@ -94,28 +92,30 @@ public class GenericMethods extends GlobalConstants {
 				logger.log(Status.INFO, "Successfully logged with Regular user valid credentials");
 
 			} else {
-				Assert.fail("User SignIn is Failed due to "+getText(driver.findElement(By.xpath("//span[text()='Forgot password?']/following::div[2]"))));
+				Assert.fail("User SignIn is Failed due to "
+						+ getText(driver.findElement(By.xpath("//span[text()='Forgot password?']/following::div[2]"))));
 			}
 			click(myacc.getMyAccountClose(), "Close My Account");
 			WaitForJStoLoad();
 		} catch (Exception e) {
 			Assert.fail("Fail to Login due to " + e.getMessage());
 		}
-		removeExistingCart(url);
+		removeExistingCart();
 	}
+
 	public static void expressLogin(String sheetname, String testcase) {
 		try {
 			Map<String, String> testData = ReadTestData.getJsonData(sheetname, testcase);
 
-			click(singlePage.getExpressCheckout(),"Sign in for Express checkout");
+			click(singlePage.getExpressCheckout(), "Sign in for Express checkout");
 			delay(2000);
 			input(home.getUserName(), testData.get("EmailID"), "Email Address");
 			input(home.getPassWord(), testData.get("Password"), "Password");
 			click(home.getLogOn(), "Login");
-			//delay(10000);
+			// delay(10000);
 			elementToBeClickable(myacc.getSignout());
 			try {
-				if (guestBillPage.getItemsInCart().isDisplayed()||myacc.getSignout().isDisplayed()) {
+				if (guestBillPage.getItemsInCart().isDisplayed() || myacc.getSignout().isDisplayed()) {
 					logger.log(Status.INFO, "Successfully logged with Regular user valid credentials");
 				}
 
@@ -129,10 +129,10 @@ public class GenericMethods extends GlobalConstants {
 	}
 
 	public static void click(WebElement element, String buttonName) {
-		
+
 		try {
 			if (element.isDisplayed() && element.isEnabled()) {
-				
+
 				element.click();
 				logger.log(Status.INFO, "Clicked on " + buttonName);
 				WaitForJStoLoad();
@@ -661,7 +661,7 @@ public class GenericMethods extends GlobalConstants {
 
 	public static void delay(int mili) {
 		try {
-			Thread.sleep(mili+000);
+			Thread.sleep(mili + 000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -700,18 +700,22 @@ public class GenericMethods extends GlobalConstants {
 		return Integer.parseInt(name);
 	}
 
-	public static void removeExistingCart(String data) {
+	public static void removeExistingCart() {
 
 		try {
 			UIFunctions.delay(3000);
 			System.out.println("Mini Cart Remove");
 			if (!getText(home.getMinicartCount()).contains("0")) {
-				
-				String url=data.replace("#", "")+"cart";
-				driver.get(url);
-				//doubleClick(home.getMinicart());
-			//	UIFunctions.delay(5000);
-				//click(minicart.getProceedCheckOut(), "Proceed to Checkout");
+				doubleClick(home.getMinicart());
+				UIFunctions.delay(5000);
+				if (minicart.getProceedCheckOut().isDisplayed() && minicart.getProceedCheckOut().isEnabled()) {
+					click(minicart.getProceedCheckOut(), "Proceed to Checkout");
+				} else {
+					Assert.fail(
+							"Mini Cart Section is not displayed, "
+							+ "evenafter user clicks on Mini Cart. Same issue observed Functional Testing as well");
+				}
+
 				try {
 					String cartCount = getText(driver.findElement(By.xpath("//h2[contains(text(),'Shopping Cart')]")));
 					String count = cartCount.substring(cartCount.length() - 3).replace(")", "").replace("(", "").trim();
