@@ -129,8 +129,8 @@ public class GenericMethods extends GlobalConstants {
 	public static void click(WebElement element, String buttonName) {
 		
 		try {
-			if (element.isDisplayed()) {
-				// Clicking on WebElement
+			if (element.isDisplayed() && element.isEnabled()) {
+				
 				element.click();
 				logger.log(Status.INFO, "Clicked on " + buttonName);
 				WaitForJStoLoad();
@@ -141,12 +141,11 @@ public class GenericMethods extends GlobalConstants {
 		} catch (Exception e) {
 			Assert.fail(buttonName + " " + "is not Enabled or Unable to interact at this point");
 		}
-		// captureScreen(buttonName);
 	}
 
 	public static void webclick(WebElement element, String buttonName) {
 		try {
-			if (element.isDisplayed()) {
+			if (element.isDisplayed() && element.isEnabled()) {
 				element.click();
 				logger.log(Status.INFO, "Clicked on " + buttonName);
 			}
@@ -158,7 +157,7 @@ public class GenericMethods extends GlobalConstants {
 
 	public static void input(WebElement element, String Value, String fieldName) {
 		try {
-			if (element.isDisplayed()) {
+			if (element.isDisplayed() && element.isEnabled()) {
 				// To clear the existed value
 				element.clear();
 				// To enter current value
