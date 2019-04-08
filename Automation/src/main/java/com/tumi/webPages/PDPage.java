@@ -489,6 +489,22 @@ public class PDPage extends GenericMethods {
 	public WebElement getBreadCrumbSubCategory(){
 		return breadCrumbSubCategory;
 	}
+	
+	@FindBy(how=How.XPATH,using="//span[contains(text(),'Show Filters')]")
+	private WebElement showFilters;
+	
+	public WebElement getShowFilters(){
+		return showFilters;
+	}
+	
+	@FindBy(how=How.XPATH,using="//span[contains(text(),'Hide Filters')]")
+	private WebElement hideFilters;
+	
+	public WebElement getHideFilters(){
+		return hideFilters;
+	}
+	
+	
 
 	
 	

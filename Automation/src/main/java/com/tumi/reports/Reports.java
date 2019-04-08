@@ -48,7 +48,7 @@ import com.tumi.webPages.CartPage;
 import com.tumi.webPages.CheckOutPage;
 import com.tumi.webPages.ComparePage;
 import com.tumi.webPages.CreateAccountPage;
-import com.tumi.webPages.TumiTracerPage;
+//import com.tumi.webPages.TumiTracerPage;
 import com.tumi.webPages.GiftServices;
 import com.tumi.webPages.GooglePage;
 import com.tumi.webPages.GuestBillingPage;
@@ -117,7 +117,7 @@ public class Reports {
 	public static String applicationUrl = null;
 	public static PGP pgp = null;
 	public static ComparePage compare = null;
-	public static TumiTracerPage tracer = null;
+	// public static TumiTracerPage tracer = null;
 
 	@BeforeSuite(alwaysRun = true)
 	public void extentReportConfiguration() {
@@ -180,7 +180,6 @@ public class Reports {
 			}
 		}
 		UIFunctions.selectCountry();
-		// driver.navigate().to("https://ca.stg-hybris-akamai.tumi.com");
 	}
 
 	@AfterMethod(alwaysRun = true)
@@ -233,7 +232,7 @@ public class Reports {
 		confirmation = new OrderConfirmationPage(driver);
 		pgp = new PGP(driver);
 		compare = new ComparePage(driver);
-		tracer = new TumiTracerPage(driver);
+		// tracer = new TumiTracerPage(driver);
 	}
 
 	@AfterMethod(alwaysRun = true)
@@ -309,13 +308,8 @@ public class Reports {
 
 		if (browserName.equalsIgnoreCase("Remote")) {
 
-			// enableLocalTesting();
-			/*
-			 * remoteAccess(testData.get("remoteBrowser"),
-			 * testData.get("remoteBrowserVersion"), testData.get("remoteOS"),
-			 * testData.get("remoteOsVersion"));
-			 */
-			sauceConnect();
+			remoteAccess();			
+			//sauceConnect();
 			getURL();
 
 		} else {
@@ -382,23 +376,37 @@ public class Reports {
 	}
 
 	@SuppressWarnings("unchecked")
-	public static void remoteAccess(String remoteBrowser, String remoteBrowserVersion, String remoteOS,
-			String remoteOsVersion) throws Exception {
+	public static void remoteAccess() throws Exception {
 
 		final String USERNAME = "kurrysuresh1";
 		final String AUTOMATE_KEY = "zKp1VrRqTkUXqi4efALq";
 		String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
 		DesiredCapabilities caps = new DesiredCapabilities();
 
-		caps.setCapability("browser", remoteBrowser);
-		caps.setCapability("browser_version", remoteBrowserVersion);
-		caps.setCapability("os", remoteOS);
-		caps.setCapability("os_version", remoteOsVersion);
+		/*
+		 * caps.setCapability("browser", remoteBrowser);
+		 * caps.setCapability("browser_version", remoteBrowserVersion);
+		 * caps.setCapability("os", remoteOS); caps.setCapability("os_version",
+		 * remoteOsVersion);
+		 */
+
+		
+		  caps.setCapability("browserName", "iPhone"); 
+		  caps.setCapability("device","iPhone 8 Plus"); 
+		  caps.setCapability("realMobile", "true");
+		  caps.setCapability("os_version", "11");
+		 
+		/*
+		 * caps.setCapability("browser", "Safari");
+		 * caps.setCapability("browser_version", "12.0"); caps.setCapability("os",
+		 * "OS X"); caps.setCapability("os_version", "Mojave");
+		 * caps.setCapability(CapabilityType.SUPPORTS_LOCATION_CONTEXT, "false");
+		 */
+
 		caps.setCapability("browserstack.local", localTesting());
 		caps.setCapability("browserstack.debug", "true");
 		caps.setCapability("browserstack.networkLogs", "true");
-		caps.setCapability("resolution", "1024x768");
-		caps.setCapability("browserstack.selenium_version", "3.13.0");
+		//caps.setCapability("resolution", "1024x768");
 
 		Map<String, Object> prefs1 = new HashMap<String, Object>();
 
@@ -411,23 +419,36 @@ public class Reports {
 		options.addArguments("disable-infobars");
 		options.addArguments("--disable-notifications");
 		options.addArguments("--disable-extensions");
-		options.merge(caps);
-		caps.setCapability(ChromeOptions.CAPABILITY, options);
+		// options.merge(caps);
+		// caps.setCapability(ChromeOptions.CAPABILITY, options);
 		driver = new RemoteWebDriver(new URL(URL), caps);
 	}
-	
+
 	public static void sauceConnect() {
+
+		final String USERNAME = "skurry189";
+		final String ACCESS_KEY = "297e9a77-83f5-4acf-afa3-04c19a7d08b8";
+		final String URL = "http://ondemand.saucelabs.com:80/wd/hub";
+
+		DesiredCapabilities capabilities = new DesiredCapabilities();
 		
-		  final String USERNAME = "skurry189";
-	      final String ACCESS_KEY = "297e9a77-83f5-4acf-afa3-04c19a7d08b8";
-	      final String URL = "https://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.saucelabs.com:443/wd/hub";
-	      
-	      DesiredCapabilities capabilities = new DesiredCapabilities();
-	      capabilities.setCapability("platform", "Windows 10");
-	      capabilities.setCapability("version", "latest");
-	      capabilities.setCapability("browserName", "chrome");
-	      
-	      try {
+		  //set your user name and access key to run tests in Sauce
+        capabilities.setCapability("username", USERNAME);
+ 
+        //set your sauce labs access key
+        capabilities.setCapability("accessKey", ACCESS_KEY);
+		//set browser to Safari
+        capabilities.setCapability("browserName", "Safari");
+ 
+        //set operating system to macOS version 10.13
+        capabilities.setCapability("platform", "macOS 10.13");
+ 
+        //set the browser version to 11.1
+        capabilities.setCapability("version", "11.1");
+        
+        capabilities.setCapability(CapabilityType.SUPPORTS_LOCATION_CONTEXT, "true");
+
+		try {
 			driver = new RemoteWebDriver(new URL(URL), capabilities);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -473,7 +494,7 @@ public class Reports {
 		} else if (applicationUrl.toLowerCase().equalsIgnoreCase("akamaiS2")) {
 
 			if (!browserName.equals("ie")) {
-				driver.get(testData.get("akamaiStage"));
+				driver.get(testData.get("akamaiS2"));
 			}
 		} else if (applicationUrl.toLowerCase().equalsIgnoreCase("prod")) {
 

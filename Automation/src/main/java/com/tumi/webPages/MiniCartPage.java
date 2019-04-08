@@ -34,30 +34,35 @@ public class MiniCartPage extends GenericMethods {
 	 * 
 	 * @FindBy(how=How.XPATH,using="(//a[@href='/cart'])[2]")
 	 */
-	/*@FindBy(how = How.XPATH, using = "//div[@id='tm-panel-mini-cart']/div/div[2]/a[1]")
-	private WebElement krProceedtoCheck;
-	public WebElement getKrProceedToCheck() {
-		return explicitWait(krProceedtoCheck);
-	}*/
+	/*
+	 * @FindBy(how = How.XPATH, using =
+	 * "//div[@id='tm-panel-mini-cart']/div/div[2]/a[1]") private WebElement
+	 * krProceedtoCheck; public WebElement getKrProceedToCheck() { return
+	 * explicitWait(krProceedtoCheck); }
+	 */
 
 	@FindBy(how = How.XPATH, using = "//div[@id='tm-panel-mini-cart']/div/div[3]/a[1]")
 	private WebElement proceedtoCheck;
 
 	public WebElement getProceedCheckOut() {
 		
-		/*if (selectedCountry.contains("US")||
-				selectedCountry.contains("Canada")) {*/
+		if (selectedCountry.contains("US")||
+				selectedCountry.contains("Canada")) {
 			return explicitWait(proceedtoCheck);
-		} /*else {
-			return explicitWait(krProceedtoCheck);
-		}
-	}*/
 
+		} else {
+			return explicitWait(proceedtoCheck);
+
+		} /*
+		 * else { return explicitWait(krProceedtoCheck); >>>>>>> branch 'master' of
+		 * https://github.com/spentapalli/TumiAutomation.git } }
+		 */
+	}
 	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Proceed to Checkout')]")
 	private WebElement singlePageCheckout;
 
 	public WebElement getSinglePageCheckout() {
-          
+
 		return explicitWait(singlePageCheckout);
 	}
 
@@ -68,15 +73,12 @@ public class MiniCartPage extends GenericMethods {
 	private WebElement continueShopping;
 
 	public WebElement getContinueShopping() {
-		if (selectedCountry.contains("US")||
-				selectedCountry.contains("Canada")) {
+		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
 			return explicitWait(continueShopping);
 		} else {
-			
+
 			return explicitWait(krContinueShopping);
 		}
 	}
-	
-	
-	
+
 }

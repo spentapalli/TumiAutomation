@@ -3,9 +3,9 @@
 <suite name="Suite">
 	<test thread-count="5" name="Test">
 		<classes>
-			<class name="orders.guest.OrderWithGiftBox">
+			<class name="com.tumi.guestOrders.OrderWithGiftBox">
 				<methods>
-					<include name="backOrderWithGiftBox">
+					<include name="preOrderWithGiftBoxnMsgAsGuest">
 					</include>
 				</methods>
 			</class>

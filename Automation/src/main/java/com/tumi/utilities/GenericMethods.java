@@ -66,10 +66,22 @@ public class GenericMethods extends GlobalConstants {
 			e.printStackTrace();
 		}
 	}
+	
+	public void waitForSinglePage() {
+		for (int i = 1; i <=180; i++) {
+			delay(i);
+			if (!driver.getCurrentUrl().contains("express")) {
+				break;
+			}
+			if (i == 180) {
+				Assert.fail("Waited for 3 Minutes but still page is not loaded");
+			}
+		}
+	}
 
 	public void login(String sheetName, String testCaseName) {
 		try {
-			Map<String, String> testData = ReadTestData.getJsonData(sheetName, testCaseName);
+ 			Map<String, String> testData = ReadTestData.getJsonData(sheetName, testCaseName);
 
 			click(home.getHeaderSignIn(), "Sign In");
 			input(home.getUserName(), testData.get("EmailID"), "Email Address");
@@ -80,14 +92,14 @@ public class GenericMethods extends GlobalConstants {
 				logger.log(Status.INFO, "Successfully logged with Regular user valid credentials");
 
 			} else {
-				Assert.fail("user signin is failed");
+				Assert.fail("User SignIn is Failed due to "+getText(driver.findElement(By.xpath("//span[text()='Forgot password?']/following::div[2]"))));
 			}
 			click(myacc.getMyAccountClose(), "Close My Account");
 			WaitForJStoLoad();
 		} catch (Exception e) {
 			Assert.fail("Fail to Login due to " + e.getMessage());
 		}
-		// removeExistingCart();
+		removeExistingCart();
 	}
 	public static void expressLogin(String sheetname, String testcase) {
 		try {
@@ -117,8 +129,8 @@ public class GenericMethods extends GlobalConstants {
 	public static void click(WebElement element, String buttonName) {
 		
 		try {
-			if (element.isDisplayed()) {
-				// Clicking on WebElement
+			if (element.isDisplayed() && element.isEnabled()) {
+				
 				element.click();
 				logger.log(Status.INFO, "Clicked on " + buttonName);
 				WaitForJStoLoad();
@@ -129,12 +141,11 @@ public class GenericMethods extends GlobalConstants {
 		} catch (Exception e) {
 			Assert.fail(buttonName + " " + "is not Enabled or Unable to interact at this point");
 		}
-		// captureScreen(buttonName);
 	}
 
 	public static void webclick(WebElement element, String buttonName) {
 		try {
-			if (element.isDisplayed()) {
+			if (element.isDisplayed() && element.isEnabled()) {
 				element.click();
 				logger.log(Status.INFO, "Clicked on " + buttonName);
 			}
@@ -146,7 +157,7 @@ public class GenericMethods extends GlobalConstants {
 
 	public static void input(WebElement element, String Value, String fieldName) {
 		try {
-			if (element.isDisplayed()) {
+			if (element.isDisplayed() && element.isEnabled()) {
 				// To clear the existed value
 				element.clear();
 				// To enter current value
@@ -648,7 +659,7 @@ public class GenericMethods extends GlobalConstants {
 
 	public static void delay(int mili) {
 		try {
-			Thread.sleep(mili);
+			Thread.sleep(mili+000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -731,18 +742,16 @@ public class GenericMethods extends GlobalConstants {
 			input(home.getUserName(), testData.get("EmailID"), "Email Address");
 			input(home.getPassWord(), testData.get("Password"), "Password");
 			click(home.getLogOn(), "Login");
-
 			if (myacc.getSignout().isDisplayed()) {
 				logger.log(Status.INFO, "Successfully logged with Regular user valid credentials");
-
 			} else {
 				Assert.fail("user signin is failed");
 			}
-
-			myacc.getMyAccountClose().click();
+			click(myacc.getMyAccountClose(), "Close My Account");
+			WaitForJStoLoad();
 		} catch (Exception e) {
 			Assert.fail("Fail to Login due to " + e.getMessage());
 		}
-		// removeExistingCart();
+		removeExistingCart();
 	}
 }
