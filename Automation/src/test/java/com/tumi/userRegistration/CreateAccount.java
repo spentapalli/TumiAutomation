@@ -25,8 +25,10 @@ public class CreateAccount extends GenericMethods {
 			email = testData.get("EmailID") + randomNumber() + "@gmail.com";
 			userAccount(email);
 			if (register.getRegisterError().isDisplayed()) {
-				
+
 				Assert.fail(getText(register.getRegisterError()));
+			} else if (register.getRegisterEmailError().isDisplayed()) {
+				Assert.fail(getText(register.getRegisterEmailError()));
 			}
 			verifyAssertEquals(getText(register.getRegisterConfirm()), getProperty("registration.success"));
 			click(login.getLogOut(), "Sign Out");
