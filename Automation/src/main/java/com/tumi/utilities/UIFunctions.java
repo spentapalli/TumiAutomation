@@ -10,6 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 import com.aventstack.extentreports.Status;
 import com.tumi.dataProvider.ReadTestData;
@@ -379,7 +380,7 @@ public class UIFunctions extends GenericMethods {
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
 
 		// domClick(mono.getComplimentaryMono(),"Monogram");
-		click(mono.getAddPersonalization(), "Add Personalization");
+		domClick(mono.getAddPersonalization(), "Add Personalization");
 		input(mono.getFirstMonoInput(), testData.get("FirstMonoInput"), "First Mono Input");
 		input(mono.getSecondMonoInput(), testData.get("SecondMonoInput"), "Second Mono Input");
 		input(mono.getThirdMonoInput(), testData.get("ThirdMonoInput"), "Third Mono Input");
@@ -714,6 +715,7 @@ public class UIFunctions extends GenericMethods {
 	}
 
 	public static void verifyPromoCharge(double data) {
+		SoftAssert promoAsser = new SoftAssert();
 		delay(2000);
 
 		String afterTotal = getText(shipMethod.getBeforeTotal());
@@ -739,8 +741,9 @@ public class UIFunctions extends GenericMethods {
 		if (promoDiscount.equals(verifyPromo)) {
 			logger.log(Status.INFO, "Promocode added successfully to Order summery");
 		}else {
-			Assert.fail("Promo code validation is failed");
+			promoAsser.fail("Promo code validation is failed");
 		}
+		promoAsser.assertAll();
 	}
 
 	public static void addGiftMessage(String sheet, String testCase) {

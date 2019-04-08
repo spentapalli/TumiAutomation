@@ -103,7 +103,7 @@ public class VerifyGiftBox extends GenericMethods{
 				}
 			}
 		} catch (Exception e) {
-			giftAsser.fail("Gift Message not added, Please Check");
+			giftAsser.fail("Gift Message not added");
 		}
 		}else {
 			domClick(gift.getCheckStandardGift(), "Stanadard gift box");

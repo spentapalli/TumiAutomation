@@ -165,6 +165,7 @@ public class BillingPage extends GenericMethods {
 		} else {
 			giftcardAsser.fail("Verification of Billing page Accordions is Failed");
 		}
+		giftcardAsser.assertAll();
 	}
-
+	
 }
