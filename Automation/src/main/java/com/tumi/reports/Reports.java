@@ -71,6 +71,7 @@ import com.tumi.webPages.SignInBillingPage;
 import com.tumi.webPages.SignInShippingPage;
 import com.tumi.webPages.SinglePageCheckout;
 import com.tumi.webPages.TumiStudio;
+import com.tumi.webPages.TumiTracerPage;
 
 /**
  * @author Suuresh clean test -Dsurefire.suiteXmlFiles=regressionTests.xml
@@ -117,7 +118,7 @@ public class Reports {
 	public static String applicationUrl = null;
 	public static PGP pgp = null;
 	public static ComparePage compare = null;
-	// public static TumiTracerPage tracer = null;
+	public static TumiTracerPage tracer = null;
 
 	@BeforeSuite(alwaysRun = true)
 	public void extentReportConfiguration() {
@@ -232,7 +233,7 @@ public class Reports {
 		confirmation = new OrderConfirmationPage(driver);
 		pgp = new PGP(driver);
 		compare = new ComparePage(driver);
-		// tracer = new TumiTracerPage(driver);
+		tracer = new TumiTracerPage(driver);
 	}
 
 	@AfterMethod(alwaysRun = true)

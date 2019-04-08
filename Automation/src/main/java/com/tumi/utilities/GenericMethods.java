@@ -761,6 +761,6 @@ public class GenericMethods extends GlobalConstants {
 		} catch (Exception e) {
 			Assert.fail("Fail to Login due to " + e.getMessage());
 		}
-		removeExistingCart();
+		//removeExistingCart();
 	}
 }
