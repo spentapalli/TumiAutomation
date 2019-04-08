@@ -58,7 +58,7 @@ public class ShippingMethodPage extends GenericMethods {
 				logger.log(Status.INFO, "Promocode applied successfully");
 			} else if (getText(mainCart.getPromoSuccessMsg()).equals(getProperty("voucher.successmsg"))) {
 				logger.log(Status.INFO, "Promocode applied successfully");
-			} else if ((mainCart.getPromoSuccessMsg()).equals(getProperty("voucher.alreadyapplied"))) {
+			} else if (getText(mainCart.getPromoSuccessMsg()).equals(getProperty("voucher.alreadyapplied"))) {
 				logger.log(Status.INFO, "Voucher already been applied successfully");
 			}
 		} catch (Exception e) {

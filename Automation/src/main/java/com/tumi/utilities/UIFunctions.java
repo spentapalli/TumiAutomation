@@ -646,8 +646,18 @@ public class UIFunctions extends GenericMethods {
 	public static void addPromotionalCodeAtSinglePage(String sheet, String testCase) {
 		
 		String beforeTotal = getText(shipMethod.getBeforeTotal());
-		Double beforeCost = Double.valueOf(beforeTotal.replace("$", "").replace(",",""));
+		Double beforeCost = 0.00D;
+		Double beforeCostkr= 0.00D;
+		if(selectedCountry.contains("US")||selectedCountry.contains("Canada")) {
+		beforeCost = Double.valueOf(beforeTotal.replace("$", "").replace(",",""));
 		System.out.println("Before select Price = " + beforeCost);
+		}
+		
+		else {
+	    beforeCostkr = Double.valueOf(beforeTotal.substring(1).replace(",",""));
+		System.out.println("Before select Price = " + beforeCostkr);
+		}
+		
 
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
 		if (selectedCountry.contains("US")) {
@@ -666,6 +676,7 @@ public class UIFunctions extends GenericMethods {
 			
 			input(singlePage.getPromocode(), testData.get("KRVoucherID"), "Vocher Id");
 			click(singlePage.getApply(), "Check Promocode");
+			verifyPromoCharge(beforeCostkr);
 		}
 		// delay(2000);
 
@@ -701,13 +712,23 @@ public class UIFunctions extends GenericMethods {
 		delay(2000);
 
 		String afterTotal = getText(shipMethod.getBeforeTotal());
-		Double afterCost = Double.valueOf(afterTotal.replace("$", "").replace(",",""));
+		Double afterCost = 0.00D;
+		if(selectedCountry.contains("US")||selectedCountry.contains("Canada")) {
+		afterCost = Double.valueOf(afterTotal.replace("$", "").replace(",",""));
+		}else {
+		afterCost = Double.valueOf(afterTotal.substring(1).replace(",",""));
+		}
 		System.out.println("After applying Promocode, Total Price = " + afterCost);
 
 		double verifyPromo =  data - afterCost ;
 
 		String promo = getText(shipMethod.getPromoCharge());
-		Double promoDiscount = Double.valueOf(promo.replace("$", "").replace("-", "").replace(",",""));
+		Double promoDiscount = 0.00D;
+		if(selectedCountry.contains("US")||selectedCountry.contains("Canada")) {
+		promoDiscount = Double.valueOf(promo.replace("$", "").replace("-", "").replace(",",""));
+		}else {
+	    promoDiscount = Double.valueOf(promo.substring(2).replace("-", "").replace(",",""));	
+		}
 		System.out.println("Promo Discount ="+promoDiscount);
 
 		if (promoDiscount.equals(verifyPromo)) {

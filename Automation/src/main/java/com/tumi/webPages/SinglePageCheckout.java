@@ -92,10 +92,17 @@ public class SinglePageCheckout extends GenericMethods {
 	@FindBy(how = How.XPATH, using = "//button[text()='Apply']")
 	private WebElement ApplyClick;
 
-	public WebElement getApply() {
+	@FindBy(how = How.XPATH, using = "//button[contains(@class,'tm-button tm-white-button')]")
+	private WebElement KrApplyClick;
 
-		return explicitWait(ApplyClick);
+	public WebElement getApply() {
+		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
+			return explicitWait(ApplyClick);
+		} else {
+			return explicitWait(KrApplyClick);
+		}
 	}
+
 	@FindBy(how = How.XPATH, using = "//input[@name='voucherCode']/../../following-sibling::div[2]")
 	private WebElement PromocodeMessage;
 
@@ -103,6 +110,7 @@ public class SinglePageCheckout extends GenericMethods {
 
 		return explicitWait(PromocodeMessage);
 	}
+
 	@FindBy(how = How.XPATH, using = "(//button[@type='submit'])[2]")
 	private WebElement PromocodeRemove;
 
@@ -110,6 +118,7 @@ public class SinglePageCheckout extends GenericMethods {
 
 		return explicitWait(PromocodeRemove);
 	}
+
 	@FindBy(how = How.XPATH, using = "//div[contains(text(),'Subtotal')]/../following-sibling::div[1]")
 	private WebElement subtotalCode;
 
@@ -117,6 +126,7 @@ public class SinglePageCheckout extends GenericMethods {
 
 		return subtotalCode;
 	}
+
 	@FindBy(how = How.XPATH, using = "(//button[@type='submit'])[2]/following::div[1]")
 	private WebElement RemovePromoMsg;
 
@@ -124,6 +134,7 @@ public class SinglePageCheckout extends GenericMethods {
 
 		return RemovePromoMsg;
 	}
+
 	@FindBy(how = How.XPATH, using = "//button[contains(@class,'singlePageCheckout-login')]")
 	private WebElement expressCheckout;
 
@@ -131,6 +142,7 @@ public class SinglePageCheckout extends GenericMethods {
 
 		return expressCheckout;
 	}
+
 	@FindBy(how = How.XPATH, using = "//input[@name='voucherCode']/../button")
 	private WebElement RemovePromo;
 
@@ -138,8 +150,5 @@ public class SinglePageCheckout extends GenericMethods {
 
 		return RemovePromo;
 	}
-	
-	
+
 }
-
-

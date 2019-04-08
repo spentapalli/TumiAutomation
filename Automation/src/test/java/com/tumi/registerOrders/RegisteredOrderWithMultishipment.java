@@ -15,7 +15,7 @@ public class RegisteredOrderWithMultishipment extends GenericMethods {
 	 * Verify Order with 2 'Ready to Ship' Items with different SKU/sPurchase with Multishipment-Registered User
 	 * 
 	 */
-	@Test(description = " Verify Order with 2 'Ready to Ship' Items with different SKU/sPurchase with Multishipment-Registered User")
+	@Test(description = "TA-286, Verify Order with 2 'Ready to Ship' Items with different SKU/sPurchase with Multishipment-Registered User")
 	public void verifyRegisteredOrderWithMutlishipment()throws InterruptedException{
 		
 		login("TumiTestData", "RegisteredOrders");
