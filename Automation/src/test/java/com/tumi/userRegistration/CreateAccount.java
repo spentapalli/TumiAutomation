@@ -5,6 +5,7 @@ package com.tumi.userRegistration;
 import java.util.Map;
 
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import com.aventstack.extentreports.Status;
 import com.tumi.dataProvider.ReadTestData;
@@ -58,23 +59,30 @@ public class CreateAccount extends GenericMethods {
 
 	@Test(priority = 3)
 	public void registrationValidations() {
+
+		SoftAssert softAssertion = new SoftAssert();
+
 		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
 			click(home.getHeaderSignIn(), "Sign In");
 			click(register.getRegisterCreate(), "Create an Account");
 			click(register.getSubmitAccount(), "Submit Account Details");
 
-			softAssertEquals(getText(register.getRegisterError()), getProperty("registration.error"));
+			softAssertion.assertEquals(getText(register.getRegisterError()), getProperty("registration.error"));
 
-			softAssertEquals(getText(register.getRegisterEmailError()), getProperty("registration.email"));
+			softAssertion.assertEquals(getText(register.getRegisterEmailError()), getProperty("registration.email"));
 
-			softAssertEquals(getText(register.getRegisterPassError()), getProperty("registration.password"));
+			softAssertion.assertEquals(getText(register.getRegisterPassError()), getProperty("registration.password"));
 
-			softAssertEquals(getText(register.getRegisterCheckPassError()),
+			softAssertion.assertEquals(getText(register.getRegisterCheckPassError()),
 					getProperty("registration.confirm.password"));
 
-			softAssertEquals(getText(register.getRegisterFNameError()), getProperty("registration.firstName"));
+			softAssertion.assertEquals(getText(register.getRegisterFNameError()),
+					getProperty("registration.firstName"));
 
-			softAssertEquals(getText(register.getRegisterLNameError()), getProperty("registration.lastName"));
+			softAssertion.assertEquals(getText(register.getRegisterLNameError()), getProperty("registration.lastName"));
+
+			softAssertion.assertAll();
+
 		} else {
 			click(home.getHeaderSignIn(), "Sign In");
 			click(register.getRegisterCreate(), "Create an Account");
