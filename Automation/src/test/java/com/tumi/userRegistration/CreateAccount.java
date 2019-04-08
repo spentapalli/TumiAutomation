@@ -4,6 +4,7 @@ package com.tumi.userRegistration;
 
 import java.util.Map;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -23,6 +24,10 @@ public class CreateAccount extends GenericMethods {
 		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
 			email = testData.get("EmailID") + randomNumber() + "@gmail.com";
 			userAccount(email);
+			if (register.getRegisterError().isDisplayed()) {
+				
+				Assert.fail(getText(register.getRegisterError()));
+			}
 			verifyAssertEquals(getText(register.getRegisterConfirm()), getProperty("registration.success"));
 			click(login.getLogOut(), "Sign Out");
 		} else {
