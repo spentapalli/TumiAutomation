@@ -22,7 +22,7 @@ public class TopNavigation extends GenericMethods {
 	 * TA-76 Verify Top Navigation.
 	 */
 
-	@Test(priority = 0, description = " Sprint 3- TA-342/ TA-76 Verify Location")
+	/*@Test(priority = 0, description = " Sprint 3- TA-342/ TA-76 Verify Location")
 	public void verifyLocation() {
 		if (selectedCountry.contains("US")) {
 			delay(2000);
@@ -45,8 +45,8 @@ public class TopNavigation extends GenericMethods {
 		click(home.getSelectCountry(), "Country");
 		click(home.getSelectCountryUSforTop(), "US");
 		String url = driver.getCurrentUrl();
-		if (!url.contains(testData.get("USurl"))) {
-			Assert.fail("Verification of US country selection failed");
+		if (!url.contains("www")) {
+			Assert.fail("When select US, Page couldn't navigated to US country");
 		} else {
 			logger.log(Status.INFO, "Country Selection of US is successfull");
 		}
@@ -59,8 +59,8 @@ public class TopNavigation extends GenericMethods {
 		click(home.getSelectCountryCAforTop(), "Canada");
 		String caUrl = driver.getCurrentUrl();
 		UIFunctions.closeSignUp();
-		if (!caUrl.contains(testData.get("CAurl"))) {
-			Assert.fail("Verification of Canada country selection failed");
+		if (!caUrl.contains("ca")) {
+			Assert.fail("When select Canada, Page couldn't navigated to Canada country");
 		} else {
 			logger.log(Status.INFO, "Country Selection of Canada is successfull");
 		}
@@ -72,8 +72,8 @@ public class TopNavigation extends GenericMethods {
 		click(home.getSelectCountryKRforTop(), "Korea");
 		String krUrl = driver.getCurrentUrl();
 		UIFunctions.closeSignUp();
-		if (!krUrl.contains(testData.get("KRurl"))) {
-			Assert.fail("Verification of Korea country selection failed");
+		if (!krUrl.contains("kr")) {
+			Assert.fail("When select Korea, Page couldn't navigated to Korea country");
 		} else {
 			logger.log(Status.INFO, "Country Selection of Korea is successfull");
 		}
@@ -90,7 +90,7 @@ public class TopNavigation extends GenericMethods {
 				logger.log(Status.INFO, "Selection of Sapnish language is successfull");
 			}
 		} catch (Exception e) {
-			Assert.fail("Select Sapnish language failed");
+			Assert.fail("Page couldn't displayed in Sapnish language");
 		}
 		click(home.getSelectLanguageContainer(), "Language");
 		click(home.getSelectFrenchLanguage(), "French");
@@ -99,7 +99,7 @@ public class TopNavigation extends GenericMethods {
 				logger.log(Status.INFO, "Selection of French language is successfull");
 			}
 		} catch (Exception e) {
-			Assert.fail("Selecting French language is failed");
+			Assert.fail("Page couldn't displayed in French language");
 		}
 		
 	}
@@ -126,7 +126,7 @@ public class TopNavigation extends GenericMethods {
 
 		click(home.getHeaderCustomerService(), "Customer Service");
 		HomePageVerification.verifyHomePageResponse();
-	}
+	}*/
 
 	@Test(priority = 4, description = " Sprint 3- TA-346/ TA-76 Verify SignIn")
 	public void verifySignIn() {

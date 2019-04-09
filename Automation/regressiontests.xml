@@ -150,12 +150,7 @@
 			</class>
 		</classes>
 	</test>
-	<test name="GmailLogin">
-		<classes>
-			<class name="com.tumi.login.GmailLogin">
-			</class>
-		</classes>
-	</test>
+	
 	<test name="GoogleLogin">
 		<classes>
 			<class name="com.tumi.login.GoogleLogin">
@@ -231,12 +226,7 @@
 			</class>
 		</classes>
 	</test>
-	<test name="InvalidCredentials">
-		<classes>
-			<class name="com.tumi.testcases.InvalidCredentials">
-			</class>
-		</classes>
-	</test>
+	
 	<test name="ProductDetails">
 		<classes>
 			<class name="com.tumi.testcases.ProductDetails">
