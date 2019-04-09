@@ -318,8 +318,8 @@ public class Reports {
 
 		if (browserName.equalsIgnoreCase("Remote")) {
 
-			remoteAccess();			
-			//sauceConnect();
+			//remoteAccess();			
+			sauceConnect();
 			getURL();
 
 		} else {
@@ -456,7 +456,6 @@ public class Reports {
         //set the browser version to 11.1
         capabilities.setCapability("version", "11.1");
         
-        capabilities.setCapability(CapabilityType.SUPPORTS_LOCATION_CONTEXT, "true");
 
 		try {
 			driver = new RemoteWebDriver(new URL(URL), capabilities);

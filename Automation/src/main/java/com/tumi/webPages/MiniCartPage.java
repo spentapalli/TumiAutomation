@@ -41,7 +41,7 @@ public class MiniCartPage extends GenericMethods {
 	 * explicitWait(krProceedtoCheck); }
 	 */
 
-	@FindBy(how = How.XPATH, using = "//div[@id='tm-panel-mini-cart']/div/div[3]/a[1]")
+	@FindBy(how = How.XPATH, using = "//a[@title='Proceed to Checkout']")
 	private WebElement proceedtoCheck;
 
 	public WebElement getProceedCheckOut() {

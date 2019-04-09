@@ -88,10 +88,10 @@
 					<version>2.22.1</version>
 					<configuration>
 						<systemPropertyVariables>
-							<browsername>Remote</browsername>
+							<browsername>firefox</browsername>
 							<countryName>US</countryName>
-							<applicationUrl>prod</applicationUrl>
-							<localTesting>true</localTesting>
+							<applicationUrl>akamaiS2</applicationUrl>
+							<localTesting>false</localTesting>
 						</systemPropertyVariables>
 						<forkCount>0</forkCount>
 						<executable>C:\Program Files\Java\jdk1.8.0_161\bin\javac.exe</executable>
