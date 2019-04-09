@@ -218,6 +218,7 @@ public class UIFunctions extends GenericMethods {
 				driver.navigate().to(pdpURL);
 
 			}else if (applicationUrl.equals("akamaiS2")) {
+			
 
 				final String pdpURL = GlobalConstants.akamaiUrl + "/p/" + testData.get("SKUID");
 				driver.navigate().to(pdpURL);

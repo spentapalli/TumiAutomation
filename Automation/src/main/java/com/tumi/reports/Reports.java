@@ -178,12 +178,13 @@ public class Reports {
 				UIFunctions.closeSignUp();
 			} else {
 				getURL();
+				
 			}
 		}
 		UIFunctions.selectCountry();
 	}
 
-	@AfterMethod(alwaysRun = true)
+	//@AfterMethod(alwaysRun = true)
 	public static void closeBrowser() {
 
 		if (browserName.equalsIgnoreCase("Remote")) {
@@ -234,7 +235,15 @@ public class Reports {
 		pgp = new PGP(driver);
 		compare = new ComparePage(driver);
 		tracer = new TumiTracerPage(driver);
+		if(driver.getCurrentUrl().contains("akamai")) {
+			GenericMethods.click(home.getAkamaiSelectCountry(), "Country");
+			GenericMethods.click(home.getAkamaiSelectUS(), "US");
+			UIFunctions.delay(2000);
+			UIFunctions.closeSignUp();
+		}
 	}
+
+	
 
 	@AfterMethod(alwaysRun = true)
 	public void verifyTestResult(ITestResult result) {

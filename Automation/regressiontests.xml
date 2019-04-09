@@ -15,7 +15,7 @@
 			</class>
 		</classes>
 	</test> -->
-	<test name="GuestBackOrderWithMonogram">
+	 <test name="GuestBackOrderWithMonogram">
 		<classes>
 			<class name="com.tumi.guestOrders.GuestBackOrderWithMonogram">
 			</class>
@@ -26,7 +26,7 @@
 			<class name="com.tumi.guestOrders.GuestOrderFail">
 			</class>
 		</classes>
-	</test>
+	</test> 
 	<test name="GuestOrdersWithGiftMsg">
 		<classes>
 			<class name="com.tumi.guestOrders.GuestOrdersWithGiftMsg">
@@ -76,14 +76,7 @@
 			</class>
 		</classes>
 	</test>
-
-	<test name="TenderChange">
-		<classes>
-			<class name="com.tumi.guestOrders.TenderChange">
-			</class>
-		</classes>
-	</test>
-	<test name="ThreeOrderForGuestUser">
+<test name="ThreeOrderForGuestUser">
 		<classes>
 			<class name="com.tumi.guestOrders.ThreeOrderForGuestUser">
 			</class>
@@ -107,12 +100,6 @@
 			</class>
 		</classes>
 	</test>
-	<test name="HomepPageTumiLogo">
-		<classes>
-			<class name="com.tumi.home.HomepPageTumiLogo">
-			</class>
-		</classes>
-	</test>
 	<test name="OutOfStockProduct">
 		<classes>
 			<class name="com.tumi.home.OutOfStockProduct">
@@ -122,12 +109,6 @@
 	<test name="PGPFilters">
 		<classes>
 			<class name="com.tumi.home.PGPFilters">
-			</class>
-		</classes>
-	</test>
-	<test name="PGPFiltersForKorea">
-		<classes>
-			<class name="com.tumi.home.PGPFiltersForKorea">
 			</class>
 		</classes>
 	</test>
