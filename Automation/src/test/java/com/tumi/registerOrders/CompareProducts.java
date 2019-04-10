@@ -20,6 +20,7 @@ public class CompareProducts extends GenericMethods {
 		delay(2000);
 		mouseHover(compare.getBagsCategory());
 		click(compare.getCrossbodiesInBags(), "Crossbodies");
+		delay(2000);
 		Assert.assertEquals(pdp.getCompareLabelSize().size(), 3);
 		System.out.println(pdp.getCompareLabelSize().size());
 		// for (int i = 1; i < pdp.getCompareProductsList().size(); i++) {
@@ -66,8 +67,22 @@ public class CompareProducts extends GenericMethods {
 
 		domClick(pdp.getCompareNow(), "Compare Products");
 		logger.log(Status.INFO, "User is able to add products to compare and successfully navigated to Compare page.");
-
+		
+		//In akamai
 		try {
+			delay(2000);
+			if (compare.getProductInSuggestions().isDisplayed()) {
+				click(compare.getCompareInSuggestions(), "Compare");
+				logger.log(Status.INFO, "Successfully added 3rd product to compare in Compare page");
+			} 
+		} catch (Exception e) {
+			
+				Assert.fail("Product suggestions not enabled to add one more product to compare");
+		}
+		
+		//In stage2
+
+		/*try {
 			if (compare.getProductInSuggestions().isDisplayed()) {
 				click(compare.getProductInSuggestions(), "Compare");
 				logger.log(Status.INFO, "Successfully added 3rd product to compare in Compare page");
@@ -76,15 +91,7 @@ public class CompareProducts extends GenericMethods {
 			
 				Assert.fail("Product suggestions not enabled to add one more product to compare");
 		}
-		/*
-		 * try { for (int i = 1; i < compare.getProductSuggestionsList().size(); i++) {
-		 * 
-		 * click(compare.getProductInSuggestions(),"Compare"); logger.log(Status.INFO,
-		 * "Successfully added 3rd product to compare in Compare page"); break;
-		 * 
-		 * } } catch (Exception e) { Assert.
-		 * fail("Product suggestions not enabled to add one more product to compare"); }
-		 */
+		*/
 
 	}
 }

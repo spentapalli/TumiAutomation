@@ -89,6 +89,13 @@ public class PGP extends GenericMethods {
 
 		return QuickShopAddtoCart;
 	}
+	
+	@FindBy(how = How.XPATH, using = "//span[contains(@class,'filters-show-text')]")
+	private WebElement showFilters;
+
+	public WebElement getShowFilters() {
+		return explicitWait(showFilters);
+	}
 
 	@FindBy(how = How.XPATH, using = "//div[@id='Color_group-ctrl']/ul/li/form/label")
 	private List<WebElement> colorsList;

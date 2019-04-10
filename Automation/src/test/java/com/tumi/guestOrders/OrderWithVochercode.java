@@ -28,7 +28,7 @@ public class OrderWithVochercode extends GenericMethods {
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		// UIFunctions.addPromotionalCodeAtCart("TumiTestData", "GuestOrders");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
-		UIFunctions.addPromotionalCodeAtCart("TumiTestData", "VoucherCodeDetails");
+		UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "VoucherCodeDetails");
 		if (mainCart.getVocherMsg().isDisplayed()) {
 			msg = getText(mainCart.getVocherMsg());
 		}
