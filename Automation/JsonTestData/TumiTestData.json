@@ -41,8 +41,11 @@
 		"PageNotFound": "017DH"
 	},
 	"SocialNetworkDetails": {
-		"GoogleEmailID": "emptumi@gmail.com",
-		"GooglePassword": "tumi1234",
+	    "GoogleEmailID": "tumi.automation@gmail.com",
+	    "GooglePassword": "tumi1234",
+	    "GoogleRecoveryEmailID":"emptumi@gmail.com",
+		"GmailEmailID": "emptumi@gmail.com",
+		"GmailPassword": "tumi1234",
 		"Password_login": "Tumi_8864",
 		"InValidGoogleEmail": "Employee.tumi@gmail.com",
 		"InValidGooglePassword": "tumi12",
@@ -193,7 +196,7 @@
 		"stage2": "https://www.hybris-stage2.tumi.com/",
 		"stage3": "https://www.hybris-stage3.tumi.com/",
 		"prod": "https://www.tumi.com/",
-		"akamaiS2": "https://www.stg-hybris-akamai.tumi.com/"
+		"akamaiS2": "https://www.stg-hybris-akamai.tumi.com"
 	},
 	"BrowserStack": {
 		"remoteBrowser": "Chrome",
