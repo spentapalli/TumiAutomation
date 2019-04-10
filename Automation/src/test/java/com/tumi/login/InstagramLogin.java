@@ -6,8 +6,10 @@ package com.tumi.login;
 import java.util.Map;
 import java.util.Set;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import com.aventstack.extentreports.Status;
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
 import com.tumi.utilities.UIFunctions;
@@ -47,6 +49,13 @@ public class InstagramLogin extends GenericMethods {
 		input(insta.getInstaUsername(), testData.get("InstaEmailID"), "Username");
 		input(insta.getInstaPassword(), testData.get("InstaPassword"), "Password");
 		click(insta.getInstaLogin(), "Login");
+		try {
+			if(insta.getSecurityAlert().isDisplayed()) {
+				logger.log(Status.INFO, "Instagram asking Security alert");
+			}
+		} catch (Exception e) {
+			Assert.fail("Instagram is asking Security alert code");
+		}
 		driver.switchTo().window(parentHandle);
 	}
 

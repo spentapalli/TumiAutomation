@@ -41,7 +41,6 @@ public class GooglePage extends GenericMethods {
 		return firstNext;
 	}
 
-	// input[@name='identifier']
 	@FindBy(how = How.XPATH, using = "//input[@name='identifier']")
 	private WebElement email;
 
@@ -61,6 +60,30 @@ public class GooglePage extends GenericMethods {
 
 	public WebElement getPasswordNext() {
 		return passwordNext;
+	}
+	@FindBy(how = How.XPATH, using = "//h1[@id='headingText']")
+	private WebElement verifyYou;
+
+	public WebElement getVerifyYou() {
+		return verifyYou;
+	}
+	@FindBy(how = How.XPATH, using = "//div[contains(text(),'Confirm your recovery email')]")
+	private WebElement confirmRecoveryemail;
+
+	public WebElement getConfirmRecoveryemail() {
+		return confirmRecoveryemail;
+	}
+	@FindBy(how = How.XPATH, using = "//input[@id='identifierId']")
+	private WebElement recoveryEmail;
+
+	public WebElement getRecoveryEmail(){
+		return recoveryEmail;
+	}
+	@FindBy(how = How.XPATH, using = "//span[contains(text(),'Next')]")
+	private WebElement recoveryNext;
+
+	public WebElement getRecoveryNext() {
+		return recoveryNext;
 	}
 
 	@FindBy(how = How.XPATH, using = "//div[@id='submit_approve_access']")

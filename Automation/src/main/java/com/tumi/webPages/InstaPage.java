@@ -33,21 +33,27 @@ public class InstaPage extends GenericMethods {
 	public WebElement getInstaUsername() {
 		return explicitWait(instaUsername);
 	}
-
+	@FindBy(how=How.XPATH, using="//input[@name='password']")
+	private WebElement instaPassword;
+	
 	public WebElement getInstaPassword() {
 		return instaPassword;
 	}
 
-	@FindBy(how=How.XPATH, using="//div[contains(text(),'Log in')]")
+	@FindBy(how=How.XPATH, using="//div[contains(text(),'Log In')]")
 	private WebElement instaLogin;
 	
 	public WebElement getInstaLogin() {
 		return instaLogin;
 	}
-
-	@FindBy(how=How.XPATH, using="//input[@name='password']")
-	private WebElement instaPassword;
 	
+	@FindBy(how=How.XPATH, using="//button[contains(text(),'Send Security Code')]")
+	private WebElement securityAlert;
+	
+	public WebElement getSecurityAlert() {
+		return securityAlert;
+	}
+
 	
 	
 	@FindBy(how=How.XPATH, using="//div[@class='eiCW-']/p")

@@ -350,12 +350,20 @@ public class PDPage extends GenericMethods {
 		return collectionNameList;
 	}
 	
-	@FindBy(how=How.XPATH,using="//div[@id='prod-details']/a")
+	//div[@id='prod-details']/a xpath changed
+	@FindBy(how=How.XPATH,using="//div[@id='prod-details']/span/a/span")
 	private WebElement collectionName;
 	
 	public WebElement getCollectionName(){
 		return explicitWait(collectionName);
 	}
+	
+	/*@FindBy(how=How.XPATH,using="")
+	private WebElement akamaicollectionName;
+	
+	public WebElement getAkamaiCollectionName(){
+		return explicitWait(akamaicollectionName);
+	}*/
 	
 	@FindBy(how=How.XPATH,using="//div[@class='prod-style-accordion']/span[2]")
 	private WebElement styleSKUID;

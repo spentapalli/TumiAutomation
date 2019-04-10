@@ -59,12 +59,19 @@ public class ComparePage extends GenericMethods {
 			return krCrossbodiesInBags;
 		}
 	}
-
-	@FindBy(how = How.XPATH, using = "//div[contains(@class,'jspPane removeFocusIndicator')]/div[1]/div/div[2]/div/following::a")
+	
+	//@FindBy(how = How.XPATH, using = "//div[contains(@class,'jspPane removeFocusIndicator')]/div[1]/div/div[2]/div/following::a")
+	@FindBy(how = How.XPATH, using = "//div[contains(@class,'ctnr-additional-prod-items')]/div[1]/div/div[2]/div/following::a")
 	private WebElement productInSuggestions;
 
 	public WebElement getProductInSuggestions() {
 		return productInSuggestions;
+	}
+	@FindBy(how = How.XPATH, using = "//div[contains(@class,'ctnr-additional-prod-items')]/div[1]/div/div[2]/div/following::a[2]")
+	private WebElement compareInSuggestions;
+
+	public WebElement getCompareInSuggestions() {
+		return compareInSuggestions;
 	}
 
 }

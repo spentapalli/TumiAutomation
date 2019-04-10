@@ -1199,6 +1199,7 @@ public class UIFunctions extends GenericMethods {
 	}
 	
 	public static void addMonogram(WebElement edit, WebElement remove) {
+		SoftAssert monoAsser = new SoftAssert();
 		if (mono.getStep1().isDisplayed()) {
 			if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
 				if (mono.getAddPatch().isEnabled()) {
@@ -1213,9 +1214,9 @@ public class UIFunctions extends GenericMethods {
 		}
 
 		click(mono.getFirstMonoInput(), "First option..");
-		webclick(mainCart.getAddHeart(), "Heart Symbol");
-		webclick(mainCart.getSmiley(), "Smiley Symbol");
-		webclick(mainCart.getStar(), "Star Symbol");
+		domClick(mainCart.getAddHeart(), "Heart Symbol");
+		domClick(mainCart.getSmiley(), "Smiley Symbol");
+		domClick(mainCart.getStar(), "Star Symbol");
 
 		click(mono.getNext(), "Next");
 		click(mono.getTextStyleBold(), "Serif as Bold");
@@ -1227,7 +1228,7 @@ public class UIFunctions extends GenericMethods {
 				logger.log(Status.INFO, "Monogram added Successfully");
 			}
 		} catch (Exception e) {
-			Assert.fail("Monogram couldn't added, Please Check...");
+			monoAsser.fail("Monogram couldn't added");
 		}
 		delay(3000);
 
@@ -1237,7 +1238,6 @@ public class UIFunctions extends GenericMethods {
 				click(mono.getOptionsNext(), "Next");
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
 		}
 		click(mono.getSecondNext(), "Next");
 		click(mono.getBlueColor(), "Color");
@@ -1249,7 +1249,7 @@ public class UIFunctions extends GenericMethods {
 				logger.log(Status.INFO, "Verification of Edit Monogram is Successfull");
 		} 
 		}catch (Exception e) {
-			Assert.fail("Verification of Edit Monogram is Failed");
+			monoAsser.fail("Monogram couldn't be edited");
 		}
 		delay(2000);
 		click(remove, "Remove");
@@ -1259,8 +1259,9 @@ public class UIFunctions extends GenericMethods {
 				logger.log(Status.INFO, "Verification of Remove Monogram is successfull");
 			} 
 		} catch (Exception e) {
-			Assert.fail("Verification of Remove Monogram is failed");
+			monoAsser.fail("Monogram couldn't be removed");
 		}
+		monoAsser.assertAll();
 
 	}
 	
