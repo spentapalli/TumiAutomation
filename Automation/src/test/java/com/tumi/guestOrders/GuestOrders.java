@@ -23,7 +23,7 @@ public class GuestOrders extends GenericMethods {
 	 * TA-57 Verify Order with merchandise Ready to ship for Guest User
 	 */
 
-	//@Test(priority = 0, description = " TA- 57 Verify Order with merchandise Ready to ship for Guest User")
+	@Test(priority = 0, description = " TA- 57 Verify Order with merchandise Ready to ship for Guest User")
 	public void tumiOrderAsGuest() throws InterruptedException {
 
 		UIFunctions.addProductToCart("TumiTestData","Products");
@@ -83,7 +83,7 @@ public class GuestOrders extends GenericMethods {
 		UIFunctions.completeOrder();
 	}
 
-	//@Test(priority = 3, description = "TA_11 Verify Order with Donation purchase")
+	@Test(priority = 3, description = "TA_11 Verify Order with Donation purchase")
 	public void donationPurchaseOrderAsGuest() {
 
 		UIFunctions.addProductToCart("TumiTestData","DonationPurchase");

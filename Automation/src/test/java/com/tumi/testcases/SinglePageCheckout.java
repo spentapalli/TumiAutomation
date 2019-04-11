@@ -44,7 +44,7 @@ public class SinglePageCheckout extends GenericMethods{
 	public void verifyExpressCheckout() {
 		goToSinglePage();
 		
-		expressLogin("TumiTestData", "ExpressCheckout");
+		expressLogin("TumiTestData", "RegisteredOrders");
 		try {
 			if(guestBillPage.getContinueInLogin().isDisplayed()) {
 				click(guestBillPage.getContinueInLogin(),"Continue");
