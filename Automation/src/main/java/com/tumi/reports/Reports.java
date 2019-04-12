@@ -316,7 +316,7 @@ public class Reports {
 
 		if (browserName.equalsIgnoreCase("Remote")) {
 
-			// remoteAccess();
+			//remoteAccess();
 			sauceConnect();
 			getURL();
 
@@ -398,17 +398,16 @@ public class Reports {
 		 * remoteOsVersion);
 		 */
 
-		caps.setCapability("browserName", "iPhone");
-		caps.setCapability("device", "iPhone 8 Plus");
-		caps.setCapability("realMobile", "true");
-		caps.setCapability("os_version", "11");
-
 		/*
-		 * caps.setCapability("browser", "Safari");
-		 * caps.setCapability("browser_version", "12.0"); caps.setCapability("os",
-		 * "OS X"); caps.setCapability("os_version", "Mojave");
-		 * caps.setCapability(CapabilityType.SUPPORTS_LOCATION_CONTEXT, "false");
+		 * caps.setCapability("browserName", "iPhone"); caps.setCapability("device",
+		 * "iPhone 8 Plus"); caps.setCapability("realMobile", "true");
+		 * caps.setCapability("os_version", "11");
 		 */
+		
+		  caps.setCapability("browser", "Safari");
+		  caps.setCapability("browser_version", "12.0"); caps.setCapability("os",
+		  "OS X"); caps.setCapability("os_version", "Mojave");
+		 
 
 		caps.setCapability("browserstack.local", localTesting());
 		caps.setCapability("browserstack.debug", "true");
@@ -444,14 +443,15 @@ public class Reports {
 
 		// set your sauce labs access key
 		capabilities.setCapability("accessKey", ACCESS_KEY);
-		// set browser to Safari
-		capabilities.setCapability("browserName", "Safari");
-
-		// set operating system to macOS version 10.13
-		capabilities.setCapability("platform", "macOS 10.13");
-
-		// set the browser version to 11.1
-		capabilities.setCapability("version", "11.1");
+		/*
+		 * // set browser to Safari capabilities.setCapability("browserName", "Safari");
+		 * 
+		 * // set operating system to macOS version 10.13
+		 * capabilities.setCapability("platform", "macOS 10.13");
+		 * 
+		 * // set the browser version to 11.1 capabilities.setCapability("version",
+		 * "11.1");
+		 */
 
 		try {
 			driver = new RemoteWebDriver(new URL(URL), capabilities);
