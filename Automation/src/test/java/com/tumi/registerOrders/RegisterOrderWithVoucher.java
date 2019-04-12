@@ -18,6 +18,7 @@ public class RegisterOrderWithVoucher extends GenericMethods{
 
 	@Test(description = " TA - 189 Verify Order with merchandise Ready to ship + Voucher -Registered User")
 	public void orderWithVoucherAsRegistered() throws Exception {
+		
 		login("TumiTestData", "TumiLogin");
 		UIFunctions.addProductToCart("TumiTestData", "Products");
 		click(pdp.getAddToCart(), "Add to cart");
@@ -28,7 +29,6 @@ public class RegisterOrderWithVoucher extends GenericMethods{
 		UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "VoucherCodeDetails");
 		domClick(shipping.getContinueShippingMethod(), "Contiue Shipping");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
-		
 		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		UIFunctions.completeOrder();
 	}

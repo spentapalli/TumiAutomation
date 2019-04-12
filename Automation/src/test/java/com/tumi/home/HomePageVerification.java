@@ -19,7 +19,6 @@ import org.testng.annotations.Test;
 import com.aventstack.extentreports.Status;
 import com.tumi.utilities.GenericMethods;
 
-
 public class HomePageVerification extends GenericMethods {
 
 	public static HttpURLConnection huc = null;
@@ -40,7 +39,7 @@ public class HomePageVerification extends GenericMethods {
 
 			currenturl = it.next().getAttribute("href");
 			if (currenturl == null || currenturl.isEmpty()) {
-				logger.log(Status.INFO,"URL is either not configured for anchor tag or it is empty");
+				logger.log(Status.INFO, "URL is either not configured for anchor tag or it is empty");
 				continue;
 			}
 
@@ -56,9 +55,13 @@ public class HomePageVerification extends GenericMethods {
 				respCode = huc.getResponseMessage();
 
 				if (respCode.equals("OK")) {
-					logger.log(Status.INFO,currenturl + "Server Response Code: "+ respCode);
-				}else {
-					logger.log(Status.FAIL,currenturl + "Server Response Code: "+ respCode);
+					logger.log(Status.INFO, currenturl + "Server Response Code: " + respCode);
+					
+				} else if (respCode.equals("Not Found")) {
+					logger.log(Status.WARNING, currenturl + "Server Response Code: " + respCode);
+					
+				} else {
+					logger.log(Status.FAIL, currenturl + "Server Response Code: " + respCode);
 				}
 			} catch (Exception e) {
 			}
@@ -82,6 +85,7 @@ public class HomePageVerification extends GenericMethods {
 		HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
 
 		HostnameVerifier allHostsValid = new HostnameVerifier() {
+
 			public boolean verify(String hostname, SSLSession session) {
 				return true;
 			}
