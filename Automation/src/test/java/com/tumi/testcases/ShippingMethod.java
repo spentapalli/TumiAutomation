@@ -16,7 +16,7 @@ import com.tumi.utilities.UIFunctions;
  * @author Shwetha Capo
  *
  */
-public class ShippingMethodPage extends GenericMethods {
+public class ShippingMethod extends GenericMethods {
 	
 	/*
 	 *  TA-62, Verify Shipping Method Page

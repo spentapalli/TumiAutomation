@@ -214,9 +214,9 @@
 			</class>
 		</classes>
 	</test>
-	<test name="ShippingMethodPage">
+	<test name="ShippingMethod">
 		<classes>
-			<class name="com.tumi.testcases.ShippingMethodPage">
+			<class name="com.tumi.testcases.ShippingMethod">
 			</class>
 		</classes>
 	</test>
