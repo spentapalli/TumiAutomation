@@ -41,13 +41,21 @@ public class HomePage extends GenericMethods {
 		return NoProducts;
 	}
 
-//kjhhfgszbuhtddxfg
+
 	@FindBy(how = How.XPATH, using = "//ul[@id='matching_products']/li")
 	private List<WebElement> matchingProducts;
 
 	public List<WebElement> getMatchingProducts() {
 
 		return matchingProducts;
+	}
+	
+	@FindBy(how = How.XPATH, using = "//ul[@id='matching_products']/li")
+	private WebElement matchingProduct;
+
+	public WebElement getMatchingProduct() {
+
+		return matchingProduct;
 	}
 
 	// for Canada

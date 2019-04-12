@@ -812,7 +812,7 @@ public class UIFunctions extends GenericMethods {
 				throw new RuntimeException(emptyViewText);
 			}
 		} else {
-			home.getMatchingProducts().get(i).click();
+			home.getMatchingProduct().click();
 		}
 	}
 
