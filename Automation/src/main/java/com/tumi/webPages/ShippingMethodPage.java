@@ -130,7 +130,7 @@ public class ShippingMethodPage extends GenericMethods {
 	@FindBy(how = How.XPATH, using = "(//script[@id='checkoutMessages']/following::button)[3]") /////////////////
 	private WebElement krEstimatedShipping;
 
-	@FindBy(how = How.XPATH, using = "(//div[contains(@class,'pad3 onlyBottomPad')])[2]/div[2]")
+	@FindBy(how = How.XPATH, using = "//div[contains(text(),'Estimated Shipping')]/following::div")
 	private WebElement estimatedShipping;
 
 	public WebElement getEstimatedShipping() {
@@ -142,9 +142,9 @@ public class ShippingMethodPage extends GenericMethods {
 			return krEstimatedShipping;
 		}
 
-	}
+	}//input[@id='overnight-net']/following::div[3]
 
-	@FindBy(how = How.XPATH, using = "(//div[contains(@class,'pad3 onlyBottomPad')])[2]/div[2]")
+	@FindBy(how = How.XPATH, using = "//input[@id='standard-ground-net']/following::div[3]")
 	private WebElement shippingFree;
 
 	public WebElement getEstimatedShipFree() {
