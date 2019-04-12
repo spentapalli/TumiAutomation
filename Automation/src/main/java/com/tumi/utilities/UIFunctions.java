@@ -217,9 +217,8 @@ public class UIFunctions extends GenericMethods {
 				final String pdpURL = GlobalConstants.S3 + "/p/" + testData.get("SKUID");
 				driver.navigate().to(pdpURL);
 
-			}else if (applicationUrl.toLowerCase().equals("akamaiS2")) {
+			}else if (applicationUrl.toLowerCase().equals("akamais2")) {
 			
-
 				final String pdpURL = GlobalConstants.akamaiUrl + "/p/" + testData.get("SKUID");
 				driver.navigate().to(pdpURL);
 

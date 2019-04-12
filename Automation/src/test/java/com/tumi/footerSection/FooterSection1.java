@@ -71,6 +71,7 @@ public class FooterSection1 extends GenericMethods {
 					}
 					driver.close();
 				}
+
 			}
 			driver.switchTo().window(parentWindow);
 		}
@@ -81,12 +82,14 @@ public class FooterSection1 extends GenericMethods {
 
 		click(home.getCustomerService(), "CUSTOMER SERVICE");
 
-		if (getText(home.getCustomerServiceHeader()).equalsIgnoreCase("CUSTOMER SERVICE")) {
+		try {
+			if (getText(home.getCustomerServiceHeader()).equalsIgnoreCase("CUSTOMER SERVICE")) {
 
-			logger.log(Status.INFO, "Customer Serivce redirection is success");
-
-		} else {
-			Assert.fail("Customer Service is not available");
+				logger.log(Status.INFO, "Customer Serivce redirection is success");
+			}
+		} catch (Exception e) {
+			
+			Assert.fail("Customer Service Header is not available in "+driver.getCurrentUrl());
 		}
 	}
 
@@ -180,12 +183,14 @@ public class FooterSection1 extends GenericMethods {
 
 		click(home.getContactUs(), "Contact us");
 
-		if (getText(home.getContactUsHeader()).equalsIgnoreCase("CONTACT US")) {
+		try {
+			if (getText(home.getContactUsHeader()).equalsIgnoreCase("CONTACT US")) {
 
-			logger.log(Status.INFO, "Contact Us redirection is success");
-
-		} else {
-			Assert.fail("Contact Us is not available");
+				logger.log(Status.INFO, "Contact Us redirection is success");
+			}
+		} catch (Exception e) {
+			
+			Assert.fail("Contact us is not available in "+driver.getCurrentUrl());
 		}
 	}
 
@@ -394,10 +399,14 @@ public class FooterSection1 extends GenericMethods {
 
 		click(home.getWarranty(), "Warranty");
 
-		if (getText(home.getProductInfoWarrantyHeader()).equalsIgnoreCase("Product Information and Warranty")) {
+		try {
+			if (getText(home.getProductInfoWarrantyHeader()).equalsIgnoreCase("Product Information and Warranty")) {
 
-			logger.log(Status.INFO, "Warranty redirection is success");
-
+				logger.log(Status.INFO, "Warranty redirection is success");
+			}
+		} catch (Exception e) {
+			
+			Assert.fail("Warrenty is not available in "+driver.getCurrentUrl());
 		}
 		for (int i = 1; i < home.getChangeLanguage().size(); i++) {
 
@@ -460,10 +469,14 @@ public class FooterSection1 extends GenericMethods {
 
 		click(home.getTumiDifference(), "Tumi Difference");
 
-		if (!getText(home.getTumiDifferenceHeader()).trim().equalsIgnoreCase("THE TUMI DIFFERENCE")) {
+		try {
+			if (!getText(home.getTumiDifferenceHeader()).trim().equalsIgnoreCase("THE TUMI DIFFERENCE")) {
 
-			Assert.fail("Tumi Difference redirection unsuccessful");
-
+				Assert.fail("Tumi Difference redirection unsuccessful");
+			}
+		} catch (Exception e) {
+			
+			Assert.fail("Tumi Difference is not available "+driver.getCurrentUrl());
 		}
 		for (int i = 1; i < home.getAboutTumi().size(); i++) {
 
@@ -514,15 +527,19 @@ public class FooterSection1 extends GenericMethods {
 
 		click(home.getCorporateResponsibility(), "Corporate Responsibility");
 
-		if (getText(home.getCorporateResponsibilityHeader())
-				.equalsIgnoreCase("COMMUNITY ENGAGEMENT & CORPORATE GIVING")) {
+		try {
+			if (getText(home.getCorporateResponsibilityHeader())
+					.equalsIgnoreCase("COMMUNITY ENGAGEMENT & CORPORATE GIVING")) {
 
-			click(home.getExploreCareers(), "Explore Careers");
+				click(home.getExploreCareers(), "Explore Careers");
 
-			if (!getText(home.getCareersHeader()).equalsIgnoreCase("ENVISION YOUR FUTURE WITH A CAREER AT TUMI")) {
+				if (!getText(home.getCareersHeader()).equalsIgnoreCase("ENVISION YOUR FUTURE WITH A CAREER AT TUMI")) {
 
-				Assert.fail("Corporate Responsibility redirection unsuccessful");
+					Assert.fail("Corporate Responsibility redirection unsuccessful");
+				}
 			}
+		} catch (Exception e) {
+			Assert.fail("Corporate Responsibility is not available "+driver.getCurrentUrl());
 		}
 	}
 
@@ -531,9 +548,13 @@ public class FooterSection1 extends GenericMethods {
 
 		click(home.getSupplyChainAct(), "California Transparency In Supply ChainAct");
 
-		if (!getText(home.getSupplyChainHeader()).equalsIgnoreCase("FORCED LABOR AND HUMAN TRAFFICKING POLICY")) {
+		try {
+			if (!getText(home.getSupplyChainHeader()).equalsIgnoreCase("FORCED LABOR AND HUMAN TRAFFICKING POLICY")) {
 
-			Assert.fail("California TransparencyIn Supply Chain Act redirection unsuccessful");
+				Assert.fail("California TransparencyIn Supply Chain Act redirection unsuccessful");
+			}
+		} catch (Exception e) {
+			Assert.fail("California TransparencyIn Supply Chain Act is not available "+driver.getCurrentUrl());
 		}
 
 	}

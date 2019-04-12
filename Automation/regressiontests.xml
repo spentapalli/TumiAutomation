@@ -227,12 +227,11 @@
 		</classes>
 	</test> -->
 	
-	<!-- <test name="FooterSection1">
+	<test name="FooterSection1">
 		<classes>
 			<class name="com.tumi.footerSection.FooterSection1">
 			</class>
 		</classes>
-	</test>	 -->
-
+	</test>	
 
 </suite>
