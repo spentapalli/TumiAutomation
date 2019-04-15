@@ -227,6 +227,10 @@ public class UIFunctions extends GenericMethods {
 				final String pdpURL = testData1.get("prod") + "/p/" + testData.get("SKUID");
 				driver.navigate().to(pdpURL);
 				UIFunctions.closeSignUp();
+				if(driver.getTitle().contains("Not Found")) {
+					
+					Assert.fail(testData.get("SKUID")+ "is not available");
+				}
 			}
 
 		} else if (selectedCountry.contains("Canada")) {
