@@ -56,6 +56,11 @@
 		"EmailID": "Employee.tumi@gmail.com",
 		"Password": "t1"
 	},
+	"ShippingCharges":{
+	"UsStandardShippingCharge":"$0.00",
+	"PriorityShippingCharge":"$25.00",
+	"SecondDayShippingCahrge":"$15.00"
+	},
 	"VoucherCodeDetails": {
 		"VoucherID": "T30-D5L6-E4LR-WEDL",
 		"RecipientName": "Test",

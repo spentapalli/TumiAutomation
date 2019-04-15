@@ -135,7 +135,7 @@ public class ShippingPage extends GenericMethods {
 	@FindBy(how = How.XPATH, using = "(//script[@id='checkoutMessages']/following::button)[3]")
 	private WebElement krContinueShippingMethod;
 
-	@FindBy(how = How.XPATH, using = "//button[contains(text(), 'Continue to Shipping Method')]")
+	@FindBy(how = How.XPATH, using = "//*[contains(text(), 'Continue to Shipping Method')][@type='submit']")
 	private WebElement continueShippingMethod;
 
 	public WebElement getContinueShippingMethod() {

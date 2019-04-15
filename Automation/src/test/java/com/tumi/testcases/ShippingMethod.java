@@ -16,7 +16,7 @@ import com.tumi.utilities.UIFunctions;
  * @author Shwetha Capo
  *
  */
-public class ShippingMethodPage extends GenericMethods {
+public class ShippingMethod extends GenericMethods {
 	
 	/*
 	 *  TA-62, Verify Shipping Method Page
@@ -52,7 +52,7 @@ public class ShippingMethodPage extends GenericMethods {
 		shipPageAssertions.assertAll();
 	}
 
-	@Test(priority = 1, description = "TA-433 Verify Promo Code in Shipping Method Page")
+	//@Test(priority = 1, description = "TA-433 Verify Promo Code in Shipping Method Page")
 	public  void verifyPromoCode() {
 
 		goToShipMethodPage();
@@ -118,7 +118,7 @@ public class ShippingMethodPage extends GenericMethods {
 		domClick(shipMethod.getPriorityShippingMethod(), "Priority Shipping");
 		delay(2000);
 
-		if (getText(shipMethod.getEstimatedShipping()).equals(shipCharge.get("PriorityShippingCharge"))) {
+		if (getText(shipMethod.getEstimatedShipping()).equals(getText(shipMethod.getPrioritycharge()))) {
 
 			String afterTotal = getText(shipMethod.getBeforeTotal());
 			Double afterCost = Double.valueOf(afterTotal.replace("$", "").replace(",",""));
@@ -144,7 +144,7 @@ public class ShippingMethodPage extends GenericMethods {
 
 		domClick(shipMethod.getSecondDayShippingMethod(), "Second day Shipping");
 		delay(2000);
-		if (getText(shipMethod.getEstimatedShipping()).equals(shipCharge.get("SecondDayShippingCahrge"))) {
+		if (getText(shipMethod.getEstimatedShipping()).equals(getText(shipMethod.getSecondShippingCharge()))) {
 
 			String afterTotal = getText(shipMethod.getBeforeTotal());
 			Double afterCost = Double.valueOf(afterTotal.replace("$", "").replace(",",""));
@@ -174,7 +174,7 @@ public class ShippingMethodPage extends GenericMethods {
 		Double subCost = Double.valueOf(subTotal.replace("$", "").replace(",",""));
 		System.out.println("Before select Price = " + subCost);
 
-		if (getText(shipMethod.getEstimatedShipFree()).contains(getText(shipMethod.getCAStandardShippingCharge()))) {
+		if (getText(shipMethod.getEstimatedShipping()).equals(getText(shipMethod.getCAStandardShippingCharge()))) {
 			
 			String estimatedTotal = getText(shipMethod.getBeforeTotal());
 			Double total = Double.valueOf(estimatedTotal.replace("$", "").replace(",",""));

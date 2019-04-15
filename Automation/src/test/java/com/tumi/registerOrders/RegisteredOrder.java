@@ -27,6 +27,7 @@ public class RegisteredOrder extends GenericMethods {
 		login("TumiTestData", "RegisteredOrders");
 
 		UIFunctions.addProductToCart("TumiTestData", "Products");
+		
 		click(pdp.getAddToCart(), "Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Cart");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");

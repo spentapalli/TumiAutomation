@@ -207,23 +207,22 @@ public class UIFunctions extends GenericMethods {
 
 		if (selectedCountry.equals("US") || selectedCountry.contains("United States") || selectedCountry.isEmpty()) {
 
-			if (applicationUrl.equals("stage2")) {
+			if (applicationUrl.toLowerCase().equals("stage2")) {
 
 				final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("SKUID");
 				driver.navigate().to(pdpURL);
 
-			} else if (applicationUrl.equals("stage3")) {
+			} else if (applicationUrl.toLowerCase().equals("stage3")) {
 
 				final String pdpURL = GlobalConstants.S3 + "/p/" + testData.get("SKUID");
 				driver.navigate().to(pdpURL);
 
-			}else if (applicationUrl.equals("akamaiS2")) {
+			}else if (applicationUrl.toLowerCase().equals("akamais2")) {
 			
-
 				final String pdpURL = GlobalConstants.akamaiUrl + "/p/" + testData.get("SKUID");
 				driver.navigate().to(pdpURL);
 
-			} else if (applicationUrl.equals("prod")) {
+			} else if (applicationUrl.toLowerCase().equals("prod")) {
 
 				final String pdpURL = testData1.get("prod") + "/p/" + testData.get("SKUID");
 				driver.navigate().to(pdpURL);
@@ -812,7 +811,7 @@ public class UIFunctions extends GenericMethods {
 				throw new RuntimeException(emptyViewText);
 			}
 		} else {
-			home.getMatchingProducts().get(i).click();
+			home.getMatchingProduct().click();
 		}
 	}
 

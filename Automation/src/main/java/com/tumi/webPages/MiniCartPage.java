@@ -34,15 +34,13 @@ public class MiniCartPage extends GenericMethods {
 	 * 
 	 * @FindBy(how=How.XPATH,using="(//a[@href='/cart'])[2]")
 	 */
-	/*
-	 * @FindBy(how = How.XPATH, using =
-	 * "//div[@id='tm-panel-mini-cart']/div/div[2]/a[1]") private WebElement
-	 * krProceedtoCheck; public WebElement getKrProceedToCheck() { return
-	 * explicitWait(krProceedtoCheck); }
-	 */
-
+	
+	
 	@FindBy(how = How.XPATH, using = "//a[@title='Proceed to Checkout']")
 	private WebElement proceedtoCheck;
+	@FindBy(how = How.XPATH, using = "//a[@class='tm-button tm-red-button checkBtn']")
+	private WebElement krproceedtoCheck;
+
 
 	public WebElement getProceedCheckOut() {
 		
@@ -51,7 +49,7 @@ public class MiniCartPage extends GenericMethods {
 			return explicitWait(proceedtoCheck);
 
 		} else {
-			return explicitWait(proceedtoCheck);
+			return explicitWait(krproceedtoCheck);
 
 		} /*
 		 * else { return explicitWait(krProceedtoCheck); >>>>>>> branch 'master' of

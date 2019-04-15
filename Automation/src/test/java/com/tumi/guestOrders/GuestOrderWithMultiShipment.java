@@ -23,9 +23,11 @@ public class GuestOrderWithMultiShipment extends GenericMethods {
 	 */
 	@Test(description = "TA - 290 Verify Order with 2 'Ready to Ship' Items with different SKU/sPurchase with Multishipment for Guest user")
 	public void verifyGuestOrderWithMutlishipment() throws InterruptedException {
+		
 		UIFunctions.addMultipleProducts("TumiTestData", "GuestDetails");
 		click(minicart.getMiniCartSymbol(), "Cart Image");
-		click(driver.findElement(By.xpath("//button[contains(text(),'Proceed to Checkout')]")), "Proceed to Cart");
+		click(minicart.getProceedCheckOut(),"Proceed To Cart");
+		click(mainCart.getProceedCart(), "Proceed to Checkout");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		UIFunctions.addMultiship();
