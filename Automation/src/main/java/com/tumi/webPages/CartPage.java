@@ -70,6 +70,16 @@ public class CartPage extends GenericMethods {
 		}
 
 	}
+	
+	@FindBy(how = How.XPATH, using = "//*[contains(text(),'Shipping Address')]/following::button[1]")
+	private WebElement editAddress;
+
+	public WebElement getEditAddress() {
+
+		return editAddress;
+
+	}
+	
 
 	@FindBy(how = How.XPATH, using = "//img[@alt='Checkout with PayPal']")
 	private WebElement payPalProceed;

@@ -389,7 +389,7 @@ public class Reports {
 		final String USERNAME = "kurrysuresh1";
 		final String AUTOMATE_KEY = "zKp1VrRqTkUXqi4efALq";
 		String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
-		DesiredCapabilities caps = new DesiredCapabilities();
+		DesiredCapabilities caps = new DesiredCapabilities().safari();
 
 		/*
 		 * caps.setCapability("browser", remoteBrowser);
@@ -404,14 +404,14 @@ public class Reports {
 		 * caps.setCapability("os_version", "11");
 		 */
 		
-		  caps.setCapability("browser", "Safari");
+		 // caps.setCapability("browser", "Safari");
 		  caps.setCapability("browser_version", "12.0"); caps.setCapability("os",
 		  "OS X"); caps.setCapability("os_version", "Mojave");
 		 
 
 		caps.setCapability("browserstack.local", localTesting());
 		caps.setCapability("browserstack.debug", "true");
-		caps.setCapability("browserstack.networkLogs", "true");
+		caps.setCapability("browserstack.networkLogs", "false");
 		// caps.setCapability("resolution", "1024x768");
 
 		Map<String, Object> prefs1 = new HashMap<String, Object>();
@@ -436,13 +436,19 @@ public class Reports {
 		final String ACCESS_KEY = "297e9a77-83f5-4acf-afa3-04c19a7d08b8";
 		final String URL = "http://ondemand.saucelabs.com:80/wd/hub";
 
-		DesiredCapabilities capabilities = new DesiredCapabilities();
+		DesiredCapabilities caps = new DesiredCapabilities().safari();
 
 		// set your user name and access key to run tests in Sauce
-		capabilities.setCapability("username", USERNAME);
+		caps.setCapability("username", USERNAME);
 
 		// set your sauce labs access key
-		capabilities.setCapability("accessKey", ACCESS_KEY);
+		caps.setCapability("accessKey", ACCESS_KEY);
+		
+		
+		caps.setCapability("platform", "macOS 10.14");
+		caps.setCapability("version", "12.0");
+		caps.setCapability("recordVideo", "false");
+		caps.setCapability("recordScreenshots", "false");
 		/*
 		 * // set browser to Safari capabilities.setCapability("browserName", "Safari");
 		 * 
@@ -454,7 +460,7 @@ public class Reports {
 		 */
 
 		try {
-			driver = new RemoteWebDriver(new URL(URL), capabilities);
+			driver = new RemoteWebDriver(new URL(URL), caps);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -506,7 +512,7 @@ public class Reports {
 			driver.get(testData.get("prod"));
 			UIFunctions.verifyVPN();
 			UIFunctions.closeSignUp();
-			// UIFunctions.countrySelection("United States");
+			UIFunctions.countrySelection("United States");
 		}
 		UIFunctions.verifyVPN();
 		UIFunctions.closeSignUp();
