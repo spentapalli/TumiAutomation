@@ -207,5 +207,20 @@ public class ShippingPage extends GenericMethods {
 
 		return selectUS;
 	}
+	@FindBy(how = How.XPATH, using = "//input[@id='addNewAddress']")
+	private WebElement addNewAddress;
+
+	public WebElement getAddNewAddress() {
+
+		return addNewAddress;
+	}
+	
+	@FindBy(how = How.XPATH, using = "//div[contains(@class,'shippingInfoForm')]")
+	private WebElement shipAddressForm;
+
+	public WebElement getShipAddressForm() {
+
+		return shipAddressForm;
+	}
 
 }
