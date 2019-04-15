@@ -887,6 +887,7 @@ public class UIFunctions extends GenericMethods {
 
 	public static void payPalCheckout(String sheet, String testCase, WebElement ele) {
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
+		
 		String value = getText(ele);
 		System.out.println(value);
 		Double dValue = Double.valueOf(value.replace("$", ""));
@@ -894,7 +895,11 @@ public class UIFunctions extends GenericMethods {
 			click(paypal.getPayPalAnother(), "PayPal");
 		} else {
 			click(paypal.getPayPal(), "PayPal");
+			
 		}
+		if (applicationUrl.equals("prod")) {
+			logger.log(Status.PASS,"Scripts are executing in Production");
+		}else {
 		input(paypal.getPayPalEmail(), testData.get("EmailID"), "EmailID");
 		//click(paypal.getNext(), "Next");
 		input(paypal.getPayPalPassword(), testData.get("Password"), "Password");
@@ -904,6 +909,7 @@ public class UIFunctions extends GenericMethods {
 		delay(3000);
 		click(paypal.getPaypalCheckout(), "Checkout");
 	}
+		}
 
 	public static void waitForContinueToEnable() {
 		try {
