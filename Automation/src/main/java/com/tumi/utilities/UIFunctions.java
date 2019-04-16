@@ -245,31 +245,6 @@ public class UIFunctions extends GenericMethods {
 		}
 
 		UIFunctions.verifyVPN();
-		// WaitForJStoLoad();
-
-		// commented below for Korea order, because getting error here
-		/*
-		 * verifyAssertContains(driver.getCurrentUrl(), testData.get("SKUID"),
-		 * "Wrong Product is displayed"); try { if (pdp.getAddToCart().isDisplayed()) {
-		 * verifyAssertEquals("Add To Cart", getText(pdp.getAddToCart())); } } catch
-		 * (Exception e) { Assert.fail(testData.get("SKUID") +
-		 * " Product is not available"); }
-		 */
-		// click(pdp.getAddToCart(), "Add to Cart");
-
-		// due to product search issue i am using above code to get the product.
-
-		/*
-		 * input(home.getSearchProduct(), testData.get("SKUID"), "Search Product");
-		 * keyEnter(home.getSearchProduct());
-		 * verifyAssertContains(driver.getCurrentUrl(), testData.get("SKUID"),
-		 * "Wrong Product is displayed"); try { if (pdp.getAddToCart().isDisplayed()) {
-		 * 
-		 * verifyAssertEquals("Add To Cart", getText(pdp.getAddToCart())); } } catch
-		 * (Exception e) { Assert.fail(testData.get("SKUID")
-		 * +" Product is not available"); }
-		 */
-
 	}
 
 	public static void addToCart(String sheet, String testCase) {
@@ -495,6 +470,7 @@ public class UIFunctions extends GenericMethods {
 				input(shipping.getLastName(), testData.get("LastName"), "Last Name");
 				input(shipping.getAddressLine1(), testData.get("AddressLine1"), "Address Line1");
 				explicitWait(shipping.getSelectedAddressLine());
+				delay(5000);
 				if (selectedCountry.contains("Canada")) {
 					for (WebElement ele : shipping.getListAddressLine1()) {
 						if (getText(ele).contains("ABBOTSFORD, BC")) {
@@ -521,6 +497,7 @@ public class UIFunctions extends GenericMethods {
 					}
 				}
 				input(shipping.getPhoneNumber(), testData.get("Phone"), "Phone Number");
+				
 			} else {
 
 				Map<String, String> korea = ReadTestData.getJsonData("TumiTestData", "GuestDeatilsForKorea");
@@ -932,7 +909,9 @@ public class UIFunctions extends GenericMethods {
 		} else {
 			addMultishipGuestDeatils(testData.get("shipment1"), testData.get("AddressLine1"));
 		}
-		click(multiShip.getNext(), "Continue next shipping");
+		if (!multiShip.getNext().isEnabled()) {
+			
+		}
 		webclick(shipMethod.getStandardShippingMethod(), "Standard Shipping Method");
 		click(multiShip.getNextShipment(), "Continue next shipment");
 		domClick(multiShip.getAddShippment0(), "add shipment 2");
@@ -981,6 +960,7 @@ public class UIFunctions extends GenericMethods {
 		input(shipping.getLastName(), testData.get("LastName"), "Last Name");
 		input(shipping.getAddressLine1(), data1, "Address Line1");
 		explicitWait(shipping.getSelectedAddressLine());// input[@name='line1']/following::div[3]
+		delay(5000);
 		if (selectedCountry.contains("Canada")) {
 			for (WebElement ele : shipping.getListAddressLine1()) {
 				if (getText(ele).contains("ABBOTSFORD, BC")) {
@@ -1316,5 +1296,54 @@ public class UIFunctions extends GenericMethods {
 		input(guestBillPage.getemail(), testData.get("EmailID"), "Email ID");
 		input(guestBillPage.getPhoneNumber(), testData.get("Phone"), "Phone number");
   }
+  
+	public static void addProduct(String sheet, String testCase,String product) {
+
+		UIFunctions.closeSignUp();
+		//removeExistingCart();
+		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
+		Map<String, String> testData1 = ReadTestData.getJsonData("TumiTestData", "Environments");
+
+		if (selectedCountry.equals("US") || selectedCountry.contains("United States") || selectedCountry.isEmpty()) {
+
+			if (applicationUrl.toLowerCase().equals("stage2")) {
+
+				final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get(product);
+				driver.navigate().to(pdpURL);
+
+			} else if (applicationUrl.toLowerCase().equals("stage3")) {
+
+				final String pdpURL = GlobalConstants.S3 + "/p/" + testData.get(product);
+				driver.navigate().to(pdpURL);
+
+			}else if (applicationUrl.toLowerCase().equals("akamais2")) {
+			
+				final String pdpURL = GlobalConstants.akamaiUrl + "/p/" + testData.get(product);
+				driver.navigate().to(pdpURL);
+
+			} else if (applicationUrl.toLowerCase().equals("prod")) {
+
+				final String pdpURL = testData1.get("prod") + "/p/" + testData.get(product);
+				driver.navigate().to(pdpURL);
+				UIFunctions.closeSignUp();
+				if(driver.getTitle().contains("Not Found")) {
+					
+					Assert.fail(testData.get(product)+ "is not available");
+				}
+			}
+
+		} else if (selectedCountry.contains("Canada")) {
+
+			final String pdpURL = GlobalConstants.urlca + "/p/" + testData.get(product);
+			driver.get(pdpURL);
+
+		} else {
+
+			final String pdpURL = GlobalConstants.urlkr + "/p/" + testData.get(product);
+			driver.get(pdpURL);
+		}
+
+		UIFunctions.verifyVPN();
+	}
 
 }

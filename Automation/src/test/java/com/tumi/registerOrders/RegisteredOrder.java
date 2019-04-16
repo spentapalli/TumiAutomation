@@ -27,19 +27,20 @@ public class RegisteredOrder extends GenericMethods {
 		login("TumiTestData", "RegisteredOrders");
 
 		UIFunctions.addProductToCart("TumiTestData", "Products");
-		
+
 		click(pdp.getAddToCart(), "Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Cart");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
 		waitForSinglePage();
-		domClick(signinShip.getAddNewAddress(), "Add new Address");
-		UIFunctions.addGuestDetails();
-		domClick(shipping.getContinueShippingMethod(), "Contiue Shipping");
-		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
+		if (!applicationUrl.equals("prod")) {
+			domClick(signinShip.getAddNewAddress(), "Add new Address");
+			UIFunctions.addGuestDetails();
+			domClick(shipping.getContinueShippingMethod(), "Contiue Shipping");
+			click(shipMethod.getProceedToPayment(), "Proceed to Payment");
+		}
 		domClick(signinBill.getAddNewPay(), "Add new Payment");
 		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		UIFunctions.completeOrder();
 	}
 
-	
 }

@@ -70,7 +70,7 @@ public class GenericMethods extends GlobalConstants {
 	public void waitForSinglePage() {
 		for (int i = 1; i <= 180; i++) {
 			delay(i);
-			if (!driver.getCurrentUrl().contains("express")) {
+			if (!driver.getCurrentUrl().contains("express") || driver.getCurrentUrl().contains("billing")) {
 				break;
 			}
 			if (i == 180) {
@@ -661,7 +661,7 @@ public class GenericMethods extends GlobalConstants {
 
 	public static void delay(int mili) {
 		try {
-			Thread.sleep(mili + 000);
+			Thread.sleep(mili);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -708,12 +708,14 @@ public class GenericMethods extends GlobalConstants {
 			if (!getText(home.getMinicartCount()).contains("0")) {
 				doubleClick(home.getMinicart());
 				UIFunctions.delay(5000);
-				if (minicart.getProceedCheckOut().isDisplayed() && minicart.getProceedCheckOut().isEnabled()) {
-					click(minicart.getProceedCheckOut(), "Proceed to Checkout");
-				} else {
+				try {
+					if (minicart.getProceedCheckOut().isDisplayed() && minicart.getProceedCheckOut().isEnabled()) {
+						click(minicart.getProceedCheckOut(), "Proceed to Checkout");
+					}
+				} catch (Exception e1) {
 					Assert.fail(
 							"Mini Cart Section is not displayed, "
-							+ "evenafter user clicks on Mini Cart. Same issue observed Functional Testing as well");
+							+ "evenafter user clicks on Mini Cart. Same issue observed Functional Testing as well  "+e1.getMessage());
 				}
 
 				try {
@@ -724,7 +726,7 @@ public class GenericMethods extends GlobalConstants {
 						System.out.println("Removing Existing Products");
 						delay(5000);
 						for (WebElement ele : checkout.getRemoveMinicartProducts()) {
-							click(checkout.getRemoveProduct(), "Remove Existing Product");
+							checkout.getRemoveProduct().click();
 						}
 					}
 				} catch (Exception e) {

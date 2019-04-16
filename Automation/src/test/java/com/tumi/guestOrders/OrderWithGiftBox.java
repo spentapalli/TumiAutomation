@@ -20,7 +20,7 @@ public class OrderWithGiftBox extends GenericMethods {
 	@Test(priority = 1, description = " TA-99 Verify Order with merchandise Back Order + Gift Boxing for Guest User")
 	public void backOrderWithGiftBox() {
 
-		UIFunctions.addProductToCart("TumiTestData", "BackOrderProduct");
+		UIFunctions.addProduct("TumiTestData", "BackOrderProduct","BackSKUID");
 		click(pdp.getAddToCart(), "Add to cart");
 		
 		if (browserName.equals("mobile")) {
@@ -34,12 +34,15 @@ public class OrderWithGiftBox extends GenericMethods {
 			click(gift.getContinueGiftService(), "Continue");
 			click(mainCart.getProceedCart(), "Proceed to Checkout");
 		}
-
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		UIFunctions.waitForContinueToEnable();
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		UIFunctions.addGuestDetails();
-		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
+		if (!shipping.getContinueShippingMethod().isEnabled()) {
+			UIFunctions.addGuestDetails();
+		}else {
+			click(shipping.getContinueShippingMethod(), "Contiue Shipping");
+		}
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
 		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		UIFunctions.completeOrder();
@@ -48,7 +51,7 @@ public class OrderWithGiftBox extends GenericMethods {
 
 	@Test(priority = 2, description = "TA-109 Verify Order with merchandise Back Order for Guest ")
 	public void backOrderAsGuest() {
-		UIFunctions.addProductToCart("TumiTestData", "BackOrderProduct");
+		UIFunctions.addProduct("TumiTestData", "BackOrderProduct","BackSKUID");
 		click(pdp.getAddToCart(), "Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Cart");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
@@ -57,7 +60,11 @@ public class OrderWithGiftBox extends GenericMethods {
 		UIFunctions.waitForContinueToEnable();
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		UIFunctions.addGuestDetails();
-		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
+		if (!shipping.getContinueShippingMethod().isEnabled()) {
+			UIFunctions.addGuestDetails();
+		}else {
+			click(shipping.getContinueShippingMethod(), "Contiue Shipping");
+		}
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
 		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		UIFunctions.completeOrder();
@@ -77,7 +84,11 @@ public class OrderWithGiftBox extends GenericMethods {
 		UIFunctions.waitForContinueToEnable();
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		UIFunctions.addGuestDetails();
-		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
+		if (!shipping.getContinueShippingMethod().isEnabled()) {
+			UIFunctions.addGuestDetails();
+		}else {
+			click(shipping.getContinueShippingMethod(), "Contiue Shipping");
+		}
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
 		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		UIFunctions.completeOrder();
@@ -98,7 +109,11 @@ public class OrderWithGiftBox extends GenericMethods {
 		UIFunctions.waitForContinueToEnable();
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		UIFunctions.addGuestDetails();
-		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
+		if (!shipping.getContinueShippingMethod().isEnabled()) {
+			UIFunctions.addGuestDetails();
+		}else {
+			click(shipping.getContinueShippingMethod(), "Contiue Shipping");
+		}
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
 		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		UIFunctions.completeOrder();
@@ -118,7 +133,11 @@ public class OrderWithGiftBox extends GenericMethods {
 		UIFunctions.waitForContinueToEnable();
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		UIFunctions.addGuestDetails();
-		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
+		if (!shipping.getContinueShippingMethod().isEnabled()) {
+			UIFunctions.addGuestDetails();
+		}else {
+			click(shipping.getContinueShippingMethod(), "Contiue Shipping");
+		}
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
 		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		UIFunctions.completeOrder();
@@ -138,7 +157,11 @@ public class OrderWithGiftBox extends GenericMethods {
 		UIFunctions.waitForContinueToEnable();
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		UIFunctions.addGuestDetails();
-		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
+		if (!shipping.getContinueShippingMethod().isEnabled()) {
+			UIFunctions.addGuestDetails();
+		}else {
+			click(shipping.getContinueShippingMethod(), "Contiue Shipping");
+		}
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
 		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		UIFunctions.completeOrder();
@@ -161,16 +184,19 @@ public class OrderWithGiftBox extends GenericMethods {
 		UIFunctions.waitForContinueToEnable();
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		UIFunctions.addGuestDetails();
-		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
+		if (!shipping.getContinueShippingMethod().isEnabled()) {
+			UIFunctions.addGuestDetails();
+		}else {
+			click(shipping.getContinueShippingMethod(), "Contiue Shipping");
+		}
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
 		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		UIFunctions.completeOrder();
 	}
 
 	@Test(priority = 8, description = "TA-96 Verify Order with merchandise Back Order + Gift Boxing + Gift Message ")
-
 	public void backOrderWithGiftBoxNMsgAsGuest() {
-		UIFunctions.addProductToCart("TumiTestData", "BackOrderProduct");
+		UIFunctions.addProduct("TumiTestData", "BackOrderProduct","BackSKUID");
 		click(pdp.getAddToCart(), "Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(gift.getMakeThisGift(), "Make this Gift");
@@ -182,7 +208,11 @@ public class OrderWithGiftBox extends GenericMethods {
 		UIFunctions.waitForContinueToEnable();
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		UIFunctions.addGuestDetails();
-		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
+		if (!shipping.getContinueShippingMethod().isEnabled()) {
+			UIFunctions.addGuestDetails();
+		}else {
+			click(shipping.getContinueShippingMethod(), "Contiue Shipping");
+		}
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
 		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		UIFunctions.completeOrder();
