@@ -638,9 +638,7 @@ public class UIFunctions extends GenericMethods {
 		if(selectedCountry.contains("US")||selectedCountry.contains("Canada")) {
 		beforeCost = Double.valueOf(beforeTotal.replace("$", "").replace(",",""));
 		System.out.println("Before select Price = " + beforeCost);
-		}
-		
-		else {
+		}else {
 	    beforeCostkr = Double.valueOf(beforeTotal.substring(1).replace(",",""));
 		System.out.println("Before select Price = " + beforeCostkr);
 		}
@@ -1323,7 +1321,7 @@ public class UIFunctions extends GenericMethods {
 
 			} else if (applicationUrl.toLowerCase().equals("prod")) {
 
-				final String pdpURL = testData1.get("prod") + "/p/" + testData.get(product);
+				final String pdpURL = GlobalConstants.prodUrl + "/p/" + testData.get(product);
 				driver.navigate().to(pdpURL);
 				UIFunctions.closeSignUp();
 				if(driver.getTitle().contains("Not Found")) {

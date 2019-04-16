@@ -33,7 +33,7 @@ public class GlobalConstants extends Reports {
 	public static String urlca = "https://ca.hybris-stage2.tumi.com/";
    
 	// Production
-	// public static String url = "https://www.tumi.com";
+	public static String prodUrl = "https://www.tumi.com";
 
 	// production Canada
 	// public static String url = "https://ca.tumi.com";
