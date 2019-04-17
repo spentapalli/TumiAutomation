@@ -92,6 +92,10 @@ public class ShippingMethodPage extends GenericMethods {
 			return explicitWait(krProceedToPayment);
 		}
 	}
+	
+	public WebElement getMultiProceedToPayment() {
+		return explicitWait(proceedToPayment);
+	}
 
 	@FindBy(how = How.XPATH, using = "(//button[@type='button'])[1]")
 	private WebElement krEditAddress;

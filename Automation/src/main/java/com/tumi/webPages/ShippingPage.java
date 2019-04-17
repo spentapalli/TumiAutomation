@@ -222,5 +222,30 @@ public class ShippingPage extends GenericMethods {
 
 		return shipAddressForm;
 	}
+	
+	@FindBy(how = How.XPATH, using = "//div[@id='empty-cart-msg-home']")
+	private WebElement emptyCartatHome;
+
+	public WebElement getEmptyCartatHome() {
+
+		return emptyCartatHome;
+	}
+	
+	@FindBy(how = How.XPATH, using = "(//button[contains(@class,'tm-button tm-red-button')])[1]")
+	private WebElement signInContinue;
+
+	public WebElement getSignInContinue() {
+
+		return signInContinue;
+	}
+	@FindBy(how = How.XPATH, using = "//div[@id='loggedInDiv']/a[2]")
+	private WebElement signOut;
+
+	public WebElement getSignOut() {
+
+		return signOut;
+	}
+	
+	
 
 }
