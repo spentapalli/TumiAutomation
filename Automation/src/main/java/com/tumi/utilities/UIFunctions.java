@@ -944,7 +944,7 @@ public class UIFunctions extends GenericMethods {
 
 		click(multiShip.getNext(), "Continue next shipping");
 		webclick(shipMethod.getStandardShippingMethod(), "Standard Shipping Method");
-		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
+		click(shipMethod.getMultiProceedToPayment(), "Proceed to Payment");
 	}
 
 	public static void addMultishipForRegistered() {
@@ -972,7 +972,8 @@ public class UIFunctions extends GenericMethods {
 		}
 		click(multiShip.getNext(), "Continue next shipping");
 		webclick(shipMethod.getStandardShippingMethod(), "Standard Shipping Method");
-		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
+		delay(2000);
+		click(shipMethod.getMultiProceedToPayment(), "Proceed to Payment");
 	}
 
 	public static void addMultishipGuestDeatils(String data, String data1) {

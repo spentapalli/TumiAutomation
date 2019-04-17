@@ -16,7 +16,7 @@ public class ShippingPageSingleItem extends GenericMethods {
 	 * TA - 61, Verify Shipping Page-Single item-Guest/Register User.
 	 */
 
-	@Test(priority = 0, description = "TA-439, verify shipping to different location- only for Guest User")
+	//@Test(priority = 0, description = "TA-439, verify shipping to different location- only for Guest User")
 	public void verifyShiptoDiffLoc() {
 		SinglePageCheckout.goToSinglePage();
 		input(singlePage.getEmailAddress(), testdata.get("EmailID"), "Email ID");
@@ -32,7 +32,7 @@ public class ShippingPageSingleItem extends GenericMethods {
 				click(shipping.getSelectCanada(), "Canada");
 				if (driver.getCurrentUrl().contains("ca") && driver.getCurrentUrl().contains("cart")) {
 					logger.log(Status.PASS, "After selecting Canada, successfully page navigated to Canada Cart page");
-				} else if (driver.getCurrentUrl().equals("https://ca.hybris-stage2.tumi.com")) {
+				} else if (driver.getCurrentUrl().contains("https://ca.hybris-stage2.tumi.com")) {
 					logger.log(Status.INFO, "Either Product is in out of stock or Not available in Canada");
 				} else
 					Assert.fail("After selecting Canada, page couldn't navigated to Canada Cart page");
@@ -40,7 +40,7 @@ public class ShippingPageSingleItem extends GenericMethods {
 				webclick(shipping.getSelectKorea(), "Korea");
 				if (driver.getCurrentUrl().contains("kr") && driver.getCurrentUrl().contains("cart")) {
 					logger.log(Status.PASS, "After selecting Korea, successfully page navigated to Korea Cart page");
-				} else if (driver.getCurrentUrl().equals("https://kr.hybris-stage2.tumi.com")) {
+				} else if (driver.getCurrentUrl().contains("https://kr.hybris-stage2.tumi.com")) {
 					logger.log(Status.INFO, "Either Product is in out of stock or Not available in Korea");
 				} else {
 					Assert.fail("After selecting Korea, page couldn't navigated to Korea Cart page");
@@ -49,7 +49,7 @@ public class ShippingPageSingleItem extends GenericMethods {
 				click(shipping.getSelectUS(), "US");
 				if (driver.getCurrentUrl().contains("www") && driver.getCurrentUrl().contains("cart")) {
 					logger.log(Status.PASS, "After selecting US, successfully page navigated to US Cart page");
-				} else if (driver.getCurrentUrl().equals("https://www.hybris-stage2.tumi.com")) {
+				} else if (driver.getCurrentUrl().contains("https://www.hybris-stage2.tumi.com")) {
 					logger.log(Status.INFO, "Either Product is in out of stock or Not available in US");
 				} else {
 					Assert.fail("After selecting US, page couldn't navigated to US Cart page");
@@ -67,14 +67,26 @@ public class ShippingPageSingleItem extends GenericMethods {
 		SinglePageCheckout.goToSinglePage();
 		input(singlePage.getEmailAddress(), testdata.get("EmailID"), "Email ID");
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
+		delay(2000);
 		BillingPage.loginAfterCart("TumiTestData", "RegisteredOrders");
+		try {
+			if(shipping.getSignInContinue().isDisplayed()) {
+				click(shipping.getSignInContinue(),"Continue after signIn");
+			}
+		} catch (Exception e) {
+		
+		}
 		//userLogin("TumiTestData", "RegisteredOrders");
 		domClick(shipping.getAddNewAddress(),"Add New Address");
-		if(shipping.getShipAddressForm().isEnabled()) {
+		if(shipping.getAddressLine1().isEnabled()) {
 			logger.log(Status.PASS, "When click Add New Address, it is allowing to add another address");
 		}else {
 			logger.log(Status.INFO, "When click Add New Address, deails are not displayed to add another address");
 		}
+		
+		click(shipping.getSignOut(),"Signout");
+		
+		
 	}
 
 }

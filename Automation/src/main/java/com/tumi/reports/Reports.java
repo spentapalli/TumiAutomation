@@ -189,7 +189,7 @@ public class Reports {
 		UIFunctions.selectCountry();
 	}
 
-	@AfterMethod(alwaysRun = true)
+	//@AfterMethod(alwaysRun = true)
 	public static void closeBrowser() {
 
 		if (browserName.equals("Remote")) {

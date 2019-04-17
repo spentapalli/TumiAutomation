@@ -258,10 +258,17 @@ public class GuestBillingPage extends GenericMethods {
 	@FindBy(how = How.XPATH, using = "//h2[contains(text(),'Items Saved in Cart')]")
 	private WebElement itemsInCart;
 
-	public WebElement getItemsInCart() {
-		return itemsInCart;
+	@FindBy(how = How.XPATH, using = "//div[contains(@class,'cartMergeProducts')]/../../div/div/div/h2")
+	private WebElement krItemsInCart;
 
+	public WebElement getItemsInCart() {
+		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
+			return itemsInCart;
+		} else {
+			return krItemsInCart;
+		}
 	}
+
 	@FindBy(how = How.XPATH, using = "(//button[contains(@class,'tm-button tm-red-button')])[1]")
 	private WebElement continueInLogin;
 
