@@ -545,6 +545,24 @@ public class UIFunctions extends GenericMethods {
 		input(mainCart.getPromocode(), testData.get("VoucherID"), "Vocher Id");
 		click(mainCart.getApply(), "Check Promocode");
 		delay(2000);
+		UIFunctions.addPromotionalCodeAtCart("TumiTestData", "VoucherCodeDetails");
+		if (mainCart.getPromoMsg().isDisplayed()
+				&& (getText(mainCart.getVoucherMsg()).equals(getProperty("voucher.alreadyapplied")))) {
+			logger.log(Status.INFO, "Voucher already been applied successfully");
+		} else	if (mainCart.getPromoMsg().isDisplayed()) {
+			logger.log(Status.INFO, "promo code applied succesfully");
+	 
+
+		} else if (getText(mainCart.getVoucherMsg()).equals(getProperty("voucher.error"))) {
+		Assert.fail((getText(mainCart.getVoucherMsg())));
+
+		} else if (getText(mainCart.getVoucherMsg()).equals(getProperty("voucher.wrong"))) {
+			Assert.fail((getText(mainCart.getVoucherMsg())));
+
+		} else {
+			Assert.fail("Failed to add Voucher code");
+	}
+	delay(2000);
 		verifyPromoChargeCart(beforeCost);
 		} else if (selectedCountry.contains("Canada")) {
 			String beforeTotal = getText(mainCart.getEstimatedTotal());
@@ -907,9 +925,9 @@ public class UIFunctions extends GenericMethods {
 		} else {
 			addMultishipGuestDeatils(testData.get("shipment1"), testData.get("AddressLine1"));
 		}
-		if (!multiShip.getNext().isEnabled()) {
+		click(multiShip.getNext(), "Continue next shipping");
 			
-		}
+		
 		webclick(shipMethod.getStandardShippingMethod(), "Standard Shipping Method");
 		click(multiShip.getNextShipment(), "Continue next shipment");
 		domClick(multiShip.getAddShippment0(), "add shipment 2");
