@@ -27,8 +27,6 @@ import com.tumi.utilities.UIFunctions;
 			UIFunctions.addProductToCart("TumiTestData","Products");
 			click(pdp.getAddToCart(),"Add to cart");
 			click(minicart.getProceedCheckOut(), "Proceed to Cart");
-			
-			
 			UIFunctions.payPalCheckout("TumiTestData","PayPalDeatils", mainCart.getEstimatedTotalRegistered());
 			UIFunctions.completeOrder();
 

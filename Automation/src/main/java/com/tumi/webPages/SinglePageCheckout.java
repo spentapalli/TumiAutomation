@@ -103,7 +103,7 @@ public class SinglePageCheckout extends GenericMethods {
 		}
 	}
 
-	@FindBy(how = How.XPATH, using = "//div[contains(@class,'promoCode')]/div[2]")
+	@FindBy(how = How.XPATH, using = "//div[contains(@class,'promoCode')]/div")
 	private WebElement PromocodeMessage;
 
 	public WebElement getPromocodeMessage() {
@@ -111,7 +111,7 @@ public class SinglePageCheckout extends GenericMethods {
 		return explicitWait(PromocodeMessage);
 	}
 
-	@FindBy(how = How.XPATH, using = "(//button[contains(text(),'Remove')])[3]")
+	@FindBy(how = How.XPATH, using = "(//button[contains(text(),'Remove')])")
 	private WebElement PromocodeRemove;
 
 	public WebElement getPromocodeRemove() {

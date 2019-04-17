@@ -66,7 +66,7 @@ public class GuestOrders extends GenericMethods {
 		UIFunctions.completeOrder();
 	}
 
-	//@Test(priority = 2, description = "TA- 112,Verify Order with merchandise Pre Order for Guest User")
+	@Test(priority = 2, description = "TA- 112,Verify Order with merchandise Pre Order for Guest User")
 	public void preOrderAsGuest() throws InterruptedException {
 
 		UIFunctions.addProductToCart("TumiTestData", "PreOrderProduct");

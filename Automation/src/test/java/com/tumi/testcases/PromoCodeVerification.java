@@ -26,12 +26,12 @@ public class PromoCodeVerification extends GenericMethods {
 		click(pdp.getAddToCart(), "Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Cart");
 		UIFunctions.addPromotionalCodeAtCart("TumiTestData", "VoucherCodeDetails");
-
-		if (mainCart.getPromoMsg().isDisplayed()) {
-			logger.log(Status.INFO, "promo code applied succesfully");
-		} else if (mainCart.getPromoMsg().isDisplayed()
+		if (mainCart.getPromoMsg().isDisplayed()
 				&& (getText(mainCart.getVoucherMsg()).equals(getProperty("voucher.alreadyapplied")))) {
 			logger.log(Status.INFO, "Voucher already been applied successfully");
+		} else	if (mainCart.getPromoMsg().isDisplayed()) {
+			logger.log(Status.INFO, "promo code applied succesfully");
+	 
 
 		} else if (getText(mainCart.getVoucherMsg()).equals(getProperty("voucher.error"))) {
 		Assert.fail((getText(mainCart.getVoucherMsg())));
@@ -43,7 +43,7 @@ public class PromoCodeVerification extends GenericMethods {
 			Assert.fail("Failed to add Voucher code");
 	}
 	}
-	// @Test(priority=2)
+	 @Test(priority=1)
 	public void VerifyPromoCodeSinglePageCheckout() {
 		UIFunctions.addProductToCart("TumiTestData", "Products");
 		click(pdp.getAddToCart(), "Add to cart");
@@ -71,7 +71,7 @@ public class PromoCodeVerification extends GenericMethods {
 		}
 	}
 
-	// @Test(priority=3)
+	 @Test(priority=2)
 	public void VerifyPromocodeShippingAddress() {
 
 		UIFunctions.addProductToCart("TumiTestData", "Products");

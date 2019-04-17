@@ -449,6 +449,7 @@ public class HomePage extends GenericMethods {
 	}
 
 //same for korea
+	//chghggcfcggvhd
 	@FindBy(how = How.XPATH, using = "//div[@id='minicart_data']/span[1]")
 	private WebElement minicart;
 

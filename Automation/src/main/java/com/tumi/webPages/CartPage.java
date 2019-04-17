@@ -308,7 +308,7 @@ public class CartPage extends GenericMethods {
 		return codeApplied;
 	}
 	
-	@FindBy(how = How.XPATH, using = "(//button[@type='submit'])[2]/following::div")
+	@FindBy(how = How.XPATH, using = "(//button[@type='submit'])[2]/following::div[4]")
 	private WebElement promoSuccessMsg;
 
 	public WebElement getPromoSuccessMsg() {

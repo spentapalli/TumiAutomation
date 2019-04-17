@@ -316,8 +316,8 @@ public class Reports {
 
 		if (browserName.equalsIgnoreCase("Remote")) {
 
-			//remoteAccess();
-			sauceConnect();
+			remoteAccess();
+			//sauceConnect();
 			getURL();
 
 		} else {
@@ -410,8 +410,9 @@ public class Reports {
 		 
 
 		caps.setCapability("browserstack.local", localTesting());
-		caps.setCapability("browserstack.debug", "true");
+		caps.setCapability("browserstack.debug", "false");
 		caps.setCapability("browserstack.networkLogs", "false");
+		caps.setCapability("browserstack.geoLocation", "US");
 		// caps.setCapability("resolution", "1024x768");
 
 		Map<String, Object> prefs1 = new HashMap<String, Object>();
