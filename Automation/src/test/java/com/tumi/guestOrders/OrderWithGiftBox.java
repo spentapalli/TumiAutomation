@@ -55,8 +55,9 @@ public class OrderWithGiftBox extends GenericMethods {
 		click(pdp.getAddToCart(), "Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Cart");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
-		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
+		
 		UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "VoucherCodeDetails");
+		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		UIFunctions.waitForContinueToEnable();
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		UIFunctions.addGuestDetails();
