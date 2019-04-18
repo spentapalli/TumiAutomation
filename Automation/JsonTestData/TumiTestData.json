@@ -37,12 +37,15 @@
 		"ColorSwatches": "01084371193",
 		"ColorSwatchesKr": "0228069HNT",
 		"AirlineProduct": "022061D2",
-		"OutOfStock": "0494796PST",
+		"OutOfStock": "0494796PST",   
 		"PageNotFound": "017DH"
 	},
 	"SocialNetworkDetails": {
-		"GoogleEmailID": "emptumi@gmail.com",
-		"GooglePassword": "tumi1234",
+	    "GoogleEmailID": "tumi.automation@gmail.com",
+	    "GooglePassword": "tumi1234",
+	    "GoogleRecoveryEmailID":"emptumi@gmail.com",
+		"GmailEmailID": "emptumi@gmail.com",
+		"GmailPassword": "tumi1234",
 		"Password_login": "Tumi_8864",
 		"InValidGoogleEmail": "Employee.tumi@gmail.com",
 		"InValidGooglePassword": "tumi12",
@@ -52,6 +55,11 @@
 		"InvalidInstaPassword": "tumi12",
 		"EmailID": "Employee.tumi@gmail.com",
 		"Password": "t1"
+	},
+	"ShippingCharges":{
+	"UsStandardShippingCharge":"$0.00",
+	"PriorityShippingCharge":"$25.00",
+	"SecondDayShippingCahrge":"$15.00"
 	},
 	"VoucherCodeDetails": {
 		"VoucherID": "T30-D5L6-E4LR-WEDL",
@@ -79,10 +87,10 @@
 		"CAPostCode": "V2S 8B7"
 	},
 	"RegisteredOrders": {
-		"EmailID1": "skomma@coredatalabs.com",
-		"Password1": "tumi1234",
-		"EmailID" : "Tumi0604190837@gmail.com",
-		"Password": "TumiiEcom@123456789",
+		"EmailID": "skomma@coredatalabs.com",
+		"Password": "tumi1234",
+		"EmailID1" : "Tumi0604190837@gmail.com",
+		"Password1": "TumiiEcom@123456789",
 		"SKUID": "022061D2"
 	},
 	"FailedOrder": {
@@ -96,14 +104,16 @@
 		"Phone": "12345678901"
 	},
 	"BackOrderProduct": {
-		"SKUID": "13234CPT"
+		"SKUID": "13234CPT",
+		"BackSKUID":"01193891041"
 	},
 	"PreOrderProduct": {
 		"SKUID": "028TRK"
 	},
 	"GlobalLocatorProduct": {
 		"AddressLine1": "1 LEFEUVRE RD",
-		"SKUID": "1111301041"
+		"SKUID": "01166761041"
+		
 	},
 	"DonationPurchase": {
 		"SKUID": "TUMISTJUDE250"
@@ -193,7 +203,7 @@
 		"stage2": "https://www.hybris-stage2.tumi.com/",
 		"stage3": "https://www.hybris-stage3.tumi.com/",
 		"prod": "https://www.tumi.com/",
-		"akamaiS2": "https://www.stg-hybris-akamai.tumi.com/"
+		"akamaiS2": "https://www.stg-hybris-akamai.tumi.com"
 	},
 	"BrowserStack": {
 		"remoteBrowser": "Chrome",

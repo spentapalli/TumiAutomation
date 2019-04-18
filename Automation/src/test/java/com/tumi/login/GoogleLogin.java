@@ -36,16 +36,26 @@ public class GoogleLogin extends GenericMethods {
 				webclick(google.getFirstNext(), "Next");
 				input(google.getPassword(), testData.get("GooglePassword"), "Password");
 				webclick(google.getPasswordNext(), "password next");
+				delay(2000);
+				try {
+					if(google.getVerifyYou().isDisplayed()) {
+						click(google.getConfirmRecoveryemail(),"Confirm recovery email");
+						input(google.getRecoveryEmail(),testData.get("GoogleRecoveryEmailID"), "gmail id");
+						click(google.getRecoveryNext(),"Next");
+					}
+				} catch (Exception e) {
+					
+				}
 			}
 		}
 		driver.switchTo().window(parentHandle);
 		try {
 			if (myacc.getSignout().isDisplayed()) {
 				verifyAssertContains(getText(myacc.getWelcomeMessage()), getProperty("login.success.message"),
-						"Faile to Login with Google");
+						"Failed to Login with Google");
 				click(myacc.getSignout(), "Signout");
 			}else {
-				Assert.fail("Google Login Unsuccessful");
+				Assert.fail("Unable to login google");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

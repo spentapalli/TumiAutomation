@@ -41,13 +41,21 @@ public class HomePage extends GenericMethods {
 		return NoProducts;
 	}
 
-//kjhhfgszbuhtddxfg
+
 	@FindBy(how = How.XPATH, using = "//ul[@id='matching_products']/li")
 	private List<WebElement> matchingProducts;
 
 	public List<WebElement> getMatchingProducts() {
 
 		return matchingProducts;
+	}
+	
+	@FindBy(how = How.XPATH, using = "//ul[@id='matching_products']/li")
+	private WebElement matchingProduct;
+
+	public WebElement getMatchingProduct() {
+
+		return matchingProduct;
 	}
 
 	// for Canada
@@ -135,6 +143,22 @@ public class HomePage extends GenericMethods {
 		} else {
 			return krselectCountry;
 		}
+	}
+
+	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Location: United States')]")
+	private WebElement akamaiSelectCountry;
+
+	public WebElement getAkamaiSelectCountry() {
+			return akamaiSelectCountry;
+		
+	}
+
+	@FindBy(how = How.XPATH, using = "(// a[contains(text(),'United States')])[2]")
+	private WebElement akamaiSelectUS;
+
+	public WebElement getAkamaiSelectUS() {
+		return akamaiSelectUS;
+
 	}
 
 	@FindBy(how = How.XPATH, using = "(//a[contains(text(),'United States')])[2]")
@@ -425,7 +449,8 @@ public class HomePage extends GenericMethods {
 	}
 
 //same for korea
-	@FindBy(how = How.XPATH, using = "//div[@id='minicart_data']/span")
+	//chghggcfcggvhd
+	@FindBy(how = How.XPATH, using = "//div[@id='minicart_data']/span[1]")
 	private WebElement minicart;
 
 	public WebElement getMinicart() {
@@ -1312,9 +1337,10 @@ public class HomePage extends GenericMethods {
 	}
 
 	// CURRENT USER
+
 	@FindBy(how = How.XPATH, using = "//div[@id='loggedInDiv']/a")
 	private WebElement currentUserKR;
-	
+
 	@FindBy(how = How.XPATH, using = "(//a[contains(text(), 'Hi,')])[2]")
 	private WebElement currentUser;
 
@@ -1527,5 +1553,5 @@ public class HomePage extends GenericMethods {
 
 		return previewYourGift;
 	}
-	
+
 }

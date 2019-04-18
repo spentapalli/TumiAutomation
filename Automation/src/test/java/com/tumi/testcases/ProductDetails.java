@@ -28,7 +28,7 @@ public class ProductDetails extends GenericMethods {
 	static Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "Products");
 	static Map<String, String> personalization = ReadTestData.getJsonData("TumiTestData", "MonoGramDetails");
 
-	//@Test(priority = 0, description = "TA-420, Verify bread crumbs above Product" )
+	@Test(priority = 0, description = "TA-420, Verify bread crumbs above Product" )
 	public void verifyBreadScrumbs() {
 		SoftAssert breadcrumbs = new SoftAssert();
 		addProductForPDPtest(testData.get("BreadCrumbsTest"));
@@ -64,13 +64,14 @@ public class ProductDetails extends GenericMethods {
 		breadcrumbs.assertAll();
 	}
 
-	//@Test(priority = 1, description = "TA-422, Verify Enire Collection link")
+	@Test(priority = 1, description = "TA-422, Verify Entire Collection link")
 	public void verifyCollectionLink() {
 
 		addProductForPDPtest(testData.get("BreadCrumbsTest"));
-		String collName = getText(pdp.getCollectionName());
+		String collName = getText(pdp.getCollectionName());  
 
 		click(pdp.getCollectionLink(), "View Entire Collection");
+		delay(2000);
 
 		WebElement items = driver.findElement(By.xpath("//span[@id='numberItemsSelectBoxItText']"));
 		String products = getText(items);
@@ -122,7 +123,7 @@ public class ProductDetails extends GenericMethods {
 
 	}
 
-	//@Test(priority = 4, description = "TA-421, Verify Images")
+	@Test(priority = 4, description = "TA-421, Verify Images")
 	public void verifyImages() {
 		addProductForPDPtest(testData.get("BreadCrumbsTest"));
 		int imagesCount = pdp.getAltItemsList().size();
@@ -135,14 +136,16 @@ public class ProductDetails extends GenericMethods {
 
 	}
 
-	//@Test(priority = 5, description = "TA-426: Verify Add to Cart," + "TA-435: Verify Airline Carry on guide and "
-	//		+ "TA-428 : Accordians/labels")
+	@Test(priority = 5, description = "TA-426: Verify Add to Cart," + "TA-435: Verify Airline Carry on guide and "
+			+ "TA-428 : Accordians/labels")
 	public void verifyPDP() {
 		SoftAssert verifypdpAsser = new SoftAssert();
 
-		/*
-		 * Verify Airline Carry-On-Guide is opening window and displaying guide or not"
-		 */
+		
+		 /*
+		  *  Verify Airline Carry-On-Guide is opening window and displaying guide or not"
+		  */
+		 
 
 		addProductForPDPtest(testData.get("AirlineProduct"));
 		click(pdp.getAirLine(), "AirLine Carry-On-Guide");
@@ -155,9 +158,11 @@ public class ProductDetails extends GenericMethods {
 		}
 		click(pdp.getAirLineClose(), "Close Airline Window");
 
-		/*
-		 * Verify Add to Cart : Verifying that product is in out of stock or in stock
-		 */
+		
+		 /*
+		  *  Verify Add to Cart : Verifying that product is in out of stock or in stock
+		  */
+		 
 		try {
 			if (pdp.getAddToCart().isDisplayed()) {
 				click(pdp.getAddToCart(), "Add to cart");
@@ -178,8 +183,8 @@ public class ProductDetails extends GenericMethods {
 			}
 		}
 
-		/*
-		 * Verify Accordions: Verifying accordions are enabled or not , if enabled
+		
+		 /* Verify Accordions: Verifying accordions are enabled or not , if enabled
 		 * verifying each accordion has content or not.
 		 */
 
@@ -210,16 +215,17 @@ public class ProductDetails extends GenericMethods {
 
 	}
 
-	//@Test(priority = 6, description = "TA-429: Verify Product Warranty test,"
-	//		+ "Setting your Tumi Lock and Free returns.")
+	@Test(priority = 6, description = "TA-429: Verify Product Warranty test,"
+			+ "Setting your Tumi Lock and Free returns.")
 	public void verifyAccordionFeatures() {
 		SoftAssert accordion = new SoftAssert();
 		addProductForPDPtest(testData.get("BreadCrumbsTest"));
 
-		/*
-		 * Verify Product Warranty : verifying if click on Product Warranty, displaying
+		
+		/* Verify Product Warranty : verifying if click on Product Warranty, displaying
 		 * content or not
 		 */
+		 
 		click(pdp.getProductWarranty(), "Product Warranty");
 
 		if (pdp.getProductWarrantyContent().isDisplayed()) {
@@ -230,11 +236,11 @@ public class ProductDetails extends GenericMethods {
 		}
 		click(pdp.getProductWarrantyPopupClose(), "Popup Close");
 
-		/*
-		 * Verify Setting Your Tumi Lock: Verifying if click on Setting Your Tumi Lock
+		
+		 /* Verify Setting Your Tumi Lock: Verifying if click on Setting Your Tumi Lock
 		 * will open tumi lock page with specific buttons or not
-		 * 
-		 */
+		 */ 
+		 
 		if(selectedCountry.contains("US")) {
 		click(pdp.getTumiLock(), "Setting Your TumiLock");
 		if (!pdp.getTumiLockList().isEmpty()) {
@@ -244,10 +250,13 @@ public class ProductDetails extends GenericMethods {
 		}
 		}
 		
-		/*
+		
+		/* 
 		 * Verify Free Returns : verifying if click on Free Returns, displaying
-		 * content or not
+		 content or not
 		 */
+		 
+		 
 		
 
 		addProductForPDPtest(testData.get("BreadCrumbsTest"));
@@ -263,10 +272,34 @@ public class ProductDetails extends GenericMethods {
 
 	public static void addProductForPDPtest(String data) {
 
-		if (selectedCountry.contains("US")) {
+	
+		Map<String, String> testData1 = ReadTestData.getJsonData("TumiTestData", "Environments");
 
-			final String pdpURL = GlobalConstants.S2 + "/p/" + data;
-			driver.get(pdpURL);
+		if (selectedCountry.equals("US") || selectedCountry.contains("United States") || selectedCountry.isEmpty()) {
+
+			if (applicationUrl.equals("stage2")) {
+
+				final String pdpURL = GlobalConstants.S2 + "/p/" + data;
+				driver.navigate().to(pdpURL);
+
+			} else if (applicationUrl.equals("stage3")) {
+
+				final String pdpURL = GlobalConstants.S3 + "/p/" + data;
+				driver.navigate().to(pdpURL);
+
+			}else if (applicationUrl.equals("akamaiS2")) {
+			
+
+				final String pdpURL = GlobalConstants.akamaiUrl + "/p/" + data;
+				driver.navigate().to(pdpURL);
+
+			} else if (applicationUrl.equals("prod")) {
+
+				final String pdpURL = testData1.get("prod") + "/p/" + data;
+				driver.navigate().to(pdpURL);
+				UIFunctions.closeSignUp();
+			}
+
 		} else if (selectedCountry.contains("Canada")) {
 
 			final String pdpURL = GlobalConstants.urlca + "/p/" + data;
@@ -277,6 +310,7 @@ public class ProductDetails extends GenericMethods {
 			final String pdpURL = GlobalConstants.urlkr + "/p/" + data;
 			driver.get(pdpURL);
 		}
+		
 		UIFunctions.verifyVPN();
 	}
 

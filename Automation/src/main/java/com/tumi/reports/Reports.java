@@ -71,6 +71,7 @@ import com.tumi.webPages.SignInBillingPage;
 import com.tumi.webPages.SignInShippingPage;
 import com.tumi.webPages.SinglePageCheckout;
 import com.tumi.webPages.TumiStudio;
+import com.tumi.webPages.TumiTracerPage;
 
 /**
  * @author Suuresh clean test -Dsurefire.suiteXmlFiles=regressionTests.xml
@@ -117,7 +118,7 @@ public class Reports {
 	public static String applicationUrl = null;
 	public static PGP pgp = null;
 	public static ComparePage compare = null;
-	// public static TumiTracerPage tracer = null;
+	public static TumiTracerPage tracer = null;
 
 	@BeforeSuite(alwaysRun = true)
 	public void extentReportConfiguration() {
@@ -134,6 +135,11 @@ public class Reports {
 		// writing everything to document
 		// flush() - to write or update test information to your report.
 		report.flush();
+		try {
+			GenericMethods.killSession();
+		} catch (Exception e) {
+			logger.log(Status.INFO, "Unable to Kill Browser Instance");
+		}
 	}
 
 	@SuppressWarnings("deprecation")
@@ -177,24 +183,20 @@ public class Reports {
 				UIFunctions.closeSignUp();
 			} else {
 				getURL();
+
 			}
 		}
 		UIFunctions.selectCountry();
 	}
 
-	@AfterMethod(alwaysRun = true)
+	//@AfterMethod(alwaysRun = true)
 	public static void closeBrowser() {
 
-		if (browserName.equalsIgnoreCase("Remote")) {
+		if (browserName.equals("Remote")) {
 			driver.quit();
 		} else {
 			driver.close();
 		}
-		/*
-		 * try { GenericMethods.killSession(); } catch (Exception e) {
-		 * logger.log(Status.INFO, "Unable to Kill Browser Instance"); }
-		 */
-
 	}
 
 	@BeforeMethod(alwaysRun = true)
@@ -232,7 +234,13 @@ public class Reports {
 		confirmation = new OrderConfirmationPage(driver);
 		pgp = new PGP(driver);
 		compare = new ComparePage(driver);
-		// tracer = new TumiTracerPage(driver);
+		tracer = new TumiTracerPage(driver);
+		if (driver.getCurrentUrl().contains("akamai")) {
+			GenericMethods.click(home.getAkamaiSelectCountry(), "Country");
+			GenericMethods.click(home.getAkamaiSelectUS(), "US");
+			UIFunctions.delay(2000);
+			UIFunctions.closeSignUp();
+		}
 	}
 
 	@AfterMethod(alwaysRun = true)
@@ -308,13 +316,8 @@ public class Reports {
 
 		if (browserName.equalsIgnoreCase("Remote")) {
 
-			// enableLocalTesting();
-
 			remoteAccess();
-			// testData.get("remoteBrowser"), testData.get("remoteBrowserVersion"),
-			// testData.get("remoteOS"),
-			// testData.get("remoteOsVersion")
-			// sauceConnect();
+			//sauceConnect();
 			getURL();
 
 		} else {
@@ -386,7 +389,7 @@ public class Reports {
 		final String USERNAME = "kurrysuresh1";
 		final String AUTOMATE_KEY = "zKp1VrRqTkUXqi4efALq";
 		String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
-		DesiredCapabilities caps = new DesiredCapabilities();
+		DesiredCapabilities caps = new DesiredCapabilities().safari();
 
 		/*
 		 * caps.setCapability("browser", remoteBrowser);
@@ -400,15 +403,17 @@ public class Reports {
 		 * "iPhone 8 Plus"); caps.setCapability("realMobile", "true");
 		 * caps.setCapability("os_version", "11");
 		 */
-		caps.setCapability("browser", "Safari");
-		caps.setCapability("browser_version", "12.0");
-		caps.setCapability("os", "OS X");
-		caps.setCapability("os_version", "Mojave");
+		
+		 // caps.setCapability("browser", "Safari");
+		  caps.setCapability("browser_version", "12.0"); caps.setCapability("os",
+		  "OS X"); caps.setCapability("os_version", "Mojave");
+		 
 
 		caps.setCapability("browserstack.local", localTesting());
-		caps.setCapability("browserstack.debug", "true");
-		caps.setCapability("browserstack.networkLogs", "true");
-		//caps.setCapability("resolution", "1024x768");
+		caps.setCapability("browserstack.debug", "false");
+		caps.setCapability("browserstack.networkLogs", "false");
+		caps.setCapability("browserstack.geoLocation", "US");
+		// caps.setCapability("resolution", "1024x768");
 
 		Map<String, Object> prefs1 = new HashMap<String, Object>();
 
@@ -430,15 +435,33 @@ public class Reports {
 
 		final String USERNAME = "skurry189";
 		final String ACCESS_KEY = "297e9a77-83f5-4acf-afa3-04c19a7d08b8";
-		final String URL = "https://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.saucelabs.com:443/wd/hub";
+		final String URL = "http://ondemand.saucelabs.com:80/wd/hub";
 
-		DesiredCapabilities capabilities = new DesiredCapabilities();
-		capabilities.setCapability("platform", "Windows 10");
-		capabilities.setCapability("version", "latest");
-		capabilities.setCapability("browserName", "chrome");
+		DesiredCapabilities caps = new DesiredCapabilities().safari();
+
+		// set your user name and access key to run tests in Sauce
+		caps.setCapability("username", USERNAME);
+
+		// set your sauce labs access key
+		caps.setCapability("accessKey", ACCESS_KEY);
+		
+		
+		caps.setCapability("platform", "macOS 10.14");
+		caps.setCapability("version", "12.0");
+		caps.setCapability("recordVideo", "false");
+		caps.setCapability("recordScreenshots", "false");
+		/*
+		 * // set browser to Safari capabilities.setCapability("browserName", "Safari");
+		 * 
+		 * // set operating system to macOS version 10.13
+		 * capabilities.setCapability("platform", "macOS 10.13");
+		 * 
+		 * // set the browser version to 11.1 capabilities.setCapability("version",
+		 * "11.1");
+		 */
 
 		try {
-			driver = new RemoteWebDriver(new URL(URL), capabilities);
+			driver = new RemoteWebDriver(new URL(URL), caps);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -490,7 +513,7 @@ public class Reports {
 			driver.get(testData.get("prod"));
 			UIFunctions.verifyVPN();
 			UIFunctions.closeSignUp();
-			// UIFunctions.countrySelection("United States");
+			UIFunctions.countrySelection("United States");
 		}
 		UIFunctions.verifyVPN();
 		UIFunctions.closeSignUp();

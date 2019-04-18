@@ -135,7 +135,7 @@ public class ShippingPage extends GenericMethods {
 	@FindBy(how = How.XPATH, using = "(//script[@id='checkoutMessages']/following::button)[3]")
 	private WebElement krContinueShippingMethod;
 
-	@FindBy(how = How.XPATH, using = "//button[contains(text(), 'Continue to Shipping Method')]")
+	@FindBy(how = How.XPATH, using = "//*[contains(text(), 'Continue to Shipping Method')][@type='submit']")
 	private WebElement continueShippingMethod;
 
 	public WebElement getContinueShippingMethod() {
@@ -207,5 +207,45 @@ public class ShippingPage extends GenericMethods {
 
 		return selectUS;
 	}
+	@FindBy(how = How.XPATH, using = "//input[@id='addNewAddress']")
+	private WebElement addNewAddress;
+
+	public WebElement getAddNewAddress() {
+
+		return addNewAddress;
+	}
+	
+	@FindBy(how = How.XPATH, using = "//div[contains(@class,'shippingInfoForm')]")
+	private WebElement shipAddressForm;
+
+	public WebElement getShipAddressForm() {
+
+		return shipAddressForm;
+	}
+	
+	@FindBy(how = How.XPATH, using = "//div[@id='empty-cart-msg-home']")
+	private WebElement emptyCartatHome;
+
+	public WebElement getEmptyCartatHome() {
+
+		return emptyCartatHome;
+	}
+	
+	@FindBy(how = How.XPATH, using = "(//button[contains(@class,'tm-button tm-red-button')])[1]")
+	private WebElement signInContinue;
+
+	public WebElement getSignInContinue() {
+
+		return signInContinue;
+	}
+	@FindBy(how = How.XPATH, using = "//div[@id='loggedInDiv']/a[2]")
+	private WebElement signOut;
+
+	public WebElement getSignOut() {
+
+		return signOut;
+	}
+	
+	
 
 }

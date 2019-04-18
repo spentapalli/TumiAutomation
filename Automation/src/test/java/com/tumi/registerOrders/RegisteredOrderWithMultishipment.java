@@ -14,14 +14,13 @@ public class RegisteredOrderWithMultishipment extends GenericMethods {
 	/* TA-286
 	 * Verify Order with 2 'Ready to Ship' Items with different SKU/sPurchase with Multishipment-Registered User
 	 */
-	@Test(description = " Verify Order with 2 'Ready to Ship' Items with different SKU/sPurchase with Multishipment-Registered User")
+	@Test(description = "TA-286, Verify Order with 2 'Ready to Ship' Items with different SKU/sPurchase with Multishipment-Registered User")
 	public void verifyRegisteredOrderWithMutlishipment()throws InterruptedException{
 		
 		login("TumiTestData", "RegisteredOrders");
-		//click(myacc.getMyAccountClose(), "My Account Close");
 		UIFunctions.addMultipleProducts("TumiTestData", "GuestDetails");
 		click(minicart.getMiniCartSymbol(), "Cart Image");
-		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
+		click(minicart.getProceedCheckOut(),"Proceed To Cart");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
 		UIFunctions.addMultishipForRegistered();
 		domClick(signinBill.getAddNewPay(),"Add new Payment");

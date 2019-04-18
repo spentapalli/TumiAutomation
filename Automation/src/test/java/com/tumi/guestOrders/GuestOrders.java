@@ -39,9 +39,9 @@ public class GuestOrders extends GenericMethods {
 		
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		UIFunctions.waitForContinueToEnable();
-		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
+		click(singlePage.getContinueAsGuest(), "Continue as Guest");
 		UIFunctions.addGuestDetails();
-		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
+		click(shipping.getContinueShippingMethod(), "Continue Shipping");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
 		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		UIFunctions.completeOrder();
@@ -58,9 +58,9 @@ public class GuestOrders extends GenericMethods {
 		UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData","VoucherCodeDetails");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		UIFunctions.waitForContinueToEnable();
-		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
+		click(singlePage.getContinueAsGuest(), "Continue as Guest");
 		UIFunctions.addGuestDetails();
-		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
+		click(shipping.getContinueShippingMethod(), "Continue  Shipping");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
 		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		UIFunctions.completeOrder();
@@ -75,9 +75,9 @@ public class GuestOrders extends GenericMethods {
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		UIFunctions.waitForContinueToEnable();
-		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
+		click(singlePage.getContinueAsGuest(), "Continue as Guest");
 		UIFunctions.addGuestDetails();
-		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
+		click(shipping.getContinueShippingMethod(), "Continue Shipping");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
 		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		UIFunctions.completeOrder();
@@ -92,9 +92,9 @@ public class GuestOrders extends GenericMethods {
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		UIFunctions.waitForContinueToEnable();
-		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
+		click(singlePage.getContinueAsGuest(), "Continue as Guest");
 		UIFunctions.addGuestDetails();
-		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
+		click(shipping.getContinueShippingMethod(), "Continue Shipping");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
 		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		UIFunctions.completeOrder();

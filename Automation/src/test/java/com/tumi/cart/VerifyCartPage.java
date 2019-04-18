@@ -138,7 +138,7 @@ public class VerifyCartPage extends GenericMethods {
 		
 	}
 	
-	//@Test(priority = 6, description = "TA-401, Verify Sign In") having issue here in stage 2.
+	@Test(priority = 6, description = "TA-401, Verify Sign In")
 	public void verifySignInCartPage() {
 		goToCartPage();
 		userLogin("TumiTestData", "RegisteredOrders");

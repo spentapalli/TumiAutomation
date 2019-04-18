@@ -10,6 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 import com.aventstack.extentreports.Status;
 import com.tumi.dataProvider.ReadTestData;
@@ -206,26 +207,30 @@ public class UIFunctions extends GenericMethods {
 
 		if (selectedCountry.equals("US") || selectedCountry.contains("United States") || selectedCountry.isEmpty()) {
 
-			if (applicationUrl.equals("stage2")) {
+			if (applicationUrl.toLowerCase().equals("stage2")) {
 
 				final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("SKUID");
 				driver.navigate().to(pdpURL);
 
-			} else if (applicationUrl.equals("stage3")) {
+			} else if (applicationUrl.toLowerCase().equals("stage3")) {
 
 				final String pdpURL = GlobalConstants.S3 + "/p/" + testData.get("SKUID");
 				driver.navigate().to(pdpURL);
 
-			}else if (applicationUrl.equals("akamaiS2")) {
-
+			}else if (applicationUrl.toLowerCase().equals("akamais2")) {
+			
 				final String pdpURL = GlobalConstants.akamaiUrl + "/p/" + testData.get("SKUID");
 				driver.navigate().to(pdpURL);
 
-			} else if (applicationUrl.equals("prod")) {
+			} else if (applicationUrl.toLowerCase().equals("prod")) {
 
 				final String pdpURL = testData1.get("prod") + "/p/" + testData.get("SKUID");
 				driver.navigate().to(pdpURL);
 				UIFunctions.closeSignUp();
+				if(driver.getTitle().contains("Not Found")) {
+					
+					Assert.fail(testData.get("SKUID")+ "is not available");
+				}
 			}
 
 		} else if (selectedCountry.contains("Canada")) {
@@ -240,31 +245,6 @@ public class UIFunctions extends GenericMethods {
 		}
 
 		UIFunctions.verifyVPN();
-		// WaitForJStoLoad();
-
-		// commented below for Korea order, because getting error here
-		/*
-		 * verifyAssertContains(driver.getCurrentUrl(), testData.get("SKUID"),
-		 * "Wrong Product is displayed"); try { if (pdp.getAddToCart().isDisplayed()) {
-		 * verifyAssertEquals("Add To Cart", getText(pdp.getAddToCart())); } } catch
-		 * (Exception e) { Assert.fail(testData.get("SKUID") +
-		 * " Product is not available"); }
-		 */
-		// click(pdp.getAddToCart(), "Add to Cart");
-
-		// due to product search issue i am using above code to get the product.
-
-		/*
-		 * input(home.getSearchProduct(), testData.get("SKUID"), "Search Product");
-		 * keyEnter(home.getSearchProduct());
-		 * verifyAssertContains(driver.getCurrentUrl(), testData.get("SKUID"),
-		 * "Wrong Product is displayed"); try { if (pdp.getAddToCart().isDisplayed()) {
-		 * 
-		 * verifyAssertEquals("Add To Cart", getText(pdp.getAddToCart())); } } catch
-		 * (Exception e) { Assert.fail(testData.get("SKUID")
-		 * +" Product is not available"); }
-		 */
-
 	}
 
 	public static void addToCart(String sheet, String testCase) {
@@ -379,7 +359,7 @@ public class UIFunctions extends GenericMethods {
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
 
 		// domClick(mono.getComplimentaryMono(),"Monogram");
-		click(mono.getAddPersonalization(), "Add Personalization");
+		domClick(mono.getAddPersonalization(), "Add Personalization");
 		input(mono.getFirstMonoInput(), testData.get("FirstMonoInput"), "First Mono Input");
 		input(mono.getSecondMonoInput(), testData.get("SecondMonoInput"), "Second Mono Input");
 		input(mono.getThirdMonoInput(), testData.get("ThirdMonoInput"), "Third Mono Input");
@@ -490,6 +470,7 @@ public class UIFunctions extends GenericMethods {
 				input(shipping.getLastName(), testData.get("LastName"), "Last Name");
 				input(shipping.getAddressLine1(), testData.get("AddressLine1"), "Address Line1");
 				explicitWait(shipping.getSelectedAddressLine());
+				delay(5000);
 				if (selectedCountry.contains("Canada")) {
 					for (WebElement ele : shipping.getListAddressLine1()) {
 						if (getText(ele).contains("ABBOTSFORD, BC")) {
@@ -516,6 +497,7 @@ public class UIFunctions extends GenericMethods {
 					}
 				}
 				input(shipping.getPhoneNumber(), testData.get("Phone"), "Phone Number");
+				
 			} else {
 
 				Map<String, String> korea = ReadTestData.getJsonData("TumiTestData", "GuestDeatilsForKorea");
@@ -563,6 +545,24 @@ public class UIFunctions extends GenericMethods {
 		input(mainCart.getPromocode(), testData.get("VoucherID"), "Vocher Id");
 		click(mainCart.getApply(), "Check Promocode");
 		delay(2000);
+		UIFunctions.addPromotionalCodeAtCart("TumiTestData", "VoucherCodeDetails");
+		if (mainCart.getPromoMsg().isDisplayed()
+				&& (getText(mainCart.getVoucherMsg()).equals(getProperty("voucher.alreadyapplied")))) {
+			logger.log(Status.INFO, "Voucher already been applied successfully");
+		} else	if (mainCart.getPromoMsg().isDisplayed()) {
+			logger.log(Status.INFO, "promo code applied succesfully");
+	 
+
+		} else if (getText(mainCart.getVoucherMsg()).equals(getProperty("voucher.error"))) {
+		Assert.fail((getText(mainCart.getVoucherMsg())));
+
+		} else if (getText(mainCart.getVoucherMsg()).equals(getProperty("voucher.wrong"))) {
+			Assert.fail((getText(mainCart.getVoucherMsg())));
+
+		} else {
+			Assert.fail("Failed to add Voucher code");
+	}
+	delay(2000);
 		verifyPromoChargeCart(beforeCost);
 		} else if (selectedCountry.contains("Canada")) {
 			String beforeTotal = getText(mainCart.getEstimatedTotal());
@@ -651,8 +651,16 @@ public class UIFunctions extends GenericMethods {
 	public static void addPromotionalCodeAtSinglePage(String sheet, String testCase) {
 		
 		String beforeTotal = getText(shipMethod.getBeforeTotal());
-		Double beforeCost = Double.valueOf(beforeTotal.replace("$", "").replace(",",""));
+		Double beforeCost = 0.00D;
+		Double beforeCostkr= 0.00D;
+		if(selectedCountry.contains("US")||selectedCountry.contains("Canada")) {
+		beforeCost = Double.valueOf(beforeTotal.replace("$", "").replace(",",""));
 		System.out.println("Before select Price = " + beforeCost);
+		}else {
+	    beforeCostkr = Double.valueOf(beforeTotal.substring(1).replace(",",""));
+		System.out.println("Before select Price = " + beforeCostkr);
+		}
+		
 
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
 		if (selectedCountry.contains("US")) {
@@ -671,6 +679,7 @@ public class UIFunctions extends GenericMethods {
 			
 			input(singlePage.getPromocode(), testData.get("KRVoucherID"), "Vocher Id");
 			click(singlePage.getApply(), "Check Promocode");
+			verifyPromoCharge(beforeCostkr);
 		}
 		// delay(2000);
 
@@ -703,23 +712,35 @@ public class UIFunctions extends GenericMethods {
 	}
 
 	public static void verifyPromoCharge(double data) {
+		SoftAssert promoAsser = new SoftAssert();
 		delay(2000);
 
 		String afterTotal = getText(shipMethod.getBeforeTotal());
-		Double afterCost = Double.valueOf(afterTotal.replace("$", "").replace(",",""));
+		Double afterCost = 0.00D;
+		if(selectedCountry.contains("US")||selectedCountry.contains("Canada")) {
+		afterCost = Double.valueOf(afterTotal.replace("$", "").replace(",",""));
+		}else {
+		afterCost = Double.valueOf(afterTotal.substring(1).replace(",",""));
+		}
 		System.out.println("After applying Promocode, Total Price = " + afterCost);
 
 		double verifyPromo =  data - afterCost ;
 
 		String promo = getText(shipMethod.getPromoCharge());
-		Double promoDiscount = Double.valueOf(promo.replace("$", "").replace("-", "").replace(",",""));
+		Double promoDiscount = 0.00D;
+		if(selectedCountry.contains("US")||selectedCountry.contains("Canada")) {
+		promoDiscount = Double.valueOf(promo.replace("$", "").replace("-", "").replace(",",""));
+		}else {
+	    promoDiscount = Double.valueOf(promo.substring(2).replace("-", "").replace(",",""));	
+		}
 		System.out.println("Promo Discount ="+promoDiscount);
 
 		if (promoDiscount.equals(verifyPromo)) {
 			logger.log(Status.INFO, "Promocode added successfully to Order summery");
 		}else {
-			Assert.fail("Promo code validation is failed");
+			promoAsser.fail("Promo code validation is failed");
 		}
+		promoAsser.assertAll();
 	}
 
 	public static void addGiftMessage(String sheet, String testCase) {
@@ -787,7 +808,7 @@ public class UIFunctions extends GenericMethods {
 				throw new RuntimeException(emptyViewText);
 			}
 		} else {
-			home.getMatchingProducts().get(i).click();
+			home.getMatchingProduct().click();
 		}
 	}
 
@@ -859,6 +880,7 @@ public class UIFunctions extends GenericMethods {
 
 	public static void payPalCheckout(String sheet, String testCase, WebElement ele) {
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
+		
 		String value = getText(ele);
 		System.out.println(value);
 		Double dValue = Double.valueOf(value.replace("$", ""));
@@ -866,7 +888,11 @@ public class UIFunctions extends GenericMethods {
 			click(paypal.getPayPalAnother(), "PayPal");
 		} else {
 			click(paypal.getPayPal(), "PayPal");
+			
 		}
+		if (applicationUrl.equals("prod")) {
+			logger.log(Status.PASS,"Scripts are executing in Production");
+		}else {
 		input(paypal.getPayPalEmail(), testData.get("EmailID"), "EmailID");
 		//click(paypal.getNext(), "Next");
 		input(paypal.getPayPalPassword(), testData.get("Password"), "Password");
@@ -876,6 +902,7 @@ public class UIFunctions extends GenericMethods {
 		delay(3000);
 		click(paypal.getPaypalCheckout(), "Checkout");
 	}
+		}
 
 	public static void waitForContinueToEnable() {
 		try {
@@ -899,6 +926,8 @@ public class UIFunctions extends GenericMethods {
 			addMultishipGuestDeatils(testData.get("shipment1"), testData.get("AddressLine1"));
 		}
 		click(multiShip.getNext(), "Continue next shipping");
+			
+		
 		webclick(shipMethod.getStandardShippingMethod(), "Standard Shipping Method");
 		click(multiShip.getNextShipment(), "Continue next shipment");
 		domClick(multiShip.getAddShippment0(), "add shipment 2");
@@ -910,7 +939,7 @@ public class UIFunctions extends GenericMethods {
 
 		click(multiShip.getNext(), "Continue next shipping");
 		webclick(shipMethod.getStandardShippingMethod(), "Standard Shipping Method");
-		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
+		click(shipMethod.getMultiProceedToPayment(), "Proceed to Payment");
 	}
 
 	public static void addMultishipForRegistered() {
@@ -938,7 +967,8 @@ public class UIFunctions extends GenericMethods {
 		}
 		click(multiShip.getNext(), "Continue next shipping");
 		webclick(shipMethod.getStandardShippingMethod(), "Standard Shipping Method");
-		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
+		delay(2000);
+		click(shipMethod.getMultiProceedToPayment(), "Proceed to Payment");
 	}
 
 	public static void addMultishipGuestDeatils(String data, String data1) {
@@ -947,6 +977,7 @@ public class UIFunctions extends GenericMethods {
 		input(shipping.getLastName(), testData.get("LastName"), "Last Name");
 		input(shipping.getAddressLine1(), data1, "Address Line1");
 		explicitWait(shipping.getSelectedAddressLine());// input[@name='line1']/following::div[3]
+		delay(5000);
 		if (selectedCountry.contains("Canada")) {
 			for (WebElement ele : shipping.getListAddressLine1()) {
 				if (getText(ele).contains("ABBOTSFORD, BC")) {
@@ -1174,6 +1205,7 @@ public class UIFunctions extends GenericMethods {
 	}
 	
 	public static void addMonogram(WebElement edit, WebElement remove) {
+		SoftAssert monoAsser = new SoftAssert();
 		if (mono.getStep1().isDisplayed()) {
 			if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
 				if (mono.getAddPatch().isEnabled()) {
@@ -1188,9 +1220,9 @@ public class UIFunctions extends GenericMethods {
 		}
 
 		click(mono.getFirstMonoInput(), "First option..");
-		webclick(mainCart.getAddHeart(), "Heart Symbol");
-		webclick(mainCart.getSmiley(), "Smiley Symbol");
-		webclick(mainCart.getStar(), "Star Symbol");
+		domClick(mainCart.getAddHeart(), "Heart Symbol");
+		domClick(mainCart.getSmiley(), "Smiley Symbol");
+		domClick(mainCart.getStar(), "Star Symbol");
 
 		click(mono.getNext(), "Next");
 		click(mono.getTextStyleBold(), "Serif as Bold");
@@ -1202,7 +1234,7 @@ public class UIFunctions extends GenericMethods {
 				logger.log(Status.INFO, "Monogram added Successfully");
 			}
 		} catch (Exception e) {
-			Assert.fail("Monogram couldn't added, Please Check...");
+			monoAsser.fail("Monogram couldn't added");
 		}
 		delay(3000);
 
@@ -1212,7 +1244,6 @@ public class UIFunctions extends GenericMethods {
 				click(mono.getOptionsNext(), "Next");
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
 		}
 		click(mono.getSecondNext(), "Next");
 		click(mono.getBlueColor(), "Color");
@@ -1224,7 +1255,7 @@ public class UIFunctions extends GenericMethods {
 				logger.log(Status.INFO, "Verification of Edit Monogram is Successfull");
 		} 
 		}catch (Exception e) {
-			Assert.fail("Verification of Edit Monogram is Failed");
+			monoAsser.fail("Monogram couldn't be edited");
 		}
 		delay(2000);
 		click(remove, "Remove");
@@ -1234,8 +1265,9 @@ public class UIFunctions extends GenericMethods {
 				logger.log(Status.INFO, "Verification of Remove Monogram is successfull");
 			} 
 		} catch (Exception e) {
-			Assert.fail("Verification of Remove Monogram is failed");
+			monoAsser.fail("Monogram couldn't be removed");
 		}
+		monoAsser.assertAll();
 
 	}
 	
@@ -1281,5 +1313,54 @@ public class UIFunctions extends GenericMethods {
 		input(guestBillPage.getemail(), testData.get("EmailID"), "Email ID");
 		input(guestBillPage.getPhoneNumber(), testData.get("Phone"), "Phone number");
   }
+  
+	public static void addProduct(String sheet, String testCase,String product) {
+
+		UIFunctions.closeSignUp();
+		//removeExistingCart();
+		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
+		Map<String, String> testData1 = ReadTestData.getJsonData("TumiTestData", "Environments");
+
+		if (selectedCountry.equals("US") || selectedCountry.contains("United States") || selectedCountry.isEmpty()) {
+
+			if (applicationUrl.toLowerCase().equals("stage2")) {
+
+				final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get(product);
+				driver.navigate().to(pdpURL);
+
+			} else if (applicationUrl.toLowerCase().equals("stage3")) {
+
+				final String pdpURL = GlobalConstants.S3 + "/p/" + testData.get(product);
+				driver.navigate().to(pdpURL);
+
+			}else if (applicationUrl.toLowerCase().equals("akamais2")) {
+			
+				final String pdpURL = GlobalConstants.akamaiUrl + "/p/" + testData.get(product);
+				driver.navigate().to(pdpURL);
+
+			} else if (applicationUrl.toLowerCase().equals("prod")) {
+
+				final String pdpURL = GlobalConstants.prodUrl + "/p/" + testData.get(product);
+				driver.navigate().to(pdpURL);
+				UIFunctions.closeSignUp();
+				if(driver.getTitle().contains("Not Found")) {
+					
+					Assert.fail(testData.get(product)+ "is not available");
+				}
+			}
+
+		} else if (selectedCountry.contains("Canada")) {
+
+			final String pdpURL = GlobalConstants.urlca + "/p/" + testData.get(product);
+			driver.get(pdpURL);
+
+		} else {
+
+			final String pdpURL = GlobalConstants.urlkr + "/p/" + testData.get(product);
+			driver.get(pdpURL);
+		}
+
+		UIFunctions.verifyVPN();
+	}
 
 }
