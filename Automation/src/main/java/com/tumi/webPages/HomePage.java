@@ -1363,7 +1363,7 @@ public class HomePage extends GenericMethods {
 		return slings;
 	}
 
-	@FindBy(how = How.XPATH, using = "//div[@id='grid-container']/div/div[2]/div/div[2]/div/a/div")
+	@FindBy(how = How.XPATH, using = "//div[@id='fsmhidden']/following::div/div[4]//following::div/div[2]/div/a/div")
 	private List<WebElement>  slingProducts;
 
 	public List<WebElement>  getSlingProducts() {
@@ -1384,7 +1384,7 @@ public class HomePage extends GenericMethods {
 
 	public WebElement getExperienceYourGift() {
 
-		return experienceYourGift;
+		return explicitWait(experienceYourGift);
 	}
 	
 	@FindBy(how = How.XPATH, using = "//div[@id='scratch-gift-content']/section/div/div[2]/div/div/div[1]")
@@ -1392,7 +1392,7 @@ public class HomePage extends GenericMethods {
 
 	public WebElement getYourGiftPreview() {
 
-		return yourGiftPreview;
+		return explicitWait(yourGiftPreview);
 	}
 	
 	@FindBy(how = How.XPATH, using = "//div[@id='scratch-gift-content']/section/div/div[1]/div")
@@ -1442,13 +1442,23 @@ public class HomePage extends GenericMethods {
 		return goBackPopUp;
 	}
 	
-	@FindBy(how = How.XPATH, using = "//w-div[@id='gpgjfuy']/span")
+	@FindBy(how = How.XPATH, using = "(//w-div[@role='dialog'])[4]")
+	private WebElement PopUp;
+
+	public WebElement getPopUp() {
+
+		return PopUp;
+	}
+	
+	@FindBy(how = How.XPATH, using = "(//w-div[@role='dialog'])[4]/w-div/span")
 	private WebElement closePopUp;
 
 	public WebElement getClosePopUp() {
 
 		return closePopUp;
 	}
+	
+	
 	
 	@FindBy(how = How.XPATH, using = "//div[@id='app']/div/div[2]/div/div/div/button")
 	private WebElement letsGo;

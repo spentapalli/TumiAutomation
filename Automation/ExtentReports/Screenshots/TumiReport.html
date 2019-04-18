@@ -52,7 +52,7 @@
 		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
 			<li>
                 <a href='#!'>
-                    <span class='label suite-start-time blue darken-3'>Apr 16, 2019 06:32:18 PM</span>
+                    <span class='label suite-start-time blue darken-3'>Apr 19, 2019 12:30:59 AM</span>
 				</a>
 			</li>
 			<li>
@@ -77,7 +77,8 @@
 					<i class='material-icons'>warning</i> Status
 				</a>
 				<ul id='tests-toggle' class='dropdown-content'>
-											<li status='fail'><a href='#!'>Fail <i class='material-icons red-text'>cancel</i></a></li>
+											<li status='pass'><a href='#!'>Pass <i class='material-icons green-text'>check_circle</i></a></li>
+						<li status='fail'><a href='#!'>Fail <i class='material-icons red-text'>cancel</i></a></li>
 					<li class='divider'></li>
 					<li status='clear' clear='true'><a href='#!'>Clear Filters <i class='material-icons'>clear</i></a></li>
 				</ul>
@@ -146,7 +147,7 @@
 					<span class='tooltipped' data-position='top' data-tooltip='0%'><span class='strong'>0</span> step(s) passed</span>
 				</div>
 				<div class='block text-small'>
-					<span class='strong tooltipped' data-position='top' data-tooltip='100%'>4</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+					<span class='strong tooltipped' data-position='top' data-tooltip='27.273%'>3</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='72.727%'>8</span> others
 				</div>
 			</div>
 		</div>
@@ -163,17 +164,17 @@
 				
 				<li class='test displayed active  fail' status='fail' bdd='false' test-id='1'>
 					<div class='test-heading'>
-						<span class='test-name'>backOrderAsGuest</span>
-						<span class='test-time'>Apr 16, 2019 06:33:30 PM</span>
+						<span class='test-name'>verifyViewYourProfile</span>
+						<span class='test-time'>Apr 19, 2019 12:31:50 AM</span>
 						<span class='test-status right fail'>fail</span>
 					</div>
 					<div class='test-content hide'>
 <div class='test-time-info'>
-	<span class='label start-time'>Apr 16, 2019 06:33:30 PM</span>
-	<span class='label end-time'>Apr 16, 2019 06:34:21 PM</span>
-	<span class='label time-taken grey lighten-1 white-text'>0h 0m 50s+304ms</span>
+	<span class='label start-time'>Apr 19, 2019 12:31:50 AM</span>
+	<span class='label end-time'>Apr 19, 2019 12:32:14 AM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 24s+289ms</span>
 </div>
-	<div class='test-desc'>com.tumi.guestOrders.OrderWithGiftBox </div>
+	<div class='test-desc'>com.myAccount.MyAccount </div>
 	<div class='test-steps'>
 		<table class='bordered table-results'>
 			<thead>
@@ -184,23 +185,63 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr class='log' status='fail'>
-					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
-					<td class='timestamp'>6:34:18 PM</td>
-					<td class='step-details'>Button is not enabled Add to cart</td>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:31:50 AM</td>
+					<td class='step-details'>Clicked on Sign In</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:31:51 AM</td>
+					<td class='step-details'>Entered the value in Email Address as: skomma@coredatalabs.com</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:31:51 AM</td>
+					<td class='step-details'>Entered the value in Password as: tumi1234</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:31:52 AM</td>
+					<td class='step-details'>Clicked on Login</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:31:54 AM</td>
+					<td class='step-details'>Successfully logged with Regular user valid credentials</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:31:54 AM</td>
+					<td class='step-details'>Clicked on Close My Account</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:32:03 AM</td>
+					<td class='step-details'>Clicked on Current User</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>12:32:11 AM</td>
+					<td class='step-details'>Clicked on View Your Profile</td>
 				</tr>
 				<tr class='log' status='fail'>
 					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
-					<td class='timestamp'>6:34:20 PM</td>
-					<td class='step-details'><span class='label white-text red'>backOrderAsGuest Test Case Failed</span></td>
+					<td class='timestamp'>12:32:13 AM</td>
+					<td class='step-details'><span class='label white-text red'>verifyViewYourProfile Test Case Failed</span></td>
 				</tr>
 				<tr class='log' status='fail'>
 					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
-					<td class='timestamp'>6:34:20 PM</td>
-					<td class='step-details'><pre>java.lang.AssertionError: Add to cart is not Enabled or Unable to interact at this point
+					<td class='timestamp'>12:32:13 AM</td>
+					<td class='step-details'><pre>java.lang.AssertionError: expected [null] but found [Shwetha]
 	at org.testng.Assert.fail(Assert.java:96)
-	at com.tumi.utilities.GenericMethods.click(GenericMethods.java:141)
-	at com.tumi.guestOrders.OrderWithGiftBox.backOrderAsGuest(OrderWithGiftBox.java:55)
+	at org.testng.Assert.failNotEquals(Assert.java:776)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:132)
+	at org.testng.Assert.assertEquals(Assert.java:118)
+	at org.testng.Assert.assertEquals(Assert.java:453)
+	at org.testng.Assert.assertEquals(Assert.java:463)
+	at com.tumi.utilities.GenericMethods.verifyAssertEquals(GenericMethods.java:461)
+	at com.myAccount.MyAccount.verifyViewYourProfile(MyAccount.java:25)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -230,8 +271,8 @@
 				</tr>
 				<tr class='log' status='fail'>
 					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
-					<td class='timestamp'>6:34:21 PM</td>
-					<td class='step-details'>Screen Shot Reference:<img data-featherlight='./Screenshots/backOrderAsGuest.png' width='10%' src='./Screenshots/backOrderAsGuest.png' data-src='./Screenshots/backOrderAsGuest.png'></td>
+					<td class='timestamp'>12:32:14 AM</td>
+					<td class='step-details'>Screen Shot Reference:<img data-featherlight='./Screenshots/verifyViewYourProfile.png' width='10%' src='./Screenshots/verifyViewYourProfile.png' data-src='./Screenshots/verifyViewYourProfile.png'></td>
 				</tr>
 			</tbody>
 		</table>
@@ -306,12 +347,17 @@
                                         </thead>
                                         <tbody>
                                                     <tr>
-                                                        <td>Apr 16, 2019 06:33:30 PM</td>
-                                                        <td class='linked' test-id='1'>backOrderAsGuest</td>
-                                                        <td><pre><pre>java.lang.AssertionError: Add to cart is not Enabled or Unable to interact at this point
+                                                        <td>Apr 19, 2019 12:31:50 AM</td>
+                                                        <td class='linked' test-id='1'>verifyViewYourProfile</td>
+                                                        <td><pre><pre>java.lang.AssertionError: expected [null] but found [Shwetha]
 	at org.testng.Assert.fail(Assert.java:96)
-	at com.tumi.utilities.GenericMethods.click(GenericMethods.java:141)
-	at com.tumi.guestOrders.OrderWithGiftBox.backOrderAsGuest(OrderWithGiftBox.java:55)
+	at org.testng.Assert.failNotEquals(Assert.java:776)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:132)
+	at org.testng.Assert.assertEquals(Assert.java:118)
+	at org.testng.Assert.assertEquals(Assert.java:453)
+	at org.testng.Assert.assertEquals(Assert.java:463)
+	at com.tumi.utilities.GenericMethods.verifyAssertEquals(GenericMethods.java:461)
+	at com.myAccount.MyAccount.verifyViewYourProfile(MyAccount.java:25)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -369,25 +415,25 @@
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Steps
-					<div class='panel-lead'>4</div>
+					<div class='panel-lead'>11</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Start
-					<div class='panel-lead'>Apr 16, 2019 06:32:18 PM</div>
+					<div class='panel-lead'>Apr 19, 2019 12:30:59 AM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 			 		End
-			 		<div class='panel-lead'>Apr 16, 2019 06:34:21 PM</div>
+			 		<div class='panel-lead'>Apr 19, 2019 12:32:14 AM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Time Taken
-					<div class='panel-lead'>0h 2m 2s+681ms</div>
+					<div class='panel-lead'>0h 1m 14s+927ms</div>
 				</div>
 			</div>
 		</div>
@@ -409,13 +455,13 @@
 				exceptionsParent: 1,
 				
 				passChild: 0,
-				failChild: 4,
+				failChild: 3,
 				fatalChild: 0,
 				errorChild: 0,
 				warningChild: 0,
 				skipChild: 0,
-				infoChild: 0,
-				exceptionsChild: 4,
+				infoChild: 8,
+				exceptionsChild: 3,
 				
 				passGrandChild: 0,
 				failGrandChild: 0,
