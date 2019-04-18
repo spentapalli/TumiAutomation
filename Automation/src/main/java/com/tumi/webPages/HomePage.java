@@ -596,7 +596,17 @@ public class HomePage extends GenericMethods {
 		return SubCategoriesSelection;
 
 	}
+	
+	@FindBy(how = How.XPATH, using = "//nav[@id='navMainCntr']/ul/li/a")
+	private List<WebElement> CategoriesList;
 
+	public List<WebElement> getCategoriesList() {
+
+		return CategoriesList;
+
+	}
+
+	
 	// FOLLOW US
 	@FindBy(how = How.XPATH, using = "//div[contains(@class, 'social')]/a")
 	private List<WebElement> followUs;
@@ -1233,7 +1243,7 @@ public class HomePage extends GenericMethods {
 
 		return fullOrderDetails;
 	}
-	
+
 	@FindBy(how = How.XPATH, using = "//h1[contains(text(),'Order Details')]")
 	private WebElement orderDetailsHeader;
 
@@ -1241,7 +1251,7 @@ public class HomePage extends GenericMethods {
 
 		return orderDetailsHeader;
 	}
-	
+
 	// REGISTER YOUR TUMI
 	@FindBy(how = How.XPATH, using = "//a[contains(text(), 'Register Your Tumi')]")
 	private WebElement registerYourTumi;
@@ -1266,7 +1276,7 @@ public class HomePage extends GenericMethods {
 
 		return signInTumiTracerPage;
 	}
-	
+
 	@FindBy(how = How.XPATH, using = "//form[@id='tumiTracerForm']/div/h3/following::div[1]/div/div[1]")
 	private WebElement tumiTracerRegistrationHeader;
 
@@ -1292,7 +1302,7 @@ public class HomePage extends GenericMethods {
 
 		return signUpForNewsLetterWithEmail;
 	}
-	
+
 	@FindBy(how = How.XPATH, using = "//span[@id='responseAlreadySignedUpFooter']")
 	private WebElement messegeThrown;
 
@@ -1301,13 +1311,221 @@ public class HomePage extends GenericMethods {
 		return messegeThrown;
 	}
 
-	//CURRENT USER
+	// CURRENT USER
+	@FindBy(how = How.XPATH, using = "//div[@id='loggedInDiv']/a")
+	private WebElement currentUserKR;
+	
 	@FindBy(how = How.XPATH, using = "(//a[contains(text(), 'Hi,')])[2]")
 	private WebElement currentUser;
 
 	public WebElement getCurrentUser() {
 
-		return currentUser;
+		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
+
+			return currentUser;
+		} else {
+			return explicitWait(currentUserKR);
+		}
+	}
+
+	//BUYING A GIFT
+	@FindBy(how = How.XPATH, using = "//a[@title='Slings']")
+	private WebElement slings;
+
+	public WebElement getSlings() {
+
+		return slings;
+	}
+
+	@FindBy(how = How.XPATH, using = "//div[@id='grid-container']/div/div[2]/div/div[2]/div/a/div")
+	private List<WebElement>  slingProducts;
+
+	public List<WebElement>  getSlingProducts() {
+
+		return slingProducts;
+	}
+
+	@FindBy(how = How.XPATH, using = "//a[@id='smartGiftBtn']/span[2]")
+	private WebElement buyingGift;
+
+	public WebElement getBuyingGift() {
+
+		return buyingGift;
+	}
+	
+	@FindBy(how = How.XPATH, using = "//div[@id='preview-wrapper']/div/h1")
+	private WebElement experienceYourGift;
+
+	public WebElement getExperienceYourGift() {
+
+		return experienceYourGift;
+	}
+	
+	@FindBy(how = How.XPATH, using = "//div[@id='scratch-gift-content']/section/div/div[2]/div/div/div[1]")
+	private WebElement yourGiftPreview;
+
+	public WebElement getYourGiftPreview() {
+
+		return yourGiftPreview;
+	}
+	
+	@FindBy(how = How.XPATH, using = "//div[@id='scratch-gift-content']/section/div/div[1]/div")
+	private WebElement customizeGift;
+
+	public WebElement getCustomizeGift() {
+
+		return customizeGift;
+	}
+
+	@FindBy(how = How.XPATH, using = "//div[@id='scratch-gift-content']/section/button[1]")
+	private WebElement acceptThisGift;
+
+	public WebElement getAcceptThisGift() {
+
+		return acceptThisGift;
+	}
+	
+	@FindBy(how = How.XPATH, using = "//div[@id='preview-wrapper']/div/p")
+	private WebElement clickToReveal;
+
+	public WebElement getClickToReveal() {
+
+		return clickToReveal;
+	}
+	@FindBy(how = How.XPATH, using = "//div[@id='scratch-gift-content']/section/button[2]")
+	private WebElement exchangeGift;
+
+	public WebElement getExchangeGift() {
+
+		return exchangeGift;
+	}
+	
+	@FindBy(how = How.XPATH, using = "//button[contains(text(), 'Go Back')]")
+	private WebElement goBack;
+
+	public WebElement getGoBackButton() {
+
+		return goBack;
+	}
+	
+	@FindBy(how = How.XPATH, using = "//w-div[@id='gpgjfuy']/div[2]/div[1]")
+	private WebElement goBackPopUp;
+
+	public WebElement getGoBackPopUp() {
+
+		return goBackPopUp;
+	}
+	
+	@FindBy(how = How.XPATH, using = "//w-div[@id='gpgjfuy']/span")
+	private WebElement closePopUp;
+
+	public WebElement getClosePopUp() {
+
+		return closePopUp;
+	}
+	
+	@FindBy(how = How.XPATH, using = "//div[@id='app']/div/div[2]/div/div/div/button")
+	private WebElement letsGo;
+
+	public WebElement getLetsGoButton() {
+
+		return letsGo;
+	}
+	
+	@FindBy(how = How.XPATH, using = "//div[@id='app']/div/div[2]/div/div[2]/div[2]/div/h1")
+	private WebElement prepareYourGiftHeader;
+
+	public WebElement getPrepareYourGiftHeader() {
+
+		return prepareYourGiftHeader;
+	}
+	
+	@FindBy(how = How.XPATH, using = "//input[@id= 'senderFirstName']")
+	private WebElement firstName;
+
+	public WebElement getFirstName() {
+
+		return firstName;
+	}
+	
+	@FindBy(how = How.XPATH, using = "//input[@id= 'senderLastName']")
+	private WebElement lastName;
+
+	public WebElement getLastName() {
+
+		return lastName;
+	}
+	
+	@FindBy(how = How.XPATH, using = "//input[@id= 'senderEmail']")
+	private WebElement email;
+
+	public WebElement getEmail() {
+
+		return email;
+	}
+	
+	@FindBy(how = How.XPATH, using = "//input[@id= 'senderPhone']")
+	private WebElement phone;
+
+	public WebElement getPhoneNo() {
+
+		return phone;
+	}
+	
+	@FindBy(how = How.XPATH, using = "//input[@id= 'recipientFirstName']")
+	private WebElement theirFirstName;
+
+	public WebElement getTheirFirstName() {
+
+		return theirFirstName;
+	}
+	
+	@FindBy(how = How.XPATH, using = "//input[@id= 'recipientLastName']")
+	private WebElement theirLastName;
+
+	public WebElement getTheirLasttName() {
+
+		return theirLastName;
+	}
+
+	@FindBy(how = How.XPATH, using = "//button[contains(text(), 'Next')]")
+	private WebElement next;
+
+	public WebElement getNextButton() {
+
+		return next;
+	}
+
+	@FindBy(how = How.XPATH, using = "//div[@id='app']/div/div[2]/div/div[2]/div[2]/div/h1")
+	private WebElement reviewYourInformation;
+
+	public WebElement getReviewYourInfotHeader() {
+
+		return reviewYourInformation;
+	}
+
+	@FindBy(how = How.XPATH, using = "//button[contains(text(), 'Confirm')]")
+	private WebElement confirm;
+
+	public WebElement getConfirmButton() {
+
+		return confirm;
+	}
+	
+	@FindBy(how = How.XPATH, using = "//div[@id='app']/div/div[2]/div/div[2]/div/div/h1")
+	private WebElement shareYourGiftWithSV;
+
+	public WebElement getShareYourGifHeader() {
+
+		return shareYourGiftWithSV;
+	}
+	
+	@FindBy(how = How.XPATH, using = "//button[contains(text(), 'Preview Your Gift')]")
+	private WebElement previewYourGift;
+
+	public WebElement getPreviewYourGiftButton() {
+
+		return previewYourGift;
 	}
 	
 }

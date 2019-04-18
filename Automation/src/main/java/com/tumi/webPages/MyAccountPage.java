@@ -60,6 +60,7 @@ public class MyAccountPage extends GenericMethods {
 	private WebElement viewYourOrderStatus;
 
 	public WebElement getViewYourOrderStatus() {
+		
 		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
 
 			return viewYourOrderStatus;
@@ -217,12 +218,22 @@ public class MyAccountPage extends GenericMethods {
 	//div[contains(text(),'Payment Card')]/following::section[1]/div[3]/form[1]/button
 	
 	//VIEW YOUR PROFILE
+	
+	@FindBy(how = How.XPATH, using = "//div[@id='tm-panel-login-confirmation']/div/div/ul[1]/li[1]/a")
+	private WebElement viewYourProfileKR;
+	
 	@FindBy(how = How.XPATH, using = "(//a[@title='View Your Profile'])[2]")
 	private WebElement viewYourProfile;
 
 	public WebElement getViewYourProfile() {
-		return viewYourProfile;
 
+		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
+
+			return viewYourProfile;
+		} else {
+			return explicitWait(orderHistoryHeaderKR);
+
+		}
 	}
 	
 	@FindBy(how = How.XPATH, using = "//input[@id='profile.firstName']")
@@ -242,7 +253,7 @@ public class MyAccountPage extends GenericMethods {
 	}
 	
 	//PURCHASED ITEMS
-	@FindBy(how = How.XPATH, using = "//h1[contains(text(), 'My Purchases')]")
+	@FindBy(how = How.XPATH, using = "//h1[@class='section-headline-lite']")
 	private WebElement	myPurchases;
 
 	public WebElement getMyPurchases() {
@@ -251,20 +262,38 @@ public class MyAccountPage extends GenericMethods {
 	}
 	
 	//VIEW ORDER STATUS
+	
+	@FindBy(how = How.XPATH, using = "//div[@id='tm-panel-login-confirmation']/div/div/ul[1]/li[3]/a")
+	private WebElement viewOrderStatusKR;
+	
 	@FindBy(how = How.XPATH, using = "(//a[@title='View Your Order Status'])[2]")
 	private WebElement viewOrderStatus;
 
 	public WebElement getViewOrderStatus() {
-		return viewOrderStatus;
 
+		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
+
+			return viewOrderStatus;
+		} else {
+			return explicitWait(viewOrderStatusKR);
+
+		}
 	}
-	
-	@FindBy(how = How.XPATH, using = "//div[contains(text(),'Processing')]")
-	private WebElement orderStatusMessege;
 
-	public WebElement getOrderStatusMessege() {
-		return orderStatusMessege;
+	@FindBy(how = How.XPATH, using = "//div[@id='globalMessages']/following::div/div/div[2]/h2")
+	private WebElement orderHistoryHeaderKR;
 
+	@FindBy(how = How.XPATH, using = "//h2[contains(text(),'Order History')]")
+	private WebElement orderHistoryHeader;
+
+	public WebElement getOrderHistoryHeader() {
+
+		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
+
+			return orderHistoryHeader;
+		} else {
+			return explicitWait(orderHistoryHeaderKR);
+		}
 	}
 	
 	//REGISTER YOUR TUMI
@@ -276,21 +305,12 @@ public class MyAccountPage extends GenericMethods {
 
 	}
 
-	//REGISTER YOUR SERVICES
-	@FindBy(how = How.XPATH, using = "//a[contains(text(), 'Request a Repair ')]")
-	private WebElement requestRepair;
+	//REPAIR SERVICES FOR US
+	@FindBy(how = How.XPATH, using = "//h2[contains(text(), 'Repair Services')]")
+	private WebElement repairServicesHeader;
 
-	public WebElement getRequestRepair() {
-		return requestRepair;
-
-	}
-	
-	@FindBy(how = How.XPATH, using = "//a[contains(text(), 'Check Repair Status')]")
-	private WebElement checkRepairStatus;
-
-	public WebElement getCheckRepairStatus() {
-		return checkRepairStatus;
+	public WebElement getRepairServicesHeader() {
+		return repairServicesHeader;
 
 	}
-	
 }
