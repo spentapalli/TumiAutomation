@@ -45,7 +45,7 @@ public class ShippingPage extends GenericMethods {
 		return explicitWait(addressLine1);
 	}
 
-	@FindBy(how = How.XPATH, using = "//div[@class='address-picklist']/div")
+	@FindBy(how = How.XPATH, using = "//div[@class='address-picklist']")
 	private WebElement selectedAddressLine1;
 
 	public WebElement getSelectedAddressLine() {

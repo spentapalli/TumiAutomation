@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.testng.annotations.Test;
 
+import com.aventstack.extentreports.Status;
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
 import com.tumi.utilities.UIFunctions;
@@ -23,7 +24,7 @@ public class GuestBackOrderWithMonogram extends GenericMethods {
 
 	@Test(description = "TA-108 Verify Order with BackOrder +Personalization")
 	public void backOrderWithMonogramAsGuest() {
-		
+		logger.log(Status.INFO, applicationUrl);
 		UIFunctions.addProductToCart("TumiTestData", "Products");
 		UIFunctions.addMonogram("TumiTestData", "MonoGramDetails");
 		click(pdp.getAddToCart(), "Add to cart");
