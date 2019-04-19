@@ -285,9 +285,12 @@ public class UIFunctions extends GenericMethods {
 	public static void addBackOrderProduct(String sheet, String testCase) {
 
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
-
-		final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("BackOrderSKUID");
+		if (applicationUrl.equals("prod")) {
+			final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("BackOrderSKUID");
+		}else {
+		final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("SKUID");
 		driver.get(pdpURL);
+		
 
 		// due to product search issue i am using above code to get the product.
 
@@ -301,7 +304,7 @@ public class UIFunctions extends GenericMethods {
 		 * (Exception e) { Assert.fail(testData.get("SKUID")
 		 * +" Product is not available"); }
 		 */
-
+		}
 	}
 
 	public static void addPreOrder(String sheet, String testCase) {
