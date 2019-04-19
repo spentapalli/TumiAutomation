@@ -1549,11 +1549,11 @@ public class HomePage extends GenericMethods {
 	}
 	
 	@FindBy(how = How.XPATH, using = "//div[@id='app']/div/div[2]/div/div[2]/div/div/h1")
-	private WebElement shareYourGiftWithSV;
+	private WebElement shareYourGiftWithTest;
 
 	public WebElement getShareYourGifHeader() {
 
-		return shareYourGiftWithSV;
+		return shareYourGiftWithTest;
 	}
 	
 	@FindBy(how = How.XPATH, using = "//button[contains(text(), 'Preview Your Gift')]")
@@ -1561,7 +1561,7 @@ public class HomePage extends GenericMethods {
 
 	public WebElement getPreviewYourGiftButton() {
 
-		return previewYourGift;
+		return explicitWait(previewYourGift);
 	}
 
 }
