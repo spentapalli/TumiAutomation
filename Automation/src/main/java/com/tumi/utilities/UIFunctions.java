@@ -288,23 +288,25 @@ public class UIFunctions extends GenericMethods {
 	public static void addBackOrderProduct(String sheet, String testCase) {
 
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
+		if (applicationUrl.equals("prod")) {
+			final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("BackOrderSKUID");
+		} else {
+			final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("SKUID");
+			driver.get(pdpURL);
 
-		final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("BackOrderSKUID");
-		driver.get(pdpURL);
+			// due to product search issue i am using above code to get the product.
 
-		// due to product search issue i am using above code to get the product.
-
-		/*
-		 * input(home.getSearchProduct(), testData.get("SKUID"), "Search Product");
-		 * keyEnter(home.getSearchProduct());
-		 * verifyAssertContains(driver.getCurrentUrl(), testData.get("SKUID"),
-		 * "Wrong Product is displayed"); try { if (pdp.getAddToCart().isDisplayed()) {
-		 * 
-		 * verifyAssertEquals("Add To Cart", getText(pdp.getAddToCart())); } } catch
-		 * (Exception e) { Assert.fail(testData.get("SKUID")
-		 * +" Product is not available"); }
-		 */
-
+			/*
+			 * input(home.getSearchProduct(), testData.get("SKUID"), "Search Product");
+			 * keyEnter(home.getSearchProduct());
+			 * verifyAssertContains(driver.getCurrentUrl(), testData.get("SKUID"),
+			 * "Wrong Product is displayed"); try { if (pdp.getAddToCart().isDisplayed()) {
+			 * 
+			 * verifyAssertEquals("Add To Cart", getText(pdp.getAddToCart())); } } catch
+			 * (Exception e) { Assert.fail(testData.get("SKUID")
+			 * +" Product is not available"); }
+			 */
+		}
 	}
 
 	public static void addPreOrder(String sheet, String testCase) {
@@ -484,7 +486,7 @@ public class UIFunctions extends GenericMethods {
 							break;
 						}
 					}
-					
+
 				} else {
 					for (int i = 1; i < shipping.getAddList().size(); i++) {
 						WebElement add = driver
@@ -559,6 +561,10 @@ public class UIFunctions extends GenericMethods {
 			} else {
 				Assert.fail("Failed to add Voucher code");
 			}
+			delay(2000);
+			verifyPromoChargeCart(beforeCost);
+			input(mainCart.getPromocode(), testData.get("VoucherID"), "Vocher Id");
+			click(mainCart.getApply(), "Check Promocode");
 			delay(2000);
 			verifyPromoChargeCart(beforeCost);
 		} else if (selectedCountry.contains("Canada")) {

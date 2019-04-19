@@ -38,7 +38,8 @@
 		"ColorSwatchesKr": "0228069HNT",
 		"AirlineProduct": "022061D2",
 		"OutOfStock": "0494796PST",   
-		"PageNotFound": "017DH"
+		"PageNotFound": "017DH",
+		"SmartGiftSKUID" : "022060D2"
 	},
 	"SocialNetworkDetails": {
 	    "GoogleEmailID": "tumi.automation@gmail.com",
@@ -181,7 +182,8 @@
 		"Password": "TumiEcom@123456789",
 		"ConfirmPassword": "TumiiEcom@123456789",
 		"FirstName": "Tumi",
-		"LastName": "Ecom"
+		"LastName": "Ecom",
+		
 	},
 	"ExistingAccount": {
 		"EmailID": "Tumi1301193945@gmail.com",

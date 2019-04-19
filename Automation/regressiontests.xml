@@ -233,5 +233,53 @@
 			</class>
 		</classes>
 	</test>	
+	<test name="OrderWithRegisteredUsers">
+		<classes>
+			<class name="com.tumi.registerOrders.OrderWithRegisteredUsers">
+			</class>
+		</classes>
+	</test>	
+	<test name="TumiStudioRegisteredUser">
+		<classes>
+			<class name="com.tumi.registerOrders.TumiStudioRegisteredUser">
+			</class>
+		</classes>
+	</test>	
+	<test name="PromoCodeVerification">
+		<classes>
+			<class name="com.tumi.testcases.PromoCodeVerification">
+			</class>
+		</classes>
+	</test>	
+	<test name="TumiTracer">
+		<classes>
+			<class name="com.tumi.testcases.TumiTracer">
+			</class>
+		</classes>
+	</test>	
+	<test name="VerifyCartPage">
+		<classes>
+			<class name="com.tumi.cart.VerifyCartPage">
+			</class>
+		</classes>
+	</test>
+	<test name="VerifyGiftBox">
+		<classes>
+			<class name="com.tumi.testcases.VerifyGiftBox">
+			</class>
+		</classes>
+	</test>
+	<test name="SinglePageCheckout">
+		<classes>
+			<class name="com.tumi.testcases.SinglePageCheckout">
+			</class>
+		</classes>
+	</test>
+	<test name="ShippingPageSingleItem">
+		<classes>
+			<class name="com.tumi.testcases.ShippingPageSingleItem">
+			</class>
+		</classes>
+	</test>
 
 </suite>
