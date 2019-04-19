@@ -10,6 +10,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 import org.json.simple.JSONObject;
 import org.openqa.selenium.OutputType;
@@ -189,7 +190,7 @@ public class Reports {
 		UIFunctions.selectCountry();
 	}
 
-	//@AfterMethod(alwaysRun = true)
+	@AfterMethod(alwaysRun = true)
 	public static void closeBrowser() {
 
 		if (browserName.equals("Remote")) {
@@ -317,7 +318,7 @@ public class Reports {
 		if (browserName.equalsIgnoreCase("Remote")) {
 
 			remoteAccess();
-			//sauceConnect();
+			// sauceConnect();
 			getURL();
 
 		} else {
@@ -368,6 +369,11 @@ public class Reports {
 				launchMobile("iPhone X");
 			}
 		}
+		if (browserName.equals("Remote")) {
+			
+			driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+			driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+		}
 	}
 
 	public static String localTesting() {
@@ -389,7 +395,7 @@ public class Reports {
 		final String USERNAME = "kurrysuresh1";
 		final String AUTOMATE_KEY = "zKp1VrRqTkUXqi4efALq";
 		String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
-		DesiredCapabilities caps = new DesiredCapabilities().safari();
+		DesiredCapabilities caps = new DesiredCapabilities();
 
 		/*
 		 * caps.setCapability("browser", remoteBrowser);
@@ -403,17 +409,24 @@ public class Reports {
 		 * "iPhone 8 Plus"); caps.setCapability("realMobile", "true");
 		 * caps.setCapability("os_version", "11");
 		 */
-		
-		 // caps.setCapability("browser", "Safari");
-		  caps.setCapability("browser_version", "12.0"); caps.setCapability("os",
-		  "OS X"); caps.setCapability("os_version", "Mojave");
-		 
+
+		caps.setCapability("browser", "Safari");
+		caps.setCapability("browser_version", "12.0");
+		caps.setCapability("os", "OS X");
+		caps.setCapability("os_version", "Mojave");
+		caps.setCapability("resolution", "1024x768");
+
+		/*
+		 * caps.setCapability("browser", "Chrome");
+		 * caps.setCapability("browser_version", "62.0"); caps.setCapability("os",
+		 * "Windows"); caps.setCapability("os_version", "10");
+		 * caps.setCapability("resolution", "1024x768");
+		 */
 
 		caps.setCapability("browserstack.local", localTesting());
-		caps.setCapability("browserstack.debug", "false");
+		caps.setCapability("browserstack.debug", "true");
 		caps.setCapability("browserstack.networkLogs", "false");
 		caps.setCapability("browserstack.geoLocation", "US");
-		// caps.setCapability("resolution", "1024x768");
 
 		Map<String, Object> prefs1 = new HashMap<String, Object>();
 
@@ -444,8 +457,7 @@ public class Reports {
 
 		// set your sauce labs access key
 		caps.setCapability("accessKey", ACCESS_KEY);
-		
-		
+
 		caps.setCapability("platform", "macOS 10.14");
 		caps.setCapability("version", "12.0");
 		caps.setCapability("recordVideo", "false");
@@ -503,17 +515,18 @@ public class Reports {
 			if (!browserName.equals("ie")) {
 				driver.get(testData.get("stage3"));
 			}
-		} else if (applicationUrl.toLowerCase().equalsIgnoreCase("akamaiS2")) {
+		} else if (applicationUrl.toLowerCase().equalsIgnoreCase("akamais2")) {
 
 			if (!browserName.equals("ie")) {
 				driver.get(testData.get("akamaiS2"));
+
 			}
 		} else if (applicationUrl.toLowerCase().equalsIgnoreCase("prod")) {
 
 			driver.get(testData.get("prod"));
 			UIFunctions.verifyVPN();
 			UIFunctions.closeSignUp();
-			UIFunctions.countrySelection("United States");
+			// UIFunctions.countrySelection("United States");
 		}
 		UIFunctions.verifyVPN();
 		UIFunctions.closeSignUp();
