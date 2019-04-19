@@ -43,7 +43,7 @@ public class PromoCodeVerification extends GenericMethods {
 			Assert.fail("Failed to add Voucher code");
 	}
 	}
-	 @Test(priority=1)
+	// @Test(priority=1)
 	public void VerifyPromoCodeSinglePageCheckout() {
 		UIFunctions.addProductToCart("TumiTestData", "Products");
 		click(pdp.getAddToCart(), "Add to cart");
@@ -71,7 +71,7 @@ public class PromoCodeVerification extends GenericMethods {
 		}
 	}
 
-	 @Test(priority=2)
+	// @Test(priority=2)
 	public void VerifyPromocodeShippingAddress() {
 
 		UIFunctions.addProductToCart("TumiTestData", "Products");
