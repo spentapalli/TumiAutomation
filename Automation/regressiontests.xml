@@ -233,18 +233,18 @@
 			</class>
 		</classes>
 	</test>	
-	<test name="OrderWithRegisteredUsers">
+	<test name="RegisteredOrder">
 		<classes>
-			<class name="com.tumi.registerOrders.OrderWithRegisteredUsers">
+			<class name="com.tumi.registerOrders.RegisteredOrder">
 			</class>
 		</classes>
 	</test>	
-	<test name="TumiStudioRegisteredUser">
+	<!-- <test name="TumiStudioRegisteredUser">
 		<classes>
 			<class name="com.tumi.registerOrders.TumiStudioRegisteredUser">
 			</class>
 		</classes>
-	</test>	
+	</test>	 -->
 	<test name="PromoCodeVerification">
 		<classes>
 			<class name="com.tumi.testcases.PromoCodeVerification">
