@@ -369,11 +369,7 @@ public class Reports {
 				launchMobile("iPhone X");
 			}
 		}
-		if (browserName.equals("Remote")) {
-			
-			driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
-			driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
-		}
+		
 	}
 
 	public static String localTesting() {
