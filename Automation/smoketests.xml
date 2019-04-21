@@ -29,6 +29,9 @@
 	<test name="OrderWithGiftBox">
 		<classes>
 			<class name="com.tumi.guestOrders.OrderWithGiftBox">
+			<methods>
+			<exclude name="backOrderAsGuest"></exclude>
+			</methods>
 			</class>
 		</classes>
 	</test>
@@ -50,20 +53,6 @@
 	<test name="RegisteredOrderWithPayPal">
 		<classes>
 			<class name="com.tumi.registerOrders.RegisteredOrderWithPayPal">
-			</class>
-		</classes>
-	</test>
-	
-	<test name="GuestOrderWithMultiShipment">
-		<classes>
-			<class name="com.tumi.guestOrders.GuestOrderWithMultiShipment">
-			</class>
-		</classes>
-	</test>
-	
-	<test name="RegisteredOrderWithMultishipment">
-		<classes>
-			<class name="com.tumi.registerOrders.RegisteredOrderWithMultishipment">
 			</class>
 		</classes>
 	</test>

@@ -281,5 +281,26 @@
 			</class>
 		</classes>
 	</test>
+	
+	<test name="GuestOrders">
+		<classes>
+			<class name="com.tumi.guestOrders.GuestOrders">
+			</class>
+		</classes>
+	</test>
+	
+	<test name="GuestOrderWithMultiShipment">
+		<classes>
+			<class name="com.tumi.guestOrders.GuestOrderWithMultiShipment">
+			</class>
+		</classes>
+	</test>
+	
+	<test name="RegisteredOrderWithMultishipment">
+		<classes>
+			<class name="com.tumi.registerOrders.RegisteredOrderWithMultishipment">
+			</class>
+		</classes>
+	</test>
 
 </suite>
