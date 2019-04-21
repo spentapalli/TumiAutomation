@@ -1,17 +1,22 @@
 package com.tumi.reports;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.codec.binary.Base64;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.PageLoadStrategy;
@@ -123,6 +128,8 @@ public class Reports {
 
 	@BeforeSuite(alwaysRun = true)
 	public void extentReportConfiguration() {
+
+		exeBrowserStack();
 		timeStamp = new SimpleDateFormat("dd-MMM-yy  hh.mm.ss aa").format(Calendar.getInstance().getTime());
 		extentReportPath = System.getProperty("user.dir") + "/ExtentReports/Screenshots/TumiReport.html";
 		htmlreport = new ExtentHtmlReporter(extentReportPath);
@@ -253,11 +260,11 @@ public class Reports {
 				// Timestamp time = new Timestamp(System.currentTimeMillis());
 				logger.fail(MarkupHelper.createLabel(result.getName() + " Test Case Failed", ExtentColor.RED));
 				logger.fail(result.getThrowable());
-				getScreen("./ExtentReports/Screenshots/" + result.getName() + ".png");
-				String screenlocation = "./Screenshots/" + result.getName() + ".png";
+				//getScreen(System.getProperty("user.dir")+"/ExtentReports/Screenshots/" + result.getName() + ".png");
+				//String screenlocation = "./Screenshots/" + result.getName() + ".png";
 
 				logger.fail("Screen Shot Reference:  ",
-						MediaEntityBuilder.createScreenCaptureFromPath(screenlocation).build());
+						MediaEntityBuilder.createScreenCaptureFromPath(getBase64Screen()).build());
 			}
 		} catch (Exception e) {
 			logger.log(Status.FAIL, "Faile to due to below error");
@@ -320,7 +327,6 @@ public class Reports {
 			remoteAccess();
 			// sauceConnect();
 			getURL();
-
 		} else {
 
 			if (null == browserName || browserName.isEmpty() || browserName.equalsIgnoreCase("chrome")) {
@@ -369,7 +375,7 @@ public class Reports {
 				launchMobile("iPhone X");
 			}
 		}
-		
+
 	}
 
 	public static String localTesting() {
@@ -572,6 +578,47 @@ public class Reports {
 			Assert.fail("Unable to get the Firefox File Path");
 		}
 		return OS;
+	}
+
+	public static String getBase64Screen() {
+		Date oDate = new Date();
+		SimpleDateFormat oSDF = new SimpleDateFormat("yyyyMMddHHmmss");
+		String sDate = oSDF.format(oDate);
+		String encodedBase64 = null;
+		FileInputStream fileInputStream = null;
+		TakesScreenshot screenshot = (TakesScreenshot) driver;
+		File source = screenshot.getScreenshotAs(OutputType.FILE);
+		String destination = System.getProperty("user.dir") + "\\ExtentReports\\Screenshots\\" + "Screenshot_" + sDate
+				+ ".png";
+		File finalDestination = new File(destination);
+		try {
+			FileHandler.copy(source, finalDestination);
+		} catch (Exception e1) {
+		}
+
+		try {
+			fileInputStream = new FileInputStream(finalDestination);
+			byte[] bytes = new byte[(int) finalDestination.length()];
+			fileInputStream.read(bytes);
+			encodedBase64 = new String(Base64.encodeBase64(bytes));
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "data:image/png;base64," + encodedBase64;
+	}
+
+	public static void exeBrowserStack() {
+
+		try {
+			Process p = Runtime.getRuntime().exec("cmd /c start C:\\suresh\\BrowserStack\\BrowserStackLocal.bat");
+			/*
+			 * InputStream in = p.getInputStream(); int c; while ((c = in.read()) != -1) {
+			 * System.out.print(c); } in.close(); p.waitFor(); System.out.println("done");
+			 */
+			Thread.sleep(5000);
+		} catch (Exception e) {
+		}
 	}
 
 	public static void getScreen(String path) {
