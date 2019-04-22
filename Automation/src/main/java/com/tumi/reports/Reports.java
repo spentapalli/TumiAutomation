@@ -129,7 +129,7 @@ public class Reports {
 	@BeforeSuite(alwaysRun = true)
 	public void extentReportConfiguration() {
 
-		exeBrowserStack();
+		//exeBrowserStack();
 		timeStamp = new SimpleDateFormat("dd-MMM-yy  hh.mm.ss aa").format(Calendar.getInstance().getTime());
 		extentReportPath = System.getProperty("user.dir") + "/ExtentReports/Screenshots/TumiReport.html";
 		htmlreport = new ExtentHtmlReporter(extentReportPath);
@@ -243,7 +243,7 @@ public class Reports {
 		pgp = new PGP(driver);
 		compare = new ComparePage(driver);
 		tracer = new TumiTracerPage(driver);
-		if (driver.getCurrentUrl().contains("akamai") && !browserName.equals("Remote")) {
+		if (driver.getCurrentUrl().contains("akamai")) {
 			GenericMethods.click(home.getAkamaiSelectCountry(), "Country");
 			GenericMethods.click(home.getAkamaiSelectUS(), "US");
 			UIFunctions.delay(2000);
@@ -429,6 +429,7 @@ public class Reports {
 		caps.setCapability("browserstack.debug", "true");
 		caps.setCapability("browserstack.networkLogs", "false");
 		caps.setCapability("browserstack.geoLocation", "US");
+		caps.setCapability("browserstack.hosts","23.200.116.157,www.stg-hybris-akamai.tumi.com");
 
 		Map<String, Object> prefs1 = new HashMap<String, Object>();
 

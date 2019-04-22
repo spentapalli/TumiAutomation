@@ -23,7 +23,7 @@ public class OrderConfirmationPage extends GenericMethods {
 	
 	public WebElement getWithForConfirmation() {
 		
-		return withForConfirmation;
+		return explicitWait(withForConfirmation);
 	}
 	
 	@FindBy(how = How.XPATH, using = "//section[@id='confirmation-info-ctnr']/div/div[1]")
@@ -31,7 +31,7 @@ public class OrderConfirmationPage extends GenericMethods {
 	
 	public WebElement getConfirmOrder() {
 		
-		return confirmOrder;
+		return explicitWait(confirmOrder);
 	}
 	
 	@FindBy(how = How.XPATH, using = "//section[@id='confirmation-info-ctnr']/div/div[1]/b")
