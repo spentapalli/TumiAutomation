@@ -100,8 +100,11 @@ public class UIFunctions extends GenericMethods {
 			selectByVisibleText(guestBillPage.getExpiryYear(), testData.get("ExpiryYear"), "Expiry Year");
 		}
 		input(guestBillPage.getCvvNumber(), testData.get("CVV"), "Cvv Number");
-		input(guestBillPage.getemail(), testData.get("EmailID"), "Email ID");
-		input(guestBillPage.getPhoneNumber(), testData.get("Phone"), "Phone number");
+		if (!browserName.equals("Remote")) {
+			input(guestBillPage.getemail(), testData.get("EmailID"), "Email ID");
+			input(guestBillPage.getPhoneNumber(), testData.get("Phone"), "Phone number");
+		}
+
 		domClick(guestBillPage.getReviewOrder(), "Review your order");
 	}
 

@@ -88,9 +88,9 @@
 					<version>2.22.1</version>
 					<configuration>
 						<systemPropertyVariables>
-							<browsername>chrome</browsername>
+							<browsername>Remote</browsername>
 							<countryName>US</countryName>
-							<applicationUrl>stage2</applicationUrl>
+							<applicationUrl>akamais2</applicationUrl>
 							<localTesting>false</localTesting>
 						</systemPropertyVariables>
 						<forkCount>0</forkCount>

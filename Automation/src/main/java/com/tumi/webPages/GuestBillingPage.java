@@ -77,6 +77,16 @@ public class GuestBillingPage extends GenericMethods {
 
 		return explicitWait(phoneNumber);
 	}
+	
+	@FindBy(how = How.XPATH, using = "//input[@name='phone']/parent::div")
+	private WebElement EphoneNumber;
+
+	public WebElement getErrorPhoneNumber() {
+
+		return explicitWait(EphoneNumber);
+	}
+	
+	
 
 	@FindBy(how = How.XPATH, using = "//input[@id='shippingAddressForBilling']")
 	private WebElement useShippingAddressAsBilling;
