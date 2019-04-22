@@ -302,5 +302,12 @@
 			</class>
 		</classes>
 	</test>
+	
+	<test name="BuyingGift">
+		<classes>
+			<class name="com.tumi.testcases.BuyingGift">
+			</class>
+		</classes>
+	</test>
 
 </suite>
