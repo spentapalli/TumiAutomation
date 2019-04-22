@@ -243,7 +243,7 @@ public class Reports {
 		pgp = new PGP(driver);
 		compare = new ComparePage(driver);
 		tracer = new TumiTracerPage(driver);
-		if (driver.getCurrentUrl().contains("akamai")) {
+		if (driver.getCurrentUrl().contains("akamai") && !browserName.equals("Remote")) {
 			GenericMethods.click(home.getAkamaiSelectCountry(), "Country");
 			GenericMethods.click(home.getAkamaiSelectUS(), "US");
 			UIFunctions.delay(2000);
