@@ -129,7 +129,7 @@ public class Reports {
 	@BeforeSuite(alwaysRun = true)
 	public void extentReportConfiguration() {
 
-		//exeBrowserStack();
+		// exeBrowserStack();
 		timeStamp = new SimpleDateFormat("dd-MMM-yy  hh.mm.ss aa").format(Calendar.getInstance().getTime());
 		extentReportPath = System.getProperty("user.dir") + "/ExtentReports/Screenshots/TumiReport.html";
 		htmlreport = new ExtentHtmlReporter(extentReportPath);
@@ -260,8 +260,9 @@ public class Reports {
 				// Timestamp time = new Timestamp(System.currentTimeMillis());
 				logger.fail(MarkupHelper.createLabel(result.getName() + " Test Case Failed", ExtentColor.RED));
 				logger.fail(result.getThrowable());
-				//getScreen(System.getProperty("user.dir")+"/ExtentReports/Screenshots/" + result.getName() + ".png");
-				//String screenlocation = "./Screenshots/" + result.getName() + ".png";
+				// getScreen(System.getProperty("user.dir")+"/ExtentReports/Screenshots/" +
+				// result.getName() + ".png");
+				// String screenlocation = "./Screenshots/" + result.getName() + ".png";
 
 				logger.fail("Screen Shot Reference:  ",
 						MediaEntityBuilder.createScreenCaptureFromPath(getBase64Screen()).build());
@@ -322,7 +323,11 @@ public class Reports {
 
 		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "BrowserStack");
 
-		if (browserName.equalsIgnoreCase("Remote")) {
+		if (browserName.equalsIgnoreCase("iphone")) {
+
+			iphone();
+			getURL();
+		} else if (browserName.equalsIgnoreCase("Remote")) {
 
 			remoteAccess();
 			// sauceConnect();
@@ -391,7 +396,6 @@ public class Reports {
 
 	}
 
-	@SuppressWarnings("unchecked")
 	public static void remoteAccess() throws Exception {
 
 		final String USERNAME = "kurrysuresh1";
@@ -399,51 +403,37 @@ public class Reports {
 		String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
 		DesiredCapabilities caps = new DesiredCapabilities();
 
-		/*
-		 * caps.setCapability("browser", remoteBrowser);
-		 * caps.setCapability("browser_version", remoteBrowserVersion);
-		 * caps.setCapability("os", remoteOS); caps.setCapability("os_version",
-		 * remoteOsVersion);
-		 */
-
-		/*
-		 * caps.setCapability("browserName", "iPhone"); caps.setCapability("device",
-		 * "iPhone 8 Plus"); caps.setCapability("realMobile", "true");
-		 * caps.setCapability("os_version", "11");
-		 */
-
 		caps.setCapability("browser", "Safari");
 		caps.setCapability("browser_version", "12.0");
 		caps.setCapability("os", "OS X");
 		caps.setCapability("os_version", "Mojave");
 		caps.setCapability("resolution", "1024x768");
+		caps.setCapability("browserstack.local", localTesting());
+		caps.setCapability("browserstack.debug", "true");
+		caps.setCapability("browserstack.networkLogs", "false");
+		caps.setCapability("browserstack.geoLocation", "US");
+		caps.setCapability("browserstack.hosts", "23.200.116.157,www.stg-hybris-akamai.tumi.com");
+		driver = new RemoteWebDriver(new URL(URL), caps);
+	}
 
-		/*
-		 * caps.setCapability("browser", "Chrome");
-		 * caps.setCapability("browser_version", "62.0"); caps.setCapability("os",
-		 * "Windows"); caps.setCapability("os_version", "10");
-		 * caps.setCapability("resolution", "1024x768");
-		 */
+	public static void iphone() throws Exception {
+
+		final String USERNAME = "kurrysuresh1";
+		final String AUTOMATE_KEY = "zKp1VrRqTkUXqi4efALq";
+		String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
+		DesiredCapabilities caps = new DesiredCapabilities();
+
+		caps.setCapability("browserName", "iPhone");
+		caps.setCapability("device", "iPhone XS");
+		caps.setCapability("realMobile", "true");
+		caps.setCapability("os_version", "12");
 
 		caps.setCapability("browserstack.local", localTesting());
 		caps.setCapability("browserstack.debug", "true");
 		caps.setCapability("browserstack.networkLogs", "false");
 		caps.setCapability("browserstack.geoLocation", "US");
-		caps.setCapability("browserstack.hosts","23.200.116.157,www.stg-hybris-akamai.tumi.com");
-
-		Map<String, Object> prefs1 = new HashMap<String, Object>();
-
-		prefs1.put("profile.default_content_setting_values.notifications", 2);
-
-		ChromeOptions options = new ChromeOptions();
-
-		options.setExperimentalOption("prefs", prefs1);
-
-		options.addArguments("disable-infobars");
-		options.addArguments("--disable-notifications");
-		options.addArguments("--disable-extensions");
-		// options.merge(caps);
-		// caps.setCapability(ChromeOptions.CAPABILITY, options);
+		// caps.setCapability("browserstack.hosts",
+		// "23.200.116.157,www.stg-hybris-akamai.tumi.com");
 		driver = new RemoteWebDriver(new URL(URL), caps);
 	}
 
