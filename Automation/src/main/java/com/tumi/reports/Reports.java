@@ -243,12 +243,12 @@ public class Reports {
 		pgp = new PGP(driver);
 		compare = new ComparePage(driver);
 		tracer = new TumiTracerPage(driver);
-		if (driver.getCurrentUrl().contains("akamai")) {
-			GenericMethods.click(home.getAkamaiSelectCountry(), "Country");
-			GenericMethods.click(home.getAkamaiSelectUS(), "US");
-			UIFunctions.delay(2000);
-			UIFunctions.closeSignUp();
-		}
+		/*
+		 * if (driver.getCurrentUrl().contains("akamai")) {
+		 * GenericMethods.click(home.getAkamaiSelectCountry(), "Country");
+		 * GenericMethods.click(home.getAkamaiSelectUS(), "US");
+		 * UIFunctions.delay(2000); UIFunctions.closeSignUp(); }
+		 */
 	}
 
 	@AfterMethod(alwaysRun = true)
@@ -411,10 +411,15 @@ public class Reports {
 		caps.setCapability("browserstack.local", localTesting());
 		caps.setCapability("browserstack.debug", "true");
 		caps.setCapability("browserstack.networkLogs", "false");
+
 		caps.setCapability("browserstack.geoLocation", "US");
 		caps.setCapability("browserstack.hosts", "23.200.116.157,www.stg-hybris-akamai.tumi.com");
 		driver = new RemoteWebDriver(new URL(URL), caps);
 	}
+
+
+		Map<String, Object> prefs1 = new HashMap<String, Object>();
+
 
 	public static void iphone() throws Exception {
 
