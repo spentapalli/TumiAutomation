@@ -436,7 +436,7 @@ public class Reports {
 		caps.setCapability("browserstack.local", localTesting());
 		caps.setCapability("browserstack.debug", "true");
 		caps.setCapability("browserstack.networkLogs", "false");
-		caps.setCapability("browserstack.geoLocation", "US");
+		//caps.setCapability("browserstack.geoLocation", "US");
 		// caps.setCapability("browserstack.hosts",
 		// "23.200.116.157,www.stg-hybris-akamai.tumi.com");
 		driver = new RemoteWebDriver(new URL(URL), caps);
