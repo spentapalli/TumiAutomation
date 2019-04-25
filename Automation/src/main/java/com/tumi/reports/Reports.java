@@ -181,7 +181,7 @@ public class Reports {
 	public static void initiateApplication() throws Exception {
 
 		getBrowser(GlobalConstants.BROWSER);
-		if (!browserName.equalsIgnoreCase("Remote")) {
+		if (!browserName.equalsIgnoreCase("Remote") && !browserName.equals("iphone")) {
 			maximizeBrowser();
 			if (browserName.equals("ie")) {
 				GenericMethods.delay(2000);
@@ -320,22 +320,15 @@ public class Reports {
 		browserName = browser;
 
 		System.out.println("Parameter " + browserName);
-
-		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "BrowserStack");
-
 		if (browserName.equalsIgnoreCase("iphone")) {
-
 			iphone();
-			getURL();
+			getIphoneURL();
 		} else if (browserName.equalsIgnoreCase("Remote")) {
-
 			remoteAccess();
 			// sauceConnect();
 			getURL();
 		} else {
-
 			if (null == browserName || browserName.isEmpty() || browserName.equalsIgnoreCase("chrome")) {
-
 				// Create object of HashMap Class
 				Map<String, Object> prefs = new HashMap<String, Object>();
 				// Set the notification setting it will override the default setting
@@ -380,7 +373,6 @@ public class Reports {
 				launchMobile("iPhone X");
 			}
 		}
-
 	}
 
 	public static String localTesting() {
@@ -436,7 +428,7 @@ public class Reports {
 		caps.setCapability("browserstack.local", localTesting());
 		caps.setCapability("browserstack.debug", "true");
 		caps.setCapability("browserstack.networkLogs", "false");
-		//caps.setCapability("browserstack.geoLocation", "US");
+		caps.setCapability("browserstack.geoLocation", "US");
 		// caps.setCapability("browserstack.hosts",
 		// "23.200.116.157,www.stg-hybris-akamai.tumi.com");
 		driver = new RemoteWebDriver(new URL(URL), caps);
@@ -522,8 +514,48 @@ public class Reports {
 		} else if (applicationUrl.toLowerCase().equalsIgnoreCase("prod")) {
 
 			driver.get(testData.get("prod"));
+			GenericMethods.acceptAlert();
 			UIFunctions.verifyVPN();
 			UIFunctions.closeSignUp();
+			// UIFunctions.countrySelection("United States");
+		}
+		UIFunctions.verifyVPN();
+		UIFunctions.closeSignUp();
+	}
+	
+	public static void getIphoneURL() {
+
+		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "Environments");
+
+		applicationUrl = System.getProperty("applicationUrl");
+
+		System.out.println("Application Name " + applicationUrl);
+
+		if (null == applicationUrl || applicationUrl.isEmpty()
+				|| applicationUrl.toLowerCase().equalsIgnoreCase("stage2")) {
+
+			if (!browserName.equals("ie")) {
+				driver.get(testData.get("stage2"));
+			}
+		} else if (applicationUrl.toLowerCase().equalsIgnoreCase("stage3")) {
+
+			if (!browserName.equals("ie")) {
+				driver.get(testData.get("stage3"));
+			}
+		} else if (applicationUrl.toLowerCase().equalsIgnoreCase("akamais2")) {
+
+			if (!browserName.equals("ie")) {
+				driver.get(testData.get("akamaiS2"));
+
+			}
+		} else if (applicationUrl.toLowerCase().equalsIgnoreCase("prod")) {
+
+			driver.get(testData.get("prod"));
+			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+			driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
+			GenericMethods.acceptAlert();
+			//UIFunctions.verifyVPN();
+			//UIFunctions.closeSignUp();
 			// UIFunctions.countrySelection("United States");
 		}
 		UIFunctions.verifyVPN();
