@@ -97,7 +97,7 @@
 						<executable>C:\Program Files\Java\jdk1.8.0_161\bin\javac.exe</executable>
 						<suiteXmlFiles>
 							<suiteXmlFile>smoketests.xml</suiteXmlFile>
-							<!-- <suiteXmlFile>regressiontests.xml</suiteXmlFile> -->
+							<suiteXmlFile>regressiontests.xml</suiteXmlFile>
 						</suiteXmlFiles>
 					</configuration>
 				</plugin>
