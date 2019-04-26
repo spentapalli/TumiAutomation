@@ -58,6 +58,17 @@ public class OrderReviewPage extends GenericMethods {
 		return elementToBeClickable(placeOrder);
 		// return explicitWait(placeOrder);
 	}
+	
+	@FindBy(how = How.XPATH, using = "//main[@role='main']/div/div/div/div/div/span")
+	private WebElement placeOrderError;
+
+	public WebElement getPlaceOrderError() {
+
+		return elementToBeClickable(placeOrderError);
+		// return explicitWait(placeOrder);
+	}
+	
+	
 
 	@FindBy(how = How.XPATH, using = "//section[@id='confirmation-info-ctnr']/div/div/b")
 	private WebElement orderNumber;

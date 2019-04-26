@@ -254,16 +254,17 @@ public class Reports {
 				// Timestamp time = new Timestamp(System.currentTimeMillis());
 				logger.fail(MarkupHelper.createLabel(result.getName() + " Test Case Failed", ExtentColor.RED));
 				logger.fail(result.getThrowable());
-				// getScreen(System.getProperty("user.dir")+"/ExtentReports/Screenshots/" +
-				// result.getName() + ".png");
-				// String screenlocation = "./Screenshots/" + result.getName() + ".png";
+				getScreen(System.getProperty("user.dir")+"/ExtentReports/Screenshots/" +
+				result.getName() + ".png");
+				String screenlocation = System.getProperty("user.dir")+"/ExtentReports/Screenshots/" +
+						result.getName() + ".png";
 
 				logger.fail("Screen Shot Reference:  ",
-						MediaEntityBuilder.createScreenCaptureFromPath(getBase64Screen()).build());
+						MediaEntityBuilder.createScreenCaptureFromPath(screenlocation).build());
 			}
 		} catch (Exception e) {
-			logger.log(Status.FAIL, "Faile to due to below error");
-			Assert.fail(e.getMessage());
+			//logger.log(Status.FAIL, "Faile to due to below error");
+			//Assert.fail(e.getMessage());
 		}
 	}
 
