@@ -509,7 +509,10 @@ public class Reports {
 		} else if (applicationUrl.toLowerCase().equalsIgnoreCase("prod")) {
 
 			driver.get(testData.get("prod"));
-			GenericMethods.acceptAlert();
+			if(browserName.equals("iphone")) {
+				GenericMethods.acceptAlert();
+			}
+			
 			UIFunctions.verifyVPN();
 			UIFunctions.closeSignUp();
 			// UIFunctions.countrySelection("United States");
