@@ -90,7 +90,7 @@
 						<systemPropertyVariables>
 							<browsername>chrome</browsername>
 							<countryName>US</countryName>
-							<applicationUrl>akamais2</applicationUrl>
+							<applicationUrl>prod</applicationUrl>
 							<localTesting>false</localTesting>
 						</systemPropertyVariables>
 						<forkCount>0</forkCount>
