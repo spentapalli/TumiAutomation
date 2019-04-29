@@ -35,6 +35,12 @@ public class UIFunctions extends GenericMethods {
 			delay(5000);
 		} catch (Exception e) {
 		}
+		if (applicationUrl.toLowerCase().equalsIgnoreCase("prod")) {
+			try {
+				home.getFreeShipping().click();
+			} catch (Exception e) {
+			}
+		}
 
 		try {
 			home.getSignupPopup().click();
@@ -497,7 +503,7 @@ public class UIFunctions extends GenericMethods {
 								.findElement(By.xpath("//div[@class='address-picklist']/div[" + i + "]"));
 						if (add.getText().contains("Fairport NY 14450")) {
 							doubleClick(add, "Address");
-							//domClick(add, "Address");
+							// domClick(add, "Address");
 							delay(1000);
 							break;
 						}
@@ -520,7 +526,7 @@ public class UIFunctions extends GenericMethods {
 	}
 
 	public static void completeOrder() {
-		
+
 		if (applicationUrl.equals("prod")) {
 			logger.log(Status.PASS, "Scripts are executing in Production");
 		} else {
@@ -544,7 +550,7 @@ public class UIFunctions extends GenericMethods {
 				delay(3000);
 			}
 
-			//captureOrderConfScreen("");
+			// captureOrderConfScreen("");
 		}
 	}
 

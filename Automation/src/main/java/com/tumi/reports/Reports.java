@@ -184,7 +184,7 @@ public class Reports {
 				UIFunctions.verifyVPN();
 				UIFunctions.closeSignUp();
 			} else {
-				getURL();
+				getURL(GlobalConstants.URL);
 
 			}
 		}
@@ -321,7 +321,7 @@ public class Reports {
 		} else if (browserName.equalsIgnoreCase("Remote")) {
 			remoteAccess();
 			// sauceConnect();
-			getURL();
+			getURL(GlobalConstants.URL);
 		} else {
 			if (null == browserName || browserName.isEmpty() || browserName.equalsIgnoreCase("chrome")) {
 				// Create object of HashMap Class
@@ -481,11 +481,11 @@ public class Reports {
 	/**
 	 * @param URL
 	 */
-	public static void getURL() {
+	public static void getURL(String url) {
 
 		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "Environments");
 
-		applicationUrl = System.getProperty("applicationUrl");
+		applicationUrl = url;
 
 		System.out.println("Application Name " + applicationUrl);
 
