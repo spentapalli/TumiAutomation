@@ -235,6 +235,11 @@ public class UIFunctions extends GenericMethods {
 				final String pdpURL = GlobalConstants.akamaiUrl + "/p/" + testData.get("SKUID");
 				driver.navigate().to(pdpURL);
 
+			}else if (applicationUrl.toLowerCase().equalsIgnoreCase("stage4")) {
+
+				final String pdpURL = GlobalConstants.stage4 + "/p/" + testData.get("SKUID");
+				driver.navigate().to(pdpURL);
+				
 			} else if (applicationUrl.toLowerCase().equals("prod")) {
 
 				final String pdpURL = testData1.get("prod") + "/p/" + testData.get("SKUID");
@@ -1339,7 +1344,6 @@ public class UIFunctions extends GenericMethods {
 		UIFunctions.closeSignUp();
 		// removeExistingCart();
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
-		Map<String, String> testData1 = ReadTestData.getJsonData("TumiTestData", "Environments");
 
 		if (selectedCountry.equals("US") || selectedCountry.contains("United States") || selectedCountry.isEmpty()) {
 
@@ -1358,6 +1362,10 @@ public class UIFunctions extends GenericMethods {
 				final String pdpURL = GlobalConstants.akamaiUrl + "/p/" + testData.get(product);
 				driver.navigate().to(pdpURL);
 
+			} else if (applicationUrl.toLowerCase().equalsIgnoreCase("stage4")) {
+
+				final String pdpURL = GlobalConstants.stage4 + "/p/" + testData.get(product);
+				driver.navigate().to(pdpURL);
 			} else if (applicationUrl.toLowerCase().equals("prod")) {
 
 				final String pdpURL = GlobalConstants.prodUrl + "/p/" + testData.get(product);
