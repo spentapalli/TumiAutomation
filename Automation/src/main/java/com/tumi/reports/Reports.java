@@ -1,19 +1,19 @@
 package com.tumi.reports;
 
 import java.io.File;
-import java.io.IOException;
+import java.io.FileInputStream;
 import java.lang.reflect.Method;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
-import org.json.simple.JSONObject;
+import org.apache.commons.codec.binary.Base64;
 import org.openqa.selenium.OutputType;
-import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -122,6 +122,8 @@ public class Reports {
 
 	@BeforeSuite(alwaysRun = true)
 	public void extentReportConfiguration() {
+
+		// exeBrowserStack();
 		timeStamp = new SimpleDateFormat("dd-MMM-yy  hh.mm.ss aa").format(Calendar.getInstance().getTime());
 		extentReportPath = System.getProperty("user.dir") + "/ExtentReports/Screenshots/TumiReport.html";
 		htmlreport = new ExtentHtmlReporter(extentReportPath);
@@ -173,7 +175,7 @@ public class Reports {
 	public static void initiateApplication() throws Exception {
 
 		getBrowser(GlobalConstants.BROWSER);
-		if (!browserName.equalsIgnoreCase("Remote")) {
+		if (!browserName.equalsIgnoreCase("Remote") && !browserName.equals("iphone")) {
 			maximizeBrowser();
 			if (browserName.equals("ie")) {
 				GenericMethods.delay(2000);
@@ -182,14 +184,14 @@ public class Reports {
 				UIFunctions.verifyVPN();
 				UIFunctions.closeSignUp();
 			} else {
-				getURL();
+				getURL(GlobalConstants.URL);
 
 			}
 		}
 		UIFunctions.selectCountry();
 	}
 
-	//@AfterMethod(alwaysRun = true)
+	@AfterMethod(alwaysRun = true)
 	public static void closeBrowser() {
 
 		if (browserName.equals("Remote")) {
@@ -235,12 +237,12 @@ public class Reports {
 		pgp = new PGP(driver);
 		compare = new ComparePage(driver);
 		tracer = new TumiTracerPage(driver);
-		if (driver.getCurrentUrl().contains("akamai")) {
-			GenericMethods.click(home.getAkamaiSelectCountry(), "Country");
-			GenericMethods.click(home.getAkamaiSelectUS(), "US");
-			UIFunctions.delay(2000);
-			UIFunctions.closeSignUp();
-		}
+		/*
+		 * if (driver.getCurrentUrl().contains("akamai")) {
+		 * GenericMethods.click(home.getAkamaiSelectCountry(), "Country");
+		 * GenericMethods.click(home.getAkamaiSelectUS(), "US");
+		 * UIFunctions.delay(2000); UIFunctions.closeSignUp(); }
+		 */
 	}
 
 	@AfterMethod(alwaysRun = true)
@@ -252,15 +254,16 @@ public class Reports {
 				// Timestamp time = new Timestamp(System.currentTimeMillis());
 				logger.fail(MarkupHelper.createLabel(result.getName() + " Test Case Failed", ExtentColor.RED));
 				logger.fail(result.getThrowable());
-				getScreen("./ExtentReports/Screenshots/" + result.getName() + ".png");
-				String screenlocation = "./Screenshots/" + result.getName() + ".png";
+				getScreen(System.getProperty("user.dir") + "/ExtentReports/Screenshots/" + result.getName() + ".png");
+				String screenlocation = System.getProperty("user.dir") + "/ExtentReports/Screenshots/"
+						+ result.getName() + ".png";
 
 				logger.fail("Screen Shot Reference:  ",
 						MediaEntityBuilder.createScreenCaptureFromPath(screenlocation).build());
 			}
 		} catch (Exception e) {
-			logger.log(Status.FAIL, "Faile to due to below error");
-			Assert.fail(e.getMessage());
+			// logger.log(Status.FAIL, "Faile to due to below error");
+			// Assert.fail(e.getMessage());
 		}
 	}
 
@@ -311,19 +314,15 @@ public class Reports {
 		browserName = browser;
 
 		System.out.println("Parameter " + browserName);
-
-		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "BrowserStack");
-
-		if (browserName.equalsIgnoreCase("Remote")) {
-
+		if (browserName.equalsIgnoreCase("iphone")) {
+			iphone();
+			getIphoneURL();
+		} else if (browserName.equalsIgnoreCase("Remote")) {
 			remoteAccess();
-			//sauceConnect();
-			getURL();
-
+			// sauceConnect();
+			getURL(GlobalConstants.URL);
 		} else {
-
 			if (null == browserName || browserName.isEmpty() || browserName.equalsIgnoreCase("chrome")) {
-
 				// Create object of HashMap Class
 				Map<String, Object> prefs = new HashMap<String, Object>();
 				// Set the notification setting it will override the default setting
@@ -383,51 +382,47 @@ public class Reports {
 
 	}
 
-	@SuppressWarnings("unchecked")
 	public static void remoteAccess() throws Exception {
 
 		final String USERNAME = "kurrysuresh1";
 		final String AUTOMATE_KEY = "zKp1VrRqTkUXqi4efALq";
 		String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
-		DesiredCapabilities caps = new DesiredCapabilities().safari();
+		DesiredCapabilities caps = new DesiredCapabilities();
 
-		/*
-		 * caps.setCapability("browser", remoteBrowser);
-		 * caps.setCapability("browser_version", remoteBrowserVersion);
-		 * caps.setCapability("os", remoteOS); caps.setCapability("os_version",
-		 * remoteOsVersion);
-		 */
+		caps.setCapability("browser", "Safari");
+		caps.setCapability("browser_version", "12.0");
+		caps.setCapability("os", "OS X");
+		caps.setCapability("os_version", "Mojave");
+		caps.setCapability("resolution", "1024x768");
+		caps.setCapability("browserstack.local", localTesting());
+		caps.setCapability("browserstack.debug", "true");
+		caps.setCapability("browserstack.networkLogs", "false");
 
-		/*
-		 * caps.setCapability("browserName", "iPhone"); caps.setCapability("device",
-		 * "iPhone 8 Plus"); caps.setCapability("realMobile", "true");
-		 * caps.setCapability("os_version", "11");
-		 */
-		
-		 // caps.setCapability("browser", "Safari");
-		  caps.setCapability("browser_version", "12.0"); caps.setCapability("os",
-		  "OS X"); caps.setCapability("os_version", "Mojave");
-		 
+		caps.setCapability("browserstack.geoLocation", "US");
+		caps.setCapability("browserstack.hosts", "23.200.116.157,www.stg-hybris-akamai.tumi.com");
+		driver = new RemoteWebDriver(new URL(URL), caps);
+	}
+
+	Map<String, Object> prefs1 = new HashMap<String, Object>();
+
+	public static void iphone() throws Exception {
+
+		final String USERNAME = "kurrysuresh1";
+		final String AUTOMATE_KEY = "zKp1VrRqTkUXqi4efALq";
+		String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
+		DesiredCapabilities caps = new DesiredCapabilities();
+
+		caps.setCapability("browserName", "iPhone");
+		caps.setCapability("device", "iPhone XS");
+		caps.setCapability("realMobile", "true");
+		caps.setCapability("os_version", "12");
 
 		caps.setCapability("browserstack.local", localTesting());
-		caps.setCapability("browserstack.debug", "false");
+		caps.setCapability("browserstack.debug", "true");
 		caps.setCapability("browserstack.networkLogs", "false");
 		caps.setCapability("browserstack.geoLocation", "US");
-		// caps.setCapability("resolution", "1024x768");
-
-		Map<String, Object> prefs1 = new HashMap<String, Object>();
-
-		prefs1.put("profile.default_content_setting_values.notifications", 2);
-
-		ChromeOptions options = new ChromeOptions();
-
-		options.setExperimentalOption("prefs", prefs1);
-
-		options.addArguments("disable-infobars");
-		options.addArguments("--disable-notifications");
-		options.addArguments("--disable-extensions");
-		// options.merge(caps);
-		// caps.setCapability(ChromeOptions.CAPABILITY, options);
+		// caps.setCapability("browserstack.hosts",
+		// "23.200.116.157,www.stg-hybris-akamai.tumi.com");
 		driver = new RemoteWebDriver(new URL(URL), caps);
 	}
 
@@ -444,8 +439,7 @@ public class Reports {
 
 		// set your sauce labs access key
 		caps.setCapability("accessKey", ACCESS_KEY);
-		
-		
+
 		caps.setCapability("platform", "macOS 10.14");
 		caps.setCapability("version", "12.0");
 		caps.setCapability("recordVideo", "false");
@@ -484,7 +478,52 @@ public class Reports {
 	/**
 	 * @param URL
 	 */
-	public static void getURL() {
+	public static void getURL(String url) {
+
+		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "Environments");
+
+		applicationUrl = url;
+
+		System.out.println("Application Name " + applicationUrl);
+
+		if (null == applicationUrl || applicationUrl.isEmpty()
+				|| applicationUrl.toLowerCase().equalsIgnoreCase("stage2")) {
+
+			if (!browserName.equals("ie")) {
+				driver.get(testData.get("stage2"));
+			}
+		} else if (applicationUrl.toLowerCase().equalsIgnoreCase("stage3")) {
+
+			if (!browserName.equals("ie")) {
+				driver.get(testData.get("stage3"));
+			}
+		} else if (applicationUrl.toLowerCase().equalsIgnoreCase("akamais2")) {
+
+			if (!browserName.equals("ie")) {
+				driver.get(testData.get("akamaiS2"));
+
+			}
+		} else if (applicationUrl.toLowerCase().equalsIgnoreCase("stage4")) {
+
+			if (!browserName.equals("ie")) {
+				driver.get(GlobalConstants.stage4);
+			}
+		} else if (applicationUrl.toLowerCase().equalsIgnoreCase("prod")) {
+
+			driver.get(testData.get("prod"));
+			if (browserName.equals("iphone")) {
+				GenericMethods.acceptAlert();
+			}
+
+			UIFunctions.verifyVPN();
+			UIFunctions.closeSignUp();
+			// UIFunctions.countrySelection("United States");
+		}
+		UIFunctions.verifyVPN();
+		UIFunctions.closeSignUp();
+	}
+
+	public static void getIphoneURL() {
 
 		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "Environments");
 
@@ -503,17 +542,21 @@ public class Reports {
 			if (!browserName.equals("ie")) {
 				driver.get(testData.get("stage3"));
 			}
-		} else if (applicationUrl.toLowerCase().equalsIgnoreCase("akamaiS2")) {
+		} else if (applicationUrl.toLowerCase().equalsIgnoreCase("akamais2")) {
 
 			if (!browserName.equals("ie")) {
 				driver.get(testData.get("akamaiS2"));
+
 			}
 		} else if (applicationUrl.toLowerCase().equalsIgnoreCase("prod")) {
 
 			driver.get(testData.get("prod"));
-			UIFunctions.verifyVPN();
-			UIFunctions.closeSignUp();
-			UIFunctions.countrySelection("United States");
+			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+			driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
+			GenericMethods.acceptAlert();
+			// UIFunctions.verifyVPN();
+			// UIFunctions.closeSignUp();
+			// UIFunctions.countrySelection("United States");
 		}
 		UIFunctions.verifyVPN();
 		UIFunctions.closeSignUp();
@@ -563,6 +606,47 @@ public class Reports {
 			Assert.fail("Unable to get the Firefox File Path");
 		}
 		return OS;
+	}
+
+	public static String getBase64Screen() {
+		Date oDate = new Date();
+		SimpleDateFormat oSDF = new SimpleDateFormat("yyyyMMddHHmmss");
+		String sDate = oSDF.format(oDate);
+		String encodedBase64 = null;
+		FileInputStream fileInputStream = null;
+		TakesScreenshot screenshot = (TakesScreenshot) driver;
+		File source = screenshot.getScreenshotAs(OutputType.FILE);
+		String destination = System.getProperty("user.dir") + "\\ExtentReports\\Screenshots\\" + "Screenshot_" + sDate
+				+ ".png";
+		File finalDestination = new File(destination);
+		try {
+			FileHandler.copy(source, finalDestination);
+		} catch (Exception e1) {
+		}
+
+		try {
+			fileInputStream = new FileInputStream(finalDestination);
+			byte[] bytes = new byte[(int) finalDestination.length()];
+			fileInputStream.read(bytes);
+			encodedBase64 = new String(Base64.encodeBase64(bytes));
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "data:image/png;base64," + encodedBase64;
+	}
+
+	public static void exeBrowserStack() {
+
+		try {
+			Process p = Runtime.getRuntime().exec("cmd /c start C:\\suresh\\BrowserStack\\BrowserStackLocal.bat");
+			/*
+			 * InputStream in = p.getInputStream(); int c; while ((c = in.read()) != -1) {
+			 * System.out.print(c); } in.close(); p.waitFor(); System.out.println("done");
+			 */
+			Thread.sleep(5000);
+		} catch (Exception e) {
+		}
 	}
 
 	public static void getScreen(String path) {

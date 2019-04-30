@@ -2,7 +2,6 @@ package com.tumi.registerOrders;
 
 import java.util.Map;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.tumi.dataProvider.ReadTestData;
@@ -15,6 +14,7 @@ import com.tumi.utilities.UIFunctions;
  */
 
 public class RegisteredOrder extends GenericMethods {
+	
 	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestDetails");
 
 	/*

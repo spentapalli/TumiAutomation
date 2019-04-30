@@ -233,5 +233,81 @@
 			</class>
 		</classes>
 	</test>	
+	<test name="RegisteredOrder">
+		<classes>
+			<class name="com.tumi.registerOrders.RegisteredOrder">
+			</class>
+		</classes>
+	</test>	
+	<!-- <test name="TumiStudioRegisteredUser">
+		<classes>
+			<class name="com.tumi.registerOrders.TumiStudioRegisteredUser">
+			</class>
+		</classes>
+	</test>	 -->
+	<test name="PromoCodeVerification">
+		<classes>
+			<class name="com.tumi.testcases.PromoCodeVerification">
+			</class>
+		</classes>
+	</test>	
+	<test name="TumiTracer">
+		<classes>
+			<class name="com.tumi.testcases.TumiTracer">
+			</class>
+		</classes>
+	</test>	
+	<test name="VerifyCartPage">
+		<classes>
+			<class name="com.tumi.cart.VerifyCartPage">
+			</class>
+		</classes>
+	</test>
+	<test name="VerifyGiftBox">
+		<classes>
+			<class name="com.tumi.testcases.VerifyGiftBox">
+			</class>
+		</classes>
+	</test>
+	<test name="SinglePageCheckout">
+		<classes>
+			<class name="com.tumi.testcases.SinglePageCheckout">
+			</class>
+		</classes>
+	</test>
+	<test name="ShippingPageSingleItem">
+		<classes>
+			<class name="com.tumi.testcases.ShippingPageSingleItem">
+			</class>
+		</classes>
+	</test>
+	
+	<test name="GuestOrders">
+		<classes>
+			<class name="com.tumi.guestOrders.GuestOrders">
+			</class>
+		</classes>
+	</test>
+	
+	<test name="GuestOrderWithMultiShipment">
+		<classes>
+			<class name="com.tumi.guestOrders.GuestOrderWithMultiShipment">
+			</class>
+		</classes>
+	</test>
+	
+	<test name="RegisteredOrderWithMultishipment">
+		<classes>
+			<class name="com.tumi.registerOrders.RegisteredOrderWithMultishipment">
+			</class>
+		</classes>
+	</test>
+	
+	<test name="BuyingGift">
+		<classes>
+			<class name="com.tumi.testcases.BuyingGift">
+			</class>
+		</classes>
+	</test>
 
 </suite>

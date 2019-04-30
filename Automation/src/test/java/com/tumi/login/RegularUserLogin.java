@@ -63,7 +63,7 @@ public class RegularUserLogin extends GenericMethods {
 
 		click(review.getPlaceOrder(), "place order");
 		delay(5000);
-		captureOrderConfScreen("OrderConfirmation");
+		//captureOrderConfScreen();
 		delay(20000);
 
 	}

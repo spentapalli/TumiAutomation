@@ -399,10 +399,11 @@ public class GenericMethods extends GlobalConstants {
 		}
 	}
 
-	public static void doubleClick(WebElement ele) {
+	public static void doubleClick(WebElement ele,String filedName) {
 		try {
 			action = new Actions(driver);
 			action.doubleClick(ele).perform();
+			logger.log(Status.INFO, "Clicked on "+filedName);
 		} catch (Exception e) {
 			Assert.fail("Fail to Double Click " + e.getMessage());
 		}
@@ -706,7 +707,7 @@ public class GenericMethods extends GlobalConstants {
 			UIFunctions.delay(3000);
 			System.out.println("Mini Cart Remove");
 			if (!getText(home.getMinicartCount()).contains("0")) {
-				doubleClick(home.getMinicart());
+				doubleClick(home.getMinicart(),"Mini Cart");
 				UIFunctions.delay(5000);
 				try {
 					if (minicart.getProceedCheckOut().isDisplayed() && minicart.getProceedCheckOut().isEnabled()) {

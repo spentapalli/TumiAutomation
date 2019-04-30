@@ -3,9 +3,9 @@
 <suite name="Suite">
 	<test  name="Test">
 		<classes>
-			<class name="com.tumi.guestOrders.OrderWithGiftBox">
+			<class name="com.tumi.guestOrders.GuestOrders">
 				<methods>
-					<include name="backOrderAsGuest">
+					<include name="tumiOrderAsGuest">
 					</include>
 				</methods>
 			</class>

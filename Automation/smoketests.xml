@@ -2,12 +2,12 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Smoke Tests Suite">
 
-	<!-- <test name="CreateAccount">
+	<test name="CreateAccount">
 		<classes>
 			<class name="com.tumi.userRegistration.CreateAccount">
 			</class>
 		</classes>
-	</test> -->
+	</test>
 	
 	<test name="GuestOrders">
 		<classes>
@@ -29,6 +29,9 @@
 	<test name="OrderWithGiftBox">
 		<classes>
 			<class name="com.tumi.guestOrders.OrderWithGiftBox">
+			<methods>
+			<exclude name="backOrderAsGuest"></exclude>
+			</methods>
 			</class>
 		</classes>
 	</test>
@@ -54,18 +57,4 @@
 		</classes>
 	</test>
 	
-	<test name="GuestOrderWithMultiShipment">
-		<classes>
-			<class name="com.tumi.guestOrders.GuestOrderWithMultiShipment">
-			</class>
-		</classes>
-	</test>
-	
-	<test name="RegisteredOrderWithMultishipment">
-		<classes>
-			<class name="com.tumi.registerOrders.RegisteredOrderWithMultishipment">
-			</class>
-		</classes>
-	</test>
-	
-</suite> <!-- Suite -->
+</suite>
