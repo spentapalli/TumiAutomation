@@ -635,7 +635,7 @@ public class UIFunctions extends GenericMethods {
 		String beforeTotal = getText(shipMethod.getBeforeTotal());
 		Double beforeCost = 0.00D;
 		Double beforeCostkr= 0.00D;
-		if(selectedCountry.contains("US")||selectedCountry.contains("Canada")) {
+		if(selectedCountry.contains("US")||selectedCountry.contains("Canada")||selectedCountry.contains("United States")) {
 		beforeCost = Double.valueOf(beforeTotal.replace("$", "").replace(",",""));
 		System.out.println("Before select Price = " + beforeCost);
 		}else {
@@ -645,9 +645,20 @@ public class UIFunctions extends GenericMethods {
 		
 
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
-		if (selectedCountry.contains("US")) {
+		if (selectedCountry.contains("US")||selectedCountry.contains("United States")) {
 			input(singlePage.getPromocode(), testData.get("VoucherID"), "Vocher Id");
 			click(singlePage.getApply(), "Check Promocode");
+			try {
+				if (singlePage.getPromocodeRemove().isDisplayed()) {
+					logger.log(Status.INFO, "Promocode applied successfully");
+				} else if (getText(mainCart.getPromoSuccessMsg()).equals(getProperty("voucher.successmsg"))) {
+					logger.log(Status.INFO, "Promocode applied successfully");
+				} else if (getText(mainCart.getPromoSuccessMsg()).equals(getProperty("voucher.alreadyapplied"))) {
+					logger.log(Status.INFO, "Voucher already been applied successfully");
+				}
+			} catch (Exception e) {
+				Assert.fail("Promocode couldn't be applied");
+			}
 			delay(2000);
 			verifyPromoCharge(beforeCost);
 
@@ -655,12 +666,34 @@ public class UIFunctions extends GenericMethods {
 
 			input(singlePage.getPromocode(), testData.get("CAVoucherID"), "Vocher Id");
 			click(singlePage.getApply(), "Check Promocode");
+			try {
+				if (singlePage.getPromocodeRemove().isDisplayed()) {
+					logger.log(Status.INFO, "Promocode applied successfully");
+				} else if (getText(mainCart.getPromoSuccessMsg()).equals(getProperty("voucher.successmsg"))) {
+					logger.log(Status.INFO, "Promocode applied successfully");
+				} else if (getText(mainCart.getPromoSuccessMsg()).equals(getProperty("voucher.alreadyapplied"))) {
+					logger.log(Status.INFO, "Voucher already been applied successfully");
+				}
+			} catch (Exception e) {
+				Assert.fail("Promocode couldn't be applied");
+			}
 
 			verifyPromoCharge(beforeCost);
 		} else {
 			
 			input(singlePage.getPromocode(), testData.get("KRVoucherID"), "Vocher Id");
 			click(singlePage.getApply(), "Check Promocode");
+			try {
+				if (singlePage.getPromocodeRemove().isDisplayed()) {
+					logger.log(Status.INFO, "Promocode applied successfully");
+				} else if (getText(mainCart.getPromoSuccessMsg()).equals(getProperty("voucher.successmsg"))) {
+					logger.log(Status.INFO, "Promocode applied successfully");
+				} else if (getText(mainCart.getPromoSuccessMsg()).equals(getProperty("voucher.alreadyapplied"))) {
+					logger.log(Status.INFO, "Voucher already been applied successfully");
+				}
+			} catch (Exception e) {
+				Assert.fail("Promocode couldn't be applied");
+			}
 			verifyPromoCharge(beforeCostkr);
 		}
 		// delay(2000);
@@ -699,7 +732,7 @@ public class UIFunctions extends GenericMethods {
 
 		String afterTotal = getText(shipMethod.getBeforeTotal());
 		Double afterCost = 0.00D;
-		if(selectedCountry.contains("US")||selectedCountry.contains("Canada")) {
+		if(selectedCountry.contains("US")||selectedCountry.contains("Canada")||selectedCountry.contains("United States")) {
 		afterCost = Double.valueOf(afterTotal.replace("$", "").replace(",",""));
 		}else {
 		afterCost = Double.valueOf(afterTotal.substring(1).replace(",",""));
@@ -710,7 +743,7 @@ public class UIFunctions extends GenericMethods {
 
 		String promo = getText(shipMethod.getPromoCharge());
 		Double promoDiscount = 0.00D;
-		if(selectedCountry.contains("US")||selectedCountry.contains("Canada")) {
+		if(selectedCountry.contains("US")||selectedCountry.contains("Canada")||selectedCountry.contains("United States")) {
 		promoDiscount = Double.valueOf(promo.replace("$", "").replace("-", "").replace(",",""));
 		}else {
 	    promoDiscount = Double.valueOf(promo.substring(2).replace("-", "").replace(",",""));	
