@@ -15,6 +15,7 @@ import com.tumi.utilities.UIFunctions;
  */
 
 public class RegisteredOrder extends GenericMethods {
+	
 	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestDetails");
 
 	/*
