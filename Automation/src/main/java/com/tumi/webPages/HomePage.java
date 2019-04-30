@@ -432,6 +432,15 @@ public class HomePage extends GenericMethods {
 	public WebElement getNoThanks() {
 		return noThanks;
 	}
+	
+	@FindBy(how = How.XPATH, using = "//button[@id='reject']")
+	private WebElement freeShipping;
+
+	public WebElement getFreeShipping() {
+		return freeShipping;
+	}
+	
+	
 
 	@FindBy(how = How.XPATH, using = "//div[@id='main-content']/div[2]/h1/span")
 	private WebElement vpnIssue;

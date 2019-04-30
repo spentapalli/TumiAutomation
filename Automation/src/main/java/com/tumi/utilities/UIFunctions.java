@@ -1,5 +1,6 @@
 package com.tumi.utilities;
 
+import java.lang.reflect.Method;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -33,6 +34,12 @@ public class UIFunctions extends GenericMethods {
 			jsClick(home.getNoThanks());
 			delay(5000);
 		} catch (Exception e) {
+		}
+		if (applicationUrl.toLowerCase().equalsIgnoreCase("prod")) {
+			try {
+				home.getFreeShipping().click();
+			} catch (Exception e) {
+			}
 		}
 
 		try {
@@ -227,6 +234,11 @@ public class UIFunctions extends GenericMethods {
 				final String pdpURL = GlobalConstants.akamaiUrl + "/p/" + testData.get("SKUID");
 				driver.navigate().to(pdpURL);
 
+			}else if (applicationUrl.toLowerCase().equalsIgnoreCase("stage4")) {
+
+				final String pdpURL = GlobalConstants.stage4 + "/p/" + testData.get("SKUID");
+				driver.navigate().to(pdpURL);
+				
 			} else if (applicationUrl.toLowerCase().equals("prod")) {
 
 				final String pdpURL = testData1.get("prod") + "/p/" + testData.get("SKUID");
@@ -494,7 +506,8 @@ public class UIFunctions extends GenericMethods {
 						WebElement add = driver
 								.findElement(By.xpath("//div[@class='address-picklist']/div[" + i + "]"));
 						if (add.getText().contains("Fairport NY 14450")) {
-							domClick(add, "Address");
+							doubleClick(add, "Address");
+							// domClick(add, "Address");
 							delay(1000);
 							break;
 						}
@@ -517,23 +530,31 @@ public class UIFunctions extends GenericMethods {
 	}
 
 	public static void completeOrder() {
+
 		if (applicationUrl.equals("prod")) {
 			logger.log(Status.PASS, "Scripts are executing in Production");
 		} else {
 			domClick(review.getPlaceOrder(), "Place Order");
 			scrollUp();
-			do {
-				delay(2000);
+			try {
+				if (review.getPlaceOrderError().isDisplayed()) {
+					logger.log(Status.WARNING, "Place Order Failed due to " + getText(review.getPlaceOrderError()));
+				}
+			} catch (Exception e) {
+				do {
+					delay(2000);
 
-			} while (confirmation.getWithForConfirmation().isDisplayed());
-			if (!confirmation.getConfirmOrder().isDisplayed()) {
+				} while (confirmation.getWithForConfirmation().isDisplayed());
+				if (!confirmation.getConfirmOrder().isDisplayed()) {
 
-				Assert.fail("Faile to Place An Order");
+					Assert.fail("Faile to Place An Order");
+				}
+				orderNumber = getText(confirmation.getOrderNumber());
+				logger.log(Status.INFO, "Thank you for Your Order, here is your Order Number " + orderNumber);
+				delay(3000);
 			}
-			orderNumber = getText(confirmation.getOrderNumber());
-			logger.log(Status.INFO, "Thank you for Your Order, here is your Order Number " + orderNumber);
-			delay(3000);
-			// captureOrderConfScreen("OrderConfirmation");
+
+			// captureOrderConfScreen("");
 		}
 	}
 
@@ -749,7 +770,7 @@ public class UIFunctions extends GenericMethods {
 	public static void addGiftMessage(String sheet, String testCase) {
 
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
-
+		driver.switchTo().activeElement();
 		domClick(gift.getCheckMessage(), "Check Message");
 		input(gift.getRecipientName(), testData.get("RecipientName"), "Recipients name");
 		input(gift.getSenderName(), testData.get("SenderName"), "Sender name");
@@ -1322,7 +1343,6 @@ public class UIFunctions extends GenericMethods {
 		UIFunctions.closeSignUp();
 		// removeExistingCart();
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
-		Map<String, String> testData1 = ReadTestData.getJsonData("TumiTestData", "Environments");
 
 		if (selectedCountry.equals("US") || selectedCountry.contains("United States") || selectedCountry.isEmpty()) {
 
@@ -1341,6 +1361,10 @@ public class UIFunctions extends GenericMethods {
 				final String pdpURL = GlobalConstants.akamaiUrl + "/p/" + testData.get(product);
 				driver.navigate().to(pdpURL);
 
+			} else if (applicationUrl.toLowerCase().equalsIgnoreCase("stage4")) {
+
+				final String pdpURL = GlobalConstants.stage4 + "/p/" + testData.get(product);
+				driver.navigate().to(pdpURL);
 			} else if (applicationUrl.toLowerCase().equals("prod")) {
 
 				final String pdpURL = GlobalConstants.prodUrl + "/p/" + testData.get(product);

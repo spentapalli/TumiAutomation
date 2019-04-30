@@ -184,7 +184,7 @@ public class Reports {
 				UIFunctions.verifyVPN();
 				UIFunctions.closeSignUp();
 			} else {
-				getURL();
+				getURL(GlobalConstants.URL);
 
 			}
 		}
@@ -254,16 +254,16 @@ public class Reports {
 				// Timestamp time = new Timestamp(System.currentTimeMillis());
 				logger.fail(MarkupHelper.createLabel(result.getName() + " Test Case Failed", ExtentColor.RED));
 				logger.fail(result.getThrowable());
-				// getScreen(System.getProperty("user.dir")+"/ExtentReports/Screenshots/" +
-				// result.getName() + ".png");
-				// String screenlocation = "./Screenshots/" + result.getName() + ".png";
+				getScreen(System.getProperty("user.dir") + "/ExtentReports/Screenshots/" + result.getName() + ".png");
+				String screenlocation = System.getProperty("user.dir") + "/ExtentReports/Screenshots/"
+						+ result.getName() + ".png";
 
 				logger.fail("Screen Shot Reference:  ",
-						MediaEntityBuilder.createScreenCaptureFromPath(getBase64Screen()).build());
+						MediaEntityBuilder.createScreenCaptureFromPath(screenlocation).build());
 			}
 		} catch (Exception e) {
-			logger.log(Status.FAIL, "Faile to due to below error");
-			Assert.fail(e.getMessage());
+			// logger.log(Status.FAIL, "Faile to due to below error");
+			// Assert.fail(e.getMessage());
 		}
 	}
 
@@ -320,7 +320,7 @@ public class Reports {
 		} else if (browserName.equalsIgnoreCase("Remote")) {
 			remoteAccess();
 			// sauceConnect();
-			getURL();
+			getURL(GlobalConstants.URL);
 		} else {
 			if (null == browserName || browserName.isEmpty() || browserName.equalsIgnoreCase("chrome")) {
 				// Create object of HashMap Class
@@ -403,9 +403,7 @@ public class Reports {
 		driver = new RemoteWebDriver(new URL(URL), caps);
 	}
 
-
-		Map<String, Object> prefs1 = new HashMap<String, Object>();
-
+	Map<String, Object> prefs1 = new HashMap<String, Object>();
 
 	public static void iphone() throws Exception {
 
@@ -480,11 +478,11 @@ public class Reports {
 	/**
 	 * @param URL
 	 */
-	public static void getURL() {
+	public static void getURL(String url) {
 
 		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "Environments");
 
-		applicationUrl = System.getProperty("applicationUrl");
+		applicationUrl = url;
 
 		System.out.println("Application Name " + applicationUrl);
 
@@ -505,10 +503,18 @@ public class Reports {
 				driver.get(testData.get("akamaiS2"));
 
 			}
+		} else if (applicationUrl.toLowerCase().equalsIgnoreCase("stage4")) {
+
+			if (!browserName.equals("ie")) {
+				driver.get(GlobalConstants.stage4);
+			}
 		} else if (applicationUrl.toLowerCase().equalsIgnoreCase("prod")) {
 
 			driver.get(testData.get("prod"));
-			GenericMethods.acceptAlert();
+			if (browserName.equals("iphone")) {
+				GenericMethods.acceptAlert();
+			}
+
 			UIFunctions.verifyVPN();
 			UIFunctions.closeSignUp();
 			// UIFunctions.countrySelection("United States");
@@ -516,7 +522,7 @@ public class Reports {
 		UIFunctions.verifyVPN();
 		UIFunctions.closeSignUp();
 	}
-	
+
 	public static void getIphoneURL() {
 
 		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "Environments");
@@ -548,8 +554,8 @@ public class Reports {
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
 			GenericMethods.acceptAlert();
-			//UIFunctions.verifyVPN();
-			//UIFunctions.closeSignUp();
+			// UIFunctions.verifyVPN();
+			// UIFunctions.closeSignUp();
 			// UIFunctions.countrySelection("United States");
 		}
 		UIFunctions.verifyVPN();

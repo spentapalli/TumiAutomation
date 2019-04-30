@@ -88,9 +88,9 @@
 					<version>2.22.1</version>
 					<configuration>
 						<systemPropertyVariables>
-							<browsername>iphone</browsername>
+							<browsername>chrome</browsername>
 							<countryName>US</countryName>
-							<applicationUrl>prod</applicationUrl>
+							<applicationUrl>stage4</applicationUrl>
 							<localTesting>false</localTesting>
 						</systemPropertyVariables>
 						<forkCount>0</forkCount>

@@ -21,81 +21,101 @@ public class CreateAccount extends GenericMethods {
 
 	@Test(priority = 0)
 	public void newUserRegistration() {
-		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
-			email = testData.get("EmailID") + randomNumber() + "@gmail.com";
-			userAccount(email);
-			if (register.getRegisterError().isDisplayed()) {
-
-				Assert.fail(getText(register.getRegisterError()));
-			} else if (register.getRegisterEmailError().isDisplayed()) {
-				Assert.fail(getText(register.getRegisterEmailError()));
-			}
-			verifyAssertEquals(getText(register.getRegisterConfirm()), getProperty("registration.success"));
-			click(login.getLogOut(), "Sign Out");
+		if (applicationUrl.equals("prod")) {
+			logger.log(Status.WARNING, "User Registration will Execute Only in Stage Environments");
 		} else {
-			email = testData.get("EmailID") + randomNumber() + "@gmail.com";
-			userAccount(email);
-			if (register.getkrErrorMessage().isDisplayed())
-				logger.log(Status.INFO, "Successfully CreatedAccount ");
+			if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
+				email = testData.get("EmailID") + randomNumber() + "@gmail.com";
+				userAccount(email);
+				if (register.getRegisterError().isDisplayed()) {
+
+					Assert.fail(getText(register.getRegisterError()));
+				} else if (register.getRegisterEmailError().isDisplayed()) {
+					Assert.fail(getText(register.getRegisterEmailError()));
+				}
+				verifyAssertEquals(getText(register.getRegisterConfirm()), getProperty("registration.success"));
+				click(login.getLogOut(), "Sign Out");
+			} else {
+				email = testData.get("EmailID") + randomNumber() + "@gmail.com";
+				userAccount(email);
+				if (register.getkrErrorMessage().isDisplayed())
+					logger.log(Status.INFO, "Successfully CreatedAccount ");
+			}
 		}
 	}
 
 	@Test(priority = 1, dependsOnMethods = "newUserRegistration")
 	public void existingAccount() {
-		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
-			userAccount(testData1.get("EmailID"));
-			verifyAssertContains(getText(register.getRegisterError()), getProperty("registration.duplicate"), "D");
-			click(login.getCloseWindow(), "Close Window");
+		if (applicationUrl.equals("prod")) {
+			logger.log(Status.WARNING, "User Registration will Execute Only in Stage Environments");
 		} else {
-			userAccount(testData1.get("EmailID"));
-			if (register.getkrErrorMessage().isDisplayed())
-				logger.log(Status.INFO, "User Details already Exist  ");
+			if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
+				userAccount(testData1.get("EmailID"));
+				verifyAssertContains(getText(register.getRegisterError()), getProperty("registration.duplicate"), "D");
+				click(login.getCloseWindow(), "Close Window");
+			} else {
+				userAccount(testData1.get("EmailID"));
+				if (register.getkrErrorMessage().isDisplayed())
+					logger.log(Status.INFO, "User Details already Exist  ");
+			}
 		}
 	}
 
 	@Test(priority = 2, dependsOnMethods = "newUserRegistration")
 	public void userLogin() {
-		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
-			SignIn(email);
+		if (applicationUrl.equals("prod")) {
+			logger.log(Status.WARNING, "User Registration will Execute Only in Stage Environments");
 		} else {
-			SignIn(email);
-			if (register.getkrErrorMessage().isDisplayed())
-				logger.log(Status.INFO, "Can't login");
+			if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
+				SignIn(email);
+			} else {
+				SignIn(email);
+				if (register.getkrErrorMessage().isDisplayed())
+					logger.log(Status.INFO, "Can't login");
+			}
 		}
 	}
 
 	@Test(priority = 3)
 	public void registrationValidations() {
 
-		SoftAssert softAssertion = new SoftAssert();
-
-		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
-			click(home.getHeaderSignIn(), "Sign In");
-			click(register.getRegisterCreate(), "Create an Account");
-			click(register.getSubmitAccount(), "Submit Account Details");
-
-			softAssertion.assertEquals(getText(register.getRegisterError()), getProperty("registration.error"));
-
-			softAssertion.assertEquals(getText(register.getRegisterEmailError()), getProperty("registration.email"));
-
-			softAssertion.assertEquals(getText(register.getRegisterPassError()), getProperty("registration.password"));
-
-			softAssertion.assertEquals(getText(register.getRegisterCheckPassError()),
-					getProperty("registration.confirm.password"));
-
-			softAssertion.assertEquals(getText(register.getRegisterFNameError()),
-					getProperty("registration.firstName"));
-
-			softAssertion.assertEquals(getText(register.getRegisterLNameError()), getProperty("registration.lastName"));
-
-			softAssertion.assertAll();
-
+		if (applicationUrl.equals("prod")) {
+			logger.log(Status.WARNING, "User Registration will Execute Only in Stage Environments");
 		} else {
-			click(home.getHeaderSignIn(), "Sign In");
-			click(register.getRegisterCreate(), "Create an Account");
-			click(register.getSubmitAccount(), "Submit Account Details");
-			if (register.getkrErrorMessage().isDisplayed())
-				logger.log(Status.INFO, "Blank Message");
+
+			SoftAssert softAssertion = new SoftAssert();
+
+			if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
+				click(home.getHeaderSignIn(), "Sign In");
+				click(register.getRegisterCreate(), "Create an Account");
+				click(register.getSubmitAccount(), "Submit Account Details");
+
+				softAssertion.assertEquals(getText(register.getRegisterError()), getProperty("registration.error"));
+
+				softAssertion.assertEquals(getText(register.getRegisterEmailError()),
+						getProperty("registration.email"));
+
+				softAssertion.assertEquals(getText(register.getRegisterPassError()),
+						getProperty("registration.password"));
+
+				softAssertion.assertEquals(getText(register.getRegisterCheckPassError()),
+						getProperty("registration.confirm.password"));
+
+				softAssertion.assertEquals(getText(register.getRegisterFNameError()),
+						getProperty("registration.firstName"));
+
+				softAssertion.assertEquals(getText(register.getRegisterLNameError()),
+						getProperty("registration.lastName"));
+
+				softAssertion.assertAll();
+
+			} else {
+				click(home.getHeaderSignIn(), "Sign In");
+				click(register.getRegisterCreate(), "Create an Account");
+				click(register.getSubmitAccount(), "Submit Account Details");
+				if (register.getkrErrorMessage().isDisplayed())
+					logger.log(Status.INFO, "Blank Message");
+			}
 		}
 	}
 

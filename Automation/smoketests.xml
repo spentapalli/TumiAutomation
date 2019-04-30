@@ -2,12 +2,12 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Smoke Tests Suite">
 
-	<!-- <test name="CreateAccount">
+	<test name="CreateAccount">
 		<classes>
 			<class name="com.tumi.userRegistration.CreateAccount">
 			</class>
 		</classes>
-	</test> -->
+	</test>
 	
 	<test name="GuestOrders">
 		<classes>
@@ -57,4 +57,4 @@
 		</classes>
 	</test>
 	
-</suite> <!-- Suite -->
+</suite>

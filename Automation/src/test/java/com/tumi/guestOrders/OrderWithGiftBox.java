@@ -5,6 +5,7 @@ import java.util.Map;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
+import com.aventstack.extentreports.Status;
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
 import com.tumi.utilities.UIFunctions;
@@ -123,7 +124,9 @@ public class OrderWithGiftBox extends GenericMethods {
 	@Test(priority = 5, description = " TA- 107 Verify Order with merchandise Pre Order + Gift Boxing for Guest user")
 	public void preOrderWithGiftBoxAsGuest() throws Exception {
 
-		if (!applicationUrl.equals("prod")) {
+		if (applicationUrl.equals("prod")) {
+			logger.log(Status.WARNING, "Pre Order Products are not available in production");
+		} else {
 
 			UIFunctions.addProductToCart("TumiTestData", "PreOrderProduct");
 			click(pdp.getAddToCart(), "Add To Cart");
@@ -136,21 +139,19 @@ public class OrderWithGiftBox extends GenericMethods {
 			UIFunctions.waitForContinueToEnable();
 			click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 			UIFunctions.addGuestDetails();
-			if (!shipping.getContinueShippingMethod().isEnabled()) {
-				UIFunctions.addGuestDetails();
-			} else {
-				click(shipping.getContinueShippingMethod(), "Contiue Shipping");
-			}
+			click(shipping.getContinueShippingMethod(), "Contiue Shipping");
 			click(shipMethod.getProceedToPayment(), "Proceed to Payment");
 			UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 			UIFunctions.completeOrder();
-
 		}
+
 	}
 
 	@Test(priority = 6, description = " TA-3 Verify Order with merchandise Pre Order + Gift Boxing + Gift Message-Guest user")
 	public void preOrderWithGiftBoxnMsgAsGuest() throws Exception {
-		if (!applicationUrl.equals("prod")) {
+		if (applicationUrl.equals("prod")) {
+			logger.log(Status.WARNING, "Pre Order Products are not available in production");
+		} else {
 			UIFunctions.addProductToCart("TumiTestData", "PreOrderProduct");
 			click(pdp.getAddToCart(), "Add To Cart");
 			click(minicart.getProceedCheckOut(), "Proceed to Cart");
@@ -177,7 +178,11 @@ public class OrderWithGiftBox extends GenericMethods {
 	@Test(priority = 7, description = " TA- 12 Verify Order with merchandise Pre Order + Gift Boxing "
 			+ "+ Gift Message + Voucher/Promos-Guest User")
 	public void preOrderWithGiftBoxnMsgVocher() {
-		if (!applicationUrl.equals("prod")) {
+
+		if (applicationUrl.equals("prod")) {
+			logger.log(Status.WARNING, "Pre Order Products are not available in production");
+		} else {
+
 			UIFunctions.addProductToCart("TumiTestData", "PreOrderProduct");
 			click(pdp.getAddToCart(), "Add To Cart");
 			click(minicart.getProceedCheckOut(), "Proceed to Checkout");
@@ -226,5 +231,4 @@ public class OrderWithGiftBox extends GenericMethods {
 		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		UIFunctions.completeOrder();
 	}
-
 }
