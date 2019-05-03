@@ -96,7 +96,7 @@ public class SinglePageCheckout extends GenericMethods {
 	private WebElement KrApplyClick;
 
 	public WebElement getApply() {
-		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
+		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")||selectedCountry.contains("United States")) {
 			return explicitWait(ApplyClick);
 		} else {
 			return explicitWait(KrApplyClick);
