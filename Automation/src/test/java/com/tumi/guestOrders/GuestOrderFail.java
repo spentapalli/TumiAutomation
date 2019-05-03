@@ -22,9 +22,9 @@ public class GuestOrderFail extends GenericMethods {
 	
 	@Test(priority = 8, description = "TA- 8 Verify order fail with wrong card details for Guest user")
 	public void orderWithWrongCardDetails() throws InterruptedException {
-		UIFunctions.addProductToCart("TumiTestData", "FailedOrder");
-		click(pdp.getAddToCart(), "Add to cart");
-		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
+		UIFunctions.addProductToCart();
+		UIFunctions.verifyAddToCart();
+		click(minicart.getProceedCheckOut(), "Proceed to Cart");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		UIFunctions.waitForContinueToEnable();

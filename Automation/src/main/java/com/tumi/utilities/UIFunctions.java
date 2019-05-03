@@ -83,8 +83,8 @@ public class UIFunctions extends GenericMethods {
 			delay(5000);
 			String title = driver.getTitle();
 			if (title.contains("www.hybris") || title.contains("www.stg-hybris") || title.contains("ca.hybris")
-					||title.contains("www.tumi")) {
-				Assert.fail("Application is not Working "+title);
+					|| title.contains("www.tumi")) {
+				Assert.fail("Application is not Working " + title);
 			}
 		} catch (Exception e) {
 		}
@@ -243,6 +243,58 @@ public class UIFunctions extends GenericMethods {
 			} else if (applicationUrl.equalsIgnoreCase("prod")) {
 
 				final String pdpURL = testData1.get("prod") + "/p/" + testData.get("NoramlSKUID");
+				driver.navigate().to(pdpURL);
+				UIFunctions.closeSignUp();
+				if (driver.getTitle().contains("Not Found")) {
+
+					Assert.fail(testData.get("NoramlSKUID") + "is not available");
+				}
+			}
+
+		} else if (selectedCountry.contains("Canada")) {
+
+			final String pdpURL = GlobalConstants.urlca + "/p/" + testData.get("NoramlSKUID");
+			driver.get(pdpURL);
+
+		} else {
+
+			final String pdpURL = GlobalConstants.urlkr + "/p/" + testData.get("KoreaSKUID");
+			driver.get(pdpURL);
+		}
+
+		UIFunctions.verifyVPN();
+	}
+
+	public static void addProductToCart() {
+
+		UIFunctions.closeSignUp();
+		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "Products");
+
+		if (selectedCountry.equals("US") || selectedCountry.contains("United States") || selectedCountry.isEmpty()) {
+
+			if (applicationUrl.equalsIgnoreCase("stage2")) {
+
+				final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("SKUID");
+				driver.navigate().to(pdpURL);
+
+			} else if (applicationUrl.equalsIgnoreCase("stage3")) {
+
+				final String pdpURL = GlobalConstants.S3 + "/p/" + testData.get("NoramlSKUID");
+				driver.navigate().to(pdpURL);
+
+			} else if (applicationUrl.equalsIgnoreCase("akamais2")) {
+
+				final String pdpURL = GlobalConstants.akamaiUrl + "/p/" + testData.get("NoramlSKUID");
+				driver.navigate().to(pdpURL);
+
+			} else if (applicationUrl.equalsIgnoreCase("stage4")) {
+
+				final String pdpURL = GlobalConstants.stage4 + "/p/" + testData.get("NoramlSKUID");
+				driver.navigate().to(pdpURL);
+
+			} else if (applicationUrl.equalsIgnoreCase("prod")) {
+
+				final String pdpURL = GlobalConstants.prodUrl + "/p/" + testData.get("NoramlSKUID");
 				driver.navigate().to(pdpURL);
 				UIFunctions.closeSignUp();
 				if (driver.getTitle().contains("Not Found")) {
