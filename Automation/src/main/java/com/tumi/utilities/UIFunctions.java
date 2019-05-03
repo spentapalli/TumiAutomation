@@ -221,38 +221,38 @@ public class UIFunctions extends GenericMethods {
 
 			if (applicationUrl.toLowerCase().equals("stage2")) {
 
-				final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("SKUID");
+				final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("NoramlSKUID");
 				driver.navigate().to(pdpURL);
 
 			} else if (applicationUrl.toLowerCase().equals("stage3")) {
 
-				final String pdpURL = GlobalConstants.S3 + "/p/" + testData.get("SKUID");
+				final String pdpURL = GlobalConstants.S3 + "/p/" + testData.get("NoramlSKUID");
 				driver.navigate().to(pdpURL);
 
 			} else if (applicationUrl.toLowerCase().equals("akamais2")) {
 
-				final String pdpURL = GlobalConstants.akamaiUrl + "/p/" + testData.get("SKUID");
+				final String pdpURL = GlobalConstants.akamaiUrl + "/p/" + testData.get("NoramlSKUID");
 				driver.navigate().to(pdpURL);
 
 			}else if (applicationUrl.toLowerCase().equalsIgnoreCase("stage4")) {
 
-				final String pdpURL = GlobalConstants.stage4 + "/p/" + testData.get("SKUID");
+				final String pdpURL = GlobalConstants.stage4 + "/p/" + testData.get("NoramlSKUID");
 				driver.navigate().to(pdpURL);
 				
 			} else if (applicationUrl.toLowerCase().equals("prod")) {
 
-				final String pdpURL = testData1.get("prod") + "/p/" + testData.get("SKUID");
+				final String pdpURL = testData1.get("prod") + "/p/" + testData.get("NoramlSKUID");
 				driver.navigate().to(pdpURL);
 				UIFunctions.closeSignUp();
 				if (driver.getTitle().contains("Not Found")) {
 
-					Assert.fail(testData.get("SKUID") + "is not available");
+					Assert.fail(testData.get("NoramlSKUID") + "is not available");
 				}
 			}
 
 		} else if (selectedCountry.contains("Canada")) {
 
-			final String pdpURL = GlobalConstants.urlca + "/p/" + testData.get("SKUID");
+			final String pdpURL = GlobalConstants.urlca + "/p/" + testData.get("NoramlSKUID");
 			driver.get(pdpURL);
 
 		} else {
