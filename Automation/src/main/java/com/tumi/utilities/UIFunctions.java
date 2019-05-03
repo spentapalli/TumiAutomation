@@ -219,27 +219,27 @@ public class UIFunctions extends GenericMethods {
 
 		if (selectedCountry.equals("US") || selectedCountry.contains("United States") || selectedCountry.isEmpty()) {
 
-			if (applicationUrl.toLowerCase().equals("stage2")) {
+			if (applicationUrl.equalsIgnoreCase("stage2")) {
 
 				final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("NoramlSKUID");
 				driver.navigate().to(pdpURL);
 
-			} else if (applicationUrl.toLowerCase().equals("stage3")) {
+			} else if (applicationUrl.equalsIgnoreCase("stage3")) {
 
 				final String pdpURL = GlobalConstants.S3 + "/p/" + testData.get("NoramlSKUID");
 				driver.navigate().to(pdpURL);
 
-			} else if (applicationUrl.toLowerCase().equals("akamais2")) {
+			} else if (applicationUrl.equalsIgnoreCase("akamais2")) {
 
 				final String pdpURL = GlobalConstants.akamaiUrl + "/p/" + testData.get("NoramlSKUID");
 				driver.navigate().to(pdpURL);
 
-			}else if (applicationUrl.toLowerCase().equalsIgnoreCase("stage4")) {
+			}else if (applicationUrl.equalsIgnoreCase("stage4")) {
 
 				final String pdpURL = GlobalConstants.stage4 + "/p/" + testData.get("NoramlSKUID");
 				driver.navigate().to(pdpURL);
 				
-			} else if (applicationUrl.toLowerCase().equals("prod")) {
+			} else if (applicationUrl.equalsIgnoreCase("prod")) {
 
 				final String pdpURL = testData1.get("prod") + "/p/" + testData.get("NoramlSKUID");
 				driver.navigate().to(pdpURL);
