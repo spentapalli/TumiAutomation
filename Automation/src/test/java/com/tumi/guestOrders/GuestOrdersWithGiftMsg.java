@@ -26,7 +26,7 @@ public class GuestOrdersWithGiftMsg extends GenericMethods {
 	public void orderWithGiftMsgAsGuest() {
 
 		UIFunctions.addProductToCart("TumiTestData", "Products");
-		click(pdp.getAddToCart(), "Add to cart");
+		UIFunctions.verifyAddToCart();
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(gift.getMakeThisGift(), "Make this Gift");
 		UIFunctions.addGiftMessage("TumiTestData", "VoucherCodeDetails");
@@ -45,8 +45,8 @@ public class GuestOrdersWithGiftMsg extends GenericMethods {
 	@Test(priority = 1, description = "Sprint 2- TA- 179 Verify Order with merchandise Pre order Ready to ship with Gift message for Guest User")
 	public void preOrderWithGiftMsgAsGuest() {
 
-		UIFunctions.addProductToCart("TumiTestData", "PreOrderProduct");
-		click(pdp.getAddToCart(), "Add to cart");
+		UIFunctions.addProduct("TumiTestData", "Products","PreOrderProduct");
+		UIFunctions.verifyAddToCart();
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(gift.getMakeThisGift(), "Make this Gift");
 		UIFunctions.addGiftMessage("TumiTestData", "VoucherCodeDetails");
@@ -66,7 +66,7 @@ public class GuestOrdersWithGiftMsg extends GenericMethods {
 	public void backOrderWithGiftMsgAsGuest() {
 
 		UIFunctions.addProductToCart("TumiTestData", "BackOrderProduct");
-		click(pdp.getAddToCart(), "Add to cart");
+		UIFunctions.verifyAddToCart();
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(gift.getMakeThisGift(), "Make this Gift");
 		UIFunctions.addGiftMessage("TumiTestData", "VoucherCodeDetails");
