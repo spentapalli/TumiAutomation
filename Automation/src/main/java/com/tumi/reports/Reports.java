@@ -1,5 +1,7 @@
 package com.tumi.reports;
 
+import static org.testng.Assert.assertEquals;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.lang.reflect.Method;
@@ -519,6 +521,7 @@ public class Reports {
 			UIFunctions.closeSignUp();
 			// UIFunctions.countrySelection("United States");
 		}
+		
 		UIFunctions.verifyVPN();
 		UIFunctions.closeSignUp();
 	}

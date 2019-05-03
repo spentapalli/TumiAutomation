@@ -36,6 +36,20 @@ public class PDPage extends GenericMethods {
 		
 		return explicitWait(addToCart);
 	}
+	
+	@FindBy(how = How.XPATH, using = "//div[contains(@id,'button-outofstock')]") //for korea it is same
+	private WebElement outofStock;
+
+	public WebElement getOutofStock() {
+		
+		if (browserName.equals("mobile")|| browserName.equals("prod")) {
+			scrollDown(300);
+		}
+		
+		return explicitWait(outofStock);
+	}
+	
+	
 
 	@FindBy(how = How.ID, using = "select-qty")  // for KR it is same
 	private WebElement selectQuantity;
@@ -398,12 +412,7 @@ public class PDPage extends GenericMethods {
 	public WebElement getAirLineClose(){
 		return airLineClose;
 	}
-	@FindBy(how=How.XPATH,using="//div[contains(@id,'button-outofstock')]")
-	private WebElement outOfStock;
 	
-	public WebElement getOutOfStock(){
-		return outOfStock;
-	}
 	
 	@FindBy(how=How.XPATH,using="//main[@id='navEnd']/div[2]/div/div/div")
 	private WebElement pageNotFound;

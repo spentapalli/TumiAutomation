@@ -81,9 +81,10 @@ public class UIFunctions extends GenericMethods {
 	public static void verifyVPN() {
 		try {
 			delay(5000);
-			if (driver.getTitle().equals("www.hybris-stage2.tumi.com")) {
-				logger.log(Status.FAIL, "Failed due to VPN");
-				Assert.fail("VPN is Disconnected, Kindly Use VPN to Access Application");
+			String title = driver.getTitle();
+			if (title.contains("www.hybris") || title.contains("www.stg-hybris") || title.contains("ca.hybris")
+					||title.contains("www.tumi")) {
+				Assert.fail("Application is not Working "+title);
 			}
 		} catch (Exception e) {
 		}
@@ -221,7 +222,7 @@ public class UIFunctions extends GenericMethods {
 
 			if (applicationUrl.equalsIgnoreCase("stage2")) {
 
-				final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("NoramlSKUID");
+				final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("SKUID");
 				driver.navigate().to(pdpURL);
 
 			} else if (applicationUrl.equalsIgnoreCase("stage3")) {
@@ -234,11 +235,11 @@ public class UIFunctions extends GenericMethods {
 				final String pdpURL = GlobalConstants.akamaiUrl + "/p/" + testData.get("NoramlSKUID");
 				driver.navigate().to(pdpURL);
 
-			}else if (applicationUrl.equalsIgnoreCase("stage4")) {
+			} else if (applicationUrl.equalsIgnoreCase("stage4")) {
 
 				final String pdpURL = GlobalConstants.stage4 + "/p/" + testData.get("NoramlSKUID");
 				driver.navigate().to(pdpURL);
-				
+
 			} else if (applicationUrl.equalsIgnoreCase("prod")) {
 
 				final String pdpURL = testData1.get("prod") + "/p/" + testData.get("NoramlSKUID");
@@ -1388,6 +1389,22 @@ public class UIFunctions extends GenericMethods {
 		}
 
 		UIFunctions.verifyVPN();
+	}
+
+	public static void verifyAddToCart() {
+
+		try {
+			if (pdp.getAddToCart().isDisplayed()) {
+
+				click(pdp.getAddToCart(), "Add to cart");
+			}
+		} catch (Exception e) {
+			if (pdp.getOutofStock().isDisplayed()) {
+
+				Assert.fail("Product is Out of Stock. Please change the Product");
+			}
+		}
+
 	}
 
 }

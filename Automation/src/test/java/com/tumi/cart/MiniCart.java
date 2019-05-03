@@ -28,7 +28,7 @@ public class MiniCart extends GenericMethods {
 
 		login("TumiTestData", "TumiLogin");
 		UIFunctions.addProductToCart("TumiTestData", "GlobalLocatorProduct");
-		click(pdp.getAddToCart(), "Add to cart");
+		UIFunctions.verifyAddToCart();
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(mainCart.getRemoveItemInCart(), "Remove item in cart");
 		verifyAssertEquals(getText(mainCart.getShopingCartMessege()), getProperty("cart.emptyCart"));
