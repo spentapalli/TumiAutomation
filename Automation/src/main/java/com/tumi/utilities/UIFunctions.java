@@ -559,7 +559,7 @@ public class UIFunctions extends GenericMethods {
 						WebElement add = driver
 								.findElement(By.xpath("//div[@class='address-picklist']/div[" + i + "]"));
 						if (add.getText().contains("Fairport NY 14450")) {
-							doubleClick(add, "Address");
+							click(add, "Address");
 							// domClick(add, "Address");
 							delay(1000);
 							break;
