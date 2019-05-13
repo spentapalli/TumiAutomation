@@ -5,14 +5,25 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
+import java.security.cert.X509Certificate;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Properties;
+
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -130,6 +141,23 @@ public class GenericMethods extends GlobalConstants {
 
 	public static void click(WebElement element, String buttonName) {
 
+		try {
+			if (element.isDisplayed() && element.isEnabled()) {
+
+				element.click();
+				logger.log(Status.INFO, "Clicked on " + buttonName);
+				WaitForJStoLoad();
+			} else {
+				logger.log(Status.FAIL, "Button is not enabled " + buttonName);
+				Assert.fail(buttonName + " " + "is not Enabled or Unable to interact at this point");
+			}
+		} catch (Exception e) {
+			Assert.fail(buttonName + " " + "is not Enabled or Unable to interact at this point");
+		}
+	}
+	
+	public static void clickLink(WebElement element, String buttonName) {
+		verifyLink(element);
 		try {
 			if (element.isDisplayed() && element.isEnabled()) {
 
@@ -399,11 +427,11 @@ public class GenericMethods extends GlobalConstants {
 		}
 	}
 
-	public static void doubleClick(WebElement ele,String filedName) {
+	public static void doubleClick(WebElement ele, String filedName) {
 		try {
 			action = new Actions(driver);
 			action.doubleClick(ele).perform();
-			logger.log(Status.INFO, "Clicked on "+filedName);
+			logger.log(Status.INFO, "Clicked on " + filedName);
 		} catch (Exception e) {
 			Assert.fail("Fail to Double Click " + e.getMessage());
 		}
@@ -707,16 +735,16 @@ public class GenericMethods extends GlobalConstants {
 			UIFunctions.delay(3000);
 			System.out.println("Mini Cart Remove");
 			if (!getText(home.getMinicartCount()).contains("0")) {
-				doubleClick(home.getMinicart(),"Mini Cart");
+				doubleClick(home.getMinicart(), "Mini Cart");
 				UIFunctions.delay(5000);
 				try {
 					if (minicart.getProceedCheckOut().isDisplayed() && minicart.getProceedCheckOut().isEnabled()) {
 						click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 					}
 				} catch (Exception e1) {
-					Assert.fail(
-							"Mini Cart Section is not displayed, "
-							+ "evenafter user clicks on Mini Cart. Same issue observed Functional Testing as well  "+e1.getMessage());
+					Assert.fail("Mini Cart Section is not displayed, "
+							+ "evenafter user clicks on Mini Cart. Same issue observed Functional Testing as well  "
+							+ e1.getMessage());
 				}
 
 				try {
@@ -764,6 +792,67 @@ public class GenericMethods extends GlobalConstants {
 		} catch (Exception e) {
 			Assert.fail("Fail to Login due to " + e.getMessage());
 		}
-		//removeExistingCart();
+		// removeExistingCart();
+	}
+
+	public static void fixUntrustCertificate() throws KeyManagementException, NoSuchAlgorithmException {
+		TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
+			public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+				return null;
+			}
+
+			public void checkClientTrusted(X509Certificate[] certs, String authType) {
+			}
+
+			public void checkServerTrusted(X509Certificate[] certs, String authType) {
+			}
+		} };
+		SSLContext sc = SSLContext.getInstance("SSL");
+		sc.init(null, trustAllCerts, new java.security.SecureRandom());
+		HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+
+		HostnameVerifier allHostsValid = new HostnameVerifier() {
+
+			public boolean verify(String hostname, SSLSession session) {
+				return true;
+			}
+		};
+		HttpsURLConnection.setDefaultHostnameVerifier(allHostsValid);
+	}
+
+	public static void verifyLink(WebElement ele) {
+
+		HttpURLConnection huc = null;
+		String respCode;
+		String currenturl = "";
+
+		currenturl = ele.getAttribute("href");
+		if (currenturl == null || currenturl.isEmpty()) {
+			logger.log(Status.INFO, "URL is either not configured for anchor tag or it is empty");
+		} else {
+
+			try {
+				huc = (HttpURLConnection) (new URL(currenturl).openConnection());
+
+				huc.setRequestMethod("HEAD");
+
+				fixUntrustCertificate();
+
+				huc.connect();
+
+				respCode = huc.getResponseMessage();
+
+				if (respCode.equals("OK")) {
+					logger.log(Status.INFO, currenturl + "Server Response Code: " + respCode);
+
+				} else if (respCode.equals("Not Found")) {
+					logger.log(Status.WARNING, currenturl + "Server Response Code: " + respCode);
+
+				} else {
+					logger.log(Status.FAIL, currenturl + "Server Response Code: " + respCode);
+				}
+			} catch (Exception e) {
+			}
+		}
 	}
 }
