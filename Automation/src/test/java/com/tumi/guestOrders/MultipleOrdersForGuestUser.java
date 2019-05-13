@@ -62,10 +62,10 @@ public class MultipleOrdersForGuestUser extends GenericMethods {
 	@Test(priority = 2, description = "Verify Order with 2 'Ready to Ship' Items, One PreOrder  SKU + One  Backorder SKU for Guest User")
 	public void verifyGuestOrderWithTwoPreOrderProductsandBackOrder() {
 
-		UIFunctions.addProductToCart("TumiTestData", "PreOrderProduct");
+		UIFunctions.addProduct("TumiTestData", "Products","PreOrderProduct");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getContinueShopping(), "Continue Shopping");
-		UIFunctions.addToCart("TumiTestData", "BackOrderProduct");
+		UIFunctions.addProduct("TumiTestData", "Products","BackOrderProduct");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");

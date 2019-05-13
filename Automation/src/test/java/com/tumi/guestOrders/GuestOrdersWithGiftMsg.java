@@ -65,7 +65,7 @@ public class GuestOrdersWithGiftMsg extends GenericMethods {
 	@Test(priority = 2, description = "Sprint 2- TA- 180 Verify Order with merchandise Back order Ready to ship with Gift message for Guest User")
 	public void backOrderWithGiftMsgAsGuest() {
 
-		UIFunctions.addProductToCart("TumiTestData", "BackOrderProduct");
+		UIFunctions.addProduct("TumiTestData", "Products","BackOrderProduct");
 		UIFunctions.verifyAddToCart();
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(gift.getMakeThisGift(), "Make this Gift");

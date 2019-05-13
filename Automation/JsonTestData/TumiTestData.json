@@ -23,7 +23,7 @@
 	"Products": {
 		"BackOrderProduct": "0484706D",
 		"BackOrderSKUID": "013234CPT",
-		"PreOrderPRoduct": "0484660D",
+		"PreOrderProduct": "0484660D",
 		"DonationProduct": "TUMISTJUDE250",
 		"GlobalLocatorProduct": "1111301041",
 		"PromoCode20": "FixedDollar20",
@@ -113,11 +113,11 @@
 	},
 	"GlobalLocatorProduct": {
 		"AddressLine1": "1 LEFEUVRE RD",
-		"SKUID": "01166761041"
+		"NoramlSKUID": "01166761041"
 		
 	},
 	"DonationPurchase": {
-		"SKUID": "TUMISTJUDE250"
+		"NoramlSKUID": "TUMISTJUDE250"
 	},
 	"TumiIDPRoduct": {
 		"SKUID": "0117474T999"

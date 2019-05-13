@@ -1,5 +1,7 @@
 package com.tumi.utilities;
 
+import static org.testng.Assert.assertTrue;
+
 import java.lang.reflect.Method;
 import java.util.Iterator;
 import java.util.List;
@@ -245,10 +247,6 @@ public class UIFunctions extends GenericMethods {
 				final String pdpURL = testData1.get("prod") + "/p/" + testData.get("NoramlSKUID");
 				driver.navigate().to(pdpURL);
 				UIFunctions.closeSignUp();
-				if (driver.getTitle().contains("Not Found")) {
-
-					Assert.fail(testData.get("NoramlSKUID") + "is not available");
-				}
 			}
 
 		} else if (selectedCountry.contains("Canada")) {
@@ -263,6 +261,9 @@ public class UIFunctions extends GenericMethods {
 		}
 
 		UIFunctions.verifyVPN();
+		if(driver.getTitle().contains("Not Found")) {
+			Assert.fail("Invalid Product, Kindly use valid product");
+		}
 	}
 
 	public static void addProductToCart() {
@@ -297,10 +298,6 @@ public class UIFunctions extends GenericMethods {
 				final String pdpURL = GlobalConstants.prodUrl + "/p/" + testData.get("NoramlSKUID");
 				driver.navigate().to(pdpURL);
 				UIFunctions.closeSignUp();
-				if (driver.getTitle().contains("Not Found")) {
-
-					Assert.fail(testData.get("NoramlSKUID") + "is not available");
-				}
 			}
 
 		} else if (selectedCountry.contains("Canada")) {
@@ -315,6 +312,9 @@ public class UIFunctions extends GenericMethods {
 		}
 
 		UIFunctions.verifyVPN();
+		if(driver.getTitle().contains("Not Found")) {
+			Assert.fail("Invalid Product, Kindly use valid product");
+		}
 	}
 
 	public static void addToCart(String sheet, String testCase) {
@@ -594,14 +594,24 @@ public class UIFunctions extends GenericMethods {
 					logger.log(Status.WARNING, "Place Order Failed due to " + getText(review.getPlaceOrderError()));
 				}
 			} catch (Exception e) {
-				do {
+				for (int i = 0; i < 180; i++) {
+					System.out.println("Time Satrts now, Ticktok.. "+i);
 					delay(2000);
-
-				} while (confirmation.getWithForConfirmation().isDisplayed());
-				if (!confirmation.getConfirmOrder().isDisplayed()) {
-
-					Assert.fail("Faile to Place An Order");
+					if (!confirmation.getWithForConfirmation().isDisplayed()) {
+						break;
+					}
+					if (i == 179) {
+						Assert.fail("Waited for 3 minutes to load Confirmation Page, Failed to Place An Order");
+					}
 				}
+				/*
+				 * do { delay(2000);
+				 * 
+				 * } while (confirmation.getWithForConfirmation().isDisplayed()); if
+				 * (!confirmation.getConfirmOrder().isDisplayed()) {
+				 * 
+				 * }
+				 */
 				orderNumber = getText(confirmation.getOrderNumber());
 				logger.log(Status.INFO, "Thank you for Your Order, here is your Order Number " + orderNumber);
 				delay(3000);
@@ -878,6 +888,7 @@ public class UIFunctions extends GenericMethods {
 
 	public static void searchProducts(int i, String data) {
 		input(home.getSearchProduct(), data, "Product Search");
+		delay(3000);
 		if (home.getMatchingProducts().isEmpty()) {
 			final String emptyViewText = driver
 					.findElement(By.xpath("//div[contains(text(),'Sorry, no search results for')]")).getText();
@@ -894,8 +905,6 @@ public class UIFunctions extends GenericMethods {
 		for (int i = 0; i < 2; i++) {
 			UIFunctions.searchProducts(i, testData.get("ProductName"));
 			delay(3000);
-			// verifyAssertContains(driver.getCurrentUrl(), testData.get("SKUID"), "Wrong
-			// Product is displayed");
 			try {
 				if (pdp.getAddToCart().isDisplayed()) {
 					verifyAssertEquals("Add To Cart", getText(pdp.getAddToCart()));
@@ -1423,10 +1432,6 @@ public class UIFunctions extends GenericMethods {
 				final String pdpURL = GlobalConstants.prodUrl + "/p/" + testData.get(product);
 				driver.navigate().to(pdpURL);
 				UIFunctions.closeSignUp();
-				if (driver.getTitle().contains("Not Found")) {
-
-					Assert.fail(testData.get(product) + "is not available");
-				}
 			}
 
 		} else if (selectedCountry.contains("Canada")) {
@@ -1441,6 +1446,10 @@ public class UIFunctions extends GenericMethods {
 		}
 
 		UIFunctions.verifyVPN();
+		if(driver.getTitle().contains("Not Found")) {
+			Assert.fail("Invalid Product, Kindly use valid product");
+		}
+			
 	}
 
 	public static void verifyAddToCart() {
