@@ -594,24 +594,16 @@ public class UIFunctions extends GenericMethods {
 					logger.log(Status.WARNING, "Place Order Failed due to " + getText(review.getPlaceOrderError()));
 				}
 			} catch (Exception e) {
-				for (int i = 0; i < 180; i++) {
+				for (int i = 0; i < 60; i++) {
 					System.out.println("Time Satrts now, Ticktok.. "+i);
 					delay(2000);
 					if (!confirmation.getWithForConfirmation().isDisplayed()) {
 						break;
 					}
-					if (i == 179) {
-						Assert.fail("Waited for 3 minutes to load Confirmation Page, Failed to Place An Order");
+					if (i == 59) {
+						Assert.fail("Waited for 1 minutes to load Confirmation Page, Failed to Place An Order");
 					}
 				}
-				/*
-				 * do { delay(2000);
-				 * 
-				 * } while (confirmation.getWithForConfirmation().isDisplayed()); if
-				 * (!confirmation.getConfirmOrder().isDisplayed()) {
-				 * 
-				 * }
-				 */
 				orderNumber = getText(confirmation.getOrderNumber());
 				logger.log(Status.INFO, "Thank you for Your Order, here is your Order Number " + orderNumber);
 				delay(3000);

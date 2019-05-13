@@ -825,7 +825,6 @@ public class GenericMethods extends GlobalConstants {
 		HttpURLConnection huc = null;
 		String respCode;
 		String currenturl = "";
-
 		currenturl = ele.getAttribute("href");
 		if (currenturl == null || currenturl.isEmpty()) {
 			logger.log(Status.INFO, "URL is either not configured for anchor tag or it is empty");
@@ -844,9 +843,6 @@ public class GenericMethods extends GlobalConstants {
 
 				if (respCode.equals("OK")) {
 					logger.log(Status.INFO, currenturl + "Server Response Code: " + respCode);
-
-				} else if (respCode.equals("Not Found")) {
-					logger.log(Status.WARNING, currenturl + "Server Response Code: " + respCode);
 
 				} else {
 					logger.log(Status.FAIL, currenturl + "Server Response Code: " + respCode);

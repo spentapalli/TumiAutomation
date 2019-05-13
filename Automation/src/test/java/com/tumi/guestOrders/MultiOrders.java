@@ -66,7 +66,7 @@ public class MultiOrders extends GenericMethods {
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		delay(5000);
-		clickLink(gift.getMakeThisGift(), "Make this Gift");
+		domClick(gift.getMakeThisGift(), "Make this Gift");
 		UIFunctions.addGiftBox();
 		click(gift.getContinueGiftService(), "continue");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
