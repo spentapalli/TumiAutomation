@@ -835,7 +835,7 @@ public class GenericMethods extends GlobalConstants {
 
 				huc.setRequestMethod("HEAD");
 
-				fixUntrustCertificate();
+				//fixUntrustCertificate();
 
 				huc.connect();
 
