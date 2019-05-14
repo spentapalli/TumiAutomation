@@ -52,7 +52,7 @@ public class GuestOrders extends GenericMethods {
 	+ "Gift Boxing + Gift Message + Voucher/Promos for Guest User")
 	public void backOrderAsGuest() throws Exception {
 
-		UIFunctions.addProductToCart("TumiTestData", "BackOrderProduct");
+		UIFunctions.addProduct("TumiTestData", "Products","BackOrderProduct");
 		click(pdp.getAddToCart(), "Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Cart");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
@@ -70,7 +70,7 @@ public class GuestOrders extends GenericMethods {
 	@Test(priority = 2, description = "TA- 112,Verify Order with merchandise Pre Order for Guest User")
 	public void preOrderAsGuest() throws InterruptedException {
 
-		UIFunctions.addProductToCart("TumiTestData", "PreOrderProduct");
+		UIFunctions.addProduct("TumiTestData", "Products","PreOrderProduct");
 		click(pdp.getAddToCart(), "Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
