@@ -156,23 +156,6 @@ public class GenericMethods extends GlobalConstants {
 		}
 	}
 	
-	public static void clickLink(WebElement element, String buttonName) {
-		verifyLink(element);
-		try {
-			if (element.isDisplayed() && element.isEnabled()) {
-
-				element.click();
-				logger.log(Status.INFO, "Clicked on " + buttonName);
-				WaitForJStoLoad();
-			} else {
-				logger.log(Status.FAIL, "Button is not enabled " + buttonName);
-				Assert.fail(buttonName + " " + "is not Enabled or Unable to interact at this point");
-			}
-		} catch (Exception e) {
-			Assert.fail(buttonName + " " + "is not Enabled or Unable to interact at this point");
-		}
-	}
-
 	public static void webclick(WebElement element, String buttonName) {
 		try {
 			if (element.isDisplayed() && element.isEnabled()) {
@@ -818,37 +801,5 @@ public class GenericMethods extends GlobalConstants {
 			}
 		};
 		HttpsURLConnection.setDefaultHostnameVerifier(allHostsValid);
-	}
-
-	public static void verifyLink(WebElement ele) {
-
-		HttpURLConnection huc = null;
-		String respCode;
-		String currenturl = "";
-		currenturl = ele.getAttribute("href");
-		if (currenturl == null || currenturl.isEmpty()) {
-			logger.log(Status.INFO, "URL is either not configured for anchor tag or it is empty");
-		} else {
-
-			try {
-				huc = (HttpURLConnection) (new URL(currenturl).openConnection());
-
-				huc.setRequestMethod("HEAD");
-
-				//fixUntrustCertificate();
-
-				huc.connect();
-
-				respCode = huc.getResponseMessage();
-
-				if (respCode.equals("OK")) {
-					logger.log(Status.INFO, currenturl + "Server Response Code: " + respCode);
-
-				} else {
-					logger.log(Status.FAIL, currenturl + "Server Response Code: " + respCode);
-				}
-			} catch (Exception e) {
-			}
-		}
 	}
 }
