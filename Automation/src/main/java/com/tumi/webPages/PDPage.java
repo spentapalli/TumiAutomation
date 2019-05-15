@@ -14,7 +14,7 @@ import com.tumi.utilities.GenericMethods;
 
 
 /**
- * @author Shwetha Capo 
+ * @author Suresh, Shwetha Capo 
  *
  */
 
@@ -521,8 +521,13 @@ public class PDPage extends GenericMethods {
 		return hideFilters;
 	}
 	
+	@FindBy(how=How.XPATH,using="//div[@class='stock-message']")
+	private WebElement stockMsg;
 	
-
+	public WebElement getStockMsg(){
+		return stockMsg;
+	}
+	
 	
 	
 	

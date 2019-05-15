@@ -218,7 +218,7 @@ public class UIFunctions extends GenericMethods {
 
 		UIFunctions.closeSignUp();
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
-		Map<String, String> testData1 = ReadTestData.getJsonData("TumiTestData", "Environments");
+		
 
 		if (selectedCountry.equals("US") || selectedCountry.contains("United States") || selectedCountry.isEmpty()) {
 
@@ -244,7 +244,7 @@ public class UIFunctions extends GenericMethods {
 
 			} else if (applicationUrl.equalsIgnoreCase("prod")) {
 
-				final String pdpURL = testData1.get("prod") + "/p/" + testData.get("NoramlSKUID");
+				final String pdpURL = testData.get("prod") + "/p/" + testData.get("NoramlSKUID");
 				driver.navigate().to(pdpURL);
 				UIFunctions.closeSignUp();
 			}
@@ -261,9 +261,23 @@ public class UIFunctions extends GenericMethods {
 		}
 
 		UIFunctions.verifyVPN();
-		if(driver.getTitle().contains("Not Found")) {
+		if (driver.getTitle().contains("Not Found")) {
 			Assert.fail("Invalid Product, Kindly use valid product");
 		}
+		isProductInStock(testData.get("NoramlSKUID"));
+	}
+
+	public static void isProductInStock(String product) {
+		try {
+			if (getText(pdp.getStockmessage()).equalsIgnoreCase("IN STOCK")) {
+				logger.log(Status.INFO, product + "is In Stock");
+			} else {
+				Assert.fail(product + " is out of Stock, Please change the product");
+			}
+		} catch (Exception e) {
+
+		}
+
 	}
 
 	public static void addProductToCart() {
@@ -312,44 +326,9 @@ public class UIFunctions extends GenericMethods {
 		}
 
 		UIFunctions.verifyVPN();
-		if(driver.getTitle().contains("Not Found")) {
+		if (driver.getTitle().contains("Not Found")) {
 			Assert.fail("Invalid Product, Kindly use valid product");
 		}
-	}
-
-	public static void addToCart(String sheet, String testCase) {
-		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
-		Map<String, String> testData1 = ReadTestData.getJsonData("TumiTestData", "Environments");
-
-		if (selectedCountry.equals("US") || selectedCountry.contains("United States") || selectedCountry.isEmpty()) {
-
-			if (applicationUrl.equals("stage2")) {
-
-				final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("SKUID");
-				driver.get(pdpURL);
-
-			} else if (applicationUrl.equals("stage3")) {
-
-				final String pdpURL = GlobalConstants.S3 + "/p/" + testData.get("SKUID");
-				driver.get(pdpURL);
-
-			} else if (applicationUrl.equals("prod")) {
-
-				final String pdpURL = testData1.get("prod") + "/p/" + testData.get("SKUID");
-				driver.get(pdpURL);
-			}
-
-		} else if (selectedCountry.contains("Canada")) {
-
-			final String pdpURL = GlobalConstants.urlca + "/p/" + testData.get("SKUID");
-			driver.get(pdpURL);
-
-		} else {
-
-			final String pdpURL = GlobalConstants.urlkr + "/p/" + testData.get("KoreaSKUID");
-			driver.get(pdpURL);
-		}
-		UIFunctions.verifyVPN();
 	}
 
 	public static void addBackOrderProduct(String sheet, String testCase) {
@@ -358,7 +337,7 @@ public class UIFunctions extends GenericMethods {
 		if (applicationUrl.equals("prod")) {
 			final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("BackOrderSKUID");
 		} else {
-			final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("SKUID");
+			final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("NoramlSKUID");
 			driver.get(pdpURL);
 
 			// due to product search issue i am using above code to get the product.
@@ -595,7 +574,7 @@ public class UIFunctions extends GenericMethods {
 				}
 			} catch (Exception e) {
 				for (int i = 0; i < 60; i++) {
-					System.out.println("Time Satrts now, Ticktok.. "+i);
+					System.out.println("Time Satrts now, Ticktok.. " + i);
 					delay(2000);
 					if (!confirmation.getWithForConfirmation().isDisplayed()) {
 						break;
@@ -1437,10 +1416,10 @@ public class UIFunctions extends GenericMethods {
 		}
 
 		UIFunctions.verifyVPN();
-		if(driver.getTitle().contains("Not Found")) {
+		if (driver.getTitle().contains("Not Found")) {
 			Assert.fail("Invalid Product, Kindly use valid product");
 		}
-			
+		isProductInStock(testData.get(product));
 	}
 
 	public static void verifyAddToCart() {
