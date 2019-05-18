@@ -57,7 +57,7 @@ public class HomePageVerification extends GenericMethods {
 				if (respCode.equals("OK")) {
 					logger.log(Status.INFO, currenturl + "Server Response Code: " + respCode);
 					
-				} else if (respCode.equals("Not Found")) {
+				} else if (respCode.equals("Not Found") || respCode.equals("Moved Permanently")) {
 					logger.log(Status.WARNING, currenturl + "Server Response Code: " + respCode);
 					
 				} else {

@@ -25,7 +25,7 @@ public class GuestBackOrderWithMonogram extends GenericMethods {
 	@Test(description = "TA-108 Verify Order with BackOrder +Personalization")
 	public void backOrderWithMonogramAsGuest() {
 		logger.log(Status.INFO, "Test(s) are running in "+URL);
-		UIFunctions.addProductToCart("TumiTestData", "Products");
+		UIFunctions.addProduct("TumiTestData", "Products","NoramlSKUID");
 		UIFunctions.addMonogram("TumiTestData", "MonoGramDetails");
 		click(pdp.getAddToCart(), "Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Cart");

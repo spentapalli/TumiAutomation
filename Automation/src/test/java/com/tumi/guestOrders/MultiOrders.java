@@ -19,7 +19,7 @@ public class MultiOrders extends GenericMethods {
 	@Test(priority = 0,description = "TA- 20 Verify Order with 2 'Back Order' Items, One Back Order SKU + One Back Order SKU with Personalization-Guest user")
 	public void verifyGuestOrderWithTwoBackOrderProducts() {
 
-		UIFunctions.addProductToCart("TumiTestData", "BackOrderProduct");
+		UIFunctions.addProduct("TumiTestData", "Products","BackOrderProduct");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getContinueShopping(), "Continue Shopping");
 		UIFunctions.addMonogram("TumiTestData", "MonoGramDetails");
@@ -42,7 +42,7 @@ public class MultiOrders extends GenericMethods {
 		UIFunctions.removeMonogram();
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getContinueShopping(), "Continue Shopping");
-		UIFunctions.addToCart("TumiTestData", "BackOrderProduct");
+		UIFunctions.addProduct("TumiTestData", "Products","BackOrderProduct");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
@@ -59,13 +59,14 @@ public class MultiOrders extends GenericMethods {
 	@Test(priority = 2, description = " TA - 23 Verify Order with 2 'Back Order' Items, One Back Order SKU + One Back Order SKU with Gift boxing-Guest user")
 	public void verifyGuestOrderWithTwoBackOrder() {
 
-		UIFunctions.addProductToCart("TumiTestData", "BackOrderProduct");
+		UIFunctions.addProduct("TumiTestData", "Products","BackOrderProduct");
 		UIFunctions.removeMonogram();
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getContinueShopping(), "Continue Shopping");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
-		click(gift.getMakeThisGift(), "Make this Gift");
+		delay(5000);
+		domClick(gift.getMakeThisGift(), "Make this Gift");
 		UIFunctions.addGiftBox();
 		click(gift.getContinueGiftService(), "continue");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
@@ -85,7 +86,7 @@ public class MultiOrders extends GenericMethods {
 		UIFunctions.removeMonogram();
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getContinueShopping(), "Continue Shopping");
-		UIFunctions.addToCart("TumiTestData", "BackOrderProduct");
+		UIFunctions.addProduct("TumiTestData", "Products","BackOrderProduct");
 		UIFunctions.removeMonogram();
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");

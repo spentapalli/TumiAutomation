@@ -23,7 +23,7 @@
 	"Products": {
 		"BackOrderProduct": "0484706D",
 		"BackOrderSKUID": "013234CPT",
-		"PreOrderPRoduct": "0484660D",
+		"PreOrderProduct": "0484660D",
 		"DonationProduct": "TUMISTJUDE250",
 		"GlobalLocatorProduct": "1111301041",
 		"PromoCode20": "FixedDollar20",
@@ -81,7 +81,7 @@
 	},
 	"GuestOrders": {
 		"ProductName": "tag",
-		"SKUID": "022060D2",
+		"NoramlSKUID": "022060D2",
 		"FirstMonoInput": "1",
 		"SecondMonoInput": "2",
 		"ThirdMonoInput": "3",
@@ -92,10 +92,10 @@
 		"Password": "tumi1234",
 		"EmailID1" : "Tumi0604190837@gmail.com",
 		"Password1": "TumiiEcom@123456789",
-		"SKUID": "022061D2"
+		"NoramlSKUID": "022061D2"
 	},
 	"FailedOrder": {
-		"SKUID": "014757D",
+		"NoramlSKUID": "014757D",
 		"EmailID": "skara@coredatalabs.com",
 		"NameOnCard": "test",
 		"CardNumber": "41111111111111",
@@ -105,25 +105,25 @@
 		"Phone": "12345678901"
 	},
 	"BackOrderProduct": {
-		"SKUID": "13234CPT",
+		"NoramlSKUID": "0484706D",
 		"BackSKUID":"01193891041"
 	},
 	"PreOrderProduct": {
-		"SKUID": "028TRK"
+		"NoramlSKUID": "0484660D"
 	},
 	"GlobalLocatorProduct": {
 		"AddressLine1": "1 LEFEUVRE RD",
-		"SKUID": "01166761041"
+		"NoramlSKUID": "01166761041"
 		
 	},
 	"DonationPurchase": {
-		"SKUID": "TUMISTJUDE250"
+		"NoramlSKUID": "TUMISTJUDE250"
 	},
 	"TumiIDPRoduct": {
-		"SKUID": "0117474T999"
+		"NoramlSKUID": "0117474T999"
 	},
 	"OrderWithTwoProducts": {
-		"SKUID": "051DH",
+		"NoramlSKUID": "051DH",
 		"FirstName": "Test",
 		"LastName": "TumiLast",
 		"AddressLine1": "10 Sumac Way",
@@ -190,10 +190,10 @@
 		"Password": "TumiiEcom@123456789"
 	},
 	"TumiStudio": {
-		"SKUID": "0117474T999"
+		"NoramlSKUID": "0117474T999"
 	},
 	"OutOfStock": {
-		"SKUID": "0494796PST",
+		"NoramlSKUID": "0494796PST",
 		"KoreaSKUID": "0494796PST"
 	},
 	"VerifyPGPFilters": {

@@ -287,7 +287,7 @@ public class ProductDetails extends GenericMethods {
 				final String pdpURL = GlobalConstants.S3 + "/p/" + data;
 				driver.navigate().to(pdpURL);
 
-			}else if (applicationUrl.equals("akamaiS2")) {
+			}else if (applicationUrl.equalsIgnoreCase("akamaiS2")) {
 			
 
 				final String pdpURL = GlobalConstants.akamaiUrl + "/p/" + data;
