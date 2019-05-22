@@ -2,14 +2,7 @@
    
 package com.tumi.login;
 
-import java.util.List;
-import java.util.Map;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 import org.testng.annotations.Test;
-import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
 
 /**
@@ -27,17 +20,7 @@ public class RegularLogin extends GenericMethods {
 	public void verifyValidLogin() {
 
 		userLogin("TumiTestData", "RegisteredOrders");
-		/*try {
-			if (myacc.getSignout().isDisplayed()) {
-				verifyAssertContains(getText(myacc.getWelcomeMessage()), getProperty("login.success.message"),
-						"Successfully logged with Regular user valid credentials");
-				click(myacc.getSignout(), "Signout");
-			}else {
-				Assert.fail("user signin is failed");
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}*/
+		
 	}
 
 }
