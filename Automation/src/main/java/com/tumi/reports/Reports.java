@@ -389,22 +389,18 @@ public class Reports {
 		String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
 		DesiredCapabilities caps = new DesiredCapabilities();
 
+		
+		  caps.setCapability("browser", "Safari");
+		  caps.setCapability("browser_version", "12.0"); caps.setCapability("os",
+		  "OS X"); 
+		  caps.setCapability("os_version", "Mojave");
+		 
 		/*
-		 * caps.setCapability("browser", "Safari");
-		 * caps.setCapability("browser_version", "12.0"); caps.setCapability("os",
-		 * "OS X"); caps.setCapability("os_version", "Mojave");
+		 * caps.setCapability("os_version", "7.0"); caps.setCapability("device",
+		 * "Samsung Galaxy S8");
 		 */
-		
-		
-		caps.setCapability("os_version", "7.0");
-		caps.setCapability("device", "Samsung Galaxy S8");
-		
-		
 		caps.setCapability("real_mobile", "true");
-		
 		//caps.setCapability("browserstack.local", "false");
-		
-		
 		caps.setCapability("resolution", "1024x768");
 		caps.setCapability("browserstack.local", localTesting());
 		caps.setCapability("browserstack.debug", "true");
