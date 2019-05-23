@@ -364,7 +364,7 @@ public class Reports {
 
 			} else if (browserName.equalsIgnoreCase("mobile")) {
 
-				launchMobile("iPhone X");
+				launchMobile(GenericMethods.getProperty("deviceName"));
 			}
 		}
 	}
