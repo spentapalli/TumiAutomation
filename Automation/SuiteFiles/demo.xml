@@ -2,10 +2,14 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Sprint3n4 Suite">
 
-	<test name="PGPFilters"> 
-		<classes> 
-			<class name="com.tumi.home.PGPFilters"/> 
+	<test name="OrderWithVochercode">
+		<classes>
+			<class name="com.tumi.guestOrders.OrderWithVochercode">
+			<methods>
+				<include name="backOrderWithVocherAsGuest"></include>
+			</methods>
+			</class>
 		</classes>
-   </test>
+	</test>
 
 </suite> <!-- Suite -->
