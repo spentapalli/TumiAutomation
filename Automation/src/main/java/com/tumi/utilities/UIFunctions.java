@@ -1,5 +1,7 @@
 package com.tumi.utilities;
 
+import static org.testng.Assert.assertTrue;
+
 import java.lang.reflect.Method;
 import java.util.Iterator;
 import java.util.List;
@@ -81,9 +83,10 @@ public class UIFunctions extends GenericMethods {
 	public static void verifyVPN() {
 		try {
 			delay(5000);
-			if (driver.getTitle().equals("www.hybris-stage2.tumi.com")) {
-				logger.log(Status.FAIL, "Failed due to VPN");
-				Assert.fail("VPN is Disconnected, Kindly Use VPN to Access Application");
+			String title = driver.getTitle();
+			if (title.contains("www.hybris") || title.contains("www.stg-hybris") || title.contains("ca.hybris")
+					|| title.contains("www.tumi")) {
+				Assert.fail("Application is not Working " + title);
 			}
 		} catch (Exception e) {
 		}
@@ -215,44 +218,41 @@ public class UIFunctions extends GenericMethods {
 
 		UIFunctions.closeSignUp();
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
-		Map<String, String> testData1 = ReadTestData.getJsonData("TumiTestData", "Environments");
+
+	
 
 		if (selectedCountry.equals("US") || selectedCountry.contains("United States") || selectedCountry.isEmpty()) {
 
-			if (applicationUrl.toLowerCase().equals("stage2")) {
+			if (applicationUrl.equalsIgnoreCase("stage2")) {
 
 				final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("SKUID");
 				driver.navigate().to(pdpURL);
 
-			} else if (applicationUrl.toLowerCase().equals("stage3")) {
+			} else if (applicationUrl.equalsIgnoreCase("stage3")) {
 
-				final String pdpURL = GlobalConstants.S3 + "/p/" + testData.get("SKUID");
+				final String pdpURL = GlobalConstants.S3 + "/p/" + testData.get("NoramlSKUID");
 				driver.navigate().to(pdpURL);
 
-			} else if (applicationUrl.toLowerCase().equals("akamais2")) {
+			} else if (applicationUrl.equalsIgnoreCase("akamais2")) {
 
-				final String pdpURL = GlobalConstants.akamaiUrl + "/p/" + testData.get("SKUID");
+				final String pdpURL = GlobalConstants.akamaiUrl + "/p/" + testData.get("NoramlSKUID");
 				driver.navigate().to(pdpURL);
 
-			}else if (applicationUrl.toLowerCase().equalsIgnoreCase("stage4")) {
+			} else if (applicationUrl.equalsIgnoreCase("stage4")) {
 
-				final String pdpURL = GlobalConstants.stage4 + "/p/" + testData.get("SKUID");
+				final String pdpURL = GlobalConstants.stage4 + "/p/" + testData.get("NoramlSKUID");
 				driver.navigate().to(pdpURL);
-				
-			} else if (applicationUrl.toLowerCase().equals("prod")) {
 
-				final String pdpURL = testData1.get("prod") + "/p/" + testData.get("SKUID");
+			} else if (applicationUrl.equalsIgnoreCase("prod")) {
+
+				final String pdpURL = GlobalConstants.prodUrl + "/p/" + testData.get("NoramlSKUID");
 				driver.navigate().to(pdpURL);
 				UIFunctions.closeSignUp();
-				if (driver.getTitle().contains("Not Found")) {
-
-					Assert.fail(testData.get("SKUID") + "is not available");
-				}
 			}
 
 		} else if (selectedCountry.contains("Canada")) {
 
-			final String pdpURL = GlobalConstants.urlca + "/p/" + testData.get("SKUID");
+			final String pdpURL = GlobalConstants.urlca + "/p/" + testData.get("NoramlSKUID");
 			driver.get(pdpURL);
 
 		} else {
@@ -262,33 +262,62 @@ public class UIFunctions extends GenericMethods {
 		}
 
 		UIFunctions.verifyVPN();
+		if (driver.getTitle().contains("Not Found")) {
+			Assert.fail("Invalid Product, Kindly use valid product");
+		}
+		isProductInStock(testData.get("NoramlSKUID"));
 	}
 
-	public static void addToCart(String sheet, String testCase) {
-		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
-		Map<String, String> testData1 = ReadTestData.getJsonData("TumiTestData", "Environments");
+	public static void isProductInStock(String product) {
+		try {
+			if (getText(pdp.getStockmessage()).equalsIgnoreCase("IN STOCK")) {
+				logger.log(Status.INFO, product + "is In Stock");
+			} else {
+				Assert.fail(product + " is out of Stock, Please change the product");
+			}
+		} catch (Exception e) {
+
+		}
+
+	}
+
+	public static void addProductToCart() {
+
+		UIFunctions.closeSignUp();
+		Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "Products");
 
 		if (selectedCountry.equals("US") || selectedCountry.contains("United States") || selectedCountry.isEmpty()) {
 
-			if (applicationUrl.equals("stage2")) {
+			if (applicationUrl.equalsIgnoreCase("stage2")) {
 
 				final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("SKUID");
-				driver.get(pdpURL);
+				driver.navigate().to(pdpURL);
 
-			} else if (applicationUrl.equals("stage3")) {
+			} else if (applicationUrl.equalsIgnoreCase("stage3")) {
 
-				final String pdpURL = GlobalConstants.S3 + "/p/" + testData.get("SKUID");
-				driver.get(pdpURL);
+				final String pdpURL = GlobalConstants.S3 + "/p/" + testData.get("NoramlSKUID");
+				driver.navigate().to(pdpURL);
 
-			} else if (applicationUrl.equals("prod")) {
+			} else if (applicationUrl.equalsIgnoreCase("akamais2")) {
 
-				final String pdpURL = testData1.get("prod") + "/p/" + testData.get("SKUID");
-				driver.get(pdpURL);
+				final String pdpURL = GlobalConstants.akamaiUrl + "/p/" + testData.get("NoramlSKUID");
+				driver.navigate().to(pdpURL);
+
+			} else if (applicationUrl.equalsIgnoreCase("stage4")) {
+
+				final String pdpURL = GlobalConstants.stage4 + "/p/" + testData.get("NoramlSKUID");
+				driver.navigate().to(pdpURL);
+
+			} else if (applicationUrl.equalsIgnoreCase("prod")) {
+
+				final String pdpURL = GlobalConstants.prodUrl + "/p/" + testData.get("NoramlSKUID");
+				driver.navigate().to(pdpURL);
+				UIFunctions.closeSignUp();
 			}
 
 		} else if (selectedCountry.contains("Canada")) {
 
-			final String pdpURL = GlobalConstants.urlca + "/p/" + testData.get("SKUID");
+			final String pdpURL = GlobalConstants.urlca + "/p/" + testData.get("NoramlSKUID");
 			driver.get(pdpURL);
 
 		} else {
@@ -296,7 +325,11 @@ public class UIFunctions extends GenericMethods {
 			final String pdpURL = GlobalConstants.urlkr + "/p/" + testData.get("KoreaSKUID");
 			driver.get(pdpURL);
 		}
+
 		UIFunctions.verifyVPN();
+		if (driver.getTitle().contains("Not Found")) {
+			Assert.fail("Invalid Product, Kindly use valid product");
+		}
 	}
 
 	public static void addBackOrderProduct(String sheet, String testCase) {
@@ -305,7 +338,7 @@ public class UIFunctions extends GenericMethods {
 		if (applicationUrl.equals("prod")) {
 			final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("BackOrderSKUID");
 		} else {
-			final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("SKUID");
+			final String pdpURL = GlobalConstants.S2 + "/p/" + testData.get("NoramlSKUID");
 			driver.get(pdpURL);
 
 			// due to product search issue i am using above code to get the product.
@@ -506,7 +539,7 @@ public class UIFunctions extends GenericMethods {
 						WebElement add = driver
 								.findElement(By.xpath("//div[@class='address-picklist']/div[" + i + "]"));
 						if (add.getText().contains("Fairport NY 14450")) {
-							doubleClick(add, "Address");
+							click(add, "Address");
 							// domClick(add, "Address");
 							delay(1000);
 							break;
@@ -541,13 +574,15 @@ public class UIFunctions extends GenericMethods {
 					logger.log(Status.WARNING, "Place Order Failed due to " + getText(review.getPlaceOrderError()));
 				}
 			} catch (Exception e) {
-				do {
+				for (int i = 0; i < 60; i++) {
+					System.out.println("Time Satrts now, Ticktok.. " + i);
 					delay(2000);
-
-				} while (confirmation.getWithForConfirmation().isDisplayed());
-				if (!confirmation.getConfirmOrder().isDisplayed()) {
-
-					Assert.fail("Faile to Place An Order");
+					if (!confirmation.getWithForConfirmation().isDisplayed()) {
+						break;
+					}
+					if (i == 59) {
+						Assert.fail("Waited for 1 minutes to load Confirmation Page, Failed to Place An Order");
+					}
 				}
 				orderNumber = getText(confirmation.getOrderNumber());
 				logger.log(Status.INFO, "Thank you for Your Order, here is your Order Number " + orderNumber);
@@ -825,6 +860,7 @@ public class UIFunctions extends GenericMethods {
 
 	public static void searchProducts(int i, String data) {
 		input(home.getSearchProduct(), data, "Product Search");
+		delay(3000);
 		if (home.getMatchingProducts().isEmpty()) {
 			final String emptyViewText = driver
 					.findElement(By.xpath("//div[contains(text(),'Sorry, no search results for')]")).getText();
@@ -841,8 +877,6 @@ public class UIFunctions extends GenericMethods {
 		for (int i = 0; i < 2; i++) {
 			UIFunctions.searchProducts(i, testData.get("ProductName"));
 			delay(3000);
-			// verifyAssertContains(driver.getCurrentUrl(), testData.get("SKUID"), "Wrong
-			// Product is displayed");
 			try {
 				if (pdp.getAddToCart().isDisplayed()) {
 					verifyAssertEquals("Add To Cart", getText(pdp.getAddToCart()));
@@ -858,7 +892,6 @@ public class UIFunctions extends GenericMethods {
 	public static void countrySelection(String name) {
 
 		HomePage home = PageFactory.initElements(driver, HomePage.class);
-
 		home.getHomeCountry().click();
 		delay(3000);
 		for (WebElement ele : home.getCountriesList()) {
@@ -1370,10 +1403,6 @@ public class UIFunctions extends GenericMethods {
 				final String pdpURL = GlobalConstants.prodUrl + "/p/" + testData.get(product);
 				driver.navigate().to(pdpURL);
 				UIFunctions.closeSignUp();
-				if (driver.getTitle().contains("Not Found")) {
-
-					Assert.fail(testData.get(product) + "is not available");
-				}
 			}
 
 		} else if (selectedCountry.contains("Canada")) {
@@ -1388,6 +1417,26 @@ public class UIFunctions extends GenericMethods {
 		}
 
 		UIFunctions.verifyVPN();
+		if (driver.getTitle().contains("Not Found")) {
+			Assert.fail("Invalid Product, Kindly use valid product");
+		}
+		isProductInStock(testData.get(product));
+	}
+
+	public static void verifyAddToCart() {
+
+		try {
+			if (pdp.getAddToCart().isDisplayed()) {
+
+				click(pdp.getAddToCart(), "Add to cart");
+			}
+		} catch (Exception e) {
+			if (pdp.getOutofStock().isDisplayed()) {
+
+				Assert.fail("Product is Out of Stock. Please change the Product");
+			}
+		}
+
 	}
 
 }

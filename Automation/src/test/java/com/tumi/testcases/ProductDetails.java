@@ -173,7 +173,7 @@ public class ProductDetails extends GenericMethods {
 				} catch (Exception e) {
 					verifypdpAsser.fail("Mini Cart is not opened when click on Add to Cart");
 				}
-			} else if (pdp.getOutOfStock().isDisplayed()) {
+			} else if (pdp.getOutofStock().isDisplayed()) {
 				verifypdpAsser.fail("Product is Out of Stock, Unable to verify Add to Cart");
 			}
 		} catch (Exception e) {
@@ -287,7 +287,7 @@ public class ProductDetails extends GenericMethods {
 				final String pdpURL = GlobalConstants.S3 + "/p/" + data;
 				driver.navigate().to(pdpURL);
 
-			}else if (applicationUrl.equals("akamaiS2")) {
+			}else if (applicationUrl.equalsIgnoreCase("akamaiS2")) {
 			
 
 				final String pdpURL = GlobalConstants.akamaiUrl + "/p/" + data;

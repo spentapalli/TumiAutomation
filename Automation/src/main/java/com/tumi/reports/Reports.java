@@ -364,7 +364,7 @@ public class Reports {
 
 			} else if (browserName.equalsIgnoreCase("mobile")) {
 
-				launchMobile("iPhone X");
+				launchMobile(GenericMethods.getProperty("deviceName"));
 			}
 		}
 	}
@@ -389,10 +389,18 @@ public class Reports {
 		String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
 		DesiredCapabilities caps = new DesiredCapabilities();
 
-		caps.setCapability("browser", "Safari");
-		caps.setCapability("browser_version", "12.0");
-		caps.setCapability("os", "OS X");
-		caps.setCapability("os_version", "Mojave");
+		
+		  caps.setCapability("browser", "Safari");
+		  caps.setCapability("browser_version", "12.0"); caps.setCapability("os",
+		  "OS X"); 
+		  caps.setCapability("os_version", "Mojave");
+		 
+		/*
+		 * caps.setCapability("os_version", "7.0"); caps.setCapability("device",
+		 * "Samsung Galaxy S8");
+		 */
+		caps.setCapability("real_mobile", "true");
+		//caps.setCapability("browserstack.local", "false");
 		caps.setCapability("resolution", "1024x768");
 		caps.setCapability("browserstack.local", localTesting());
 		caps.setCapability("browserstack.debug", "true");
@@ -400,6 +408,7 @@ public class Reports {
 
 		caps.setCapability("browserstack.geoLocation", "US");
 		caps.setCapability("browserstack.hosts", "23.200.116.157,www.stg-hybris-akamai.tumi.com");
+		
 		driver = new RemoteWebDriver(new URL(URL), caps);
 	}
 
@@ -495,7 +504,7 @@ public class Reports {
 		} else if (applicationUrl.toLowerCase().equalsIgnoreCase("stage3")) {
 
 			if (!browserName.equals("ie")) {
-				driver.get(testData.get("stage3"));
+				driver.get(GlobalConstants.S3);
 			}
 		} else if (applicationUrl.toLowerCase().equalsIgnoreCase("akamais2")) {
 
@@ -511,14 +520,17 @@ public class Reports {
 		} else if (applicationUrl.toLowerCase().equalsIgnoreCase("prod")) {
 
 			driver.get(testData.get("prod"));
+			UIFunctions.verifyVPN();
+			UIFunctions.closeSignUp();
+			UIFunctions.countrySelection("United States");
+			
 			if (browserName.equals("iphone")) {
 				GenericMethods.acceptAlert();
 			}
 
-			UIFunctions.verifyVPN();
-			UIFunctions.closeSignUp();
-			// UIFunctions.countrySelection("United States");
+			
 		}
+		
 		UIFunctions.verifyVPN();
 		UIFunctions.closeSignUp();
 	}

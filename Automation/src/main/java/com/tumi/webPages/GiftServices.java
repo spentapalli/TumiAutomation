@@ -24,7 +24,7 @@ public class GiftServices extends GenericMethods {
 	@FindBy(how = How.XPATH, using = ("//div[@id='cart-items-container']/div[2]/div[1]/div[1]/div[2]/div[9]/div[2]/a"))
 	private WebElement krMakegiftbox;
 
-	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Make this a Gift')]")
+	@FindBy(how = How.XPATH, using = "(//a[contains(text(),'Make this a Gift')])[1]")
 	private WebElement makeGiftBox;
 	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Gift Card/Services')]")
 	private WebElement makeGiftCard;
@@ -35,7 +35,7 @@ public class GiftServices extends GenericMethods {
 		}else {
 			if (selectedCountry.contains("US")||
 					selectedCountry.contains("Canada")) {
-				return makeGiftBox;
+				return explicitWait(makeGiftBox);
 			} else {
 				return explicitWait(krMakegiftbox);
 			

@@ -22,7 +22,7 @@ public class ThreeOrderForGuestUser extends GenericMethods {
 		  UIFunctions.removeMonogram();
 			click(pdp.getAddToCart(), "Add To Cart");
 			click(minicart.getContinueShopping(), "Continue Shopping");
-			UIFunctions.addToCart("TumiTestData", "BackOrderProduct");
+			UIFunctions.addProductToCart("TumiTestData", "BackOrderProduct");
 			UIFunctions.removeMonogram();
 			UIFunctions.addMonogram("TumiTestData", "MonoGramDetails");
 			click(pdp.getAddToCart(), "Add To Cart");
@@ -48,7 +48,7 @@ public class ThreeOrderForGuestUser extends GenericMethods {
 			UIFunctions.removeMonogram();
 			click(pdp.getAddToCart(), "Add To Cart");
 			click(minicart.getContinueShopping(), "Continue Shopping");
-			UIFunctions.addToCart("TumiTestData", "PreOrderProduct");
+			UIFunctions.addProductToCart("TumiTestData", "PreOrderProduct");
 			UIFunctions.removeMonogram();
 			UIFunctions.addMonogram("TumiTestData", "MonoGramDetails");
 			click(pdp.getAddToCart(), "Add To Cart");
@@ -70,12 +70,12 @@ public class ThreeOrderForGuestUser extends GenericMethods {
 		@Test(priority=3,description = "Verify Order with 3 'Ready to Ship' Items, One regular in stock SKU + One in stock SKU with Personalization + One in stock SKU with Gift boxing-Guest user")
 		public void verifyGuestOrderWithThreeReadyToShipProducts() {
 
-			UIFunctions.addProductToCart("TumiTestData", "Products");
+			UIFunctions.addProduct("TumiTestData", "Products","NoramlSKUID");
 			input(mainCart.getEditProductQuantity(), "2", "Edit Product Quantity");
 			UIFunctions.removeMonogram();
 			click(pdp.getAddToCart(), "Add To Cart");
 			click(minicart.getContinueShopping(), "Continue Shopping");
-			UIFunctions.addToCart("TumiTestData", "Products");
+			UIFunctions.addProduct("TumiTestData", "Products","NoramlSKUID");
 			UIFunctions.removeMonogram();
 	     	UIFunctions.addMonogram("TumiTestData", "MonoGramDetails");
 			click(pdp.getAddToCart(), "Add To Cart");

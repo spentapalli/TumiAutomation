@@ -2,12 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Smoke Tests Suite">
 
-	<test name="CreateAccount">
-		<classes>
-			<class name="com.tumi.userRegistration.CreateAccount">
-			</class>
-		</classes>
-	</test>
+	
 	
 	<test name="GuestOrders">
 		<classes>
@@ -53,6 +48,13 @@
 	<test name="RegisteredOrderWithPayPal">
 		<classes>
 			<class name="com.tumi.registerOrders.RegisteredOrderWithPayPal">
+			</class>
+		</classes>
+	</test>
+	
+	<test name="CreateAccount">
+		<classes>
+			<class name="com.tumi.userRegistration.CreateAccount">
 			</class>
 		</classes>
 	</test>

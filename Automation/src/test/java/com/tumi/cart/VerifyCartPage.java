@@ -124,7 +124,7 @@ public class VerifyCartPage extends GenericMethods {
 				try {
 					if(minicart.getProceedCheckOut().isDisplayed()) {
 						logger.log(Status.INFO, "Able to add products by clicking on continue shopping button");
-					}else if(pdp.getOutOfStock().isDisplayed()) {
+					}else if(pdp.getOutofStock().isDisplayed()) {
 						logger.log(Status.PASS, "Product is out of stock to add product to cart" );
 					}
 				} catch (Exception e) {

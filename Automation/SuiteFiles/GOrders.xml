@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite">
-	<test  name="Test">
+	<test name="GuestOrders">
 		<classes>
 			<class name="com.tumi.guestOrders.GuestOrders">
-				<methods>
-					<include name="tumiOrderAsGuest">
-					</include>
-				</methods>
+			<methods>
+				<include name="tumiOrderAsGuest"></include>
+			</methods>
 			</class>
 		</classes>
-	</test> <!-- Test -->
+	</test>
 </suite> <!-- Suite -->

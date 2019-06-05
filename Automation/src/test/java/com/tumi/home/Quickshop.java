@@ -36,7 +36,7 @@ public class Quickshop extends GenericMethods {
 				click(shipMethod.getProceedToPayment(), "Proceed to Payment");
 				UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 				UIFunctions.completeOrder();
-			} else if (pdp.getOutOfStock().isDisplayed()) {
+			} else if (pdp.getOutofStock().isDisplayed()) {
 				Assert.fail("Product is Out of Stock, Unable to verify Add to Cart");
 			}
 		} catch (Exception e) {
