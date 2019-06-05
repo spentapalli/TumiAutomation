@@ -32,14 +32,16 @@ public class RegisteredOrder extends GenericMethods {
 		click(minicart.getProceedCheckOut(), "Proceed to Cart");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
 		waitForSinglePage();
-		if (!applicationUrl.equals("prod")) {
+		//if (!applicationUrl.equals("prod")) {
+		if(driver.getCurrentUrl().contains("shipping")) {
 			domClick(signinShip.getAddNewAddress(), "Add new Address");
 			UIFunctions.addGuestDetails();
 			domClick(shipping.getContinueShippingMethod(), "Contiue Shipping");
 			click(shipMethod.getProceedToPayment(), "Proceed to Payment");
-		}
+		}else if(driver.getCurrentUrl().contains("billing")) {
 		domClick(signinBill.getAddNewPay(), "Add new Payment");
 		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
+		}
 		UIFunctions.completeOrder();
 	}
 
