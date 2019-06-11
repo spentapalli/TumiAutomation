@@ -50,6 +50,20 @@ public class GenericMethods extends GlobalConstants {
 
 	public static Actions action;
 
+	public static void waitForElement(WebElement ele, String name) {
+		try {
+			for (int i = 1; i <= 30; i++) {
+				Thread.sleep(1000);
+				if (ele.isDisplayed() && ele.isEnabled()) {
+					break;
+				}
+			}
+		} catch (Exception e) {
+			getScreen("./Screenshots/" + "WaitedFor30SecondsFor" + name.replaceAll("\\s", "")+".png");
+			Assert.fail("Waited For 30 Seconds, " + ele + " is not displayed or enabled");
+		}
+	}
+
 	public static void captureOrderConfScreen(String name) {
 
 		// long time = ZonedDateTime.now().toInstant().toEpochMilli();
@@ -123,7 +137,6 @@ public class GenericMethods extends GlobalConstants {
 			input(home.getUserName(), testData.get("EmailID"), "Email Address");
 			input(home.getPassWord(), testData.get("Password"), "Password");
 			click(home.getLogOn(), "Login");
-			// delay(10000);
 			elementToBeClickable(myacc.getSignout());
 			try {
 				if (guestBillPage.getItemsInCart().isDisplayed() || myacc.getSignout().isDisplayed()) {
@@ -140,22 +153,16 @@ public class GenericMethods extends GlobalConstants {
 	}
 
 	public static void click(WebElement element, String buttonName) {
-
+		waitForElement(element, buttonName);
 		try {
-			if (element.isDisplayed() && element.isEnabled()) {
-
-				element.click();
-				logger.log(Status.INFO, "Clicked on " + buttonName);
-				WaitForJStoLoad();
-			} else {
-				logger.log(Status.FAIL, "Button is not enabled " + buttonName);
-				Assert.fail(buttonName + " " + "is not Enabled or Unable to interact at this point");
-			}
+			element.click();
+			logger.log(Status.INFO, "Clicked on " + buttonName);
+			WaitForJStoLoad();
 		} catch (Exception e) {
 			Assert.fail(buttonName + " " + "is not Enabled or Unable to interact at this point");
 		}
 	}
-	
+
 	public static void webclick(WebElement element, String buttonName) {
 		try {
 			if (element.isDisplayed() && element.isEnabled()) {
@@ -169,18 +176,15 @@ public class GenericMethods extends GlobalConstants {
 	}
 
 	public static void input(WebElement element, String Value, String fieldName) {
+		waitForElement(element, fieldName);
 		try {
-			if (element.isDisplayed() && element.isEnabled()) {
-				// To clear the existed value
-				element.clear();
-				// To enter current value
-				element.sendKeys(Value);
-				logger.log(Status.INFO, "Entered the value in " + fieldName + " as: " + Value);
-				// WaitForJStoLoad();
-			} else {
-
-				Assert.fail("Fail to Enter Value in  " + fieldName);
-			}
+			element.click();
+			// To clear the existed value
+			element.clear();
+			// To enter current value
+			element.sendKeys(Value);
+			logger.log(Status.INFO, "Entered the value in " + fieldName + " as: " + Value);
+			
 		} catch (Exception e) {
 			Assert.fail("Fail to Enter Value in  " + fieldName + e.getMessage());
 		}
@@ -253,6 +257,7 @@ public class GenericMethods extends GlobalConstants {
 	}
 
 	public static void selectByVisibleText(WebElement ele, String testData, String fieldName) {
+		waitForElement(ele, fieldName);
 		try {
 			new Select(ele).selectByVisibleText(testData);
 			logger.log(Status.INFO, "Selected " + testData + " from " + fieldName);
@@ -262,6 +267,7 @@ public class GenericMethods extends GlobalConstants {
 	}
 
 	public static void selectByValue(WebElement ele, String testData, String fieldName) {
+		waitForElement(ele, fieldName);
 		try {
 			new Select(ele).selectByValue(testData);
 			logger.log(Status.INFO, "Selected " + testData + " from " + fieldName);
@@ -271,6 +277,7 @@ public class GenericMethods extends GlobalConstants {
 	}
 
 	public static void selectByIndex(WebElement ele, int testData, String fieldName) {
+		waitForElement(ele, fieldName);
 		try {
 			new Select(ele).selectByIndex(testData);
 			logger.log(Status.INFO, "Selected " + testData + " from " + fieldName);
@@ -672,11 +679,6 @@ public class GenericMethods extends GlobalConstants {
 	}
 
 	public static void delay(int mili) {
-		try {
-			Thread.sleep(mili);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 	}
 
 	public void waitForElement(WebElement element, int timeOut) {
