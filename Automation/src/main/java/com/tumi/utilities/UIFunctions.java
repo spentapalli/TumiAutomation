@@ -218,7 +218,8 @@ public class UIFunctions extends GenericMethods {
 
 		UIFunctions.closeSignUp();
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
-		
+
+	
 
 		if (selectedCountry.equals("US") || selectedCountry.contains("United States") || selectedCountry.isEmpty()) {
 
@@ -244,7 +245,7 @@ public class UIFunctions extends GenericMethods {
 
 			} else if (applicationUrl.equalsIgnoreCase("prod")) {
 
-				final String pdpURL = testData.get("prod") + "/p/" + testData.get("NoramlSKUID");
+				final String pdpURL = GlobalConstants.prodUrl + "/p/" + testData.get("NoramlSKUID");
 				driver.navigate().to(pdpURL);
 				UIFunctions.closeSignUp();
 			}

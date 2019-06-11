@@ -23,7 +23,7 @@
 	"Products": {
 		"BackOrderProduct": "0484706D",
 		"BackOrderSKUID": "013234CPT",
-		"PreOrderProduct": "0484660D",
+		"PreOrderPRoduct": "0484660D",
 		"DonationProduct": "TUMISTJUDE250",
 		"GlobalLocatorProduct": "1111301041",
 		"PromoCode20": "FixedDollar20",
@@ -81,7 +81,7 @@
 	},
 	"GuestOrders": {
 		"ProductName": "tag",
-		"NoramlSKUID": "022060D2",
+		"SKUID": "022060D2",
 		"FirstMonoInput": "1",
 		"SecondMonoInput": "2",
 		"ThirdMonoInput": "3",
@@ -92,10 +92,10 @@
 		"Password": "tumi1234",
 		"EmailID1" : "Tumi0604190837@gmail.com",
 		"Password1": "TumiiEcom@123456789",
-		"NoramlSKUID": "022061D2"
+		"SKUID": "022061D2"
 	},
 	"FailedOrder": {
-		"NoramlSKUID": "014757D",
+		"SKUID": "014757D",
 		"EmailID": "skara@coredatalabs.com",
 		"NameOnCard": "test",
 		"CardNumber": "41111111111111",
@@ -105,25 +105,25 @@
 		"Phone": "12345678901"
 	},
 	"BackOrderProduct": {
-		"NoramlSKUID": "0484706D",
+		"SKUID": "13234CPT",
 		"BackSKUID":"01193891041"
 	},
 	"PreOrderProduct": {
-		"NoramlSKUID": "0484660D"
+		"SKUID": "028TRK"
 	},
 	"GlobalLocatorProduct": {
 		"AddressLine1": "1 LEFEUVRE RD",
-		"NoramlSKUID": "01166761041"
+		"NoramlSKUID": "0114409D"
 		
 	},
 	"DonationPurchase": {
-		"NoramlSKUID": "TUMISTJUDE250"
+		"SKUID": "TUMISTJUDE250"
 	},
 	"TumiIDPRoduct": {
-		"NoramlSKUID": "0117474T999"
+		"SKUID": "0117474T999"
 	},
 	"OrderWithTwoProducts": {
-		"NoramlSKUID": "051DH",
+		"SKUID": "051DH",
 		"FirstName": "Test",
 		"LastName": "TumiLast",
 		"AddressLine1": "10 Sumac Way",
@@ -190,10 +190,10 @@
 		"Password": "TumiiEcom@123456789"
 	},
 	"TumiStudio": {
-		"NoramlSKUID": "0117474T999"
+		"SKUID": "0117474T999"
 	},
 	"OutOfStock": {
-		"NoramlSKUID": "0494796PST",
+		"SKUID": "0494796PST",
 		"KoreaSKUID": "0494796PST"
 	},
 	"VerifyPGPFilters": {
@@ -204,6 +204,7 @@
 	"Environments": {
 		"stage2": "https://www.hybris-stage2.tumi.com/",
 		"stage3": "https://www.hybris-stage3.tumi.com/",
+		"stage4":"https://www.hybris-stage4.tumi.com/",
 		"prod": "https://www.tumi.com/",
 		"akamaiS2": "https://www.stg-hybris-akamai.tumi.com"
 	},
