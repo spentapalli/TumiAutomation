@@ -52,7 +52,7 @@
 		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
 			<li>
                 <a href='#!'>
-                    <span class='label suite-start-time blue darken-3'>May 26, 2019 11:04:34 PM</span>
+                    <span class='label suite-start-time blue darken-3'>Jul 17, 2019 04:58:56 PM</span>
 				</a>
 			</li>
 			<li>
@@ -132,7 +132,7 @@
 					<span class='tooltipped' data-position='top' data-tooltip='0%'><span class='strong'>0</span> test(s) passed</span>
 				</div>
 				<div class='block text-small'>
-					<span class='strong tooltipped' data-position='top' data-tooltip='100%'>1</span> test(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+					<span class='strong tooltipped' data-position='top' data-tooltip='100%'>3</span> test(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
 				</div>
 			</div>
 		</div>
@@ -147,7 +147,7 @@
 					<span class='tooltipped' data-position='top' data-tooltip='0%'><span class='strong'>0</span> step(s) passed</span>
 				</div>
 				<div class='block text-small'>
-					<span class='strong tooltipped' data-position='top' data-tooltip='75%'>3</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='25%'>1</span> others
+					<span class='strong tooltipped' data-position='top' data-tooltip='42.857%'>9</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='57.143%'>12</span> others
 				</div>
 			</div>
 		</div>
@@ -164,17 +164,17 @@
 				
 				<li class='test displayed active  fail' status='fail' bdd='false' test-id='1'>
 					<div class='test-heading'>
-						<span class='test-name'>tumiOrderAsGuest</span>
-						<span class='test-time'>May 26, 2019 11:06:25 PM</span>
+						<span class='test-name'>verifyMiniCartCount</span>
+						<span class='test-time'>Jul 17, 2019 04:59:17 PM</span>
 						<span class='test-status right fail'>fail</span>
 					</div>
 					<div class='test-content hide'>
 <div class='test-time-info'>
-	<span class='label start-time'>May 26, 2019 11:06:25 PM</span>
-	<span class='label end-time'>May 26, 2019 11:06:32 PM</span>
-	<span class='label time-taken grey lighten-1 white-text'>0h 0m 7s+372ms</span>
+	<span class='label start-time'>Jul 17, 2019 04:59:17 PM</span>
+	<span class='label end-time'>Jul 17, 2019 04:59:50 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 32s+71ms</span>
 </div>
-	<div class='test-desc'>com.tumi.guestOrders.GuestOrders </div>
+	<div class='test-desc'>com.tumi.cart.MiniCart </div>
 	<div class='test-steps'>
 		<table class='bordered table-results'>
 			<thead>
@@ -187,42 +187,36 @@
 			<tbody>
 				<tr class='log' status='info'>
 					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>11:06:25 PM</td>
-					<td class='step-details'>Test(s) are running in prod</td>
+					<td class='timestamp'>4:59:19 PM</td>
+					<td class='step-details'>Clicked on Sign In</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:59:21 PM</td>
+					<td class='step-details'>Entered the value in Email Address as: Tumi0604190837@gmail.com</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:59:22 PM</td>
+					<td class='step-details'>Entered the value in Password as: TumiiEcom@123456789</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:59:24 PM</td>
+					<td class='step-details'>Clicked on Login</td>
 				</tr>
 				<tr class='log' status='fail'>
 					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
-					<td class='timestamp'>11:06:32 PM</td>
-					<td class='step-details'><span class='label white-text red'>tumiOrderAsGuest Test Case Failed</span></td>
+					<td class='timestamp'>4:59:49 PM</td>
+					<td class='step-details'><span class='label white-text red'>verifyMiniCartCount Test Case Failed</span></td>
 				</tr>
 				<tr class='log' status='fail'>
 					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
-					<td class='timestamp'>11:06:32 PM</td>
-					<td class='step-details'><pre>org.openqa.selenium.WebDriverException: unknown error: unhandled inspector error: {"code":-32000,"message":"Cannot navigate to invalid URL"}
-  (Session info: chrome=74.0.3729.157)
-  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.14393 x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 0 milliseconds
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'UICRMWinServ', ip: '10.0.1.4', os.name: 'Windows Server 2016', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_201'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 74.0.3729.6 (255758eccf3d24..., userDataDir: C:\Users\pentapalli\AppData...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:53467}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, proxy: Proxy(), rotatable: false, setWindowRect: true, strictFileInteractability: false, takesHeapSnapshot: true, takesScreenshot: true, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unexpectedAlertBehaviour: ignore, unhandledPromptBehavior: ignore, version: 74.0.3729.157, webStorageEnabled: true}
-Session ID: 62346c323f10813ac132fe5a1611ef30
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
-	at java.lang.reflect.Constructor.newInstance(Unknown Source)
-	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
-	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
-	at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)
-	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)
-	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
-	at org.openqa.selenium.remote.RemoteWebDriver.get(RemoteWebDriver.java:277)
-	at org.openqa.selenium.remote.RemoteWebDriver$RemoteNavigation.to(RemoteWebDriver.java:857)
-	at com.tumi.utilities.UIFunctions.addProductToCart(UIFunctions.java:248)
-	at com.tumi.guestOrders.GuestOrders.tumiOrderAsGuest(GuestOrders.java:30)
+					<td class='timestamp'>4:59:49 PM</td>
+					<td class='step-details'><pre>java.lang.AssertionError: User SignIn is Failed due to Your username or password was incorrect.
+	at org.testng.Assert.fail(Assert.java:96)
+	at com.tumi.utilities.GenericMethods.login(GenericMethods.java:120)
+	at com.tumi.cart.MiniCart.verifyMiniCartCount(MiniCart.java:16)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -252,8 +246,196 @@ Session ID: 62346c323f10813ac132fe5a1611ef30
 				</tr>
 				<tr class='log' status='fail'>
 					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
-					<td class='timestamp'>11:06:32 PM</td>
-					<td class='step-details'>Screen Shot Reference:<img data-featherlight='C:\Users\pentapalli\git\TumiAutomation\Automation/ExtentReports/Screenshots/tumiOrderAsGuest.png' width='10%' src='C:\Users\pentapalli\git\TumiAutomation\Automation/ExtentReports/Screenshots/tumiOrderAsGuest.png' data-src='C:\Users\pentapalli\git\TumiAutomation\Automation/ExtentReports/Screenshots/tumiOrderAsGuest.png'></td>
+					<td class='timestamp'>4:59:50 PM</td>
+					<td class='step-details'>Screen Shot Reference:<img data-featherlight='C:\Users\Capo\Documents\TumiAutomation\Automation/ExtentReports/Screenshots/verifyMiniCartCount.png' width='10%' src='C:\Users\Capo\Documents\TumiAutomation\Automation/ExtentReports/Screenshots/verifyMiniCartCount.png' data-src='C:\Users\Capo\Documents\TumiAutomation\Automation/ExtentReports/Screenshots/verifyMiniCartCount.png'></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  fail' status='fail' bdd='false' test-id='2'>
+					<div class='test-heading'>
+						<span class='test-name'>removeProductInCart</span>
+						<span class='test-time'>Jul 17, 2019 05:00:06 PM</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Jul 17, 2019 05:00:06 PM</span>
+	<span class='label end-time'>Jul 17, 2019 05:00:38 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 32s+48ms</span>
+</div>
+	<div class='test-desc'>com.tumi.cart.MiniCart </div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>5:00:07 PM</td>
+					<td class='step-details'>Clicked on Sign In</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>5:00:10 PM</td>
+					<td class='step-details'>Entered the value in Email Address as: Tumi0604190837@gmail.com</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>5:00:11 PM</td>
+					<td class='step-details'>Entered the value in Password as: TumiiEcom@123456789</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>5:00:12 PM</td>
+					<td class='step-details'>Clicked on Login</td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>5:00:38 PM</td>
+					<td class='step-details'><span class='label white-text red'>removeProductInCart Test Case Failed</span></td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>5:00:38 PM</td>
+					<td class='step-details'><pre>java.lang.AssertionError: User SignIn is Failed due to Your username or password was incorrect.
+	at org.testng.Assert.fail(Assert.java:96)
+	at com.tumi.utilities.GenericMethods.login(GenericMethods.java:120)
+	at com.tumi.cart.MiniCart.removeProductInCart(MiniCart.java:29)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>5:00:38 PM</td>
+					<td class='step-details'>Screen Shot Reference:<img data-featherlight='C:\Users\Capo\Documents\TumiAutomation\Automation/ExtentReports/Screenshots/removeProductInCart.png' width='10%' src='C:\Users\Capo\Documents\TumiAutomation\Automation/ExtentReports/Screenshots/removeProductInCart.png' data-src='C:\Users\Capo\Documents\TumiAutomation\Automation/ExtentReports/Screenshots/removeProductInCart.png'></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  fail' status='fail' bdd='false' test-id='3'>
+					<div class='test-heading'>
+						<span class='test-name'>editCartProducts</span>
+						<span class='test-time'>Jul 17, 2019 05:00:55 PM</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Jul 17, 2019 05:00:55 PM</span>
+	<span class='label end-time'>Jul 17, 2019 05:01:27 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 32s+450ms</span>
+</div>
+	<div class='test-desc'>com.tumi.cart.MiniCart </div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>5:00:56 PM</td>
+					<td class='step-details'>Clicked on Sign In</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>5:00:59 PM</td>
+					<td class='step-details'>Entered the value in Email Address as: Tumi0604190837@gmail.com</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>5:01:00 PM</td>
+					<td class='step-details'>Entered the value in Password as: TumiiEcom@123456789</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>5:01:01 PM</td>
+					<td class='step-details'>Clicked on Login</td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>5:01:27 PM</td>
+					<td class='step-details'><span class='label white-text red'>editCartProducts Test Case Failed</span></td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>5:01:27 PM</td>
+					<td class='step-details'><pre>java.lang.AssertionError: User SignIn is Failed due to Your username or password was incorrect.
+	at org.testng.Assert.fail(Assert.java:96)
+	at com.tumi.utilities.GenericMethods.login(GenericMethods.java:120)
+	at com.tumi.cart.MiniCart.editCartProducts(MiniCart.java:42)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>5:01:27 PM</td>
+					<td class='step-details'>Screen Shot Reference:<img data-featherlight='C:\Users\Capo\Documents\TumiAutomation\Automation/ExtentReports/Screenshots/editCartProducts.png' width='10%' src='C:\Users\Capo\Documents\TumiAutomation\Automation/ExtentReports/Screenshots/editCartProducts.png' data-src='C:\Users\Capo\Documents\TumiAutomation\Automation/ExtentReports/Screenshots/editCartProducts.png'></td>
 				</tr>
 			</tbody>
 		</table>
@@ -313,8 +495,8 @@ Session ID: 62346c323f10813ac132fe5a1611ef30
 
                         <li class='exception displayed active'>
                             <div class='exception-heading'>
-                                <span class='exception-name'>org.openqa.selenium.WebDriverException</span>
-                                <span class='exception-count right'><span class='label red lighten-1 white-text'>1</span></span>
+                                <span class='exception-name'>java.lang.AssertionError</span>
+                                <span class='exception-count right'><span class='label red lighten-1 white-text'>3</span></span>
                             </div>
                             <div class='exception-content hide'>
                                 <div class='exception-tests'>
@@ -328,33 +510,80 @@ Session ID: 62346c323f10813ac132fe5a1611ef30
                                         </thead>
                                         <tbody>
                                                     <tr>
-                                                        <td>May 26, 2019 11:06:25 PM</td>
-                                                        <td class='linked' test-id='1'>tumiOrderAsGuest</td>
-                                                        <td><pre><pre>org.openqa.selenium.WebDriverException: unknown error: unhandled inspector error: {"code":-32000,"message":"Cannot navigate to invalid URL"}
-  (Session info: chrome=74.0.3729.157)
-  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.14393 x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 0 milliseconds
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'UICRMWinServ', ip: '10.0.1.4', os.name: 'Windows Server 2016', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_201'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 74.0.3729.6 (255758eccf3d24..., userDataDir: C:\Users\pentapalli\AppData...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:53467}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, proxy: Proxy(), rotatable: false, setWindowRect: true, strictFileInteractability: false, takesHeapSnapshot: true, takesScreenshot: true, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unexpectedAlertBehaviour: ignore, unhandledPromptBehavior: ignore, version: 74.0.3729.157, webStorageEnabled: true}
-Session ID: 62346c323f10813ac132fe5a1611ef30
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
-	at java.lang.reflect.Constructor.newInstance(Unknown Source)
-	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
-	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
-	at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)
-	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)
-	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
-	at org.openqa.selenium.remote.RemoteWebDriver.get(RemoteWebDriver.java:277)
-	at org.openqa.selenium.remote.RemoteWebDriver$RemoteNavigation.to(RemoteWebDriver.java:857)
-	at com.tumi.utilities.UIFunctions.addProductToCart(UIFunctions.java:248)
-	at com.tumi.guestOrders.GuestOrders.tumiOrderAsGuest(GuestOrders.java:30)
+                                                        <td>Jul 17, 2019 04:59:17 PM</td>
+                                                        <td class='linked' test-id='1'>verifyMiniCartCount</td>
+                                                        <td><pre><pre>java.lang.AssertionError: User SignIn is Failed due to Your username or password was incorrect.
+	at org.testng.Assert.fail(Assert.java:96)
+	at com.tumi.utilities.GenericMethods.login(GenericMethods.java:120)
+	at com.tumi.cart.MiniCart.verifyMiniCartCount(MiniCart.java:16)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></pre></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Jul 17, 2019 05:00:06 PM</td>
+                                                        <td class='linked' test-id='2'>removeProductInCart</td>
+                                                        <td><pre><pre>java.lang.AssertionError: User SignIn is Failed due to Your username or password was incorrect.
+	at org.testng.Assert.fail(Assert.java:96)
+	at com.tumi.utilities.GenericMethods.login(GenericMethods.java:120)
+	at com.tumi.cart.MiniCart.removeProductInCart(MiniCart.java:29)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></pre></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Jul 17, 2019 05:00:55 PM</td>
+                                                        <td class='linked' test-id='3'>editCartProducts</td>
+                                                        <td><pre><pre>java.lang.AssertionError: User SignIn is Failed due to Your username or password was incorrect.
+	at org.testng.Assert.fail(Assert.java:96)
+	at com.tumi.utilities.GenericMethods.login(GenericMethods.java:120)
+	at com.tumi.cart.MiniCart.editCartProducts(MiniCart.java:42)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -406,31 +635,31 @@ Session ID: 62346c323f10813ac132fe5a1611ef30
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Tests
-					<div class='panel-lead'>1</div>
+					<div class='panel-lead'>3</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Steps
-					<div class='panel-lead'>4</div>
+					<div class='panel-lead'>21</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Start
-					<div class='panel-lead'>May 26, 2019 11:04:34 PM</div>
+					<div class='panel-lead'>Jul 17, 2019 04:58:56 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 			 		End
-			 		<div class='panel-lead'>May 26, 2019 11:06:32 PM</div>
+			 		<div class='panel-lead'>Jul 17, 2019 05:01:28 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Time Taken
-					<div class='panel-lead'>0h 1m 58s+1ms</div>
+					<div class='panel-lead'>0h 2m 31s+440ms</div>
 				</div>
 			</div>
 		</div>
@@ -444,21 +673,21 @@ Session ID: 62346c323f10813ac132fe5a1611ef30
 		<script>
 			var statusGroup = {
 				passParent: 0,
-				failParent: 1,
+				failParent: 3,
 				fatalParent: 0,
 				errorParent: 0,
 				warningParent: 0,
 				skipParent: 0,
-				exceptionsParent: 1,
+				exceptionsParent: 3,
 				
 				passChild: 0,
-				failChild: 3,
+				failChild: 9,
 				fatalChild: 0,
 				errorChild: 0,
 				warningChild: 0,
 				skipChild: 0,
-				infoChild: 1,
-				exceptionsChild: 3,
+				infoChild: 12,
+				exceptionsChild: 9,
 				
 				passGrandChild: 0,
 				failGrandChild: 0,
