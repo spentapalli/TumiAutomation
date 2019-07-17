@@ -269,7 +269,7 @@
 			</class>
 		</classes>
 	</test>
-	<test name="SinglePageCheckout">
+<!-- 	<test name="SinglePageCheckout">
 		<classes>
 			<class name="com.tumi.testcases.SinglePageCheckout">
 			</class>
@@ -308,6 +308,6 @@
 			<class name="com.tumi.testcases.BuyingGift">
 			</class>
 		</classes>
-	</test>
+	</test> -->
 
 </suite>

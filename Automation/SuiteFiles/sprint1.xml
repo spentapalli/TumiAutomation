@@ -100,5 +100,5 @@
 		<classes>
 			<class name="com.tumi.guestOrders.GuestOrderWithPaypal" />
 		</classes>
-	</test>
+	</test> 
 </suite>
