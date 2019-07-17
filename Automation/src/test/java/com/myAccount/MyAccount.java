@@ -1,12 +1,18 @@
 package com.myAccount;
 
 import static org.testng.Assert.assertTrue;
+
 import java.util.Map;
 import org.testng.annotations.Test;
 import com.aventstack.extentreports.Status;
 import com.tumi.dataProvider.ReadTestData;
 import com.tumi.utilities.GenericMethods;
 
+
+/**
+ * @author Capo
+ *
+ */
 public class MyAccount extends GenericMethods {
 
 	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "CreateAccount");

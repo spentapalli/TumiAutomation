@@ -8,6 +8,11 @@ import org.testng.annotations.Test;
 import com.tumi.utilities.GenericMethods;
 import com.tumi.utilities.UIFunctions;
 
+
+/**
+ * @author Shwetha Capo
+ *
+ */
 public class MiniCart extends GenericMethods {
 
 	@Test(priority = 0)
