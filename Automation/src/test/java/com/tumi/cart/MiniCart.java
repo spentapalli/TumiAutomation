@@ -10,7 +10,7 @@ import com.tumi.utilities.UIFunctions;
 
 
 /**
- * @author Shwetha Capo
+ * @author Shwetha CDL
  *
  */
 public class MiniCart extends GenericMethods {
