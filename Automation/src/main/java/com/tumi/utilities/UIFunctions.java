@@ -31,7 +31,8 @@ public class UIFunctions extends GenericMethods {
 	public static void closeSignUp() {
 
 		HomePage home = PageFactory.initElements(driver, HomePage.class);
-		delay(5000);
+		delay(10000);
+		WaitForJStoLoad();
 		try {
 			jsClick(home.getNoThanks());
 			delay(5000);
@@ -43,7 +44,6 @@ public class UIFunctions extends GenericMethods {
 			} catch (Exception e) {
 			}
 		}
-
 		try {
 			home.getSignupPopup().click();
 		} catch (Exception e) {
@@ -892,7 +892,7 @@ public class UIFunctions extends GenericMethods {
 	public static void countrySelection(String name) {
 
 		HomePage home = PageFactory.initElements(driver, HomePage.class);
-		home.getHomeCountry().click();
+		click(home.getHomeCountry(),"Country");
 		delay(3000);
 		for (WebElement ele : home.getCountriesList()) {
 

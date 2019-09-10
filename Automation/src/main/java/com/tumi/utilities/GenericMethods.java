@@ -678,7 +678,12 @@ public class GenericMethods extends GlobalConstants {
 		delay(2000);
 	}
 
-	public static void delay(int mili) {
+	public static void delay(long mili) {
+		try {
+			Thread.sleep(5000);
+		} catch (Exception e) {
+			
+		}
 	}
 
 	public void waitForElement(WebElement element, int timeOut) {
