@@ -894,7 +894,7 @@ public class UIFunctions extends GenericMethods {
 	public static void countrySelection(String name) {
 
 		HomePage home = PageFactory.initElements(driver, HomePage.class);
-		click(home.getHomeCountry(),"Country");
+		home.getHomeCountry().click();
 		delay(3000);
 		for (WebElement ele : home.getCountriesList()) {
 
