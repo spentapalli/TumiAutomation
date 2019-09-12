@@ -2,6 +2,7 @@ package com.tumi.webPages;
 
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -22,12 +23,14 @@ public class CheckOutPage extends GenericMethods {
 		return removeProducts;
 	}
 
-	@FindBy(how = How.XPATH, using = "//div[@class='cart-items']/div/div/div[2]/div[6]/span[3]") 
+	@FindBy(how = How.XPATH, using = "//span[contains(text(),'Remove')]") 
 	private List<WebElement> removeMinicartProducts;
 
 	public List<WebElement> getRemoveMinicartProducts() {
 		return removeMinicartProducts;
 	}
+	
+	public static By removeSingleProduct = By.xpath("//div[@role='gridcell']/div[2]/div[7]/span[3]");
 	
 	@FindBy(how = How.XPATH, using = "//div[@aria-label='mini-cart dialog']/div/div/div[2]/div/ul/li") 
 	private WebElement removeMinicart;

@@ -522,7 +522,7 @@ public class Reports {
 			driver.get(testData.get("prod"));
 			UIFunctions.verifyVPN();
 			UIFunctions.closeSignUp();
-			UIFunctions.countrySelection("United States");
+			//UIFunctions.countrySelection("United States");
 			
 			if (browserName.equals("iphone")) {
 				GenericMethods.acceptAlert();
