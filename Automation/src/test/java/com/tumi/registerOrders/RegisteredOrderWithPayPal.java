@@ -29,9 +29,7 @@ import com.tumi.utilities.UIFunctions;
 			click(minicart.getProceedCheckOut(), "Proceed to Cart");
 			UIFunctions.payPalCheckout("TumiTestData","PayPalDeatils", mainCart.getEstimatedTotalRegistered());
 			UIFunctions.completeOrder();
-
 		}
-
 	}
 
 
