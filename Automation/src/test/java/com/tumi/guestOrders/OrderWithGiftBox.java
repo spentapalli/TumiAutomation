@@ -18,7 +18,7 @@ public class OrderWithGiftBox extends GenericMethods {
 
 	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestDetails");
 
-	@Test(priority = 1, description = " TA-99 Verify Order with merchandise Back Order + Gift Boxing for Guest User")
+	//@Test(priority = 1, description = " TA-99 Verify Order with merchandise Back Order + Gift Boxing for Guest User")
 	public void backOrderWithGiftBox() {
 
 		UIFunctions.addProduct("TumiTestData", "BackOrderProduct", "BackSKUID");
@@ -50,7 +50,7 @@ public class OrderWithGiftBox extends GenericMethods {
 
 	}
 
-	@Test(priority = 2, description = "TA-109 Verify Order with merchandise Back Order for Guest ")
+	//@Test(priority = 2, description = "TA-109 Verify Order with merchandise Back Order for Guest ")
 	public void backOrderAsGuest() {
 		UIFunctions.addProduct("TumiTestData", "BackOrderProduct", "BackSKUID");
 		click(pdp.getAddToCart(), "Add to cart");
@@ -72,8 +72,8 @@ public class OrderWithGiftBox extends GenericMethods {
 		UIFunctions.completeOrder();
 	}
 
-	@Test(priority = 3, description = " TA- 47 Verify Order with merchandise Ready to ship "
-			+ "+ Gift Boxing for Guest User")
+	//@Test(priority = 3, description = " TA- 47 Verify Order with merchandise Ready to ship "
+	//		+ "+ Gift Boxing for Guest User")
 	public void orderWithGiftBoxAsGuest() throws Exception {
 		UIFunctions.addProductToCart("TumiTestData", "Products");
 		click(pdp.getAddToCart(), "Add to cart");
@@ -121,7 +121,7 @@ public class OrderWithGiftBox extends GenericMethods {
 		UIFunctions.completeOrder();
 	}
 
-	@Test(priority = 5, description = " TA- 107 Verify Order with merchandise Pre Order + Gift Boxing for Guest user")
+//	@Test(priority = 5, description = " TA- 107 Verify Order with merchandise Pre Order + Gift Boxing for Guest user")
 	public void preOrderWithGiftBoxAsGuest() throws Exception {
 
 		if (applicationUrl.equals("prod")) {
@@ -147,7 +147,7 @@ public class OrderWithGiftBox extends GenericMethods {
 
 	}
 
-	@Test(priority = 6, description = " TA-3 Verify Order with merchandise Pre Order + Gift Boxing + Gift Message-Guest user")
+	//@Test(priority = 6, description = " TA-3 Verify Order with merchandise Pre Order + Gift Boxing + Gift Message-Guest user")
 	public void preOrderWithGiftBoxnMsgAsGuest() throws Exception {
 		if (applicationUrl.equals("prod")) {
 			logger.log(Status.WARNING, "Pre Order Products are not available in production");
@@ -175,8 +175,8 @@ public class OrderWithGiftBox extends GenericMethods {
 		}
 	}
 
-	@Test(priority = 7, description = " TA- 12 Verify Order with merchandise Pre Order + Gift Boxing "
-			+ "+ Gift Message + Voucher/Promos-Guest User")
+	//@Test(priority = 7, description = " TA- 12 Verify Order with merchandise Pre Order + Gift Boxing "
+	//		+ "+ Gift Message + Voucher/Promos-Guest User")
 	public void preOrderWithGiftBoxnMsgVocher() {
 
 		if (applicationUrl.equals("prod")) {
@@ -208,7 +208,7 @@ public class OrderWithGiftBox extends GenericMethods {
 		}
 	}
 
-	@Test(priority = 8, description = "TA-96 Verify Order with merchandise Back Order + Gift Boxing + Gift Message ")
+//	@Test(priority = 8, description = "TA-96 Verify Order with merchandise Back Order + Gift Boxing + Gift Message ")
 	public void backOrderWithGiftBoxNMsgAsGuest() {
 		UIFunctions.addProduct("TumiTestData", "BackOrderProduct", "BackSKUID");
 		click(pdp.getAddToCart(), "Add to cart");
@@ -231,4 +231,5 @@ public class OrderWithGiftBox extends GenericMethods {
 		UIFunctions.addCardDetails("TumiTestData", "CreditCardDetails");
 		UIFunctions.completeOrder();
 	}
+
 }

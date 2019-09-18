@@ -817,15 +817,34 @@ public class UIFunctions extends GenericMethods {
 
 	public static void addGiftBox() {
 
-		if (selectedCountry.contains("US") || selectedCountry.contains("Canada")) {
-			domClick(gift.getCheckPremiumGift(), "Premium GiftBox");
-
-		} else {
-
-			domClick(gift.getCheckStandardGift(), "Stanadard gift box");
+		/*
+		 * try { if (selectedCountry.contains("US") ||
+		 * selectedCountry.contains("Canada")||selectedCountry.contains("United States"
+		 * )) { domClick(gift.getCheckPremiumGift(), "Premium GiftBox");
+		 * 
+		 * } else {
+		 * 
+		 * domClick(gift.getCheckStandardGift(), "Stanadard gift box"); } } catch
+		 * (Exception e) { // TODO Auto-generated catch block e.printStackTrace(); }
+		 */
+		
+			try {
+				if(getText(gift.getGiftWindow()).contains("Premium")) {
+					domClick(gift.getCheckPremiumGift(), "Premium GiftBox");
+				}else if(getText(gift.getGiftWindow()).contains(" Standard")){
+					domClick(gift.getCheckStandardGift(), "Stanadard gift box");
+				}else {
+					logger.log(Status.INFO, "Gift box options not available for this product");
+					
+				}
+			}catch(Exception e) {
+				logger.log(Status.INFO, "Gift box options not available for this product");
+				
+			}
+			
 		}
 
-	}
+	
 
 	public static void addVoucherID(String sheet, String testCase) {
 		Map<String, String> testData = ReadTestData.retrieveData(sheet, testCase);

@@ -34,7 +34,7 @@ public class GiftServices extends GenericMethods {
 			return makeGiftCard;
 		}else {
 			if (selectedCountry.contains("US")||
-					selectedCountry.contains("Canada")) {
+					selectedCountry.contains("Canada")||selectedCountry.contains("United States")) {
 				return explicitWait(makeGiftBox);
 			} else {
 				return explicitWait(krMakegiftbox);
@@ -43,7 +43,13 @@ public class GiftServices extends GenericMethods {
 		
 		}
 	}
-
+	// added complete gift panel xpath
+	@FindBy(how=How.XPATH, using="//div[contains(@class, 'checkout-section-content')]")
+	private WebElement giftWindow;
+	
+	public WebElement getGiftWindow() {
+		return giftWindow;
+	}
 	
 
 	@FindBy(how=How.XPATH, using="//input[@id='giftMessage']")

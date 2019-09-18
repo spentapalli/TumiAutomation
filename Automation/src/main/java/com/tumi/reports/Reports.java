@@ -185,7 +185,6 @@ public class Reports {
 				UIFunctions.closeSignUp();
 			} else {
 				getURL(GlobalConstants.URL);
-
 			}
 		}
 		UIFunctions.selectCountry();
@@ -589,7 +588,12 @@ public class Reports {
 
 				return GlobalConstants.chromeLinuxPath;
 
-			} else {
+			} else if (OS.contains("Mac OS X")) {
+
+				return GlobalConstants.chromeMacPath;
+
+			}  
+			else {
 
 				return GlobalConstants.chromeLinuxPath;
 			}

@@ -155,9 +155,11 @@ public class GenericMethods extends GlobalConstants {
 	public static void click(WebElement element, String buttonName) {
 		waitForElement(element, buttonName);
 		try {
+			UIFunctions.closeSignUp();
 			element.click();
 			logger.log(Status.INFO, "Clicked on " + buttonName);
-			WaitForJStoLoad();
+			WaitForJStoLoad(); 
+			//Thread.sleep(2000);
 		} catch (Exception e) {
 			Assert.fail(buttonName + " " + "is not Enabled or Unable to interact at this point");
 		}
@@ -311,7 +313,8 @@ public class GenericMethods extends GlobalConstants {
 		try {
 			for (int i = 0; i < 180; i++) {
 				JavascriptExecutor executor = (JavascriptExecutor) driver;
-				jsLoad = (Boolean) executor.executeScript("return jQuery.active == 0");
+				jsLoad = (Boolean) executor.executeScript("return document.readyState").equals("complete");
+				//jsLoad = (Boolean) executor.executeScript("return jQuery.active == 0");
 				Thread.sleep(1000);
 				if (jsLoad)
 					break;

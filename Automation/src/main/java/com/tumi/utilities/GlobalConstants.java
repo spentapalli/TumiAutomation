@@ -52,6 +52,7 @@ public class GlobalConstants extends Reports {
 	public static String chromeWinPath = System.getProperty("user.dir")
 			+ "/BrowserDrivers/ChromeDriverWin/chromedriver.exe";
 	public static String chromeLinuxPath = System.getProperty("user.dir") + "/BrowserDrivers//ChromeLinux/chromedriver";
+	public static String chromeMacPath = System.getProperty("user.dir") + "/BrowserDrivers/ChromeDriverMac/chromedriver";
 	public static String firefoxWinPath = System.getProperty("user.dir") + "/BrowserDrivers/FirefoxWin/geckodriver.exe";
 	public static String firefoxLinuxPath = System.getProperty("user.dir") + "/BrowserDrivers/FirefoxLinux/geckodriver";
 
