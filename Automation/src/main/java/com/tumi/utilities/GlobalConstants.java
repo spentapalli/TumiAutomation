@@ -1,5 +1,7 @@
 package com.tumi.utilities;
 
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import com.tumi.reports.Reports;
 
 /**
@@ -7,6 +9,8 @@ import com.tumi.reports.Reports;
  *
  */
 public class GlobalConstants extends Reports {
+	
+
 
 	public static final String countryName = "US";
 	// initiating driver

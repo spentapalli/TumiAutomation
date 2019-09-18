@@ -41,6 +41,7 @@ import org.testng.asserts.SoftAssert;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.tumi.dataProvider.ReadTestData;
+import com.tumi.webPages.CheckOutPage;
 
 /**
  * @author Suuresh
@@ -49,12 +50,13 @@ import com.tumi.dataProvider.ReadTestData;
 public class GenericMethods extends GlobalConstants {
 
 	public static Actions action;
+	
 
 	public static void waitForElement(WebElement ele, String name) {
 		try {
 			for (int i = 1; i <= 30; i++) {
 				Thread.sleep(1000);
-				if (ele.isDisplayed() && ele.isEnabled()) {
+				if (ele.isDisplayed()) {
 					break;
 				}
 			}
@@ -239,8 +241,30 @@ public class GenericMethods extends GlobalConstants {
 	public static WebElement explicitWait(WebElement element) {
 		try {
 			// WebDriverWait Initialization
-			WebDriverWait wait = new WebDriverWait(driver, 20);
+			WebDriverWait wait = new WebDriverWait(driver, 5);
 			wait.until(ExpectedConditions.visibilityOf(element));
+		} catch (Exception e) {
+			e.getMessage();
+		}
+		return element;
+	}
+	
+	public static By presenceOfElement(By element) {
+		try {
+			// WebDriverWait Initialization
+			WebDriverWait wait = new WebDriverWait(driver, 20);
+			wait.until(ExpectedConditions.presenceOfElementLocated(element));
+		} catch (Exception e) {
+			e.getMessage();
+		}
+		return element;
+	}
+	
+	public static WebElement staleness(WebElement element) {
+		try {
+			// WebDriverWait Initialization
+			WebDriverWait wait = new WebDriverWait(driver, 20);
+			wait.until(ExpectedConditions.stalenessOf(element));
 		} catch (Exception e) {
 			e.getMessage();
 		}
@@ -731,7 +755,7 @@ public class GenericMethods extends GlobalConstants {
 				doubleClick(home.getMinicart(), "Mini Cart");
 				UIFunctions.delay(5000);
 				try {
-					if (minicart.getProceedCheckOut().isDisplayed() && minicart.getProceedCheckOut().isEnabled()) {
+					if (minicart.getProceedCheckOut().isDisplayed()) {
 						click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 					}
 				} catch (Exception e1) {
@@ -740,21 +764,20 @@ public class GenericMethods extends GlobalConstants {
 							+ e1.getMessage());
 				}
 
-				try {
+				
 					String cartCount = getText(driver.findElement(By.xpath("//h2[contains(text(),'Shopping Cart')]")));
-					String count = cartCount.substring(cartCount.length() - 3).replace(")", "").replace("(", "").trim();
+					String count = cartCount.replaceAll("[^0-9]", "").trim();
 					int cart = parseInt(count);
 					if (cart != 0) {
 						System.out.println("Removing Existing Products");
 						delay(5000);
 						for (WebElement ele : checkout.getRemoveMinicartProducts()) {
-							checkout.getRemoveProduct().click();
+							
+							driver.findElement(CheckOutPage.removeSingleProduct).click();
+							WaitForJStoLoad();
+							
 						}
 					}
-				} catch (Exception e) {
-
-					e.printStackTrace();
-				}
 			}
 
 		} catch (Exception e) {

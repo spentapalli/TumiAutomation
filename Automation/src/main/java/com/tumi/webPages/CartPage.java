@@ -378,7 +378,7 @@ public class CartPage extends GenericMethods {
 		return subTotalValue;
 	}
 	
-	@FindBy(how = How.XPATH, using = ("//div[@id='cart-summary-container']/div[2]/div/div[2]/div[2]/div[2]"))
+	@FindBy(how = How.XPATH, using = ("//span[contains(text(), 'Estimated Total')]/following::div[1]"))
 	private WebElement estimatedTotalRegistered;
 	
 	public WebElement getEstimatedTotalRegistered() {

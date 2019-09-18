@@ -45,16 +45,14 @@ public class MiniCartPage extends GenericMethods {
 	public WebElement getProceedCheckOut() {
 		
 		if (selectedCountry.contains("US")||
-				selectedCountry.contains("Canada")) {
+				selectedCountry.contains("Canada")
+				||selectedCountry.contains("United States")) {
 			return explicitWait(proceedtoCheck);
 
 		} else {
 			return explicitWait(krproceedtoCheck);
 
-		} /*
-		 * else { return explicitWait(krProceedtoCheck); >>>>>>> branch 'master' of
-		 * https://github.com/spentapalli/TumiAutomation.git } }
-		 */
+		} 
 	}
 	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Proceed to Checkout')]")
 	private WebElement singlePageCheckout;
