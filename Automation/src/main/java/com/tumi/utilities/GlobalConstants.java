@@ -39,6 +39,9 @@ public class GlobalConstants extends Reports {
 	
 	//Stage4
 	public static String stage4 = "https://www.hybris-stage4.tumi.com/";
+	
+	//stage3 yotta
+	public static String stg3yotta = "https://www.stage3.tumi.com/?yottaa-whitelist-set";
 
 	// production Canada
 	// public static String url = "https://ca.tumi.com";

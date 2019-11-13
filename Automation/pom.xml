@@ -90,7 +90,7 @@
 						<systemPropertyVariables>
 							<browsername>chrome</browsername>
 							<countryName>US</countryName>
-							<applicationUrl>prod</applicationUrl>
+							<applicationUrl>stage3yotta</applicationUrl>
 							<localTesting>false</localTesting>
 						</systemPropertyVariables>
 						<forkCount>0</forkCount>

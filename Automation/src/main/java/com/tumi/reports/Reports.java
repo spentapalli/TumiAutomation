@@ -516,7 +516,14 @@ public class Reports {
 			if (!browserName.equals("ie")) {
 				driver.get(GlobalConstants.stage4);
 			}
-		} else if (applicationUrl.toLowerCase().equalsIgnoreCase("prod")) {
+		} 
+		else if (applicationUrl.toLowerCase().equalsIgnoreCase("stage3yotta")) {
+
+			if (!browserName.equals("ie")) {
+				driver.get(GlobalConstants.stg3yotta);
+
+			}
+		}else if (applicationUrl.toLowerCase().equalsIgnoreCase("prod")) {
 
 			driver.get(testData.get("prod"));
 			UIFunctions.verifyVPN();

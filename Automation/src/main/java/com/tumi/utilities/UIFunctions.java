@@ -243,6 +243,11 @@ public class UIFunctions extends GenericMethods {
 				final String pdpURL = GlobalConstants.stage4 + "/p/" + testData.get("NoramlSKUID");
 				driver.navigate().to(pdpURL);
 
+			}else if (applicationUrl.equalsIgnoreCase("stage3yotta")) {
+
+				final String pdpURL = GlobalConstants.stg3yotta + "/p/" + testData.get("NoramlSKUID");
+				driver.navigate().to(pdpURL);
+
 			} else if (applicationUrl.equalsIgnoreCase("prod")) {
 
 				final String pdpURL = GlobalConstants.prodUrl + "/p/" + testData.get("NoramlSKUID");
@@ -308,6 +313,11 @@ public class UIFunctions extends GenericMethods {
 			} else if (applicationUrl.equalsIgnoreCase("stage4")) {
 
 				final String pdpURL = GlobalConstants.stage4 + "/p/" + testData.get("NoramlSKUID");
+				driver.navigate().to(pdpURL);
+
+			}else if (applicationUrl.equalsIgnoreCase("stage3yotta")) {
+
+				final String pdpURL = GlobalConstants.stg3yotta + "/p/" + testData.get("NoramlSKUID");
 				driver.navigate().to(pdpURL);
 
 			} else if (applicationUrl.equalsIgnoreCase("prod")) {

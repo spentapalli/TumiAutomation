@@ -38,9 +38,9 @@ public class GuestOrders extends GenericMethods {
 			webclick(mainCart.getProceedCart(), "Proceed to Checkout");
 		}
 		
-		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
+		/*input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		UIFunctions.waitForContinueToEnable();
-		click(singlePage.getContinueAsGuest(), "Continue as Guest");
+		click(singlePage.getContinueAsGuest(), "Continue as Guest"); */
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Continue Shipping");
 		click(shipMethod.getProceedToPayment(), "Proceed to Payment");
@@ -48,8 +48,8 @@ public class GuestOrders extends GenericMethods {
 		UIFunctions.completeOrder();
 	}
 
-	//@Test(priority = 1, description = " TA-16 Verify Order with merchandise Back Order + "
-	//+ "Gift Boxing + Gift Message + Voucher/Promos for Guest User")
+	@Test(priority = 1, description = " TA-16 Verify Order with merchandise Back Order + "
+	+ "Gift Boxing + Gift Message + Voucher/Promos for Guest User")
 	public void backOrderAsGuest() throws Exception {
 
 		UIFunctions.addProduct("TumiTestData", "Products","BackOrderProduct");
@@ -67,7 +67,7 @@ public class GuestOrders extends GenericMethods {
 		UIFunctions.completeOrder();
 	}
 
-//	@Test(priority = 2, description = "TA- 112,Verify Order with merchandise Pre Order for Guest User")
+	@Test(priority = 2, description = "TA- 112,Verify Order with merchandise Pre Order for Guest User")
 	public void preOrderAsGuest() throws InterruptedException {
 
 		UIFunctions.addProduct("TumiTestData", "Products","PreOrderProduct");
@@ -84,7 +84,7 @@ public class GuestOrders extends GenericMethods {
 		UIFunctions.completeOrder();
 	}
 
-	//@Test(priority = 3, description = "TA_11 Verify Order with Donation purchase")
+	@Test(priority = 3, description = "TA_11 Verify Order with Donation purchase")
 	public void donationPurchaseOrderAsGuest() {
 
 		UIFunctions.addProductToCart("TumiTestData","DonationPurchase");

@@ -934,7 +934,7 @@ public class HomePage extends GenericMethods {
 	@FindBy(how = How.XPATH, using = "(//div[@id='cmsSlot1']/div/div/div/div/div)[3]")
 	private WebElement FrenchContent;
 
-	public WebElement getFrançaisContent() {
+	public WebElement getFranaisContent() {
 
 		return FrenchContent;
 	}
