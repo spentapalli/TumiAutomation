@@ -98,7 +98,12 @@ public class UIFunctions extends GenericMethods {
 		Map<String, String> testData1 = ReadTestData.getJsonData("TumiTestData", "CreditCardDetails");
 
 		// billing page
-		input(guestBillPage.getNameOnCard(), testData.get("NameOnCard"), "Name on Card");
+		//input(guestBillPage.getNameOnCard(), testData.get("NameOnCard"), "Name on Card"); - it is not working after 6.7 that is y commented
+
+		Actions actions = new Actions(driver);
+		WebElement element = guestBillPage.getNameOnCard();
+		actions.moveToElement(element).click().perform();
+		element.sendKeys(testData.get("NameOnCard"));
 
 		// invalid card number
 		input(guestBillPage.getCardNumber(), testData.get("CardNumber"), "Card Number");
