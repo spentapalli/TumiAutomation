@@ -28,8 +28,10 @@ public class GuestOrderWithMultiShipment extends GenericMethods {
 		click(minicart.getMiniCartSymbol(), "Cart Image");
 		click(minicart.getProceedCheckOut(),"Proceed To Cart");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
+		if (!(selectedCountry.equals("US") && !(selectedCountry.contains("United States")) && !(selectedCountry.contains("Canada")))) {
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
+		}
 		UIFunctions.addMultiship();
 		UIFunctions.addMultishipAddressWithCardDeatils("TumiTestData", "CreditCardDetailsMultishipmnet");
 		UIFunctions.completeOrder();

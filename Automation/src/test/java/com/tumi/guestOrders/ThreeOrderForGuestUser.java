@@ -31,8 +31,10 @@ public class ThreeOrderForGuestUser extends GenericMethods {
 			UIFunctions.addGiftBox();
 			click(gift.getContinueGiftService(), "continue");
 			click(mainCart.getProceedCart(), "Proceed to Checkout");
+			if (!(selectedCountry.equals("US") && !(selectedCountry.contains("United States")) && !(selectedCountry.contains("Canada")))) {
 			input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 			click(singlePage.getContinueAsGuest(), "Contiue as Guest");
+			}
 			UIFunctions.addGuestDetails();
 			click(shipping.getContinueShippingMethod(), "Contiue Shipping");
 			click(shipMethod.getProceedToPayment(), "Proceed to Payment");
@@ -57,8 +59,10 @@ public class ThreeOrderForGuestUser extends GenericMethods {
 			UIFunctions.addGiftBox();
 			click(gift.getContinueGiftService(), "continue");
 			click(mainCart.getProceedCart(), "Proceed to Checkout");
+			if (!(selectedCountry.equals("US") && !(selectedCountry.contains("United States")) && !(selectedCountry.contains("Canada")))) {
 			input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 			click(singlePage.getContinueAsGuest(), "Contiue as Guest");
+			}
 			UIFunctions.addGuestDetails();
 			click(shipping.getContinueShippingMethod(), "Contiue Shipping");
 			click(shipMethod.getProceedToPayment(), "Proceed to Payment");
@@ -84,8 +88,10 @@ public class ThreeOrderForGuestUser extends GenericMethods {
 			UIFunctions.addGiftBox();
 			click(gift.getContinueGiftService(), "continue");
 			click(mainCart.getProceedCart(), "Proceed to Checkout");
+			if (!(selectedCountry.equals("US") && !(selectedCountry.contains("United States")) && !(selectedCountry.contains("Canada")))) {
 			input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 			click(singlePage.getContinueAsGuest(), "Contiue as Guest");
+			}
 			UIFunctions.addGuestDetails();
 			click(shipping.getContinueShippingMethod(), "Contiue Shipping");
 			click(shipMethod.getProceedToPayment(), "Proceed to Payment");
