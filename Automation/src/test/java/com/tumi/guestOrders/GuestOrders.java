@@ -32,14 +32,16 @@ public class GuestOrders extends GenericMethods {
 		click(pdp.getAddToCart(), "Add to cart");
 
 		click(minicart.getProceedCheckOut(), "Proceed to Cart");
-		if (applicationUrl.equals("prod")) {
+		if (applicationUrl.equals("prod") && (selectedCountry.contains("US")
+				|| selectedCountry.contains("United States") || selectedCountry.contains("Canada"))) {
+
 			driver.findElement(By.xpath("//button[contains(text(),'Proceed to Checkout')]")).click();
+
 		} else {
 			webclick(mainCart.getProceedCart(), "Proceed to Checkout");
 		}
 
-		if (!(selectedCountry.equals("US") && !(selectedCountry.contains("United States"))
-				&& !(selectedCountry.contains("Canada")))) {
+		if (!(selectedCountry.contains("US") || selectedCountry.contains("Canada"))) {
 			input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 			UIFunctions.waitForContinueToEnable();
 			click(singlePage.getContinueAsGuest(), "Continue as Guest");
@@ -61,10 +63,10 @@ public class GuestOrders extends GenericMethods {
 		click(minicart.getProceedCheckOut(), "Proceed to Cart");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
 		UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "VoucherCodeDetails");
-		if (!(selectedCountry.equals("US") && !(selectedCountry.contains("United States")) && !(selectedCountry.contains("Canada")))) {
-		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
-		UIFunctions.waitForContinueToEnable();
-		click(singlePage.getContinueAsGuest(), "Continue as Guest");
+		if (!(selectedCountry.contains("US") || selectedCountry.contains("Canada"))) {
+			input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
+			UIFunctions.waitForContinueToEnable();
+			click(singlePage.getContinueAsGuest(), "Continue as Guest");
 		}
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Continue  Shipping");
@@ -80,10 +82,10 @@ public class GuestOrders extends GenericMethods {
 		click(pdp.getAddToCart(), "Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
-		if (!(selectedCountry.equals("US") && !(selectedCountry.contains("United States")) && !(selectedCountry.contains("Canada")))) {
-		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
-		UIFunctions.waitForContinueToEnable();
-		click(singlePage.getContinueAsGuest(), "Continue as Guest");
+		if (!(selectedCountry.contains("US") || selectedCountry.contains("Canada"))) {
+			input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
+			UIFunctions.waitForContinueToEnable();
+			click(singlePage.getContinueAsGuest(), "Continue as Guest");
 		}
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Continue Shipping");
@@ -99,10 +101,11 @@ public class GuestOrders extends GenericMethods {
 		click(pdp.getAddToCart(), "Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Cart");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
-		if (!(selectedCountry.equals("US") && !(selectedCountry.contains("United States")) && !(selectedCountry.contains("Canada")))) {
-		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
-		UIFunctions.waitForContinueToEnable();
-		click(singlePage.getContinueAsGuest(), "Continue as Guest");
+		if (!(selectedCountry.contains("US") || selectedCountry.contains("Canada"))) {
+
+			input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
+			UIFunctions.waitForContinueToEnable();
+			click(singlePage.getContinueAsGuest(), "Continue as Guest");
 		}
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Continue Shipping");

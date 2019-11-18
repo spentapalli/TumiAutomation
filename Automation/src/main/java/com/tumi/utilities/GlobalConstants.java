@@ -37,6 +37,9 @@ public class GlobalConstants extends Reports {
 	// Production
 	public static String prodUrl = "https://www.tumi.com";
 	
+	// Production Korea
+		public static String prodKr = "https://kr.tumi.com";
+	
 	//Stage4
 	public static String stage4 = "https://www.hybris-stage4.tumi.com/";
 	

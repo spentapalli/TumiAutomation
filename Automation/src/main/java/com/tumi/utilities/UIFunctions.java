@@ -266,9 +266,16 @@ public class UIFunctions extends GenericMethods {
 			driver.get(pdpURL);
 
 		} else {
+			if (applicationUrl.equalsIgnoreCase("prod")) {
+
+				final String pdpURL = GlobalConstants.prodKr + "/p/" + testData.get("KoreaSKUID");
+				driver.navigate().to(pdpURL);
+				UIFunctions.closeSignUp();
+			}else {
 
 			final String pdpURL = GlobalConstants.urlkr + "/p/" + testData.get("KoreaSKUID");
 			driver.get(pdpURL);
+			}
 		}
 
 		UIFunctions.verifyVPN();
