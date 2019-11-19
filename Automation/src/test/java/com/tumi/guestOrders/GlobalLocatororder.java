@@ -21,6 +21,8 @@ public class GlobalLocatororder extends GenericMethods {
 		UIFunctions.closeSignUp();
 		click(pdp.getAddToCart(), "Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Cart");
+		
+		//added prod logic here
 		if (applicationUrl.equals("prod") && (selectedCountry.contains("US")
 				|| selectedCountry.contains("United States") || selectedCountry.contains("Canada"))) {
 
