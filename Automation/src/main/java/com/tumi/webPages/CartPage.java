@@ -386,7 +386,8 @@ public class CartPage extends GenericMethods {
 	}
 	
 	
-	@FindBy(how = How.XPATH, using = ("//div[contains(@class,'cart-total-row cart-grand-total')]/div[2]"))
+//	@FindBy(how = How.XPATH, using = ("//div[contains(@class,'cart-total-row cart-grand-total')]/div[2]"))
+	@FindBy(how = How.XPATH, using = ("(//div[(@class='cart-price')])[2]"))  // xpath changed for estimated total
 	private WebElement estimatedTotal;
 	
 	public WebElement getEstimatedTotal() {

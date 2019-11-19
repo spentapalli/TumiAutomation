@@ -982,8 +982,14 @@ public class UIFunctions extends GenericMethods {
 		Map<String, String> testData = ReadTestData.getJsonData(sheet, testCase);
 
 		String value = getText(ele);
-		System.out.println(value);
-		Double dValue = Double.valueOf(value.replace("$", ""));
+		value=value.replace("$", "");
+		if(value.contains(","))
+		{
+			value=value.replace(",", "");
+		}
+		Double dValue = Double.valueOf(value);
+
+		
 		if (dValue.intValue() >= 100) {
 			click(paypal.getPayPalAnother(), "PayPal");
 		} else {
