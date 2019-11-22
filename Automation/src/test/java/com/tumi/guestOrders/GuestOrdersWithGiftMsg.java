@@ -14,7 +14,7 @@ import com.tumi.utilities.UIFunctions;
  *
  */
 public class GuestOrdersWithGiftMsg extends GenericMethods {
-	
+
 	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestDetails");
 
 	/*
@@ -32,10 +32,10 @@ public class GuestOrdersWithGiftMsg extends GenericMethods {
 		UIFunctions.addGiftMessage("TumiTestData", "VoucherCodeDetails");
 		click(gift.getContinueGiftService(), "Continue");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
-		if (!(selectedCountry.equals("US") && !(selectedCountry.contains("United States")) && !(selectedCountry.contains("Canada")))) {
-		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
-		UIFunctions.waitForContinueToEnable();
-		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
+		if (!(selectedCountry.contains("US") || selectedCountry.contains("Canada"))) {
+			input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
+			UIFunctions.waitForContinueToEnable();
+			click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		}
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
@@ -47,17 +47,17 @@ public class GuestOrdersWithGiftMsg extends GenericMethods {
 	@Test(priority = 1, description = "Sprint 2- TA- 179 Verify Order with merchandise Pre order Ready to ship with Gift message for Guest User")
 	public void preOrderWithGiftMsgAsGuest() {
 
-		UIFunctions.addProduct("TumiTestData", "Products","PreOrderProduct");
+		UIFunctions.addProduct("TumiTestData", "Products", "PreOrderProduct");
 		UIFunctions.verifyAddToCart();
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(gift.getMakeThisGift(), "Make this Gift");
 		UIFunctions.addGiftMessage("TumiTestData", "VoucherCodeDetails");
 		click(gift.getContinueGiftService(), "Continue");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
-		if (!(selectedCountry.equals("US") && !(selectedCountry.contains("United States")) && !(selectedCountry.contains("Canada")))) {
-		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
-		UIFunctions.waitForContinueToEnable();
-		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
+		if (!(selectedCountry.contains("US") || selectedCountry.contains("Canada"))) {
+			input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
+			UIFunctions.waitForContinueToEnable();
+			click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		}
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
@@ -69,17 +69,17 @@ public class GuestOrdersWithGiftMsg extends GenericMethods {
 	@Test(priority = 2, description = "Sprint 2- TA- 180 Verify Order with merchandise Back order Ready to ship with Gift message for Guest User")
 	public void backOrderWithGiftMsgAsGuest() {
 
-		UIFunctions.addProduct("TumiTestData", "Products","BackOrderProduct");
+		UIFunctions.addProduct("TumiTestData", "Products", "BackOrderProduct");
 		UIFunctions.verifyAddToCart();
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(gift.getMakeThisGift(), "Make this Gift");
 		UIFunctions.addGiftMessage("TumiTestData", "VoucherCodeDetails");
 		click(gift.getContinueGiftService(), "Continue");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
-		if (!(selectedCountry.equals("US") && !(selectedCountry.contains("United States")) && !(selectedCountry.contains("Canada")))) {
-		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
-		UIFunctions.waitForContinueToEnable();
-		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
+		if (!(selectedCountry.contains("US") || selectedCountry.contains("Canada"))) {
+			input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
+			UIFunctions.waitForContinueToEnable();
+			click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		}
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
@@ -88,6 +88,4 @@ public class GuestOrdersWithGiftMsg extends GenericMethods {
 		UIFunctions.completeOrder();
 	}
 
-
-	
 }

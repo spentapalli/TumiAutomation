@@ -24,8 +24,10 @@ public class KoreaOrder extends GenericMethods {
 		delay(2000);
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(mainCart.getProceedCart(), "Cart");
+		if (!(selectedCountry.contains("US") || selectedCountry.contains("Canada"))) {
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
+		}
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
 		domClick(shipMethod.getStandardShippingMethod(),"standard Shipping method");

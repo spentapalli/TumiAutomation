@@ -26,7 +26,7 @@ public class MultiOrders extends GenericMethods {
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
-		if (!(selectedCountry.equals("US") && !(selectedCountry.contains("United States")) && !(selectedCountry.contains("Canada")))) {
+		if (!(selectedCountry.contains("US") || selectedCountry.contains("Canada"))) {
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		}
@@ -48,7 +48,7 @@ public class MultiOrders extends GenericMethods {
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
-		if (!(selectedCountry.equals("US") && !(selectedCountry.contains("United States")) && !(selectedCountry.contains("Canada")))) {
+		if (!(selectedCountry.contains("US") || selectedCountry.contains("Canada"))) {
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		}
@@ -74,7 +74,7 @@ public class MultiOrders extends GenericMethods {
 		UIFunctions.addGiftBox();
 		click(gift.getContinueGiftService(), "continue");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
-		if (!(selectedCountry.equals("US") && !(selectedCountry.contains("United States")) && !(selectedCountry.contains("Canada")))) {
+		if (!(selectedCountry.contains("US") || selectedCountry.contains("Canada"))) {
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		}
@@ -97,7 +97,7 @@ public class MultiOrders extends GenericMethods {
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
-		if (!(selectedCountry.equals("US") && !(selectedCountry.contains("United States")) && !(selectedCountry.contains("Canada")))) {
+		if (!(selectedCountry.contains("US") || selectedCountry.contains("Canada"))) {
 		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
 		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		}

@@ -28,9 +28,9 @@ public class MultipleOrdersForGuestUser extends GenericMethods {
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
-		if (!(selectedCountry.equals("US") && !(selectedCountry.contains("United States")) && !(selectedCountry.contains("Canada")))) {
-		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
-		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
+		if (!(selectedCountry.contains("US") || selectedCountry.contains("Canada"))) {
+			input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
+			click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		}
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
@@ -51,9 +51,9 @@ public class MultipleOrdersForGuestUser extends GenericMethods {
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
-		if (!(selectedCountry.equals("US") && !(selectedCountry.contains("United States")) && !(selectedCountry.contains("Canada")))) {
-		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
-		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
+		if (!(selectedCountry.contains("US") || selectedCountry.contains("Canada"))) {
+			input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
+			click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		}
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
@@ -66,16 +66,16 @@ public class MultipleOrdersForGuestUser extends GenericMethods {
 	@Test(priority = 2, description = "Verify Order with 2 'Ready to Ship' Items, One PreOrder  SKU + One  Backorder SKU for Guest User")
 	public void verifyGuestOrderWithTwoPreOrderProductsandBackOrder() {
 
-		UIFunctions.addProduct("TumiTestData", "Products","PreOrderProduct");
+		UIFunctions.addProduct("TumiTestData", "Products", "PreOrderProduct");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getContinueShopping(), "Continue Shopping");
-		UIFunctions.addProduct("TumiTestData", "Products","BackOrderProduct");
+		UIFunctions.addProduct("TumiTestData", "Products", "BackOrderProduct");
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
-		if (!(selectedCountry.equals("US") && !(selectedCountry.contains("United States")) && !(selectedCountry.contains("Canada")))) {
-		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
-		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
+		if (!(selectedCountry.contains("US") || selectedCountry.contains("Canada"))) {
+			input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
+			click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		}
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
@@ -95,9 +95,9 @@ public class MultipleOrdersForGuestUser extends GenericMethods {
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
-		if (!(selectedCountry.equals("US") && !(selectedCountry.contains("United States")) && !(selectedCountry.contains("Canada")))) {
-		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
-		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
+		if (!(selectedCountry.contains("US") || selectedCountry.contains("Canada"))) {
+			input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
+			click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		}
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
@@ -117,9 +117,9 @@ public class MultipleOrdersForGuestUser extends GenericMethods {
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
-		if (!(selectedCountry.equals("US") && !(selectedCountry.contains("United States")) && !(selectedCountry.contains("Canada")))) {
-		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
-		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
+		if (!(selectedCountry.contains("US") || selectedCountry.contains("Canada"))) {
+			input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
+			click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		}
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
@@ -141,9 +141,9 @@ public class MultipleOrdersForGuestUser extends GenericMethods {
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
-		if (!(selectedCountry.equals("US") && !(selectedCountry.contains("United States")) && !(selectedCountry.contains("Canada")))) {
-		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
-		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
+		if (!(selectedCountry.contains("US") || selectedCountry.contains("Canada"))) {
+			input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
+			click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		}
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
@@ -156,7 +156,7 @@ public class MultipleOrdersForGuestUser extends GenericMethods {
 	@Test(priority = 6, description = "Verify Order with 'Pre Order' SKU + Donation purchase-Guest user")
 	public void verifyGuestOrderWithPreOrderAndDonation() {
 
-		UIFunctions.addProduct("TumiTestData", "Products","PreOrderProduct");
+		UIFunctions.addProduct("TumiTestData", "Products", "PreOrderProduct");
 		UIFunctions.removeMonogram();
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getContinueShopping(), "Continue Shopping");
@@ -165,9 +165,9 @@ public class MultipleOrdersForGuestUser extends GenericMethods {
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
-		if (!(selectedCountry.equals("US") && !(selectedCountry.contains("United States")) && !(selectedCountry.contains("Canada")))) {
-		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
-		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
+		if (!(selectedCountry.contains("US") || selectedCountry.contains("Canada"))) {
+			input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
+			click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		}
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
@@ -180,7 +180,7 @@ public class MultipleOrdersForGuestUser extends GenericMethods {
 	@Test(priority = 7, description = "Verify Order with 'Pre Order' SKU + Global locator-Guest user")
 	public void verifyGuestOrderWithPreOrderAndGloabalLocator() {
 
-		UIFunctions.addProduct("TumiTestData", "Products","PreOrderProduct");
+		UIFunctions.addProduct("TumiTestData", "Products", "PreOrderProduct");
 		UIFunctions.removeMonogram();
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getContinueShopping(), "Continue Shopping");
@@ -189,9 +189,9 @@ public class MultipleOrdersForGuestUser extends GenericMethods {
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
-		if (!(selectedCountry.equals("US") && !(selectedCountry.contains("United States")) && !(selectedCountry.contains("Canada")))) {
-		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
-		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
+		if (!(selectedCountry.contains("US") || selectedCountry.contains("Canada"))) {
+			input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
+			click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		}
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
@@ -205,7 +205,7 @@ public class MultipleOrdersForGuestUser extends GenericMethods {
 	@Test(priority = 8, description = "Verify Order with 2 'Pre Order' Items, One Pre Order SKU + One Pre Order SKU with Personalization-Guest user")
 	public void verifyGuestOrderWithTwoPersonalizePreOrder() {
 
-		UIFunctions.addProduct("TumiTestData", "Products","PreOrderProduct");
+		UIFunctions.addProduct("TumiTestData", "Products", "PreOrderProduct");
 		UIFunctions.removeMonogram();
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getContinueShopping(), "Continue Shopping");
@@ -215,9 +215,9 @@ public class MultipleOrdersForGuestUser extends GenericMethods {
 		click(pdp.getAddToCart(), "Add To Cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Checkout");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
-		if (!(selectedCountry.equals("US") && !(selectedCountry.contains("United States")) && !(selectedCountry.contains("Canada")))) {
-		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
-		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
+		if (!(selectedCountry.contains("US") || selectedCountry.contains("Canada"))) {
+			input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
+			click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		}
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");

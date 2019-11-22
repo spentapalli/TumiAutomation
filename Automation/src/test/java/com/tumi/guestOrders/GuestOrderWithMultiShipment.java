@@ -23,14 +23,14 @@ public class GuestOrderWithMultiShipment extends GenericMethods {
 	 */
 	@Test(description = "TA - 290 Verify Order with 2 'Ready to Ship' Items with different SKU/sPurchase with Multishipment for Guest user")
 	public void verifyGuestOrderWithMutlishipment() throws InterruptedException {
-		
+
 		UIFunctions.addMultipleProducts("TumiTestData", "GuestDetails");
 		click(minicart.getMiniCartSymbol(), "Cart Image");
-		click(minicart.getProceedCheckOut(),"Proceed To Cart");
+		click(minicart.getProceedCheckOut(), "Proceed To Cart");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
-		if (!(selectedCountry.equals("US") && !(selectedCountry.contains("United States")) && !(selectedCountry.contains("Canada")))) {
-		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
-		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
+		if (!(selectedCountry.contains("US") || selectedCountry.contains("Canada"))) {
+			input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
+			click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		}
 		UIFunctions.addMultiship();
 		UIFunctions.addMultishipAddressWithCardDeatils("TumiTestData", "CreditCardDetailsMultishipmnet");
