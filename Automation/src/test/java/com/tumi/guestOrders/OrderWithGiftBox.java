@@ -35,10 +35,10 @@ public class OrderWithGiftBox extends GenericMethods {
 			click(gift.getContinueGiftService(), "Continue");
 			click(mainCart.getProceedCart(), "Proceed to Checkout");
 		}
-		if (!(selectedCountry.equals("US") && !(selectedCountry.contains("United States")) && !(selectedCountry.contains("Canada")))) {
-		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
-		UIFunctions.waitForContinueToEnable();
-		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
+		if (!(selectedCountry.contains("US") || selectedCountry.contains("Canada"))) {
+			input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
+			UIFunctions.waitForContinueToEnable();
+			click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		}
 		UIFunctions.addGuestDetails();
 		if (!shipping.getContinueShippingMethod().isEnabled()) {
@@ -60,10 +60,10 @@ public class OrderWithGiftBox extends GenericMethods {
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
 
 		UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "VoucherCodeDetails");
-		if (!(selectedCountry.equals("US") && !(selectedCountry.contains("United States")) && !(selectedCountry.contains("Canada")))) {
-		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
-		UIFunctions.waitForContinueToEnable();
-		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
+		if (!(selectedCountry.contains("US") || selectedCountry.contains("Canada"))) {
+			input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
+			UIFunctions.waitForContinueToEnable();
+			click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		}
 		UIFunctions.addGuestDetails();
 		if (!shipping.getContinueShippingMethod().isEnabled()) {
@@ -86,10 +86,10 @@ public class OrderWithGiftBox extends GenericMethods {
 		UIFunctions.addGiftBox();
 		click(gift.getContinueGiftService(), "continue");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
-		if (!(selectedCountry.equals("US") && !(selectedCountry.contains("United States")) && !(selectedCountry.contains("Canada")))) {
-		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
-		UIFunctions.waitForContinueToEnable();
-		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
+		if (!(selectedCountry.contains("US") || selectedCountry.contains("Canada"))) {
+			input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
+			UIFunctions.waitForContinueToEnable();
+			click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		}
 		UIFunctions.addGuestDetails();
 		if (!shipping.getContinueShippingMethod().isEnabled()) {
@@ -113,10 +113,10 @@ public class OrderWithGiftBox extends GenericMethods {
 		UIFunctions.addGiftBox();
 		click(gift.getContinueGiftService(), "Continue");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
-		if (!(selectedCountry.equals("US") && !(selectedCountry.contains("United States")) && !(selectedCountry.contains("Canada")))) {
-		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
-		UIFunctions.waitForContinueToEnable();
-		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
+		if (!(selectedCountry.contains("US") || selectedCountry.contains("Canada"))) {
+			input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
+			UIFunctions.waitForContinueToEnable();
+			click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		}
 		UIFunctions.addGuestDetails();
 		if (!shipping.getContinueShippingMethod().isEnabled()) {
@@ -143,10 +143,10 @@ public class OrderWithGiftBox extends GenericMethods {
 			UIFunctions.addGiftBox();
 			click(gift.getContinueGiftService(), "Continue");
 			click(mainCart.getProceedCart(), "Proceed to Checkout");
-			if (!(selectedCountry.equals("US") && !(selectedCountry.contains("United States")) && !(selectedCountry.contains("Canada")))) {
-			input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
-			UIFunctions.waitForContinueToEnable();
-			click(singlePage.getContinueAsGuest(), "Contiue as Guest");
+			if (!(selectedCountry.contains("US") || selectedCountry.contains("Canada"))) {
+				input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
+				UIFunctions.waitForContinueToEnable();
+				click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 			}
 			UIFunctions.addGuestDetails();
 			click(shipping.getContinueShippingMethod(), "Contiue Shipping");
@@ -170,10 +170,10 @@ public class OrderWithGiftBox extends GenericMethods {
 			UIFunctions.addGiftBox();
 			click(gift.getContinueGiftService(), "Continue");
 			click(mainCart.getProceedCart(), "Proceed to Checkout");
-			if (!(selectedCountry.equals("US") && !(selectedCountry.contains("United States")) && !(selectedCountry.contains("Canada")))) {
-			input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
-			UIFunctions.waitForContinueToEnable();
-			click(singlePage.getContinueAsGuest(), "Contiue as Guest");
+			if (!(selectedCountry.contains("US") || selectedCountry.contains("Canada"))) {
+				input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
+				UIFunctions.waitForContinueToEnable();
+				click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 			}
 			UIFunctions.addGuestDetails();
 			if (!shipping.getContinueShippingMethod().isEnabled()) {
@@ -204,11 +204,11 @@ public class OrderWithGiftBox extends GenericMethods {
 			click(gift.getContinueGiftService(), "Continue");
 			// UIFunctions.addPromotionalCodeAtCart("TumiTestData", "PreOrderProduct");
 			click(mainCart.getProceedCart(), "Proceed to Checkout");
-			if (!(selectedCountry.equals("US") && !(selectedCountry.contains("United States")) && !(selectedCountry.contains("Canada")))) {
-			input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
-			UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "VoucherCodeDetails");
-			UIFunctions.waitForContinueToEnable();
-			click(singlePage.getContinueAsGuest(), "Contiue as Guest");
+			if (!(selectedCountry.contains("US") || selectedCountry.contains("Canada"))) {
+				input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
+				UIFunctions.addPromotionalCodeAtSinglePage("TumiTestData", "VoucherCodeDetails");
+				UIFunctions.waitForContinueToEnable();
+				click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 			}
 			UIFunctions.addGuestDetails();
 			if (!shipping.getContinueShippingMethod().isEnabled()) {
@@ -232,10 +232,10 @@ public class OrderWithGiftBox extends GenericMethods {
 		UIFunctions.addGiftBox();
 		click(gift.getContinueGiftService(), "Continue");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
-		if (!(selectedCountry.equals("US") && !(selectedCountry.contains("United States")) && !(selectedCountry.contains("Canada")))) {
-		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
-		UIFunctions.waitForContinueToEnable();
-		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
+		if (!(selectedCountry.contains("US") || selectedCountry.contains("Canada"))) {
+			input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
+			UIFunctions.waitForContinueToEnable();
+			click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		}
 		UIFunctions.addGuestDetails();
 		if (!shipping.getContinueShippingMethod().isEnabled()) {

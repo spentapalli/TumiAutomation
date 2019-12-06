@@ -13,20 +13,20 @@ import com.tumi.utilities.UIFunctions;
  *
  */
 public class OrderWithMonogram extends GenericMethods {
-	
+
 	Map<String, String> testData = ReadTestData.getJsonData("TumiTestData", "GuestDetails");
-	
-	@Test(priority=0,description = " TA - 48 Verify Order with merchandise Ready to ship + Personalization for  Guest User.")
+
+	@Test(priority = 0, description = " TA - 48 Verify Order with merchandise Ready to ship + Personalization for  Guest User.")
 	public void orderWithMonogramAsGuest() {
-		UIFunctions.addProductToCart("TumiTestData","Products");
+		UIFunctions.addProductToCart("TumiTestData", "Products");
 		UIFunctions.addMonogram("TumiTestData", "MonoGramDetails");
-		click(pdp.getAddToCart(),"Add to cart");
+		click(pdp.getAddToCart(), "Add to cart");
 		click(minicart.getProceedCheckOut(), "Proceed to Cart");
 		click(mainCart.getProceedCart(), "Proceed to Checkout");
-		if (!(selectedCountry.equals("US") && !(selectedCountry.contains("United States")) && !(selectedCountry.contains("Canada")))) {
-		input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
-		UIFunctions.waitForContinueToEnable();
-		click(singlePage.getContinueAsGuest(), "Contiue as Guest");
+		if (!(selectedCountry.contains("US") || selectedCountry.contains("Canada"))) {
+			input(singlePage.getEmailAddress(), testData.get("EmailID"), "Email ID");
+			UIFunctions.waitForContinueToEnable();
+			click(singlePage.getContinueAsGuest(), "Contiue as Guest");
 		}
 		UIFunctions.addGuestDetails();
 		click(shipping.getContinueShippingMethod(), "Contiue Shipping");
@@ -35,7 +35,4 @@ public class OrderWithMonogram extends GenericMethods {
 		UIFunctions.completeOrder();
 	}
 
-	
-	
-	
 }
